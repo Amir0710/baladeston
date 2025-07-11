@@ -11,5 +11,5 @@ abstract class PurchaseRepository {
     required int offset,
   });
 
-  Future<void> editPurchase({required Purchase purchase});
+  Future<void> editPurchase({required Purchase purchase , required int purchaseId});
 }

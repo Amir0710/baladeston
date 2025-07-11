@@ -1,4 +1,4 @@
-class Collection {
+class Category {
   final int id;
   final String title;
   final String password;
@@ -8,7 +8,7 @@ class Collection {
   final DateTime createdAt;
   final int ownerId;
 
-  const Collection({
+  const Category({
     required this.id,
     required this.title,
     required this.password,

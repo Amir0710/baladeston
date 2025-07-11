@@ -1,15 +1,17 @@
 class Discount {
+  final int? userId ;
   final int id;
-  final String category;
+  final int category;
   final int percent;
   final String status;
-  final DateTime? expiresAt;
+  final DateTime expiresAt;
 
-  const Discount({
+  const Discount( {
+    this.userId,
     required this.id,
     required this.category,
     required this.percent,
     required this.status,
-    this.expiresAt,
+    required this.expiresAt,
   });
 }
