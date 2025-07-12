@@ -16,6 +16,17 @@ class VideoQueryFilter {
   final bool ascending;
 
   VideoQueryFilter(
-      { this.limit = 20, this.offset = 1, this.category, this.searchTerm, this.uploaderId, this.collectionId, this.collectionName, this.minRating, this.maxRating, this.uploadedAfter, this.uploadedBefore, this.orderBy = 'name', this.ascending = false});
+      {this.limit = 20,
+      this.offset = 0,
+      this.category,
+      this.searchTerm,
+      this.uploaderId,
+      this.collectionId,
+      this.collectionName,
+      this.minRating,
+      this.maxRating,
+      this.uploadedAfter,
+      this.uploadedBefore,
+      this.orderBy = 'name',
+      this.ascending = false});
 }
-

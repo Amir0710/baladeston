@@ -2,16 +2,11 @@ class DiscountQueryFilter {
   final int? userId; // '?' for show is general  ?
   final String order;
   final int limit;
-
   final int offset;
-
   final int? categoryID;
-
   final String? categoryName;
-
   final bool ascending;
   final int? minPercent;
-
   final int? maxPercent;
 
   DiscountQueryFilter({

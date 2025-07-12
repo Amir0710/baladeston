@@ -6,9 +6,7 @@ abstract class PurchaseRepository {
   Future<Purchase> getPurchaseById({required int purchase});
 
   Future<List<Purchase>> getPurchase({
-    required int userId,
-    required int limit,
-    required int offset,
+required
   });
 
   Future<void> editPurchase({required Purchase purchase , required int purchaseId});

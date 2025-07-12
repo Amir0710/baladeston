@@ -1,3 +1,6 @@
+
+// all of this filter only for admin
+
 class UserQueryFilter {
   final int? id;
 

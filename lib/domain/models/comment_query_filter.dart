@@ -1,26 +1,22 @@
 class CommentQueryFilter {
   final int videoId;
   final int? userId;
-  final String? contentContains;
+  final String? searchTerm;
   final double? minRating;
   final double? maxRating;
-
   final DateTime? createdAfter;
   final DateTime? createdBefore;
-
   final String? orderBy;
   final bool ascending;
-
   final int limit;
   final int offset;
 
   const CommentQueryFilter({
     required this.videoId,
     this.userId,
-    this.contentContains,
+    this.searchTerm,
     this.minRating,
     this.maxRating,
-
     this.createdAfter,
     this.createdBefore,
     this.orderBy = 'createdAt',
