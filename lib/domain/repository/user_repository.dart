@@ -1,4 +1,4 @@
-import '../entities/user.dart';
+import '../entities/user/user.dart';
 import '../models/user_query_filter.dart';
 
 abstract class UserRepository {

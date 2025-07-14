@@ -1,4 +1,4 @@
-import '../entities/discount.dart';
+import '../entities/discount/discount.dart';
 import '../models/discount_query_filter.dart';
 
 abstract class DiscountRepository {

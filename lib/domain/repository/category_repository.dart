@@ -1,6 +1,6 @@
 import 'package:baladeston/domain/models/category_query_filter.dart';
 
-import '../entities/category.dart';
+import '../entities/category/category.dart';
 
 abstract class CategoryRepository {
   Future<void> createCategory({required Category collection});

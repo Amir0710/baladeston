@@ -1,4 +1,4 @@
-import 'package:baladeston/domain/entities/purchase.dart';
+import 'package:baladeston/domain/entities/purchase/purchase.dart';
 
 abstract class PurchaseRepository {
   Future<void> createPurchase({required Purchase purchase});

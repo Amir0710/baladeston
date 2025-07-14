@@ -1,4 +1,4 @@
-import '../entities/comment.dart';
+import '../entities/comment/comment.dart';
 import '../models/comment_query_filter.dart';
 
 abstract class CommentRepository {

@@ -1,4 +1,4 @@
-import 'package:baladeston/domain/entities/video.dart';
+import 'package:baladeston/domain/entities/video/video.dart';
 import 'package:baladeston/domain/models/video_query_filter.dart';
 
 abstract class VideoRepository {
