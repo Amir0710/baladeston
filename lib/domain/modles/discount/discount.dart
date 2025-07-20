@@ -23,15 +23,15 @@ part 'discount.freezed.dart';
 part 'discount.g.dart';
 
 @freezed
-class Discount with _$Discount {
-  const factory Discount({
-    int? userId,
-    required int id,
-    required int category,
-    required int percent,
-    required String status,
-    required DateTime expiresAt,
-  }) = _Discount;
+abstract class Discount with _$Discount {
+
+  factory Discount({   required int? userId ,
+  required int id,
+  required int category,
+  required int percent,
+  required String status,
+  required DateTime expiresAt
+}) = _Discount;
 
   factory Discount.fromJson(Map<String, dynamic> json) => _$DiscountFromJson(json);
 }

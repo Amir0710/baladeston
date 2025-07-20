@@ -15,10 +15,15 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Comment {
   int get userId;
+  set userId(int value);
   int get targetId;
+  set targetId(int value);
   String get content;
+  set content(String value);
   double get rating;
+  set rating(double value);
   DateTime get createdAt;
+  set createdAt(DateTime value);
 
   /// Create a copy of Comment
   /// with the given fields replaced by the non-null parameter values.
@@ -29,25 +34,6 @@ mixin _$Comment {
 
   /// Serializes this Comment to a JSON map.
   Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is Comment &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.targetId, targetId) ||
-                other.targetId == targetId) &&
-            (identical(other.content, content) || other.content == content) &&
-            (identical(other.rating, rating) || other.rating == rating) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, userId, targetId, content, rating, createdAt);
 
   @override
   String toString() {
@@ -278,9 +264,10 @@ extension CommentPatterns on Comment {
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _Comment implements Comment {
-  const _Comment(
+  _Comment(
       {required this.userId,
       required this.targetId,
       required this.content,
@@ -290,15 +277,15 @@ class _Comment implements Comment {
       _$CommentFromJson(json);
 
   @override
-  final int userId;
+  int userId;
   @override
-  final int targetId;
+  int targetId;
   @override
-  final String content;
+  String content;
   @override
-  final double rating;
+  double rating;
   @override
-  final DateTime createdAt;
+  DateTime createdAt;
 
   /// Create a copy of Comment
   /// with the given fields replaced by the non-null parameter values.
@@ -314,25 +301,6 @@ class _Comment implements Comment {
       this,
     );
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Comment &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.targetId, targetId) ||
-                other.targetId == targetId) &&
-            (identical(other.content, content) || other.content == content) &&
-            (identical(other.rating, rating) || other.rating == rating) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, userId, targetId, content, rating, createdAt);
 
   @override
   String toString() {

@@ -15,13 +15,21 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Purchase {
   int get id;
+  set id(int value);
   String get status;
+  set status(String value);
   int get userId;
+  set userId(int value);
   int get collectionId;
+  set collectionId(int value);
   int? get discountId;
+  set discountId(int? value);
   double get finalPrice;
+  set finalPrice(double value);
   DateTime get purchaseTime;
+  set purchaseTime(DateTime value);
   DateTime? get expiresAt;
+  set expiresAt(DateTime? value);
 
   /// Create a copy of Purchase
   /// with the given fields replaced by the non-null parameter values.
@@ -32,31 +40,6 @@ mixin _$Purchase {
 
   /// Serializes this Purchase to a JSON map.
   Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is Purchase &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.collectionId, collectionId) ||
-                other.collectionId == collectionId) &&
-            (identical(other.discountId, discountId) ||
-                other.discountId == discountId) &&
-            (identical(other.finalPrice, finalPrice) ||
-                other.finalPrice == finalPrice) &&
-            (identical(other.purchaseTime, purchaseTime) ||
-                other.purchaseTime == purchaseTime) &&
-            (identical(other.expiresAt, expiresAt) ||
-                other.expiresAt == expiresAt));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, status, userId, collectionId,
-      discountId, finalPrice, purchaseTime, expiresAt);
 
   @override
   String toString() {
@@ -347,9 +330,10 @@ extension PurchasePatterns on Purchase {
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _Purchase implements Purchase {
-  const _Purchase(
+  _Purchase(
       {required this.id,
       required this.status,
       required this.userId,
@@ -362,21 +346,21 @@ class _Purchase implements Purchase {
       _$PurchaseFromJson(json);
 
   @override
-  final int id;
+  int id;
   @override
-  final String status;
+  String status;
   @override
-  final int userId;
+  int userId;
   @override
-  final int collectionId;
+  int collectionId;
   @override
-  final int? discountId;
+  int? discountId;
   @override
-  final double finalPrice;
+  double finalPrice;
   @override
-  final DateTime purchaseTime;
+  DateTime purchaseTime;
   @override
-  final DateTime? expiresAt;
+  DateTime? expiresAt;
 
   /// Create a copy of Purchase
   /// with the given fields replaced by the non-null parameter values.
@@ -392,31 +376,6 @@ class _Purchase implements Purchase {
       this,
     );
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Purchase &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.collectionId, collectionId) ||
-                other.collectionId == collectionId) &&
-            (identical(other.discountId, discountId) ||
-                other.discountId == discountId) &&
-            (identical(other.finalPrice, finalPrice) ||
-                other.finalPrice == finalPrice) &&
-            (identical(other.purchaseTime, purchaseTime) ||
-                other.purchaseTime == purchaseTime) &&
-            (identical(other.expiresAt, expiresAt) ||
-                other.expiresAt == expiresAt));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, status, userId, collectionId,
-      discountId, finalPrice, purchaseTime, expiresAt);
 
   @override
   String toString() {

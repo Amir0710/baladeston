@@ -19,25 +19,25 @@
 //     required this.ownerId,
 //   });
 // }
-
-
-
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'user.freezed.dart';
-part 'user.g.dart';
+part 'category.freezed.dart';
+part 'category.g.dart';
 
 @freezed
-class User with _$User {
-  const factory User({
+abstract class Category with _$Category {
+  const factory Category({
     required int id,
-    required String fullName,
-    required String email,
-    required String phoneNumber,
-    String? avatarUrl,
+    required String title,
+    required String password,
+    required double price,
     required String status,
-  }) = _User;
+    String? thumbnailUrl,
+    required DateTime createdAt,
+    required int ownerId,
+  }) = _Category;
 
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+  factory Category.fromJson(Map<String, dynamic> json) => _$CategoryFromJson(json);
 }
+
+

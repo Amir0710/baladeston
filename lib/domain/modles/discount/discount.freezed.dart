@@ -15,11 +15,17 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Discount {
   int? get userId;
+  set userId(int? value);
   int get id;
+  set id(int value);
   int get category;
+  set category(int value);
   int get percent;
+  set percent(int value);
   String get status;
+  set status(String value);
   DateTime get expiresAt;
+  set expiresAt(DateTime value);
 
   /// Create a copy of Discount
   /// with the given fields replaced by the non-null parameter values.
@@ -30,26 +36,6 @@ mixin _$Discount {
 
   /// Serializes this Discount to a JSON map.
   Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is Discount &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.category, category) ||
-                other.category == category) &&
-            (identical(other.percent, percent) || other.percent == percent) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.expiresAt, expiresAt) ||
-                other.expiresAt == expiresAt));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, userId, id, category, percent, status, expiresAt);
 
   @override
   String toString() {
@@ -286,9 +272,10 @@ extension DiscountPatterns on Discount {
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _Discount implements Discount {
-  const _Discount(
+  _Discount(
       {this.userId,
       required this.id,
       required this.category,
@@ -299,17 +286,17 @@ class _Discount implements Discount {
       _$DiscountFromJson(json);
 
   @override
-  final int? userId;
+  int? userId;
   @override
-  final int id;
+  int id;
   @override
-  final int category;
+  int category;
   @override
-  final int percent;
+  int percent;
   @override
-  final String status;
+  String status;
   @override
-  final DateTime expiresAt;
+  DateTime expiresAt;
 
   /// Create a copy of Discount
   /// with the given fields replaced by the non-null parameter values.
@@ -325,26 +312,6 @@ class _Discount implements Discount {
       this,
     );
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Discount &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.category, category) ||
-                other.category == category) &&
-            (identical(other.percent, percent) || other.percent == percent) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.expiresAt, expiresAt) ||
-                other.expiresAt == expiresAt));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, userId, id, category, percent, status, expiresAt);
 
   @override
   String toString() {

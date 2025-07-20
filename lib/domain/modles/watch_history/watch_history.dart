@@ -18,9 +18,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'watch_history.freezed.dart';
 part 'watch_history.g.dart';
 
-@freezed
+@unfreezed
 class WatchHistory with _$WatchHistory {
-  const factory WatchHistory({
+  @JsonSerializable(explicitToJson: true)
+  factory WatchHistory({
     required int userId,
     required int videoId,
     required int lastPositionSeconds,

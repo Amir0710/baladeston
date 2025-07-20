@@ -15,14 +15,23 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Video {
   int get id;
+  set id(int value);
   String get title;
+  set title(String value);
   String? get description;
+  set description(String? value);
   String get videoUrl;
+  set videoUrl(String value);
   String? get thumbnailUrl;
+  set thumbnailUrl(String? value);
   String get status;
+  set status(String value);
   int get uploaderId;
+  set uploaderId(int value);
   int get collectionId;
+  set collectionId(int value);
   DateTime get uploadedAt;
+  set uploadedAt(DateTime value);
 
   /// Create a copy of Video
   /// with the given fields replaced by the non-null parameter values.
@@ -33,33 +42,6 @@ mixin _$Video {
 
   /// Serializes this Video to a JSON map.
   Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is Video &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.videoUrl, videoUrl) ||
-                other.videoUrl == videoUrl) &&
-            (identical(other.thumbnailUrl, thumbnailUrl) ||
-                other.thumbnailUrl == thumbnailUrl) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.uploaderId, uploaderId) ||
-                other.uploaderId == uploaderId) &&
-            (identical(other.collectionId, collectionId) ||
-                other.collectionId == collectionId) &&
-            (identical(other.uploadedAt, uploadedAt) ||
-                other.uploadedAt == uploadedAt));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, title, description, videoUrl,
-      thumbnailUrl, status, uploaderId, collectionId, uploadedAt);
 
   @override
   String toString() {
@@ -362,9 +344,10 @@ extension VideoPatterns on Video {
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _Video implements Video {
-  const _Video(
+  _Video(
       {required this.id,
       required this.title,
       this.description,
@@ -377,23 +360,23 @@ class _Video implements Video {
   factory _Video.fromJson(Map<String, dynamic> json) => _$VideoFromJson(json);
 
   @override
-  final int id;
+  int id;
   @override
-  final String title;
+  String title;
   @override
-  final String? description;
+  String? description;
   @override
-  final String videoUrl;
+  String videoUrl;
   @override
-  final String? thumbnailUrl;
+  String? thumbnailUrl;
   @override
-  final String status;
+  String status;
   @override
-  final int uploaderId;
+  int uploaderId;
   @override
-  final int collectionId;
+  int collectionId;
   @override
-  final DateTime uploadedAt;
+  DateTime uploadedAt;
 
   /// Create a copy of Video
   /// with the given fields replaced by the non-null parameter values.
@@ -409,33 +392,6 @@ class _Video implements Video {
       this,
     );
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Video &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.videoUrl, videoUrl) ||
-                other.videoUrl == videoUrl) &&
-            (identical(other.thumbnailUrl, thumbnailUrl) ||
-                other.thumbnailUrl == thumbnailUrl) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.uploaderId, uploaderId) ||
-                other.uploaderId == uploaderId) &&
-            (identical(other.collectionId, collectionId) ||
-                other.collectionId == collectionId) &&
-            (identical(other.uploadedAt, uploadedAt) ||
-                other.uploadedAt == uploadedAt));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, title, description, videoUrl,
-      thumbnailUrl, status, uploaderId, collectionId, uploadedAt);
 
   @override
   String toString() {

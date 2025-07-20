@@ -1,5 +1,5 @@
-// import 'package:baladeston/domain/entities/user.dart';
-// import 'package:baladeston/domain/models/user_query_filter.dart';
+// import 'package:baladeston/domain/modles/user.dart';
+// import 'package:baladeston/domain/entitys/user_query_filter.dart';
 // import 'package:baladeston/domain/repository/user_repository.dart';
 
 // class UserRepositoryImpleentaion implements UserRepository{

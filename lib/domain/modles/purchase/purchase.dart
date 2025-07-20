@@ -21,23 +21,28 @@
 // }
 
 
+
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'purchase.freezed.dart';
 part 'purchase.g.dart';
 
 @freezed
-class Purchase with _$Purchase {
-  const factory Purchase({
-    required int id,
-    required String status,
-    required int userId,
-    required int collectionId,
-    int? discountId,
-    required double finalPrice,
-    required DateTime purchaseTime,
-    DateTime? expiresAt,
-  }) = _Purchase;
+abstract class Purchase with _$Purchase {
+
+  factory Purchase(
+    {
+        required int id,
+  required String status ,
+  required int userId,
+  required int collectionId,
+  required int? discountId,
+  required double finalPrice,
+  required DateTime purchaseTime,
+  required DateTime? expiresAt,
+    }
+  ) = _Purchase;
 
   factory Purchase.fromJson(Map<String, dynamic> json) => _$PurchaseFromJson(json);
 }

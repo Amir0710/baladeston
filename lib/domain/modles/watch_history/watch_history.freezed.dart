@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'favorite.dart';
+part of 'watch_history.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,86 +13,83 @@ part of 'favorite.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$Favorite {
+mixin _$WatchHistory {
   int get userId;
-  int get targetId;
-  DateTime get interestedIn;
+  set userId(int value);
+  int get videoId;
+  set videoId(int value);
+  int get lastPositionSeconds;
+  set lastPositionSeconds(int value);
+  DateTime get updatedAt;
+  set updatedAt(DateTime value);
 
-  /// Create a copy of Favorite
+  /// Create a copy of WatchHistory
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $FavoriteCopyWith<Favorite> get copyWith =>
-      _$FavoriteCopyWithImpl<Favorite>(this as Favorite, _$identity);
+  $WatchHistoryCopyWith<WatchHistory> get copyWith =>
+      _$WatchHistoryCopyWithImpl<WatchHistory>(
+          this as WatchHistory, _$identity);
 
-  /// Serializes this Favorite to a JSON map.
+  /// Serializes this WatchHistory to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is Favorite &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.targetId, targetId) ||
-                other.targetId == targetId) &&
-            (identical(other.interestedIn, interestedIn) ||
-                other.interestedIn == interestedIn));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, userId, targetId, interestedIn);
-
-  @override
   String toString() {
-    return 'Favorite(userId: $userId, targetId: $targetId, interestedIn: $interestedIn)';
+    return 'WatchHistory(userId: $userId, videoId: $videoId, lastPositionSeconds: $lastPositionSeconds, updatedAt: $updatedAt)';
   }
 }
 
 /// @nodoc
-abstract mixin class $FavoriteCopyWith<$Res> {
-  factory $FavoriteCopyWith(Favorite value, $Res Function(Favorite) _then) =
-      _$FavoriteCopyWithImpl;
+abstract mixin class $WatchHistoryCopyWith<$Res> {
+  factory $WatchHistoryCopyWith(
+          WatchHistory value, $Res Function(WatchHistory) _then) =
+      _$WatchHistoryCopyWithImpl;
   @useResult
-  $Res call({int userId, int targetId, DateTime interestedIn});
+  $Res call(
+      {int userId, int videoId, int lastPositionSeconds, DateTime updatedAt});
 }
 
 /// @nodoc
-class _$FavoriteCopyWithImpl<$Res> implements $FavoriteCopyWith<$Res> {
-  _$FavoriteCopyWithImpl(this._self, this._then);
+class _$WatchHistoryCopyWithImpl<$Res> implements $WatchHistoryCopyWith<$Res> {
+  _$WatchHistoryCopyWithImpl(this._self, this._then);
 
-  final Favorite _self;
-  final $Res Function(Favorite) _then;
+  final WatchHistory _self;
+  final $Res Function(WatchHistory) _then;
 
-  /// Create a copy of Favorite
+  /// Create a copy of WatchHistory
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? userId = null,
-    Object? targetId = null,
-    Object? interestedIn = null,
+    Object? videoId = null,
+    Object? lastPositionSeconds = null,
+    Object? updatedAt = null,
   }) {
     return _then(_self.copyWith(
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int,
-      targetId: null == targetId
-          ? _self.targetId
-          : targetId // ignore: cast_nullable_to_non_nullable
+      videoId: null == videoId
+          ? _self.videoId
+          : videoId // ignore: cast_nullable_to_non_nullable
               as int,
-      interestedIn: null == interestedIn
-          ? _self.interestedIn
-          : interestedIn // ignore: cast_nullable_to_non_nullable
+      lastPositionSeconds: null == lastPositionSeconds
+          ? _self.lastPositionSeconds
+          : lastPositionSeconds // ignore: cast_nullable_to_non_nullable
+              as int,
+      updatedAt: null == updatedAt
+          ? _self.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
   }
 }
 
-/// Adds pattern-matching-related methods to [Favorite].
-extension FavoritePatterns on Favorite {
+/// Adds pattern-matching-related methods to [WatchHistory].
+extension WatchHistoryPatterns on WatchHistory {
   /// A variant of `map` that fallback to returning `orElse`.
   ///
   /// It is equivalent to doing:
@@ -107,12 +104,12 @@ extension FavoritePatterns on Favorite {
 
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
-    TResult Function(_Favorite value)? $default, {
+    TResult Function(_WatchHistory value)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _Favorite() when $default != null:
+      case _WatchHistory() when $default != null:
         return $default(_that);
       case _:
         return orElse();
@@ -134,11 +131,11 @@ extension FavoritePatterns on Favorite {
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_Favorite value) $default,
+    TResult Function(_WatchHistory value) $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _Favorite():
+      case _WatchHistory():
         return $default(_that);
       case _:
         throw StateError('Unexpected subclass');
@@ -159,11 +156,11 @@ extension FavoritePatterns on Favorite {
 
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_Favorite value)? $default,
+    TResult? Function(_WatchHistory value)? $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _Favorite() when $default != null:
+      case _WatchHistory() when $default != null:
         return $default(_that);
       case _:
         return null;
@@ -184,14 +181,16 @@ extension FavoritePatterns on Favorite {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int userId, int targetId, DateTime interestedIn)?
+    TResult Function(int userId, int videoId, int lastPositionSeconds,
+            DateTime updatedAt)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _Favorite() when $default != null:
-        return $default(_that.userId, _that.targetId, _that.interestedIn);
+      case _WatchHistory() when $default != null:
+        return $default(_that.userId, _that.videoId, _that.lastPositionSeconds,
+            _that.updatedAt);
       case _:
         return orElse();
     }
@@ -212,12 +211,15 @@ extension FavoritePatterns on Favorite {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(int userId, int targetId, DateTime interestedIn) $default,
+    TResult Function(int userId, int videoId, int lastPositionSeconds,
+            DateTime updatedAt)
+        $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _Favorite():
-        return $default(_that.userId, _that.targetId, _that.interestedIn);
+      case _WatchHistory():
+        return $default(_that.userId, _that.videoId, _that.lastPositionSeconds,
+            _that.updatedAt);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -237,13 +239,15 @@ extension FavoritePatterns on Favorite {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int userId, int targetId, DateTime interestedIn)?
+    TResult? Function(int userId, int videoId, int lastPositionSeconds,
+            DateTime updatedAt)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _Favorite() when $default != null:
-        return $default(_that.userId, _that.targetId, _that.interestedIn);
+      case _WatchHistory() when $default != null:
+        return $default(_that.userId, _that.videoId, _that.lastPositionSeconds,
+            _that.updatedAt);
       case _:
         return null;
     }
@@ -251,97 +255,93 @@ extension FavoritePatterns on Favorite {
 }
 
 /// @nodoc
-@JsonSerializable()
-class _Favorite implements Favorite {
-  const _Favorite(
+
+@JsonSerializable(explicitToJson: true)
+class _WatchHistory implements WatchHistory {
+  _WatchHistory(
       {required this.userId,
-      required this.targetId,
-      required this.interestedIn});
-  factory _Favorite.fromJson(Map<String, dynamic> json) =>
-      _$FavoriteFromJson(json);
+      required this.videoId,
+      required this.lastPositionSeconds,
+      required this.updatedAt});
+  factory _WatchHistory.fromJson(Map<String, dynamic> json) =>
+      _$WatchHistoryFromJson(json);
 
   @override
-  final int userId;
+  int userId;
   @override
-  final int targetId;
+  int videoId;
   @override
-  final DateTime interestedIn;
+  int lastPositionSeconds;
+  @override
+  DateTime updatedAt;
 
-  /// Create a copy of Favorite
+  /// Create a copy of WatchHistory
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$FavoriteCopyWith<_Favorite> get copyWith =>
-      __$FavoriteCopyWithImpl<_Favorite>(this, _$identity);
+  _$WatchHistoryCopyWith<_WatchHistory> get copyWith =>
+      __$WatchHistoryCopyWithImpl<_WatchHistory>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$FavoriteToJson(
+    return _$WatchHistoryToJson(
       this,
     );
   }
 
   @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Favorite &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.targetId, targetId) ||
-                other.targetId == targetId) &&
-            (identical(other.interestedIn, interestedIn) ||
-                other.interestedIn == interestedIn));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, userId, targetId, interestedIn);
-
-  @override
   String toString() {
-    return 'Favorite(userId: $userId, targetId: $targetId, interestedIn: $interestedIn)';
+    return 'WatchHistory(userId: $userId, videoId: $videoId, lastPositionSeconds: $lastPositionSeconds, updatedAt: $updatedAt)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$FavoriteCopyWith<$Res>
-    implements $FavoriteCopyWith<$Res> {
-  factory _$FavoriteCopyWith(_Favorite value, $Res Function(_Favorite) _then) =
-      __$FavoriteCopyWithImpl;
+abstract mixin class _$WatchHistoryCopyWith<$Res>
+    implements $WatchHistoryCopyWith<$Res> {
+  factory _$WatchHistoryCopyWith(
+          _WatchHistory value, $Res Function(_WatchHistory) _then) =
+      __$WatchHistoryCopyWithImpl;
   @override
   @useResult
-  $Res call({int userId, int targetId, DateTime interestedIn});
+  $Res call(
+      {int userId, int videoId, int lastPositionSeconds, DateTime updatedAt});
 }
 
 /// @nodoc
-class __$FavoriteCopyWithImpl<$Res> implements _$FavoriteCopyWith<$Res> {
-  __$FavoriteCopyWithImpl(this._self, this._then);
+class __$WatchHistoryCopyWithImpl<$Res>
+    implements _$WatchHistoryCopyWith<$Res> {
+  __$WatchHistoryCopyWithImpl(this._self, this._then);
 
-  final _Favorite _self;
-  final $Res Function(_Favorite) _then;
+  final _WatchHistory _self;
+  final $Res Function(_WatchHistory) _then;
 
-  /// Create a copy of Favorite
+  /// Create a copy of WatchHistory
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $Res call({
     Object? userId = null,
-    Object? targetId = null,
-    Object? interestedIn = null,
+    Object? videoId = null,
+    Object? lastPositionSeconds = null,
+    Object? updatedAt = null,
   }) {
-    return _then(_Favorite(
+    return _then(_WatchHistory(
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int,
-      targetId: null == targetId
-          ? _self.targetId
-          : targetId // ignore: cast_nullable_to_non_nullable
+      videoId: null == videoId
+          ? _self.videoId
+          : videoId // ignore: cast_nullable_to_non_nullable
               as int,
-      interestedIn: null == interestedIn
-          ? _self.interestedIn
-          : interestedIn // ignore: cast_nullable_to_non_nullable
+      lastPositionSeconds: null == lastPositionSeconds
+          ? _self.lastPositionSeconds
+          : lastPositionSeconds // ignore: cast_nullable_to_non_nullable
+              as int,
+      updatedAt: null == updatedAt
+          ? _self.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
   }

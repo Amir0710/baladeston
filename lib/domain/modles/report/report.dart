@@ -24,15 +24,18 @@ part 'report.freezed.dart';
 part 'report.g.dart';
 
 @freezed
-class Report with _$Report {
-  const factory Report({
-    required int id,
-    required int userId,
-    required int targetId,
-    required String response,
-    String? reason,
-    required DateTime reportedAt,
-    DateTime? responseAt,
+ abstract class Report with _$Report {
+
+  factory Report({
+
+      required int id,
+  required int userId,
+  required int targetId,
+  required String response,
+  required String? reason,
+  required DateTime reportedAt,
+  required DateTime? responseAt,
+
   }) = _Report;
 
   factory Report.fromJson(Map<String, dynamic> json) => _$ReportFromJson(json);

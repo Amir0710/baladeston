@@ -15,12 +15,19 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Report {
   int get id;
+  set id(int value);
   int get userId;
+  set userId(int value);
   int get targetId;
+  set targetId(int value);
   String get response;
+  set response(String value);
   String? get reason;
+  set reason(String? value);
   DateTime get reportedAt;
+  set reportedAt(DateTime value);
   DateTime? get responseAt;
+  set responseAt(DateTime? value);
 
   /// Create a copy of Report
   /// with the given fields replaced by the non-null parameter values.
@@ -31,29 +38,6 @@ mixin _$Report {
 
   /// Serializes this Report to a JSON map.
   Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is Report &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.targetId, targetId) ||
-                other.targetId == targetId) &&
-            (identical(other.response, response) ||
-                other.response == response) &&
-            (identical(other.reason, reason) || other.reason == reason) &&
-            (identical(other.reportedAt, reportedAt) ||
-                other.reportedAt == reportedAt) &&
-            (identical(other.responseAt, responseAt) ||
-                other.responseAt == responseAt));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, userId, targetId, response,
-      reason, reportedAt, responseAt);
 
   @override
   String toString() {
@@ -296,9 +280,10 @@ extension ReportPatterns on Report {
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _Report implements Report {
-  const _Report(
+  _Report(
       {required this.id,
       required this.userId,
       required this.targetId,
@@ -309,19 +294,19 @@ class _Report implements Report {
   factory _Report.fromJson(Map<String, dynamic> json) => _$ReportFromJson(json);
 
   @override
-  final int id;
+  int id;
   @override
-  final int userId;
+  int userId;
   @override
-  final int targetId;
+  int targetId;
   @override
-  final String response;
+  String response;
   @override
-  final String? reason;
+  String? reason;
   @override
-  final DateTime reportedAt;
+  DateTime reportedAt;
   @override
-  final DateTime? responseAt;
+  DateTime? responseAt;
 
   /// Create a copy of Report
   /// with the given fields replaced by the non-null parameter values.
@@ -337,29 +322,6 @@ class _Report implements Report {
       this,
     );
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Report &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.targetId, targetId) ||
-                other.targetId == targetId) &&
-            (identical(other.response, response) ||
-                other.response == response) &&
-            (identical(other.reason, reason) || other.reason == reason) &&
-            (identical(other.reportedAt, reportedAt) ||
-                other.reportedAt == reportedAt) &&
-            (identical(other.responseAt, responseAt) ||
-                other.responseAt == responseAt));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, userId, targetId, response,
-      reason, reportedAt, responseAt);
 
   @override
   String toString() {

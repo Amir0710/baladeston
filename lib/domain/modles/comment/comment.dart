@@ -21,13 +21,14 @@ part 'comment.freezed.dart';
 part 'comment.g.dart';
 
 @freezed
-class Comment with _$Comment {
-  const factory Comment({
-    required int userId,
-    required int targetId,
-    required String content,
-    required double rating,
-    required DateTime createdAt,
+abstract class Comment with _$Comment {
+
+  factory Comment({
+      required int userId,
+  required int targetId,
+  required String content,
+  required double rating,
+  required DateTime createdAt,
   }) = _Comment;
 
   factory Comment.fromJson(Map<String, dynamic> json) => _$CommentFromJson(json);
