@@ -1,6 +1,9 @@
+import 'package:baladeston/core/init/supabase_initializer.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async{
+    WidgetsFlutterBinding.ensureInitialized();
+  await initSupabase(); 
   runApp(const MyApp());
 }
 
