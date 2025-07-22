@@ -1,33 +1,35 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'purchase.dart';
+part of 'purchase_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_Purchase _$PurchaseFromJson(Map<String, dynamic> json) => _Purchase(
+PurchaseModel _$PurchaseModelFromJson(Map<String, dynamic> json) =>
+    PurchaseModel(
       id: (json['id'] as num).toInt(),
       status: json['status'] as String,
       userId: (json['userId'] as num).toInt(),
+      categoryId: (json['categoryId'] as num).toInt(),
       discountId: (json['discountId'] as num?)?.toInt(),
       finalPrice: (json['finalPrice'] as num).toDouble(),
       purchaseTime: DateTime.parse(json['purchaseTime'] as String),
       expiresAt: json['expiresAt'] == null
           ? null
           : DateTime.parse(json['expiresAt'] as String),
-      categoryId: (json['categoryId'] as num).toInt(),
       createdAt: DateTime.parse(json['createdAt'] as String),
     );
 
-Map<String, dynamic> _$PurchaseToJson(_Purchase instance) => <String, dynamic>{
+Map<String, dynamic> _$PurchaseModelToJson(PurchaseModel instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'status': instance.status,
       'userId': instance.userId,
+      'categoryId': instance.categoryId,
       'discountId': instance.discountId,
       'finalPrice': instance.finalPrice,
       'purchaseTime': instance.purchaseTime.toIso8601String(),
       'expiresAt': instance.expiresAt?.toIso8601String(),
-      'categoryId': instance.categoryId,
       'createdAt': instance.createdAt.toIso8601String(),
     };

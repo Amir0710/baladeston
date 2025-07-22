@@ -17,11 +17,12 @@ mixin _$Purchase {
   int get id;
   String get status;
   int get userId;
-  int get collectionId;
   int? get discountId;
   double get finalPrice;
   DateTime get purchaseTime;
   DateTime? get expiresAt;
+  int get categoryId;
+  DateTime get createdAt;
 
   /// Create a copy of Purchase
   /// with the given fields replaced by the non-null parameter values.
@@ -41,8 +42,6 @@ mixin _$Purchase {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.collectionId, collectionId) ||
-                other.collectionId == collectionId) &&
             (identical(other.discountId, discountId) ||
                 other.discountId == discountId) &&
             (identical(other.finalPrice, finalPrice) ||
@@ -50,17 +49,21 @@ mixin _$Purchase {
             (identical(other.purchaseTime, purchaseTime) ||
                 other.purchaseTime == purchaseTime) &&
             (identical(other.expiresAt, expiresAt) ||
-                other.expiresAt == expiresAt));
+                other.expiresAt == expiresAt) &&
+            (identical(other.categoryId, categoryId) ||
+                other.categoryId == categoryId) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, status, userId, collectionId,
-      discountId, finalPrice, purchaseTime, expiresAt);
+  int get hashCode => Object.hash(runtimeType, id, status, userId, discountId,
+      finalPrice, purchaseTime, expiresAt, categoryId, createdAt);
 
   @override
   String toString() {
-    return 'Purchase(id: $id, status: $status, userId: $userId, collectionId: $collectionId, discountId: $discountId, finalPrice: $finalPrice, purchaseTime: $purchaseTime, expiresAt: $expiresAt)';
+    return 'Purchase(id: $id, status: $status, userId: $userId, discountId: $discountId, finalPrice: $finalPrice, purchaseTime: $purchaseTime, expiresAt: $expiresAt, categoryId: $categoryId, createdAt: $createdAt)';
   }
 }
 
@@ -73,11 +76,12 @@ abstract mixin class $PurchaseCopyWith<$Res> {
       {int id,
       String status,
       int userId,
-      int collectionId,
       int? discountId,
       double finalPrice,
       DateTime purchaseTime,
-      DateTime? expiresAt});
+      DateTime? expiresAt,
+      int categoryId,
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -95,11 +99,12 @@ class _$PurchaseCopyWithImpl<$Res> implements $PurchaseCopyWith<$Res> {
     Object? id = null,
     Object? status = null,
     Object? userId = null,
-    Object? collectionId = null,
     Object? discountId = freezed,
     Object? finalPrice = null,
     Object? purchaseTime = null,
     Object? expiresAt = freezed,
+    Object? categoryId = null,
+    Object? createdAt = null,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -113,10 +118,6 @@ class _$PurchaseCopyWithImpl<$Res> implements $PurchaseCopyWith<$Res> {
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      collectionId: null == collectionId
-          ? _self.collectionId
-          : collectionId // ignore: cast_nullable_to_non_nullable
               as int,
       discountId: freezed == discountId
           ? _self.discountId
@@ -134,6 +135,14 @@ class _$PurchaseCopyWithImpl<$Res> implements $PurchaseCopyWith<$Res> {
           ? _self.expiresAt
           : expiresAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      categoryId: null == categoryId
+          ? _self.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as int,
+      createdAt: null == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -235,11 +244,12 @@ extension PurchasePatterns on Purchase {
             int id,
             String status,
             int userId,
-            int collectionId,
             int? discountId,
             double finalPrice,
             DateTime purchaseTime,
-            DateTime? expiresAt)?
+            DateTime? expiresAt,
+            int categoryId,
+            DateTime createdAt)?
         $default, {
     required TResult orElse(),
   }) {
@@ -250,11 +260,12 @@ extension PurchasePatterns on Purchase {
             _that.id,
             _that.status,
             _that.userId,
-            _that.collectionId,
             _that.discountId,
             _that.finalPrice,
             _that.purchaseTime,
-            _that.expiresAt);
+            _that.expiresAt,
+            _that.categoryId,
+            _that.createdAt);
       case _:
         return orElse();
     }
@@ -279,11 +290,12 @@ extension PurchasePatterns on Purchase {
             int id,
             String status,
             int userId,
-            int collectionId,
             int? discountId,
             double finalPrice,
             DateTime purchaseTime,
-            DateTime? expiresAt)
+            DateTime? expiresAt,
+            int categoryId,
+            DateTime createdAt)
         $default,
   ) {
     final _that = this;
@@ -293,11 +305,12 @@ extension PurchasePatterns on Purchase {
             _that.id,
             _that.status,
             _that.userId,
-            _that.collectionId,
             _that.discountId,
             _that.finalPrice,
             _that.purchaseTime,
-            _that.expiresAt);
+            _that.expiresAt,
+            _that.categoryId,
+            _that.createdAt);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -321,11 +334,12 @@ extension PurchasePatterns on Purchase {
             int id,
             String status,
             int userId,
-            int collectionId,
             int? discountId,
             double finalPrice,
             DateTime purchaseTime,
-            DateTime? expiresAt)?
+            DateTime? expiresAt,
+            int categoryId,
+            DateTime createdAt)?
         $default,
   ) {
     final _that = this;
@@ -335,11 +349,12 @@ extension PurchasePatterns on Purchase {
             _that.id,
             _that.status,
             _that.userId,
-            _that.collectionId,
             _that.discountId,
             _that.finalPrice,
             _that.purchaseTime,
-            _that.expiresAt);
+            _that.expiresAt,
+            _that.categoryId,
+            _that.createdAt);
       case _:
         return null;
     }
@@ -353,11 +368,12 @@ class _Purchase implements Purchase {
       {required this.id,
       required this.status,
       required this.userId,
-      required this.collectionId,
       required this.discountId,
       required this.finalPrice,
       required this.purchaseTime,
-      required this.expiresAt});
+      required this.expiresAt,
+      required this.categoryId,
+      required this.createdAt});
   factory _Purchase.fromJson(Map<String, dynamic> json) =>
       _$PurchaseFromJson(json);
 
@@ -368,8 +384,6 @@ class _Purchase implements Purchase {
   @override
   final int userId;
   @override
-  final int collectionId;
-  @override
   final int? discountId;
   @override
   final double finalPrice;
@@ -377,6 +391,10 @@ class _Purchase implements Purchase {
   final DateTime purchaseTime;
   @override
   final DateTime? expiresAt;
+  @override
+  final int categoryId;
+  @override
+  final DateTime createdAt;
 
   /// Create a copy of Purchase
   /// with the given fields replaced by the non-null parameter values.
@@ -401,8 +419,6 @@ class _Purchase implements Purchase {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.collectionId, collectionId) ||
-                other.collectionId == collectionId) &&
             (identical(other.discountId, discountId) ||
                 other.discountId == discountId) &&
             (identical(other.finalPrice, finalPrice) ||
@@ -410,17 +426,21 @@ class _Purchase implements Purchase {
             (identical(other.purchaseTime, purchaseTime) ||
                 other.purchaseTime == purchaseTime) &&
             (identical(other.expiresAt, expiresAt) ||
-                other.expiresAt == expiresAt));
+                other.expiresAt == expiresAt) &&
+            (identical(other.categoryId, categoryId) ||
+                other.categoryId == categoryId) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, status, userId, collectionId,
-      discountId, finalPrice, purchaseTime, expiresAt);
+  int get hashCode => Object.hash(runtimeType, id, status, userId, discountId,
+      finalPrice, purchaseTime, expiresAt, categoryId, createdAt);
 
   @override
   String toString() {
-    return 'Purchase(id: $id, status: $status, userId: $userId, collectionId: $collectionId, discountId: $discountId, finalPrice: $finalPrice, purchaseTime: $purchaseTime, expiresAt: $expiresAt)';
+    return 'Purchase(id: $id, status: $status, userId: $userId, discountId: $discountId, finalPrice: $finalPrice, purchaseTime: $purchaseTime, expiresAt: $expiresAt, categoryId: $categoryId, createdAt: $createdAt)';
   }
 }
 
@@ -435,11 +455,12 @@ abstract mixin class _$PurchaseCopyWith<$Res>
       {int id,
       String status,
       int userId,
-      int collectionId,
       int? discountId,
       double finalPrice,
       DateTime purchaseTime,
-      DateTime? expiresAt});
+      DateTime? expiresAt,
+      int categoryId,
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -457,11 +478,12 @@ class __$PurchaseCopyWithImpl<$Res> implements _$PurchaseCopyWith<$Res> {
     Object? id = null,
     Object? status = null,
     Object? userId = null,
-    Object? collectionId = null,
     Object? discountId = freezed,
     Object? finalPrice = null,
     Object? purchaseTime = null,
     Object? expiresAt = freezed,
+    Object? categoryId = null,
+    Object? createdAt = null,
   }) {
     return _then(_Purchase(
       id: null == id
@@ -475,10 +497,6 @@ class __$PurchaseCopyWithImpl<$Res> implements _$PurchaseCopyWith<$Res> {
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      collectionId: null == collectionId
-          ? _self.collectionId
-          : collectionId // ignore: cast_nullable_to_non_nullable
               as int,
       discountId: freezed == discountId
           ? _self.discountId
@@ -496,6 +514,14 @@ class __$PurchaseCopyWithImpl<$Res> implements _$PurchaseCopyWith<$Res> {
           ? _self.expiresAt
           : expiresAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      categoryId: null == categoryId
+          ? _self.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as int,
+      createdAt: null == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }

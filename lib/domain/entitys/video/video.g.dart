@@ -14,7 +14,7 @@ _Video _$VideoFromJson(Map<String, dynamic> json) => _Video(
       thumbnailUrl: json['thumbnailUrl'] as String?,
       status: json['status'] as String,
       uploaderId: (json['uploaderId'] as num).toInt(),
-      collectionId: (json['collectionId'] as num).toInt(),
+      categoryId: (json['categoryId'] as num).toInt(),
       uploadedAt: DateTime.parse(json['uploadedAt'] as String),
     );
 
@@ -26,6 +26,6 @@ Map<String, dynamic> _$VideoToJson(_Video instance) => <String, dynamic>{
       'thumbnailUrl': instance.thumbnailUrl,
       'status': instance.status,
       'uploaderId': instance.uploaderId,
-      'collectionId': instance.collectionId,
+      'categoryId': instance.categoryId,
       'uploadedAt': instance.uploadedAt.toIso8601String(),
     };

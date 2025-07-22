@@ -7,6 +7,6 @@ class UpdateCategoryUseCase {
   UpdateCategoryUseCase(this.repository);
 
   Future<void> call(Category category) {
-    return repository.updateCategory(collection: category);
+    return repository.updateCategory(category: category);
   }
 }

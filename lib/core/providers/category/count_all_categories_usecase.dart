@@ -1,3 +1,4 @@
+import 'package:baladeston/domain/filters/category_query_filter.dart';
 import 'package:baladeston/domain/repositories/category_repository.dart';
 
 class CountAllCategoriesUseCase {
@@ -6,6 +7,6 @@ class CountAllCategoriesUseCase {
   CountAllCategoriesUseCase(this.repository);
 
   Future<int> call() {
-    return repository.countAllCategories();
+    return repository.countAllCategories(filter: CategoryQueryFilter());
   }
 }

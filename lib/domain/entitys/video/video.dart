@@ -6,7 +6,7 @@
   // final String? thumbnailUrl;
   // final String status;
   // final int uploaderId;
-  // final int collectionId;
+  // final int categoryId;
   // final DateTime uploadedAt;
 
 //   const Video({
@@ -17,7 +17,7 @@
 //     this.thumbnailUrl,
 //     required this.status,
 //     required this.uploaderId,
-//     required this.collectionId,
+//     required this.categoryId,
 //     required this.uploadedAt,
 //   });
 // }
@@ -44,7 +44,7 @@ abstract class Video with _$Video {
   required String? thumbnailUrl,
   required String status,
   required int uploaderId,
-  required int collectionId,
+  required int categoryId,
   required DateTime uploadedAt,
 
   }) = _Video;

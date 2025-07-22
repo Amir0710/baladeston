@@ -13,7 +13,7 @@ class VideoModel {
   final String? thumbnailUrl;
   final String status;
   final int uploaderId;
-  final int collectionId;
+  final int categoryId;
   final DateTime uploadedAt;
 
   const VideoModel({
@@ -24,7 +24,7 @@ class VideoModel {
     this.thumbnailUrl,
     required this.status,
     required this.uploaderId,
-    required this.collectionId,
+    required this.categoryId,
     required this.uploadedAt,
   });
 
@@ -42,7 +42,7 @@ class VideoModel {
         thumbnailUrl: thumbnailUrl,
         status: status,
         uploaderId: uploaderId,
-        collectionId: collectionId,
+        categoryId: categoryId,
         uploadedAt: uploadedAt,
       );
 
@@ -55,7 +55,7 @@ class VideoModel {
         thumbnailUrl: video.thumbnailUrl,
         status: video.status,
         uploaderId: video.uploaderId,
-        collectionId: video.collectionId,
+        categoryId: video.categoryId,
         uploadedAt: video.uploadedAt,
       );
 }

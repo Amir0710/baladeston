@@ -6,8 +6,8 @@ class VideoQueryFilter {
 
   final String? searchTerm;
   final int? uploaderId;
-  final int? collectionId;
-  final String? collectionName;
+  final int? categoryId;
+  final String? categoryName;
   final double? minRating;
   final double? maxRating;
   final DateTime? uploadedAfter;
@@ -21,8 +21,8 @@ class VideoQueryFilter {
       this.category,
       this.searchTerm,
       this.uploaderId,
-      this.collectionId,
-      this.collectionName,
+      this.categoryId,
+      this.categoryName,
       this.minRating,
       this.maxRating,
       this.uploadedAfter,

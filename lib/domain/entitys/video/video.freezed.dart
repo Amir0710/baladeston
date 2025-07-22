@@ -21,7 +21,7 @@ mixin _$Video {
   String? get thumbnailUrl;
   String get status;
   int get uploaderId;
-  int get collectionId;
+  int get categoryId;
   DateTime get uploadedAt;
 
   /// Create a copy of Video
@@ -50,8 +50,8 @@ mixin _$Video {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.uploaderId, uploaderId) ||
                 other.uploaderId == uploaderId) &&
-            (identical(other.collectionId, collectionId) ||
-                other.collectionId == collectionId) &&
+            (identical(other.categoryId, categoryId) ||
+                other.categoryId == categoryId) &&
             (identical(other.uploadedAt, uploadedAt) ||
                 other.uploadedAt == uploadedAt));
   }
@@ -59,11 +59,11 @@ mixin _$Video {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, title, description, videoUrl,
-      thumbnailUrl, status, uploaderId, collectionId, uploadedAt);
+      thumbnailUrl, status, uploaderId, categoryId, uploadedAt);
 
   @override
   String toString() {
-    return 'Video(id: $id, title: $title, description: $description, videoUrl: $videoUrl, thumbnailUrl: $thumbnailUrl, status: $status, uploaderId: $uploaderId, collectionId: $collectionId, uploadedAt: $uploadedAt)';
+    return 'Video(id: $id, title: $title, description: $description, videoUrl: $videoUrl, thumbnailUrl: $thumbnailUrl, status: $status, uploaderId: $uploaderId, categoryId: $categoryId, uploadedAt: $uploadedAt)';
   }
 }
 
@@ -80,7 +80,7 @@ abstract mixin class $VideoCopyWith<$Res> {
       String? thumbnailUrl,
       String status,
       int uploaderId,
-      int collectionId,
+      int categoryId,
       DateTime uploadedAt});
 }
 
@@ -103,7 +103,7 @@ class _$VideoCopyWithImpl<$Res> implements $VideoCopyWith<$Res> {
     Object? thumbnailUrl = freezed,
     Object? status = null,
     Object? uploaderId = null,
-    Object? collectionId = null,
+    Object? categoryId = null,
     Object? uploadedAt = null,
   }) {
     return _then(_self.copyWith(
@@ -135,9 +135,9 @@ class _$VideoCopyWithImpl<$Res> implements $VideoCopyWith<$Res> {
           ? _self.uploaderId
           : uploaderId // ignore: cast_nullable_to_non_nullable
               as int,
-      collectionId: null == collectionId
-          ? _self.collectionId
-          : collectionId // ignore: cast_nullable_to_non_nullable
+      categoryId: null == categoryId
+          ? _self.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
               as int,
       uploadedAt: null == uploadedAt
           ? _self.uploadedAt
@@ -248,7 +248,7 @@ extension VideoPatterns on Video {
             String? thumbnailUrl,
             String status,
             int uploaderId,
-            int collectionId,
+            int categoryId,
             DateTime uploadedAt)?
         $default, {
     required TResult orElse(),
@@ -264,7 +264,7 @@ extension VideoPatterns on Video {
             _that.thumbnailUrl,
             _that.status,
             _that.uploaderId,
-            _that.collectionId,
+            _that.categoryId,
             _that.uploadedAt);
       case _:
         return orElse();
@@ -294,7 +294,7 @@ extension VideoPatterns on Video {
             String? thumbnailUrl,
             String status,
             int uploaderId,
-            int collectionId,
+            int categoryId,
             DateTime uploadedAt)
         $default,
   ) {
@@ -309,7 +309,7 @@ extension VideoPatterns on Video {
             _that.thumbnailUrl,
             _that.status,
             _that.uploaderId,
-            _that.collectionId,
+            _that.categoryId,
             _that.uploadedAt);
       case _:
         throw StateError('Unexpected subclass');
@@ -338,7 +338,7 @@ extension VideoPatterns on Video {
             String? thumbnailUrl,
             String status,
             int uploaderId,
-            int collectionId,
+            int categoryId,
             DateTime uploadedAt)?
         $default,
   ) {
@@ -353,7 +353,7 @@ extension VideoPatterns on Video {
             _that.thumbnailUrl,
             _that.status,
             _that.uploaderId,
-            _that.collectionId,
+            _that.categoryId,
             _that.uploadedAt);
       case _:
         return null;
@@ -372,7 +372,7 @@ class _Video implements Video {
       required this.thumbnailUrl,
       required this.status,
       required this.uploaderId,
-      required this.collectionId,
+      required this.categoryId,
       required this.uploadedAt});
   factory _Video.fromJson(Map<String, dynamic> json) => _$VideoFromJson(json);
 
@@ -391,7 +391,7 @@ class _Video implements Video {
   @override
   final int uploaderId;
   @override
-  final int collectionId;
+  final int categoryId;
   @override
   final DateTime uploadedAt;
 
@@ -426,8 +426,8 @@ class _Video implements Video {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.uploaderId, uploaderId) ||
                 other.uploaderId == uploaderId) &&
-            (identical(other.collectionId, collectionId) ||
-                other.collectionId == collectionId) &&
+            (identical(other.categoryId, categoryId) ||
+                other.categoryId == categoryId) &&
             (identical(other.uploadedAt, uploadedAt) ||
                 other.uploadedAt == uploadedAt));
   }
@@ -435,11 +435,11 @@ class _Video implements Video {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, title, description, videoUrl,
-      thumbnailUrl, status, uploaderId, collectionId, uploadedAt);
+      thumbnailUrl, status, uploaderId, categoryId, uploadedAt);
 
   @override
   String toString() {
-    return 'Video(id: $id, title: $title, description: $description, videoUrl: $videoUrl, thumbnailUrl: $thumbnailUrl, status: $status, uploaderId: $uploaderId, collectionId: $collectionId, uploadedAt: $uploadedAt)';
+    return 'Video(id: $id, title: $title, description: $description, videoUrl: $videoUrl, thumbnailUrl: $thumbnailUrl, status: $status, uploaderId: $uploaderId, categoryId: $categoryId, uploadedAt: $uploadedAt)';
   }
 }
 
@@ -457,7 +457,7 @@ abstract mixin class _$VideoCopyWith<$Res> implements $VideoCopyWith<$Res> {
       String? thumbnailUrl,
       String status,
       int uploaderId,
-      int collectionId,
+      int categoryId,
       DateTime uploadedAt});
 }
 
@@ -480,7 +480,7 @@ class __$VideoCopyWithImpl<$Res> implements _$VideoCopyWith<$Res> {
     Object? thumbnailUrl = freezed,
     Object? status = null,
     Object? uploaderId = null,
-    Object? collectionId = null,
+    Object? categoryId = null,
     Object? uploadedAt = null,
   }) {
     return _then(_Video(
@@ -512,9 +512,9 @@ class __$VideoCopyWithImpl<$Res> implements _$VideoCopyWith<$Res> {
           ? _self.uploaderId
           : uploaderId // ignore: cast_nullable_to_non_nullable
               as int,
-      collectionId: null == collectionId
-          ? _self.collectionId
-          : collectionId // ignore: cast_nullable_to_non_nullable
+      categoryId: null == categoryId
+          ? _self.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
               as int,
       uploadedAt: null == uploadedAt
           ? _self.uploadedAt

@@ -7,6 +7,6 @@ class CreateCategoryUseCase {
   CreateCategoryUseCase(this.repository);
 
   Future<void> call(Category category) {
-    return repository.createCategory(collection: category);
+    return repository.createCategory(category: category);
   }
 }
