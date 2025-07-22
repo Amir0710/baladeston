@@ -1,5 +1,7 @@
 class CategoryQueryFilter {
+  final int? id;
   final String? searchTerm;
+
   final int limit;
   final int offset;
   final String? orderBy;
@@ -7,7 +9,8 @@ class CategoryQueryFilter {
   final int? maxCount;
   final bool ascending;
 
-  CategoryQueryFilter({
+  CategoryQueryFilter( {
+    this.id,
     this.limit = 20,
     this.offset = 0,
     this.searchTerm,

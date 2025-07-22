@@ -1,4 +1,4 @@
-import 'package:baladeston/data/datasources/user_datasource/comment_remote_datasource/comment_remote_datasource.dart';
+import 'package:baladeston/data/datasources/comment_remote_datasource/comment_remote_datasource.dart';
 import 'package:baladeston/domain/repositories/comment_repository.dart';
 import 'package:baladeston/domain/entitys/comment/comment.dart';
 import 'package:baladeston/domain/filters/comment_query_filter.dart';
