@@ -6,7 +6,7 @@ part of 'video_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-VideoModel _$VideoModelFromJson(Map<String, dynamic> json) => VideoModel(
+_VideoModel _$VideoModelFromJson(Map<String, dynamic> json) => _VideoModel(
       id: (json['id'] as num).toInt(),
       title: json['title'] as String,
       description: json['description'] as String?,
@@ -18,7 +18,7 @@ VideoModel _$VideoModelFromJson(Map<String, dynamic> json) => VideoModel(
       uploadedAt: DateTime.parse(json['uploadedAt'] as String),
     );
 
-Map<String, dynamic> _$VideoModelToJson(VideoModel instance) =>
+Map<String, dynamic> _$VideoModelToJson(_VideoModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,

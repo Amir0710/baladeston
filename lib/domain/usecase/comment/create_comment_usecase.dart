@@ -1,4 +1,4 @@
-import 'package:baladeston/domain/entitys/comment/comment.dart';
+import 'package:baladeston/domain/entitys/comment/comment_entity.dart';
 import 'package:baladeston/domain/repositories/comment_repository.dart';
 
 class CreateCommentUseCase {
@@ -6,7 +6,7 @@ class CreateCommentUseCase {
 
   CreateCommentUseCase(this.repository);
 
-  Future<void> call(Comment comment) {
+  Future<void> call(CommentEntity comment) {
     return repository.createComment(comment: comment);
   }
 }

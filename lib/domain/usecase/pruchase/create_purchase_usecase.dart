@@ -1,4 +1,4 @@
-import 'package:baladeston/domain/entitys/purchase/purchase.dart';
+import 'package:baladeston/domain/entitys/purchase/purchase_entity.dart';
 import 'package:baladeston/domain/repositories/purchase_repository.dart';
 
 class CreatePurchaseUseCase {
@@ -6,7 +6,7 @@ class CreatePurchaseUseCase {
 
   CreatePurchaseUseCase(this.repository);
 
-  Future<void> call(Purchase purchase) {
+  Future<void> call(PurchaseEntity purchase) {
     return repository.createPurchase(purchase: purchase);
   }
 }

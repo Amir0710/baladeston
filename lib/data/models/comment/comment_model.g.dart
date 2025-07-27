@@ -6,7 +6,8 @@ part of 'comment_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CommentModel _$CommentModelFromJson(Map<String, dynamic> json) => CommentModel(
+_CommentModel _$CommentModelFromJson(Map<String, dynamic> json) =>
+    _CommentModel(
       userId: (json['userId'] as num).toInt(),
       targetId: (json['targetId'] as num).toInt(),
       content: json['content'] as String,
@@ -14,7 +15,7 @@ CommentModel _$CommentModelFromJson(Map<String, dynamic> json) => CommentModel(
       createdAt: DateTime.parse(json['createdAt'] as String),
     );
 
-Map<String, dynamic> _$CommentModelToJson(CommentModel instance) =>
+Map<String, dynamic> _$CommentModelToJson(_CommentModel instance) =>
     <String, dynamic>{
       'userId': instance.userId,
       'targetId': instance.targetId,

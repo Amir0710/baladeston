@@ -1,4 +1,4 @@
-import 'package:baladeston/domain/entitys/user/user.dart';
+import 'package:baladeston/domain/entitys/user/user_entity.dart';
 import 'package:baladeston/domain/repositories/user_repository.dart';
 
 class GetCurrentUserUseCase {
@@ -6,7 +6,7 @@ class GetCurrentUserUseCase {
 
   GetCurrentUserUseCase(this.repository);
 
-  Future<User> call() {
+  Future<UserEntity> call() {
     return repository.getCurrentUser();
   }
 }

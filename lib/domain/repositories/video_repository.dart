@@ -1,25 +1,26 @@
 
 import 'package:baladeston/domain/filters/video_query_filter.dart';
-import 'package:baladeston/domain/entitys/video/video.dart';
+import 'package:baladeston/domain/entitys/video/video_entity.dart';
 
 abstract class VideoRepository {
-  Future<void> uploadVideo();
+  Future<void> uploadVideo({required VideoEntity video});
 
-  Future<List<Video>> getVideosFiltered({
+  Future<List<VideoEntity>> getVideosFiltered({
     required VideoQueryFilter filter,
-    required int limit,
-    required int offset,
+
   });
 
-  Future<void> deleteVideo();
+  Future<void> deleteVideo(); //for admin
+  Future<void> deleteVideoList({required VideoQueryFilter filter}
+); 
 
-  Future<void> updateVideo({required Video video});
+  Future<void> updateVideo({required VideoEntity video});
 
   Future<void> toggleFavorite({required int userId, required int videoId});
 
   Future<bool> isFavorite({required int userId, required int videoId});
 
-  Future<List<Video>?> getFavoriteVideos({required int userId});
+  Future<List<VideoEntity>?> getFavoriteVideos({required int userId});
 
   Future<void> updateLastWatch({
     required int userId,

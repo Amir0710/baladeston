@@ -1,4 +1,4 @@
-import 'package:baladeston/domain/entitys/video/video.dart';
+import 'package:baladeston/domain/entitys/video/video_entity.dart';
 import 'package:baladeston/domain/repositories/video_repository.dart';
 
 class GetFavoriteVideosUseCase {
@@ -6,7 +6,7 @@ class GetFavoriteVideosUseCase {
 
   GetFavoriteVideosUseCase(this.repository);
 
-  Future<List<Video>?> call({required int userId}) {
+  Future<List<VideoEntity>?> call({required int userId}) {
     return repository.getFavoriteVideos(userId: userId);
   }
 }

@@ -1,4 +1,4 @@
-import 'package:baladeston/domain/entitys/user/user.dart';
+import 'package:baladeston/domain/entitys/user/user_entity.dart';
 import 'package:baladeston/domain/repositories/user_repository.dart';
 
 class UpdateUserUseCase {
@@ -6,7 +6,7 @@ class UpdateUserUseCase {
 
   UpdateUserUseCase(this.repository);
 
-  Future<void> call(User user) {
+  Future<void> call(UserEntity user) {
     return repository.updateUser(user: user);
   }
 }

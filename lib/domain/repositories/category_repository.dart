@@ -1,16 +1,16 @@
 
 
 import 'package:baladeston/domain/filters/category_query_filter.dart';
-import 'package:baladeston/domain/entitys/category/category.dart';
+import 'package:baladeston/domain/entitys/category/category_entity.dart';
 
 abstract class CategoryRepository {
 
-  Future<List<Category>> getCategory({required CategoryQueryFilter filter});
-  Future<Category> fetchCategoryById({required int id});
+  Future<List<CategoryEntity>> getCategory({required CategoryQueryFilter filter});
+  Future<CategoryEntity> fetchCategoryById({required int id});
 
-  Future<void> createCategory({required Category category});
+  Future<void> createCategory({required CategoryEntity category});
 
-  Future<void> updateCategory({required Category category});
+  Future<void> updateCategory({required CategoryEntity category});
 
   Future<void> deleteCategory({required int id});
 

@@ -1,3 +1,4 @@
+import 'package:baladeston/domain/entitys/video/video_entity.dart';
 import 'package:baladeston/domain/repositories/video_repository.dart';
 
 class UploadVideoUseCase {
@@ -5,7 +6,7 @@ class UploadVideoUseCase {
 
   UploadVideoUseCase(this.repository);
 
-  Future<void> call() {
-    return repository.uploadVideo();
+  Future<void> call(VideoEntity video) {
+    return repository.uploadVideo(video: video);
   }
 }

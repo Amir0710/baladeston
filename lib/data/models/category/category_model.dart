@@ -1,57 +1,22 @@
-import 'package:baladeston/domain/entitys/category/category.dart';
-import 'package:json_annotation/json_annotation.dart';
+// data/models/category_model.dart
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'category_model.freezed.dart';
 part 'category_model.g.dart';
 
-@JsonSerializable()
-class CategoryModel {
-  final int id;
-  final String title;
-  final String password;
-  final double price;
-  final String status;
-  final String? thumbnailUrl;
-  final DateTime createdAt;
-  final int ownerId;
-
-  const CategoryModel({
-    required this.id,
-    required this.title,
-    required this.password,
-    required this.price,
-    required this.status,
-    this.thumbnailUrl,
-    required this.createdAt,
-    required this.ownerId,
-  });
+@freezed
+abstract class CategoryModel with _$CategoryModel {
+  const factory CategoryModel({
+    required int id,
+    required String title,
+    required String password,
+    required double price,
+    required String status,
+    String? thumbnailUrl,
+    required DateTime createdAt,
+    required int ownerId,
+  }) = _CategoryModel;
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) =>
       _$CategoryModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CategoryModelToJson(this);
-
-  /// تبدیل مدل به domain entity
-  Category toDomain() => Category(
-    
-        id: id,
-        title: title,
-        password: password,
-        price: price,
-        status: status,
-        thumbnailUrl: thumbnailUrl,
-        createdAt: createdAt,
-        ownerId: ownerId,
-      );
-
-  /// ساخت مدل از روی domain entity
-  factory CategoryModel.fromDomain(Category category) => CategoryModel(
-        id: category.id,
-        title: category.title,
-        password: category.password,
-        price: category.price,
-        status: category.status,
-        thumbnailUrl: category.thumbnailUrl,
-        createdAt: category.createdAt,
-        ownerId: category.ownerId,
-      );
 }

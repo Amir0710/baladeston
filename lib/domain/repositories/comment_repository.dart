@@ -1,15 +1,15 @@
 import 'package:baladeston/domain/filters/comment_query_filter.dart';
-import 'package:baladeston/domain/entitys/comment/comment.dart';
+import 'package:baladeston/domain/entitys/comment/comment_entity.dart';
 
 abstract class CommentRepository {
-  Future<List<Comment>?> getComment({required CommentQueryFilter filter });
+  Future<List<CommentEntity>?> getComment({required CommentQueryFilter filter });
 
-  Future<void> createComment({required Comment comment});
+  Future<void> createComment({required CommentEntity comment});
 
   Future<void> deleteComment({
     required int commentId,
     required int userId,
   }); // delete by owner, commenter, admin
-  Future<void> updateComment({required Comment comment});
+  Future<void> updateComment({required CommentEntity comment});
   Future<int> countComment({required int videoId}) ;
 }

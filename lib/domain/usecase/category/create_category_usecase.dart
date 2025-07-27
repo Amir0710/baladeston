@@ -1,4 +1,4 @@
-import 'package:baladeston/domain/entitys/category/category.dart';
+import 'package:baladeston/domain/entitys/category/category_entity.dart';
 import 'package:baladeston/domain/repositories/category_repository.dart';
 
 class CreateCategoryUseCase {
@@ -6,7 +6,7 @@ class CreateCategoryUseCase {
 
   CreateCategoryUseCase(this.repository);
 
-  Future<void> call(Category category) {
+  Future<void> call(CategoryEntity category) {
     return repository.createCategory(category: category);
   }
 }

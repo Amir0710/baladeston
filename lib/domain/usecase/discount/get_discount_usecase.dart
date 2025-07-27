@@ -1,5 +1,5 @@
 import 'package:baladeston/domain/filters/discount_query_filter.dart';
-import 'package:baladeston/domain/entitys/discount/discount.dart';
+import 'package:baladeston/domain/entitys/discount/discount_entity.dart';
 import 'package:baladeston/domain/repositories/discount_repository.dart';
 
 class GetDiscountUseCase {
@@ -7,7 +7,7 @@ class GetDiscountUseCase {
 
   GetDiscountUseCase(this.repository);
 
-  Future<List<Discount>> call(DiscountQueryFilter filter) {
+  Future<List<DiscountEntity>> call(DiscountQueryFilter filter) {
     return repository.getDiscount(filter: filter);
   }
 }

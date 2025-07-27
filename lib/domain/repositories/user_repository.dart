@@ -1,14 +1,14 @@
 
 
 import 'package:baladeston/domain/filters/user_query_filter.dart';
-import 'package:baladeston/domain/entitys/user/user.dart';
+import 'package:baladeston/domain/entitys/user/user_entity.dart';
 
 abstract class UserRepository {
-  Future<User> getCurrentUser();
+  Future<UserEntity> getCurrentUser();
 
-  Future<List<User>> getUsers(
+  Future<List<UserEntity>> getUsers(
       {required UserQueryFilter filter}); //only for admin
-  Future<void> updateUser({required User user});
+  Future<void> updateUser({required UserEntity user});
 
   Future<void> deleteUser();
 

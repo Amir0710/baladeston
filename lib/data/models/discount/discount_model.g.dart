@@ -6,8 +6,8 @@ part of 'discount_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-DiscountModel _$DiscountModelFromJson(Map<String, dynamic> json) =>
-    DiscountModel(
+_DiscountModel _$DiscountModelFromJson(Map<String, dynamic> json) =>
+    _DiscountModel(
       userId: (json['userId'] as num?)?.toInt(),
       id: (json['id'] as num).toInt(),
       category: (json['category'] as num).toInt(),
@@ -16,7 +16,7 @@ DiscountModel _$DiscountModelFromJson(Map<String, dynamic> json) =>
       expiresAt: DateTime.parse(json['expiresAt'] as String),
     );
 
-Map<String, dynamic> _$DiscountModelToJson(DiscountModel instance) =>
+Map<String, dynamic> _$DiscountModelToJson(_DiscountModel instance) =>
     <String, dynamic>{
       'userId': instance.userId,
       'id': instance.id,
