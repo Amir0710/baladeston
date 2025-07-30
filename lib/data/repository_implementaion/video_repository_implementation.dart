@@ -11,14 +11,8 @@ class VideoRepositoryImplementation extends VideoRepository {
   }
 
   @override
-  Future<List<VideoEntity>?> getFavoriteVideos({required int userId}) {
-    // TODO: implement getFavoriteVideos
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<int> getLastWatchPosition({required int userId, required int videoId}) {
-    // TODO: implement getLastWatchPosition
+  Future<void> deleteVideoList({required VideoQueryFilter filter}) {
+    // TODO: implement deleteVideoList
     throw UnimplementedError();
   }
 
@@ -29,44 +23,14 @@ class VideoRepositoryImplementation extends VideoRepository {
   }
 
   @override
-  Future<bool> isFavorite({required int userId, required int videoId}) {
-    // TODO: implement isFavorite
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> reportVideo({required int userId, required int videoId, required String reason}) {
-    // TODO: implement reportVideo
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> toggleFavorite({required int userId, required int videoId}) {
-    // TODO: implement toggleFavorite
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> updateLastWatch({required int userId, required int videoId, required int lastPositionSeconds}) {
-    // TODO: implement updateLastWatch
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> updateVideo({required VideoEntity video}) {
+  Future<VideoEntity> updateVideo({required VideoEntity video}) {
     // TODO: implement updateVideo
     throw UnimplementedError();
   }
 
   @override
-  Future<void> uploadVideo({required VideoEntity video}) {
+  Future<VideoEntity> uploadVideo({required VideoEntity video}) {
     // TODO: implement uploadVideo
-    throw UnimplementedError();
-  }
-  
-  @override
-  Future<void> deleteVideoList({required VideoQueryFilter filter}) {
-    // TODO: implement deleteVideoList
     throw UnimplementedError();
   }
 }

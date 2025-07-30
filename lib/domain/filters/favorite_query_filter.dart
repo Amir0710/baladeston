@@ -1,20 +1,23 @@
 class FavoriteQueryFilter {
-  final String type;
   final int? userId;
   final int? toggleId;
   final DateTime? interestedIn;
+
   final bool ascending;
   final int limit;
   final int offset;
   final String orderBy;
 
+  final String type;
+
+
   FavoriteQueryFilter(
-      {this.type = 'video',
+      { required this.type ,
       this.userId,
       this.toggleId,
       required this.interestedIn,
       this.ascending = false,
       this.limit = 20,
-      this.offset = 1,
+      this.offset = 0,
       this.orderBy = 'name'});
 }

@@ -17,7 +17,7 @@ mixin _$FavoriteEntity {
   int get userId;
   String get type;
   int get targetId;
-  DateTime get interestedIn;
+  DateTime? get interestedIn;
 
   /// Create a copy of FavoriteEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -56,7 +56,7 @@ abstract mixin class $FavoriteEntityCopyWith<$Res> {
           FavoriteEntity value, $Res Function(FavoriteEntity) _then) =
       _$FavoriteEntityCopyWithImpl;
   @useResult
-  $Res call({int userId, String type, int targetId, DateTime interestedIn});
+  $Res call({int userId, String type, int targetId, DateTime? interestedIn});
 }
 
 /// @nodoc
@@ -75,7 +75,7 @@ class _$FavoriteEntityCopyWithImpl<$Res>
     Object? userId = null,
     Object? type = null,
     Object? targetId = null,
-    Object? interestedIn = null,
+    Object? interestedIn = freezed,
   }) {
     return _then(_self.copyWith(
       userId: null == userId
@@ -90,10 +90,10 @@ class _$FavoriteEntityCopyWithImpl<$Res>
           ? _self.targetId
           : targetId // ignore: cast_nullable_to_non_nullable
               as int,
-      interestedIn: null == interestedIn
+      interestedIn: freezed == interestedIn
           ? _self.interestedIn
           : interestedIn // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 }
@@ -192,7 +192,7 @@ extension FavoriteEntityPatterns on FavoriteEntity {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            int userId, String type, int targetId, DateTime interestedIn)?
+            int userId, String type, int targetId, DateTime? interestedIn)?
         $default, {
     required TResult orElse(),
   }) {
@@ -222,7 +222,7 @@ extension FavoriteEntityPatterns on FavoriteEntity {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            int userId, String type, int targetId, DateTime interestedIn)
+            int userId, String type, int targetId, DateTime? interestedIn)
         $default,
   ) {
     final _that = this;
@@ -250,7 +250,7 @@ extension FavoriteEntityPatterns on FavoriteEntity {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            int userId, String type, int targetId, DateTime interestedIn)?
+            int userId, String type, int targetId, DateTime? interestedIn)?
         $default,
   ) {
     final _that = this;
@@ -280,7 +280,7 @@ class _FavoriteEntity implements FavoriteEntity {
   @override
   final int targetId;
   @override
-  final DateTime interestedIn;
+  final DateTime? interestedIn;
 
   /// Create a copy of FavoriteEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -321,7 +321,7 @@ abstract mixin class _$FavoriteEntityCopyWith<$Res>
       __$FavoriteEntityCopyWithImpl;
   @override
   @useResult
-  $Res call({int userId, String type, int targetId, DateTime interestedIn});
+  $Res call({int userId, String type, int targetId, DateTime? interestedIn});
 }
 
 /// @nodoc
@@ -340,7 +340,7 @@ class __$FavoriteEntityCopyWithImpl<$Res>
     Object? userId = null,
     Object? type = null,
     Object? targetId = null,
-    Object? interestedIn = null,
+    Object? interestedIn = freezed,
   }) {
     return _then(_FavoriteEntity(
       userId: null == userId
@@ -355,10 +355,10 @@ class __$FavoriteEntityCopyWithImpl<$Res>
           ? _self.targetId
           : targetId // ignore: cast_nullable_to_non_nullable
               as int,
-      interestedIn: null == interestedIn
+      interestedIn: freezed == interestedIn
           ? _self.interestedIn
           : interestedIn // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 }

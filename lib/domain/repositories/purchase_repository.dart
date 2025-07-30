@@ -1,14 +1,11 @@
-
 import 'package:baladeston/domain/entitys/purchase/purchase_entity.dart';
+import 'package:baladeston/domain/filters/purchase_query_filter.dart';
 
 abstract class PurchaseRepository {
-  Future<void> createPurchase({required PurchaseEntity purchase});
+  Future<PurchaseEntity> createPurchase({required PurchaseEntity purchase});
 
-  Future<PurchaseEntity> getPurchaseById({required int purchase});
 
-  Future<List<PurchaseEntity>> getPurchase({
-required
-  });
+  Future<List<PurchaseEntity>> getPurchase({required PurchaseQueryFilter filter  });
 
-  Future<void> editPurchase({required PurchaseEntity purchase , required int purchaseId});
+  Future<PurchaseEntity> editPurchase({required PurchaseEntity purchase});
 }

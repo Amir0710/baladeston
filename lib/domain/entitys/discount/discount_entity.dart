@@ -26,7 +26,7 @@ abstract class DiscountEntity with _$DiscountEntity {
   const factory DiscountEntity({
     required int? userId,
     required int id,
-    required int category,
+    required int? category,
     required int percent,
     required String status,
     required DateTime expiresAt,

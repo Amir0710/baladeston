@@ -27,5 +27,6 @@ abstract class CommentEntity with _$CommentEntity {
     required String content,
     required double rating,
     required DateTime createdAt,
+    required DateTime updatedAt,
   }) = _CommentEntity;
 }

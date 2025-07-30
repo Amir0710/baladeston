@@ -3,13 +3,13 @@ import 'package:baladeston/domain/repositories/purchase_repository.dart';
 
 class PurchaseRepositoryImplementation extends PurchaseRepository {
   @override
-  Future<void> createPurchase({required PurchaseEntity purchase}) {
+  Future<PurchaseEntity> createPurchase({required PurchaseEntity purchase}) {
     // TODO: implement createPurchase
     throw UnimplementedError();
   }
 
   @override
-  Future<void> editPurchase({required PurchaseEntity purchase, required int purchaseId}) {
+  Future<PurchaseEntity> editPurchase({required PurchaseEntity purchase}) {
     // TODO: implement editPurchase
     throw UnimplementedError();
   }

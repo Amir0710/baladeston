@@ -1,23 +1,31 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 class DiscountQueryFilter {
-  final int? userId; // '?' for show is general  ?
+  final int? userId;
+  final int? id;
+  final int? categoryID;
+  final String? categoryName;
+  final int? minPercent;
+  final int? maxPercent;
+  final String? status;
+  final DateTime? expiresAt;
+
+  final bool ascending;
   final String order;
   final int limit;
   final int offset;
-  final int? categoryID;
-  final String? categoryName;
-  final bool ascending;
-  final int? minPercent;
-  final int? maxPercent;
 
   DiscountQueryFilter({
-    this.minPercent,
-    this.maxPercent,
-    this.limit = 20,
-    this.offset = 0,
     this.userId,
-    this.order = 'expiresAt',
+    this.id,
     this.categoryID,
     this.categoryName,
+    this.minPercent,
+    this.maxPercent,
+    this.status,
+    this.expiresAt,
     this.ascending = false,
+    this.order = 'expiresAt',
+    this.limit = 20,
+    this.offset = 0,
   });
 }

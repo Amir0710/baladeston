@@ -4,20 +4,26 @@ import 'package:baladeston/domain/repositories/favorite_repository.dart';
 
 class FavoriteRepositoryImplementation extends FavoriteRepository {
   @override
-  Future<void> createFavorite({required FavoriteEntity favorite}) {
+  Future<FavoriteEntity> createFavorite({required FavoriteEntity favorite}) {
     // TODO: implement createFavorite
     throw UnimplementedError();
   }
 
   @override
-  Future<List<FavoriteEntity>> getLastPosition({required FavoriteQueryFilter filter}) {
+  Future<FavoriteEntity> getFavoriteById({required int favorite}) {
+    // TODO: implement getFavoriteById
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<FavoriteEntity>?> getLastPosition({required FavoriteQueryFilter filter}) {
     // TODO: implement getLastPosition
     throw UnimplementedError();
   }
 
   @override
-  Future<void> toggleFavorite({required FavoriteEntity favorite}) {
+  Future<FavoriteEntity> toggleFavorite({required FavoriteEntity favorite}) {
     // TODO: implement toggleFavorite
     throw UnimplementedError();
   }
-} 
+}

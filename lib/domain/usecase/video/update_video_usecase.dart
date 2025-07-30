@@ -6,7 +6,7 @@ class UpdateVideoUseCase {
 
   UpdateVideoUseCase(this.repository);
 
-  Future<void> call(VideoEntity video) {
+  Future<VideoEntity> call(VideoEntity video) {
     return repository.updateVideo(video: video);
   }
 }

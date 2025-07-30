@@ -18,9 +18,8 @@ mixin _$ReportEntity {
   int get userId;
   int get targetId;
   String get response;
-  String? get reason;
   DateTime get reportedAt;
-  DateTime get reportModeledAt;
+  String? get reason;
   DateTime? get responseAt;
 
   /// Create a copy of ReportEntity
@@ -42,22 +41,20 @@ mixin _$ReportEntity {
                 other.targetId == targetId) &&
             (identical(other.response, response) ||
                 other.response == response) &&
-            (identical(other.reason, reason) || other.reason == reason) &&
             (identical(other.reportedAt, reportedAt) ||
                 other.reportedAt == reportedAt) &&
-            (identical(other.reportModeledAt, reportModeledAt) ||
-                other.reportModeledAt == reportModeledAt) &&
+            (identical(other.reason, reason) || other.reason == reason) &&
             (identical(other.responseAt, responseAt) ||
                 other.responseAt == responseAt));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id, userId, targetId, response,
-      reason, reportedAt, reportModeledAt, responseAt);
+      reportedAt, reason, responseAt);
 
   @override
   String toString() {
-    return 'ReportEntity(id: $id, userId: $userId, targetId: $targetId, response: $response, reason: $reason, reportedAt: $reportedAt, reportModeledAt: $reportModeledAt, responseAt: $responseAt)';
+    return 'ReportEntity(id: $id, userId: $userId, targetId: $targetId, response: $response, reportedAt: $reportedAt, reason: $reason, responseAt: $responseAt)';
   }
 }
 
@@ -72,9 +69,8 @@ abstract mixin class $ReportEntityCopyWith<$Res> {
       int userId,
       int targetId,
       String response,
-      String? reason,
       DateTime reportedAt,
-      DateTime reportModeledAt,
+      String? reason,
       DateTime? responseAt});
 }
 
@@ -94,9 +90,8 @@ class _$ReportEntityCopyWithImpl<$Res> implements $ReportEntityCopyWith<$Res> {
     Object? userId = null,
     Object? targetId = null,
     Object? response = null,
-    Object? reason = freezed,
     Object? reportedAt = null,
-    Object? reportModeledAt = null,
+    Object? reason = freezed,
     Object? responseAt = freezed,
   }) {
     return _then(_self.copyWith(
@@ -116,18 +111,14 @@ class _$ReportEntityCopyWithImpl<$Res> implements $ReportEntityCopyWith<$Res> {
           ? _self.response
           : response // ignore: cast_nullable_to_non_nullable
               as String,
-      reason: freezed == reason
-          ? _self.reason
-          : reason // ignore: cast_nullable_to_non_nullable
-              as String?,
       reportedAt: null == reportedAt
           ? _self.reportedAt
           : reportedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      reportModeledAt: null == reportModeledAt
-          ? _self.reportModeledAt
-          : reportModeledAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      reason: freezed == reason
+          ? _self.reason
+          : reason // ignore: cast_nullable_to_non_nullable
+              as String?,
       responseAt: freezed == responseAt
           ? _self.responseAt
           : responseAt // ignore: cast_nullable_to_non_nullable
@@ -229,30 +220,16 @@ extension ReportEntityPatterns on ReportEntity {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            int id,
-            int userId,
-            int targetId,
-            String response,
-            String? reason,
-            DateTime reportedAt,
-            DateTime reportModeledAt,
-            DateTime? responseAt)?
+    TResult Function(int id, int userId, int targetId, String response,
+            DateTime reportedAt, String? reason, DateTime? responseAt)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _ReportEntity() when $default != null:
-        return $default(
-            _that.id,
-            _that.userId,
-            _that.targetId,
-            _that.response,
-            _that.reason,
-            _that.reportedAt,
-            _that.reportModeledAt,
-            _that.responseAt);
+        return $default(_that.id, _that.userId, _that.targetId, _that.response,
+            _that.reportedAt, _that.reason, _that.responseAt);
       case _:
         return orElse();
     }
@@ -273,29 +250,15 @@ extension ReportEntityPatterns on ReportEntity {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(
-            int id,
-            int userId,
-            int targetId,
-            String response,
-            String? reason,
-            DateTime reportedAt,
-            DateTime reportModeledAt,
-            DateTime? responseAt)
+    TResult Function(int id, int userId, int targetId, String response,
+            DateTime reportedAt, String? reason, DateTime? responseAt)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ReportEntity():
-        return $default(
-            _that.id,
-            _that.userId,
-            _that.targetId,
-            _that.response,
-            _that.reason,
-            _that.reportedAt,
-            _that.reportModeledAt,
-            _that.responseAt);
+        return $default(_that.id, _that.userId, _that.targetId, _that.response,
+            _that.reportedAt, _that.reason, _that.responseAt);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -315,29 +278,15 @@ extension ReportEntityPatterns on ReportEntity {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            int id,
-            int userId,
-            int targetId,
-            String response,
-            String? reason,
-            DateTime reportedAt,
-            DateTime reportModeledAt,
-            DateTime? responseAt)?
+    TResult? Function(int id, int userId, int targetId, String response,
+            DateTime reportedAt, String? reason, DateTime? responseAt)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ReportEntity() when $default != null:
-        return $default(
-            _that.id,
-            _that.userId,
-            _that.targetId,
-            _that.response,
-            _that.reason,
-            _that.reportedAt,
-            _that.reportModeledAt,
-            _that.responseAt);
+        return $default(_that.id, _that.userId, _that.targetId, _that.response,
+            _that.reportedAt, _that.reason, _that.responseAt);
       case _:
         return null;
     }
@@ -352,10 +301,9 @@ class _ReportEntity implements ReportEntity {
       required this.userId,
       required this.targetId,
       required this.response,
-      this.reason,
       required this.reportedAt,
-      required this.reportModeledAt,
-      this.responseAt});
+      required this.reason,
+      required this.responseAt});
 
   @override
   final int id;
@@ -366,11 +314,9 @@ class _ReportEntity implements ReportEntity {
   @override
   final String response;
   @override
-  final String? reason;
-  @override
   final DateTime reportedAt;
   @override
-  final DateTime reportModeledAt;
+  final String? reason;
   @override
   final DateTime? responseAt;
 
@@ -393,22 +339,20 @@ class _ReportEntity implements ReportEntity {
                 other.targetId == targetId) &&
             (identical(other.response, response) ||
                 other.response == response) &&
-            (identical(other.reason, reason) || other.reason == reason) &&
             (identical(other.reportedAt, reportedAt) ||
                 other.reportedAt == reportedAt) &&
-            (identical(other.reportModeledAt, reportModeledAt) ||
-                other.reportModeledAt == reportModeledAt) &&
+            (identical(other.reason, reason) || other.reason == reason) &&
             (identical(other.responseAt, responseAt) ||
                 other.responseAt == responseAt));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id, userId, targetId, response,
-      reason, reportedAt, reportModeledAt, responseAt);
+      reportedAt, reason, responseAt);
 
   @override
   String toString() {
-    return 'ReportEntity(id: $id, userId: $userId, targetId: $targetId, response: $response, reason: $reason, reportedAt: $reportedAt, reportModeledAt: $reportModeledAt, responseAt: $responseAt)';
+    return 'ReportEntity(id: $id, userId: $userId, targetId: $targetId, response: $response, reportedAt: $reportedAt, reason: $reason, responseAt: $responseAt)';
   }
 }
 
@@ -425,9 +369,8 @@ abstract mixin class _$ReportEntityCopyWith<$Res>
       int userId,
       int targetId,
       String response,
-      String? reason,
       DateTime reportedAt,
-      DateTime reportModeledAt,
+      String? reason,
       DateTime? responseAt});
 }
 
@@ -448,9 +391,8 @@ class __$ReportEntityCopyWithImpl<$Res>
     Object? userId = null,
     Object? targetId = null,
     Object? response = null,
-    Object? reason = freezed,
     Object? reportedAt = null,
-    Object? reportModeledAt = null,
+    Object? reason = freezed,
     Object? responseAt = freezed,
   }) {
     return _then(_ReportEntity(
@@ -470,18 +412,14 @@ class __$ReportEntityCopyWithImpl<$Res>
           ? _self.response
           : response // ignore: cast_nullable_to_non_nullable
               as String,
-      reason: freezed == reason
-          ? _self.reason
-          : reason // ignore: cast_nullable_to_non_nullable
-              as String?,
       reportedAt: null == reportedAt
           ? _self.reportedAt
           : reportedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      reportModeledAt: null == reportModeledAt
-          ? _self.reportModeledAt
-          : reportModeledAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      reason: freezed == reason
+          ? _self.reason
+          : reason // ignore: cast_nullable_to_non_nullable
+              as String?,
       responseAt: freezed == responseAt
           ? _self.responseAt
           : responseAt // ignore: cast_nullable_to_non_nullable

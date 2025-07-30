@@ -17,9 +17,9 @@ part 'favorite_entity.freezed.dart';
 @freezed
 abstract class FavoriteEntity with _$FavoriteEntity {
   const factory FavoriteEntity({
-    required int userId,
-    required String type ,
-    required int targetId,
-    required DateTime interestedIn,
+     required int userId,
+     required String type ,
+     required int targetId,
+     required DateTime? interestedIn,
   }) = _FavoriteEntity;
 }

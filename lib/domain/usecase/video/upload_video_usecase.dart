@@ -6,7 +6,7 @@ class UploadVideoUseCase {
 
   UploadVideoUseCase(this.repository);
 
-  Future<void> call(VideoEntity video) {
+  Future<VideoEntity> call(VideoEntity video) {
     return repository.uploadVideo(video: video);
   }
 }

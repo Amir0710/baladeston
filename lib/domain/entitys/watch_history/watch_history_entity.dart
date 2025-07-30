@@ -20,6 +20,7 @@ part 'watch_history_entity.freezed.dart';
 @freezed
 abstract class WatchHistoryEntity with _$WatchHistoryEntity {
   const factory WatchHistoryEntity({
+    required int id ,
     required int userId,
     required int videoId,
     required int lastPositionSeconds,

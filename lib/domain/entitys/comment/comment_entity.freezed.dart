@@ -19,6 +19,7 @@ mixin _$CommentEntity {
   String get content;
   double get rating;
   DateTime get createdAt;
+  DateTime get updatedAt;
 
   /// Create a copy of CommentEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -39,16 +40,18 @@ mixin _$CommentEntity {
             (identical(other.content, content) || other.content == content) &&
             (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userId, targetId, content, rating, createdAt);
+  int get hashCode => Object.hash(
+      runtimeType, userId, targetId, content, rating, createdAt, updatedAt);
 
   @override
   String toString() {
-    return 'CommentEntity(userId: $userId, targetId: $targetId, content: $content, rating: $rating, createdAt: $createdAt)';
+    return 'CommentEntity(userId: $userId, targetId: $targetId, content: $content, rating: $rating, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 }
 
@@ -63,7 +66,8 @@ abstract mixin class $CommentEntityCopyWith<$Res> {
       int targetId,
       String content,
       double rating,
-      DateTime createdAt});
+      DateTime createdAt,
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -84,6 +88,7 @@ class _$CommentEntityCopyWithImpl<$Res>
     Object? content = null,
     Object? rating = null,
     Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(_self.copyWith(
       userId: null == userId
@@ -105,6 +110,10 @@ class _$CommentEntityCopyWithImpl<$Res>
       createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _self.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
   }
@@ -204,7 +213,7 @@ extension CommentEntityPatterns on CommentEntity {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(int userId, int targetId, String content, double rating,
-            DateTime createdAt)?
+            DateTime createdAt, DateTime updatedAt)?
         $default, {
     required TResult orElse(),
   }) {
@@ -212,7 +221,7 @@ extension CommentEntityPatterns on CommentEntity {
     switch (_that) {
       case _CommentEntity() when $default != null:
         return $default(_that.userId, _that.targetId, _that.content,
-            _that.rating, _that.createdAt);
+            _that.rating, _that.createdAt, _that.updatedAt);
       case _:
         return orElse();
     }
@@ -234,14 +243,14 @@ extension CommentEntityPatterns on CommentEntity {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(int userId, int targetId, String content, double rating,
-            DateTime createdAt)
+            DateTime createdAt, DateTime updatedAt)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _CommentEntity():
         return $default(_that.userId, _that.targetId, _that.content,
-            _that.rating, _that.createdAt);
+            _that.rating, _that.createdAt, _that.updatedAt);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -262,14 +271,14 @@ extension CommentEntityPatterns on CommentEntity {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(int userId, int targetId, String content, double rating,
-            DateTime createdAt)?
+            DateTime createdAt, DateTime updatedAt)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _CommentEntity() when $default != null:
         return $default(_that.userId, _that.targetId, _that.content,
-            _that.rating, _that.createdAt);
+            _that.rating, _that.createdAt, _that.updatedAt);
       case _:
         return null;
     }
@@ -284,7 +293,8 @@ class _CommentEntity implements CommentEntity {
       required this.targetId,
       required this.content,
       required this.rating,
-      required this.createdAt});
+      required this.createdAt,
+      required this.updatedAt});
 
   @override
   final int userId;
@@ -296,6 +306,8 @@ class _CommentEntity implements CommentEntity {
   final double rating;
   @override
   final DateTime createdAt;
+  @override
+  final DateTime updatedAt;
 
   /// Create a copy of CommentEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -316,16 +328,18 @@ class _CommentEntity implements CommentEntity {
             (identical(other.content, content) || other.content == content) &&
             (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userId, targetId, content, rating, createdAt);
+  int get hashCode => Object.hash(
+      runtimeType, userId, targetId, content, rating, createdAt, updatedAt);
 
   @override
   String toString() {
-    return 'CommentEntity(userId: $userId, targetId: $targetId, content: $content, rating: $rating, createdAt: $createdAt)';
+    return 'CommentEntity(userId: $userId, targetId: $targetId, content: $content, rating: $rating, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 }
 
@@ -342,7 +356,8 @@ abstract mixin class _$CommentEntityCopyWith<$Res>
       int targetId,
       String content,
       double rating,
-      DateTime createdAt});
+      DateTime createdAt,
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -363,6 +378,7 @@ class __$CommentEntityCopyWithImpl<$Res>
     Object? content = null,
     Object? rating = null,
     Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(_CommentEntity(
       userId: null == userId
@@ -384,6 +400,10 @@ class __$CommentEntityCopyWithImpl<$Res>
       createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _self.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
   }

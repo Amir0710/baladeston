@@ -30,10 +30,10 @@ abstract class CategoryEntity with _$CategoryEntity {
     required int id,
     required String title,
     required String password,
-    required double price,
     required String status,
     String? thumbnailUrl,
     required DateTime createdAt,
+    required DateTime lastTransaction,
     required int ownerId,
   }) = _CategoryEntity;
 }

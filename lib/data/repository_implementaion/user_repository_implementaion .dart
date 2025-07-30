@@ -2,10 +2,10 @@ import 'package:baladeston/domain/entitys/user/user_entity.dart';
 import 'package:baladeston/domain/filters/user_query_filter.dart';
 import 'package:baladeston/domain/repositories/user_repository.dart';
 
-class UserRepositoryImplementation implements UserRepository{
+class UserRepositoryImplementation implements UserRepository {
   @override
-  Future<void> changePassword({required String newPassword}) {
-    // TODO: implement changePassword
+  Future<UserEntity> createUser({required UserEntity user}) {
+    // TODO: implement createUser
     throw UnimplementedError();
   }
 
@@ -17,7 +17,7 @@ class UserRepositoryImplementation implements UserRepository{
 
   @override
   Future<UserEntity> getCurrentUser() {
-    // TODO: implement getCurrentUser  
+    // TODO: implement getCurrentUser
     throw UnimplementedError();
   }
 
@@ -28,9 +28,8 @@ class UserRepositoryImplementation implements UserRepository{
   }
 
   @override
-  Future<void> updateUser({required UserEntity user}) {
+  Future<UserEntity> updateUser({required UserEntity user}) {
     // TODO: implement updateUser
     throw UnimplementedError();
   }
-    
 }

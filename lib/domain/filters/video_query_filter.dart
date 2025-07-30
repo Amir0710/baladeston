@@ -1,32 +1,35 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 class VideoQueryFilter {
+  final int? id;
   final String? category;
-  final int limit;
-
-  final int offset;
-
   final String? searchTerm;
+  final String? status;
   final int? uploaderId;
   final int? categoryId;
-  final String? categoryName;
   final double? minRating;
   final double? maxRating;
   final DateTime? uploadedAfter;
   final DateTime? uploadedBefore;
+
   final String orderBy;
   final bool ascending;
+  final int limit;
+  final int offset;
 
-  VideoQueryFilter(
-      {this.limit = 20,
-      this.offset = 0,
-      this.category,
-      this.searchTerm,
-      this.uploaderId,
-      this.categoryId,
-      this.categoryName,
-      this.minRating,
-      this.maxRating,
-      this.uploadedAfter,
-      this.uploadedBefore,
-      this.orderBy = 'name',
-      this.ascending = false});
+  VideoQueryFilter({
+    this.id,
+    this.category,
+    this.searchTerm,
+    this.status,
+    this.uploaderId,
+    this.categoryId,
+    this.minRating,
+    this.maxRating,
+    this.uploadedAfter,
+    this.uploadedBefore,
+    this.orderBy = 'name',
+    this.limit = 20,
+    this.offset = 0,
+    this.ascending = false,
+  });
 }

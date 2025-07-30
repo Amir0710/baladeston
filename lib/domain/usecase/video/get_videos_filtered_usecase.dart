@@ -9,8 +9,6 @@ class GetVideosFilteredUseCase {
 
   Future<List<VideoEntity>> call({
     required VideoQueryFilter filter,
-    required int limit,
-    required int offset,
   }) {
     return repository.getVideosFiltered(
       filter: filter,

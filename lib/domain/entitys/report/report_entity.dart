@@ -29,9 +29,8 @@ abstract class ReportEntity with _$ReportEntity {
     required int userId,
     required int targetId,
     required String response,
-    String? reason,
     required DateTime reportedAt,
-    required DateTime reportModeledAt,
-    DateTime? responseAt,
+    required String? reason,
+    required DateTime? responseAt,
   }) = _ReportEntity;
 }

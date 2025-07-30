@@ -15,6 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UserEntity {
   int get id;
+  String get role;
   String get fullName;
   String get email;
   String get phoneNumber;
@@ -34,6 +35,7 @@ mixin _$UserEntity {
         (other.runtimeType == runtimeType &&
             other is UserEntity &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.role, role) || other.role == role) &&
             (identical(other.fullName, fullName) ||
                 other.fullName == fullName) &&
             (identical(other.email, email) || other.email == email) &&
@@ -46,11 +48,11 @@ mixin _$UserEntity {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, fullName, email, phoneNumber, avatarUrl, status);
+      runtimeType, id, role, fullName, email, phoneNumber, avatarUrl, status);
 
   @override
   String toString() {
-    return 'UserEntity(id: $id, fullName: $fullName, email: $email, phoneNumber: $phoneNumber, avatarUrl: $avatarUrl, status: $status)';
+    return 'UserEntity(id: $id, role: $role, fullName: $fullName, email: $email, phoneNumber: $phoneNumber, avatarUrl: $avatarUrl, status: $status)';
   }
 }
 
@@ -62,6 +64,7 @@ abstract mixin class $UserEntityCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
+      String role,
       String fullName,
       String email,
       String phoneNumber,
@@ -82,6 +85,7 @@ class _$UserEntityCopyWithImpl<$Res> implements $UserEntityCopyWith<$Res> {
   @override
   $Res call({
     Object? id = null,
+    Object? role = null,
     Object? fullName = null,
     Object? email = null,
     Object? phoneNumber = null,
@@ -93,6 +97,10 @@ class _$UserEntityCopyWithImpl<$Res> implements $UserEntityCopyWith<$Res> {
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      role: null == role
+          ? _self.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
       fullName: null == fullName
           ? _self.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
@@ -210,15 +218,15 @@ extension UserEntityPatterns on UserEntity {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int id, String fullName, String email, String phoneNumber,
-            String? avatarUrl, String status)?
+    TResult Function(int id, String role, String fullName, String email,
+            String phoneNumber, String? avatarUrl, String status)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _UserEntity() when $default != null:
-        return $default(_that.id, _that.fullName, _that.email,
+        return $default(_that.id, _that.role, _that.fullName, _that.email,
             _that.phoneNumber, _that.avatarUrl, _that.status);
       case _:
         return orElse();
@@ -240,14 +248,14 @@ extension UserEntityPatterns on UserEntity {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(int id, String fullName, String email, String phoneNumber,
-            String? avatarUrl, String status)
+    TResult Function(int id, String role, String fullName, String email,
+            String phoneNumber, String? avatarUrl, String status)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _UserEntity():
-        return $default(_that.id, _that.fullName, _that.email,
+        return $default(_that.id, _that.role, _that.fullName, _that.email,
             _that.phoneNumber, _that.avatarUrl, _that.status);
       case _:
         throw StateError('Unexpected subclass');
@@ -268,14 +276,14 @@ extension UserEntityPatterns on UserEntity {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int id, String fullName, String email, String phoneNumber,
-            String? avatarUrl, String status)?
+    TResult? Function(int id, String role, String fullName, String email,
+            String phoneNumber, String? avatarUrl, String status)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _UserEntity() when $default != null:
-        return $default(_that.id, _that.fullName, _that.email,
+        return $default(_that.id, _that.role, _that.fullName, _that.email,
             _that.phoneNumber, _that.avatarUrl, _that.status);
       case _:
         return null;
@@ -288,6 +296,7 @@ extension UserEntityPatterns on UserEntity {
 class _UserEntity implements UserEntity {
   const _UserEntity(
       {required this.id,
+      required this.role,
       required this.fullName,
       required this.email,
       required this.phoneNumber,
@@ -296,6 +305,8 @@ class _UserEntity implements UserEntity {
 
   @override
   final int id;
+  @override
+  final String role;
   @override
   final String fullName;
   @override
@@ -321,6 +332,7 @@ class _UserEntity implements UserEntity {
         (other.runtimeType == runtimeType &&
             other is _UserEntity &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.role, role) || other.role == role) &&
             (identical(other.fullName, fullName) ||
                 other.fullName == fullName) &&
             (identical(other.email, email) || other.email == email) &&
@@ -333,11 +345,11 @@ class _UserEntity implements UserEntity {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, fullName, email, phoneNumber, avatarUrl, status);
+      runtimeType, id, role, fullName, email, phoneNumber, avatarUrl, status);
 
   @override
   String toString() {
-    return 'UserEntity(id: $id, fullName: $fullName, email: $email, phoneNumber: $phoneNumber, avatarUrl: $avatarUrl, status: $status)';
+    return 'UserEntity(id: $id, role: $role, fullName: $fullName, email: $email, phoneNumber: $phoneNumber, avatarUrl: $avatarUrl, status: $status)';
   }
 }
 
@@ -351,6 +363,7 @@ abstract mixin class _$UserEntityCopyWith<$Res>
   @useResult
   $Res call(
       {int id,
+      String role,
       String fullName,
       String email,
       String phoneNumber,
@@ -371,6 +384,7 @@ class __$UserEntityCopyWithImpl<$Res> implements _$UserEntityCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   $Res call({
     Object? id = null,
+    Object? role = null,
     Object? fullName = null,
     Object? email = null,
     Object? phoneNumber = null,
@@ -382,6 +396,10 @@ class __$UserEntityCopyWithImpl<$Res> implements _$UserEntityCopyWith<$Res> {
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      role: null == role
+          ? _self.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
       fullName: null == fullName
           ? _self.fullName
           : fullName // ignore: cast_nullable_to_non_nullable

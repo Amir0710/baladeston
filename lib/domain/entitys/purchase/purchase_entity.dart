@@ -35,6 +35,6 @@ abstract class PurchaseEntity with _$PurchaseEntity {
     required double finalPrice,
     required DateTime purchaseTime,
     required DateTime? expiresAt,
-    required DateTime createdAt,
+    required DateTime? updateAt,
   }) = _PurchaseEntity;
 }

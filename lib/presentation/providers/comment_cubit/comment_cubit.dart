@@ -37,7 +37,7 @@ CommentCubit({
     emit(const CommentState.loading());
     try {
       final comments = await _getUseCase(filter);
-      final count = await _countUseCase(filter.videoId);
+      final count = await _countUseCase(filter.targetId!);
       emit(CommentState.success(comments: comments ?? [], count: count));
     } catch (e) {
       emit(CommentState.failure(message: e.toString()));

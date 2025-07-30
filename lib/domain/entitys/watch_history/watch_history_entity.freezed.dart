@@ -14,6 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$WatchHistoryEntity {
+  int get id;
   int get userId;
   int get videoId;
   int get lastPositionSeconds;
@@ -32,6 +33,7 @@ mixin _$WatchHistoryEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is WatchHistoryEntity &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.videoId, videoId) || other.videoId == videoId) &&
             (identical(other.lastPositionSeconds, lastPositionSeconds) ||
@@ -41,12 +43,12 @@ mixin _$WatchHistoryEntity {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userId, videoId, lastPositionSeconds, updatedAt);
+  int get hashCode => Object.hash(
+      runtimeType, id, userId, videoId, lastPositionSeconds, updatedAt);
 
   @override
   String toString() {
-    return 'WatchHistoryEntity(userId: $userId, videoId: $videoId, lastPositionSeconds: $lastPositionSeconds, updatedAt: $updatedAt)';
+    return 'WatchHistoryEntity(id: $id, userId: $userId, videoId: $videoId, lastPositionSeconds: $lastPositionSeconds, updatedAt: $updatedAt)';
   }
 }
 
@@ -57,7 +59,11 @@ abstract mixin class $WatchHistoryEntityCopyWith<$Res> {
       _$WatchHistoryEntityCopyWithImpl;
   @useResult
   $Res call(
-      {int userId, int videoId, int lastPositionSeconds, DateTime updatedAt});
+      {int id,
+      int userId,
+      int videoId,
+      int lastPositionSeconds,
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -73,12 +79,17 @@ class _$WatchHistoryEntityCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? userId = null,
     Object? videoId = null,
     Object? lastPositionSeconds = null,
     Object? updatedAt = null,
   }) {
     return _then(_self.copyWith(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -192,7 +203,7 @@ extension WatchHistoryEntityPatterns on WatchHistoryEntity {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int userId, int videoId, int lastPositionSeconds,
+    TResult Function(int id, int userId, int videoId, int lastPositionSeconds,
             DateTime updatedAt)?
         $default, {
     required TResult orElse(),
@@ -200,8 +211,8 @@ extension WatchHistoryEntityPatterns on WatchHistoryEntity {
     final _that = this;
     switch (_that) {
       case _WatchHistoryEntity() when $default != null:
-        return $default(_that.userId, _that.videoId, _that.lastPositionSeconds,
-            _that.updatedAt);
+        return $default(_that.id, _that.userId, _that.videoId,
+            _that.lastPositionSeconds, _that.updatedAt);
       case _:
         return orElse();
     }
@@ -222,15 +233,15 @@ extension WatchHistoryEntityPatterns on WatchHistoryEntity {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(int userId, int videoId, int lastPositionSeconds,
+    TResult Function(int id, int userId, int videoId, int lastPositionSeconds,
             DateTime updatedAt)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _WatchHistoryEntity():
-        return $default(_that.userId, _that.videoId, _that.lastPositionSeconds,
-            _that.updatedAt);
+        return $default(_that.id, _that.userId, _that.videoId,
+            _that.lastPositionSeconds, _that.updatedAt);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -250,15 +261,15 @@ extension WatchHistoryEntityPatterns on WatchHistoryEntity {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int userId, int videoId, int lastPositionSeconds,
+    TResult? Function(int id, int userId, int videoId, int lastPositionSeconds,
             DateTime updatedAt)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _WatchHistoryEntity() when $default != null:
-        return $default(_that.userId, _that.videoId, _that.lastPositionSeconds,
-            _that.updatedAt);
+        return $default(_that.id, _that.userId, _that.videoId,
+            _that.lastPositionSeconds, _that.updatedAt);
       case _:
         return null;
     }
@@ -269,11 +280,14 @@ extension WatchHistoryEntityPatterns on WatchHistoryEntity {
 
 class _WatchHistoryEntity implements WatchHistoryEntity {
   const _WatchHistoryEntity(
-      {required this.userId,
+      {required this.id,
+      required this.userId,
       required this.videoId,
       required this.lastPositionSeconds,
       required this.updatedAt});
 
+  @override
+  final int id;
   @override
   final int userId;
   @override
@@ -296,6 +310,7 @@ class _WatchHistoryEntity implements WatchHistoryEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _WatchHistoryEntity &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.videoId, videoId) || other.videoId == videoId) &&
             (identical(other.lastPositionSeconds, lastPositionSeconds) ||
@@ -305,12 +320,12 @@ class _WatchHistoryEntity implements WatchHistoryEntity {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userId, videoId, lastPositionSeconds, updatedAt);
+  int get hashCode => Object.hash(
+      runtimeType, id, userId, videoId, lastPositionSeconds, updatedAt);
 
   @override
   String toString() {
-    return 'WatchHistoryEntity(userId: $userId, videoId: $videoId, lastPositionSeconds: $lastPositionSeconds, updatedAt: $updatedAt)';
+    return 'WatchHistoryEntity(id: $id, userId: $userId, videoId: $videoId, lastPositionSeconds: $lastPositionSeconds, updatedAt: $updatedAt)';
   }
 }
 
@@ -323,7 +338,11 @@ abstract mixin class _$WatchHistoryEntityCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int userId, int videoId, int lastPositionSeconds, DateTime updatedAt});
+      {int id,
+      int userId,
+      int videoId,
+      int lastPositionSeconds,
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -339,12 +358,17 @@ class __$WatchHistoryEntityCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
+    Object? id = null,
     Object? userId = null,
     Object? videoId = null,
     Object? lastPositionSeconds = null,
     Object? updatedAt = null,
   }) {
     return _then(_WatchHistoryEntity(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable

@@ -17,10 +17,10 @@ mixin _$CategoryEntity {
   int get id;
   String get title;
   String get password;
-  double get price;
   String get status;
   String? get thumbnailUrl;
   DateTime get createdAt;
+  DateTime get lastTransaction;
   int get ownerId;
 
   /// Create a copy of CategoryEntity
@@ -40,22 +40,23 @@ mixin _$CategoryEntity {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.password, password) ||
                 other.password == password) &&
-            (identical(other.price, price) || other.price == price) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.thumbnailUrl, thumbnailUrl) ||
                 other.thumbnailUrl == thumbnailUrl) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
+            (identical(other.lastTransaction, lastTransaction) ||
+                other.lastTransaction == lastTransaction) &&
             (identical(other.ownerId, ownerId) || other.ownerId == ownerId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, password, price,
-      status, thumbnailUrl, createdAt, ownerId);
+  int get hashCode => Object.hash(runtimeType, id, title, password, status,
+      thumbnailUrl, createdAt, lastTransaction, ownerId);
 
   @override
   String toString() {
-    return 'CategoryEntity(id: $id, title: $title, password: $password, price: $price, status: $status, thumbnailUrl: $thumbnailUrl, createdAt: $createdAt, ownerId: $ownerId)';
+    return 'CategoryEntity(id: $id, title: $title, password: $password, status: $status, thumbnailUrl: $thumbnailUrl, createdAt: $createdAt, lastTransaction: $lastTransaction, ownerId: $ownerId)';
   }
 }
 
@@ -69,10 +70,10 @@ abstract mixin class $CategoryEntityCopyWith<$Res> {
       {int id,
       String title,
       String password,
-      double price,
       String status,
       String? thumbnailUrl,
       DateTime createdAt,
+      DateTime lastTransaction,
       int ownerId});
 }
 
@@ -92,10 +93,10 @@ class _$CategoryEntityCopyWithImpl<$Res>
     Object? id = null,
     Object? title = null,
     Object? password = null,
-    Object? price = null,
     Object? status = null,
     Object? thumbnailUrl = freezed,
     Object? createdAt = null,
+    Object? lastTransaction = null,
     Object? ownerId = null,
   }) {
     return _then(_self.copyWith(
@@ -111,10 +112,6 @@ class _$CategoryEntityCopyWithImpl<$Res>
           ? _self.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      price: null == price
-          ? _self.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
       status: null == status
           ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -126,6 +123,10 @@ class _$CategoryEntityCopyWithImpl<$Res>
       createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      lastTransaction: null == lastTransaction
+          ? _self.lastTransaction
+          : lastTransaction // ignore: cast_nullable_to_non_nullable
               as DateTime,
       ownerId: null == ownerId
           ? _self.ownerId
@@ -232,10 +233,10 @@ extension CategoryEntityPatterns on CategoryEntity {
             int id,
             String title,
             String password,
-            double price,
             String status,
             String? thumbnailUrl,
             DateTime createdAt,
+            DateTime lastTransaction,
             int ownerId)?
         $default, {
     required TResult orElse(),
@@ -243,8 +244,15 @@ extension CategoryEntityPatterns on CategoryEntity {
     final _that = this;
     switch (_that) {
       case _CategoryEntity() when $default != null:
-        return $default(_that.id, _that.title, _that.password, _that.price,
-            _that.status, _that.thumbnailUrl, _that.createdAt, _that.ownerId);
+        return $default(
+            _that.id,
+            _that.title,
+            _that.password,
+            _that.status,
+            _that.thumbnailUrl,
+            _that.createdAt,
+            _that.lastTransaction,
+            _that.ownerId);
       case _:
         return orElse();
     }
@@ -269,18 +277,25 @@ extension CategoryEntityPatterns on CategoryEntity {
             int id,
             String title,
             String password,
-            double price,
             String status,
             String? thumbnailUrl,
             DateTime createdAt,
+            DateTime lastTransaction,
             int ownerId)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _CategoryEntity():
-        return $default(_that.id, _that.title, _that.password, _that.price,
-            _that.status, _that.thumbnailUrl, _that.createdAt, _that.ownerId);
+        return $default(
+            _that.id,
+            _that.title,
+            _that.password,
+            _that.status,
+            _that.thumbnailUrl,
+            _that.createdAt,
+            _that.lastTransaction,
+            _that.ownerId);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -304,18 +319,25 @@ extension CategoryEntityPatterns on CategoryEntity {
             int id,
             String title,
             String password,
-            double price,
             String status,
             String? thumbnailUrl,
             DateTime createdAt,
+            DateTime lastTransaction,
             int ownerId)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _CategoryEntity() when $default != null:
-        return $default(_that.id, _that.title, _that.password, _that.price,
-            _that.status, _that.thumbnailUrl, _that.createdAt, _that.ownerId);
+        return $default(
+            _that.id,
+            _that.title,
+            _that.password,
+            _that.status,
+            _that.thumbnailUrl,
+            _that.createdAt,
+            _that.lastTransaction,
+            _that.ownerId);
       case _:
         return null;
     }
@@ -329,10 +351,10 @@ class _CategoryEntity implements CategoryEntity {
       {required this.id,
       required this.title,
       required this.password,
-      required this.price,
       required this.status,
       this.thumbnailUrl,
       required this.createdAt,
+      required this.lastTransaction,
       required this.ownerId});
 
   @override
@@ -342,13 +364,13 @@ class _CategoryEntity implements CategoryEntity {
   @override
   final String password;
   @override
-  final double price;
-  @override
   final String status;
   @override
   final String? thumbnailUrl;
   @override
   final DateTime createdAt;
+  @override
+  final DateTime lastTransaction;
   @override
   final int ownerId;
 
@@ -369,22 +391,23 @@ class _CategoryEntity implements CategoryEntity {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.password, password) ||
                 other.password == password) &&
-            (identical(other.price, price) || other.price == price) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.thumbnailUrl, thumbnailUrl) ||
                 other.thumbnailUrl == thumbnailUrl) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
+            (identical(other.lastTransaction, lastTransaction) ||
+                other.lastTransaction == lastTransaction) &&
             (identical(other.ownerId, ownerId) || other.ownerId == ownerId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, password, price,
-      status, thumbnailUrl, createdAt, ownerId);
+  int get hashCode => Object.hash(runtimeType, id, title, password, status,
+      thumbnailUrl, createdAt, lastTransaction, ownerId);
 
   @override
   String toString() {
-    return 'CategoryEntity(id: $id, title: $title, password: $password, price: $price, status: $status, thumbnailUrl: $thumbnailUrl, createdAt: $createdAt, ownerId: $ownerId)';
+    return 'CategoryEntity(id: $id, title: $title, password: $password, status: $status, thumbnailUrl: $thumbnailUrl, createdAt: $createdAt, lastTransaction: $lastTransaction, ownerId: $ownerId)';
   }
 }
 
@@ -400,10 +423,10 @@ abstract mixin class _$CategoryEntityCopyWith<$Res>
       {int id,
       String title,
       String password,
-      double price,
       String status,
       String? thumbnailUrl,
       DateTime createdAt,
+      DateTime lastTransaction,
       int ownerId});
 }
 
@@ -423,10 +446,10 @@ class __$CategoryEntityCopyWithImpl<$Res>
     Object? id = null,
     Object? title = null,
     Object? password = null,
-    Object? price = null,
     Object? status = null,
     Object? thumbnailUrl = freezed,
     Object? createdAt = null,
+    Object? lastTransaction = null,
     Object? ownerId = null,
   }) {
     return _then(_CategoryEntity(
@@ -442,10 +465,6 @@ class __$CategoryEntityCopyWithImpl<$Res>
           ? _self.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      price: null == price
-          ? _self.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
       status: null == status
           ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -457,6 +476,10 @@ class __$CategoryEntityCopyWithImpl<$Res>
       createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      lastTransaction: null == lastTransaction
+          ? _self.lastTransaction
+          : lastTransaction // ignore: cast_nullable_to_non_nullable
               as DateTime,
       ownerId: null == ownerId
           ? _self.ownerId

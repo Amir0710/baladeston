@@ -1,4 +1,3 @@
-
 import 'package:baladeston/domain/entitys/comment/comment_entity.dart';
 import 'package:baladeston/domain/filters/comment_query_filter.dart';
 import 'package:baladeston/domain/repositories/comment_repository.dart';
@@ -11,7 +10,7 @@ class CommentRepositoryImplementation implements CommentRepository {
   }
 
   @override
-  Future<void> createComment({required CommentEntity comment}) {
+  Future<CommentEntity> createComment({required CommentEntity comment}) {
     // TODO: implement createComment
     throw UnimplementedError();
   }
@@ -29,7 +28,13 @@ class CommentRepositoryImplementation implements CommentRepository {
   }
 
   @override
-  Future<void> updateComment({required CommentEntity comment}) {
+  Future<CommentEntity> getCommentById({required int comment}) {
+    // TODO: implement getCommentById
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<CommentEntity> updateComment({required CommentEntity comment}) {
     // TODO: implement updateComment
     throw UnimplementedError();
   }

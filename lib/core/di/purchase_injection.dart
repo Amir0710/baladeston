@@ -1,7 +1,7 @@
 import 'package:baladeston/data/repository_implementaion/purchase_repository_implementation.dart';
 import 'package:baladeston/domain/usecase/pruchase/create_purchase_usecase.dart';
 import 'package:baladeston/domain/usecase/pruchase/edit_purchase_usecase.dart';
-import 'package:baladeston/domain/usecase/pruchase/get_purchase_by_id_usecase.dart';
+import 'package:baladeston/domain/usecase/pruchase/get_purchase_usecase.dart';
 import 'package:baladeston/domain/usecase/pruchase/get_purchase_usecase.dart';
 import 'package:get_it/get_it.dart';
 import 'package:baladeston/domain/repositories/purchase_repository.dart';
