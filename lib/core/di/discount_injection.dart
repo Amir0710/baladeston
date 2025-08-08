@@ -2,7 +2,7 @@ import 'package:baladeston/data/repository_implementaion/discount_repository_imp
 import 'package:get_it/get_it.dart';
 import 'package:baladeston/domain/repositories/discount_repository.dart';
 import 'package:baladeston/domain/usecase/discount/create_discount_usecase.dart';
-import 'package:baladeston/domain/usecase/discount/get_discount_usecase.dart';
+import 'package:baladeston/domain/usecase/discount/get_discount_usecase_by_filter.dart';
 import 'package:baladeston/domain/usecase/discount/edit_discount_usecase.dart';
 import 'package:baladeston/presentation/providers/discount_cubit/discount_cubit.dart';
 
@@ -20,8 +20,8 @@ Future<void> initDiscountModule() async {
     ..registerLazySingleton<CreateDiscountUseCase>(
       () => CreateDiscountUseCase(getIt<DiscountRepository>()),
     )
-    ..registerLazySingleton<GetDiscountUseCase>(
-      () => GetDiscountUseCase(getIt<DiscountRepository>()),
+    ..registerLazySingleton<GetDiscountByFilterUseCase>(
+      () => GetDiscountByFilterUseCase(getIt<DiscountRepository>()),
     )
     ..registerLazySingleton<EditDiscountUseCase>(
       () => EditDiscountUseCase(getIt<DiscountRepository>()),
@@ -31,7 +31,7 @@ Future<void> initDiscountModule() async {
     ..registerFactory<DiscountCubit>(
       () => DiscountCubit(
         createUseCase: getIt<CreateDiscountUseCase>(),
-        getUseCase: getIt<GetDiscountUseCase>(),
+        getUseCase: getIt<GetDiscountByFilterUseCase>(),
         editUseCase: getIt<EditDiscountUseCase>(),
       ),
     );

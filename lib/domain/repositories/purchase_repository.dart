@@ -5,7 +5,10 @@ abstract class PurchaseRepository {
   Future<PurchaseEntity> createPurchase({required PurchaseEntity purchase});
 
 
-  Future<List<PurchaseEntity>> getPurchase({required PurchaseQueryFilter filter  });
+  Future<List<PurchaseEntity>> getPurchaseByFilter({required PurchaseQueryFilter filter  });
+  Future<PurchaseEntity> getPurchaseById({required int id});
 
   Future<PurchaseEntity> editPurchase({required PurchaseEntity purchase});
+
+
 }

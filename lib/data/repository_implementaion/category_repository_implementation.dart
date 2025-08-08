@@ -22,7 +22,8 @@ class CategoryRepositoryImplementation extends CategoryRepository {
   }
 
   @override
-  Future<List<CategoryEntity>> getCategory({required CategoryQueryFilter filter}) {
+  Future<List<CategoryEntity>> getCategoryByFilter(
+      {required CategoryQueryFilter filter}) {
     // TODO: implement getCategory
     throw UnimplementedError();
   }

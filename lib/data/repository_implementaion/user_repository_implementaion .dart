@@ -16,13 +16,13 @@ class UserRepositoryImplementation implements UserRepository {
   }
 
   @override
-  Future<UserEntity> getCurrentUser() {
+  Future<UserEntity> getUserById() {
     // TODO: implement getCurrentUser
     throw UnimplementedError();
   }
 
   @override
-  Future<List<UserEntity>> getUsers({required UserQueryFilter filter}) {
+  Future<List<UserEntity>> getUsersByFilter({required UserQueryFilter filter}) {
     // TODO: implement getUsers
     throw UnimplementedError();
   }

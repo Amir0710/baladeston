@@ -2,8 +2,9 @@ import 'package:baladeston/domain/filters/comment_query_filter.dart';
 import 'package:baladeston/domain/entitys/comment/comment_entity.dart';
 
 abstract class CommentRepository {
-  Future<List<CommentEntity>?> getComment({required CommentQueryFilter filter});
-  Future<CommentEntity> getCommentById({required int comment});
+  Future<List<CommentEntity>?> getCommentByFilter(
+      {required CommentQueryFilter filter});
+  Future<CommentEntity> getCommentById({ required int id});
 
   Future<CommentEntity> createComment({required CommentEntity comment});
 

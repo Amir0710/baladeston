@@ -8,6 +8,6 @@ class GetPurchaseUseCase {
   GetPurchaseUseCase(this.repository);
 
   Future<List<PurchaseEntity>> call(PurchaseQueryFilter filter ) {
-    return repository.getPurchase(filter : filter );
+    return repository.getPurchaseByFilter(filter : filter );
   }
 }

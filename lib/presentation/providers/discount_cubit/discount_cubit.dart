@@ -3,17 +3,17 @@ import 'package:bloc/bloc.dart';
 import 'package:baladeston/domain/filters/discount_query_filter.dart';
 import 'package:baladeston/domain/entitys/discount/discount_entity.dart';
 import 'package:baladeston/domain/usecase/discount/create_discount_usecase.dart';
-import 'package:baladeston/domain/usecase/discount/get_discount_usecase.dart';
+import 'package:baladeston/domain/usecase/discount/get_discount_usecase_by_filter.dart';
 import 'package:baladeston/domain/usecase/discount/edit_discount_usecase.dart';
 
 class DiscountCubit extends Cubit<DiscountState> {
   final CreateDiscountUseCase _createUseCase;
-  final GetDiscountUseCase _getUseCase;
+  final GetDiscountByFilterUseCase _getUseCase;
   final EditDiscountUseCase _editUseCase;
 
   DiscountCubit({
     required CreateDiscountUseCase createUseCase,
-    required GetDiscountUseCase getUseCase,
+    required GetDiscountByFilterUseCase getUseCase,
     required EditDiscountUseCase editUseCase,
   })  : _createUseCase = createUseCase,
         _getUseCase = getUseCase,

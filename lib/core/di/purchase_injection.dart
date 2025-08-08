@@ -1,8 +1,8 @@
 import 'package:baladeston/data/repository_implementaion/purchase_repository_implementation.dart';
 import 'package:baladeston/domain/usecase/pruchase/create_purchase_usecase.dart';
 import 'package:baladeston/domain/usecase/pruchase/edit_purchase_usecase.dart';
-import 'package:baladeston/domain/usecase/pruchase/get_purchase_usecase.dart';
-import 'package:baladeston/domain/usecase/pruchase/get_purchase_usecase.dart';
+import 'package:baladeston/domain/usecase/pruchase/get_purchase_by_filter_usecase.dart';
+import 'package:baladeston/domain/usecase/pruchase/get_purchase_by_filter_usecase.dart';
 import 'package:get_it/get_it.dart';
 import 'package:baladeston/domain/repositories/purchase_repository.dart';
 import 'package:baladeston/presentation/providers/purchase_cubit/purchase_cubit.dart';
@@ -20,8 +20,8 @@ Future<void> initPurchaseModule() async {
     ..registerLazySingleton<CreatePurchaseUseCase>(
       () => CreatePurchaseUseCase(getIt<PurchaseRepository>()),
     )
-    ..registerLazySingleton<GetPurchaseUseCase>(
-      () => GetPurchaseUseCase(getIt<PurchaseRepository>()),
+    ..registerLazySingleton<GetPurchaseByIdUseCase>(
+      () => GetPurchaseByIdUseCase(getIt<PurchaseRepository>()),
     )
     ..registerLazySingleton<GetPurchaseByIdUseCase>(
       () => GetPurchaseByIdUseCase(getIt<PurchaseRepository>()),
@@ -33,7 +33,7 @@ Future<void> initPurchaseModule() async {
     ..registerFactory<PurchaseCubit>(
       () => PurchaseCubit(
         createUseCase: getIt<CreatePurchaseUseCase>(),
-        getListUseCase: getIt<GetPurchaseUseCase>(),
+        getListUseCase: getIt<GetPurchaseByIdUseCase>(),
         getByIdUseCase: getIt<GetPurchaseByIdUseCase>(),
         editUseCase: getIt<EditPurchaseUseCase>(),
       ),

@@ -1,21 +1,19 @@
+import 'package:baladeston/domain/entitys/purchase/purchase_entity.dart';
 import 'package:baladeston/domain/usecase/pruchase/create_purchase_usecase.dart';
 import 'package:baladeston/domain/usecase/pruchase/edit_purchase_usecase.dart';
-import 'package:baladeston/domain/usecase/pruchase/get_purchase_usecase.dart';
-import 'package:baladeston/domain/usecase/pruchase/get_purchase_usecase.dart';
+import 'package:baladeston/domain/usecase/pruchase/get_purchase_by_filter_usecase.dart';
 import 'package:baladeston/presentation/providers/purchase_cubit/purchase_state.dart';
 import 'package:bloc/bloc.dart';
-import 'package:baladeston/domain/entitys/purchase/purchase_entity.dart';
-
 
 class PurchaseCubit extends Cubit<PurchaseState> {
   final CreatePurchaseUseCase _createUseCase;
-  final GetPurchaseUseCase _getListUseCase;
+  final GetPurchaseByIdUseCase _getListUseCase;
   // final GetPurchaseByIdUseCase _getByIdUseCase;
   final EditPurchaseUseCase _editUseCase;
 
   PurchaseCubit({
     required CreatePurchaseUseCase createUseCase,
-    required GetPurchaseUseCase getListUseCase,
+    required GetPurchaseByIdUseCase getListUseCase,
     // required GetPurchaseByIdUseCase getByIdUseCase,
     required EditPurchaseUseCase editUseCase,
   })  : _createUseCase = createUseCase,

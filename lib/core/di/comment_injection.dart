@@ -7,7 +7,7 @@ import 'package:baladeston/domain/usecase/comment/create_comment_usecase.dart';
 import 'package:baladeston/domain/usecase/comment/update_comment_usecase.dart';
 import 'package:baladeston/domain/usecase/comment/count_comment_usecase.dart';
 import 'package:baladeston/domain/usecase/comment/delete_comment_usecase.dart';
-import 'package:baladeston/domain/usecase/comment/get_comment_usecase.dart';
+import 'package:baladeston/domain/usecase/comment/get_comment_by_filter_usecase.dart';
 
 import 'package:baladeston/presentation/providers/comment_cubit/comment_cubit.dart';
 
@@ -35,8 +35,8 @@ Future<void> initCommentModule() async {
     ..registerLazySingleton<DeleteCommentUseCase>(
       () => DeleteCommentUseCase(getIt<CommentRepository>()),
     )
-    ..registerLazySingleton<GetCommentUseCase>(
-      () => GetCommentUseCase(getIt<CommentRepository>()),
+    ..registerLazySingleton<GetCommentByFilterUseCase>(
+      () => GetCommentByFilterUseCase(getIt<CommentRepository>()),
     )
 
     // Cubit
@@ -46,7 +46,7 @@ Future<void> initCommentModule() async {
         updateUseCase: getIt<UpdateCommentUseCase>(),
         countUseCase: getIt<CountCommentUseCase>(),
         deleteUseCase: getIt<DeleteCommentUseCase>(),
-        getUseCase: getIt<GetCommentUseCase>(),
+        getUseCase: getIt<GetCommentByFilterUseCase>(),
       ),
     );
 }

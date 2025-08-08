@@ -4,7 +4,7 @@ import 'package:baladeston/domain/entitys/video/video_entity.dart';
 
 import 'package:baladeston/domain/usecase/video/delete_video_usecase.dart';
 import 'package:baladeston/domain/usecase/video/is_favorite_usecase.dart';
-import 'package:baladeston/domain/usecase/video/get_videos_filtered_usecase.dart';
+import 'package:baladeston/domain/usecase/video/get_video_by_filter_usecase.dart';
 import 'package:baladeston/domain/usecase/video/get_last_watch_position_usecase.dart';
 import 'package:baladeston/domain/usecase/video/get_favorite_videos_usecase.dart';
 import 'package:baladeston/domain/usecase/video/report_video_usecase.dart';

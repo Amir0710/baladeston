@@ -22,7 +22,8 @@ class CommentRepositoryImplementation implements CommentRepository {
   }
 
   @override
-  Future<List<CommentEntity>?> getComment({required CommentQueryFilter filter}) {
+  Future<List<CommentEntity>?> getCommentByFilter(
+      {required CommentQueryFilter filter}) {
     // TODO: implement getComment
     throw UnimplementedError();
   }

@@ -8,6 +8,6 @@ class GetUsersUseCase {
   GetUsersUseCase(this.repository);
 
   Future<List<UserEntity>> call(UserQueryFilter filter) {
-    return repository.getUsers(filter: filter);
+    return repository.getUsersByFilter(filter: filter);
   }
 }

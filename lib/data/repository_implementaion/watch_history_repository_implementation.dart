@@ -4,7 +4,8 @@ import 'package:baladeston/domain/repositories/watch_history_repository.dart';
 
 class WatchHistoryRepositoryImplementation extends WatchHistoryRepository {
   @override
-  Future<WatchHistoryEntity> createWatchHistory({required WatchHistoryEntity watchHistory}) {
+  Future<WatchHistoryEntity> createWatchHistory(
+      {required WatchHistoryEntity watchHistory}) {
     // TODO: implement createWatchHistory
     throw UnimplementedError();
   }
@@ -16,19 +17,22 @@ class WatchHistoryRepositoryImplementation extends WatchHistoryRepository {
   }
 
   @override
-  Future<void> deleteWatchHistoryList({required WatchHistoryQueryFilter filter}) {
+  Future<void> deleteWatchHistoryList(
+      {required WatchHistoryQueryFilter filter}) {
     // TODO: implement deleteWatchHistoryList
     throw UnimplementedError();
   }
 
   @override
-  Future<List<WatchHistoryEntity>?> getLastPosition({required WatchHistoryQueryFilter filter}) {
+  Future<List<WatchHistoryEntity>?> getLastPositionbyFilter(
+      {required WatchHistoryQueryFilter filter}) {
     // TODO: implement getLastPosition
     throw UnimplementedError();
   }
 
   @override
-  Future<WatchHistoryEntity> updateLastPosition({required WatchHistoryEntity watchHistory}) {
+  Future<WatchHistoryEntity> updateLastPosition(
+      {required WatchHistoryEntity watchHistory}) {
     // TODO: implement updateLastPosition
     throw UnimplementedError();
   }

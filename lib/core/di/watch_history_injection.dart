@@ -1,7 +1,7 @@
 import 'package:baladeston/domain/usecase/watch_history/create_watch_history_usecase.dart';
 import 'package:baladeston/domain/usecase/watch_history/dalete_watch_history_list_usecase.dart';
 import 'package:baladeston/domain/usecase/watch_history/delete_all_history_usecase.dart';
-import 'package:baladeston/domain/usecase/watch_history/get_last_position_usecase.dart';
+import 'package:baladeston/domain/usecase/watch_history/get_last_position_by_filter_usecase.dart';
 import 'package:baladeston/domain/usecase/watch_history/update_last_position_usecase.dart';
 import 'package:get_it/get_it.dart';
 

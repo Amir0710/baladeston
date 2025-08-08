@@ -6,5 +6,6 @@ abstract class DiscountRepository {
 
   Future<DiscountEntity> createDiscount({required DiscountEntity discount}); // only for admin
   Future<DiscountEntity> editeDiscount({required DiscountEntity discount , required int discountId}); // only for admin
-  Future<List<DiscountEntity>> getDiscount({required DiscountQueryFilter filter});
+  Future<List<DiscountEntity>> getDiscountByFilter({required DiscountQueryFilter filter});
+  Future<DiscountEntity> getDiscountById({required int id });
 }

@@ -10,7 +10,7 @@ class GetVideosFilteredUseCase {
   Future<List<VideoEntity>> call({
     required VideoQueryFilter filter,
   }) {
-    return repository.getVideosFiltered(
+    return repository.getVideoByFilter(
       filter: filter,
     );
   }

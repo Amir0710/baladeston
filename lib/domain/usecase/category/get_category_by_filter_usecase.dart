@@ -2,13 +2,12 @@ import 'package:baladeston/domain/filters/category_query_filter.dart';
 import 'package:baladeston/domain/entitys/category/category_entity.dart';
 import 'package:baladeston/domain/repositories/category_repository.dart';
 
-class GetCategoryUseCase {
+class GetCategoryByFilterUseCase {
   final CategoryRepository repository;
 
-  GetCategoryUseCase(this.repository);
+  GetCategoryByFilterUseCase(this.repository);
 
   Future<List<CategoryEntity>> call(CategoryQueryFilter filter) {
-    return repository.getCategory(filter: filter);
+    return repository.getCategoryByFilter(filter: filter);
   }
 }
-

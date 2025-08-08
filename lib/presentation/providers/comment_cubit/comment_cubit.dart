@@ -6,31 +6,29 @@ import 'package:baladeston/domain/filters/comment_query_filter.dart';
 import 'package:baladeston/domain/usecase/comment/count_comment_usecase.dart';
 import 'package:baladeston/domain/usecase/comment/create_comment_usecase.dart';
 import 'package:baladeston/domain/usecase/comment/delete_comment_usecase.dart';
-import 'package:baladeston/domain/usecase/comment/get_comment_usecase.dart';
+import 'package:baladeston/domain/usecase/comment/get_comment_by_filter_usecase.dart';
 import 'package:baladeston/domain/usecase/comment/update_comment_usecase.dart';
 import 'package:baladeston/presentation/providers/comment_cubit/comment_state.dart';
-
 
 class CommentCubit extends Cubit<CommentState> {
   final CreateCommentUseCase _createUseCase;
   final UpdateCommentUseCase _updateUseCase;
   final CountCommentUseCase _countUseCase;
   final DeleteCommentUseCase _deleteUseCase;
-  final GetCommentUseCase _getUseCase;
+  final GetCommentByFilterUseCase _getUseCase;
 
-CommentCubit({
+  CommentCubit({
     required CreateCommentUseCase createUseCase,
     required UpdateCommentUseCase updateUseCase,
-    required CountCommentUseCase  countUseCase,
+    required CountCommentUseCase countUseCase,
     required DeleteCommentUseCase deleteUseCase,
-    required GetCommentUseCase    getUseCase,
+    required GetCommentByFilterUseCase getUseCase,
   })  : _createUseCase = createUseCase,
         _updateUseCase = updateUseCase,
-        _countUseCase  = countUseCase,
+        _countUseCase = countUseCase,
         _deleteUseCase = deleteUseCase,
-        _getUseCase    = getUseCase,
+        _getUseCase = getUseCase,
         super(const CommentState.initial());
-
 
   /// بارگذاری لیست کامنت و شمارش آن
   Future<void> loadComments(CommentQueryFilter filter) async {

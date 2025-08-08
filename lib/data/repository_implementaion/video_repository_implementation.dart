@@ -17,7 +17,8 @@ class VideoRepositoryImplementation extends VideoRepository {
   }
 
   @override
-  Future<List<VideoEntity>> getVideosFiltered({required VideoQueryFilter filter}) {
+  Future<List<VideoEntity>> getVideoByFilter(
+      {required VideoQueryFilter filter}) {
     // TODO: implement getVideosFiltered
     throw UnimplementedError();
   }

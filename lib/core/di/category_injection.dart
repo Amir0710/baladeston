@@ -7,7 +7,7 @@ import 'package:baladeston/domain/usecase/category/create_category_usecase.dart'
 import 'package:baladeston/domain/usecase/category/update_category_usecase.dart';
 import 'package:baladeston/domain/usecase/category/count_all_categories_usecase.dart';
 import 'package:baladeston/domain/usecase/category/delete_category_usecase.dart';
-import 'package:baladeston/domain/usecase/category/get_category_usecase.dart';
+import 'package:baladeston/domain/usecase/category/get_category_by_filter_usecase.dart';
 
 import 'package:baladeston/presentation/providers/category_cubit/category_cubit.dart';
 
@@ -35,8 +35,8 @@ Future<void> initCategoryModule() async {
     ..registerLazySingleton<DeleteCategoryUseCase>(
       () => DeleteCategoryUseCase(getIt<CategoryRepository>()),
     )
-    ..registerLazySingleton<GetCategoryUseCase>(
-      () => GetCategoryUseCase(getIt<CategoryRepository>()),
+    ..registerLazySingleton<GetCategoryByFilterUseCase>(
+      () => GetCategoryByFilterUseCase(getIt<CategoryRepository>()),
     )
 
     // Cubit
@@ -46,7 +46,8 @@ Future<void> initCategoryModule() async {
         updateUseCase: getIt<UpdateCategoryUseCase>(),
         countUseCase: getIt<CountAllCategoriesUseCase>(),
         deleteUseCase: getIt<DeleteCategoryUseCase>(),
-        getUseCase: getIt<GetCategoryUseCase>(),
+        getByFilterUseCase: getIt<GetCategoryByFilterUseCase>(),
+        getBUseCase: getIt<GetCategoryByFilterUseCase>(),
       ),
     );
 }
