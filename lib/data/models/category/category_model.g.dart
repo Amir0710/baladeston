@@ -8,13 +8,13 @@ part of 'category_model.dart';
 
 _CategoryModel _$CategoryModelFromJson(Map<String, dynamic> json) =>
     _CategoryModel(
-      id: (json['id'] as num).toInt(),
+      id: (json['id'] as num?)?.toInt(),
       title: json['title'] as String,
       password: json['password'] as String,
-      price: (json['price'] as num).toDouble(),
       status: json['status'] as String,
       thumbnailUrl: json['thumbnailUrl'] as String?,
       createdAt: DateTime.parse(json['createdAt'] as String),
+      lastTransaction: DateTime.parse(json['lastTransaction'] as String),
       ownerId: (json['ownerId'] as num).toInt(),
     );
 
@@ -23,9 +23,9 @@ Map<String, dynamic> _$CategoryModelToJson(_CategoryModel instance) =>
       'id': instance.id,
       'title': instance.title,
       'password': instance.password,
-      'price': instance.price,
       'status': instance.status,
       'thumbnailUrl': instance.thumbnailUrl,
       'createdAt': instance.createdAt.toIso8601String(),
+      'lastTransaction': instance.lastTransaction.toIso8601String(),
       'ownerId': instance.ownerId,
     };

@@ -6,7 +6,7 @@ class CreateDiscountUseCase {
 
   CreateDiscountUseCase(this.repository);
 
-  Future<void> call(DiscountEntity discount) {
+  Future<void> call({required DiscountEntity discount}) {
     return repository.createDiscount(discount: discount);
   }
 }

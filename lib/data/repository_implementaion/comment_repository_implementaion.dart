@@ -1,42 +1,74 @@
+import 'package:baladeston/data/datasources/remote/comment_remote_datasource/comment_api.dart';
 import 'package:baladeston/domain/entitys/comment/comment_entity.dart';
 import 'package:baladeston/domain/filters/comment_query_filter.dart';
 import 'package:baladeston/domain/repositories/comment_repository.dart';
 
 class CommentRepositoryImplementation implements CommentRepository {
+  final CommentApi _api;
+
+  CommentRepositoryImplementation({required CommentApi api}) : _api = api;
   @override
-  Future<int> countComment({required int videoId}) {
-    // TODO: implement countComment
-    throw UnimplementedError();
+  Future<int> countComment({required int id}) async {
+    try {
+      return await _api.countComment(id: id);
+    } catch (e) {
+      throw Exception('error $e');
+    }
   }
 
   @override
-  Future<CommentEntity> createComment({required CommentEntity comment}) {
-    // TODO: implement createComment
-    throw UnimplementedError();
+  Future<CommentEntity> createComment({required CommentEntity comment}) async {
+    try {
+      return await _api.createComment(comment: comment);
+    } catch (e) {
+      throw Exception('error $e');
+    }
   }
 
-  @override
-  Future<void> deleteComment({required int commentId, required int userId}) {
-    // TODO: implement deleteComment
-    throw UnimplementedError();
-  }
 
   @override
   Future<List<CommentEntity>?> getCommentByFilter(
-      {required CommentQueryFilter filter}) {
-    // TODO: implement getComment
-    throw UnimplementedError();
+      {required CommentQueryFilter filter}) async {
+    try {
+      return await _api.getCommentByFilter(filter: filter);
+    } catch (e) {
+      throw Exception('error $e');
+    }
   }
 
   @override
-  Future<CommentEntity> getCommentById({required int comment}) {
-    // TODO: implement getCommentById
-    throw UnimplementedError();
+  Future<CommentEntity> updateComment({required CommentEntity comment}) async {
+    try {
+      return await _api.updateComment(comment: comment);
+    } catch (e) {
+      throw Exception('error $e');
+    }
   }
 
   @override
-  Future<CommentEntity> updateComment({required CommentEntity comment}) {
-    // TODO: implement updateComment
-    throw UnimplementedError();
+  Future<void> deleteCommentByFilter({required CommentQueryFilter filter}) async {
+    try {
+      return  _api.deleteCommentByFilter(filter: filter);
+    } catch (e) {
+      throw Exception('error $e');
+    }
+  }
+
+  @override
+  Future<void> deleteCommentById({required int id}) {
+    try {
+      return  _api.deleteCommentById(id: id);
+    } catch (e) {
+      throw Exception('error $e');
+    }
+  }
+
+  @override
+  Future<CommentEntity> getCommentById({required int id}) async {
+    try {
+      return await _api.getCommentById(id: id);
+    } catch (e) {
+      throw Exception('error $e');
+    }
   }
 }

@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$CategoryEntity {
-  int get id;
+  int? get id;
   String get title;
   String get password;
   String get status;
@@ -67,7 +67,7 @@ abstract mixin class $CategoryEntityCopyWith<$Res> {
       _$CategoryEntityCopyWithImpl;
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String title,
       String password,
       String status,
@@ -90,7 +90,7 @@ class _$CategoryEntityCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? title = null,
     Object? password = null,
     Object? status = null,
@@ -100,10 +100,10 @@ class _$CategoryEntityCopyWithImpl<$Res>
     Object? ownerId = null,
   }) {
     return _then(_self.copyWith(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       title: null == title
           ? _self.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -230,7 +230,7 @@ extension CategoryEntityPatterns on CategoryEntity {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            int id,
+            int? id,
             String title,
             String password,
             String status,
@@ -274,7 +274,7 @@ extension CategoryEntityPatterns on CategoryEntity {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            int id,
+            int? id,
             String title,
             String password,
             String status,
@@ -316,7 +316,7 @@ extension CategoryEntityPatterns on CategoryEntity {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            int id,
+            int? id,
             String title,
             String password,
             String status,
@@ -348,7 +348,7 @@ extension CategoryEntityPatterns on CategoryEntity {
 
 class _CategoryEntity implements CategoryEntity {
   const _CategoryEntity(
-      {required this.id,
+      {this.id,
       required this.title,
       required this.password,
       required this.status,
@@ -358,7 +358,7 @@ class _CategoryEntity implements CategoryEntity {
       required this.ownerId});
 
   @override
-  final int id;
+  final int? id;
   @override
   final String title;
   @override
@@ -420,7 +420,7 @@ abstract mixin class _$CategoryEntityCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String title,
       String password,
       String status,
@@ -443,7 +443,7 @@ class __$CategoryEntityCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? title = null,
     Object? password = null,
     Object? status = null,
@@ -453,10 +453,10 @@ class __$CategoryEntityCopyWithImpl<$Res>
     Object? ownerId = null,
   }) {
     return _then(_CategoryEntity(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       title: null == title
           ? _self.title
           : title // ignore: cast_nullable_to_non_nullable

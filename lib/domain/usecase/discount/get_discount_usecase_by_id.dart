@@ -6,7 +6,7 @@ class GetDiscountByIdUseCase {
 
   GetDiscountByIdUseCase(this.repository);
 
-  Future<DiscountEntity> call(int id) {
+  Future<DiscountEntity> call({required int id}) {
     return repository.getDiscountById(id: id);
   }
 }

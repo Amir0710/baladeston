@@ -10,13 +10,15 @@ class DiscountRepositoryImplementation extends DiscountRepository {
   }
 
   @override
-  Future<DiscountEntity> editeDiscount({required DiscountEntity discount, required int discountId}) {
+  Future<DiscountEntity> editDiscountById(
+      {required DiscountEntity discount, required int discountId}) {
     // TODO: implement editeDiscount
     throw UnimplementedError();
   }
 
   @override
-  Future<List<DiscountEntity>> getDiscount({required DiscountQueryFilter filter}) {
+  Future<List<DiscountEntity>> getDiscount(
+      {required DiscountQueryFilter filter}) {
     // TODO: implement getDiscount
     throw UnimplementedError();
   }

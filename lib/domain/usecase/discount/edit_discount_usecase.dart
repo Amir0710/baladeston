@@ -6,7 +6,8 @@ class EditDiscountUseCase {
 
   EditDiscountUseCase(this.repository);
 
-  Future<void> call(DiscountEntity discount, int discountId) {
-    return repository.editeDiscount(discount: discount, discountId: discountId);
+  Future<void> call({ required DiscountEntity discount}) {
+    return repository.editDiscount(
+        discount: discount);
   }
 }

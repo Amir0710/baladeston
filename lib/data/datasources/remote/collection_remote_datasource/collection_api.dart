@@ -1,30 +1,21 @@
-// domain/datasources/remote/collection_api.dart
-import 'package:baladeston/domain/entitys/collection/collection_entity.dart';
+import 'package:baladeston/data/models/collection/collection_model.dart';
 import 'package:baladeston/domain/filters/collection_query_filter.dart';
 
 abstract class CollectionApi {
-  /// دریافت لیست مجموعه‌ها با فیلتر
-  Future<List<CollectionEntity>> getCollections({
-    required CollectionQueryFilter filter
-  });
+  Future<List<CollectionModel>> getCollectionByFilter(
+      {required CollectionQueryFilter filter});
 
-  /// ایجاد مجموعه جدید
-  Future<CollectionEntity> createCollection({
-    required CollectionEntity collection
-  });
+  Future<CollectionModel> getCollectionById({required int id});
 
-  /// به‌روزرسانی مجموعه موجود
-  Future<CollectionEntity> updateCollection({
-    required CollectionEntity collection
-  });
+  Future<CollectionModel> createCollection(
+      {required CollectionModel collection});
 
-  /// حذف مجموعه
-  Future<void> deleteCollection({
-    required int id
-  });
+  Future<CollectionModel> updateCollection(
+      {required CollectionModel collection});
 
-  /// شمارش کل مجموعه‌ها با فیلتر
-  Future<int> countAllCollections({
-    required CollectionQueryFilter filter
-  });
+  Future<void> deleteCollectionByFilter(
+      {required CollectionQueryFilter filter});
+
+  Future<int> countAllCollection({required CollectionQueryFilter filter});
+  Future<void> deleteCollectionById({required int id});
 }

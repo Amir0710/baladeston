@@ -1,11 +1,12 @@
 // lib/presentation/providers/comment_cubit/comment_cubit.dart
+import 'package:baladeston/domain/usecase/comment/delete_comment_by_filter_usecase.dart';
 import 'package:bloc/bloc.dart';
 
 import 'package:baladeston/domain/entitys/comment/comment_entity.dart';
 import 'package:baladeston/domain/filters/comment_query_filter.dart';
 import 'package:baladeston/domain/usecase/comment/count_comment_usecase.dart';
 import 'package:baladeston/domain/usecase/comment/create_comment_usecase.dart';
-import 'package:baladeston/domain/usecase/comment/delete_comment_usecase.dart';
+import 'package:baladeston/domain/usecase/comment/delete_comment_by_id_usecase.dart';
 import 'package:baladeston/domain/usecase/comment/get_comment_by_filter_usecase.dart';
 import 'package:baladeston/domain/usecase/comment/update_comment_usecase.dart';
 import 'package:baladeston/presentation/providers/comment_cubit/comment_state.dart';
@@ -14,19 +15,22 @@ class CommentCubit extends Cubit<CommentState> {
   final CreateCommentUseCase _createUseCase;
   final UpdateCommentUseCase _updateUseCase;
   final CountCommentUseCase _countUseCase;
-  final DeleteCommentUseCase _deleteUseCase;
+  final DeleteCommentByIdUseCase _deleteByIdUseCase;
+  final DeleteCommentByFilterUseCase _deleteByFilterUseCase;
   final GetCommentByFilterUseCase _getUseCase;
 
   CommentCubit({
     required CreateCommentUseCase createUseCase,
     required UpdateCommentUseCase updateUseCase,
     required CountCommentUseCase countUseCase,
-    required DeleteCommentUseCase deleteUseCase,
+    required DeleteCommentByIdUseCase deleteByIdUseCase,
     required GetCommentByFilterUseCase getUseCase,
+    required DeleteCommentByFilterUseCase deleteByFilterUseCase,
   })  : _createUseCase = createUseCase,
         _updateUseCase = updateUseCase,
         _countUseCase = countUseCase,
-        _deleteUseCase = deleteUseCase,
+        _deleteByIdUseCase = deleteByIdUseCase,
+        _deleteByFilterUseCase = deleteByFilterUseCase,
         _getUseCase = getUseCase,
         super(const CommentState.initial());
 
@@ -47,10 +51,7 @@ class CommentCubit extends Cubit<CommentState> {
     emit(const CommentState.loading());
     try {
       await _createUseCase(comment);
-      // فرض کن بعد از ایجاد می‌خواهی مجدداً لیست را بارگذاری کنی
-      emit(const CommentState.loading());
-      // قبلاً filter را ذخیره کرده‌ای یا می‌آوری
-      // await loadComments(savedFilter);
+      // بعد از ایجاد می‌توانی لیست را دوباره بارگذاری کنی
     } catch (e) {
       emit(CommentState.failure(message: e.toString()));
     }
@@ -61,21 +62,29 @@ class CommentCubit extends Cubit<CommentState> {
     emit(const CommentState.loading());
     try {
       await _updateUseCase(comment);
-      // مجدداً بارگذاری کامنت‌ها و ...
+      // بعد از بروزرسانی می‌توانی لیست را دوباره بارگذاری کنی
     } catch (e) {
       emit(CommentState.failure(message: e.toString()));
     }
   }
 
-  /// حذف کامنت
-  Future<void> deleteComment({
-    required int commentId,
-    required int userId,
-  }) async {
+  /// حذف کامنت با آیدی
+  Future<void> deleteCommentById(int id) async {
     emit(const CommentState.loading());
     try {
-      await _deleteUseCase(commentId: commentId, userId: userId);
-      // پس از حذف، لیست را بروزرسانی کن
+      await _deleteByIdUseCase(id: id);
+      // بعد از حذف می‌توانی لیست را بروزرسانی کنی
+    } catch (e) {
+      emit(CommentState.failure(message: e.toString()));
+    }
+  }
+
+  /// حذف کامنت‌ها با فیلتر
+  Future<void> deleteCommentsByFilter(CommentQueryFilter filter) async {
+    emit(const CommentState.loading());
+    try {
+      await _deleteByFilterUseCase(filter: filter);
+      // بعد از حذف می‌توانی لیست را بروزرسانی کنی
     } catch (e) {
       emit(CommentState.failure(message: e.toString()));
     }

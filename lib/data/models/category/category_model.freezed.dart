@@ -14,13 +14,13 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$CategoryModel {
-  int get id;
+  int? get id;
   String get title;
   String get password;
-  double get price;
   String get status;
   String? get thumbnailUrl;
   DateTime get createdAt;
+  DateTime get lastTransaction;
   int get ownerId;
 
   /// Create a copy of CategoryModel
@@ -43,23 +43,24 @@ mixin _$CategoryModel {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.password, password) ||
                 other.password == password) &&
-            (identical(other.price, price) || other.price == price) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.thumbnailUrl, thumbnailUrl) ||
                 other.thumbnailUrl == thumbnailUrl) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
+            (identical(other.lastTransaction, lastTransaction) ||
+                other.lastTransaction == lastTransaction) &&
             (identical(other.ownerId, ownerId) || other.ownerId == ownerId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, password, price,
-      status, thumbnailUrl, createdAt, ownerId);
+  int get hashCode => Object.hash(runtimeType, id, title, password, status,
+      thumbnailUrl, createdAt, lastTransaction, ownerId);
 
   @override
   String toString() {
-    return 'CategoryModel(id: $id, title: $title, password: $password, price: $price, status: $status, thumbnailUrl: $thumbnailUrl, createdAt: $createdAt, ownerId: $ownerId)';
+    return 'CategoryModel(id: $id, title: $title, password: $password, status: $status, thumbnailUrl: $thumbnailUrl, createdAt: $createdAt, lastTransaction: $lastTransaction, ownerId: $ownerId)';
   }
 }
 
@@ -70,13 +71,13 @@ abstract mixin class $CategoryModelCopyWith<$Res> {
       _$CategoryModelCopyWithImpl;
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String title,
       String password,
-      double price,
       String status,
       String? thumbnailUrl,
       DateTime createdAt,
+      DateTime lastTransaction,
       int ownerId});
 }
 
@@ -93,20 +94,20 @@ class _$CategoryModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? title = null,
     Object? password = null,
-    Object? price = null,
     Object? status = null,
     Object? thumbnailUrl = freezed,
     Object? createdAt = null,
+    Object? lastTransaction = null,
     Object? ownerId = null,
   }) {
     return _then(_self.copyWith(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       title: null == title
           ? _self.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -115,10 +116,6 @@ class _$CategoryModelCopyWithImpl<$Res>
           ? _self.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      price: null == price
-          ? _self.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
       status: null == status
           ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -130,6 +127,10 @@ class _$CategoryModelCopyWithImpl<$Res>
       createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      lastTransaction: null == lastTransaction
+          ? _self.lastTransaction
+          : lastTransaction // ignore: cast_nullable_to_non_nullable
               as DateTime,
       ownerId: null == ownerId
           ? _self.ownerId
@@ -233,13 +234,13 @@ extension CategoryModelPatterns on CategoryModel {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            int id,
+            int? id,
             String title,
             String password,
-            double price,
             String status,
             String? thumbnailUrl,
             DateTime createdAt,
+            DateTime lastTransaction,
             int ownerId)?
         $default, {
     required TResult orElse(),
@@ -247,8 +248,15 @@ extension CategoryModelPatterns on CategoryModel {
     final _that = this;
     switch (_that) {
       case _CategoryModel() when $default != null:
-        return $default(_that.id, _that.title, _that.password, _that.price,
-            _that.status, _that.thumbnailUrl, _that.createdAt, _that.ownerId);
+        return $default(
+            _that.id,
+            _that.title,
+            _that.password,
+            _that.status,
+            _that.thumbnailUrl,
+            _that.createdAt,
+            _that.lastTransaction,
+            _that.ownerId);
       case _:
         return orElse();
     }
@@ -270,21 +278,28 @@ extension CategoryModelPatterns on CategoryModel {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            int id,
+            int? id,
             String title,
             String password,
-            double price,
             String status,
             String? thumbnailUrl,
             DateTime createdAt,
+            DateTime lastTransaction,
             int ownerId)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _CategoryModel():
-        return $default(_that.id, _that.title, _that.password, _that.price,
-            _that.status, _that.thumbnailUrl, _that.createdAt, _that.ownerId);
+        return $default(
+            _that.id,
+            _that.title,
+            _that.password,
+            _that.status,
+            _that.thumbnailUrl,
+            _that.createdAt,
+            _that.lastTransaction,
+            _that.ownerId);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -305,21 +320,28 @@ extension CategoryModelPatterns on CategoryModel {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            int id,
+            int? id,
             String title,
             String password,
-            double price,
             String status,
             String? thumbnailUrl,
             DateTime createdAt,
+            DateTime lastTransaction,
             int ownerId)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _CategoryModel() when $default != null:
-        return $default(_that.id, _that.title, _that.password, _that.price,
-            _that.status, _that.thumbnailUrl, _that.createdAt, _that.ownerId);
+        return $default(
+            _that.id,
+            _that.title,
+            _that.password,
+            _that.status,
+            _that.thumbnailUrl,
+            _that.createdAt,
+            _that.lastTransaction,
+            _that.ownerId);
       case _:
         return null;
     }
@@ -328,33 +350,34 @@ extension CategoryModelPatterns on CategoryModel {
 
 /// @nodoc
 @JsonSerializable()
-class _CategoryModel implements CategoryModel {
+class _CategoryModel extends CategoryModel {
   const _CategoryModel(
-      {required this.id,
+      {this.id,
       required this.title,
       required this.password,
-      required this.price,
       required this.status,
       this.thumbnailUrl,
       required this.createdAt,
-      required this.ownerId});
+      required this.lastTransaction,
+      required this.ownerId})
+      : super._();
   factory _CategoryModel.fromJson(Map<String, dynamic> json) =>
       _$CategoryModelFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
   final String title;
   @override
   final String password;
-  @override
-  final double price;
   @override
   final String status;
   @override
   final String? thumbnailUrl;
   @override
   final DateTime createdAt;
+  @override
+  final DateTime lastTransaction;
   @override
   final int ownerId;
 
@@ -382,23 +405,24 @@ class _CategoryModel implements CategoryModel {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.password, password) ||
                 other.password == password) &&
-            (identical(other.price, price) || other.price == price) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.thumbnailUrl, thumbnailUrl) ||
                 other.thumbnailUrl == thumbnailUrl) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
+            (identical(other.lastTransaction, lastTransaction) ||
+                other.lastTransaction == lastTransaction) &&
             (identical(other.ownerId, ownerId) || other.ownerId == ownerId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, password, price,
-      status, thumbnailUrl, createdAt, ownerId);
+  int get hashCode => Object.hash(runtimeType, id, title, password, status,
+      thumbnailUrl, createdAt, lastTransaction, ownerId);
 
   @override
   String toString() {
-    return 'CategoryModel(id: $id, title: $title, password: $password, price: $price, status: $status, thumbnailUrl: $thumbnailUrl, createdAt: $createdAt, ownerId: $ownerId)';
+    return 'CategoryModel(id: $id, title: $title, password: $password, status: $status, thumbnailUrl: $thumbnailUrl, createdAt: $createdAt, lastTransaction: $lastTransaction, ownerId: $ownerId)';
   }
 }
 
@@ -411,13 +435,13 @@ abstract mixin class _$CategoryModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String title,
       String password,
-      double price,
       String status,
       String? thumbnailUrl,
       DateTime createdAt,
+      DateTime lastTransaction,
       int ownerId});
 }
 
@@ -434,20 +458,20 @@ class __$CategoryModelCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? title = null,
     Object? password = null,
-    Object? price = null,
     Object? status = null,
     Object? thumbnailUrl = freezed,
     Object? createdAt = null,
+    Object? lastTransaction = null,
     Object? ownerId = null,
   }) {
     return _then(_CategoryModel(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       title: null == title
           ? _self.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -456,10 +480,6 @@ class __$CategoryModelCopyWithImpl<$Res>
           ? _self.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      price: null == price
-          ? _self.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
       status: null == status
           ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -471,6 +491,10 @@ class __$CategoryModelCopyWithImpl<$Res>
       createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      lastTransaction: null == lastTransaction
+          ? _self.lastTransaction
+          : lastTransaction // ignore: cast_nullable_to_non_nullable
               as DateTime,
       ownerId: null == ownerId
           ? _self.ownerId

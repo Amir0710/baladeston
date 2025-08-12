@@ -6,6 +6,6 @@ class CountCommentUseCase {
   CountCommentUseCase(this.repository);
 
   Future<int> call(int videoId) {
-    return repository.countComment(videoId: videoId);
+    return repository.countComment(id: videoId);
   }
 }

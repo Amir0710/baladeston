@@ -1,10 +1,13 @@
-import 'package:baladeston/data/models/collection/collection_model.dart';
-import 'package:baladeston/domain/filters/collection_query_filter.dart';
+import 'package:baladeston/data/models/comment/comment_model.dart';
+import 'package:baladeston/domain/filters/comment_query_filter.dart';
 
-abstract class CollectionRemoteDatasource {
-  Future<List<CollectionModel>> fetchCollections(CollectionQueryFilter filter);
-  Future<void> updateCollection(CollectionModel collection);
-  Future<void> deleteCollection(int id);
-  Future<void> createCollection(CollectionModel collection);
-  Future<int> countAllCollection(CollectionQueryFilter filter);
+abstract class CommentApi {
+  Future<List<CommentModel>?> getCommentByFilter(
+      {required CommentQueryFilter filter});
+  Future<CommentModel> getCommentById({required int id});
+  Future<CommentModel> createComment({required CommentModel comment});
+  Future<void> deleteCommentById({required int id});
+  Future<void> deleteCommentByFilter({required CommentQueryFilter filter});
+  Future<CommentModel> updateComment({required CommentModel comment});
+  Future<int> countComment({required int id});
 }
