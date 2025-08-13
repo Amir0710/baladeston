@@ -6,7 +6,7 @@ class CountAllCollectionUseCase {
 
   CountAllCollectionUseCase(this.repository);
 
-  Future<int> call() {
-    return repository.countAllCollection(filter: CollectionQueryFilter());
+  Future<int> call({required CollectionQueryFilter filter}) {
+    return repository.countAllCollection(filter: filter);
   }
 }

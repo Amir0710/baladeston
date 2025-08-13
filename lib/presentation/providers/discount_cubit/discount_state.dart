@@ -11,10 +11,11 @@ class DiscountState with _$DiscountState {
   /// در حال بارگذاری
   const factory DiscountState.loading() = _Loading;
 
-  /// ارائه لیست تخفیف‌ها
-  const factory DiscountState.loaded({
+  /// موفقیت – شامل لیست تخفیف‌ها و تعداد کل
+  const factory DiscountState.success({
     required List<DiscountEntity> discounts,
-  }) = _Loaded;
+    required int count,
+  }) = _Success;
 
   /// خطا
   const factory DiscountState.failure({

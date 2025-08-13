@@ -6,7 +6,7 @@ class UpdateCommentUseCase {
 
   UpdateCommentUseCase(this.repository);
 
-  Future<void> call(CommentEntity comment) {
+  Future<void> call({required CommentEntity comment}) {
     return repository.updateComment(comment: comment);
   }
 }

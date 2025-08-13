@@ -1,31 +1,83 @@
+import 'package:baladeston/data/datasources/remote/discount_remote_datasource/discount_api.dart';
+import 'package:baladeston/data/mapper/discount_mapper.dart';
 import 'package:baladeston/domain/entitys/discount/discount_entity.dart';
 import 'package:baladeston/domain/filters/discount_query_filter.dart';
 import 'package:baladeston/domain/repositories/discount_repository.dart';
 
 class DiscountRepositoryImplementation extends DiscountRepository {
+  final DiscountApi _api;
+
+  DiscountRepositoryImplementation({required DiscountApi api}) : _api = api;
   @override
-  Future<DiscountEntity> createDiscount({required DiscountEntity discount}) {
-    // TODO: implement createDiscount
-    throw UnimplementedError();
+  Future<DiscountEntity> createDiscount(
+      {required DiscountEntity discount}) async {
+    try {
+      final model = discount.toModel();
+      final resultModel = await _api.createDiscount(discount: model);
+      return resultModel.toEntity();
+    } catch (e) {
+      throw Exception('error $e');
+    }
   }
 
   @override
-  Future<DiscountEntity> editDiscountById(
-      {required DiscountEntity discount, required int discountId}) {
-    // TODO: implement editeDiscount
-    throw UnimplementedError();
+  Future<void> deleteDiscountByFilter(
+      {required DiscountQueryFilter filter}) async {
+    try {
+      await _api.deleteDiscountByFilter(filter: filter);
+    } catch (e) {
+      throw Exception('error $e');
+    }
   }
 
   @override
-  Future<List<DiscountEntity>> getDiscount(
-      {required DiscountQueryFilter filter}) {
-    // TODO: implement getDiscount
-    throw UnimplementedError();
+  Future<void> deleteDiscountById({required int id}) async {
+    try {
+      await _api.deleteDiscountById(id: id);
+    } catch (e) {
+      throw Exception('error $e');
+    }
   }
 
   @override
-  Future<DiscountEntity> getDiscountById({required int discount}) {
-    // TODO: implement getDiscountById
-    throw UnimplementedError();
+  Future<DiscountEntity> editDiscount(
+      {required DiscountEntity discount}) async {
+    try {
+      final model = discount.toModel();
+      final resultModle = await _api.editDiscount(discount: model);
+      return resultModle.toEntity();
+    } catch (e) {
+      throw Exception('error $e');
+    }
+  }
+
+  @override
+  Future<List<DiscountEntity>?> getDiscountByFilter(
+      {required DiscountQueryFilter filter}) async {
+    try {
+      final resultModel = await _api.getDiscountByFilter(filter: filter);
+      return resultModel?.map((m) => m.toEntity()).toList();
+    } catch (e) {
+      throw Exception('error $e');
+    }
+  }
+
+  @override
+  Future<DiscountEntity?> getDiscountById({required int id}) async {
+    try {
+      final resutModel = await _api.getDiscountById(id: id);
+      return resutModel?.toEntity();
+    } catch (e) {
+      throw Exception('error $e');
+    }
+  }
+
+  @override
+  Future<int> countDiscount({required DiscountQueryFilter filter}) async {
+    try {
+      return await _api.countDiscount(filter: filter);
+    } catch (e) {
+      throw Exception('error $e');
+    }
   }
 }

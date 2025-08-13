@@ -7,7 +7,11 @@ part 'favorite_state.freezed.dart';
 class FavoriteState with _$FavoriteState {
   const factory FavoriteState.initial() = _Initial;
   const factory FavoriteState.loading() = _Loading;
-  const factory FavoriteState.success([String? message]) = _Success;
-  const factory FavoriteState.error(String message) = _Error;
-  const factory FavoriteState.lastPositionsLoaded(List<FavoriteEntity> favorites) = _LastPositionsLoaded;
+  const factory FavoriteState.success({
+    required List<FavoriteEntity> favorites,
+    required int count,
+  }) = _Success;
+  const factory FavoriteState.failure({
+    required String message,
+  }) = _Failure;
 }

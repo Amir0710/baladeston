@@ -25,7 +25,7 @@ part 'report_entity.freezed.dart';
 @freezed
 abstract class ReportEntity with _$ReportEntity {
   const factory ReportEntity({
-    required int id,
+    required int? id,
     required int userId,
     required int targetId,
     required String response,

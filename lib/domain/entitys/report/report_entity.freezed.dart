@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$ReportEntity {
-  int get id;
+  int? get id;
   int get userId;
   int get targetId;
   String get response;
@@ -65,7 +65,7 @@ abstract mixin class $ReportEntityCopyWith<$Res> {
       _$ReportEntityCopyWithImpl;
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       int userId,
       int targetId,
       String response,
@@ -86,7 +86,7 @@ class _$ReportEntityCopyWithImpl<$Res> implements $ReportEntityCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? userId = null,
     Object? targetId = null,
     Object? response = null,
@@ -95,10 +95,10 @@ class _$ReportEntityCopyWithImpl<$Res> implements $ReportEntityCopyWith<$Res> {
     Object? responseAt = freezed,
   }) {
     return _then(_self.copyWith(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -220,7 +220,7 @@ extension ReportEntityPatterns on ReportEntity {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int id, int userId, int targetId, String response,
+    TResult Function(int? id, int userId, int targetId, String response,
             DateTime reportedAt, String? reason, DateTime? responseAt)?
         $default, {
     required TResult orElse(),
@@ -250,7 +250,7 @@ extension ReportEntityPatterns on ReportEntity {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(int id, int userId, int targetId, String response,
+    TResult Function(int? id, int userId, int targetId, String response,
             DateTime reportedAt, String? reason, DateTime? responseAt)
         $default,
   ) {
@@ -278,7 +278,7 @@ extension ReportEntityPatterns on ReportEntity {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int id, int userId, int targetId, String response,
+    TResult? Function(int? id, int userId, int targetId, String response,
             DateTime reportedAt, String? reason, DateTime? responseAt)?
         $default,
   ) {
@@ -306,7 +306,7 @@ class _ReportEntity implements ReportEntity {
       required this.responseAt});
 
   @override
-  final int id;
+  final int? id;
   @override
   final int userId;
   @override
@@ -365,7 +365,7 @@ abstract mixin class _$ReportEntityCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       int userId,
       int targetId,
       String response,
@@ -387,7 +387,7 @@ class __$ReportEntityCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? userId = null,
     Object? targetId = null,
     Object? response = null,
@@ -396,10 +396,10 @@ class __$ReportEntityCopyWithImpl<$Res>
     Object? responseAt = freezed,
   }) {
     return _then(_ReportEntity(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable

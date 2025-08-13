@@ -1,11 +1,12 @@
 import 'package:baladeston/domain/entitys/favorite/favorite_entity.dart';
 import 'package:baladeston/domain/repositories/favorite_repository.dart';
 
-class CreateFavorite {
+class CreateFavoriteUseCase {
   final FavoriteRepository repository;
 
-  CreateFavorite(this.repository);
-  Future<void> call({required FavoriteEntity favorite}) {
+  CreateFavoriteUseCase(this.repository);
+
+  Future<FavoriteEntity> call({required FavoriteEntity favorite}) {
     return repository.createFavorite(favorite: favorite);
   }
 }

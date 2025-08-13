@@ -14,10 +14,11 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$FavoriteModel {
+  int? get id;
   int get userId;
   String get type;
   int get targetId;
-  DateTime get interestedIn;
+  DateTime? get interestedIn;
 
   /// Create a copy of FavoriteModel
   /// with the given fields replaced by the non-null parameter values.
@@ -35,6 +36,7 @@ mixin _$FavoriteModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is FavoriteModel &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.targetId, targetId) ||
@@ -46,11 +48,11 @@ mixin _$FavoriteModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, userId, type, targetId, interestedIn);
+      Object.hash(runtimeType, id, userId, type, targetId, interestedIn);
 
   @override
   String toString() {
-    return 'FavoriteModel(userId: $userId, type: $type, targetId: $targetId, interestedIn: $interestedIn)';
+    return 'FavoriteModel(id: $id, userId: $userId, type: $type, targetId: $targetId, interestedIn: $interestedIn)';
   }
 }
 
@@ -60,7 +62,8 @@ abstract mixin class $FavoriteModelCopyWith<$Res> {
           FavoriteModel value, $Res Function(FavoriteModel) _then) =
       _$FavoriteModelCopyWithImpl;
   @useResult
-  $Res call({int userId, String type, int targetId, DateTime interestedIn});
+  $Res call(
+      {int? id, int userId, String type, int targetId, DateTime? interestedIn});
 }
 
 /// @nodoc
@@ -76,12 +79,17 @@ class _$FavoriteModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? userId = null,
     Object? type = null,
     Object? targetId = null,
-    Object? interestedIn = null,
+    Object? interestedIn = freezed,
   }) {
     return _then(_self.copyWith(
+      id: freezed == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -94,10 +102,10 @@ class _$FavoriteModelCopyWithImpl<$Res>
           ? _self.targetId
           : targetId // ignore: cast_nullable_to_non_nullable
               as int,
-      interestedIn: null == interestedIn
+      interestedIn: freezed == interestedIn
           ? _self.interestedIn
           : interestedIn // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 }
@@ -195,16 +203,16 @@ extension FavoriteModelPatterns on FavoriteModel {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            int userId, String type, int targetId, DateTime interestedIn)?
+    TResult Function(int? id, int userId, String type, int targetId,
+            DateTime? interestedIn)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _FavoriteModel() when $default != null:
-        return $default(
-            _that.userId, _that.type, _that.targetId, _that.interestedIn);
+        return $default(_that.id, _that.userId, _that.type, _that.targetId,
+            _that.interestedIn);
       case _:
         return orElse();
     }
@@ -225,15 +233,15 @@ extension FavoriteModelPatterns on FavoriteModel {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(
-            int userId, String type, int targetId, DateTime interestedIn)
+    TResult Function(int? id, int userId, String type, int targetId,
+            DateTime? interestedIn)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _FavoriteModel():
-        return $default(
-            _that.userId, _that.type, _that.targetId, _that.interestedIn);
+        return $default(_that.id, _that.userId, _that.type, _that.targetId,
+            _that.interestedIn);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -253,15 +261,15 @@ extension FavoriteModelPatterns on FavoriteModel {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            int userId, String type, int targetId, DateTime interestedIn)?
+    TResult? Function(int? id, int userId, String type, int targetId,
+            DateTime? interestedIn)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _FavoriteModel() when $default != null:
-        return $default(
-            _that.userId, _that.type, _that.targetId, _that.interestedIn);
+        return $default(_that.id, _that.userId, _that.type, _that.targetId,
+            _that.interestedIn);
       case _:
         return null;
     }
@@ -272,7 +280,8 @@ extension FavoriteModelPatterns on FavoriteModel {
 @JsonSerializable()
 class _FavoriteModel implements FavoriteModel {
   const _FavoriteModel(
-      {required this.userId,
+      {required this.id,
+      required this.userId,
       required this.type,
       required this.targetId,
       required this.interestedIn});
@@ -280,13 +289,15 @@ class _FavoriteModel implements FavoriteModel {
       _$FavoriteModelFromJson(json);
 
   @override
+  final int? id;
+  @override
   final int userId;
   @override
   final String type;
   @override
   final int targetId;
   @override
-  final DateTime interestedIn;
+  final DateTime? interestedIn;
 
   /// Create a copy of FavoriteModel
   /// with the given fields replaced by the non-null parameter values.
@@ -308,6 +319,7 @@ class _FavoriteModel implements FavoriteModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _FavoriteModel &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.targetId, targetId) ||
@@ -319,11 +331,11 @@ class _FavoriteModel implements FavoriteModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, userId, type, targetId, interestedIn);
+      Object.hash(runtimeType, id, userId, type, targetId, interestedIn);
 
   @override
   String toString() {
-    return 'FavoriteModel(userId: $userId, type: $type, targetId: $targetId, interestedIn: $interestedIn)';
+    return 'FavoriteModel(id: $id, userId: $userId, type: $type, targetId: $targetId, interestedIn: $interestedIn)';
   }
 }
 
@@ -335,7 +347,8 @@ abstract mixin class _$FavoriteModelCopyWith<$Res>
       __$FavoriteModelCopyWithImpl;
   @override
   @useResult
-  $Res call({int userId, String type, int targetId, DateTime interestedIn});
+  $Res call(
+      {int? id, int userId, String type, int targetId, DateTime? interestedIn});
 }
 
 /// @nodoc
@@ -351,12 +364,17 @@ class __$FavoriteModelCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
+    Object? id = freezed,
     Object? userId = null,
     Object? type = null,
     Object? targetId = null,
-    Object? interestedIn = null,
+    Object? interestedIn = freezed,
   }) {
     return _then(_FavoriteModel(
+      id: freezed == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -369,10 +387,10 @@ class __$FavoriteModelCopyWithImpl<$Res>
           ? _self.targetId
           : targetId // ignore: cast_nullable_to_non_nullable
               as int,
-      interestedIn: null == interestedIn
+      interestedIn: freezed == interestedIn
           ? _self.interestedIn
           : interestedIn // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 }

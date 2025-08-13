@@ -5,7 +5,7 @@ import 'package:baladeston/domain/usecase/user/change_password_usecase.dart';
 import 'package:baladeston/domain/usecase/user/get_users_usecase.dart';
 import 'package:baladeston/domain/usecase/user/get_user_by_id_usecase.dart';
 import 'package:baladeston/domain/usecase/user/update_user_usecase.dart';
-import 'package:baladeston/domain/usecase/user/delete_user_usecase.dart';
+import 'package:baladeston/domain/usecase/user/delete_user_by_id_usecase.dart';
 import 'package:baladeston/presentation/providers/user_cubit/user_cubit.dart';
 
 final getIt = GetIt.instance;

@@ -7,7 +7,7 @@ class GetDiscountByFilterUseCase {
 
   GetDiscountByFilterUseCase(this.repository);
 
-  Future<List<DiscountEntity>> call({required DiscountQueryFilter filter}) {
+  Future<List<DiscountEntity>?> call({required DiscountQueryFilter filter}) {
     return repository.getDiscountByFilter(filter: filter);
   }
 }

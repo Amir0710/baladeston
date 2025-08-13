@@ -5,10 +5,11 @@ import 'package:baladeston/domain/entitys/favorite/favorite_entity.dart';
 extension FavoriteModelMapper on FavoriteModel {
   FavoriteEntity toEntity() {
     return FavoriteEntity(
+      
       userId: userId,
       type: type,
       targetId: targetId,
-      interestedIn: interestedIn,
+      interestedIn: interestedIn, id: id,
     );
   }
 }
@@ -19,7 +20,7 @@ extension FavoriteEntityMapper on FavoriteEntity {
       userId: userId,
       type: type,
       targetId: targetId,
-      interestedIn: interestedIn,
+      interestedIn: interestedIn,id: id,
     );
   }
 }

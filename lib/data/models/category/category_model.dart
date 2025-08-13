@@ -21,30 +21,5 @@ abstract class CategoryModel with _$CategoryModel {
   factory CategoryModel.fromJson(Map<String, dynamic> json) =>
       _$CategoryModelFromJson(json);
 
-  factory CategoryModel.fromEntity(CategoryEntity entity) {
-    return CategoryModel(
-      id: entity.id,
-      title: entity.title,
-      password: entity.password,
-      status: entity.status,
-      thumbnailUrl: entity.thumbnailUrl,
-      createdAt: entity.createdAt,
-      ownerId: entity.ownerId,
-      lastTransaction: entity.lastTransaction,
-    );
-  }
 
-  const CategoryModel._(); 
-  CategoryEntity toEntity() {
-    return CategoryEntity(
-      id: id,
-      title: title,
-      password: password,
-      status: status,
-      thumbnailUrl: thumbnailUrl,
-      createdAt: createdAt,
-      ownerId: ownerId,
-      lastTransaction: lastTransaction,
-    );
-  }
 }

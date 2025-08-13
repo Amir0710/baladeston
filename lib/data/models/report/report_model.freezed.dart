@@ -14,13 +14,12 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$ReportModel {
-  int get id;
+  int? get id;
   int get userId;
   int get targetId;
   String get response;
   String? get reason;
   DateTime get reportedAt;
-  DateTime get reportModeledAt;
   DateTime? get responseAt;
 
   /// Create a copy of ReportModel
@@ -47,8 +46,6 @@ mixin _$ReportModel {
             (identical(other.reason, reason) || other.reason == reason) &&
             (identical(other.reportedAt, reportedAt) ||
                 other.reportedAt == reportedAt) &&
-            (identical(other.reportModeledAt, reportModeledAt) ||
-                other.reportModeledAt == reportModeledAt) &&
             (identical(other.responseAt, responseAt) ||
                 other.responseAt == responseAt));
   }
@@ -56,11 +53,11 @@ mixin _$ReportModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, userId, targetId, response,
-      reason, reportedAt, reportModeledAt, responseAt);
+      reason, reportedAt, responseAt);
 
   @override
   String toString() {
-    return 'ReportModel(id: $id, userId: $userId, targetId: $targetId, response: $response, reason: $reason, reportedAt: $reportedAt, reportModeledAt: $reportModeledAt, responseAt: $responseAt)';
+    return 'ReportModel(id: $id, userId: $userId, targetId: $targetId, response: $response, reason: $reason, reportedAt: $reportedAt, responseAt: $responseAt)';
   }
 }
 
@@ -71,13 +68,12 @@ abstract mixin class $ReportModelCopyWith<$Res> {
       _$ReportModelCopyWithImpl;
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       int userId,
       int targetId,
       String response,
       String? reason,
       DateTime reportedAt,
-      DateTime reportModeledAt,
       DateTime? responseAt});
 }
 
@@ -93,20 +89,19 @@ class _$ReportModelCopyWithImpl<$Res> implements $ReportModelCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? userId = null,
     Object? targetId = null,
     Object? response = null,
     Object? reason = freezed,
     Object? reportedAt = null,
-    Object? reportModeledAt = null,
     Object? responseAt = freezed,
   }) {
     return _then(_self.copyWith(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -126,10 +121,6 @@ class _$ReportModelCopyWithImpl<$Res> implements $ReportModelCopyWith<$Res> {
       reportedAt: null == reportedAt
           ? _self.reportedAt
           : reportedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      reportModeledAt: null == reportModeledAt
-          ? _self.reportModeledAt
-          : reportModeledAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
       responseAt: freezed == responseAt
           ? _self.responseAt
@@ -232,30 +223,16 @@ extension ReportModelPatterns on ReportModel {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            int id,
-            int userId,
-            int targetId,
-            String response,
-            String? reason,
-            DateTime reportedAt,
-            DateTime reportModeledAt,
-            DateTime? responseAt)?
+    TResult Function(int? id, int userId, int targetId, String response,
+            String? reason, DateTime reportedAt, DateTime? responseAt)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _ReportModel() when $default != null:
-        return $default(
-            _that.id,
-            _that.userId,
-            _that.targetId,
-            _that.response,
-            _that.reason,
-            _that.reportedAt,
-            _that.reportModeledAt,
-            _that.responseAt);
+        return $default(_that.id, _that.userId, _that.targetId, _that.response,
+            _that.reason, _that.reportedAt, _that.responseAt);
       case _:
         return orElse();
     }
@@ -276,29 +253,15 @@ extension ReportModelPatterns on ReportModel {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(
-            int id,
-            int userId,
-            int targetId,
-            String response,
-            String? reason,
-            DateTime reportedAt,
-            DateTime reportModeledAt,
-            DateTime? responseAt)
+    TResult Function(int? id, int userId, int targetId, String response,
+            String? reason, DateTime reportedAt, DateTime? responseAt)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ReportModel():
-        return $default(
-            _that.id,
-            _that.userId,
-            _that.targetId,
-            _that.response,
-            _that.reason,
-            _that.reportedAt,
-            _that.reportModeledAt,
-            _that.responseAt);
+        return $default(_that.id, _that.userId, _that.targetId, _that.response,
+            _that.reason, _that.reportedAt, _that.responseAt);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -318,29 +281,15 @@ extension ReportModelPatterns on ReportModel {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            int id,
-            int userId,
-            int targetId,
-            String response,
-            String? reason,
-            DateTime reportedAt,
-            DateTime reportModeledAt,
-            DateTime? responseAt)?
+    TResult? Function(int? id, int userId, int targetId, String response,
+            String? reason, DateTime reportedAt, DateTime? responseAt)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ReportModel() when $default != null:
-        return $default(
-            _that.id,
-            _that.userId,
-            _that.targetId,
-            _that.response,
-            _that.reason,
-            _that.reportedAt,
-            _that.reportModeledAt,
-            _that.responseAt);
+        return $default(_that.id, _that.userId, _that.targetId, _that.response,
+            _that.reason, _that.reportedAt, _that.responseAt);
       case _:
         return null;
     }
@@ -357,13 +306,12 @@ class _ReportModel implements ReportModel {
       required this.response,
       this.reason,
       required this.reportedAt,
-      required this.reportModeledAt,
       this.responseAt});
   factory _ReportModel.fromJson(Map<String, dynamic> json) =>
       _$ReportModelFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
   final int userId;
   @override
@@ -374,8 +322,6 @@ class _ReportModel implements ReportModel {
   final String? reason;
   @override
   final DateTime reportedAt;
-  @override
-  final DateTime reportModeledAt;
   @override
   final DateTime? responseAt;
 
@@ -408,8 +354,6 @@ class _ReportModel implements ReportModel {
             (identical(other.reason, reason) || other.reason == reason) &&
             (identical(other.reportedAt, reportedAt) ||
                 other.reportedAt == reportedAt) &&
-            (identical(other.reportModeledAt, reportModeledAt) ||
-                other.reportModeledAt == reportModeledAt) &&
             (identical(other.responseAt, responseAt) ||
                 other.responseAt == responseAt));
   }
@@ -417,11 +361,11 @@ class _ReportModel implements ReportModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, userId, targetId, response,
-      reason, reportedAt, reportModeledAt, responseAt);
+      reason, reportedAt, responseAt);
 
   @override
   String toString() {
-    return 'ReportModel(id: $id, userId: $userId, targetId: $targetId, response: $response, reason: $reason, reportedAt: $reportedAt, reportModeledAt: $reportModeledAt, responseAt: $responseAt)';
+    return 'ReportModel(id: $id, userId: $userId, targetId: $targetId, response: $response, reason: $reason, reportedAt: $reportedAt, responseAt: $responseAt)';
   }
 }
 
@@ -434,13 +378,12 @@ abstract mixin class _$ReportModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       int userId,
       int targetId,
       String response,
       String? reason,
       DateTime reportedAt,
-      DateTime reportModeledAt,
       DateTime? responseAt});
 }
 
@@ -456,20 +399,19 @@ class __$ReportModelCopyWithImpl<$Res> implements _$ReportModelCopyWith<$Res> {
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? userId = null,
     Object? targetId = null,
     Object? response = null,
     Object? reason = freezed,
     Object? reportedAt = null,
-    Object? reportModeledAt = null,
     Object? responseAt = freezed,
   }) {
     return _then(_ReportModel(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -489,10 +431,6 @@ class __$ReportModelCopyWithImpl<$Res> implements _$ReportModelCopyWith<$Res> {
       reportedAt: null == reportedAt
           ? _self.reportedAt
           : reportedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      reportModeledAt: null == reportModeledAt
-          ? _self.reportModeledAt
-          : reportModeledAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
       responseAt: freezed == responseAt
           ? _self.responseAt

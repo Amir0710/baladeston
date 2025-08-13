@@ -6,7 +6,7 @@ class GetPurchaseByIdUseCase {
 
   GetPurchaseByIdUseCase(this.repository);
 
-  Future<PurchaseEntity> call(int id ) {
+  Future<PurchaseEntity?> call({required int id} ) {
     return repository.getPurchaseById(id : id );
   }
 }

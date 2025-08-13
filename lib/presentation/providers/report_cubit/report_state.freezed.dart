@@ -52,12 +52,7 @@ extension ReportStatePatterns on ReportState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_ListLoaded value)? listLoaded,
-    TResult Function(_SingleLoaded value)? singleLoaded,
-    TResult Function(_CountLoaded value)? countLoaded,
-    TResult Function(_CreateSuccess value)? createSuccess,
-    TResult Function(_UpdateSuccess value)? updateSuccess,
-    TResult Function(_DeleteSuccess value)? deleteSuccess,
+    TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
@@ -67,18 +62,8 @@ extension ReportStatePatterns on ReportState {
         return initial(_that);
       case _Loading() when loading != null:
         return loading(_that);
-      case _ListLoaded() when listLoaded != null:
-        return listLoaded(_that);
-      case _SingleLoaded() when singleLoaded != null:
-        return singleLoaded(_that);
-      case _CountLoaded() when countLoaded != null:
-        return countLoaded(_that);
-      case _CreateSuccess() when createSuccess != null:
-        return createSuccess(_that);
-      case _UpdateSuccess() when updateSuccess != null:
-        return updateSuccess(_that);
-      case _DeleteSuccess() when deleteSuccess != null:
-        return deleteSuccess(_that);
+      case _Success() when success != null:
+        return success(_that);
       case _Failure() when failure != null:
         return failure(_that);
       case _:
@@ -103,12 +88,7 @@ extension ReportStatePatterns on ReportState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_ListLoaded value) listLoaded,
-    required TResult Function(_SingleLoaded value) singleLoaded,
-    required TResult Function(_CountLoaded value) countLoaded,
-    required TResult Function(_CreateSuccess value) createSuccess,
-    required TResult Function(_UpdateSuccess value) updateSuccess,
-    required TResult Function(_DeleteSuccess value) deleteSuccess,
+    required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
   }) {
     final _that = this;
@@ -117,18 +97,8 @@ extension ReportStatePatterns on ReportState {
         return initial(_that);
       case _Loading():
         return loading(_that);
-      case _ListLoaded():
-        return listLoaded(_that);
-      case _SingleLoaded():
-        return singleLoaded(_that);
-      case _CountLoaded():
-        return countLoaded(_that);
-      case _CreateSuccess():
-        return createSuccess(_that);
-      case _UpdateSuccess():
-        return updateSuccess(_that);
-      case _DeleteSuccess():
-        return deleteSuccess(_that);
+      case _Success():
+        return success(_that);
       case _Failure():
         return failure(_that);
       case _:
@@ -152,12 +122,7 @@ extension ReportStatePatterns on ReportState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_ListLoaded value)? listLoaded,
-    TResult? Function(_SingleLoaded value)? singleLoaded,
-    TResult? Function(_CountLoaded value)? countLoaded,
-    TResult? Function(_CreateSuccess value)? createSuccess,
-    TResult? Function(_UpdateSuccess value)? updateSuccess,
-    TResult? Function(_DeleteSuccess value)? deleteSuccess,
+    TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
   }) {
     final _that = this;
@@ -166,18 +131,8 @@ extension ReportStatePatterns on ReportState {
         return initial(_that);
       case _Loading() when loading != null:
         return loading(_that);
-      case _ListLoaded() when listLoaded != null:
-        return listLoaded(_that);
-      case _SingleLoaded() when singleLoaded != null:
-        return singleLoaded(_that);
-      case _CountLoaded() when countLoaded != null:
-        return countLoaded(_that);
-      case _CreateSuccess() when createSuccess != null:
-        return createSuccess(_that);
-      case _UpdateSuccess() when updateSuccess != null:
-        return updateSuccess(_that);
-      case _DeleteSuccess() when deleteSuccess != null:
-        return deleteSuccess(_that);
+      case _Success() when success != null:
+        return success(_that);
       case _Failure() when failure != null:
         return failure(_that);
       case _:
@@ -201,12 +156,7 @@ extension ReportStatePatterns on ReportState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<ReportEntity> reports)? listLoaded,
-    TResult Function(ReportEntity report)? singleLoaded,
-    TResult Function(int count)? countLoaded,
-    TResult Function(ReportEntity report)? createSuccess,
-    TResult Function(ReportEntity report)? updateSuccess,
-    TResult Function()? deleteSuccess,
+    TResult Function(List<ReportEntity> reports, int count)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -216,18 +166,8 @@ extension ReportStatePatterns on ReportState {
         return initial();
       case _Loading() when loading != null:
         return loading();
-      case _ListLoaded() when listLoaded != null:
-        return listLoaded(_that.reports);
-      case _SingleLoaded() when singleLoaded != null:
-        return singleLoaded(_that.report);
-      case _CountLoaded() when countLoaded != null:
-        return countLoaded(_that.count);
-      case _CreateSuccess() when createSuccess != null:
-        return createSuccess(_that.report);
-      case _UpdateSuccess() when updateSuccess != null:
-        return updateSuccess(_that.report);
-      case _DeleteSuccess() when deleteSuccess != null:
-        return deleteSuccess();
+      case _Success() when success != null:
+        return success(_that.reports, _that.count);
       case _Failure() when failure != null:
         return failure(_that.message);
       case _:
@@ -252,12 +192,7 @@ extension ReportStatePatterns on ReportState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<ReportEntity> reports) listLoaded,
-    required TResult Function(ReportEntity report) singleLoaded,
-    required TResult Function(int count) countLoaded,
-    required TResult Function(ReportEntity report) createSuccess,
-    required TResult Function(ReportEntity report) updateSuccess,
-    required TResult Function() deleteSuccess,
+    required TResult Function(List<ReportEntity> reports, int count) success,
     required TResult Function(String message) failure,
   }) {
     final _that = this;
@@ -266,18 +201,8 @@ extension ReportStatePatterns on ReportState {
         return initial();
       case _Loading():
         return loading();
-      case _ListLoaded():
-        return listLoaded(_that.reports);
-      case _SingleLoaded():
-        return singleLoaded(_that.report);
-      case _CountLoaded():
-        return countLoaded(_that.count);
-      case _CreateSuccess():
-        return createSuccess(_that.report);
-      case _UpdateSuccess():
-        return updateSuccess(_that.report);
-      case _DeleteSuccess():
-        return deleteSuccess();
+      case _Success():
+        return success(_that.reports, _that.count);
       case _Failure():
         return failure(_that.message);
       case _:
@@ -301,12 +226,7 @@ extension ReportStatePatterns on ReportState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<ReportEntity> reports)? listLoaded,
-    TResult? Function(ReportEntity report)? singleLoaded,
-    TResult? Function(int count)? countLoaded,
-    TResult? Function(ReportEntity report)? createSuccess,
-    TResult? Function(ReportEntity report)? updateSuccess,
-    TResult? Function()? deleteSuccess,
+    TResult? Function(List<ReportEntity> reports, int count)? success,
     TResult? Function(String message)? failure,
   }) {
     final _that = this;
@@ -315,18 +235,8 @@ extension ReportStatePatterns on ReportState {
         return initial();
       case _Loading() when loading != null:
         return loading();
-      case _ListLoaded() when listLoaded != null:
-        return listLoaded(_that.reports);
-      case _SingleLoaded() when singleLoaded != null:
-        return singleLoaded(_that.report);
-      case _CountLoaded() when countLoaded != null:
-        return countLoaded(_that.count);
-      case _CreateSuccess() when createSuccess != null:
-        return createSuccess(_that.report);
-      case _UpdateSuccess() when updateSuccess != null:
-        return updateSuccess(_that.report);
-      case _DeleteSuccess() when deleteSuccess != null:
-        return deleteSuccess();
+      case _Success() when success != null:
+        return success(_that.reports, _that.count);
       case _Failure() when failure != null:
         return failure(_that.message);
       case _:
@@ -377,8 +287,9 @@ class _Loading implements ReportState {
 
 /// @nodoc
 
-class _ListLoaded implements ReportState {
-  const _ListLoaded({required final List<ReportEntity> reports})
+class _Success implements ReportState {
+  const _Success(
+      {required final List<ReportEntity> reports, required this.count})
       : _reports = reports;
 
   final List<ReportEntity> _reports;
@@ -388,371 +299,67 @@ class _ListLoaded implements ReportState {
     return EqualUnmodifiableListView(_reports);
   }
 
-  /// Create a copy of ReportState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$ListLoadedCopyWith<_ListLoaded> get copyWith =>
-      __$ListLoadedCopyWithImpl<_ListLoaded>(this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _ListLoaded &&
-            const DeepCollectionEquality().equals(other._reports, _reports));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_reports));
-
-  @override
-  String toString() {
-    return 'ReportState.listLoaded(reports: $reports)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$ListLoadedCopyWith<$Res>
-    implements $ReportStateCopyWith<$Res> {
-  factory _$ListLoadedCopyWith(
-          _ListLoaded value, $Res Function(_ListLoaded) _then) =
-      __$ListLoadedCopyWithImpl;
-  @useResult
-  $Res call({List<ReportEntity> reports});
-}
-
-/// @nodoc
-class __$ListLoadedCopyWithImpl<$Res> implements _$ListLoadedCopyWith<$Res> {
-  __$ListLoadedCopyWithImpl(this._self, this._then);
-
-  final _ListLoaded _self;
-  final $Res Function(_ListLoaded) _then;
-
-  /// Create a copy of ReportState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? reports = null,
-  }) {
-    return _then(_ListLoaded(
-      reports: null == reports
-          ? _self._reports
-          : reports // ignore: cast_nullable_to_non_nullable
-              as List<ReportEntity>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _SingleLoaded implements ReportState {
-  const _SingleLoaded({required this.report});
-
-  final ReportEntity report;
-
-  /// Create a copy of ReportState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$SingleLoadedCopyWith<_SingleLoaded> get copyWith =>
-      __$SingleLoadedCopyWithImpl<_SingleLoaded>(this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _SingleLoaded &&
-            (identical(other.report, report) || other.report == report));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, report);
-
-  @override
-  String toString() {
-    return 'ReportState.singleLoaded(report: $report)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$SingleLoadedCopyWith<$Res>
-    implements $ReportStateCopyWith<$Res> {
-  factory _$SingleLoadedCopyWith(
-          _SingleLoaded value, $Res Function(_SingleLoaded) _then) =
-      __$SingleLoadedCopyWithImpl;
-  @useResult
-  $Res call({ReportEntity report});
-
-  $ReportEntityCopyWith<$Res> get report;
-}
-
-/// @nodoc
-class __$SingleLoadedCopyWithImpl<$Res>
-    implements _$SingleLoadedCopyWith<$Res> {
-  __$SingleLoadedCopyWithImpl(this._self, this._then);
-
-  final _SingleLoaded _self;
-  final $Res Function(_SingleLoaded) _then;
-
-  /// Create a copy of ReportState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? report = null,
-  }) {
-    return _then(_SingleLoaded(
-      report: null == report
-          ? _self.report
-          : report // ignore: cast_nullable_to_non_nullable
-              as ReportEntity,
-    ));
-  }
-
-  /// Create a copy of ReportState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ReportEntityCopyWith<$Res> get report {
-    return $ReportEntityCopyWith<$Res>(_self.report, (value) {
-      return _then(_self.copyWith(report: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _CountLoaded implements ReportState {
-  const _CountLoaded({required this.count});
-
   final int count;
 
   /// Create a copy of ReportState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$CountLoadedCopyWith<_CountLoaded> get copyWith =>
-      __$CountLoadedCopyWithImpl<_CountLoaded>(this, _$identity);
+  _$SuccessCopyWith<_Success> get copyWith =>
+      __$SuccessCopyWithImpl<_Success>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CountLoaded &&
+            other is _Success &&
+            const DeepCollectionEquality().equals(other._reports, _reports) &&
             (identical(other.count, count) || other.count == count));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, count);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_reports), count);
 
   @override
   String toString() {
-    return 'ReportState.countLoaded(count: $count)';
+    return 'ReportState.success(reports: $reports, count: $count)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$CountLoadedCopyWith<$Res>
+abstract mixin class _$SuccessCopyWith<$Res>
     implements $ReportStateCopyWith<$Res> {
-  factory _$CountLoadedCopyWith(
-          _CountLoaded value, $Res Function(_CountLoaded) _then) =
-      __$CountLoadedCopyWithImpl;
+  factory _$SuccessCopyWith(_Success value, $Res Function(_Success) _then) =
+      __$SuccessCopyWithImpl;
   @useResult
-  $Res call({int count});
+  $Res call({List<ReportEntity> reports, int count});
 }
 
 /// @nodoc
-class __$CountLoadedCopyWithImpl<$Res> implements _$CountLoadedCopyWith<$Res> {
-  __$CountLoadedCopyWithImpl(this._self, this._then);
+class __$SuccessCopyWithImpl<$Res> implements _$SuccessCopyWith<$Res> {
+  __$SuccessCopyWithImpl(this._self, this._then);
 
-  final _CountLoaded _self;
-  final $Res Function(_CountLoaded) _then;
+  final _Success _self;
+  final $Res Function(_Success) _then;
 
   /// Create a copy of ReportState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
+    Object? reports = null,
     Object? count = null,
   }) {
-    return _then(_CountLoaded(
+    return _then(_Success(
+      reports: null == reports
+          ? _self._reports
+          : reports // ignore: cast_nullable_to_non_nullable
+              as List<ReportEntity>,
       count: null == count
           ? _self.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
     ));
-  }
-}
-
-/// @nodoc
-
-class _CreateSuccess implements ReportState {
-  const _CreateSuccess({required this.report});
-
-  final ReportEntity report;
-
-  /// Create a copy of ReportState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$CreateSuccessCopyWith<_CreateSuccess> get copyWith =>
-      __$CreateSuccessCopyWithImpl<_CreateSuccess>(this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _CreateSuccess &&
-            (identical(other.report, report) || other.report == report));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, report);
-
-  @override
-  String toString() {
-    return 'ReportState.createSuccess(report: $report)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$CreateSuccessCopyWith<$Res>
-    implements $ReportStateCopyWith<$Res> {
-  factory _$CreateSuccessCopyWith(
-          _CreateSuccess value, $Res Function(_CreateSuccess) _then) =
-      __$CreateSuccessCopyWithImpl;
-  @useResult
-  $Res call({ReportEntity report});
-
-  $ReportEntityCopyWith<$Res> get report;
-}
-
-/// @nodoc
-class __$CreateSuccessCopyWithImpl<$Res>
-    implements _$CreateSuccessCopyWith<$Res> {
-  __$CreateSuccessCopyWithImpl(this._self, this._then);
-
-  final _CreateSuccess _self;
-  final $Res Function(_CreateSuccess) _then;
-
-  /// Create a copy of ReportState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? report = null,
-  }) {
-    return _then(_CreateSuccess(
-      report: null == report
-          ? _self.report
-          : report // ignore: cast_nullable_to_non_nullable
-              as ReportEntity,
-    ));
-  }
-
-  /// Create a copy of ReportState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ReportEntityCopyWith<$Res> get report {
-    return $ReportEntityCopyWith<$Res>(_self.report, (value) {
-      return _then(_self.copyWith(report: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _UpdateSuccess implements ReportState {
-  const _UpdateSuccess({required this.report});
-
-  final ReportEntity report;
-
-  /// Create a copy of ReportState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$UpdateSuccessCopyWith<_UpdateSuccess> get copyWith =>
-      __$UpdateSuccessCopyWithImpl<_UpdateSuccess>(this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _UpdateSuccess &&
-            (identical(other.report, report) || other.report == report));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, report);
-
-  @override
-  String toString() {
-    return 'ReportState.updateSuccess(report: $report)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$UpdateSuccessCopyWith<$Res>
-    implements $ReportStateCopyWith<$Res> {
-  factory _$UpdateSuccessCopyWith(
-          _UpdateSuccess value, $Res Function(_UpdateSuccess) _then) =
-      __$UpdateSuccessCopyWithImpl;
-  @useResult
-  $Res call({ReportEntity report});
-
-  $ReportEntityCopyWith<$Res> get report;
-}
-
-/// @nodoc
-class __$UpdateSuccessCopyWithImpl<$Res>
-    implements _$UpdateSuccessCopyWith<$Res> {
-  __$UpdateSuccessCopyWithImpl(this._self, this._then);
-
-  final _UpdateSuccess _self;
-  final $Res Function(_UpdateSuccess) _then;
-
-  /// Create a copy of ReportState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? report = null,
-  }) {
-    return _then(_UpdateSuccess(
-      report: null == report
-          ? _self.report
-          : report // ignore: cast_nullable_to_non_nullable
-              as ReportEntity,
-    ));
-  }
-
-  /// Create a copy of ReportState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ReportEntityCopyWith<$Res> get report {
-    return $ReportEntityCopyWith<$Res>(_self.report, (value) {
-      return _then(_self.copyWith(report: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _DeleteSuccess implements ReportState {
-  const _DeleteSuccess();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _DeleteSuccess);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  String toString() {
-    return 'ReportState.deleteSuccess()';
   }
 }
 

@@ -1,4 +1,5 @@
 import 'package:baladeston/data/datasources/remote/collection_remote_datasource/collection_api.dart';
+import 'package:baladeston/data/mapper/collection_mapper.dart';
 import 'package:baladeston/domain/entitys/collection/collection_entity.dart';
 import 'package:baladeston/domain/filters/collection_query_filter.dart';
 import 'package:baladeston/domain/repositories/collection_repository.dart';
@@ -23,7 +24,9 @@ class CollectionRepositoryImplementation extends CollectionRepository {
   Future<CollectionEntity> createCollection(
       {required CollectionEntity collection}) async {
     try {
-      return await _api.createCollection(collection: collection);
+      final model = collection.toModel();
+      final resultModel = await _api.createCollection(collection: model);
+      return resultModel.toEntity();
     } catch (e) {
       throw Exception('error $e');
     }
@@ -33,17 +36,18 @@ class CollectionRepositoryImplementation extends CollectionRepository {
   Future<void> deleteCollectionByFilter(
       {required CollectionQueryFilter filter}) async {
     try {
-      return await _api.deleteCollectionByFilter(filter: filter);
+      await _api.deleteCollectionByFilter(filter: filter);
     } catch (e) {
       throw Exception('error $e');
     }
   }
 
   @override
-  Future<List<CollectionEntity>> getCollectionByFilter(
+  Future<List<CollectionEntity>?> getCollectionByFilter(
       {required CollectionQueryFilter filter}) async {
     try {
-      return await _api.getCollectionByFilter(filter: filter);
+      final resultModel = await _api.getCollectionByFilter(filter: filter);
+      return resultModel?.map((m) => m.toEntity()).toList();
     } catch (e) {
       throw Exception('error $e');
     }
@@ -53,25 +57,28 @@ class CollectionRepositoryImplementation extends CollectionRepository {
   Future<CollectionEntity> updateCollection(
       {required CollectionEntity collection}) async {
     try {
-      return await _api.updateCollection(collection: collection);
+      final model = collection.toModel();
+      final resultModel = await _api.updateCollection(collection: model);
+      return resultModel.toEntity();
     } catch (e) {
       throw Exception('error $e');
     }
   }
 
   @override
-  Future<CollectionEntity> getCollectionById({required int id}) async {
+  Future<CollectionEntity?> getCollectionById({required int id}) async {
     try {
-      return await _api.getCollectionById(id: id);
+      final resulModel = await _api.getCollectionById(id: id);
+      return resulModel?.toEntity();
     } catch (e) {
       throw Exception('error $e');
     }
   }
-  
+
   @override
-  Future<void> deleteCollectionById({required int id}) {
-       try {
-      return _api.deleteCollectionById(id: id);
+  Future<void> deleteCollectionById({required int id}) async {
+    try {
+      await _api.deleteCollectionById(id: id);
     } catch (e) {
       throw Exception('error $e');
     }

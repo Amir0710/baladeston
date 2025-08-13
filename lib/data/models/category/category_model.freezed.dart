@@ -350,7 +350,7 @@ extension CategoryModelPatterns on CategoryModel {
 
 /// @nodoc
 @JsonSerializable()
-class _CategoryModel extends CategoryModel {
+class _CategoryModel implements CategoryModel {
   const _CategoryModel(
       {this.id,
       required this.title,
@@ -359,8 +359,7 @@ class _CategoryModel extends CategoryModel {
       this.thumbnailUrl,
       required this.createdAt,
       required this.lastTransaction,
-      required this.ownerId})
-      : super._();
+      required this.ownerId});
   factory _CategoryModel.fromJson(Map<String, dynamic> json) =>
       _$CategoryModelFromJson(json);
 

@@ -1,15 +1,14 @@
-// lib/presentation/providers/comment_cubit/comment_cubit.dart
-import 'package:baladeston/domain/usecase/comment/delete_comment_by_filter_usecase.dart';
-import 'package:bloc/bloc.dart';
-
 import 'package:baladeston/domain/entitys/comment/comment_entity.dart';
 import 'package:baladeston/domain/filters/comment_query_filter.dart';
 import 'package:baladeston/domain/usecase/comment/count_comment_usecase.dart';
 import 'package:baladeston/domain/usecase/comment/create_comment_usecase.dart';
+import 'package:baladeston/domain/usecase/comment/delete_comment_by_filter_usecase.dart';
 import 'package:baladeston/domain/usecase/comment/delete_comment_by_id_usecase.dart';
 import 'package:baladeston/domain/usecase/comment/get_comment_by_filter_usecase.dart';
+import 'package:baladeston/domain/usecase/comment/get_comment_by_id_usecase.dart';
 import 'package:baladeston/domain/usecase/comment/update_comment_usecase.dart';
 import 'package:baladeston/presentation/providers/comment_cubit/comment_state.dart';
+import 'package:bloc/bloc.dart';
 
 class CommentCubit extends Cubit<CommentState> {
   final CreateCommentUseCase _createUseCase;
@@ -17,74 +16,86 @@ class CommentCubit extends Cubit<CommentState> {
   final CountCommentUseCase _countUseCase;
   final DeleteCommentByIdUseCase _deleteByIdUseCase;
   final DeleteCommentByFilterUseCase _deleteByFilterUseCase;
-  final GetCommentByFilterUseCase _getUseCase;
+  final GetCommentByFilterUseCase _getByFilterUseCase;
+  final GetCommentByIdUseCase _getByIdUseCase;
 
   CommentCubit({
     required CreateCommentUseCase createUseCase,
     required UpdateCommentUseCase updateUseCase,
     required CountCommentUseCase countUseCase,
     required DeleteCommentByIdUseCase deleteByIdUseCase,
-    required GetCommentByFilterUseCase getUseCase,
     required DeleteCommentByFilterUseCase deleteByFilterUseCase,
+    required GetCommentByFilterUseCase getByFilterUseCase,
+    required GetCommentByIdUseCase getByIdUseCase,
   })  : _createUseCase = createUseCase,
         _updateUseCase = updateUseCase,
         _countUseCase = countUseCase,
         _deleteByIdUseCase = deleteByIdUseCase,
         _deleteByFilterUseCase = deleteByFilterUseCase,
-        _getUseCase = getUseCase,
+        _getByFilterUseCase = getByFilterUseCase,
+        _getByIdUseCase = getByIdUseCase,
         super(const CommentState.initial());
 
-  /// بارگذاری لیست کامنت و شمارش آن
   Future<void> loadComments(CommentQueryFilter filter) async {
     emit(const CommentState.loading());
     try {
-      final comments = await _getUseCase(filter);
-      final count = await _countUseCase(filter.targetId!);
-      emit(CommentState.success(comments: comments ?? [], count: count));
+      final comments = await _getByFilterUseCase(filter: filter) ?? [];
+      final count = await _countUseCase(filter: filter);
+      emit(CommentState.success(comments: comments, count: count));
     } catch (e) {
       emit(CommentState.failure(message: e.toString()));
     }
   }
 
-  /// ایجاد یک کامنت
-  Future<void> addComment(CommentEntity comment) async {
+  Future<void> loadCommentById(int id) async {
     emit(const CommentState.loading());
     try {
-      await _createUseCase(comment);
-      // بعد از ایجاد می‌توانی لیست را دوباره بارگذاری کنی
+      final comment = await _getByIdUseCase(id: id);
+      if (comment != null) {
+        emit(CommentState.success(comments: [comment], count: 1));
+      } else {
+        emit(const CommentState.failure(message: 'Comment not found'));
+      }
     } catch (e) {
       emit(CommentState.failure(message: e.toString()));
     }
   }
 
-  /// آپدیت کامنت
-  Future<void> updateComment(CommentEntity comment) async {
+  Future<void> addComment(CommentEntity comment, CommentQueryFilter refreshFilter) async {
     emit(const CommentState.loading());
     try {
-      await _updateUseCase(comment);
-      // بعد از بروزرسانی می‌توانی لیست را دوباره بارگذاری کنی
+      await _createUseCase(comment: comment);
+      await loadComments(refreshFilter);
     } catch (e) {
       emit(CommentState.failure(message: e.toString()));
     }
   }
 
-  /// حذف کامنت با آیدی
-  Future<void> deleteCommentById(int id) async {
+  Future<void> updateComment(CommentEntity comment, CommentQueryFilter refreshFilter) async {
+    emit(const CommentState.loading());
+    try {
+      await _updateUseCase(comment: comment);
+      await loadComments(refreshFilter);
+    } catch (e) {
+      emit(CommentState.failure(message: e.toString()));
+    }
+  }
+
+  Future<void> deleteCommentById(int id, CommentQueryFilter refreshFilter) async {
     emit(const CommentState.loading());
     try {
       await _deleteByIdUseCase(id: id);
-      // بعد از حذف می‌توانی لیست را بروزرسانی کنی
+      await loadComments(refreshFilter);
     } catch (e) {
       emit(CommentState.failure(message: e.toString()));
     }
   }
 
-  /// حذف کامنت‌ها با فیلتر
-  Future<void> deleteCommentsByFilter(CommentQueryFilter filter) async {
+  Future<void> deleteCommentsByFilter(CommentQueryFilter filter, CommentQueryFilter refreshFilter) async {
     emit(const CommentState.loading());
     try {
       await _deleteByFilterUseCase(filter: filter);
-      // بعد از حذف می‌توانی لیست را بروزرسانی کنی
+      await loadComments(refreshFilter);
     } catch (e) {
       emit(CommentState.failure(message: e.toString()));
     }

@@ -14,7 +14,7 @@ extension PurchaseModelMapper on PurchaseModel {
       finalPrice: finalPrice,
       purchaseTime: purchaseTime,
       expiresAt: expiresAt,
-      createdAt: createdAt,
+      createdAt: createdAt, updateAt: updateAt,
     );
   }
 }
@@ -30,7 +30,7 @@ extension PurchaseEntityMapper on PurchaseEntity {
       finalPrice: finalPrice,
       purchaseTime: purchaseTime,
       expiresAt: expiresAt,
-      createdAt: createdAt,
+      createdAt: createdAt,updateAt: updateAt,
     );
   }
 }

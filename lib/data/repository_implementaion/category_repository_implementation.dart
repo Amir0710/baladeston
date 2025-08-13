@@ -1,5 +1,5 @@
 import 'package:baladeston/data/datasources/remote/category_remote_datasource/category_api.dart';
-import 'package:baladeston/data/models/category/category_model.dart';
+import 'package:baladeston/data/mapper/category_mapper.dart';
 import 'package:baladeston/domain/entitys/category/category_entity.dart';
 import 'package:baladeston/domain/filters/category_query_filter.dart';
 import 'package:baladeston/domain/repositories/category_repository.dart';
@@ -22,7 +22,7 @@ class CategoryRepositoryImplementation extends CategoryRepository {
   Future<CategoryEntity> createCategory({required CategoryEntity category}) async {
     try {
       // Entity ➡ Model
-      final model = CategoryModel.fromEntity(category);
+      final model =category.toModel();
       final resultModel = await _api.createCategory(category: model);
       // Model ➡ Entity
       return resultModel.toEntity();
@@ -50,10 +50,10 @@ class CategoryRepositoryImplementation extends CategoryRepository {
   }
 
   @override
-  Future<List<CategoryEntity>> getCategoryByFilter({required CategoryQueryFilter filter}) async {
+  Future<List<CategoryEntity>?> getCategoryByFilter({required CategoryQueryFilter filter}) async {
     try {
-      final models = await _api.getCategoryByFilter(filter: filter);
-      return models.map((m) => m.toEntity()).toList();
+      final model = await _api.getCategoryByFilter(filter: filter);
+      return model?.map((m) => m.toEntity()).toList();
     } catch (e) {
       throw Exception('error $e');
     }
@@ -62,7 +62,7 @@ class CategoryRepositoryImplementation extends CategoryRepository {
   @override
   Future<CategoryEntity> updateCategory({required CategoryEntity category}) async {
     try {
-      final model = CategoryModel.fromEntity(category);
+      final model = category.toModel();
       final updatedModel = await _api.updateCategory(category: model);
       return updatedModel.toEntity();
     } catch (e) {
@@ -71,10 +71,10 @@ class CategoryRepositoryImplementation extends CategoryRepository {
   }
 
   @override
-  Future<CategoryEntity> getCategoryById({required int id}) async {
+  Future<CategoryEntity?> getCategoryById({required int id}) async {
     try {
       final model = await _api.getCategoryById(id: id);
-      return model.toEntity();
+      return model?.toEntity();
     } catch (e) {
       throw Exception('error $e');
     }

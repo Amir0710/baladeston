@@ -9,11 +9,10 @@ extension CategoryModelMapper on CategoryModel {
       id: id,
       title: title,
       password: password,
-      price: price,
       status: status,
       thumbnailUrl: thumbnailUrl,
       createdAt: createdAt,
-      ownerId: ownerId,
+      ownerId: ownerId, lastTransaction: lastTransaction,
     );
   }
 }
@@ -21,14 +20,13 @@ extension CategoryModelMapper on CategoryModel {
 extension CategoryEntityMapper on CategoryEntity {
   CategoryModel toModel() {
     return CategoryModel(
-      id: this.id,
+      id: id,
       title: title,
       password: password,
-      price: price,
       status: status,
       thumbnailUrl: thumbnailUrl,
       createdAt: createdAt,
-      ownerId: ownerId,
+      ownerId: ownerId, lastTransaction: lastTransaction
     );
   }
 }

@@ -6,7 +6,7 @@ class GetCommentByIdUseCase {
 
   GetCommentByIdUseCase(this.repository);
 
-  Future<CommentEntity> call(int id) {
+  Future<CommentEntity?> call({required int id}) {
     return repository.getCommentById(id: id);
   }
 }

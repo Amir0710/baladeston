@@ -6,6 +6,6 @@ class DeleteCollectionByIdUseCase {
   DeleteCollectionByIdUseCase(this.repository);
 
   Future<void> call({required int id}) {
-    return repository.getCollectionById(id : id);
+    return repository.deleteCollectionById(id : id);
   }
 }

@@ -7,13 +7,12 @@ part of 'report_model.dart';
 // **************************************************************************
 
 _ReportModel _$ReportModelFromJson(Map<String, dynamic> json) => _ReportModel(
-      id: (json['id'] as num).toInt(),
+      id: (json['id'] as num?)?.toInt(),
       userId: (json['userId'] as num).toInt(),
       targetId: (json['targetId'] as num).toInt(),
       response: json['response'] as String,
       reason: json['reason'] as String?,
       reportedAt: DateTime.parse(json['reportedAt'] as String),
-      reportModeledAt: DateTime.parse(json['reportModeledAt'] as String),
       responseAt: json['responseAt'] == null
           ? null
           : DateTime.parse(json['responseAt'] as String),
@@ -27,6 +26,5 @@ Map<String, dynamic> _$ReportModelToJson(_ReportModel instance) =>
       'response': instance.response,
       'reason': instance.reason,
       'reportedAt': instance.reportedAt.toIso8601String(),
-      'reportModeledAt': instance.reportModeledAt.toIso8601String(),
       'responseAt': instance.responseAt?.toIso8601String(),
     };

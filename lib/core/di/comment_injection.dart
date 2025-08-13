@@ -1,5 +1,6 @@
 import 'package:baladeston/data/datasources/remote/comment_remote_datasource/comment_api.dart';
 import 'package:baladeston/domain/usecase/comment/delete_comment_by_filter_usecase.dart';
+import 'package:baladeston/domain/usecase/comment/get_comment_by_id_usecase.dart';
 import 'package:get_it/get_it.dart';
 
 import 'package:baladeston/data/repository_implementaion/comment_repository_implementaion.dart';
@@ -15,16 +16,13 @@ import 'package:baladeston/presentation/providers/comment_cubit/comment_cubit.da
 
 final getIt = GetIt.instance;
 
-/// ثبت وابستگی‌های ماژول نظرات (Comment)
 Future<void> initCommentModule() async {
   getIt
 
-    // Repository
     ..registerLazySingleton<CommentRepository>(
       () => CommentRepositoryImplementation(api: getIt<CommentApi>()),
     )
 
-    // UseCases
     ..registerLazySingleton<CreateCommentUseCase>(
       () => CreateCommentUseCase(getIt<CommentRepository>()),
     )
@@ -44,7 +42,6 @@ Future<void> initCommentModule() async {
       () => GetCommentByFilterUseCase(getIt<CommentRepository>()),
     )
 
-    // Cubit
     ..registerFactory<CommentCubit>(
       () => CommentCubit(
         createUseCase: getIt<CreateCommentUseCase>(),
@@ -52,7 +49,8 @@ Future<void> initCommentModule() async {
         countUseCase: getIt<CountCommentUseCase>(),
         deleteByIdUseCase: getIt<DeleteCommentByIdUseCase>(),
         deleteByFilterUseCase: getIt<DeleteCommentByFilterUseCase>(),
-        getUseCase: getIt<GetCommentByFilterUseCase>(),
+        getByFilterUseCase: getIt<GetCommentByFilterUseCase>(),
+        getByIdUseCase: getIt<GetCommentByIdUseCase>(),
       ),
     );
 }

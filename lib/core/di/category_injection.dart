@@ -1,5 +1,5 @@
 import 'package:baladeston/data/datasources/remote/category_remote_datasource/category_api.dart';
-import 'package:baladeston/domain/usecase/category/delete_category_by_id_usecase.dart';
+import 'package:baladeston/presentation/providers/category_cubit/category_cubit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:baladeston/data/repository_implementaion/category_repository_implementation.dart';
 import 'package:baladeston/domain/repositories/category_repository.dart';
@@ -7,13 +7,14 @@ import 'package:baladeston/domain/usecase/category/create_category_usecase.dart'
 import 'package:baladeston/domain/usecase/category/update_category_usecase.dart';
 import 'package:baladeston/domain/usecase/category/count_all_categories_usecase.dart';
 import 'package:baladeston/domain/usecase/category/delete_category_by_filter_usecase.dart';
+import 'package:baladeston/domain/usecase/category/delete_category_by_id_usecase.dart';
 import 'package:baladeston/domain/usecase/category/get_category_by_filter_usecase.dart';
+import 'package:baladeston/domain/usecase/category/get_category_by_id_usecase.dart';
 
-import 'package:baladeston/presentation/providers/category_cubit/category_cubit.dart';
 
 final getIt = GetIt.instance;
 
-/// ثبت وابستگی‌های ماژول دسته‌بندی (Category)
+/// ثبت وابستگی‌های ماژول دسته‌بندی
 Future<void> initCategoryModule() async {
   getIt
 
@@ -41,6 +42,9 @@ Future<void> initCategoryModule() async {
     ..registerLazySingleton<GetCategoryByFilterUseCase>(
       () => GetCategoryByFilterUseCase(getIt<CategoryRepository>()),
     )
+    ..registerLazySingleton<GetCategoryByIdUseCase>(
+      () => GetCategoryByIdUseCase(getIt<CategoryRepository>()),
+    )
 
     // Cubit
     ..registerFactory<CategoryCubit>(
@@ -51,6 +55,7 @@ Future<void> initCategoryModule() async {
         deleteByIdUseCase: getIt<DeleteCategoryByIdUseCase>(),
         deleteByFilterUseCase: getIt<DeleteCategoryByFilterUseCase>(),
         getByFilterUseCase: getIt<GetCategoryByFilterUseCase>(),
+        getByIdUseCase: getIt<GetCategoryByIdUseCase>(),
       ),
     );
 }

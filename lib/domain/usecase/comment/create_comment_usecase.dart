@@ -6,7 +6,7 @@ class CreateCommentUseCase {
 
   CreateCommentUseCase(this.repository);
 
-  Future<void> call(CommentEntity comment) {
+  Future<void> call({required CommentEntity comment}) {
     return repository.createComment(comment: comment);
   }
 }

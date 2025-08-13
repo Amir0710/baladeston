@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$DiscountEntity {
   int? get userId;
-  int get id;
+  int? get id;
   int? get category;
   int get percent;
   String get status;
@@ -62,7 +62,7 @@ abstract mixin class $DiscountEntityCopyWith<$Res> {
   @useResult
   $Res call(
       {int? userId,
-      int id,
+      int? id,
       int? category,
       int percent,
       String status,
@@ -83,7 +83,7 @@ class _$DiscountEntityCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = freezed,
-    Object? id = null,
+    Object? id = freezed,
     Object? category = freezed,
     Object? percent = null,
     Object? status = null,
@@ -94,10 +94,10 @@ class _$DiscountEntityCopyWithImpl<$Res>
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int?,
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       category: freezed == category
           ? _self.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -211,7 +211,7 @@ extension DiscountEntityPatterns on DiscountEntity {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int? userId, int id, int? category, int percent,
+    TResult Function(int? userId, int? id, int? category, int percent,
             String status, DateTime expiresAt)?
         $default, {
     required TResult orElse(),
@@ -241,7 +241,7 @@ extension DiscountEntityPatterns on DiscountEntity {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(int? userId, int id, int? category, int percent,
+    TResult Function(int? userId, int? id, int? category, int percent,
             String status, DateTime expiresAt)
         $default,
   ) {
@@ -269,7 +269,7 @@ extension DiscountEntityPatterns on DiscountEntity {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int? userId, int id, int? category, int percent,
+    TResult? Function(int? userId, int? id, int? category, int percent,
             String status, DateTime expiresAt)?
         $default,
   ) {
@@ -298,7 +298,7 @@ class _DiscountEntity implements DiscountEntity {
   @override
   final int? userId;
   @override
-  final int id;
+  final int? id;
   @override
   final int? category;
   @override
@@ -351,7 +351,7 @@ abstract mixin class _$DiscountEntityCopyWith<$Res>
   @useResult
   $Res call(
       {int? userId,
-      int id,
+      int? id,
       int? category,
       int percent,
       String status,
@@ -372,7 +372,7 @@ class __$DiscountEntityCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? userId = freezed,
-    Object? id = null,
+    Object? id = freezed,
     Object? category = freezed,
     Object? percent = null,
     Object? status = null,
@@ -383,10 +383,10 @@ class __$DiscountEntityCopyWithImpl<$Res>
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int?,
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       category: freezed == category
           ? _self.category
           : category // ignore: cast_nullable_to_non_nullable

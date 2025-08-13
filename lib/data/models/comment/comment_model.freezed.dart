@@ -19,6 +19,7 @@ mixin _$CommentModel {
   String get content;
   double get rating;
   DateTime get createdAt;
+  DateTime get updatedAt;
 
   /// Create a copy of CommentModel
   /// with the given fields replaced by the non-null parameter values.
@@ -42,17 +43,19 @@ mixin _$CommentModel {
             (identical(other.content, content) || other.content == content) &&
             (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userId, targetId, content, rating, createdAt);
+  int get hashCode => Object.hash(
+      runtimeType, userId, targetId, content, rating, createdAt, updatedAt);
 
   @override
   String toString() {
-    return 'CommentModel(userId: $userId, targetId: $targetId, content: $content, rating: $rating, createdAt: $createdAt)';
+    return 'CommentModel(userId: $userId, targetId: $targetId, content: $content, rating: $rating, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 }
 
@@ -67,7 +70,8 @@ abstract mixin class $CommentModelCopyWith<$Res> {
       int targetId,
       String content,
       double rating,
-      DateTime createdAt});
+      DateTime createdAt,
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -87,6 +91,7 @@ class _$CommentModelCopyWithImpl<$Res> implements $CommentModelCopyWith<$Res> {
     Object? content = null,
     Object? rating = null,
     Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(_self.copyWith(
       userId: null == userId
@@ -108,6 +113,10 @@ class _$CommentModelCopyWithImpl<$Res> implements $CommentModelCopyWith<$Res> {
       createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _self.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
   }
@@ -207,7 +216,7 @@ extension CommentModelPatterns on CommentModel {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(int userId, int targetId, String content, double rating,
-            DateTime createdAt)?
+            DateTime createdAt, DateTime updatedAt)?
         $default, {
     required TResult orElse(),
   }) {
@@ -215,7 +224,7 @@ extension CommentModelPatterns on CommentModel {
     switch (_that) {
       case _CommentModel() when $default != null:
         return $default(_that.userId, _that.targetId, _that.content,
-            _that.rating, _that.createdAt);
+            _that.rating, _that.createdAt, _that.updatedAt);
       case _:
         return orElse();
     }
@@ -237,14 +246,14 @@ extension CommentModelPatterns on CommentModel {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(int userId, int targetId, String content, double rating,
-            DateTime createdAt)
+            DateTime createdAt, DateTime updatedAt)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _CommentModel():
         return $default(_that.userId, _that.targetId, _that.content,
-            _that.rating, _that.createdAt);
+            _that.rating, _that.createdAt, _that.updatedAt);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -265,14 +274,14 @@ extension CommentModelPatterns on CommentModel {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(int userId, int targetId, String content, double rating,
-            DateTime createdAt)?
+            DateTime createdAt, DateTime updatedAt)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _CommentModel() when $default != null:
         return $default(_that.userId, _that.targetId, _that.content,
-            _that.rating, _that.createdAt);
+            _that.rating, _that.createdAt, _that.updatedAt);
       case _:
         return null;
     }
@@ -287,7 +296,8 @@ class _CommentModel implements CommentModel {
       required this.targetId,
       required this.content,
       required this.rating,
-      required this.createdAt});
+      required this.createdAt,
+      required this.updatedAt});
   factory _CommentModel.fromJson(Map<String, dynamic> json) =>
       _$CommentModelFromJson(json);
 
@@ -301,6 +311,8 @@ class _CommentModel implements CommentModel {
   final double rating;
   @override
   final DateTime createdAt;
+  @override
+  final DateTime updatedAt;
 
   /// Create a copy of CommentModel
   /// with the given fields replaced by the non-null parameter values.
@@ -328,17 +340,19 @@ class _CommentModel implements CommentModel {
             (identical(other.content, content) || other.content == content) &&
             (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userId, targetId, content, rating, createdAt);
+  int get hashCode => Object.hash(
+      runtimeType, userId, targetId, content, rating, createdAt, updatedAt);
 
   @override
   String toString() {
-    return 'CommentModel(userId: $userId, targetId: $targetId, content: $content, rating: $rating, createdAt: $createdAt)';
+    return 'CommentModel(userId: $userId, targetId: $targetId, content: $content, rating: $rating, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 }
 
@@ -355,7 +369,8 @@ abstract mixin class _$CommentModelCopyWith<$Res>
       int targetId,
       String content,
       double rating,
-      DateTime createdAt});
+      DateTime createdAt,
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -376,6 +391,7 @@ class __$CommentModelCopyWithImpl<$Res>
     Object? content = null,
     Object? rating = null,
     Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(_CommentModel(
       userId: null == userId
@@ -397,6 +413,10 @@ class __$CommentModelCopyWithImpl<$Res>
       createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _self.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
   }

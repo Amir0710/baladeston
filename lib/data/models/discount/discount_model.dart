@@ -8,8 +8,8 @@ part 'discount_model.g.dart';
 abstract class DiscountModel with _$DiscountModel {
   const factory DiscountModel({
     required int? userId,
-    required int id,
-    required int category,
+    required int? id,
+    required int? category,
     required int percent,
     required String status,
     required DateTime expiresAt,

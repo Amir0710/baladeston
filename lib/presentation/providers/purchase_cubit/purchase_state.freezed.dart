@@ -52,8 +52,6 @@ extension PurchaseStatePatterns on PurchaseState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_ListLoaded value)? listLoaded,
-    TResult Function(_DetailLoaded value)? detailLoaded,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
@@ -64,10 +62,6 @@ extension PurchaseStatePatterns on PurchaseState {
         return initial(_that);
       case _Loading() when loading != null:
         return loading(_that);
-      case _ListLoaded() when listLoaded != null:
-        return listLoaded(_that);
-      case _DetailLoaded() when detailLoaded != null:
-        return detailLoaded(_that);
       case _Success() when success != null:
         return success(_that);
       case _Failure() when failure != null:
@@ -94,8 +88,6 @@ extension PurchaseStatePatterns on PurchaseState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_ListLoaded value) listLoaded,
-    required TResult Function(_DetailLoaded value) detailLoaded,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
   }) {
@@ -105,10 +97,6 @@ extension PurchaseStatePatterns on PurchaseState {
         return initial(_that);
       case _Loading():
         return loading(_that);
-      case _ListLoaded():
-        return listLoaded(_that);
-      case _DetailLoaded():
-        return detailLoaded(_that);
       case _Success():
         return success(_that);
       case _Failure():
@@ -134,8 +122,6 @@ extension PurchaseStatePatterns on PurchaseState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_ListLoaded value)? listLoaded,
-    TResult? Function(_DetailLoaded value)? detailLoaded,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
   }) {
@@ -145,10 +131,6 @@ extension PurchaseStatePatterns on PurchaseState {
         return initial(_that);
       case _Loading() when loading != null:
         return loading(_that);
-      case _ListLoaded() when listLoaded != null:
-        return listLoaded(_that);
-      case _DetailLoaded() when detailLoaded != null:
-        return detailLoaded(_that);
       case _Success() when success != null:
         return success(_that);
       case _Failure() when failure != null:
@@ -174,9 +156,7 @@ extension PurchaseStatePatterns on PurchaseState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PurchaseEntity> purchases)? listLoaded,
-    TResult Function(PurchaseEntity purchase)? detailLoaded,
-    TResult Function()? success,
+    TResult Function(List<PurchaseEntity> purchases, int count)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -186,12 +166,8 @@ extension PurchaseStatePatterns on PurchaseState {
         return initial();
       case _Loading() when loading != null:
         return loading();
-      case _ListLoaded() when listLoaded != null:
-        return listLoaded(_that.purchases);
-      case _DetailLoaded() when detailLoaded != null:
-        return detailLoaded(_that.purchase);
       case _Success() when success != null:
-        return success();
+        return success(_that.purchases, _that.count);
       case _Failure() when failure != null:
         return failure(_that.message);
       case _:
@@ -216,9 +192,8 @@ extension PurchaseStatePatterns on PurchaseState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PurchaseEntity> purchases) listLoaded,
-    required TResult Function(PurchaseEntity purchase) detailLoaded,
-    required TResult Function() success,
+    required TResult Function(List<PurchaseEntity> purchases, int count)
+        success,
     required TResult Function(String message) failure,
   }) {
     final _that = this;
@@ -227,12 +202,8 @@ extension PurchaseStatePatterns on PurchaseState {
         return initial();
       case _Loading():
         return loading();
-      case _ListLoaded():
-        return listLoaded(_that.purchases);
-      case _DetailLoaded():
-        return detailLoaded(_that.purchase);
       case _Success():
-        return success();
+        return success(_that.purchases, _that.count);
       case _Failure():
         return failure(_that.message);
       case _:
@@ -256,9 +227,7 @@ extension PurchaseStatePatterns on PurchaseState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PurchaseEntity> purchases)? listLoaded,
-    TResult? Function(PurchaseEntity purchase)? detailLoaded,
-    TResult? Function()? success,
+    TResult? Function(List<PurchaseEntity> purchases, int count)? success,
     TResult? Function(String message)? failure,
   }) {
     final _that = this;
@@ -267,12 +236,8 @@ extension PurchaseStatePatterns on PurchaseState {
         return initial();
       case _Loading() when loading != null:
         return loading();
-      case _ListLoaded() when listLoaded != null:
-        return listLoaded(_that.purchases);
-      case _DetailLoaded() when detailLoaded != null:
-        return detailLoaded(_that.purchase);
       case _Success() when success != null:
-        return success();
+        return success(_that.purchases, _that.count);
       case _Failure() when failure != null:
         return failure(_that.message);
       case _:
@@ -323,8 +288,9 @@ class _Loading implements PurchaseState {
 
 /// @nodoc
 
-class _ListLoaded implements PurchaseState {
-  const _ListLoaded({required final List<PurchaseEntity> purchases})
+class _Success implements PurchaseState {
+  const _Success(
+      {required final List<PurchaseEntity> purchases, required this.count})
       : _purchases = purchases;
 
   final List<PurchaseEntity> _purchases;
@@ -334,158 +300,68 @@ class _ListLoaded implements PurchaseState {
     return EqualUnmodifiableListView(_purchases);
   }
 
+  final int count;
+
   /// Create a copy of PurchaseState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$ListLoadedCopyWith<_ListLoaded> get copyWith =>
-      __$ListLoadedCopyWithImpl<_ListLoaded>(this, _$identity);
+  _$SuccessCopyWith<_Success> get copyWith =>
+      __$SuccessCopyWithImpl<_Success>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ListLoaded &&
+            other is _Success &&
             const DeepCollectionEquality()
-                .equals(other._purchases, _purchases));
+                .equals(other._purchases, _purchases) &&
+            (identical(other.count, count) || other.count == count));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_purchases));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_purchases), count);
 
   @override
   String toString() {
-    return 'PurchaseState.listLoaded(purchases: $purchases)';
+    return 'PurchaseState.success(purchases: $purchases, count: $count)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$ListLoadedCopyWith<$Res>
+abstract mixin class _$SuccessCopyWith<$Res>
     implements $PurchaseStateCopyWith<$Res> {
-  factory _$ListLoadedCopyWith(
-          _ListLoaded value, $Res Function(_ListLoaded) _then) =
-      __$ListLoadedCopyWithImpl;
+  factory _$SuccessCopyWith(_Success value, $Res Function(_Success) _then) =
+      __$SuccessCopyWithImpl;
   @useResult
-  $Res call({List<PurchaseEntity> purchases});
+  $Res call({List<PurchaseEntity> purchases, int count});
 }
 
 /// @nodoc
-class __$ListLoadedCopyWithImpl<$Res> implements _$ListLoadedCopyWith<$Res> {
-  __$ListLoadedCopyWithImpl(this._self, this._then);
+class __$SuccessCopyWithImpl<$Res> implements _$SuccessCopyWith<$Res> {
+  __$SuccessCopyWithImpl(this._self, this._then);
 
-  final _ListLoaded _self;
-  final $Res Function(_ListLoaded) _then;
+  final _Success _self;
+  final $Res Function(_Success) _then;
 
   /// Create a copy of PurchaseState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
     Object? purchases = null,
+    Object? count = null,
   }) {
-    return _then(_ListLoaded(
+    return _then(_Success(
       purchases: null == purchases
           ? _self._purchases
           : purchases // ignore: cast_nullable_to_non_nullable
               as List<PurchaseEntity>,
+      count: null == count
+          ? _self.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
-  }
-}
-
-/// @nodoc
-
-class _DetailLoaded implements PurchaseState {
-  const _DetailLoaded({required this.purchase});
-
-  final PurchaseEntity purchase;
-
-  /// Create a copy of PurchaseState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$DetailLoadedCopyWith<_DetailLoaded> get copyWith =>
-      __$DetailLoadedCopyWithImpl<_DetailLoaded>(this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _DetailLoaded &&
-            (identical(other.purchase, purchase) ||
-                other.purchase == purchase));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, purchase);
-
-  @override
-  String toString() {
-    return 'PurchaseState.detailLoaded(purchase: $purchase)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$DetailLoadedCopyWith<$Res>
-    implements $PurchaseStateCopyWith<$Res> {
-  factory _$DetailLoadedCopyWith(
-          _DetailLoaded value, $Res Function(_DetailLoaded) _then) =
-      __$DetailLoadedCopyWithImpl;
-  @useResult
-  $Res call({PurchaseEntity purchase});
-
-  $PurchaseEntityCopyWith<$Res> get purchase;
-}
-
-/// @nodoc
-class __$DetailLoadedCopyWithImpl<$Res>
-    implements _$DetailLoadedCopyWith<$Res> {
-  __$DetailLoadedCopyWithImpl(this._self, this._then);
-
-  final _DetailLoaded _self;
-  final $Res Function(_DetailLoaded) _then;
-
-  /// Create a copy of PurchaseState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? purchase = null,
-  }) {
-    return _then(_DetailLoaded(
-      purchase: null == purchase
-          ? _self.purchase
-          : purchase // ignore: cast_nullable_to_non_nullable
-              as PurchaseEntity,
-    ));
-  }
-
-  /// Create a copy of PurchaseState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $PurchaseEntityCopyWith<$Res> get purchase {
-    return $PurchaseEntityCopyWith<$Res>(_self.purchase, (value) {
-      return _then(_self.copyWith(purchase: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _Success implements PurchaseState {
-  const _Success();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Success);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  String toString() {
-    return 'PurchaseState.success()';
   }
 }
 

@@ -9,7 +9,7 @@ extension CommentModelMapper on CommentModel {
       targetId: targetId,
       content: content,
       rating: rating,
-      createdAt: createdAt,
+      createdAt: createdAt, updatedAt: updatedAt,
     );
   }
 }
@@ -22,6 +22,7 @@ extension CommentEntityMapper on CommentEntity {
       content: content,
       rating: rating,
       createdAt: createdAt,
+      updatedAt: updatedAt,
     );
   }
 }

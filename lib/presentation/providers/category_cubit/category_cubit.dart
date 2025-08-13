@@ -7,6 +7,7 @@ import 'package:baladeston/domain/usecase/category/create_category_usecase.dart'
 import 'package:baladeston/domain/usecase/category/delete_category_by_filter_usecase.dart';
 import 'package:baladeston/domain/usecase/category/delete_category_by_id_usecase.dart';
 import 'package:baladeston/domain/usecase/category/get_category_by_filter_usecase.dart';
+import 'package:baladeston/domain/usecase/category/get_category_by_id_usecase.dart';
 import 'package:baladeston/domain/usecase/category/update_category_usecase.dart';
 import 'package:bloc/bloc.dart';
 import 'category_state.dart';
@@ -18,74 +19,89 @@ class CategoryCubit extends Cubit<CategoryState> {
   final DeleteCategoryByIdUseCase _deleteByIdUseCase;
   final DeleteCategoryByFilterUseCase _deleteByFilterUseCase;
   final GetCategoryByFilterUseCase _getByFilterUseCase;
+  final GetCategoryByIdUseCase _getByIdUseCase;
 
- CategoryCubit(
- {
+  CategoryCubit({
     required CreateCategoryUseCase createUseCase,
     required UpdateCategoryUseCase updateUseCase,
     required CountAllCategoriesUseCase countUseCase,
     required DeleteCategoryByIdUseCase deleteByIdUseCase,
     required DeleteCategoryByFilterUseCase deleteByFilterUseCase,
     required GetCategoryByFilterUseCase getByFilterUseCase,
+    required GetCategoryByIdUseCase getByIdUseCase,
   })  : _createUseCase = createUseCase,
         _updateUseCase = updateUseCase,
         _countUseCase = countUseCase,
         _deleteByIdUseCase = deleteByIdUseCase,
         _deleteByFilterUseCase = deleteByFilterUseCase,
-        _getByFilterUseCase = getByFilterUseCase,   super(const CategoryState.initial());
-        
-        
-  Future<void> loadCategories([CategoryQueryFilter? filter]) async {
+        _getByFilterUseCase = getByFilterUseCase,
+        _getByIdUseCase = getByIdUseCase,
+        super(const CategoryState.initial());
+
+  Future<void> loadCategories(CategoryQueryFilter filter) async {
     emit(const CategoryState.loading());
     try {
-      final f = filter ?? CategoryQueryFilter();
-      final categories = await _getByFilterUseCase(f);
-      final count = await _countUseCase();
+      final categories = await _getByFilterUseCase(filter) ?? [];
+      final count = await _countUseCase(filter: filter);
       emit(CategoryState.success(categories: categories, count: count));
     } catch (e) {
       emit(CategoryState.failure(message: e.toString()));
     }
   }
 
-  /// ایجاد دسته‌بندی جدید
-  Future<void> addCategory(CategoryEntity category) async {
+  /// دریافت دسته‌بندی با شناسه و نمایش آن به‌صورت Success
+  Future<void> loadCategoryById(int id) async {
+    emit(const CategoryState.loading());
+    try {
+      final category = await _getByIdUseCase(id);
+      if (category != null) {
+        emit(CategoryState.success(categories: [category], count: 1));
+      } else {
+        emit(const CategoryState.failure(message: 'Category not found'));
+      }
+    } catch (e) {
+      emit(CategoryState.failure(message: e.toString()));
+    }
+  }
+
+  Future<void> addCategory(CategoryEntity category, CategoryQueryFilter refreshFilter) async {
     emit(const CategoryState.loading());
     try {
       await _createUseCase(category);
-      await loadCategories();
+      await loadCategories(refreshFilter);
     } catch (e) {
       emit(CategoryState.failure(message: e.toString()));
     }
   }
 
   /// ویرایش دسته‌بندی
-  Future<void> updateCategory(CategoryEntity category) async {
+  Future<void> updateCategory(CategoryEntity category, CategoryQueryFilter refreshFilter) async {
     emit(const CategoryState.loading());
     try {
       await _updateUseCase(category);
-      await loadCategories();
+      await loadCategories(refreshFilter);
     } catch (e) {
       emit(CategoryState.failure(message: e.toString()));
     }
   }
 
   /// حذف دسته‌بندی با شناسه
-  Future<void> deleteCategoryById(int id) async {
+  Future<void> deleteCategoryById(int id, CategoryQueryFilter refreshFilter) async {
     emit(const CategoryState.loading());
     try {
       await _deleteByIdUseCase(id);
-      await loadCategories();
+      await loadCategories(refreshFilter);
     } catch (e) {
       emit(CategoryState.failure(message: e.toString()));
     }
   }
 
   /// حذف دسته‌بندی‌ها با فیلتر
-  Future<void> deleteCategoriesByFilter(CategoryQueryFilter filter) async {
+  Future<void> deleteCategoriesByFilter(CategoryQueryFilter filter, CategoryQueryFilter refreshFilter) async {
     emit(const CategoryState.loading());
     try {
       await _deleteByFilterUseCase(filter);
-      await loadCategories();
+      await loadCategories(refreshFilter);
     } catch (e) {
       emit(CategoryState.failure(message: e.toString()));
     }

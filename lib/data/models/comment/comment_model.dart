@@ -12,6 +12,7 @@ abstract class CommentModel with _$CommentModel {
     required String content,
     required double rating,
     required DateTime createdAt,
+    required DateTime updatedAt,
   }) = _CommentModel;
 
   factory CommentModel.fromJson(Map<String, dynamic> json) =>

@@ -6,7 +6,7 @@ class CountAllCategoriesUseCase {
 
   CountAllCategoriesUseCase(this.repository);
 
-  Future<int> call() {
-    return repository.countAllCategories(filter: CategoryQueryFilter());
+  Future<int> call({required CategoryQueryFilter filter}) {
+    return repository.countAllCategories(filter: filter);
   }
 }

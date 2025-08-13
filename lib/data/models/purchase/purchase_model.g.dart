@@ -19,6 +19,9 @@ _PurchaseModel _$PurchaseModelFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['expiresAt'] as String),
       createdAt: DateTime.parse(json['createdAt'] as String),
+      updateAt: json['updateAt'] == null
+          ? null
+          : DateTime.parse(json['updateAt'] as String),
     );
 
 Map<String, dynamic> _$PurchaseModelToJson(_PurchaseModel instance) =>
@@ -32,4 +35,5 @@ Map<String, dynamic> _$PurchaseModelToJson(_PurchaseModel instance) =>
       'purchaseTime': instance.purchaseTime.toIso8601String(),
       'expiresAt': instance.expiresAt?.toIso8601String(),
       'createdAt': instance.createdAt.toIso8601String(),
+      'updateAt': instance.updateAt?.toIso8601String(),
     };

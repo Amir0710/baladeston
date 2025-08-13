@@ -16,6 +16,8 @@ abstract class PurchaseModel with _$PurchaseModel {
     required DateTime purchaseTime,
     required DateTime? expiresAt,
     required DateTime createdAt,
+        required DateTime? updateAt,
+
   }) = _PurchaseModel;
 
   factory PurchaseModel.fromJson(Map<String, dynamic> json) =>

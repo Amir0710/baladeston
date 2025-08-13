@@ -7,7 +7,7 @@ class GetCommentByFilterUseCase {
 
   GetCommentByFilterUseCase(this.repository);
 
-  Future<List<CommentEntity>?> call(CommentQueryFilter filter) {
+  Future<List<CommentEntity>?> call({required CommentQueryFilter filter}) {
     return repository.getCommentByFilter(filter: filter);
   }
 }

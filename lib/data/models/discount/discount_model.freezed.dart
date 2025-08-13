@@ -15,8 +15,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$DiscountModel {
   int? get userId;
-  int get id;
-  int get category;
+  int? get id;
+  int? get category;
   int get percent;
   String get status;
   DateTime get expiresAt;
@@ -66,8 +66,8 @@ abstract mixin class $DiscountModelCopyWith<$Res> {
   @useResult
   $Res call(
       {int? userId,
-      int id,
-      int category,
+      int? id,
+      int? category,
       int percent,
       String status,
       DateTime expiresAt});
@@ -87,8 +87,8 @@ class _$DiscountModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = freezed,
-    Object? id = null,
-    Object? category = null,
+    Object? id = freezed,
+    Object? category = freezed,
     Object? percent = null,
     Object? status = null,
     Object? expiresAt = null,
@@ -98,14 +98,14 @@ class _$DiscountModelCopyWithImpl<$Res>
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int?,
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      category: null == category
+              as int?,
+      category: freezed == category
           ? _self.category
           : category // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       percent: null == percent
           ? _self.percent
           : percent // ignore: cast_nullable_to_non_nullable
@@ -215,7 +215,7 @@ extension DiscountModelPatterns on DiscountModel {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int? userId, int id, int category, int percent,
+    TResult Function(int? userId, int? id, int? category, int percent,
             String status, DateTime expiresAt)?
         $default, {
     required TResult orElse(),
@@ -245,7 +245,7 @@ extension DiscountModelPatterns on DiscountModel {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(int? userId, int id, int category, int percent,
+    TResult Function(int? userId, int? id, int? category, int percent,
             String status, DateTime expiresAt)
         $default,
   ) {
@@ -273,7 +273,7 @@ extension DiscountModelPatterns on DiscountModel {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int? userId, int id, int category, int percent,
+    TResult? Function(int? userId, int? id, int? category, int percent,
             String status, DateTime expiresAt)?
         $default,
   ) {
@@ -304,9 +304,9 @@ class _DiscountModel implements DiscountModel {
   @override
   final int? userId;
   @override
-  final int id;
+  final int? id;
   @override
-  final int category;
+  final int? category;
   @override
   final int percent;
   @override
@@ -365,8 +365,8 @@ abstract mixin class _$DiscountModelCopyWith<$Res>
   @useResult
   $Res call(
       {int? userId,
-      int id,
-      int category,
+      int? id,
+      int? category,
       int percent,
       String status,
       DateTime expiresAt});
@@ -386,8 +386,8 @@ class __$DiscountModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? userId = freezed,
-    Object? id = null,
-    Object? category = null,
+    Object? id = freezed,
+    Object? category = freezed,
     Object? percent = null,
     Object? status = null,
     Object? expiresAt = null,
@@ -397,14 +397,14 @@ class __$DiscountModelCopyWithImpl<$Res>
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int?,
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      category: null == category
+              as int?,
+      category: freezed == category
           ? _self.category
           : category // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       percent: null == percent
           ? _self.percent
           : percent // ignore: cast_nullable_to_non_nullable

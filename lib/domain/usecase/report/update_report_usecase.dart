@@ -1,12 +1,11 @@
 import 'package:baladeston/domain/entitys/report/report_entity.dart';
-import 'package:baladeston/domain/filters/report_query_filter.dart';
 import 'package:baladeston/domain/repositories/report_repository.dart';
 
-class UpdateReportUsecase {
+class UpdateReportUseCase {
   final ReportRepository repository;
 
-  UpdateReportUsecase({required this.repository}); 
-  Future<ReportEntity> call({required ReportQueryFilter filter }){
-    return repository.updateReport(filter: filter);
+  UpdateReportUseCase(this.repository); 
+  Future<ReportEntity> call({required ReportEntity report}){
+    return repository.updateReport(report: report);
   }
 }

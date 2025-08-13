@@ -10,7 +10,7 @@ class UserRepositoryImplementation implements UserRepository {
   }
 
   @override
-  Future<void> deleteUser() {
+  Future<void> deleteUserById() {
     // TODO: implement deleteUser
     throw UnimplementedError();
   }

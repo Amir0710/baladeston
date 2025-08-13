@@ -14,6 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$FavoriteEntity {
+  int? get id;
   int get userId;
   String get type;
   int get targetId;
@@ -32,6 +33,7 @@ mixin _$FavoriteEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is FavoriteEntity &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.targetId, targetId) ||
@@ -42,11 +44,11 @@ mixin _$FavoriteEntity {
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, userId, type, targetId, interestedIn);
+      Object.hash(runtimeType, id, userId, type, targetId, interestedIn);
 
   @override
   String toString() {
-    return 'FavoriteEntity(userId: $userId, type: $type, targetId: $targetId, interestedIn: $interestedIn)';
+    return 'FavoriteEntity(id: $id, userId: $userId, type: $type, targetId: $targetId, interestedIn: $interestedIn)';
   }
 }
 
@@ -56,7 +58,8 @@ abstract mixin class $FavoriteEntityCopyWith<$Res> {
           FavoriteEntity value, $Res Function(FavoriteEntity) _then) =
       _$FavoriteEntityCopyWithImpl;
   @useResult
-  $Res call({int userId, String type, int targetId, DateTime? interestedIn});
+  $Res call(
+      {int? id, int userId, String type, int targetId, DateTime? interestedIn});
 }
 
 /// @nodoc
@@ -72,12 +75,17 @@ class _$FavoriteEntityCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? userId = null,
     Object? type = null,
     Object? targetId = null,
     Object? interestedIn = freezed,
   }) {
     return _then(_self.copyWith(
+      id: freezed == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -191,16 +199,16 @@ extension FavoriteEntityPatterns on FavoriteEntity {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            int userId, String type, int targetId, DateTime? interestedIn)?
+    TResult Function(int? id, int userId, String type, int targetId,
+            DateTime? interestedIn)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _FavoriteEntity() when $default != null:
-        return $default(
-            _that.userId, _that.type, _that.targetId, _that.interestedIn);
+        return $default(_that.id, _that.userId, _that.type, _that.targetId,
+            _that.interestedIn);
       case _:
         return orElse();
     }
@@ -221,15 +229,15 @@ extension FavoriteEntityPatterns on FavoriteEntity {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(
-            int userId, String type, int targetId, DateTime? interestedIn)
+    TResult Function(int? id, int userId, String type, int targetId,
+            DateTime? interestedIn)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _FavoriteEntity():
-        return $default(
-            _that.userId, _that.type, _that.targetId, _that.interestedIn);
+        return $default(_that.id, _that.userId, _that.type, _that.targetId,
+            _that.interestedIn);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -249,15 +257,15 @@ extension FavoriteEntityPatterns on FavoriteEntity {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            int userId, String type, int targetId, DateTime? interestedIn)?
+    TResult? Function(int? id, int userId, String type, int targetId,
+            DateTime? interestedIn)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _FavoriteEntity() when $default != null:
-        return $default(
-            _that.userId, _that.type, _that.targetId, _that.interestedIn);
+        return $default(_that.id, _that.userId, _that.type, _that.targetId,
+            _that.interestedIn);
       case _:
         return null;
     }
@@ -268,11 +276,14 @@ extension FavoriteEntityPatterns on FavoriteEntity {
 
 class _FavoriteEntity implements FavoriteEntity {
   const _FavoriteEntity(
-      {required this.userId,
+      {required this.id,
+      required this.userId,
       required this.type,
       required this.targetId,
       required this.interestedIn});
 
+  @override
+  final int? id;
   @override
   final int userId;
   @override
@@ -295,6 +306,7 @@ class _FavoriteEntity implements FavoriteEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _FavoriteEntity &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.targetId, targetId) ||
@@ -305,11 +317,11 @@ class _FavoriteEntity implements FavoriteEntity {
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, userId, type, targetId, interestedIn);
+      Object.hash(runtimeType, id, userId, type, targetId, interestedIn);
 
   @override
   String toString() {
-    return 'FavoriteEntity(userId: $userId, type: $type, targetId: $targetId, interestedIn: $interestedIn)';
+    return 'FavoriteEntity(id: $id, userId: $userId, type: $type, targetId: $targetId, interestedIn: $interestedIn)';
   }
 }
 
@@ -321,7 +333,8 @@ abstract mixin class _$FavoriteEntityCopyWith<$Res>
       __$FavoriteEntityCopyWithImpl;
   @override
   @useResult
-  $Res call({int userId, String type, int targetId, DateTime? interestedIn});
+  $Res call(
+      {int? id, int userId, String type, int targetId, DateTime? interestedIn});
 }
 
 /// @nodoc
@@ -337,12 +350,17 @@ class __$FavoriteEntityCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
+    Object? id = freezed,
     Object? userId = null,
     Object? type = null,
     Object? targetId = null,
     Object? interestedIn = freezed,
   }) {
     return _then(_FavoriteEntity(
+      id: freezed == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable

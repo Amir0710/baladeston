@@ -7,7 +7,7 @@ class GetCategoryByFilterUseCase {
 
   GetCategoryByFilterUseCase(this.repository);
 
-  Future<List<CategoryEntity>> call(CategoryQueryFilter filter) {
+  Future<List<CategoryEntity>?> call(CategoryQueryFilter filter) {
     return repository.getCategoryByFilter(filter: filter);
   }
 }

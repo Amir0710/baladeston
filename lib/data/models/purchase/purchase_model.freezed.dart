@@ -23,6 +23,7 @@ mixin _$PurchaseModel {
   DateTime get purchaseTime;
   DateTime? get expiresAt;
   DateTime get createdAt;
+  DateTime? get updateAt;
 
   /// Create a copy of PurchaseModel
   /// with the given fields replaced by the non-null parameter values.
@@ -54,17 +55,19 @@ mixin _$PurchaseModel {
             (identical(other.expiresAt, expiresAt) ||
                 other.expiresAt == expiresAt) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+                other.createdAt == createdAt) &&
+            (identical(other.updateAt, updateAt) ||
+                other.updateAt == updateAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, status, userId, categoryId,
-      discountId, finalPrice, purchaseTime, expiresAt, createdAt);
+      discountId, finalPrice, purchaseTime, expiresAt, createdAt, updateAt);
 
   @override
   String toString() {
-    return 'PurchaseModel(id: $id, status: $status, userId: $userId, categoryId: $categoryId, discountId: $discountId, finalPrice: $finalPrice, purchaseTime: $purchaseTime, expiresAt: $expiresAt, createdAt: $createdAt)';
+    return 'PurchaseModel(id: $id, status: $status, userId: $userId, categoryId: $categoryId, discountId: $discountId, finalPrice: $finalPrice, purchaseTime: $purchaseTime, expiresAt: $expiresAt, createdAt: $createdAt, updateAt: $updateAt)';
   }
 }
 
@@ -83,7 +86,8 @@ abstract mixin class $PurchaseModelCopyWith<$Res> {
       double finalPrice,
       DateTime purchaseTime,
       DateTime? expiresAt,
-      DateTime createdAt});
+      DateTime createdAt,
+      DateTime? updateAt});
 }
 
 /// @nodoc
@@ -108,6 +112,7 @@ class _$PurchaseModelCopyWithImpl<$Res>
     Object? purchaseTime = null,
     Object? expiresAt = freezed,
     Object? createdAt = null,
+    Object? updateAt = freezed,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -146,6 +151,10 @@ class _$PurchaseModelCopyWithImpl<$Res>
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      updateAt: freezed == updateAt
+          ? _self.updateAt
+          : updateAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -252,7 +261,8 @@ extension PurchaseModelPatterns on PurchaseModel {
             double finalPrice,
             DateTime purchaseTime,
             DateTime? expiresAt,
-            DateTime createdAt)?
+            DateTime createdAt,
+            DateTime? updateAt)?
         $default, {
     required TResult orElse(),
   }) {
@@ -268,7 +278,8 @@ extension PurchaseModelPatterns on PurchaseModel {
             _that.finalPrice,
             _that.purchaseTime,
             _that.expiresAt,
-            _that.createdAt);
+            _that.createdAt,
+            _that.updateAt);
       case _:
         return orElse();
     }
@@ -298,7 +309,8 @@ extension PurchaseModelPatterns on PurchaseModel {
             double finalPrice,
             DateTime purchaseTime,
             DateTime? expiresAt,
-            DateTime createdAt)
+            DateTime createdAt,
+            DateTime? updateAt)
         $default,
   ) {
     final _that = this;
@@ -313,7 +325,8 @@ extension PurchaseModelPatterns on PurchaseModel {
             _that.finalPrice,
             _that.purchaseTime,
             _that.expiresAt,
-            _that.createdAt);
+            _that.createdAt,
+            _that.updateAt);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -342,7 +355,8 @@ extension PurchaseModelPatterns on PurchaseModel {
             double finalPrice,
             DateTime purchaseTime,
             DateTime? expiresAt,
-            DateTime createdAt)?
+            DateTime createdAt,
+            DateTime? updateAt)?
         $default,
   ) {
     final _that = this;
@@ -357,7 +371,8 @@ extension PurchaseModelPatterns on PurchaseModel {
             _that.finalPrice,
             _that.purchaseTime,
             _that.expiresAt,
-            _that.createdAt);
+            _that.createdAt,
+            _that.updateAt);
       case _:
         return null;
     }
@@ -376,7 +391,8 @@ class _PurchaseModel implements PurchaseModel {
       required this.finalPrice,
       required this.purchaseTime,
       required this.expiresAt,
-      required this.createdAt});
+      required this.createdAt,
+      required this.updateAt});
   factory _PurchaseModel.fromJson(Map<String, dynamic> json) =>
       _$PurchaseModelFromJson(json);
 
@@ -398,6 +414,8 @@ class _PurchaseModel implements PurchaseModel {
   final DateTime? expiresAt;
   @override
   final DateTime createdAt;
+  @override
+  final DateTime? updateAt;
 
   /// Create a copy of PurchaseModel
   /// with the given fields replaced by the non-null parameter values.
@@ -433,17 +451,19 @@ class _PurchaseModel implements PurchaseModel {
             (identical(other.expiresAt, expiresAt) ||
                 other.expiresAt == expiresAt) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+                other.createdAt == createdAt) &&
+            (identical(other.updateAt, updateAt) ||
+                other.updateAt == updateAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, status, userId, categoryId,
-      discountId, finalPrice, purchaseTime, expiresAt, createdAt);
+      discountId, finalPrice, purchaseTime, expiresAt, createdAt, updateAt);
 
   @override
   String toString() {
-    return 'PurchaseModel(id: $id, status: $status, userId: $userId, categoryId: $categoryId, discountId: $discountId, finalPrice: $finalPrice, purchaseTime: $purchaseTime, expiresAt: $expiresAt, createdAt: $createdAt)';
+    return 'PurchaseModel(id: $id, status: $status, userId: $userId, categoryId: $categoryId, discountId: $discountId, finalPrice: $finalPrice, purchaseTime: $purchaseTime, expiresAt: $expiresAt, createdAt: $createdAt, updateAt: $updateAt)';
   }
 }
 
@@ -464,7 +484,8 @@ abstract mixin class _$PurchaseModelCopyWith<$Res>
       double finalPrice,
       DateTime purchaseTime,
       DateTime? expiresAt,
-      DateTime createdAt});
+      DateTime createdAt,
+      DateTime? updateAt});
 }
 
 /// @nodoc
@@ -489,6 +510,7 @@ class __$PurchaseModelCopyWithImpl<$Res>
     Object? purchaseTime = null,
     Object? expiresAt = freezed,
     Object? createdAt = null,
+    Object? updateAt = freezed,
   }) {
     return _then(_PurchaseModel(
       id: null == id
@@ -527,6 +549,10 @@ class __$PurchaseModelCopyWithImpl<$Res>
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      updateAt: freezed == updateAt
+          ? _self.updateAt
+          : updateAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }

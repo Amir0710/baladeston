@@ -12,7 +12,6 @@ extension ReportModelMapper on ReportModel {
       response: response,
       reason: reason,
       reportedAt: reportedAt,
-      reportModeledAt: reportModeledAt,
       responseAt: responseAt,
     );
   }
@@ -27,7 +26,6 @@ extension ReportEntityMapper on ReportEntity {
       response: response,
       reason: reason,
       reportedAt: reportedAt,
-      reportModeledAt: reportModeledAt,
       responseAt: responseAt,
     );
   }

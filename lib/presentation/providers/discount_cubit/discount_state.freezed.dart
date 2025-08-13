@@ -52,7 +52,7 @@ extension DiscountStatePatterns on DiscountState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
@@ -62,8 +62,8 @@ extension DiscountStatePatterns on DiscountState {
         return initial(_that);
       case _Loading() when loading != null:
         return loading(_that);
-      case _Loaded() when loaded != null:
-        return loaded(_that);
+      case _Success() when success != null:
+        return success(_that);
       case _Failure() when failure != null:
         return failure(_that);
       case _:
@@ -88,7 +88,7 @@ extension DiscountStatePatterns on DiscountState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
   }) {
     final _that = this;
@@ -97,8 +97,8 @@ extension DiscountStatePatterns on DiscountState {
         return initial(_that);
       case _Loading():
         return loading(_that);
-      case _Loaded():
-        return loaded(_that);
+      case _Success():
+        return success(_that);
       case _Failure():
         return failure(_that);
       case _:
@@ -122,7 +122,7 @@ extension DiscountStatePatterns on DiscountState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
   }) {
     final _that = this;
@@ -131,8 +131,8 @@ extension DiscountStatePatterns on DiscountState {
         return initial(_that);
       case _Loading() when loading != null:
         return loading(_that);
-      case _Loaded() when loaded != null:
-        return loaded(_that);
+      case _Success() when success != null:
+        return success(_that);
       case _Failure() when failure != null:
         return failure(_that);
       case _:
@@ -156,7 +156,7 @@ extension DiscountStatePatterns on DiscountState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<DiscountEntity> discounts)? loaded,
+    TResult Function(List<DiscountEntity> discounts, int count)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -166,8 +166,8 @@ extension DiscountStatePatterns on DiscountState {
         return initial();
       case _Loading() when loading != null:
         return loading();
-      case _Loaded() when loaded != null:
-        return loaded(_that.discounts);
+      case _Success() when success != null:
+        return success(_that.discounts, _that.count);
       case _Failure() when failure != null:
         return failure(_that.message);
       case _:
@@ -192,7 +192,8 @@ extension DiscountStatePatterns on DiscountState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<DiscountEntity> discounts) loaded,
+    required TResult Function(List<DiscountEntity> discounts, int count)
+        success,
     required TResult Function(String message) failure,
   }) {
     final _that = this;
@@ -201,8 +202,8 @@ extension DiscountStatePatterns on DiscountState {
         return initial();
       case _Loading():
         return loading();
-      case _Loaded():
-        return loaded(_that.discounts);
+      case _Success():
+        return success(_that.discounts, _that.count);
       case _Failure():
         return failure(_that.message);
       case _:
@@ -226,7 +227,7 @@ extension DiscountStatePatterns on DiscountState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<DiscountEntity> discounts)? loaded,
+    TResult? Function(List<DiscountEntity> discounts, int count)? success,
     TResult? Function(String message)? failure,
   }) {
     final _that = this;
@@ -235,8 +236,8 @@ extension DiscountStatePatterns on DiscountState {
         return initial();
       case _Loading() when loading != null:
         return loading();
-      case _Loaded() when loaded != null:
-        return loaded(_that.discounts);
+      case _Success() when success != null:
+        return success(_that.discounts, _that.count);
       case _Failure() when failure != null:
         return failure(_that.message);
       case _:
@@ -287,8 +288,9 @@ class _Loading implements DiscountState {
 
 /// @nodoc
 
-class _Loaded implements DiscountState {
-  const _Loaded({required final List<DiscountEntity> discounts})
+class _Success implements DiscountState {
+  const _Success(
+      {required final List<DiscountEntity> discounts, required this.count})
       : _discounts = discounts;
 
   final List<DiscountEntity> _discounts;
@@ -298,59 +300,67 @@ class _Loaded implements DiscountState {
     return EqualUnmodifiableListView(_discounts);
   }
 
+  final int count;
+
   /// Create a copy of DiscountState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$LoadedCopyWith<_Loaded> get copyWith =>
-      __$LoadedCopyWithImpl<_Loaded>(this, _$identity);
+  _$SuccessCopyWith<_Success> get copyWith =>
+      __$SuccessCopyWithImpl<_Success>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Loaded &&
+            other is _Success &&
             const DeepCollectionEquality()
-                .equals(other._discounts, _discounts));
+                .equals(other._discounts, _discounts) &&
+            (identical(other.count, count) || other.count == count));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_discounts));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_discounts), count);
 
   @override
   String toString() {
-    return 'DiscountState.loaded(discounts: $discounts)';
+    return 'DiscountState.success(discounts: $discounts, count: $count)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$LoadedCopyWith<$Res>
+abstract mixin class _$SuccessCopyWith<$Res>
     implements $DiscountStateCopyWith<$Res> {
-  factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) _then) =
-      __$LoadedCopyWithImpl;
+  factory _$SuccessCopyWith(_Success value, $Res Function(_Success) _then) =
+      __$SuccessCopyWithImpl;
   @useResult
-  $Res call({List<DiscountEntity> discounts});
+  $Res call({List<DiscountEntity> discounts, int count});
 }
 
 /// @nodoc
-class __$LoadedCopyWithImpl<$Res> implements _$LoadedCopyWith<$Res> {
-  __$LoadedCopyWithImpl(this._self, this._then);
+class __$SuccessCopyWithImpl<$Res> implements _$SuccessCopyWith<$Res> {
+  __$SuccessCopyWithImpl(this._self, this._then);
 
-  final _Loaded _self;
-  final $Res Function(_Loaded) _then;
+  final _Success _self;
+  final $Res Function(_Success) _then;
 
   /// Create a copy of DiscountState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
     Object? discounts = null,
+    Object? count = null,
   }) {
-    return _then(_Loaded(
+    return _then(_Success(
       discounts: null == discounts
           ? _self._discounts
           : discounts // ignore: cast_nullable_to_non_nullable
               as List<DiscountEntity>,
+      count: null == count
+          ? _self.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }

@@ -13,6 +13,7 @@ _CommentModel _$CommentModelFromJson(Map<String, dynamic> json) =>
       content: json['content'] as String,
       rating: (json['rating'] as num).toDouble(),
       createdAt: DateTime.parse(json['createdAt'] as String),
+      updatedAt: DateTime.parse(json['updatedAt'] as String),
     );
 
 Map<String, dynamic> _$CommentModelToJson(_CommentModel instance) =>
@@ -22,4 +23,5 @@ Map<String, dynamic> _$CommentModelToJson(_CommentModel instance) =>
       'content': instance.content,
       'rating': instance.rating,
       'createdAt': instance.createdAt.toIso8601String(),
+      'updatedAt': instance.updatedAt.toIso8601String(),
     };

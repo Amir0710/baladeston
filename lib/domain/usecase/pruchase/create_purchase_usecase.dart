@@ -6,7 +6,7 @@ class CreatePurchaseUseCase {
 
   CreatePurchaseUseCase(this.repository);
 
-  Future<void> call(PurchaseEntity purchase) {
+  Future<PurchaseEntity> call({required PurchaseEntity purchase}) {
     return repository.createPurchase(purchase: purchase);
   }
 }

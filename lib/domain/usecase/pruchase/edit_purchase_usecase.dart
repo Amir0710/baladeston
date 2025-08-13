@@ -6,7 +6,7 @@ class EditPurchaseUseCase {
 
   EditPurchaseUseCase(this.repository);
 
-  Future<PurchaseEntity> call(PurchaseEntity purchase) {
+  Future<PurchaseEntity> call({required PurchaseEntity purchase}) {
     return repository.editPurchase(purchase: purchase);
   }
 }

@@ -6,7 +6,7 @@ class GetCategoryByIdUseCase {
 
   GetCategoryByIdUseCase(this.repository);
 
-  Future<CategoryEntity> call(int id) {
+  Future<CategoryEntity?> call(int id) {
     return repository.getCategoryById(id: id);
   }
 }
