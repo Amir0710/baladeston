@@ -1,7 +1,7 @@
 import 'package:baladeston/domain/entitys/user/user_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'report_state.freezed.dart';
+part 'user_state.freezed.dart';
 
 @freezed
 class UserState with _$UserState {

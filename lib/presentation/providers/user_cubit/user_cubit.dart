@@ -44,9 +44,9 @@ class UserCubit extends Cubit<UserState> {
     try {
       final f = filter ?? UserQueryFilter();
       _lastFilter = f;
-      final users = await _getByFilterUseCase(f);
-      final count = await _countUseCase(f);
-      emit(UserState.success(users: users ?? [], count: count));
+      final users = await _getByFilterUseCase(filter: f);
+      final count = await _countUseCase(filter: f);
+      emit(UserState.success(user: users ?? [], count: count));
     } catch (e) {
       emit(UserState.failure(message: e.toString()));
     }
@@ -61,9 +61,9 @@ class UserCubit extends Cubit<UserState> {
   Future<void> loadUserById(int id) async {
     emit(const UserState.loading());
     try {
-      final user = await _getByIdUseCase(id);
+      final user = await _getByIdUseCase(id: id);
       emit(UserState.success(
-        users: user != null ? [user] : [],
+        user: user != null ? [user] : [],
         count: user != null ? 1 : 0,
       ));
     } catch (e) {
@@ -97,7 +97,7 @@ class UserCubit extends Cubit<UserState> {
   Future<void> deleteUserById(int id) async {
     emit(const UserState.loading());
     try {
-      await _deleteByIdUseCase(id);
+      await _deleteByIdUseCase(id: id);
       await refreshFilter();
     } catch (e) {
       emit(UserState.failure(message: e.toString()));
@@ -108,7 +108,7 @@ class UserCubit extends Cubit<UserState> {
   Future<void> deleteUsersByFilter(UserQueryFilter filter) async {
     emit(const UserState.loading());
     try {
-      await _deleteByFilterUseCase(filter);
+      await _deleteByFilterUseCase(filter: filter);
       await refreshFilter();
     } catch (e) {
       emit(UserState.failure(message: e.toString()));

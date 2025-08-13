@@ -52,8 +52,6 @@ extension UserStatePatterns on UserState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_UsersLoaded value)? usersLoaded,
-    TResult Function(_CurrentUserLoaded value)? currentUserLoaded,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
@@ -64,10 +62,6 @@ extension UserStatePatterns on UserState {
         return initial(_that);
       case _Loading() when loading != null:
         return loading(_that);
-      case _UsersLoaded() when usersLoaded != null:
-        return usersLoaded(_that);
-      case _CurrentUserLoaded() when currentUserLoaded != null:
-        return currentUserLoaded(_that);
       case _Success() when success != null:
         return success(_that);
       case _Failure() when failure != null:
@@ -94,8 +88,6 @@ extension UserStatePatterns on UserState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_UsersLoaded value) usersLoaded,
-    required TResult Function(_CurrentUserLoaded value) currentUserLoaded,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
   }) {
@@ -105,10 +97,6 @@ extension UserStatePatterns on UserState {
         return initial(_that);
       case _Loading():
         return loading(_that);
-      case _UsersLoaded():
-        return usersLoaded(_that);
-      case _CurrentUserLoaded():
-        return currentUserLoaded(_that);
       case _Success():
         return success(_that);
       case _Failure():
@@ -134,8 +122,6 @@ extension UserStatePatterns on UserState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_UsersLoaded value)? usersLoaded,
-    TResult? Function(_CurrentUserLoaded value)? currentUserLoaded,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
   }) {
@@ -145,10 +131,6 @@ extension UserStatePatterns on UserState {
         return initial(_that);
       case _Loading() when loading != null:
         return loading(_that);
-      case _UsersLoaded() when usersLoaded != null:
-        return usersLoaded(_that);
-      case _CurrentUserLoaded() when currentUserLoaded != null:
-        return currentUserLoaded(_that);
       case _Success() when success != null:
         return success(_that);
       case _Failure() when failure != null:
@@ -174,9 +156,7 @@ extension UserStatePatterns on UserState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<UserEntity> users)? usersLoaded,
-    TResult Function(UserEntity user)? currentUserLoaded,
-    TResult Function()? success,
+    TResult Function(List<UserEntity> user, int count)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -186,12 +166,8 @@ extension UserStatePatterns on UserState {
         return initial();
       case _Loading() when loading != null:
         return loading();
-      case _UsersLoaded() when usersLoaded != null:
-        return usersLoaded(_that.users);
-      case _CurrentUserLoaded() when currentUserLoaded != null:
-        return currentUserLoaded(_that.user);
       case _Success() when success != null:
-        return success();
+        return success(_that.user, _that.count);
       case _Failure() when failure != null:
         return failure(_that.message);
       case _:
@@ -216,9 +192,7 @@ extension UserStatePatterns on UserState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<UserEntity> users) usersLoaded,
-    required TResult Function(UserEntity user) currentUserLoaded,
-    required TResult Function() success,
+    required TResult Function(List<UserEntity> user, int count) success,
     required TResult Function(String message) failure,
   }) {
     final _that = this;
@@ -227,12 +201,8 @@ extension UserStatePatterns on UserState {
         return initial();
       case _Loading():
         return loading();
-      case _UsersLoaded():
-        return usersLoaded(_that.users);
-      case _CurrentUserLoaded():
-        return currentUserLoaded(_that.user);
       case _Success():
-        return success();
+        return success(_that.user, _that.count);
       case _Failure():
         return failure(_that.message);
       case _:
@@ -256,9 +226,7 @@ extension UserStatePatterns on UserState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<UserEntity> users)? usersLoaded,
-    TResult? Function(UserEntity user)? currentUserLoaded,
-    TResult? Function()? success,
+    TResult? Function(List<UserEntity> user, int count)? success,
     TResult? Function(String message)? failure,
   }) {
     final _that = this;
@@ -267,12 +235,8 @@ extension UserStatePatterns on UserState {
         return initial();
       case _Loading() when loading != null:
         return loading();
-      case _UsersLoaded() when usersLoaded != null:
-        return usersLoaded(_that.users);
-      case _CurrentUserLoaded() when currentUserLoaded != null:
-        return currentUserLoaded(_that.user);
       case _Success() when success != null:
-        return success();
+        return success(_that.user, _that.count);
       case _Failure() when failure != null:
         return failure(_that.message);
       case _:
@@ -323,166 +287,78 @@ class _Loading implements UserState {
 
 /// @nodoc
 
-class _UsersLoaded implements UserState {
-  const _UsersLoaded({required final List<UserEntity> users}) : _users = users;
+class _Success implements UserState {
+  const _Success({required final List<UserEntity> user, required this.count})
+      : _user = user;
 
-  final List<UserEntity> _users;
-  List<UserEntity> get users {
-    if (_users is EqualUnmodifiableListView) return _users;
+  final List<UserEntity> _user;
+  List<UserEntity> get user {
+    if (_user is EqualUnmodifiableListView) return _user;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_users);
+    return EqualUnmodifiableListView(_user);
   }
+
+  final int count;
 
   /// Create a copy of UserState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$UsersLoadedCopyWith<_UsersLoaded> get copyWith =>
-      __$UsersLoadedCopyWithImpl<_UsersLoaded>(this, _$identity);
+  _$SuccessCopyWith<_Success> get copyWith =>
+      __$SuccessCopyWithImpl<_Success>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UsersLoaded &&
-            const DeepCollectionEquality().equals(other._users, _users));
+            other is _Success &&
+            const DeepCollectionEquality().equals(other._user, _user) &&
+            (identical(other.count, count) || other.count == count));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_users));
-
-  @override
-  String toString() {
-    return 'UserState.usersLoaded(users: $users)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$UsersLoadedCopyWith<$Res>
-    implements $UserStateCopyWith<$Res> {
-  factory _$UsersLoadedCopyWith(
-          _UsersLoaded value, $Res Function(_UsersLoaded) _then) =
-      __$UsersLoadedCopyWithImpl;
-  @useResult
-  $Res call({List<UserEntity> users});
-}
-
-/// @nodoc
-class __$UsersLoadedCopyWithImpl<$Res> implements _$UsersLoadedCopyWith<$Res> {
-  __$UsersLoadedCopyWithImpl(this._self, this._then);
-
-  final _UsersLoaded _self;
-  final $Res Function(_UsersLoaded) _then;
-
-  /// Create a copy of UserState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? users = null,
-  }) {
-    return _then(_UsersLoaded(
-      users: null == users
-          ? _self._users
-          : users // ignore: cast_nullable_to_non_nullable
-              as List<UserEntity>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _CurrentUserLoaded implements UserState {
-  const _CurrentUserLoaded({required this.user});
-
-  final UserEntity user;
-
-  /// Create a copy of UserState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$CurrentUserLoadedCopyWith<_CurrentUserLoaded> get copyWith =>
-      __$CurrentUserLoadedCopyWithImpl<_CurrentUserLoaded>(this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _CurrentUserLoaded &&
-            (identical(other.user, user) || other.user == user));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_user), count);
 
   @override
   String toString() {
-    return 'UserState.currentUserLoaded(user: $user)';
+    return 'UserState.success(user: $user, count: $count)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$CurrentUserLoadedCopyWith<$Res>
+abstract mixin class _$SuccessCopyWith<$Res>
     implements $UserStateCopyWith<$Res> {
-  factory _$CurrentUserLoadedCopyWith(
-          _CurrentUserLoaded value, $Res Function(_CurrentUserLoaded) _then) =
-      __$CurrentUserLoadedCopyWithImpl;
+  factory _$SuccessCopyWith(_Success value, $Res Function(_Success) _then) =
+      __$SuccessCopyWithImpl;
   @useResult
-  $Res call({UserEntity user});
-
-  $UserEntityCopyWith<$Res> get user;
+  $Res call({List<UserEntity> user, int count});
 }
 
 /// @nodoc
-class __$CurrentUserLoadedCopyWithImpl<$Res>
-    implements _$CurrentUserLoadedCopyWith<$Res> {
-  __$CurrentUserLoadedCopyWithImpl(this._self, this._then);
+class __$SuccessCopyWithImpl<$Res> implements _$SuccessCopyWith<$Res> {
+  __$SuccessCopyWithImpl(this._self, this._then);
 
-  final _CurrentUserLoaded _self;
-  final $Res Function(_CurrentUserLoaded) _then;
+  final _Success _self;
+  final $Res Function(_Success) _then;
 
   /// Create a copy of UserState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
     Object? user = null,
+    Object? count = null,
   }) {
-    return _then(_CurrentUserLoaded(
+    return _then(_Success(
       user: null == user
-          ? _self.user
+          ? _self._user
           : user // ignore: cast_nullable_to_non_nullable
-              as UserEntity,
+              as List<UserEntity>,
+      count: null == count
+          ? _self.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
-  }
-
-  /// Create a copy of UserState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserEntityCopyWith<$Res> get user {
-    return $UserEntityCopyWith<$Res>(_self.user, (value) {
-      return _then(_self.copyWith(user: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _Success implements UserState {
-  const _Success();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Success);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  String toString() {
-    return 'UserState.success()';
   }
 }
 

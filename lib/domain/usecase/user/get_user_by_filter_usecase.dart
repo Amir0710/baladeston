@@ -1,4 +1,5 @@
 import 'package:baladeston/domain/entitys/user/user_entity.dart';
+import 'package:baladeston/domain/filters/user_query_filter.dart';
 import 'package:baladeston/domain/repositories/user_repository.dart';
 
 class GetUsersByFilterUseCase {
@@ -6,7 +7,7 @@ class GetUsersByFilterUseCase {
 
   GetUsersByFilterUseCase(this.repository);
 
-  Future<UserEntity>? call({required int id}) {
-    return repository.getUserById(id: id);
+  Future<List<UserEntity>?> call({required UserQueryFilter filter}) {
+    return repository.getUsersByFilter(filter: filter);
   }
 }
