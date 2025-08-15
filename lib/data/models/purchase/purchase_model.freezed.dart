@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$PurchaseModel {
-  int get id;
+  int? get id;
   String get status;
   int get userId;
   int get categoryId;
@@ -78,7 +78,7 @@ abstract mixin class $PurchaseModelCopyWith<$Res> {
       _$PurchaseModelCopyWithImpl;
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String status,
       int userId,
       int categoryId,
@@ -103,7 +103,7 @@ class _$PurchaseModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? status = null,
     Object? userId = null,
     Object? categoryId = null,
@@ -115,10 +115,10 @@ class _$PurchaseModelCopyWithImpl<$Res>
     Object? updateAt = freezed,
   }) {
     return _then(_self.copyWith(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       status: null == status
           ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -253,7 +253,7 @@ extension PurchaseModelPatterns on PurchaseModel {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            int id,
+            int? id,
             String status,
             int userId,
             int categoryId,
@@ -301,7 +301,7 @@ extension PurchaseModelPatterns on PurchaseModel {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            int id,
+            int? id,
             String status,
             int userId,
             int categoryId,
@@ -347,7 +347,7 @@ extension PurchaseModelPatterns on PurchaseModel {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            int id,
+            int? id,
             String status,
             int userId,
             int categoryId,
@@ -397,7 +397,7 @@ class _PurchaseModel implements PurchaseModel {
       _$PurchaseModelFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
   final String status;
   @override
@@ -476,7 +476,7 @@ abstract mixin class _$PurchaseModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String status,
       int userId,
       int categoryId,
@@ -501,7 +501,7 @@ class __$PurchaseModelCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? status = null,
     Object? userId = null,
     Object? categoryId = null,
@@ -513,10 +513,10 @@ class __$PurchaseModelCopyWithImpl<$Res>
     Object? updateAt = freezed,
   }) {
     return _then(_PurchaseModel(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       status: null == status
           ? _self.status
           : status // ignore: cast_nullable_to_non_nullable

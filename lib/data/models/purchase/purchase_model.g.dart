@@ -8,7 +8,7 @@ part of 'purchase_model.dart';
 
 _PurchaseModel _$PurchaseModelFromJson(Map<String, dynamic> json) =>
     _PurchaseModel(
-      id: (json['id'] as num).toInt(),
+      id: (json['id'] as num?)?.toInt(),
       status: json['status'] as String,
       userId: (json['userId'] as num).toInt(),
       categoryId: (json['categoryId'] as num).toInt(),

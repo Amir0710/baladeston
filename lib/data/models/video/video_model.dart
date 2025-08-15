@@ -7,7 +7,7 @@ part 'video_model.g.dart';
 @freezed
 abstract class VideoModel with _$VideoModel {
   const factory VideoModel({
-    required int id,
+    required int? id,
     required String title,
     required String? description,
     required String videoUrl,

@@ -33,7 +33,7 @@ part 'video_entity.freezed.dart';
 @freezed
 abstract class VideoEntity with _$VideoEntity {
   const factory VideoEntity({
-    required int id,
+    required int? id,
     required String title,
     required String? description,
     required String videoUrl,

@@ -52,10 +52,6 @@ extension VideoStatePatterns on VideoState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_VideosLoaded value)? videosLoaded,
-    TResult Function(_FavoriteVideosLoaded value)? favoriteVideosLoaded,
-    TResult Function(_LastWatchPositionLoaded value)? lastWatchPositionLoaded,
-    TResult Function(_IsFavoriteLoaded value)? isFavoriteLoaded,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
@@ -66,14 +62,6 @@ extension VideoStatePatterns on VideoState {
         return initial(_that);
       case _Loading() when loading != null:
         return loading(_that);
-      case _VideosLoaded() when videosLoaded != null:
-        return videosLoaded(_that);
-      case _FavoriteVideosLoaded() when favoriteVideosLoaded != null:
-        return favoriteVideosLoaded(_that);
-      case _LastWatchPositionLoaded() when lastWatchPositionLoaded != null:
-        return lastWatchPositionLoaded(_that);
-      case _IsFavoriteLoaded() when isFavoriteLoaded != null:
-        return isFavoriteLoaded(_that);
       case _Success() when success != null:
         return success(_that);
       case _Failure() when failure != null:
@@ -100,11 +88,6 @@ extension VideoStatePatterns on VideoState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_VideosLoaded value) videosLoaded,
-    required TResult Function(_FavoriteVideosLoaded value) favoriteVideosLoaded,
-    required TResult Function(_LastWatchPositionLoaded value)
-        lastWatchPositionLoaded,
-    required TResult Function(_IsFavoriteLoaded value) isFavoriteLoaded,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
   }) {
@@ -114,14 +97,6 @@ extension VideoStatePatterns on VideoState {
         return initial(_that);
       case _Loading():
         return loading(_that);
-      case _VideosLoaded():
-        return videosLoaded(_that);
-      case _FavoriteVideosLoaded():
-        return favoriteVideosLoaded(_that);
-      case _LastWatchPositionLoaded():
-        return lastWatchPositionLoaded(_that);
-      case _IsFavoriteLoaded():
-        return isFavoriteLoaded(_that);
       case _Success():
         return success(_that);
       case _Failure():
@@ -147,10 +122,6 @@ extension VideoStatePatterns on VideoState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_VideosLoaded value)? videosLoaded,
-    TResult? Function(_FavoriteVideosLoaded value)? favoriteVideosLoaded,
-    TResult? Function(_LastWatchPositionLoaded value)? lastWatchPositionLoaded,
-    TResult? Function(_IsFavoriteLoaded value)? isFavoriteLoaded,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
   }) {
@@ -160,14 +131,6 @@ extension VideoStatePatterns on VideoState {
         return initial(_that);
       case _Loading() when loading != null:
         return loading(_that);
-      case _VideosLoaded() when videosLoaded != null:
-        return videosLoaded(_that);
-      case _FavoriteVideosLoaded() when favoriteVideosLoaded != null:
-        return favoriteVideosLoaded(_that);
-      case _LastWatchPositionLoaded() when lastWatchPositionLoaded != null:
-        return lastWatchPositionLoaded(_that);
-      case _IsFavoriteLoaded() when isFavoriteLoaded != null:
-        return isFavoriteLoaded(_that);
       case _Success() when success != null:
         return success(_that);
       case _Failure() when failure != null:
@@ -193,11 +156,7 @@ extension VideoStatePatterns on VideoState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VideoEntity> videos)? videosLoaded,
-    TResult Function(List<VideoEntity>? videos)? favoriteVideosLoaded,
-    TResult Function(int position)? lastWatchPositionLoaded,
-    TResult Function(bool isFavorite)? isFavoriteLoaded,
-    TResult Function()? success,
+    TResult Function(List<VideoEntity> video, int count)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -207,16 +166,8 @@ extension VideoStatePatterns on VideoState {
         return initial();
       case _Loading() when loading != null:
         return loading();
-      case _VideosLoaded() when videosLoaded != null:
-        return videosLoaded(_that.videos);
-      case _FavoriteVideosLoaded() when favoriteVideosLoaded != null:
-        return favoriteVideosLoaded(_that.videos);
-      case _LastWatchPositionLoaded() when lastWatchPositionLoaded != null:
-        return lastWatchPositionLoaded(_that.position);
-      case _IsFavoriteLoaded() when isFavoriteLoaded != null:
-        return isFavoriteLoaded(_that.isFavorite);
       case _Success() when success != null:
-        return success();
+        return success(_that.video, _that.count);
       case _Failure() when failure != null:
         return failure(_that.message);
       case _:
@@ -241,11 +192,7 @@ extension VideoStatePatterns on VideoState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<VideoEntity> videos) videosLoaded,
-    required TResult Function(List<VideoEntity>? videos) favoriteVideosLoaded,
-    required TResult Function(int position) lastWatchPositionLoaded,
-    required TResult Function(bool isFavorite) isFavoriteLoaded,
-    required TResult Function() success,
+    required TResult Function(List<VideoEntity> video, int count) success,
     required TResult Function(String message) failure,
   }) {
     final _that = this;
@@ -254,16 +201,8 @@ extension VideoStatePatterns on VideoState {
         return initial();
       case _Loading():
         return loading();
-      case _VideosLoaded():
-        return videosLoaded(_that.videos);
-      case _FavoriteVideosLoaded():
-        return favoriteVideosLoaded(_that.videos);
-      case _LastWatchPositionLoaded():
-        return lastWatchPositionLoaded(_that.position);
-      case _IsFavoriteLoaded():
-        return isFavoriteLoaded(_that.isFavorite);
       case _Success():
-        return success();
+        return success(_that.video, _that.count);
       case _Failure():
         return failure(_that.message);
       case _:
@@ -287,11 +226,7 @@ extension VideoStatePatterns on VideoState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<VideoEntity> videos)? videosLoaded,
-    TResult? Function(List<VideoEntity>? videos)? favoriteVideosLoaded,
-    TResult? Function(int position)? lastWatchPositionLoaded,
-    TResult? Function(bool isFavorite)? isFavoriteLoaded,
-    TResult? Function()? success,
+    TResult? Function(List<VideoEntity> video, int count)? success,
     TResult? Function(String message)? failure,
   }) {
     final _that = this;
@@ -300,16 +235,8 @@ extension VideoStatePatterns on VideoState {
         return initial();
       case _Loading() when loading != null:
         return loading();
-      case _VideosLoaded() when videosLoaded != null:
-        return videosLoaded(_that.videos);
-      case _FavoriteVideosLoaded() when favoriteVideosLoaded != null:
-        return favoriteVideosLoaded(_that.videos);
-      case _LastWatchPositionLoaded() when lastWatchPositionLoaded != null:
-        return lastWatchPositionLoaded(_that.position);
-      case _IsFavoriteLoaded() when isFavoriteLoaded != null:
-        return isFavoriteLoaded(_that.isFavorite);
       case _Success() when success != null:
-        return success();
+        return success(_that.video, _that.count);
       case _Failure() when failure != null:
         return failure(_that.message);
       case _:
@@ -360,297 +287,78 @@ class _Loading implements VideoState {
 
 /// @nodoc
 
-class _VideosLoaded implements VideoState {
-  const _VideosLoaded({required final List<VideoEntity> videos})
-      : _videos = videos;
+class _Success implements VideoState {
+  const _Success({required final List<VideoEntity> video, required this.count})
+      : _video = video;
 
-  final List<VideoEntity> _videos;
-  List<VideoEntity> get videos {
-    if (_videos is EqualUnmodifiableListView) return _videos;
+  final List<VideoEntity> _video;
+  List<VideoEntity> get video {
+    if (_video is EqualUnmodifiableListView) return _video;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_videos);
+    return EqualUnmodifiableListView(_video);
   }
+
+  final int count;
 
   /// Create a copy of VideoState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$VideosLoadedCopyWith<_VideosLoaded> get copyWith =>
-      __$VideosLoadedCopyWithImpl<_VideosLoaded>(this, _$identity);
+  _$SuccessCopyWith<_Success> get copyWith =>
+      __$SuccessCopyWithImpl<_Success>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _VideosLoaded &&
-            const DeepCollectionEquality().equals(other._videos, _videos));
+            other is _Success &&
+            const DeepCollectionEquality().equals(other._video, _video) &&
+            (identical(other.count, count) || other.count == count));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_videos));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_video), count);
 
   @override
   String toString() {
-    return 'VideoState.videosLoaded(videos: $videos)';
+    return 'VideoState.success(video: $video, count: $count)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$VideosLoadedCopyWith<$Res>
+abstract mixin class _$SuccessCopyWith<$Res>
     implements $VideoStateCopyWith<$Res> {
-  factory _$VideosLoadedCopyWith(
-          _VideosLoaded value, $Res Function(_VideosLoaded) _then) =
-      __$VideosLoadedCopyWithImpl;
+  factory _$SuccessCopyWith(_Success value, $Res Function(_Success) _then) =
+      __$SuccessCopyWithImpl;
   @useResult
-  $Res call({List<VideoEntity> videos});
+  $Res call({List<VideoEntity> video, int count});
 }
 
 /// @nodoc
-class __$VideosLoadedCopyWithImpl<$Res>
-    implements _$VideosLoadedCopyWith<$Res> {
-  __$VideosLoadedCopyWithImpl(this._self, this._then);
+class __$SuccessCopyWithImpl<$Res> implements _$SuccessCopyWith<$Res> {
+  __$SuccessCopyWithImpl(this._self, this._then);
 
-  final _VideosLoaded _self;
-  final $Res Function(_VideosLoaded) _then;
+  final _Success _self;
+  final $Res Function(_Success) _then;
 
   /// Create a copy of VideoState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? videos = null,
+    Object? video = null,
+    Object? count = null,
   }) {
-    return _then(_VideosLoaded(
-      videos: null == videos
-          ? _self._videos
-          : videos // ignore: cast_nullable_to_non_nullable
+    return _then(_Success(
+      video: null == video
+          ? _self._video
+          : video // ignore: cast_nullable_to_non_nullable
               as List<VideoEntity>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _FavoriteVideosLoaded implements VideoState {
-  const _FavoriteVideosLoaded({required final List<VideoEntity>? videos})
-      : _videos = videos;
-
-  final List<VideoEntity>? _videos;
-  List<VideoEntity>? get videos {
-    final value = _videos;
-    if (value == null) return null;
-    if (_videos is EqualUnmodifiableListView) return _videos;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  /// Create a copy of VideoState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$FavoriteVideosLoadedCopyWith<_FavoriteVideosLoaded> get copyWith =>
-      __$FavoriteVideosLoadedCopyWithImpl<_FavoriteVideosLoaded>(
-          this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _FavoriteVideosLoaded &&
-            const DeepCollectionEquality().equals(other._videos, _videos));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_videos));
-
-  @override
-  String toString() {
-    return 'VideoState.favoriteVideosLoaded(videos: $videos)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$FavoriteVideosLoadedCopyWith<$Res>
-    implements $VideoStateCopyWith<$Res> {
-  factory _$FavoriteVideosLoadedCopyWith(_FavoriteVideosLoaded value,
-          $Res Function(_FavoriteVideosLoaded) _then) =
-      __$FavoriteVideosLoadedCopyWithImpl;
-  @useResult
-  $Res call({List<VideoEntity>? videos});
-}
-
-/// @nodoc
-class __$FavoriteVideosLoadedCopyWithImpl<$Res>
-    implements _$FavoriteVideosLoadedCopyWith<$Res> {
-  __$FavoriteVideosLoadedCopyWithImpl(this._self, this._then);
-
-  final _FavoriteVideosLoaded _self;
-  final $Res Function(_FavoriteVideosLoaded) _then;
-
-  /// Create a copy of VideoState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? videos = freezed,
-  }) {
-    return _then(_FavoriteVideosLoaded(
-      videos: freezed == videos
-          ? _self._videos
-          : videos // ignore: cast_nullable_to_non_nullable
-              as List<VideoEntity>?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _LastWatchPositionLoaded implements VideoState {
-  const _LastWatchPositionLoaded({required this.position});
-
-  final int position;
-
-  /// Create a copy of VideoState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$LastWatchPositionLoadedCopyWith<_LastWatchPositionLoaded> get copyWith =>
-      __$LastWatchPositionLoadedCopyWithImpl<_LastWatchPositionLoaded>(
-          this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _LastWatchPositionLoaded &&
-            (identical(other.position, position) ||
-                other.position == position));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, position);
-
-  @override
-  String toString() {
-    return 'VideoState.lastWatchPositionLoaded(position: $position)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$LastWatchPositionLoadedCopyWith<$Res>
-    implements $VideoStateCopyWith<$Res> {
-  factory _$LastWatchPositionLoadedCopyWith(_LastWatchPositionLoaded value,
-          $Res Function(_LastWatchPositionLoaded) _then) =
-      __$LastWatchPositionLoadedCopyWithImpl;
-  @useResult
-  $Res call({int position});
-}
-
-/// @nodoc
-class __$LastWatchPositionLoadedCopyWithImpl<$Res>
-    implements _$LastWatchPositionLoadedCopyWith<$Res> {
-  __$LastWatchPositionLoadedCopyWithImpl(this._self, this._then);
-
-  final _LastWatchPositionLoaded _self;
-  final $Res Function(_LastWatchPositionLoaded) _then;
-
-  /// Create a copy of VideoState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? position = null,
-  }) {
-    return _then(_LastWatchPositionLoaded(
-      position: null == position
-          ? _self.position
-          : position // ignore: cast_nullable_to_non_nullable
+      count: null == count
+          ? _self.count
+          : count // ignore: cast_nullable_to_non_nullable
               as int,
     ));
-  }
-}
-
-/// @nodoc
-
-class _IsFavoriteLoaded implements VideoState {
-  const _IsFavoriteLoaded({required this.isFavorite});
-
-  final bool isFavorite;
-
-  /// Create a copy of VideoState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$IsFavoriteLoadedCopyWith<_IsFavoriteLoaded> get copyWith =>
-      __$IsFavoriteLoadedCopyWithImpl<_IsFavoriteLoaded>(this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _IsFavoriteLoaded &&
-            (identical(other.isFavorite, isFavorite) ||
-                other.isFavorite == isFavorite));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, isFavorite);
-
-  @override
-  String toString() {
-    return 'VideoState.isFavoriteLoaded(isFavorite: $isFavorite)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$IsFavoriteLoadedCopyWith<$Res>
-    implements $VideoStateCopyWith<$Res> {
-  factory _$IsFavoriteLoadedCopyWith(
-          _IsFavoriteLoaded value, $Res Function(_IsFavoriteLoaded) _then) =
-      __$IsFavoriteLoadedCopyWithImpl;
-  @useResult
-  $Res call({bool isFavorite});
-}
-
-/// @nodoc
-class __$IsFavoriteLoadedCopyWithImpl<$Res>
-    implements _$IsFavoriteLoadedCopyWith<$Res> {
-  __$IsFavoriteLoadedCopyWithImpl(this._self, this._then);
-
-  final _IsFavoriteLoaded _self;
-  final $Res Function(_IsFavoriteLoaded) _then;
-
-  /// Create a copy of VideoState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? isFavorite = null,
-  }) {
-    return _then(_IsFavoriteLoaded(
-      isFavorite: null == isFavorite
-          ? _self.isFavorite
-          : isFavorite // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _Success implements VideoState {
-  const _Success();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Success);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  String toString() {
-    return 'VideoState.success()';
   }
 }
 

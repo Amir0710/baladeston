@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$PurchaseEntity {
-  int get id;
+  int? get id;
   String get status;
   int get userId;
   int get categoryId;
@@ -74,7 +74,7 @@ abstract mixin class $PurchaseEntityCopyWith<$Res> {
       _$PurchaseEntityCopyWithImpl;
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String status,
       int userId,
       int categoryId,
@@ -99,7 +99,7 @@ class _$PurchaseEntityCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? status = null,
     Object? userId = null,
     Object? categoryId = null,
@@ -111,10 +111,10 @@ class _$PurchaseEntityCopyWithImpl<$Res>
     Object? createdAt = null,
   }) {
     return _then(_self.copyWith(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       status: null == status
           ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -249,7 +249,7 @@ extension PurchaseEntityPatterns on PurchaseEntity {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            int id,
+            int? id,
             String status,
             int userId,
             int categoryId,
@@ -297,7 +297,7 @@ extension PurchaseEntityPatterns on PurchaseEntity {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            int id,
+            int? id,
             String status,
             int userId,
             int categoryId,
@@ -343,7 +343,7 @@ extension PurchaseEntityPatterns on PurchaseEntity {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            int id,
+            int? id,
             String status,
             int userId,
             int categoryId,
@@ -391,7 +391,7 @@ class _PurchaseEntity implements PurchaseEntity {
       required this.createdAt});
 
   @override
-  final int id;
+  final int? id;
   @override
   final String status;
   @override
@@ -462,7 +462,7 @@ abstract mixin class _$PurchaseEntityCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String status,
       int userId,
       int categoryId,
@@ -487,7 +487,7 @@ class __$PurchaseEntityCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? status = null,
     Object? userId = null,
     Object? categoryId = null,
@@ -499,10 +499,10 @@ class __$PurchaseEntityCopyWithImpl<$Res>
     Object? createdAt = null,
   }) {
     return _then(_PurchaseEntity(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       status: null == status
           ? _self.status
           : status // ignore: cast_nullable_to_non_nullable

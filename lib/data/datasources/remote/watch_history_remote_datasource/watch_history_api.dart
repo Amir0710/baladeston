@@ -1,10 +1,17 @@
-import 'package:baladeston/data/models/collection/collection_model.dart';
-import 'package:baladeston/domain/filters/collection_query_filter.dart';
+import 'package:baladeston/data/models/watch_history/watch_history_model.dart';
+import 'package:baladeston/domain/filters/watch_history_query_filter.dart';
 
-abstract class CollectionRemoteDatasource {
-  Future<List<CollectionModel>> fetchCollections(CollectionQueryFilter filter);
-  Future<void> updateCollection(CollectionModel collection);
-  Future<void> deleteCollection(int id);
-  Future<void> createCollection(CollectionModel collection);
-  Future<int> countAllCollection(CollectionQueryFilter filter);
+abstract class WatchHistoryApi {
+  Future<WatchHistoryModel> updateLastPosition(
+      {required WatchHistoryModel watchHistory});
+  Future<List<WatchHistoryModel>?> getLastPositionByFilter(
+      {required WatchHistoryQueryFilter filter});
+  Future<WatchHistoryModel?> getLastPositionById({required int id});
+  Future<void> deleteWatchHistoryById({required int id});
+  Future<void> deleteWatchHistoryByFilter(
+      {required WatchHistoryQueryFilter filter});
+  Future<WatchHistoryModel> createWatchHistory(
+      {required WatchHistoryModel watchHistory});
+     Future<int> countWatchHistory(
+      {required WatchHistoryQueryFilter filter});   
 }

@@ -53,9 +53,8 @@ extension WatchHistoryStatePatterns on WatchHistoryState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_LastPositionsLoaded value)? lastPositionsLoaded,
     TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
     final _that = this;
@@ -64,12 +63,10 @@ extension WatchHistoryStatePatterns on WatchHistoryState {
         return initial(_that);
       case _Loading() when loading != null:
         return loading(_that);
-      case _Error() when error != null:
-        return error(_that);
-      case _LastPositionsLoaded() when lastPositionsLoaded != null:
-        return lastPositionsLoaded(_that);
       case _Success() when success != null:
         return success(_that);
+      case _Failure() when failure != null:
+        return failure(_that);
       case _:
         return orElse();
     }
@@ -92,9 +89,8 @@ extension WatchHistoryStatePatterns on WatchHistoryState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-    required TResult Function(_LastPositionsLoaded value) lastPositionsLoaded,
     required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
   }) {
     final _that = this;
     switch (_that) {
@@ -102,12 +98,10 @@ extension WatchHistoryStatePatterns on WatchHistoryState {
         return initial(_that);
       case _Loading():
         return loading(_that);
-      case _Error():
-        return error(_that);
-      case _LastPositionsLoaded():
-        return lastPositionsLoaded(_that);
       case _Success():
         return success(_that);
+      case _Failure():
+        return failure(_that);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -129,9 +123,8 @@ extension WatchHistoryStatePatterns on WatchHistoryState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_LastPositionsLoaded value)? lastPositionsLoaded,
     TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
   }) {
     final _that = this;
     switch (_that) {
@@ -139,12 +132,10 @@ extension WatchHistoryStatePatterns on WatchHistoryState {
         return initial(_that);
       case _Loading() when loading != null:
         return loading(_that);
-      case _Error() when error != null:
-        return error(_that);
-      case _LastPositionsLoaded() when lastPositionsLoaded != null:
-        return lastPositionsLoaded(_that);
       case _Success() when success != null:
         return success(_that);
+      case _Failure() when failure != null:
+        return failure(_that);
       case _:
         return null;
     }
@@ -166,9 +157,8 @@ extension WatchHistoryStatePatterns on WatchHistoryState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String message)? error,
-    TResult Function(List<WatchHistoryEntity> historyList)? lastPositionsLoaded,
-    TResult Function(String? message)? success,
+    TResult Function(List<WatchHistoryEntity> watchHistory, int count)? success,
+    TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
     final _that = this;
@@ -177,12 +167,10 @@ extension WatchHistoryStatePatterns on WatchHistoryState {
         return initial();
       case _Loading() when loading != null:
         return loading();
-      case _Error() when error != null:
-        return error(_that.message);
-      case _LastPositionsLoaded() when lastPositionsLoaded != null:
-        return lastPositionsLoaded(_that.historyList);
       case _Success() when success != null:
-        return success(_that.message);
+        return success(_that.watchHistory, _that.count);
+      case _Failure() when failure != null:
+        return failure(_that.message);
       case _:
         return orElse();
     }
@@ -205,10 +193,9 @@ extension WatchHistoryStatePatterns on WatchHistoryState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String message) error,
-    required TResult Function(List<WatchHistoryEntity> historyList)
-        lastPositionsLoaded,
-    required TResult Function(String? message) success,
+    required TResult Function(List<WatchHistoryEntity> watchHistory, int count)
+        success,
+    required TResult Function(String message) failure,
   }) {
     final _that = this;
     switch (_that) {
@@ -216,12 +203,10 @@ extension WatchHistoryStatePatterns on WatchHistoryState {
         return initial();
       case _Loading():
         return loading();
-      case _Error():
-        return error(_that.message);
-      case _LastPositionsLoaded():
-        return lastPositionsLoaded(_that.historyList);
       case _Success():
-        return success(_that.message);
+        return success(_that.watchHistory, _that.count);
+      case _Failure():
+        return failure(_that.message);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -243,10 +228,9 @@ extension WatchHistoryStatePatterns on WatchHistoryState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String message)? error,
-    TResult? Function(List<WatchHistoryEntity> historyList)?
-        lastPositionsLoaded,
-    TResult? Function(String? message)? success,
+    TResult? Function(List<WatchHistoryEntity> watchHistory, int count)?
+        success,
+    TResult? Function(String message)? failure,
   }) {
     final _that = this;
     switch (_that) {
@@ -254,12 +238,10 @@ extension WatchHistoryStatePatterns on WatchHistoryState {
         return initial();
       case _Loading() when loading != null:
         return loading();
-      case _Error() when error != null:
-        return error(_that.message);
-      case _LastPositionsLoaded() when lastPositionsLoaded != null:
-        return lastPositionsLoaded(_that.historyList);
       case _Success() when success != null:
-        return success(_that.message);
+        return success(_that.watchHistory, _that.count);
+      case _Failure() when failure != null:
+        return failure(_that.message);
       case _:
         return null;
     }
@@ -308,145 +290,20 @@ class _Loading implements WatchHistoryState {
 
 /// @nodoc
 
-class _Error implements WatchHistoryState {
-  const _Error(this.message);
-
-  final String message;
-
-  /// Create a copy of WatchHistoryState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$ErrorCopyWith<_Error> get copyWith =>
-      __$ErrorCopyWithImpl<_Error>(this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Error &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  @override
-  String toString() {
-    return 'WatchHistoryState.error(message: $message)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$ErrorCopyWith<$Res>
-    implements $WatchHistoryStateCopyWith<$Res> {
-  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) _then) =
-      __$ErrorCopyWithImpl;
-  @useResult
-  $Res call({String message});
-}
-
-/// @nodoc
-class __$ErrorCopyWithImpl<$Res> implements _$ErrorCopyWith<$Res> {
-  __$ErrorCopyWithImpl(this._self, this._then);
-
-  final _Error _self;
-  final $Res Function(_Error) _then;
-
-  /// Create a copy of WatchHistoryState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_Error(
-      null == message
-          ? _self.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _LastPositionsLoaded implements WatchHistoryState {
-  const _LastPositionsLoaded(final List<WatchHistoryEntity> historyList)
-      : _historyList = historyList;
-
-  final List<WatchHistoryEntity> _historyList;
-  List<WatchHistoryEntity> get historyList {
-    if (_historyList is EqualUnmodifiableListView) return _historyList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_historyList);
-  }
-
-  /// Create a copy of WatchHistoryState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$LastPositionsLoadedCopyWith<_LastPositionsLoaded> get copyWith =>
-      __$LastPositionsLoadedCopyWithImpl<_LastPositionsLoaded>(
-          this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _LastPositionsLoaded &&
-            const DeepCollectionEquality()
-                .equals(other._historyList, _historyList));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_historyList));
-
-  @override
-  String toString() {
-    return 'WatchHistoryState.lastPositionsLoaded(historyList: $historyList)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$LastPositionsLoadedCopyWith<$Res>
-    implements $WatchHistoryStateCopyWith<$Res> {
-  factory _$LastPositionsLoadedCopyWith(_LastPositionsLoaded value,
-          $Res Function(_LastPositionsLoaded) _then) =
-      __$LastPositionsLoadedCopyWithImpl;
-  @useResult
-  $Res call({List<WatchHistoryEntity> historyList});
-}
-
-/// @nodoc
-class __$LastPositionsLoadedCopyWithImpl<$Res>
-    implements _$LastPositionsLoadedCopyWith<$Res> {
-  __$LastPositionsLoadedCopyWithImpl(this._self, this._then);
-
-  final _LastPositionsLoaded _self;
-  final $Res Function(_LastPositionsLoaded) _then;
-
-  /// Create a copy of WatchHistoryState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? historyList = null,
-  }) {
-    return _then(_LastPositionsLoaded(
-      null == historyList
-          ? _self._historyList
-          : historyList // ignore: cast_nullable_to_non_nullable
-              as List<WatchHistoryEntity>,
-    ));
-  }
-}
-
-/// @nodoc
-
 class _Success implements WatchHistoryState {
-  const _Success([this.message]);
+  const _Success(
+      {required final List<WatchHistoryEntity> watchHistory,
+      required this.count})
+      : _watchHistory = watchHistory;
 
-  final String? message;
+  final List<WatchHistoryEntity> _watchHistory;
+  List<WatchHistoryEntity> get watchHistory {
+    if (_watchHistory is EqualUnmodifiableListView) return _watchHistory;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_watchHistory);
+  }
+
+  final int count;
 
   /// Create a copy of WatchHistoryState
   /// with the given fields replaced by the non-null parameter values.
@@ -460,15 +317,18 @@ class _Success implements WatchHistoryState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Success &&
-            (identical(other.message, message) || other.message == message));
+            const DeepCollectionEquality()
+                .equals(other._watchHistory, _watchHistory) &&
+            (identical(other.count, count) || other.count == count));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_watchHistory), count);
 
   @override
   String toString() {
-    return 'WatchHistoryState.success(message: $message)';
+    return 'WatchHistoryState.success(watchHistory: $watchHistory, count: $count)';
   }
 }
 
@@ -478,7 +338,7 @@ abstract mixin class _$SuccessCopyWith<$Res>
   factory _$SuccessCopyWith(_Success value, $Res Function(_Success) _then) =
       __$SuccessCopyWithImpl;
   @useResult
-  $Res call({String? message});
+  $Res call({List<WatchHistoryEntity> watchHistory, int count});
 }
 
 /// @nodoc
@@ -492,13 +352,80 @@ class __$SuccessCopyWithImpl<$Res> implements _$SuccessCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? message = freezed,
+    Object? watchHistory = null,
+    Object? count = null,
   }) {
     return _then(_Success(
-      freezed == message
+      watchHistory: null == watchHistory
+          ? _self._watchHistory
+          : watchHistory // ignore: cast_nullable_to_non_nullable
+              as List<WatchHistoryEntity>,
+      count: null == count
+          ? _self.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _Failure implements WatchHistoryState {
+  const _Failure({required this.message});
+
+  final String message;
+
+  /// Create a copy of WatchHistoryState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$FailureCopyWith<_Failure> get copyWith =>
+      __$FailureCopyWithImpl<_Failure>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Failure &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @override
+  String toString() {
+    return 'WatchHistoryState.failure(message: $message)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$FailureCopyWith<$Res>
+    implements $WatchHistoryStateCopyWith<$Res> {
+  factory _$FailureCopyWith(_Failure value, $Res Function(_Failure) _then) =
+      __$FailureCopyWithImpl;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$FailureCopyWithImpl<$Res> implements _$FailureCopyWith<$Res> {
+  __$FailureCopyWithImpl(this._self, this._then);
+
+  final _Failure _self;
+  final $Res Function(_Failure) _then;
+
+  /// Create a copy of WatchHistoryState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_Failure(
+      message: null == message
           ? _self.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }

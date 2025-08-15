@@ -1,6 +1,5 @@
 // data/models/category_model.dart
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:baladeston/domain/entitys/category/category_entity.dart';
 
 part 'category_model.freezed.dart';
 part 'category_model.g.dart';

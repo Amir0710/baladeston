@@ -1,36 +1,60 @@
-import 'package:baladeston/data/repository_implementaion/user_repository_implementaion%20.dart';
+import 'package:baladeston/data/repository_implementaion/user_repository_implementaion.dart';
+import 'package:baladeston/domain/usecase/user/count_user_usecase.dart';
+import 'package:baladeston/domain/usecase/user/get_user_by_filter_usecase.dart';
 import 'package:get_it/get_it.dart';
-import 'package:baladeston/domain/repositories/user_repository.dart';
 
+import 'package:baladeston/data/datasources/remote/user_remote_datasource/user_api.dart';
+import 'package:baladeston/domain/repositories/user_repository.dart';
 import 'package:baladeston/domain/usecase/user/get_user_by_id_usecase.dart';
 import 'package:baladeston/domain/usecase/user/update_user_usecase.dart';
 import 'package:baladeston/domain/usecase/user/delete_user_by_id_usecase.dart';
+import 'package:baladeston/domain/usecase/user/delete_user_by_filter_usecase.dart';
+import 'package:baladeston/domain/usecase/user/create_user_usecase.dart';
+
 import 'package:baladeston/presentation/providers/user_cubit/user_cubit.dart';
 
 final getIt = GetIt.instance;
 
-/// این تابع را در main.dart یا injection اصلی صدا بزنید
 Future<void> initUserModule() async {
   getIt
-    // 1- Repository
+
     ..registerLazySingleton<UserRepository>(
-      () => UserRepositoryImplementation(),
+      () => UserRepositoryImplementation(api: getIt<UserApi>()),
     )
 
-   
+    // UseCases
+    ..registerLazySingleton<GetUserByIdUseCase>(
+      () => GetUserByIdUseCase(getIt<UserRepository>()),
+    )
+    ..registerLazySingleton<GetUsersByFilterUseCase>(
+      () => GetUsersByFilterUseCase(getIt<UserRepository>()),
+    )
     ..registerLazySingleton<UpdateUserUseCase>(
       () => UpdateUserUseCase(getIt<UserRepository>()),
     )
+    ..registerLazySingleton<DeleteUserByIdUseCase>(
+      () => DeleteUserByIdUseCase(getIt<UserRepository>()),
+    )
+    ..registerLazySingleton<DeleteUserByFilterUseCase>(
+      () => DeleteUserByFilterUseCase(getIt<UserRepository>()),
+    )
+    ..registerLazySingleton<CreateUserUseCase>(
+      () => CreateUserUseCase(getIt<UserRepository>()),
+    )
+    ..registerLazySingleton<CountUsersUseCase>(
+      () => CountUsersUseCase(getIt<UserRepository>()),
+    )
 
-
-    // 3- Cubit
+    // Cubit
     ..registerFactory<UserCubit>(
       () => UserCubit(
-        changePasswordUseCase: getIt<ChangePasswordUseCase>(),
-        getUsersUseCase: getIt<GetUsersUseCase>(),
-        getCurrentUserUseCase: getIt<GetCurrentUserUseCase>(),
-        updateUserUseCase: getIt<UpdateUserUseCase>(),
-        deleteUserUseCase: getIt<DeleteUserUseCase>(),
+        countUseCase: getIt<CountUsersUseCase>(),
+        getByFilterUseCase: getIt<GetUsersByFilterUseCase>(),
+        getByIdUseCase: getIt<GetUserByIdUseCase>(),
+        createUseCase: getIt<CreateUserUseCase>(),
+        updateUseCase: getIt<UpdateUserUseCase>(),
+        deleteByIdUseCase: getIt<DeleteUserByIdUseCase>(),
+        deleteByFilterUseCase: getIt<DeleteUserByFilterUseCase>(),
       ),
     );
 }

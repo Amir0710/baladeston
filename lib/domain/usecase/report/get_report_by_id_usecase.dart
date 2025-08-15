@@ -5,7 +5,7 @@ class GetReportByIdUseCase {
   final ReportRepository repository;
 
   GetReportByIdUseCase( this.repository);
-  Future <ReportEntity>? call({required int id}) {
+  Future <ReportEntity?> call({required int id}) {
     return repository.getReportById(id : id);
   }
 }

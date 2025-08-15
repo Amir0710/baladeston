@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$WatchHistoryEntity {
-  int get id;
+  int? get id;
   int get userId;
   int get videoId;
   int get lastPositionSeconds;
@@ -59,7 +59,7 @@ abstract mixin class $WatchHistoryEntityCopyWith<$Res> {
       _$WatchHistoryEntityCopyWithImpl;
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       int userId,
       int videoId,
       int lastPositionSeconds,
@@ -79,17 +79,17 @@ class _$WatchHistoryEntityCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? userId = null,
     Object? videoId = null,
     Object? lastPositionSeconds = null,
     Object? updatedAt = null,
   }) {
     return _then(_self.copyWith(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -203,7 +203,7 @@ extension WatchHistoryEntityPatterns on WatchHistoryEntity {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int id, int userId, int videoId, int lastPositionSeconds,
+    TResult Function(int? id, int userId, int videoId, int lastPositionSeconds,
             DateTime updatedAt)?
         $default, {
     required TResult orElse(),
@@ -233,7 +233,7 @@ extension WatchHistoryEntityPatterns on WatchHistoryEntity {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(int id, int userId, int videoId, int lastPositionSeconds,
+    TResult Function(int? id, int userId, int videoId, int lastPositionSeconds,
             DateTime updatedAt)
         $default,
   ) {
@@ -261,7 +261,7 @@ extension WatchHistoryEntityPatterns on WatchHistoryEntity {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int id, int userId, int videoId, int lastPositionSeconds,
+    TResult? Function(int? id, int userId, int videoId, int lastPositionSeconds,
             DateTime updatedAt)?
         $default,
   ) {
@@ -287,7 +287,7 @@ class _WatchHistoryEntity implements WatchHistoryEntity {
       required this.updatedAt});
 
   @override
-  final int id;
+  final int? id;
   @override
   final int userId;
   @override
@@ -338,7 +338,7 @@ abstract mixin class _$WatchHistoryEntityCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       int userId,
       int videoId,
       int lastPositionSeconds,
@@ -358,17 +358,17 @@ class __$WatchHistoryEntityCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? userId = null,
     Object? videoId = null,
     Object? lastPositionSeconds = null,
     Object? updatedAt = null,
   }) {
     return _then(_WatchHistoryEntity(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable

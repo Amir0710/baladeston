@@ -1,12 +1,12 @@
 import 'package:baladeston/domain/filters/video_query_filter.dart';
 import 'package:baladeston/domain/repositories/video_repository.dart';
 
-class DeleteVideoListUseCase {
+class CountVideosUseCase {
   final VideoRepository repository;
 
-  DeleteVideoListUseCase(this.repository);
+  CountVideosUseCase(this.repository);
 
-  Future<void> call(VideoQueryFilter filter) async {
-    return repository.deleteVideoList(filter: filter );
+  Future<int> call({required VideoQueryFilter filter}) {
+    return repository.countVideos(filter: filter);
   }
 }

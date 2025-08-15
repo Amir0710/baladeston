@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$VideoModel {
-  int get id;
+  int? get id;
   String get title;
   String? get description;
   String get videoUrl;
@@ -74,7 +74,7 @@ abstract mixin class $VideoModelCopyWith<$Res> {
       _$VideoModelCopyWithImpl;
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String title,
       String? description,
       String videoUrl,
@@ -97,7 +97,7 @@ class _$VideoModelCopyWithImpl<$Res> implements $VideoModelCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? title = null,
     Object? description = freezed,
     Object? videoUrl = null,
@@ -108,10 +108,10 @@ class _$VideoModelCopyWithImpl<$Res> implements $VideoModelCopyWith<$Res> {
     Object? uploadedAt = null,
   }) {
     return _then(_self.copyWith(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       title: null == title
           ? _self.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -242,7 +242,7 @@ extension VideoModelPatterns on VideoModel {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            int id,
+            int? id,
             String title,
             String? description,
             String videoUrl,
@@ -288,7 +288,7 @@ extension VideoModelPatterns on VideoModel {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            int id,
+            int? id,
             String title,
             String? description,
             String videoUrl,
@@ -332,7 +332,7 @@ extension VideoModelPatterns on VideoModel {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            int id,
+            int? id,
             String title,
             String? description,
             String videoUrl,
@@ -379,7 +379,7 @@ class _VideoModel implements VideoModel {
       _$VideoModelFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
   final String title;
   @override
@@ -454,7 +454,7 @@ abstract mixin class _$VideoModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String title,
       String? description,
       String videoUrl,
@@ -477,7 +477,7 @@ class __$VideoModelCopyWithImpl<$Res> implements _$VideoModelCopyWith<$Res> {
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? title = null,
     Object? description = freezed,
     Object? videoUrl = null,
@@ -488,10 +488,10 @@ class __$VideoModelCopyWithImpl<$Res> implements _$VideoModelCopyWith<$Res> {
     Object? uploadedAt = null,
   }) {
     return _then(_VideoModel(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       title: null == title
           ? _self.title
           : title // ignore: cast_nullable_to_non_nullable

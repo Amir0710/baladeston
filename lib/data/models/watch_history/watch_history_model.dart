@@ -8,6 +8,7 @@ part 'watch_history_model.g.dart';
 @freezed
 abstract class WatchHistoryModel with _$WatchHistoryModel {
   const factory WatchHistoryModel({
+    required int? id ,
     required int userId,
     required int videoId,
     required int lastPositionSeconds,

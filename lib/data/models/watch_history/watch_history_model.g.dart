@@ -8,6 +8,7 @@ part of 'watch_history_model.dart';
 
 _WatchHistoryModel _$WatchHistoryModelFromJson(Map<String, dynamic> json) =>
     _WatchHistoryModel(
+      id: (json['id'] as num?)?.toInt(),
       userId: (json['userId'] as num).toInt(),
       videoId: (json['videoId'] as num).toInt(),
       lastPositionSeconds: (json['lastPositionSeconds'] as num).toInt(),
@@ -16,6 +17,7 @@ _WatchHistoryModel _$WatchHistoryModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$WatchHistoryModelToJson(_WatchHistoryModel instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'userId': instance.userId,
       'videoId': instance.videoId,
       'lastPositionSeconds': instance.lastPositionSeconds,

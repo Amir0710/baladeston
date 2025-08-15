@@ -14,6 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$WatchHistoryModel {
+  int? get id;
   int get userId;
   int get videoId;
   int get lastPositionSeconds;
@@ -35,6 +36,7 @@ mixin _$WatchHistoryModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is WatchHistoryModel &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.videoId, videoId) || other.videoId == videoId) &&
             (identical(other.lastPositionSeconds, lastPositionSeconds) ||
@@ -45,12 +47,12 @@ mixin _$WatchHistoryModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userId, videoId, lastPositionSeconds, updatedAt);
+  int get hashCode => Object.hash(
+      runtimeType, id, userId, videoId, lastPositionSeconds, updatedAt);
 
   @override
   String toString() {
-    return 'WatchHistoryModel(userId: $userId, videoId: $videoId, lastPositionSeconds: $lastPositionSeconds, updatedAt: $updatedAt)';
+    return 'WatchHistoryModel(id: $id, userId: $userId, videoId: $videoId, lastPositionSeconds: $lastPositionSeconds, updatedAt: $updatedAt)';
   }
 }
 
@@ -61,7 +63,11 @@ abstract mixin class $WatchHistoryModelCopyWith<$Res> {
       _$WatchHistoryModelCopyWithImpl;
   @useResult
   $Res call(
-      {int userId, int videoId, int lastPositionSeconds, DateTime updatedAt});
+      {int? id,
+      int userId,
+      int videoId,
+      int lastPositionSeconds,
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -77,12 +83,17 @@ class _$WatchHistoryModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? userId = null,
     Object? videoId = null,
     Object? lastPositionSeconds = null,
     Object? updatedAt = null,
   }) {
     return _then(_self.copyWith(
+      id: freezed == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -196,7 +207,7 @@ extension WatchHistoryModelPatterns on WatchHistoryModel {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int userId, int videoId, int lastPositionSeconds,
+    TResult Function(int? id, int userId, int videoId, int lastPositionSeconds,
             DateTime updatedAt)?
         $default, {
     required TResult orElse(),
@@ -204,8 +215,8 @@ extension WatchHistoryModelPatterns on WatchHistoryModel {
     final _that = this;
     switch (_that) {
       case _WatchHistoryModel() when $default != null:
-        return $default(_that.userId, _that.videoId, _that.lastPositionSeconds,
-            _that.updatedAt);
+        return $default(_that.id, _that.userId, _that.videoId,
+            _that.lastPositionSeconds, _that.updatedAt);
       case _:
         return orElse();
     }
@@ -226,15 +237,15 @@ extension WatchHistoryModelPatterns on WatchHistoryModel {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(int userId, int videoId, int lastPositionSeconds,
+    TResult Function(int? id, int userId, int videoId, int lastPositionSeconds,
             DateTime updatedAt)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _WatchHistoryModel():
-        return $default(_that.userId, _that.videoId, _that.lastPositionSeconds,
-            _that.updatedAt);
+        return $default(_that.id, _that.userId, _that.videoId,
+            _that.lastPositionSeconds, _that.updatedAt);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -254,15 +265,15 @@ extension WatchHistoryModelPatterns on WatchHistoryModel {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int userId, int videoId, int lastPositionSeconds,
+    TResult? Function(int? id, int userId, int videoId, int lastPositionSeconds,
             DateTime updatedAt)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _WatchHistoryModel() when $default != null:
-        return $default(_that.userId, _that.videoId, _that.lastPositionSeconds,
-            _that.updatedAt);
+        return $default(_that.id, _that.userId, _that.videoId,
+            _that.lastPositionSeconds, _that.updatedAt);
       case _:
         return null;
     }
@@ -273,13 +284,16 @@ extension WatchHistoryModelPatterns on WatchHistoryModel {
 @JsonSerializable()
 class _WatchHistoryModel implements WatchHistoryModel {
   const _WatchHistoryModel(
-      {required this.userId,
+      {required this.id,
+      required this.userId,
       required this.videoId,
       required this.lastPositionSeconds,
       required this.updatedAt});
   factory _WatchHistoryModel.fromJson(Map<String, dynamic> json) =>
       _$WatchHistoryModelFromJson(json);
 
+  @override
+  final int? id;
   @override
   final int userId;
   @override
@@ -309,6 +323,7 @@ class _WatchHistoryModel implements WatchHistoryModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _WatchHistoryModel &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.videoId, videoId) || other.videoId == videoId) &&
             (identical(other.lastPositionSeconds, lastPositionSeconds) ||
@@ -319,12 +334,12 @@ class _WatchHistoryModel implements WatchHistoryModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userId, videoId, lastPositionSeconds, updatedAt);
+  int get hashCode => Object.hash(
+      runtimeType, id, userId, videoId, lastPositionSeconds, updatedAt);
 
   @override
   String toString() {
-    return 'WatchHistoryModel(userId: $userId, videoId: $videoId, lastPositionSeconds: $lastPositionSeconds, updatedAt: $updatedAt)';
+    return 'WatchHistoryModel(id: $id, userId: $userId, videoId: $videoId, lastPositionSeconds: $lastPositionSeconds, updatedAt: $updatedAt)';
   }
 }
 
@@ -337,7 +352,11 @@ abstract mixin class _$WatchHistoryModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int userId, int videoId, int lastPositionSeconds, DateTime updatedAt});
+      {int? id,
+      int userId,
+      int videoId,
+      int lastPositionSeconds,
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -353,12 +372,17 @@ class __$WatchHistoryModelCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
+    Object? id = freezed,
     Object? userId = null,
     Object? videoId = null,
     Object? lastPositionSeconds = null,
     Object? updatedAt = null,
   }) {
     return _then(_WatchHistoryModel(
+      id: freezed == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable

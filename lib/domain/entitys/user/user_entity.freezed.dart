@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$UserEntity {
-  int get id;
+  int? get id;
   String get role;
   String get fullName;
   String get email;
@@ -63,7 +63,7 @@ abstract mixin class $UserEntityCopyWith<$Res> {
       _$UserEntityCopyWithImpl;
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String role,
       String fullName,
       String email,
@@ -84,7 +84,7 @@ class _$UserEntityCopyWithImpl<$Res> implements $UserEntityCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? role = null,
     Object? fullName = null,
     Object? email = null,
@@ -93,10 +93,10 @@ class _$UserEntityCopyWithImpl<$Res> implements $UserEntityCopyWith<$Res> {
     Object? status = null,
   }) {
     return _then(_self.copyWith(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       role: null == role
           ? _self.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -218,7 +218,7 @@ extension UserEntityPatterns on UserEntity {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int id, String role, String fullName, String email,
+    TResult Function(int? id, String role, String fullName, String email,
             String phoneNumber, String? avatarUrl, String status)?
         $default, {
     required TResult orElse(),
@@ -248,7 +248,7 @@ extension UserEntityPatterns on UserEntity {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(int id, String role, String fullName, String email,
+    TResult Function(int? id, String role, String fullName, String email,
             String phoneNumber, String? avatarUrl, String status)
         $default,
   ) {
@@ -276,7 +276,7 @@ extension UserEntityPatterns on UserEntity {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int id, String role, String fullName, String email,
+    TResult? Function(int? id, String role, String fullName, String email,
             String phoneNumber, String? avatarUrl, String status)?
         $default,
   ) {
@@ -304,7 +304,7 @@ class _UserEntity implements UserEntity {
       required this.status});
 
   @override
-  final int id;
+  final int? id;
   @override
   final String role;
   @override
@@ -362,7 +362,7 @@ abstract mixin class _$UserEntityCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String role,
       String fullName,
       String email,
@@ -383,7 +383,7 @@ class __$UserEntityCopyWithImpl<$Res> implements _$UserEntityCopyWith<$Res> {
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? role = null,
     Object? fullName = null,
     Object? email = null,
@@ -392,10 +392,10 @@ class __$UserEntityCopyWithImpl<$Res> implements _$UserEntityCopyWith<$Res> {
     Object? status = null,
   }) {
     return _then(_UserEntity(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       role: null == role
           ? _self.role
           : role // ignore: cast_nullable_to_non_nullable

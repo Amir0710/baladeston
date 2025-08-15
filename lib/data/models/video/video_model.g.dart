@@ -7,7 +7,7 @@ part of 'video_model.dart';
 // **************************************************************************
 
 _VideoModel _$VideoModelFromJson(Map<String, dynamic> json) => _VideoModel(
-      id: (json['id'] as num).toInt(),
+      id: (json['id'] as num?)?.toInt(),
       title: json['title'] as String,
       description: json['description'] as String?,
       videoUrl: json['videoUrl'] as String,

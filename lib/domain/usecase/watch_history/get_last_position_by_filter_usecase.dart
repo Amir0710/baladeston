@@ -2,12 +2,12 @@ import 'package:baladeston/domain/entitys/watch_history/watch_history_entity.dar
 import 'package:baladeston/domain/filters/watch_history_query_filter.dart';
 import 'package:baladeston/domain/repositories/watch_history_repository.dart';
 
-class GetLastPosition {
+class GetWatchHistoryByFilterUseCase {
   final WatchHistoryRepository repository;
 
-  GetLastPosition(this.repository);
+  GetWatchHistoryByFilterUseCase({required this.repository});
 
-  Future<List<WatchHistoryEntity>?> call(WatchHistoryQueryFilter filter) {
-    return repository.getLastPositionbyFilter(filter: filter);
+  Future<List<WatchHistoryEntity>?> call({required WatchHistoryQueryFilter filter}) {
+    return repository.getLastPositionByFilter(filter: filter);
   }
 }

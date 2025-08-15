@@ -9,7 +9,7 @@ extension WatchHistoryModelMapper on WatchHistoryModel {
       userId: userId,
       videoId: videoId,
       lastPositionSeconds: lastPositionSeconds,
-      updatedAt: updatedAt,
+      updatedAt: updatedAt, id: id,
     );
   }
 }
@@ -17,6 +17,7 @@ extension WatchHistoryModelMapper on WatchHistoryModel {
 extension WatchHistoryEntityMapper on WatchHistoryEntity {
   WatchHistoryModel toModel() {
     return WatchHistoryModel(
+      id : id ,
       userId: userId,
       videoId: videoId,
       lastPositionSeconds: lastPositionSeconds,

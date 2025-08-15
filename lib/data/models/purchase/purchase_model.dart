@@ -7,7 +7,7 @@ part 'purchase_model.g.dart';
 @freezed
 abstract class PurchaseModel with _$PurchaseModel {
   const factory PurchaseModel({
-    required int id,
+    required int? id,
     required String status,
     required int userId,
     required int categoryId,

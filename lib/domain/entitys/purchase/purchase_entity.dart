@@ -27,7 +27,7 @@ part 'purchase_entity.freezed.dart';
 @freezed
 abstract class PurchaseEntity with _$PurchaseEntity {
   const factory PurchaseEntity({
-    required int id,
+    required int? id,
     required String status,
     required int userId,
     required int categoryId,

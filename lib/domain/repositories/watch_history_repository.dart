@@ -4,14 +4,14 @@ import 'package:baladeston/domain/filters/watch_history_query_filter.dart';
 abstract class WatchHistoryRepository {
   Future<WatchHistoryEntity> updateLastPosition(
       {required WatchHistoryEntity watchHistory});
-  Future<List<WatchHistoryEntity>?> getLastPositionbyFilter({
-    required WatchHistoryQueryFilter filter,
-  });
-
-  Future<WatchHistoryEntity> getLastPositionbyId({required int id});
-  Future<void> deleteAllHistory();
-  Future<void> deleteWatchHistoryList(
+  Future<List<WatchHistoryEntity>?> getLastPositionByFilter(
+      {required WatchHistoryQueryFilter filter});
+  Future<WatchHistoryEntity?> getLastPositionById({required int id});
+  Future<void> deleteWatchHistoryById({required int id});
+  Future<void> deleteWatchHistoryByFilter(
       {required WatchHistoryQueryFilter filter});
   Future<WatchHistoryEntity> createWatchHistory(
       {required WatchHistoryEntity watchHistory});
+     Future<int> countWatchHistory(
+      {required WatchHistoryQueryFilter filter});   
 }

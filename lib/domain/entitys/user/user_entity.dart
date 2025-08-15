@@ -24,12 +24,13 @@ part 'user_entity.freezed.dart';
 @freezed
 abstract class UserEntity with _$UserEntity {
   const factory UserEntity({
-    required int id,
+    required int? id,
     required String role,
     required String fullName,
     required String email,
     required String phoneNumber,
     required String? avatarUrl,
     required String status,
+    
   }) = _UserEntity;
 }

@@ -1,4 +1,3 @@
-// data/mappers/user_mapper.dart
 import 'package:baladeston/data/models/user/user_model.dart';
 import 'package:baladeston/domain/entitys/user/user_entity.dart';
 
@@ -11,6 +10,7 @@ extension UserModelMapper on UserModel {
       phoneNumber: phoneNumber,
       avatarUrl: avatarUrl,
       status: status,
+      role: role,
     );
   }
 }
@@ -24,6 +24,7 @@ extension UserEntityMapper on UserEntity {
       phoneNumber: phoneNumber,
       avatarUrl: avatarUrl,
       status: status,
+      role: role,
     );
   }
 }

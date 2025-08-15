@@ -1,10 +1,12 @@
-import 'package:baladeston/data/models/collection/collection_model.dart';
-import 'package:baladeston/domain/filters/collection_query_filter.dart';
+import 'package:baladeston/data/models/user/user_model.dart';
+import 'package:baladeston/domain/filters/user_query_filter.dart';
 
-abstract class CollectionRemoteDatasource {
-  Future<List<CollectionModel>> fetchCollections(CollectionQueryFilter filter);
-  Future<void> updateCollection(CollectionModel collection);
-  Future<void> deleteCollection(int id);
-  Future<void> createCollection(CollectionModel collection);
-  Future<int> countAllCollection(CollectionQueryFilter filter);
+abstract class UserApi {
+  Future<UserModel>? getUserById({required int id});
+  Future<List<UserModel>?> getUsersByFilter({required UserQueryFilter filter});
+  Future<UserModel> updateUser({required UserModel user});
+  Future<void> deleteUserById({required int id});
+  Future<void> deleteUserByFilter({required UserQueryFilter filter});
+  Future<UserModel> createUser({required UserModel user});
+  Future<int> countUser({required UserQueryFilter filter});
 }

@@ -1,182 +1,81 @@
 import 'package:bloc/bloc.dart';
-import 'package:baladeston/domain/filters/video_query_filter.dart';
 import 'package:baladeston/domain/entitys/video/video_entity.dart';
+import 'package:baladeston/domain/filters/video_query_filter.dart';
 
-import 'package:baladeston/domain/usecase/video/delete_video_usecase.dart';
-import 'package:baladeston/domain/usecase/video/is_favorite_usecase.dart';
+// UseCases
+import 'package:baladeston/domain/usecase/video/count_video_usecase.dart';
 import 'package:baladeston/domain/usecase/video/get_video_by_filter_usecase.dart';
-import 'package:baladeston/domain/usecase/video/get_last_watch_position_usecase.dart';
-import 'package:baladeston/domain/usecase/video/get_favorite_videos_usecase.dart';
-import 'package:baladeston/domain/usecase/video/report_video_usecase.dart';
-import 'package:baladeston/domain/usecase/video/toggle_favorite_usecase.dart';
+import 'package:baladeston/domain/usecase/video/get_video_by_id_usecase.dart';
 import 'package:baladeston/domain/usecase/video/upload_video_usecase.dart';
-import 'package:baladeston/domain/usecase/video/update_last_watch_usecase.dart';
 import 'package:baladeston/domain/usecase/video/update_video_usecase.dart';
+import 'package:baladeston/domain/usecase/video/delete_video_by_id_usecase.dart';
+import 'package:baladeston/domain/usecase/video/delete_video_list_by_filter_usecase.dart';
 
 import 'video_state.dart';
 
 class VideoCubit extends Cubit<VideoState> {
-  final DeleteVideoUseCase _deleteUseCase;
-  final IsFavoriteUseCase _isFavoriteUseCase;
-  final GetVideosFilteredUseCase _getFilteredUseCase;
-  final GetLastWatchPositionUseCase _getLastPositionUseCase;
-  final GetFavoriteVideosUseCase _getFavoriteUseCase;
-  final ReportVideoUseCase _reportUseCase;
-  final ToggleFavoriteUseCase _toggleFavoriteUseCase;
-  final UploadVideoUseCase _uploadVideoUseCase;
-  final UpdateLastWatchUseCase _updateLastWatchUseCase;
-  final UpdateVideoUseCase _updateVideoUseCase;
+  final CountVideosUseCase _countUseCase;
+  final GetVideosByFilterUseCase _getByFilterUseCase;
+  final GetVideoByIdUseCase _getByIdUseCase;
+  final UploadVideoUseCase _uploadUseCase;
+  final UpdateVideoUseCase _updateUseCase;
+  final DeleteVideoByIdUseCase _deleteByIdUseCase;
+  final DeleteVideoListByFilterUseCase _deleteByFilterUseCase;
+
+  VideoQueryFilter? _lastFilter;
 
   VideoCubit({
-    required DeleteVideoUseCase deleteUseCase,
-    required IsFavoriteUseCase isFavoriteUseCase,
-    required GetVideosFilteredUseCase getFilteredUseCase,
-    required GetLastWatchPositionUseCase getLastPositionUseCase,
-    required GetFavoriteVideosUseCase getFavoriteUseCase,
-    required ReportVideoUseCase reportUseCase,
-    required ToggleFavoriteUseCase toggleFavoriteUseCase,
-    required UploadVideoUseCase uploadVideoUseCase,
-    required UpdateLastWatchUseCase updateLastWatchUseCase,
-    required UpdateVideoUseCase updateVideoUseCase,
-  })  : _deleteUseCase = deleteUseCase,
-        _isFavoriteUseCase = isFavoriteUseCase,
-        _getFilteredUseCase = getFilteredUseCase,
-        _getLastPositionUseCase = getLastPositionUseCase,
-        _getFavoriteUseCase = getFavoriteUseCase,
-        _reportUseCase = reportUseCase,
-        _toggleFavoriteUseCase = toggleFavoriteUseCase,
-        _uploadVideoUseCase = uploadVideoUseCase,
-        _updateLastWatchUseCase = updateLastWatchUseCase,
-        _updateVideoUseCase = updateVideoUseCase,
+    required CountVideosUseCase countUseCase,
+    required GetVideosByFilterUseCase getByFilterUseCase,
+    required GetVideoByIdUseCase getByIdUseCase,
+    required UploadVideoUseCase uploadUseCase,
+    required UpdateVideoUseCase updateUseCase,
+    required DeleteVideoByIdUseCase deleteByIdUseCase,
+    required DeleteVideoListByFilterUseCase deleteByFilterUseCase,
+  })  : _countUseCase = countUseCase,
+        _getByFilterUseCase = getByFilterUseCase,
+        _getByIdUseCase = getByIdUseCase,
+        _uploadUseCase = uploadUseCase,
+        _updateUseCase = updateUseCase,
+        _deleteByIdUseCase = deleteByIdUseCase,
+        _deleteByFilterUseCase = deleteByFilterUseCase,
         super(const VideoState.initial());
 
-  Future<void> loadVideos({
-    required VideoQueryFilter filter,
-    required int limit,
-    required int offset,
-  }) async {
+  Future<void> loadVideos([VideoQueryFilter? filter]) async {
     emit(const VideoState.loading());
     try {
-      final videos = await _getFilteredUseCase(
-        filter: filter,
-        limit: limit,
-        offset: offset,
-      );
-      emit(VideoState.videosLoaded(videos: videos));
+      final f = filter ?? VideoQueryFilter();
+      _lastFilter = f;
+      final videos = await _getByFilterUseCase(filter: f);
+      final count = await _countUseCase(filter: f);
+      emit(VideoState.success(video: videos ?? [], count: count));
     } catch (e) {
       emit(VideoState.failure(message: e.toString()));
     }
   }
 
-  Future<void> loadFavoriteVideos({required int userId}) async {
-    emit(const VideoState.loading());
-    try {
-      final videos = await _getFavoriteUseCase(userId: userId);
-      emit(VideoState.favoriteVideosLoaded(videos:videos));
-    } catch (e) {
-      emit(VideoState.failure(message: e.toString()));// check null 
-    }
+  Future<void> refreshFilter() async {
+    await loadVideos(_lastFilter);
   }
 
-  Future<void> loadLastWatchPosition({
-    required int userId,
-    required int videoId,
-  }) async {
+  Future<void> loadVideoById(int id) async {
     emit(const VideoState.loading());
     try {
-      final pos = await _getLastPositionUseCase(
-        userId: userId,
-        videoId: videoId,
-      );
-      emit(VideoState.lastWatchPositionLoaded(position: pos));
+      final video = await _getByIdUseCase(id: id);
+      emit(VideoState.success(
+        video: video != null ? [video] : [],
+        count: video != null ? 1 : 0,
+      ));
     } catch (e) {
       emit(VideoState.failure(message: e.toString()));
     }
   }
 
-  Future<void> checkIsFavorite({
-    required int userId,
-    required int videoId,
-  }) async {
+  Future<void> uploadVideo(VideoEntity video) async {
     emit(const VideoState.loading());
     try {
-      final flag = await _isFavoriteUseCase(
-        userId: userId,
-        videoId: videoId,
-      );
-      emit(VideoState.isFavoriteLoaded(isFavorite: flag));
-    } catch (e) {
-      emit(VideoState.failure(message: e.toString()));
-    }
-  }
-
-  Future<void> deleteVideo() async {
-    emit(const VideoState.loading());
-    try {
-      await _deleteUseCase();
-      emit(const VideoState.success());
-    } catch (e) {
-      emit(VideoState.failure(message: e.toString()));
-    }
-  }
-
-  Future<void> reportVideo({
-    required int userId,
-    required int videoId,
-    required String reason,
-  }) async {
-    emit(const VideoState.loading());
-    try {
-      await _reportUseCase(
-        userId: userId,
-        videoId: videoId,
-        reason: reason,
-      );
-      emit(const VideoState.success());
-    } catch (e) {
-      emit(VideoState.failure(message: e.toString()));
-    }
-  }
-
-  Future<void> toggleFavorite({
-    required int userId,
-    required int videoId,
-  }) async {
-    emit(const VideoState.loading());
-    try {
-      await _toggleFavoriteUseCase(
-        userId: userId,
-        videoId: videoId,
-      );
-      emit(const VideoState.success());
-    } catch (e) {
-      emit(VideoState.failure(message: e.toString()));
-    }
-  }
-
-  Future<void> uploadVideo({required VideoEntity video}) async {
-    emit(const VideoState.loading());
-    try {
-      await _uploadVideoUseCase(video );
-      emit(const VideoState.success());
-    } catch (e) {
-      emit(VideoState.failure(message: e.toString()));
-    }
-  }
-
-  Future<void> updateLastWatch({
-    required int userId,
-    required int videoId,
-    required int lastPositionSeconds,
-  }) async {
-    emit(const VideoState.loading());
-    try {
-      await _updateLastWatchUseCase(
-        userId: userId,
-        videoId: videoId,
-        lastPositionSeconds: lastPositionSeconds,
-      );
-      emit(const VideoState.success());
+      await _uploadUseCase(video: video);
+      await refreshFilter();
     } catch (e) {
       emit(VideoState.failure(message: e.toString()));
     }
@@ -185,8 +84,28 @@ class VideoCubit extends Cubit<VideoState> {
   Future<void> updateVideo(VideoEntity video) async {
     emit(const VideoState.loading());
     try {
-      await _updateVideoUseCase(video);
-      emit(const VideoState.success());
+      await _updateUseCase(video: video);
+      await refreshFilter();
+    } catch (e) {
+      emit(VideoState.failure(message: e.toString()));
+    }
+  }
+
+  Future<void> deleteVideosByFilter(VideoQueryFilter filter) async {
+    emit(const VideoState.loading());
+    try {
+      await _deleteByFilterUseCase(filter: filter);
+      await refreshFilter();
+    } catch (e) {
+      emit(VideoState.failure(message: e.toString()));
+    }
+  }
+
+  Future<void> deleteVideoById(int id) async {
+    emit(const VideoState.loading());
+    try {
+      await _deleteByIdUseCase(id: id);
+      await refreshFilter();
     } catch (e) {
       emit(VideoState.failure(message: e.toString()));
     }

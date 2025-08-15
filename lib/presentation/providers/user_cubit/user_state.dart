@@ -8,13 +8,11 @@ class UserState with _$UserState {
   const factory UserState.initial() = _Initial;
   const factory UserState.loading() = _Loading;
 
-  /// موفقیت: شامل لیست گزارش‌ها و تعداد کل
   const factory UserState.success({
     required List<UserEntity> user,
     required int count,
   }) = _Success;
 
-  /// شکست: همراه با پیام خطا
   const factory UserState.failure({
     required String message,
   }) = _Failure;
