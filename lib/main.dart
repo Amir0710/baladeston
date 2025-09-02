@@ -1,6 +1,10 @@
 import 'package:baladeston/core/init/supabase_initializer.dart';
 import 'package:baladeston/presentation/pages/spalsh_page/splash_page.dart';
+import 'package:baladeston/presentation/providers/theme_cubit/theme_cubit.dart';
+import 'package:baladeston/presentation/providers/theme_cubit/theme_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,40 +15,24 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: Splash(),
-    );
-  }
-}
-
-class Home extends StatelessWidget {
-  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(
-              builder: (context) {
-                return Splash();
-              },
-            ));
-          },
-          child: Container(
-            height: 100,
-            width: 100,
-            color: Colors.red,
-          ),
-        ),
+    return BlocProvider(
+      create: (_) => ThemeCubit(),
+      child: BlocBuilder<ThemeCubit, ThemeState>(
+        builder: (context, state) {
+          return state.maybeWhen(
+            success: (themeData, isDark) {
+              return MaterialApp(
+                title: 'Flutter Demo',
+                theme: themeData,
+                home:  Splash(),
+              );
+            },
+            orElse: () => const SizedBox.shrink(),
+          );
+        },
       ),
     );
   }

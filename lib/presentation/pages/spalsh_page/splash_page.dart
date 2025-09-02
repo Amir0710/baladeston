@@ -8,6 +8,7 @@ class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Column(
         children: [
           SizedBox(
@@ -83,8 +84,8 @@ class Splash extends StatelessWidget {
             ),
           ),
           Text(
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolore magna aliqua',
-            style: GoogleFonts.aBeeZee(fontSize: 28),
+            'welcome to \n baledeston',
+            style: GoogleFonts.aboreto(fontSize: 35),
           )
         ],
       ),
