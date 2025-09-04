@@ -14,7 +14,6 @@ import 'package:baladeston/domain/usecase/category/get_category_by_id_usecase.da
 
 final getIt = GetIt.instance;
 
-/// ثبت وابستگی‌های ماژول دسته‌بندی
 Future<void> initCategoryModule() async {
   getIt
 

@@ -15,12 +15,12 @@ final getIt = GetIt.instance;
 
 Future<void> initDiscountModule() async {
   getIt
-    // 1- Repository
+    // Repository
     ..registerLazySingleton<DiscountRepository>(
       () => DiscountRepositoryImplementation(api: getIt<DiscountApi>()),
     )
 
-    // 2- UseCases
+    // UseCases
     ..registerLazySingleton<CreateDiscountUseCase>(
       () => CreateDiscountUseCase(getIt<DiscountRepository>()),
     )
@@ -31,7 +31,7 @@ Future<void> initDiscountModule() async {
       () => EditDiscountUseCase(getIt<DiscountRepository>()),
     )
 
-    // 3- Cubit
+    // Cubit
     ..registerFactory<DiscountCubit>(
       () => DiscountCubit(
         createUseCase: getIt<CreateDiscountUseCase>(),

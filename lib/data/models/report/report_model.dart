@@ -1,5 +1,4 @@
-// data/models/report_model.dart
-// data/models/report_model.dart
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'report_model.freezed.dart';

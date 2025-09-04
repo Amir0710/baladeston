@@ -21,12 +21,12 @@ final getIt = GetIt.instance;
 
 Future<void> initFavoriteModule() async {
   getIt
-    // 1- Repository
+    // Repository
     ..registerLazySingleton<FavoriteRepository>(
       () => FavoriteRepositoryImplementation(api: getIt<FavoriteApi>()),
     )
 
-    // 2- UseCases
+    // UseCases
     ..registerLazySingleton<CreateFavoriteUseCase>(
       () => CreateFavoriteUseCase(getIt<FavoriteRepository>()),
     )
@@ -46,7 +46,7 @@ Future<void> initFavoriteModule() async {
       () => DeleteFavoriteByFilterUseCase(getIt<FavoriteRepository>()),
     )
 
-    // 3- Cubit
+    // Cubit
     ..registerFactory<FavoriteCubit>(
       () => FavoriteCubit(
         createUseCase: getIt<CreateFavoriteUseCase>(),

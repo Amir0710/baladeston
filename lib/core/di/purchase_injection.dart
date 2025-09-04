@@ -17,15 +17,14 @@ import 'package:baladeston/presentation/providers/purchase_cubit/purchase_cubit.
 
 final getIt = GetIt.instance;
 
-/// ثبت وابستگی‌های Purchase
 Future<void> initPurchaseModule() async {
   getIt
-    // 1. Repository
+    // Repository
     ..registerLazySingleton<PurchaseRepository>(
       () => PurchaseRepositoryImplementation(api: getIt<PurchaseApi>()),
     )
 
-    // 2. UseCases
+    // UseCases
     ..registerLazySingleton<CreatePurchaseUseCase>(
       () => CreatePurchaseUseCase(getIt<PurchaseRepository>()),
     )
@@ -48,7 +47,7 @@ Future<void> initPurchaseModule() async {
       () => CountPurchaseUseCase(getIt<PurchaseRepository>()),
     )
 
-    // 3. Cubit
+    // Cubit
     ..registerFactory<PurchaseCubit>(
       () => PurchaseCubit(
         createUseCase: getIt<CreatePurchaseUseCase>(),

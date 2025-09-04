@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           return state.maybeWhen(
             success: (themeData, isDark) {
               return MaterialApp(
-                title: 'Flutter Demo',
+                title: "baladeston",
                 theme: themeData,
                 home:  Splash(),
               );

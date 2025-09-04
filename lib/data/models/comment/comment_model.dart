@@ -1,4 +1,3 @@
-// data/models/comment_model.dart
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'comment_model.freezed.dart';

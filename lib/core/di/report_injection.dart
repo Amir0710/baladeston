@@ -19,7 +19,6 @@ import 'package:baladeston/domain/usecase/report/count_all_report_usecase.dart';
 
 final getIt = GetIt.instance;
 
-/// ثبت وابستگی‌های ماژول گزارش (Report)
 Future<void> initReportModule() async {
   getIt
 
