@@ -1,16 +1,18 @@
+import 'package:baladeston/core/theme/app_colors.dart';
+import 'package:baladeston/core/widgets/print_circle.dart';
+import 'package:baladeston/presentation/pages/introduction/introduction_second.dart';
 import 'package:flutter/material.dart';
 import 'package:baladeston/core/extensions/media_query_extension.dart';
 
-import '../../../core/theme/app_colors.dart';
-
-class Splash extends StatefulWidget {
-  const Splash({super.key});
+class IntroductionFirst extends StatefulWidget {
+  const IntroductionFirst({super.key});
 
   @override
-  State<Splash> createState() => _SplashState();
+  State<IntroductionFirst> createState() => _IntroductionFirstState();
 }
 
-class _SplashState extends State<Splash> with TickerProviderStateMixin {
+class _IntroductionFirstState extends State<IntroductionFirst>
+    with TickerProviderStateMixin {
   late final AnimationController _moveCtrl;
   late final AnimationController _scaleCtrl;
 
@@ -40,6 +42,10 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    TextTheme appTheme = Theme
+        .of(context)
+        .textTheme;
+
     return Scaffold(
       body: Column(
         children: [
@@ -52,19 +58,13 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
                 Text(
                   'بلدستون \nتمام حرفه ها تو جیبت',
                   textAlign: TextAlign.center,
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .displaySmall,
+                  style: appTheme.displaySmall,
                 ),
                 const SizedBox(height: 16),
                 Text(
                   'بلدستون همراه هوشمند توست برای پیدا کردن بهترین مسیر '
                       'و پیشنهادها بر اساس نیاز و موقعیتت',
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .bodyMedium,
+                  style: appTheme.bodyMedium,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 32),
@@ -72,25 +72,27 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
                   height: 54,
                   width: double.infinity,
                   child: ElevatedButton(
-
-                    onPressed: () {},
-                    child: Row(
-                      children: [
-                        Expanded(child: SizedBox()),
-                        Text(
-                          'شروع کردن',
-                          style: Theme.of(context).textTheme.labelLarge,
-                        ),
-                        Expanded(
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Icon(Icons.arrow_forward_ios),
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                            context, MaterialPageRoute(builder: (context) {
+                          return IntroductionSecond();
+                        },));
+                      },
+                      child: Row(
+                        children: [
+                          Expanded(child: SizedBox()),
+                          Text(
+                            'شروع کردن',
+                            style: appTheme.labelLarge,
                           ),
-                        ),
-                      ],
-                    )
-
-                  ),
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Icon(Icons.arrow_forward_ios),
+                            ),
+                          ),
+                        ],
+                      )),
                 ),
                 SizedBox(
                   height: 38,
@@ -115,19 +117,12 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
       height: context.screenHeight * 0.6,
       child: Stack(
         children: [
-          _animatedCircle(
-            left: -59,
-            top: context.screenHeight * 0.15,
-            size: 96,
-            color: const Color(0xff5C5BFD),
-            moveAnim: moveAnim,
-            scaleAnim: scaleAnim,
-          ),
+
           _animatedCircle(
             left: context.screenWidth * 0.15,
             top: context.screenHeight * 0.25,
             size: 24,
-            color: const Color(0xffFFD037),
+            color: AppColors.partColorsLight[0],
             moveAnim: moveAnim,
             scaleAnim: scaleAnim,
           ),
@@ -135,7 +130,7 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
             top: context.screenHeight * 0.08,
             right: -102,
             size: 184,
-            color: const Color(0xFF01B6CB),
+            color: AppColors.partColorsLight[1],
             moveAnim: moveAnim,
             scaleAnim: scaleAnim,
           ),
@@ -143,7 +138,7 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
             left: context.screenWidth * 0.2,
             bottom: context.screenHeight * 0.04,
             size: 188,
-            color: const Color(0xffE14B5A),
+            color: AppColors.partColorsLight[2],
             moveAnim: moveAnim,
             scaleAnim: scaleAnim,
           ),
@@ -151,7 +146,15 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
             right: context.screenWidth * 0.1,
             bottom: context.screenHeight * 0.03,
             size: 24,
-            color: const Color(0xff2CB4EC),
+            color: AppColors.partColorsLight[3],
+            moveAnim: moveAnim,
+            scaleAnim: scaleAnim,
+          ),
+          _animatedCircle(
+            left: -59,
+            top: context.screenHeight * 0.15,
+            size: 96,
+            color: AppColors.partColorsLight[4],
             moveAnim: moveAnim,
             scaleAnim: scaleAnim,
           ),
@@ -159,7 +162,6 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
       ),
     );
   }
-
   Widget _animatedCircle({
     double? left,
     double? top,
@@ -177,19 +179,21 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
       bottom: bottom != null ? bottom - moveAnim.value : null,
       child: ScaleTransition(
         scale: scaleAnim,
-        child: _circle(size, color),
-      ),
-    );
-  }
+        child: SizedBox(
+          width: size,
+          height: size,
+          child:  PrintCircle(
+              center: Offset(size/2, size/2),
+              padding: 0,
+              width: 1,
+              layer: 1,
+              incremental: 0,
+              radius: size/2,
+              color: color,
+              style: PaintingStyle.fill,
+            ),
 
-  Widget _circle(double size, Color color) {
-    return Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-        color: color,
-        shape: BoxShape.circle,
+        ),
       ),
     );
-  }
-}
+  }}

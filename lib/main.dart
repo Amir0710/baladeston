@@ -1,5 +1,5 @@
 import 'package:baladeston/core/init/supabase_initializer.dart';
-import 'package:baladeston/presentation/pages/spalsh_page/splash_page.dart';
+import 'package:baladeston/presentation/pages/introduction/introduction_first.dart';
 import 'package:baladeston/presentation/providers/theme_cubit/theme_cubit.dart';
 import 'package:baladeston/presentation/providers/theme_cubit/theme_state.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
               return MaterialApp(
                 title: "baladeston",
                 theme: themeData,
-                home:  Splash(),
+                home:  IntroductionFirst(),
               );
             },
             orElse: () => const SizedBox.shrink(),
