@@ -11,10 +11,10 @@ abstract class VideoModel with _$VideoModel {
     required String? description,
     required String videoUrl,
     required String? thumbnailUrl,
-    required String status,
+    required String status, // edit nullable
     required int uploaderId,
     required int categoryId,
-    required DateTime uploadedAt,
+    required DateTime uploadedAt, // edit nullable
   }) = _VideoModel;
 
   factory VideoModel.fromJson(Map<String, dynamic> json) =>

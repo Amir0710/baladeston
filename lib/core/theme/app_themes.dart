@@ -6,27 +6,10 @@ class AppTheme {
   static ThemeData lightTheme() {
     return ThemeData(
       brightness: Brightness.light,
-      textTheme: GoogleFonts.aBeeZeeTextTheme()
-          .apply(
-            bodyColor: AppColors.textPrimaryLight,
-            displayColor: AppColors.textPrimaryLight,
-          )
-          .copyWith(
-            bodyMedium: TextStyle(
-              fontSize: 16,
-              color: AppColors.textSecondaryLight,
-            ),
-        bodyLarge: TextStyle(
-        fontSize: 16,
-        color: AppColors.textPrimaryLight,
+      textTheme: GoogleFonts.aBeeZeeTextTheme().apply(
+        bodyColor: AppColors.textPrimaryLight,
+        displayColor: AppColors.textPrimaryLight,
       ),
-        labelLarge:
-          TextStyle(
-            fontSize: 16 ,
-            fontWeight: FontWeight.w500,
-            color: AppColors.buttonForegroundLight
-          ),
-          ),
       primaryColor: AppColors.primaryLight,
       scaffoldBackgroundColor: AppColors.backgroundLight,
       dividerColor: AppColors.dividerLight,

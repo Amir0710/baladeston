@@ -11,8 +11,9 @@ abstract class DiscountModel with _$DiscountModel {
     required int? id,
     required int? category,
     required int percent,
-    required String status,
-    required DateTime expiresAt,
+    required String status, // edit can be nullable
+    required DateTime expiresAt, // edit can be nullable
+    // edit add video id and number of usage and number of max use is nullable
   }) = _DiscountModel;
 
   factory DiscountModel.fromJson(Map<String, dynamic> json) =>

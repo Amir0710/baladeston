@@ -9,7 +9,7 @@ abstract class FavoriteModel with _$FavoriteModel {
   const factory FavoriteModel({
     required int? id , 
     required int userId,
-        required String type ,
+    required String type , // edit delete unnecessary
     required int targetId,
     required DateTime? interestedIn,
   }) = _FavoriteModel;

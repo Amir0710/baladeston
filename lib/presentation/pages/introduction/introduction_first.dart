@@ -1,3 +1,4 @@
+import 'package:baladeston/core/constants/add_padding.dart';
 import 'package:baladeston/core/theme/app_colors.dart';
 import 'package:baladeston/core/widgets/print_circle.dart';
 import 'package:baladeston/presentation/pages/introduction/introduction_second.dart';
@@ -52,7 +53,7 @@ class _IntroductionFirstState extends State<IntroductionFirst>
           _buildTopCircles(context),
           Spacer(),
           Padding(
-            padding: EdgeInsetsGeometry.symmetric(horizontal: 21),
+            padding: EdgeInsetsGeometry.only(left: AppPadding.left , right: AppPadding.right),
             child: Column(
               children: [
                 Text(
