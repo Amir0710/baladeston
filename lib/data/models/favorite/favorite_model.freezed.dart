@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 mixin _$FavoriteModel {
   int? get id;
   int get userId;
-  String get type;
+  String get type; // edit delete unnecessary
   int get targetId;
   DateTime? get interestedIn;
 
@@ -294,6 +294,7 @@ class _FavoriteModel implements FavoriteModel {
   final int userId;
   @override
   final String type;
+// edit delete unnecessary
   @override
   final int targetId;
   @override

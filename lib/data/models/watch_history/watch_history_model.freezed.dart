@@ -14,10 +14,10 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$WatchHistoryModel {
-  int? get id;
+  int? get id; // edit unnecessary
   int get userId;
   int get videoId;
-  int get lastPositionSeconds;
+  int get lastPositionSeconds; // edit nullable
   DateTime get updatedAt;
 
   /// Create a copy of WatchHistoryModel
@@ -294,12 +294,14 @@ class _WatchHistoryModel implements WatchHistoryModel {
 
   @override
   final int? id;
+// edit unnecessary
   @override
   final int userId;
   @override
   final int videoId;
   @override
   final int lastPositionSeconds;
+// edit nullable
   @override
   final DateTime updatedAt;
 

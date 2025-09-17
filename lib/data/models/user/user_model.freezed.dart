@@ -16,10 +16,10 @@ T _$identity<T>(T value) => value;
 mixin _$UserModel {
   int? get id;
   String get fullName;
-  String get email;
+  String get email; // edit nullable
   String get phoneNumber;
   String? get avatarUrl;
-  String get status;
+  String get status; // edit nullable
   String get role;
 
   /// Create a copy of UserModel
@@ -314,12 +314,14 @@ class _UserModel implements UserModel {
   final String fullName;
   @override
   final String email;
+// edit nullable
   @override
   final String phoneNumber;
   @override
   final String? avatarUrl;
   @override
   final String status;
+// edit nullable
   @override
   final String role;
 

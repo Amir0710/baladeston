@@ -18,7 +18,7 @@ mixin _$DiscountModel {
   int? get id;
   int? get category;
   int get percent;
-  String get status;
+  String get status; // edit can be nullable
   DateTime get expiresAt;
 
   /// Create a copy of DiscountModel
@@ -311,6 +311,7 @@ class _DiscountModel implements DiscountModel {
   final int percent;
   @override
   final String status;
+// edit can be nullable
   @override
   final DateTime expiresAt;
 

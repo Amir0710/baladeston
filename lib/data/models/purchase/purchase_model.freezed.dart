@@ -15,14 +15,14 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PurchaseModel {
   int? get id;
-  String get status;
+  String get status; // edit im add default in database
   int get userId;
-  int get categoryId;
+  int get categoryId; // edit unnecessary
   int? get discountId;
   double get finalPrice;
-  DateTime get purchaseTime;
+  DateTime get purchaseTime; // edit can be nullable
   DateTime? get expiresAt;
-  DateTime get createdAt;
+  DateTime get createdAt; // edit unnecessary
   DateTime? get updateAt;
 
   /// Create a copy of PurchaseModel
@@ -400,20 +400,24 @@ class _PurchaseModel implements PurchaseModel {
   final int? id;
   @override
   final String status;
+// edit im add default in database
   @override
   final int userId;
   @override
   final int categoryId;
+// edit unnecessary
   @override
   final int? discountId;
   @override
   final double finalPrice;
   @override
   final DateTime purchaseTime;
+// edit can be nullable
   @override
   final DateTime? expiresAt;
   @override
   final DateTime createdAt;
+// edit unnecessary
   @override
   final DateTime? updateAt;
 

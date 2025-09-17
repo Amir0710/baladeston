@@ -6,17 +6,17 @@ part 'report_model.g.dart';
 
 @freezed
 abstract class ReportModel with _$ReportModel {
-  const factory ReportModel({
-    required int? id,
-    required int userId,
-    required int targetId,
-    required String response, // edit can be nullable
-    String? reason,
-    required DateTime reportedAt,
-    DateTime? responseAt,
-  }) = _ReportModel;
+    const factory ReportModel({
+      required int? id,
+      required int userId,
+      required int targetId,
+      required String response, // edit can be nullable
+      String? reason,
+      required DateTime reportedAt,
+      DateTime? responseAt,
+    }) = _ReportModel;
 
-  factory ReportModel.fromJson(Map<String, dynamic> json) =>
-      _$ReportModelFromJson(json);
-}
+    factory ReportModel.fromJson(Map<String, dynamic> json) =>
+        _$ReportModelFromJson(json);
+  }
 

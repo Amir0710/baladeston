@@ -19,7 +19,7 @@ mixin _$VideoModel {
   String? get description;
   String get videoUrl;
   String? get thumbnailUrl;
-  String get status;
+  String get status; // edit nullable
   int get uploaderId;
   int get categoryId;
   DateTime get uploadedAt;
@@ -390,6 +390,7 @@ class _VideoModel implements VideoModel {
   final String? thumbnailUrl;
   @override
   final String status;
+// edit nullable
   @override
   final int uploaderId;
   @override

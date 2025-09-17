@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/constants/add_padding.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initSupabase();
@@ -16,7 +15,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +27,21 @@ class MyApp extends StatelessWidget {
               return MaterialApp(
                 title: "baladeston",
                 theme: themeData,
-                home:  IntroductionFirst(),
+                home: IntroductionFirst(),
               );
             },
-            orElse: () => const SizedBox.shrink(),
+            initial: () => Container(
+              color: Colors.blue,
+            ),
+            orElse: () => Container(
+              color: Colors.red,
+            ),
+            failure: (massage) => Container(
+              color: Colors.red,
+            ),
+            loading: () => Container(
+              color: Colors.red,
+            ),
           );
         },
       ),

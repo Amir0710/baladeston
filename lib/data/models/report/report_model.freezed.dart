@@ -17,7 +17,7 @@ mixin _$ReportModel {
   int? get id;
   int get userId;
   int get targetId;
-  String get response;
+  String get response; // edit can be nullable
   String? get reason;
   DateTime get reportedAt;
   DateTime? get responseAt;
@@ -318,6 +318,7 @@ class _ReportModel implements ReportModel {
   final int targetId;
   @override
   final String response;
+// edit can be nullable
   @override
   final String? reason;
   @override
