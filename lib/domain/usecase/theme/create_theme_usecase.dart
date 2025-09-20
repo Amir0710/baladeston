@@ -4,7 +4,7 @@ import 'package:baladeston/domain/repositories/theme_repository.dart';
 class CreateThemeUseCase {
   final ThemeRepository repository;
 
-  CreateThemeUseCase({required this.repository});
+  CreateThemeUseCase( this.repository);
 
   Future<ThemeEntity?> call({required ThemeEntity theme}) {
     return repository.createTheme(theme: theme);

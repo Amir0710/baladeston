@@ -1,13 +1,13 @@
 import 'package:baladeston/domain/entitys/theme/theme_entity.dart';
 import 'package:baladeston/domain/repositories/theme_repository.dart';
 
-class CountAllThemeSUseCase {
+class GetAllThemesUseCase {
   final ThemeRepository repository;
 
-  CountAllThemeSUseCase({required this.repository});
+  GetAllThemesUseCase( this.repository);
 
 
-  Future<int> call() {
-    return repository.countAllThemes();
+  Future<List<ThemeEntity>?> call() {
+    return repository.getAllThemes();
   }
 }

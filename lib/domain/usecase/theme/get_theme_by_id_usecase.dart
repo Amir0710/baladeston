@@ -4,7 +4,7 @@ import 'package:baladeston/domain/repositories/theme_repository.dart';
 class GetThemeByIdUseCase {
   final ThemeRepository repository;
 
-  GetThemeByIdUseCase({required this.repository});
+  GetThemeByIdUseCase( this.repository);
 
   Future<ThemeEntity?> call ({required int id}) {
     return repository.getThemeById(id: id);

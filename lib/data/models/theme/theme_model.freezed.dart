@@ -1,5 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,117 +9,52 @@ part of 'theme_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+ThemeModel _$ThemeModelFromJson(Map<String, dynamic> json) {
+  return _ThemeModel.fromJson(json);
+}
 
 /// @nodoc
 mixin _$ThemeModel {
-  int? get id;
-  String get primary;
-  String get secondary;
-  String get background;
-  String get buttonForeground;
-  String get surface;
-  String get error;
-  String get success;
-  String get warning;
-  String get info;
-  String get divider;
-  String get textPrimary;
-  String get textSecondary;
-  List<String> get partColors;
+  int? get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  bool get isDark => throw _privateConstructorUsedError;
+  ThemeColors get colors => throw _privateConstructorUsedError;
+
+  /// Serializes this ThemeModel to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of ThemeModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $ThemeModelCopyWith<ThemeModel> get copyWith =>
-      _$ThemeModelCopyWithImpl<ThemeModel>(this as ThemeModel, _$identity);
-
-  /// Serializes this ThemeModel to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is ThemeModel &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.primary, primary) || other.primary == primary) &&
-            (identical(other.secondary, secondary) ||
-                other.secondary == secondary) &&
-            (identical(other.background, background) ||
-                other.background == background) &&
-            (identical(other.buttonForeground, buttonForeground) ||
-                other.buttonForeground == buttonForeground) &&
-            (identical(other.surface, surface) || other.surface == surface) &&
-            (identical(other.error, error) || other.error == error) &&
-            (identical(other.success, success) || other.success == success) &&
-            (identical(other.warning, warning) || other.warning == warning) &&
-            (identical(other.info, info) || other.info == info) &&
-            (identical(other.divider, divider) || other.divider == divider) &&
-            (identical(other.textPrimary, textPrimary) ||
-                other.textPrimary == textPrimary) &&
-            (identical(other.textSecondary, textSecondary) ||
-                other.textSecondary == textSecondary) &&
-            const DeepCollectionEquality()
-                .equals(other.partColors, partColors));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      primary,
-      secondary,
-      background,
-      buttonForeground,
-      surface,
-      error,
-      success,
-      warning,
-      info,
-      divider,
-      textPrimary,
-      textSecondary,
-      const DeepCollectionEquality().hash(partColors));
-
-  @override
-  String toString() {
-    return 'ThemeModel(id: $id, primary: $primary, secondary: $secondary, background: $background, buttonForeground: $buttonForeground, surface: $surface, error: $error, success: $success, warning: $warning, info: $info, divider: $divider, textPrimary: $textPrimary, textSecondary: $textSecondary, partColors: $partColors)';
-  }
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $ThemeModelCopyWith<$Res> {
+abstract class $ThemeModelCopyWith<$Res> {
   factory $ThemeModelCopyWith(
-          ThemeModel value, $Res Function(ThemeModel) _then) =
-      _$ThemeModelCopyWithImpl;
+          ThemeModel value, $Res Function(ThemeModel) then) =
+      _$ThemeModelCopyWithImpl<$Res, ThemeModel>;
   @useResult
-  $Res call(
-      {int? id,
-      String primary,
-      String secondary,
-      String background,
-      String buttonForeground,
-      String surface,
-      String error,
-      String success,
-      String warning,
-      String info,
-      String divider,
-      String textPrimary,
-      String textSecondary,
-      List<String> partColors});
+  $Res call({int? id, String name, bool isDark, ThemeColors colors});
+
+  $ThemeColorsCopyWith<$Res> get colors;
 }
 
 /// @nodoc
-class _$ThemeModelCopyWithImpl<$Res> implements $ThemeModelCopyWith<$Res> {
-  _$ThemeModelCopyWithImpl(this._self, this._then);
+class _$ThemeModelCopyWithImpl<$Res, $Val extends ThemeModel>
+    implements $ThemeModelCopyWith<$Res> {
+  _$ThemeModelCopyWithImpl(this._value, this._then);
 
-  final ThemeModel _self;
-  final $Res Function(ThemeModel) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of ThemeModel
   /// with the given fields replaced by the non-null parameter values.
@@ -127,373 +62,470 @@ class _$ThemeModelCopyWithImpl<$Res> implements $ThemeModelCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
-    Object? primary = null,
-    Object? secondary = null,
-    Object? background = null,
-    Object? buttonForeground = null,
-    Object? surface = null,
-    Object? error = null,
-    Object? success = null,
-    Object? warning = null,
-    Object? info = null,
-    Object? divider = null,
-    Object? textPrimary = null,
-    Object? textSecondary = null,
-    Object? partColors = null,
+    Object? name = null,
+    Object? isDark = null,
+    Object? colors = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       id: freezed == id
-          ? _self.id
+          ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      isDark: null == isDark
+          ? _value.isDark
+          : isDark // ignore: cast_nullable_to_non_nullable
+              as bool,
+      colors: null == colors
+          ? _value.colors
+          : colors // ignore: cast_nullable_to_non_nullable
+              as ThemeColors,
+    ) as $Val);
+  }
+
+  /// Create a copy of ThemeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ThemeColorsCopyWith<$Res> get colors {
+    return $ThemeColorsCopyWith<$Res>(_value.colors, (value) {
+      return _then(_value.copyWith(colors: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$ThemeModelImplCopyWith<$Res>
+    implements $ThemeModelCopyWith<$Res> {
+  factory _$$ThemeModelImplCopyWith(
+          _$ThemeModelImpl value, $Res Function(_$ThemeModelImpl) then) =
+      __$$ThemeModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int? id, String name, bool isDark, ThemeColors colors});
+
+  @override
+  $ThemeColorsCopyWith<$Res> get colors;
+}
+
+/// @nodoc
+class __$$ThemeModelImplCopyWithImpl<$Res>
+    extends _$ThemeModelCopyWithImpl<$Res, _$ThemeModelImpl>
+    implements _$$ThemeModelImplCopyWith<$Res> {
+  __$$ThemeModelImplCopyWithImpl(
+      _$ThemeModelImpl _value, $Res Function(_$ThemeModelImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ThemeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? name = null,
+    Object? isDark = null,
+    Object? colors = null,
+  }) {
+    return _then(_$ThemeModelImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      isDark: null == isDark
+          ? _value.isDark
+          : isDark // ignore: cast_nullable_to_non_nullable
+              as bool,
+      colors: null == colors
+          ? _value.colors
+          : colors // ignore: cast_nullable_to_non_nullable
+              as ThemeColors,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ThemeModelImpl implements _ThemeModel {
+  const _$ThemeModelImpl(
+      {this.id,
+      required this.name,
+      required this.isDark,
+      required this.colors});
+
+  factory _$ThemeModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ThemeModelImplFromJson(json);
+
+  @override
+  final int? id;
+  @override
+  final String name;
+  @override
+  final bool isDark;
+  @override
+  final ThemeColors colors;
+
+  @override
+  String toString() {
+    return 'ThemeModel(id: $id, name: $name, isDark: $isDark, colors: $colors)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ThemeModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.isDark, isDark) || other.isDark == isDark) &&
+            (identical(other.colors, colors) || other.colors == colors));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name, isDark, colors);
+
+  /// Create a copy of ThemeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ThemeModelImplCopyWith<_$ThemeModelImpl> get copyWith =>
+      __$$ThemeModelImplCopyWithImpl<_$ThemeModelImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ThemeModelImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ThemeModel implements ThemeModel {
+  const factory _ThemeModel(
+      {final int? id,
+      required final String name,
+      required final bool isDark,
+      required final ThemeColors colors}) = _$ThemeModelImpl;
+
+  factory _ThemeModel.fromJson(Map<String, dynamic> json) =
+      _$ThemeModelImpl.fromJson;
+
+  @override
+  int? get id;
+  @override
+  String get name;
+  @override
+  bool get isDark;
+  @override
+  ThemeColors get colors;
+
+  /// Create a copy of ThemeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ThemeModelImplCopyWith<_$ThemeModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ThemeColors _$ThemeColorsFromJson(Map<String, dynamic> json) {
+  return _ThemeColors.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ThemeColors {
+  String get info => throw _privateConstructorUsedError;
+  String get error => throw _privateConstructorUsedError;
+  String get divider => throw _privateConstructorUsedError;
+  String get primary => throw _privateConstructorUsedError;
+  String get success => throw _privateConstructorUsedError;
+  String get surface => throw _privateConstructorUsedError;
+  String get warning => throw _privateConstructorUsedError;
+  String get secondary => throw _privateConstructorUsedError;
+  String get background => throw _privateConstructorUsedError;
+  String get textPrimary => throw _privateConstructorUsedError;
+  String get textSecondary => throw _privateConstructorUsedError;
+  String get buttonForeground => throw _privateConstructorUsedError;
+  List<String> get partColors => throw _privateConstructorUsedError;
+
+  /// Serializes this ThemeColors to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of ThemeColors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ThemeColorsCopyWith<ThemeColors> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ThemeColorsCopyWith<$Res> {
+  factory $ThemeColorsCopyWith(
+          ThemeColors value, $Res Function(ThemeColors) then) =
+      _$ThemeColorsCopyWithImpl<$Res, ThemeColors>;
+  @useResult
+  $Res call(
+      {String info,
+      String error,
+      String divider,
+      String primary,
+      String success,
+      String surface,
+      String warning,
+      String secondary,
+      String background,
+      String textPrimary,
+      String textSecondary,
+      String buttonForeground,
+      List<String> partColors});
+}
+
+/// @nodoc
+class _$ThemeColorsCopyWithImpl<$Res, $Val extends ThemeColors>
+    implements $ThemeColorsCopyWith<$Res> {
+  _$ThemeColorsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ThemeColors
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? info = null,
+    Object? error = null,
+    Object? divider = null,
+    Object? primary = null,
+    Object? success = null,
+    Object? surface = null,
+    Object? warning = null,
+    Object? secondary = null,
+    Object? background = null,
+    Object? textPrimary = null,
+    Object? textSecondary = null,
+    Object? buttonForeground = null,
+    Object? partColors = null,
+  }) {
+    return _then(_value.copyWith(
+      info: null == info
+          ? _value.info
+          : info // ignore: cast_nullable_to_non_nullable
+              as String,
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+      divider: null == divider
+          ? _value.divider
+          : divider // ignore: cast_nullable_to_non_nullable
+              as String,
       primary: null == primary
-          ? _self.primary
+          ? _value.primary
           : primary // ignore: cast_nullable_to_non_nullable
               as String,
+      success: null == success
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as String,
+      surface: null == surface
+          ? _value.surface
+          : surface // ignore: cast_nullable_to_non_nullable
+              as String,
+      warning: null == warning
+          ? _value.warning
+          : warning // ignore: cast_nullable_to_non_nullable
+              as String,
       secondary: null == secondary
-          ? _self.secondary
+          ? _value.secondary
           : secondary // ignore: cast_nullable_to_non_nullable
               as String,
       background: null == background
-          ? _self.background
+          ? _value.background
           : background // ignore: cast_nullable_to_non_nullable
               as String,
-      buttonForeground: null == buttonForeground
-          ? _self.buttonForeground
-          : buttonForeground // ignore: cast_nullable_to_non_nullable
-              as String,
-      surface: null == surface
-          ? _self.surface
-          : surface // ignore: cast_nullable_to_non_nullable
-              as String,
-      error: null == error
-          ? _self.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String,
-      success: null == success
-          ? _self.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as String,
-      warning: null == warning
-          ? _self.warning
-          : warning // ignore: cast_nullable_to_non_nullable
-              as String,
-      info: null == info
-          ? _self.info
-          : info // ignore: cast_nullable_to_non_nullable
-              as String,
-      divider: null == divider
-          ? _self.divider
-          : divider // ignore: cast_nullable_to_non_nullable
-              as String,
       textPrimary: null == textPrimary
-          ? _self.textPrimary
+          ? _value.textPrimary
           : textPrimary // ignore: cast_nullable_to_non_nullable
               as String,
       textSecondary: null == textSecondary
-          ? _self.textSecondary
+          ? _value.textSecondary
           : textSecondary // ignore: cast_nullable_to_non_nullable
               as String,
+      buttonForeground: null == buttonForeground
+          ? _value.buttonForeground
+          : buttonForeground // ignore: cast_nullable_to_non_nullable
+              as String,
       partColors: null == partColors
-          ? _self.partColors
+          ? _value.partColors
+          : partColors // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ThemeColorsImplCopyWith<$Res>
+    implements $ThemeColorsCopyWith<$Res> {
+  factory _$$ThemeColorsImplCopyWith(
+          _$ThemeColorsImpl value, $Res Function(_$ThemeColorsImpl) then) =
+      __$$ThemeColorsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String info,
+      String error,
+      String divider,
+      String primary,
+      String success,
+      String surface,
+      String warning,
+      String secondary,
+      String background,
+      String textPrimary,
+      String textSecondary,
+      String buttonForeground,
+      List<String> partColors});
+}
+
+/// @nodoc
+class __$$ThemeColorsImplCopyWithImpl<$Res>
+    extends _$ThemeColorsCopyWithImpl<$Res, _$ThemeColorsImpl>
+    implements _$$ThemeColorsImplCopyWith<$Res> {
+  __$$ThemeColorsImplCopyWithImpl(
+      _$ThemeColorsImpl _value, $Res Function(_$ThemeColorsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ThemeColors
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? info = null,
+    Object? error = null,
+    Object? divider = null,
+    Object? primary = null,
+    Object? success = null,
+    Object? surface = null,
+    Object? warning = null,
+    Object? secondary = null,
+    Object? background = null,
+    Object? textPrimary = null,
+    Object? textSecondary = null,
+    Object? buttonForeground = null,
+    Object? partColors = null,
+  }) {
+    return _then(_$ThemeColorsImpl(
+      info: null == info
+          ? _value.info
+          : info // ignore: cast_nullable_to_non_nullable
+              as String,
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+      divider: null == divider
+          ? _value.divider
+          : divider // ignore: cast_nullable_to_non_nullable
+              as String,
+      primary: null == primary
+          ? _value.primary
+          : primary // ignore: cast_nullable_to_non_nullable
+              as String,
+      success: null == success
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as String,
+      surface: null == surface
+          ? _value.surface
+          : surface // ignore: cast_nullable_to_non_nullable
+              as String,
+      warning: null == warning
+          ? _value.warning
+          : warning // ignore: cast_nullable_to_non_nullable
+              as String,
+      secondary: null == secondary
+          ? _value.secondary
+          : secondary // ignore: cast_nullable_to_non_nullable
+              as String,
+      background: null == background
+          ? _value.background
+          : background // ignore: cast_nullable_to_non_nullable
+              as String,
+      textPrimary: null == textPrimary
+          ? _value.textPrimary
+          : textPrimary // ignore: cast_nullable_to_non_nullable
+              as String,
+      textSecondary: null == textSecondary
+          ? _value.textSecondary
+          : textSecondary // ignore: cast_nullable_to_non_nullable
+              as String,
+      buttonForeground: null == buttonForeground
+          ? _value.buttonForeground
+          : buttonForeground // ignore: cast_nullable_to_non_nullable
+              as String,
+      partColors: null == partColors
+          ? _value._partColors
           : partColors // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
   }
 }
 
-/// Adds pattern-matching-related methods to [ThemeModel].
-extension ThemeModelPatterns on ThemeModel {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_ThemeModel value)? $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _ThemeModel() when $default != null:
-        return $default(_that);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ThemeModel value) $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _ThemeModel():
-        return $default(_that);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_ThemeModel value)? $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _ThemeModel() when $default != null:
-        return $default(_that);
-      case _:
-        return null;
-    }
-  }
-
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            int? id,
-            String primary,
-            String secondary,
-            String background,
-            String buttonForeground,
-            String surface,
-            String error,
-            String success,
-            String warning,
-            String info,
-            String divider,
-            String textPrimary,
-            String textSecondary,
-            List<String> partColors)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _ThemeModel() when $default != null:
-        return $default(
-            _that.id,
-            _that.primary,
-            _that.secondary,
-            _that.background,
-            _that.buttonForeground,
-            _that.surface,
-            _that.error,
-            _that.success,
-            _that.warning,
-            _that.info,
-            _that.divider,
-            _that.textPrimary,
-            _that.textSecondary,
-            _that.partColors);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            int? id,
-            String primary,
-            String secondary,
-            String background,
-            String buttonForeground,
-            String surface,
-            String error,
-            String success,
-            String warning,
-            String info,
-            String divider,
-            String textPrimary,
-            String textSecondary,
-            List<String> partColors)
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _ThemeModel():
-        return $default(
-            _that.id,
-            _that.primary,
-            _that.secondary,
-            _that.background,
-            _that.buttonForeground,
-            _that.surface,
-            _that.error,
-            _that.success,
-            _that.warning,
-            _that.info,
-            _that.divider,
-            _that.textPrimary,
-            _that.textSecondary,
-            _that.partColors);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            int? id,
-            String primary,
-            String secondary,
-            String background,
-            String buttonForeground,
-            String surface,
-            String error,
-            String success,
-            String warning,
-            String info,
-            String divider,
-            String textPrimary,
-            String textSecondary,
-            List<String> partColors)?
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _ThemeModel() when $default != null:
-        return $default(
-            _that.id,
-            _that.primary,
-            _that.secondary,
-            _that.background,
-            _that.buttonForeground,
-            _that.surface,
-            _that.error,
-            _that.success,
-            _that.warning,
-            _that.info,
-            _that.divider,
-            _that.textPrimary,
-            _that.textSecondary,
-            _that.partColors);
-      case _:
-        return null;
-    }
-  }
-}
-
 /// @nodoc
 @JsonSerializable()
-class _ThemeModel implements ThemeModel {
-  const _ThemeModel(
-      {this.id,
+class _$ThemeColorsImpl implements _ThemeColors {
+  const _$ThemeColorsImpl(
+      {required this.info,
+      required this.error,
+      required this.divider,
       required this.primary,
+      required this.success,
+      required this.surface,
+      required this.warning,
       required this.secondary,
       required this.background,
-      required this.buttonForeground,
-      required this.surface,
-      required this.error,
-      required this.success,
-      required this.warning,
-      required this.info,
-      required this.divider,
       required this.textPrimary,
       required this.textSecondary,
+      required this.buttonForeground,
       required final List<String> partColors})
       : _partColors = partColors;
-  factory _ThemeModel.fromJson(Map<String, dynamic> json) =>
-      _$ThemeModelFromJson(json);
+
+  factory _$ThemeColorsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ThemeColorsImplFromJson(json);
 
   @override
-  final int? id;
+  final String info;
+  @override
+  final String error;
+  @override
+  final String divider;
   @override
   final String primary;
+  @override
+  final String success;
+  @override
+  final String surface;
+  @override
+  final String warning;
   @override
   final String secondary;
   @override
   final String background;
   @override
-  final String buttonForeground;
-  @override
-  final String surface;
-  @override
-  final String error;
-  @override
-  final String success;
-  @override
-  final String warning;
-  @override
-  final String info;
-  @override
-  final String divider;
-  @override
   final String textPrimary;
   @override
   final String textSecondary;
+  @override
+  final String buttonForeground;
   final List<String> _partColors;
   @override
   List<String> get partColors {
@@ -502,44 +534,33 @@ class _ThemeModel implements ThemeModel {
     return EqualUnmodifiableListView(_partColors);
   }
 
-  /// Create a copy of ThemeModel
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$ThemeModelCopyWith<_ThemeModel> get copyWith =>
-      __$ThemeModelCopyWithImpl<_ThemeModel>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$ThemeModelToJson(
-      this,
-    );
+  String toString() {
+    return 'ThemeColors(info: $info, error: $error, divider: $divider, primary: $primary, success: $success, surface: $surface, warning: $warning, secondary: $secondary, background: $background, textPrimary: $textPrimary, textSecondary: $textSecondary, buttonForeground: $buttonForeground, partColors: $partColors)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ThemeModel &&
-            (identical(other.id, id) || other.id == id) &&
+            other is _$ThemeColorsImpl &&
+            (identical(other.info, info) || other.info == info) &&
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.divider, divider) || other.divider == divider) &&
             (identical(other.primary, primary) || other.primary == primary) &&
+            (identical(other.success, success) || other.success == success) &&
+            (identical(other.surface, surface) || other.surface == surface) &&
+            (identical(other.warning, warning) || other.warning == warning) &&
             (identical(other.secondary, secondary) ||
                 other.secondary == secondary) &&
             (identical(other.background, background) ||
                 other.background == background) &&
-            (identical(other.buttonForeground, buttonForeground) ||
-                other.buttonForeground == buttonForeground) &&
-            (identical(other.surface, surface) || other.surface == surface) &&
-            (identical(other.error, error) || other.error == error) &&
-            (identical(other.success, success) || other.success == success) &&
-            (identical(other.warning, warning) || other.warning == warning) &&
-            (identical(other.info, info) || other.info == info) &&
-            (identical(other.divider, divider) || other.divider == divider) &&
             (identical(other.textPrimary, textPrimary) ||
                 other.textPrimary == textPrimary) &&
             (identical(other.textSecondary, textSecondary) ||
                 other.textSecondary == textSecondary) &&
+            (identical(other.buttonForeground, buttonForeground) ||
+                other.buttonForeground == buttonForeground) &&
             const DeepCollectionEquality()
                 .equals(other._partColors, _partColors));
   }
@@ -548,138 +569,86 @@ class _ThemeModel implements ThemeModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      id,
+      info,
+      error,
+      divider,
       primary,
+      success,
+      surface,
+      warning,
       secondary,
       background,
-      buttonForeground,
-      surface,
-      error,
-      success,
-      warning,
-      info,
-      divider,
       textPrimary,
       textSecondary,
+      buttonForeground,
       const DeepCollectionEquality().hash(_partColors));
 
-  @override
-  String toString() {
-    return 'ThemeModel(id: $id, primary: $primary, secondary: $secondary, background: $background, buttonForeground: $buttonForeground, surface: $surface, error: $error, success: $success, warning: $warning, info: $info, divider: $divider, textPrimary: $textPrimary, textSecondary: $textSecondary, partColors: $partColors)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$ThemeModelCopyWith<$Res>
-    implements $ThemeModelCopyWith<$Res> {
-  factory _$ThemeModelCopyWith(
-          _ThemeModel value, $Res Function(_ThemeModel) _then) =
-      __$ThemeModelCopyWithImpl;
-  @override
-  @useResult
-  $Res call(
-      {int? id,
-      String primary,
-      String secondary,
-      String background,
-      String buttonForeground,
-      String surface,
-      String error,
-      String success,
-      String warning,
-      String info,
-      String divider,
-      String textPrimary,
-      String textSecondary,
-      List<String> partColors});
-}
-
-/// @nodoc
-class __$ThemeModelCopyWithImpl<$Res> implements _$ThemeModelCopyWith<$Res> {
-  __$ThemeModelCopyWithImpl(this._self, this._then);
-
-  final _ThemeModel _self;
-  final $Res Function(_ThemeModel) _then;
-
-  /// Create a copy of ThemeModel
+  /// Create a copy of ThemeColors
   /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? id = freezed,
-    Object? primary = null,
-    Object? secondary = null,
-    Object? background = null,
-    Object? buttonForeground = null,
-    Object? surface = null,
-    Object? error = null,
-    Object? success = null,
-    Object? warning = null,
-    Object? info = null,
-    Object? divider = null,
-    Object? textPrimary = null,
-    Object? textSecondary = null,
-    Object? partColors = null,
-  }) {
-    return _then(_ThemeModel(
-      id: freezed == id
-          ? _self.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      primary: null == primary
-          ? _self.primary
-          : primary // ignore: cast_nullable_to_non_nullable
-              as String,
-      secondary: null == secondary
-          ? _self.secondary
-          : secondary // ignore: cast_nullable_to_non_nullable
-              as String,
-      background: null == background
-          ? _self.background
-          : background // ignore: cast_nullable_to_non_nullable
-              as String,
-      buttonForeground: null == buttonForeground
-          ? _self.buttonForeground
-          : buttonForeground // ignore: cast_nullable_to_non_nullable
-              as String,
-      surface: null == surface
-          ? _self.surface
-          : surface // ignore: cast_nullable_to_non_nullable
-              as String,
-      error: null == error
-          ? _self.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String,
-      success: null == success
-          ? _self.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as String,
-      warning: null == warning
-          ? _self.warning
-          : warning // ignore: cast_nullable_to_non_nullable
-              as String,
-      info: null == info
-          ? _self.info
-          : info // ignore: cast_nullable_to_non_nullable
-              as String,
-      divider: null == divider
-          ? _self.divider
-          : divider // ignore: cast_nullable_to_non_nullable
-              as String,
-      textPrimary: null == textPrimary
-          ? _self.textPrimary
-          : textPrimary // ignore: cast_nullable_to_non_nullable
-              as String,
-      textSecondary: null == textSecondary
-          ? _self.textSecondary
-          : textSecondary // ignore: cast_nullable_to_non_nullable
-              as String,
-      partColors: null == partColors
-          ? _self._partColors
-          : partColors // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+  _$$ThemeColorsImplCopyWith<_$ThemeColorsImpl> get copyWith =>
+      __$$ThemeColorsImplCopyWithImpl<_$ThemeColorsImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ThemeColorsImplToJson(
+      this,
+    );
   }
 }
 
-// dart format on
+abstract class _ThemeColors implements ThemeColors {
+  const factory _ThemeColors(
+      {required final String info,
+      required final String error,
+      required final String divider,
+      required final String primary,
+      required final String success,
+      required final String surface,
+      required final String warning,
+      required final String secondary,
+      required final String background,
+      required final String textPrimary,
+      required final String textSecondary,
+      required final String buttonForeground,
+      required final List<String> partColors}) = _$ThemeColorsImpl;
+
+  factory _ThemeColors.fromJson(Map<String, dynamic> json) =
+      _$ThemeColorsImpl.fromJson;
+
+  @override
+  String get info;
+  @override
+  String get error;
+  @override
+  String get divider;
+  @override
+  String get primary;
+  @override
+  String get success;
+  @override
+  String get surface;
+  @override
+  String get warning;
+  @override
+  String get secondary;
+  @override
+  String get background;
+  @override
+  String get textPrimary;
+  @override
+  String get textSecondary;
+  @override
+  String get buttonForeground;
+  @override
+  List<String> get partColors;
+
+  /// Create a copy of ThemeColors
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ThemeColorsImplCopyWith<_$ThemeColorsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

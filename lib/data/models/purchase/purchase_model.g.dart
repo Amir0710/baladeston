@@ -6,8 +6,8 @@ part of 'purchase_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_PurchaseModel _$PurchaseModelFromJson(Map<String, dynamic> json) =>
-    _PurchaseModel(
+_$PurchaseModelImpl _$$PurchaseModelImplFromJson(Map<String, dynamic> json) =>
+    _$PurchaseModelImpl(
       id: (json['id'] as num?)?.toInt(),
       status: json['status'] as String,
       userId: (json['userId'] as num).toInt(),
@@ -24,7 +24,7 @@ _PurchaseModel _$PurchaseModelFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['updateAt'] as String),
     );
 
-Map<String, dynamic> _$PurchaseModelToJson(_PurchaseModel instance) =>
+Map<String, dynamic> _$$PurchaseModelImplToJson(_$PurchaseModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'status': instance.status,

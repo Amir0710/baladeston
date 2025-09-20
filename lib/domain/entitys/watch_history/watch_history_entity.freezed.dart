@@ -1,5 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,54 +9,31 @@ part of 'watch_history_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$WatchHistoryEntity {
-  int? get id;
-  int get userId;
-  int get videoId;
-  int get lastPositionSeconds;
-  DateTime get updatedAt;
+  int? get id => throw _privateConstructorUsedError;
+  int get userId => throw _privateConstructorUsedError;
+  int get videoId => throw _privateConstructorUsedError;
+  int get lastPositionSeconds => throw _privateConstructorUsedError;
+  DateTime get updatedAt => throw _privateConstructorUsedError;
 
   /// Create a copy of WatchHistoryEntity
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $WatchHistoryEntityCopyWith<WatchHistoryEntity> get copyWith =>
-      _$WatchHistoryEntityCopyWithImpl<WatchHistoryEntity>(
-          this as WatchHistoryEntity, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is WatchHistoryEntity &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.videoId, videoId) || other.videoId == videoId) &&
-            (identical(other.lastPositionSeconds, lastPositionSeconds) ||
-                other.lastPositionSeconds == lastPositionSeconds) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, id, userId, videoId, lastPositionSeconds, updatedAt);
-
-  @override
-  String toString() {
-    return 'WatchHistoryEntity(id: $id, userId: $userId, videoId: $videoId, lastPositionSeconds: $lastPositionSeconds, updatedAt: $updatedAt)';
-  }
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $WatchHistoryEntityCopyWith<$Res> {
+abstract class $WatchHistoryEntityCopyWith<$Res> {
   factory $WatchHistoryEntityCopyWith(
-          WatchHistoryEntity value, $Res Function(WatchHistoryEntity) _then) =
-      _$WatchHistoryEntityCopyWithImpl;
+          WatchHistoryEntity value, $Res Function(WatchHistoryEntity) then) =
+      _$WatchHistoryEntityCopyWithImpl<$Res, WatchHistoryEntity>;
   @useResult
   $Res call(
       {int? id,
@@ -67,12 +44,14 @@ abstract mixin class $WatchHistoryEntityCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WatchHistoryEntityCopyWithImpl<$Res>
+class _$WatchHistoryEntityCopyWithImpl<$Res, $Val extends WatchHistoryEntity>
     implements $WatchHistoryEntityCopyWith<$Res> {
-  _$WatchHistoryEntityCopyWithImpl(this._self, this._then);
+  _$WatchHistoryEntityCopyWithImpl(this._value, this._then);
 
-  final WatchHistoryEntity _self;
-  final $Res Function(WatchHistoryEntity) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of WatchHistoryEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -85,201 +64,95 @@ class _$WatchHistoryEntityCopyWithImpl<$Res>
     Object? lastPositionSeconds = null,
     Object? updatedAt = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       id: freezed == id
-          ? _self.id
+          ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
       userId: null == userId
-          ? _self.userId
+          ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int,
       videoId: null == videoId
-          ? _self.videoId
+          ? _value.videoId
           : videoId // ignore: cast_nullable_to_non_nullable
               as int,
       lastPositionSeconds: null == lastPositionSeconds
-          ? _self.lastPositionSeconds
+          ? _value.lastPositionSeconds
           : lastPositionSeconds // ignore: cast_nullable_to_non_nullable
               as int,
       updatedAt: null == updatedAt
-          ? _self.updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$WatchHistoryEntityImplCopyWith<$Res>
+    implements $WatchHistoryEntityCopyWith<$Res> {
+  factory _$$WatchHistoryEntityImplCopyWith(_$WatchHistoryEntityImpl value,
+          $Res Function(_$WatchHistoryEntityImpl) then) =
+      __$$WatchHistoryEntityImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int? id,
+      int userId,
+      int videoId,
+      int lastPositionSeconds,
+      DateTime updatedAt});
+}
+
+/// @nodoc
+class __$$WatchHistoryEntityImplCopyWithImpl<$Res>
+    extends _$WatchHistoryEntityCopyWithImpl<$Res, _$WatchHistoryEntityImpl>
+    implements _$$WatchHistoryEntityImplCopyWith<$Res> {
+  __$$WatchHistoryEntityImplCopyWithImpl(_$WatchHistoryEntityImpl _value,
+      $Res Function(_$WatchHistoryEntityImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WatchHistoryEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? userId = null,
+    Object? videoId = null,
+    Object? lastPositionSeconds = null,
+    Object? updatedAt = null,
+  }) {
+    return _then(_$WatchHistoryEntityImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
+      videoId: null == videoId
+          ? _value.videoId
+          : videoId // ignore: cast_nullable_to_non_nullable
+              as int,
+      lastPositionSeconds: null == lastPositionSeconds
+          ? _value.lastPositionSeconds
+          : lastPositionSeconds // ignore: cast_nullable_to_non_nullable
+              as int,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
   }
 }
 
-/// Adds pattern-matching-related methods to [WatchHistoryEntity].
-extension WatchHistoryEntityPatterns on WatchHistoryEntity {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_WatchHistoryEntity value)? $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _WatchHistoryEntity() when $default != null:
-        return $default(_that);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_WatchHistoryEntity value) $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _WatchHistoryEntity():
-        return $default(_that);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_WatchHistoryEntity value)? $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _WatchHistoryEntity() when $default != null:
-        return $default(_that);
-      case _:
-        return null;
-    }
-  }
-
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int? id, int userId, int videoId, int lastPositionSeconds,
-            DateTime updatedAt)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _WatchHistoryEntity() when $default != null:
-        return $default(_that.id, _that.userId, _that.videoId,
-            _that.lastPositionSeconds, _that.updatedAt);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(int? id, int userId, int videoId, int lastPositionSeconds,
-            DateTime updatedAt)
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _WatchHistoryEntity():
-        return $default(_that.id, _that.userId, _that.videoId,
-            _that.lastPositionSeconds, _that.updatedAt);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int? id, int userId, int videoId, int lastPositionSeconds,
-            DateTime updatedAt)?
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _WatchHistoryEntity() when $default != null:
-        return $default(_that.id, _that.userId, _that.videoId,
-            _that.lastPositionSeconds, _that.updatedAt);
-      case _:
-        return null;
-    }
-  }
-}
-
 /// @nodoc
 
-class _WatchHistoryEntity implements WatchHistoryEntity {
-  const _WatchHistoryEntity(
+class _$WatchHistoryEntityImpl implements _WatchHistoryEntity {
+  const _$WatchHistoryEntityImpl(
       {required this.id,
       required this.userId,
       required this.videoId,
@@ -297,19 +170,16 @@ class _WatchHistoryEntity implements WatchHistoryEntity {
   @override
   final DateTime updatedAt;
 
-  /// Create a copy of WatchHistoryEntity
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$WatchHistoryEntityCopyWith<_WatchHistoryEntity> get copyWith =>
-      __$WatchHistoryEntityCopyWithImpl<_WatchHistoryEntity>(this, _$identity);
+  String toString() {
+    return 'WatchHistoryEntity(id: $id, userId: $userId, videoId: $videoId, lastPositionSeconds: $lastPositionSeconds, updatedAt: $updatedAt)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _WatchHistoryEntity &&
+            other is _$WatchHistoryEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.videoId, videoId) || other.videoId == videoId) &&
@@ -323,70 +193,39 @@ class _WatchHistoryEntity implements WatchHistoryEntity {
   int get hashCode => Object.hash(
       runtimeType, id, userId, videoId, lastPositionSeconds, updatedAt);
 
+  /// Create a copy of WatchHistoryEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'WatchHistoryEntity(id: $id, userId: $userId, videoId: $videoId, lastPositionSeconds: $lastPositionSeconds, updatedAt: $updatedAt)';
-  }
+  @pragma('vm:prefer-inline')
+  _$$WatchHistoryEntityImplCopyWith<_$WatchHistoryEntityImpl> get copyWith =>
+      __$$WatchHistoryEntityImplCopyWithImpl<_$WatchHistoryEntityImpl>(
+          this, _$identity);
 }
 
-/// @nodoc
-abstract mixin class _$WatchHistoryEntityCopyWith<$Res>
-    implements $WatchHistoryEntityCopyWith<$Res> {
-  factory _$WatchHistoryEntityCopyWith(
-          _WatchHistoryEntity value, $Res Function(_WatchHistoryEntity) _then) =
-      __$WatchHistoryEntityCopyWithImpl;
+abstract class _WatchHistoryEntity implements WatchHistoryEntity {
+  const factory _WatchHistoryEntity(
+      {required final int? id,
+      required final int userId,
+      required final int videoId,
+      required final int lastPositionSeconds,
+      required final DateTime updatedAt}) = _$WatchHistoryEntityImpl;
+
   @override
-  @useResult
-  $Res call(
-      {int? id,
-      int userId,
-      int videoId,
-      int lastPositionSeconds,
-      DateTime updatedAt});
-}
-
-/// @nodoc
-class __$WatchHistoryEntityCopyWithImpl<$Res>
-    implements _$WatchHistoryEntityCopyWith<$Res> {
-  __$WatchHistoryEntityCopyWithImpl(this._self, this._then);
-
-  final _WatchHistoryEntity _self;
-  final $Res Function(_WatchHistoryEntity) _then;
+  int? get id;
+  @override
+  int get userId;
+  @override
+  int get videoId;
+  @override
+  int get lastPositionSeconds;
+  @override
+  DateTime get updatedAt;
 
   /// Create a copy of WatchHistoryEntity
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? id = freezed,
-    Object? userId = null,
-    Object? videoId = null,
-    Object? lastPositionSeconds = null,
-    Object? updatedAt = null,
-  }) {
-    return _then(_WatchHistoryEntity(
-      id: freezed == id
-          ? _self.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      userId: null == userId
-          ? _self.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      videoId: null == videoId
-          ? _self.videoId
-          : videoId // ignore: cast_nullable_to_non_nullable
-              as int,
-      lastPositionSeconds: null == lastPositionSeconds
-          ? _self.lastPositionSeconds
-          : lastPositionSeconds // ignore: cast_nullable_to_non_nullable
-              as int,
-      updatedAt: null == updatedAt
-          ? _self.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WatchHistoryEntityImplCopyWith<_$WatchHistoryEntityImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-// dart format on

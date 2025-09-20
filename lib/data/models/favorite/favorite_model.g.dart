@@ -6,8 +6,8 @@ part of 'favorite_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_FavoriteModel _$FavoriteModelFromJson(Map<String, dynamic> json) =>
-    _FavoriteModel(
+_$FavoriteModelImpl _$$FavoriteModelImplFromJson(Map<String, dynamic> json) =>
+    _$FavoriteModelImpl(
       id: (json['id'] as num?)?.toInt(),
       userId: (json['userId'] as num).toInt(),
       type: json['type'] as String,
@@ -17,7 +17,7 @@ _FavoriteModel _$FavoriteModelFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['interestedIn'] as String),
     );
 
-Map<String, dynamic> _$FavoriteModelToJson(_FavoriteModel instance) =>
+Map<String, dynamic> _$$FavoriteModelImplToJson(_$FavoriteModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'userId': instance.userId,

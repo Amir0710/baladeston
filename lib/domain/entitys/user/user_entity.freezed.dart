@@ -1,5 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,58 +9,33 @@ part of 'user_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$UserEntity {
-  int? get id;
-  String get role;
-  String get fullName;
-  String get email;
-  String get phoneNumber;
-  String? get avatarUrl;
-  String get status;
+  int? get id => throw _privateConstructorUsedError;
+  String get role => throw _privateConstructorUsedError;
+  String get fullName => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
+  String get phoneNumber => throw _privateConstructorUsedError;
+  String? get avatarUrl => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
 
   /// Create a copy of UserEntity
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $UserEntityCopyWith<UserEntity> get copyWith =>
-      _$UserEntityCopyWithImpl<UserEntity>(this as UserEntity, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is UserEntity &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.role, role) || other.role == role) &&
-            (identical(other.fullName, fullName) ||
-                other.fullName == fullName) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber) &&
-            (identical(other.avatarUrl, avatarUrl) ||
-                other.avatarUrl == avatarUrl) &&
-            (identical(other.status, status) || other.status == status));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, id, role, fullName, email, phoneNumber, avatarUrl, status);
-
-  @override
-  String toString() {
-    return 'UserEntity(id: $id, role: $role, fullName: $fullName, email: $email, phoneNumber: $phoneNumber, avatarUrl: $avatarUrl, status: $status)';
-  }
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $UserEntityCopyWith<$Res> {
+abstract class $UserEntityCopyWith<$Res> {
   factory $UserEntityCopyWith(
-          UserEntity value, $Res Function(UserEntity) _then) =
-      _$UserEntityCopyWithImpl;
+          UserEntity value, $Res Function(UserEntity) then) =
+      _$UserEntityCopyWithImpl<$Res, UserEntity>;
   @useResult
   $Res call(
       {int? id,
@@ -73,11 +48,14 @@ abstract mixin class $UserEntityCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserEntityCopyWithImpl<$Res> implements $UserEntityCopyWith<$Res> {
-  _$UserEntityCopyWithImpl(this._self, this._then);
+class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
+    implements $UserEntityCopyWith<$Res> {
+  _$UserEntityCopyWithImpl(this._value, this._then);
 
-  final UserEntity _self;
-  final $Res Function(UserEntity) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of UserEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -92,209 +70,115 @@ class _$UserEntityCopyWithImpl<$Res> implements $UserEntityCopyWith<$Res> {
     Object? avatarUrl = freezed,
     Object? status = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       id: freezed == id
-          ? _self.id
+          ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
       role: null == role
-          ? _self.role
+          ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as String,
       fullName: null == fullName
-          ? _self.fullName
+          ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
-          ? _self.email
+          ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
       phoneNumber: null == phoneNumber
-          ? _self.phoneNumber
+          ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
       avatarUrl: freezed == avatarUrl
-          ? _self.avatarUrl
+          ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String?,
       status: null == status
-          ? _self.status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$UserEntityImplCopyWith<$Res>
+    implements $UserEntityCopyWith<$Res> {
+  factory _$$UserEntityImplCopyWith(
+          _$UserEntityImpl value, $Res Function(_$UserEntityImpl) then) =
+      __$$UserEntityImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int? id,
+      String role,
+      String fullName,
+      String email,
+      String phoneNumber,
+      String? avatarUrl,
+      String status});
+}
+
+/// @nodoc
+class __$$UserEntityImplCopyWithImpl<$Res>
+    extends _$UserEntityCopyWithImpl<$Res, _$UserEntityImpl>
+    implements _$$UserEntityImplCopyWith<$Res> {
+  __$$UserEntityImplCopyWithImpl(
+      _$UserEntityImpl _value, $Res Function(_$UserEntityImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? role = null,
+    Object? fullName = null,
+    Object? email = null,
+    Object? phoneNumber = null,
+    Object? avatarUrl = freezed,
+    Object? status = null,
+  }) {
+    return _then(_$UserEntityImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      avatarUrl: freezed == avatarUrl
+          ? _value.avatarUrl
+          : avatarUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: null == status
+          ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
-/// Adds pattern-matching-related methods to [UserEntity].
-extension UserEntityPatterns on UserEntity {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_UserEntity value)? $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _UserEntity() when $default != null:
-        return $default(_that);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_UserEntity value) $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _UserEntity():
-        return $default(_that);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_UserEntity value)? $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _UserEntity() when $default != null:
-        return $default(_that);
-      case _:
-        return null;
-    }
-  }
-
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int? id, String role, String fullName, String email,
-            String phoneNumber, String? avatarUrl, String status)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _UserEntity() when $default != null:
-        return $default(_that.id, _that.role, _that.fullName, _that.email,
-            _that.phoneNumber, _that.avatarUrl, _that.status);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(int? id, String role, String fullName, String email,
-            String phoneNumber, String? avatarUrl, String status)
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _UserEntity():
-        return $default(_that.id, _that.role, _that.fullName, _that.email,
-            _that.phoneNumber, _that.avatarUrl, _that.status);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int? id, String role, String fullName, String email,
-            String phoneNumber, String? avatarUrl, String status)?
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _UserEntity() when $default != null:
-        return $default(_that.id, _that.role, _that.fullName, _that.email,
-            _that.phoneNumber, _that.avatarUrl, _that.status);
-      case _:
-        return null;
-    }
-  }
-}
-
 /// @nodoc
 
-class _UserEntity implements UserEntity {
-  const _UserEntity(
+class _$UserEntityImpl implements _UserEntity {
+  const _$UserEntityImpl(
       {required this.id,
       required this.role,
       required this.fullName,
@@ -318,19 +202,16 @@ class _UserEntity implements UserEntity {
   @override
   final String status;
 
-  /// Create a copy of UserEntity
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$UserEntityCopyWith<_UserEntity> get copyWith =>
-      __$UserEntityCopyWithImpl<_UserEntity>(this, _$identity);
+  String toString() {
+    return 'UserEntity(id: $id, role: $role, fullName: $fullName, email: $email, phoneNumber: $phoneNumber, avatarUrl: $avatarUrl, status: $status)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UserEntity &&
+            other is _$UserEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.role, role) || other.role == role) &&
             (identical(other.fullName, fullName) ||
@@ -347,81 +228,44 @@ class _UserEntity implements UserEntity {
   int get hashCode => Object.hash(
       runtimeType, id, role, fullName, email, phoneNumber, avatarUrl, status);
 
+  /// Create a copy of UserEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'UserEntity(id: $id, role: $role, fullName: $fullName, email: $email, phoneNumber: $phoneNumber, avatarUrl: $avatarUrl, status: $status)';
-  }
+  @pragma('vm:prefer-inline')
+  _$$UserEntityImplCopyWith<_$UserEntityImpl> get copyWith =>
+      __$$UserEntityImplCopyWithImpl<_$UserEntityImpl>(this, _$identity);
 }
 
-/// @nodoc
-abstract mixin class _$UserEntityCopyWith<$Res>
-    implements $UserEntityCopyWith<$Res> {
-  factory _$UserEntityCopyWith(
-          _UserEntity value, $Res Function(_UserEntity) _then) =
-      __$UserEntityCopyWithImpl;
+abstract class _UserEntity implements UserEntity {
+  const factory _UserEntity(
+      {required final int? id,
+      required final String role,
+      required final String fullName,
+      required final String email,
+      required final String phoneNumber,
+      required final String? avatarUrl,
+      required final String status}) = _$UserEntityImpl;
+
   @override
-  @useResult
-  $Res call(
-      {int? id,
-      String role,
-      String fullName,
-      String email,
-      String phoneNumber,
-      String? avatarUrl,
-      String status});
-}
-
-/// @nodoc
-class __$UserEntityCopyWithImpl<$Res> implements _$UserEntityCopyWith<$Res> {
-  __$UserEntityCopyWithImpl(this._self, this._then);
-
-  final _UserEntity _self;
-  final $Res Function(_UserEntity) _then;
+  int? get id;
+  @override
+  String get role;
+  @override
+  String get fullName;
+  @override
+  String get email;
+  @override
+  String get phoneNumber;
+  @override
+  String? get avatarUrl;
+  @override
+  String get status;
 
   /// Create a copy of UserEntity
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? id = freezed,
-    Object? role = null,
-    Object? fullName = null,
-    Object? email = null,
-    Object? phoneNumber = null,
-    Object? avatarUrl = freezed,
-    Object? status = null,
-  }) {
-    return _then(_UserEntity(
-      id: freezed == id
-          ? _self.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      role: null == role
-          ? _self.role
-          : role // ignore: cast_nullable_to_non_nullable
-              as String,
-      fullName: null == fullName
-          ? _self.fullName
-          : fullName // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _self.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      phoneNumber: null == phoneNumber
-          ? _self.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      avatarUrl: freezed == avatarUrl
-          ? _self.avatarUrl
-          : avatarUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      status: null == status
-          ? _self.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UserEntityImplCopyWith<_$UserEntityImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-// dart format on

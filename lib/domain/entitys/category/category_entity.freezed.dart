@@ -1,5 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,62 +9,34 @@ part of 'category_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$CategoryEntity {
-  int? get id;
-  String get title;
-  String get password;
-  String get status;
-  String? get thumbnailUrl;
-  DateTime get createdAt;
-  DateTime get lastTransaction;
-  int get ownerId;
+  int? get id => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
+  String? get thumbnailUrl => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime get lastTransaction => throw _privateConstructorUsedError;
+  int get ownerId => throw _privateConstructorUsedError;
 
   /// Create a copy of CategoryEntity
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $CategoryEntityCopyWith<CategoryEntity> get copyWith =>
-      _$CategoryEntityCopyWithImpl<CategoryEntity>(
-          this as CategoryEntity, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is CategoryEntity &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.thumbnailUrl, thumbnailUrl) ||
-                other.thumbnailUrl == thumbnailUrl) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.lastTransaction, lastTransaction) ||
-                other.lastTransaction == lastTransaction) &&
-            (identical(other.ownerId, ownerId) || other.ownerId == ownerId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, id, title, password, status,
-      thumbnailUrl, createdAt, lastTransaction, ownerId);
-
-  @override
-  String toString() {
-    return 'CategoryEntity(id: $id, title: $title, password: $password, status: $status, thumbnailUrl: $thumbnailUrl, createdAt: $createdAt, lastTransaction: $lastTransaction, ownerId: $ownerId)';
-  }
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $CategoryEntityCopyWith<$Res> {
+abstract class $CategoryEntityCopyWith<$Res> {
   factory $CategoryEntityCopyWith(
-          CategoryEntity value, $Res Function(CategoryEntity) _then) =
-      _$CategoryEntityCopyWithImpl;
+          CategoryEntity value, $Res Function(CategoryEntity) then) =
+      _$CategoryEntityCopyWithImpl<$Res, CategoryEntity>;
   @useResult
   $Res call(
       {int? id,
@@ -78,12 +50,14 @@ abstract mixin class $CategoryEntityCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CategoryEntityCopyWithImpl<$Res>
+class _$CategoryEntityCopyWithImpl<$Res, $Val extends CategoryEntity>
     implements $CategoryEntityCopyWith<$Res> {
-  _$CategoryEntityCopyWithImpl(this._self, this._then);
+  _$CategoryEntityCopyWithImpl(this._value, this._then);
 
-  final CategoryEntity _self;
-  final $Res Function(CategoryEntity) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of CategoryEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -99,255 +73,125 @@ class _$CategoryEntityCopyWithImpl<$Res>
     Object? lastTransaction = null,
     Object? ownerId = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       id: freezed == id
-          ? _self.id
+          ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
       title: null == title
-          ? _self.title
+          ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
-          ? _self.password
+          ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
       status: null == status
-          ? _self.status
+          ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
       thumbnailUrl: freezed == thumbnailUrl
-          ? _self.thumbnailUrl
+          ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
               as String?,
       createdAt: null == createdAt
-          ? _self.createdAt
+          ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
       lastTransaction: null == lastTransaction
-          ? _self.lastTransaction
+          ? _value.lastTransaction
           : lastTransaction // ignore: cast_nullable_to_non_nullable
               as DateTime,
       ownerId: null == ownerId
-          ? _self.ownerId
+          ? _value.ownerId
+          : ownerId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$CategoryEntityImplCopyWith<$Res>
+    implements $CategoryEntityCopyWith<$Res> {
+  factory _$$CategoryEntityImplCopyWith(_$CategoryEntityImpl value,
+          $Res Function(_$CategoryEntityImpl) then) =
+      __$$CategoryEntityImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int? id,
+      String title,
+      String password,
+      String status,
+      String? thumbnailUrl,
+      DateTime createdAt,
+      DateTime lastTransaction,
+      int ownerId});
+}
+
+/// @nodoc
+class __$$CategoryEntityImplCopyWithImpl<$Res>
+    extends _$CategoryEntityCopyWithImpl<$Res, _$CategoryEntityImpl>
+    implements _$$CategoryEntityImplCopyWith<$Res> {
+  __$$CategoryEntityImplCopyWithImpl(
+      _$CategoryEntityImpl _value, $Res Function(_$CategoryEntityImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CategoryEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? title = null,
+    Object? password = null,
+    Object? status = null,
+    Object? thumbnailUrl = freezed,
+    Object? createdAt = null,
+    Object? lastTransaction = null,
+    Object? ownerId = null,
+  }) {
+    return _then(_$CategoryEntityImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      thumbnailUrl: freezed == thumbnailUrl
+          ? _value.thumbnailUrl
+          : thumbnailUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      lastTransaction: null == lastTransaction
+          ? _value.lastTransaction
+          : lastTransaction // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      ownerId: null == ownerId
+          ? _value.ownerId
           : ownerId // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
 }
 
-/// Adds pattern-matching-related methods to [CategoryEntity].
-extension CategoryEntityPatterns on CategoryEntity {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_CategoryEntity value)? $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _CategoryEntity() when $default != null:
-        return $default(_that);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_CategoryEntity value) $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _CategoryEntity():
-        return $default(_that);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_CategoryEntity value)? $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _CategoryEntity() when $default != null:
-        return $default(_that);
-      case _:
-        return null;
-    }
-  }
-
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            int? id,
-            String title,
-            String password,
-            String status,
-            String? thumbnailUrl,
-            DateTime createdAt,
-            DateTime lastTransaction,
-            int ownerId)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _CategoryEntity() when $default != null:
-        return $default(
-            _that.id,
-            _that.title,
-            _that.password,
-            _that.status,
-            _that.thumbnailUrl,
-            _that.createdAt,
-            _that.lastTransaction,
-            _that.ownerId);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            int? id,
-            String title,
-            String password,
-            String status,
-            String? thumbnailUrl,
-            DateTime createdAt,
-            DateTime lastTransaction,
-            int ownerId)
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _CategoryEntity():
-        return $default(
-            _that.id,
-            _that.title,
-            _that.password,
-            _that.status,
-            _that.thumbnailUrl,
-            _that.createdAt,
-            _that.lastTransaction,
-            _that.ownerId);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            int? id,
-            String title,
-            String password,
-            String status,
-            String? thumbnailUrl,
-            DateTime createdAt,
-            DateTime lastTransaction,
-            int ownerId)?
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _CategoryEntity() when $default != null:
-        return $default(
-            _that.id,
-            _that.title,
-            _that.password,
-            _that.status,
-            _that.thumbnailUrl,
-            _that.createdAt,
-            _that.lastTransaction,
-            _that.ownerId);
-      case _:
-        return null;
-    }
-  }
-}
-
 /// @nodoc
 
-class _CategoryEntity implements CategoryEntity {
-  const _CategoryEntity(
+class _$CategoryEntityImpl implements _CategoryEntity {
+  const _$CategoryEntityImpl(
       {this.id,
       required this.title,
       required this.password,
@@ -374,19 +218,16 @@ class _CategoryEntity implements CategoryEntity {
   @override
   final int ownerId;
 
-  /// Create a copy of CategoryEntity
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$CategoryEntityCopyWith<_CategoryEntity> get copyWith =>
-      __$CategoryEntityCopyWithImpl<_CategoryEntity>(this, _$identity);
+  String toString() {
+    return 'CategoryEntity(id: $id, title: $title, password: $password, status: $status, thumbnailUrl: $thumbnailUrl, createdAt: $createdAt, lastTransaction: $lastTransaction, ownerId: $ownerId)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CategoryEntity &&
+            other is _$CategoryEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.password, password) ||
@@ -405,88 +246,48 @@ class _CategoryEntity implements CategoryEntity {
   int get hashCode => Object.hash(runtimeType, id, title, password, status,
       thumbnailUrl, createdAt, lastTransaction, ownerId);
 
+  /// Create a copy of CategoryEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'CategoryEntity(id: $id, title: $title, password: $password, status: $status, thumbnailUrl: $thumbnailUrl, createdAt: $createdAt, lastTransaction: $lastTransaction, ownerId: $ownerId)';
-  }
+  @pragma('vm:prefer-inline')
+  _$$CategoryEntityImplCopyWith<_$CategoryEntityImpl> get copyWith =>
+      __$$CategoryEntityImplCopyWithImpl<_$CategoryEntityImpl>(
+          this, _$identity);
 }
 
-/// @nodoc
-abstract mixin class _$CategoryEntityCopyWith<$Res>
-    implements $CategoryEntityCopyWith<$Res> {
-  factory _$CategoryEntityCopyWith(
-          _CategoryEntity value, $Res Function(_CategoryEntity) _then) =
-      __$CategoryEntityCopyWithImpl;
+abstract class _CategoryEntity implements CategoryEntity {
+  const factory _CategoryEntity(
+      {final int? id,
+      required final String title,
+      required final String password,
+      required final String status,
+      final String? thumbnailUrl,
+      required final DateTime createdAt,
+      required final DateTime lastTransaction,
+      required final int ownerId}) = _$CategoryEntityImpl;
+
   @override
-  @useResult
-  $Res call(
-      {int? id,
-      String title,
-      String password,
-      String status,
-      String? thumbnailUrl,
-      DateTime createdAt,
-      DateTime lastTransaction,
-      int ownerId});
-}
-
-/// @nodoc
-class __$CategoryEntityCopyWithImpl<$Res>
-    implements _$CategoryEntityCopyWith<$Res> {
-  __$CategoryEntityCopyWithImpl(this._self, this._then);
-
-  final _CategoryEntity _self;
-  final $Res Function(_CategoryEntity) _then;
+  int? get id;
+  @override
+  String get title;
+  @override
+  String get password;
+  @override
+  String get status;
+  @override
+  String? get thumbnailUrl;
+  @override
+  DateTime get createdAt;
+  @override
+  DateTime get lastTransaction;
+  @override
+  int get ownerId;
 
   /// Create a copy of CategoryEntity
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? id = freezed,
-    Object? title = null,
-    Object? password = null,
-    Object? status = null,
-    Object? thumbnailUrl = freezed,
-    Object? createdAt = null,
-    Object? lastTransaction = null,
-    Object? ownerId = null,
-  }) {
-    return _then(_CategoryEntity(
-      id: freezed == id
-          ? _self.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      title: null == title
-          ? _self.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _self.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _self.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      thumbnailUrl: freezed == thumbnailUrl
-          ? _self.thumbnailUrl
-          : thumbnailUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      createdAt: null == createdAt
-          ? _self.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      lastTransaction: null == lastTransaction
-          ? _self.lastTransaction
-          : lastTransaction // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      ownerId: null == ownerId
-          ? _self.ownerId
-          : ownerId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CategoryEntityImplCopyWith<_$CategoryEntityImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-// dart format on

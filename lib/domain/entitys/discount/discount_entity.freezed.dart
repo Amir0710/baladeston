@@ -1,5 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,56 +9,32 @@ part of 'discount_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DiscountEntity {
-  int? get userId;
-  int? get id;
-  int? get category;
-  int get percent;
-  String get status;
-  DateTime get expiresAt;
+  int? get userId => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  int? get category => throw _privateConstructorUsedError;
+  int get percent => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
+  DateTime get expiresAt => throw _privateConstructorUsedError;
 
   /// Create a copy of DiscountEntity
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $DiscountEntityCopyWith<DiscountEntity> get copyWith =>
-      _$DiscountEntityCopyWithImpl<DiscountEntity>(
-          this as DiscountEntity, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is DiscountEntity &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.category, category) ||
-                other.category == category) &&
-            (identical(other.percent, percent) || other.percent == percent) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.expiresAt, expiresAt) ||
-                other.expiresAt == expiresAt));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, userId, id, category, percent, status, expiresAt);
-
-  @override
-  String toString() {
-    return 'DiscountEntity(userId: $userId, id: $id, category: $category, percent: $percent, status: $status, expiresAt: $expiresAt)';
-  }
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $DiscountEntityCopyWith<$Res> {
+abstract class $DiscountEntityCopyWith<$Res> {
   factory $DiscountEntityCopyWith(
-          DiscountEntity value, $Res Function(DiscountEntity) _then) =
-      _$DiscountEntityCopyWithImpl;
+          DiscountEntity value, $Res Function(DiscountEntity) then) =
+      _$DiscountEntityCopyWithImpl<$Res, DiscountEntity>;
   @useResult
   $Res call(
       {int? userId,
@@ -70,12 +46,14 @@ abstract mixin class $DiscountEntityCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DiscountEntityCopyWithImpl<$Res>
+class _$DiscountEntityCopyWithImpl<$Res, $Val extends DiscountEntity>
     implements $DiscountEntityCopyWith<$Res> {
-  _$DiscountEntityCopyWithImpl(this._self, this._then);
+  _$DiscountEntityCopyWithImpl(this._value, this._then);
 
-  final DiscountEntity _self;
-  final $Res Function(DiscountEntity) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of DiscountEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -89,205 +67,105 @@ class _$DiscountEntityCopyWithImpl<$Res>
     Object? status = null,
     Object? expiresAt = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       userId: freezed == userId
-          ? _self.userId
+          ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int?,
       id: freezed == id
-          ? _self.id
+          ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
       category: freezed == category
-          ? _self.category
+          ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as int?,
       percent: null == percent
-          ? _self.percent
+          ? _value.percent
           : percent // ignore: cast_nullable_to_non_nullable
               as int,
       status: null == status
-          ? _self.status
+          ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
       expiresAt: null == expiresAt
-          ? _self.expiresAt
+          ? _value.expiresAt
+          : expiresAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$DiscountEntityImplCopyWith<$Res>
+    implements $DiscountEntityCopyWith<$Res> {
+  factory _$$DiscountEntityImplCopyWith(_$DiscountEntityImpl value,
+          $Res Function(_$DiscountEntityImpl) then) =
+      __$$DiscountEntityImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int? userId,
+      int? id,
+      int? category,
+      int percent,
+      String status,
+      DateTime expiresAt});
+}
+
+/// @nodoc
+class __$$DiscountEntityImplCopyWithImpl<$Res>
+    extends _$DiscountEntityCopyWithImpl<$Res, _$DiscountEntityImpl>
+    implements _$$DiscountEntityImplCopyWith<$Res> {
+  __$$DiscountEntityImplCopyWithImpl(
+      _$DiscountEntityImpl _value, $Res Function(_$DiscountEntityImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DiscountEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userId = freezed,
+    Object? id = freezed,
+    Object? category = freezed,
+    Object? percent = null,
+    Object? status = null,
+    Object? expiresAt = null,
+  }) {
+    return _then(_$DiscountEntityImpl(
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      category: freezed == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as int?,
+      percent: null == percent
+          ? _value.percent
+          : percent // ignore: cast_nullable_to_non_nullable
+              as int,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      expiresAt: null == expiresAt
+          ? _value.expiresAt
           : expiresAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
   }
 }
 
-/// Adds pattern-matching-related methods to [DiscountEntity].
-extension DiscountEntityPatterns on DiscountEntity {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_DiscountEntity value)? $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _DiscountEntity() when $default != null:
-        return $default(_that);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_DiscountEntity value) $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _DiscountEntity():
-        return $default(_that);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_DiscountEntity value)? $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _DiscountEntity() when $default != null:
-        return $default(_that);
-      case _:
-        return null;
-    }
-  }
-
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int? userId, int? id, int? category, int percent,
-            String status, DateTime expiresAt)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _DiscountEntity() when $default != null:
-        return $default(_that.userId, _that.id, _that.category, _that.percent,
-            _that.status, _that.expiresAt);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(int? userId, int? id, int? category, int percent,
-            String status, DateTime expiresAt)
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _DiscountEntity():
-        return $default(_that.userId, _that.id, _that.category, _that.percent,
-            _that.status, _that.expiresAt);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int? userId, int? id, int? category, int percent,
-            String status, DateTime expiresAt)?
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _DiscountEntity() when $default != null:
-        return $default(_that.userId, _that.id, _that.category, _that.percent,
-            _that.status, _that.expiresAt);
-      case _:
-        return null;
-    }
-  }
-}
-
 /// @nodoc
 
-class _DiscountEntity implements DiscountEntity {
-  const _DiscountEntity(
+class _$DiscountEntityImpl implements _DiscountEntity {
+  const _$DiscountEntityImpl(
       {required this.userId,
       required this.id,
       required this.category,
@@ -308,19 +186,16 @@ class _DiscountEntity implements DiscountEntity {
   @override
   final DateTime expiresAt;
 
-  /// Create a copy of DiscountEntity
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$DiscountEntityCopyWith<_DiscountEntity> get copyWith =>
-      __$DiscountEntityCopyWithImpl<_DiscountEntity>(this, _$identity);
+  String toString() {
+    return 'DiscountEntity(userId: $userId, id: $id, category: $category, percent: $percent, status: $status, expiresAt: $expiresAt)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DiscountEntity &&
+            other is _$DiscountEntityImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.category, category) ||
@@ -335,76 +210,42 @@ class _DiscountEntity implements DiscountEntity {
   int get hashCode => Object.hash(
       runtimeType, userId, id, category, percent, status, expiresAt);
 
+  /// Create a copy of DiscountEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'DiscountEntity(userId: $userId, id: $id, category: $category, percent: $percent, status: $status, expiresAt: $expiresAt)';
-  }
+  @pragma('vm:prefer-inline')
+  _$$DiscountEntityImplCopyWith<_$DiscountEntityImpl> get copyWith =>
+      __$$DiscountEntityImplCopyWithImpl<_$DiscountEntityImpl>(
+          this, _$identity);
 }
 
-/// @nodoc
-abstract mixin class _$DiscountEntityCopyWith<$Res>
-    implements $DiscountEntityCopyWith<$Res> {
-  factory _$DiscountEntityCopyWith(
-          _DiscountEntity value, $Res Function(_DiscountEntity) _then) =
-      __$DiscountEntityCopyWithImpl;
+abstract class _DiscountEntity implements DiscountEntity {
+  const factory _DiscountEntity(
+      {required final int? userId,
+      required final int? id,
+      required final int? category,
+      required final int percent,
+      required final String status,
+      required final DateTime expiresAt}) = _$DiscountEntityImpl;
+
   @override
-  @useResult
-  $Res call(
-      {int? userId,
-      int? id,
-      int? category,
-      int percent,
-      String status,
-      DateTime expiresAt});
-}
-
-/// @nodoc
-class __$DiscountEntityCopyWithImpl<$Res>
-    implements _$DiscountEntityCopyWith<$Res> {
-  __$DiscountEntityCopyWithImpl(this._self, this._then);
-
-  final _DiscountEntity _self;
-  final $Res Function(_DiscountEntity) _then;
+  int? get userId;
+  @override
+  int? get id;
+  @override
+  int? get category;
+  @override
+  int get percent;
+  @override
+  String get status;
+  @override
+  DateTime get expiresAt;
 
   /// Create a copy of DiscountEntity
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? userId = freezed,
-    Object? id = freezed,
-    Object? category = freezed,
-    Object? percent = null,
-    Object? status = null,
-    Object? expiresAt = null,
-  }) {
-    return _then(_DiscountEntity(
-      userId: freezed == userId
-          ? _self.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      id: freezed == id
-          ? _self.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      category: freezed == category
-          ? _self.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as int?,
-      percent: null == percent
-          ? _self.percent
-          : percent // ignore: cast_nullable_to_non_nullable
-              as int,
-      status: null == status
-          ? _self.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      expiresAt: null == expiresAt
-          ? _self.expiresAt
-          : expiresAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DiscountEntityImplCopyWith<_$DiscountEntityImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-// dart format on

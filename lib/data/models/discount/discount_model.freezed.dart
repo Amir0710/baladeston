@@ -1,5 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,60 +9,40 @@ part of 'discount_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+DiscountModel _$DiscountModelFromJson(Map<String, dynamic> json) {
+  return _DiscountModel.fromJson(json);
+}
 
 /// @nodoc
 mixin _$DiscountModel {
-  int? get userId;
-  int? get id;
-  int? get category;
-  int get percent;
-  String get status; // edit can be nullable
-  DateTime get expiresAt;
+  int? get userId => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  int? get category => throw _privateConstructorUsedError;
+  int get percent => throw _privateConstructorUsedError;
+  String get status =>
+      throw _privateConstructorUsedError; // edit can be nullable
+  DateTime get expiresAt => throw _privateConstructorUsedError;
+
+  /// Serializes this DiscountModel to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of DiscountModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $DiscountModelCopyWith<DiscountModel> get copyWith =>
-      _$DiscountModelCopyWithImpl<DiscountModel>(
-          this as DiscountModel, _$identity);
-
-  /// Serializes this DiscountModel to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is DiscountModel &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.category, category) ||
-                other.category == category) &&
-            (identical(other.percent, percent) || other.percent == percent) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.expiresAt, expiresAt) ||
-                other.expiresAt == expiresAt));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, userId, id, category, percent, status, expiresAt);
-
-  @override
-  String toString() {
-    return 'DiscountModel(userId: $userId, id: $id, category: $category, percent: $percent, status: $status, expiresAt: $expiresAt)';
-  }
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $DiscountModelCopyWith<$Res> {
+abstract class $DiscountModelCopyWith<$Res> {
   factory $DiscountModelCopyWith(
-          DiscountModel value, $Res Function(DiscountModel) _then) =
-      _$DiscountModelCopyWithImpl;
+          DiscountModel value, $Res Function(DiscountModel) then) =
+      _$DiscountModelCopyWithImpl<$Res, DiscountModel>;
   @useResult
   $Res call(
       {int? userId,
@@ -74,12 +54,14 @@ abstract mixin class $DiscountModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DiscountModelCopyWithImpl<$Res>
+class _$DiscountModelCopyWithImpl<$Res, $Val extends DiscountModel>
     implements $DiscountModelCopyWith<$Res> {
-  _$DiscountModelCopyWithImpl(this._self, this._then);
+  _$DiscountModelCopyWithImpl(this._value, this._then);
 
-  final DiscountModel _self;
-  final $Res Function(DiscountModel) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of DiscountModel
   /// with the given fields replaced by the non-null parameter values.
@@ -93,213 +75,114 @@ class _$DiscountModelCopyWithImpl<$Res>
     Object? status = null,
     Object? expiresAt = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       userId: freezed == userId
-          ? _self.userId
+          ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int?,
       id: freezed == id
-          ? _self.id
+          ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
       category: freezed == category
-          ? _self.category
+          ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as int?,
       percent: null == percent
-          ? _self.percent
+          ? _value.percent
           : percent // ignore: cast_nullable_to_non_nullable
               as int,
       status: null == status
-          ? _self.status
+          ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
       expiresAt: null == expiresAt
-          ? _self.expiresAt
+          ? _value.expiresAt
+          : expiresAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$DiscountModelImplCopyWith<$Res>
+    implements $DiscountModelCopyWith<$Res> {
+  factory _$$DiscountModelImplCopyWith(
+          _$DiscountModelImpl value, $Res Function(_$DiscountModelImpl) then) =
+      __$$DiscountModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int? userId,
+      int? id,
+      int? category,
+      int percent,
+      String status,
+      DateTime expiresAt});
+}
+
+/// @nodoc
+class __$$DiscountModelImplCopyWithImpl<$Res>
+    extends _$DiscountModelCopyWithImpl<$Res, _$DiscountModelImpl>
+    implements _$$DiscountModelImplCopyWith<$Res> {
+  __$$DiscountModelImplCopyWithImpl(
+      _$DiscountModelImpl _value, $Res Function(_$DiscountModelImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DiscountModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userId = freezed,
+    Object? id = freezed,
+    Object? category = freezed,
+    Object? percent = null,
+    Object? status = null,
+    Object? expiresAt = null,
+  }) {
+    return _then(_$DiscountModelImpl(
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      category: freezed == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as int?,
+      percent: null == percent
+          ? _value.percent
+          : percent // ignore: cast_nullable_to_non_nullable
+              as int,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      expiresAt: null == expiresAt
+          ? _value.expiresAt
           : expiresAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
   }
 }
 
-/// Adds pattern-matching-related methods to [DiscountModel].
-extension DiscountModelPatterns on DiscountModel {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_DiscountModel value)? $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _DiscountModel() when $default != null:
-        return $default(_that);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_DiscountModel value) $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _DiscountModel():
-        return $default(_that);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_DiscountModel value)? $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _DiscountModel() when $default != null:
-        return $default(_that);
-      case _:
-        return null;
-    }
-  }
-
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int? userId, int? id, int? category, int percent,
-            String status, DateTime expiresAt)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _DiscountModel() when $default != null:
-        return $default(_that.userId, _that.id, _that.category, _that.percent,
-            _that.status, _that.expiresAt);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(int? userId, int? id, int? category, int percent,
-            String status, DateTime expiresAt)
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _DiscountModel():
-        return $default(_that.userId, _that.id, _that.category, _that.percent,
-            _that.status, _that.expiresAt);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int? userId, int? id, int? category, int percent,
-            String status, DateTime expiresAt)?
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _DiscountModel() when $default != null:
-        return $default(_that.userId, _that.id, _that.category, _that.percent,
-            _that.status, _that.expiresAt);
-      case _:
-        return null;
-    }
-  }
-}
-
 /// @nodoc
 @JsonSerializable()
-class _DiscountModel implements DiscountModel {
-  const _DiscountModel(
+class _$DiscountModelImpl implements _DiscountModel {
+  const _$DiscountModelImpl(
       {required this.userId,
       required this.id,
       required this.category,
       required this.percent,
       required this.status,
       required this.expiresAt});
-  factory _DiscountModel.fromJson(Map<String, dynamic> json) =>
-      _$DiscountModelFromJson(json);
+
+  factory _$DiscountModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DiscountModelImplFromJson(json);
 
   @override
   final int? userId;
@@ -315,26 +198,16 @@ class _DiscountModel implements DiscountModel {
   @override
   final DateTime expiresAt;
 
-  /// Create a copy of DiscountModel
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$DiscountModelCopyWith<_DiscountModel> get copyWith =>
-      __$DiscountModelCopyWithImpl<_DiscountModel>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$DiscountModelToJson(
-      this,
-    );
+  String toString() {
+    return 'DiscountModel(userId: $userId, id: $id, category: $category, percent: $percent, status: $status, expiresAt: $expiresAt)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DiscountModel &&
+            other is _$DiscountModelImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.category, category) ||
@@ -350,76 +223,51 @@ class _DiscountModel implements DiscountModel {
   int get hashCode => Object.hash(
       runtimeType, userId, id, category, percent, status, expiresAt);
 
+  /// Create a copy of DiscountModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'DiscountModel(userId: $userId, id: $id, category: $category, percent: $percent, status: $status, expiresAt: $expiresAt)';
+  @pragma('vm:prefer-inline')
+  _$$DiscountModelImplCopyWith<_$DiscountModelImpl> get copyWith =>
+      __$$DiscountModelImplCopyWithImpl<_$DiscountModelImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$DiscountModelImplToJson(
+      this,
+    );
   }
 }
 
-/// @nodoc
-abstract mixin class _$DiscountModelCopyWith<$Res>
-    implements $DiscountModelCopyWith<$Res> {
-  factory _$DiscountModelCopyWith(
-          _DiscountModel value, $Res Function(_DiscountModel) _then) =
-      __$DiscountModelCopyWithImpl;
+abstract class _DiscountModel implements DiscountModel {
+  const factory _DiscountModel(
+      {required final int? userId,
+      required final int? id,
+      required final int? category,
+      required final int percent,
+      required final String status,
+      required final DateTime expiresAt}) = _$DiscountModelImpl;
+
+  factory _DiscountModel.fromJson(Map<String, dynamic> json) =
+      _$DiscountModelImpl.fromJson;
+
   @override
-  @useResult
-  $Res call(
-      {int? userId,
-      int? id,
-      int? category,
-      int percent,
-      String status,
-      DateTime expiresAt});
-}
-
-/// @nodoc
-class __$DiscountModelCopyWithImpl<$Res>
-    implements _$DiscountModelCopyWith<$Res> {
-  __$DiscountModelCopyWithImpl(this._self, this._then);
-
-  final _DiscountModel _self;
-  final $Res Function(_DiscountModel) _then;
+  int? get userId;
+  @override
+  int? get id;
+  @override
+  int? get category;
+  @override
+  int get percent;
+  @override
+  String get status; // edit can be nullable
+  @override
+  DateTime get expiresAt;
 
   /// Create a copy of DiscountModel
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? userId = freezed,
-    Object? id = freezed,
-    Object? category = freezed,
-    Object? percent = null,
-    Object? status = null,
-    Object? expiresAt = null,
-  }) {
-    return _then(_DiscountModel(
-      userId: freezed == userId
-          ? _self.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      id: freezed == id
-          ? _self.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      category: freezed == category
-          ? _self.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as int?,
-      percent: null == percent
-          ? _self.percent
-          : percent // ignore: cast_nullable_to_non_nullable
-              as int,
-      status: null == status
-          ? _self.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      expiresAt: null == expiresAt
-          ? _self.expiresAt
-          : expiresAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DiscountModelImplCopyWith<_$DiscountModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-// dart format on

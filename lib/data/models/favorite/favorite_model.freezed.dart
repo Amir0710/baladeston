@@ -1,5 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,70 +9,53 @@ part of 'favorite_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+FavoriteModel _$FavoriteModelFromJson(Map<String, dynamic> json) {
+  return _FavoriteModel.fromJson(json);
+}
 
 /// @nodoc
 mixin _$FavoriteModel {
-  int? get id;
-  int get userId;
-  String get type; // edit delete unnecessary
-  int get targetId;
-  DateTime? get interestedIn;
+  int? get id => throw _privateConstructorUsedError;
+  int get userId => throw _privateConstructorUsedError;
+  String get type =>
+      throw _privateConstructorUsedError; // edit delete unnecessary
+  int get targetId => throw _privateConstructorUsedError;
+  DateTime? get interestedIn => throw _privateConstructorUsedError;
+
+  /// Serializes this FavoriteModel to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of FavoriteModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $FavoriteModelCopyWith<FavoriteModel> get copyWith =>
-      _$FavoriteModelCopyWithImpl<FavoriteModel>(
-          this as FavoriteModel, _$identity);
-
-  /// Serializes this FavoriteModel to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is FavoriteModel &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.targetId, targetId) ||
-                other.targetId == targetId) &&
-            (identical(other.interestedIn, interestedIn) ||
-                other.interestedIn == interestedIn));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, userId, type, targetId, interestedIn);
-
-  @override
-  String toString() {
-    return 'FavoriteModel(id: $id, userId: $userId, type: $type, targetId: $targetId, interestedIn: $interestedIn)';
-  }
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $FavoriteModelCopyWith<$Res> {
+abstract class $FavoriteModelCopyWith<$Res> {
   factory $FavoriteModelCopyWith(
-          FavoriteModel value, $Res Function(FavoriteModel) _then) =
-      _$FavoriteModelCopyWithImpl;
+          FavoriteModel value, $Res Function(FavoriteModel) then) =
+      _$FavoriteModelCopyWithImpl<$Res, FavoriteModel>;
   @useResult
   $Res call(
       {int? id, int userId, String type, int targetId, DateTime? interestedIn});
 }
 
 /// @nodoc
-class _$FavoriteModelCopyWithImpl<$Res>
+class _$FavoriteModelCopyWithImpl<$Res, $Val extends FavoriteModel>
     implements $FavoriteModelCopyWith<$Res> {
-  _$FavoriteModelCopyWithImpl(this._self, this._then);
+  _$FavoriteModelCopyWithImpl(this._value, this._then);
 
-  final FavoriteModel _self;
-  final $Res Function(FavoriteModel) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of FavoriteModel
   /// with the given fields replaced by the non-null parameter values.
@@ -85,208 +68,99 @@ class _$FavoriteModelCopyWithImpl<$Res>
     Object? targetId = null,
     Object? interestedIn = freezed,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       id: freezed == id
-          ? _self.id
+          ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
       userId: null == userId
-          ? _self.userId
+          ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int,
       type: null == type
-          ? _self.type
+          ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
       targetId: null == targetId
-          ? _self.targetId
+          ? _value.targetId
           : targetId // ignore: cast_nullable_to_non_nullable
               as int,
       interestedIn: freezed == interestedIn
-          ? _self.interestedIn
+          ? _value.interestedIn
+          : interestedIn // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$FavoriteModelImplCopyWith<$Res>
+    implements $FavoriteModelCopyWith<$Res> {
+  factory _$$FavoriteModelImplCopyWith(
+          _$FavoriteModelImpl value, $Res Function(_$FavoriteModelImpl) then) =
+      __$$FavoriteModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int? id, int userId, String type, int targetId, DateTime? interestedIn});
+}
+
+/// @nodoc
+class __$$FavoriteModelImplCopyWithImpl<$Res>
+    extends _$FavoriteModelCopyWithImpl<$Res, _$FavoriteModelImpl>
+    implements _$$FavoriteModelImplCopyWith<$Res> {
+  __$$FavoriteModelImplCopyWithImpl(
+      _$FavoriteModelImpl _value, $Res Function(_$FavoriteModelImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of FavoriteModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? userId = null,
+    Object? type = null,
+    Object? targetId = null,
+    Object? interestedIn = freezed,
+  }) {
+    return _then(_$FavoriteModelImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      targetId: null == targetId
+          ? _value.targetId
+          : targetId // ignore: cast_nullable_to_non_nullable
+              as int,
+      interestedIn: freezed == interestedIn
+          ? _value.interestedIn
           : interestedIn // ignore: cast_nullable_to_non_nullable
               as DateTime?,
     ));
   }
 }
 
-/// Adds pattern-matching-related methods to [FavoriteModel].
-extension FavoriteModelPatterns on FavoriteModel {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_FavoriteModel value)? $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _FavoriteModel() when $default != null:
-        return $default(_that);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_FavoriteModel value) $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _FavoriteModel():
-        return $default(_that);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_FavoriteModel value)? $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _FavoriteModel() when $default != null:
-        return $default(_that);
-      case _:
-        return null;
-    }
-  }
-
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int? id, int userId, String type, int targetId,
-            DateTime? interestedIn)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _FavoriteModel() when $default != null:
-        return $default(_that.id, _that.userId, _that.type, _that.targetId,
-            _that.interestedIn);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(int? id, int userId, String type, int targetId,
-            DateTime? interestedIn)
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _FavoriteModel():
-        return $default(_that.id, _that.userId, _that.type, _that.targetId,
-            _that.interestedIn);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int? id, int userId, String type, int targetId,
-            DateTime? interestedIn)?
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _FavoriteModel() when $default != null:
-        return $default(_that.id, _that.userId, _that.type, _that.targetId,
-            _that.interestedIn);
-      case _:
-        return null;
-    }
-  }
-}
-
 /// @nodoc
 @JsonSerializable()
-class _FavoriteModel implements FavoriteModel {
-  const _FavoriteModel(
+class _$FavoriteModelImpl implements _FavoriteModel {
+  const _$FavoriteModelImpl(
       {required this.id,
       required this.userId,
       required this.type,
       required this.targetId,
       required this.interestedIn});
-  factory _FavoriteModel.fromJson(Map<String, dynamic> json) =>
-      _$FavoriteModelFromJson(json);
+
+  factory _$FavoriteModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FavoriteModelImplFromJson(json);
 
   @override
   final int? id;
@@ -300,26 +174,16 @@ class _FavoriteModel implements FavoriteModel {
   @override
   final DateTime? interestedIn;
 
-  /// Create a copy of FavoriteModel
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$FavoriteModelCopyWith<_FavoriteModel> get copyWith =>
-      __$FavoriteModelCopyWithImpl<_FavoriteModel>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$FavoriteModelToJson(
-      this,
-    );
+  String toString() {
+    return 'FavoriteModel(id: $id, userId: $userId, type: $type, targetId: $targetId, interestedIn: $interestedIn)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _FavoriteModel &&
+            other is _$FavoriteModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.type, type) || other.type == type) &&
@@ -334,66 +198,48 @@ class _FavoriteModel implements FavoriteModel {
   int get hashCode =>
       Object.hash(runtimeType, id, userId, type, targetId, interestedIn);
 
+  /// Create a copy of FavoriteModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'FavoriteModel(id: $id, userId: $userId, type: $type, targetId: $targetId, interestedIn: $interestedIn)';
+  @pragma('vm:prefer-inline')
+  _$$FavoriteModelImplCopyWith<_$FavoriteModelImpl> get copyWith =>
+      __$$FavoriteModelImplCopyWithImpl<_$FavoriteModelImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$FavoriteModelImplToJson(
+      this,
+    );
   }
 }
 
-/// @nodoc
-abstract mixin class _$FavoriteModelCopyWith<$Res>
-    implements $FavoriteModelCopyWith<$Res> {
-  factory _$FavoriteModelCopyWith(
-          _FavoriteModel value, $Res Function(_FavoriteModel) _then) =
-      __$FavoriteModelCopyWithImpl;
+abstract class _FavoriteModel implements FavoriteModel {
+  const factory _FavoriteModel(
+      {required final int? id,
+      required final int userId,
+      required final String type,
+      required final int targetId,
+      required final DateTime? interestedIn}) = _$FavoriteModelImpl;
+
+  factory _FavoriteModel.fromJson(Map<String, dynamic> json) =
+      _$FavoriteModelImpl.fromJson;
+
   @override
-  @useResult
-  $Res call(
-      {int? id, int userId, String type, int targetId, DateTime? interestedIn});
-}
-
-/// @nodoc
-class __$FavoriteModelCopyWithImpl<$Res>
-    implements _$FavoriteModelCopyWith<$Res> {
-  __$FavoriteModelCopyWithImpl(this._self, this._then);
-
-  final _FavoriteModel _self;
-  final $Res Function(_FavoriteModel) _then;
+  int? get id;
+  @override
+  int get userId;
+  @override
+  String get type; // edit delete unnecessary
+  @override
+  int get targetId;
+  @override
+  DateTime? get interestedIn;
 
   /// Create a copy of FavoriteModel
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? id = freezed,
-    Object? userId = null,
-    Object? type = null,
-    Object? targetId = null,
-    Object? interestedIn = freezed,
-  }) {
-    return _then(_FavoriteModel(
-      id: freezed == id
-          ? _self.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      userId: null == userId
-          ? _self.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      type: null == type
-          ? _self.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      targetId: null == targetId
-          ? _self.targetId
-          : targetId // ignore: cast_nullable_to_non_nullable
-              as int,
-      interestedIn: freezed == interestedIn
-          ? _self.interestedIn
-          : interestedIn // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-    ));
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FavoriteModelImplCopyWith<_$FavoriteModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-// dart format on

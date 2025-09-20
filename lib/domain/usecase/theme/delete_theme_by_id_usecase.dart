@@ -3,7 +3,7 @@ import 'package:baladeston/domain/repositories/theme_repository.dart';
 class DeleteThemeByIdUseCase {
   final ThemeRepository repository;
 
-  DeleteThemeByIdUseCase({required this.repository});
+  DeleteThemeByIdUseCase( this.repository);
 
 
   Future<void> call ({required int id}) {

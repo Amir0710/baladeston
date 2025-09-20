@@ -6,8 +6,9 @@ part of 'watch_history_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_WatchHistoryModel _$WatchHistoryModelFromJson(Map<String, dynamic> json) =>
-    _WatchHistoryModel(
+_$WatchHistoryModelImpl _$$WatchHistoryModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$WatchHistoryModelImpl(
       id: (json['id'] as num?)?.toInt(),
       userId: (json['userId'] as num).toInt(),
       videoId: (json['videoId'] as num).toInt(),
@@ -15,7 +16,8 @@ _WatchHistoryModel _$WatchHistoryModelFromJson(Map<String, dynamic> json) =>
       updatedAt: DateTime.parse(json['updatedAt'] as String),
     );
 
-Map<String, dynamic> _$WatchHistoryModelToJson(_WatchHistoryModel instance) =>
+Map<String, dynamic> _$$WatchHistoryModelImplToJson(
+        _$WatchHistoryModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'userId': instance.userId,

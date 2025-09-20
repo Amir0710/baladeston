@@ -4,7 +4,7 @@ import 'package:baladeston/domain/repositories/theme_repository.dart';
 class UpdateThemeUseCase {
   final ThemeRepository repository;
 
-  UpdateThemeUseCase({required this.repository});
+  UpdateThemeUseCase(this.repository);
 
 
   Future<void> call({required ThemeEntity theme}) {
