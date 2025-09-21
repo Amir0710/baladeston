@@ -249,10 +249,10 @@ mixin _$ThemeColors {
   String get warning => throw _privateConstructorUsedError;
   String get secondary => throw _privateConstructorUsedError;
   String get background => throw _privateConstructorUsedError;
+  List<String> get partColors => throw _privateConstructorUsedError;
   String get textPrimary => throw _privateConstructorUsedError;
   String get textSecondary => throw _privateConstructorUsedError;
   String get buttonForeground => throw _privateConstructorUsedError;
-  List<String> get partColors => throw _privateConstructorUsedError;
 
   /// Serializes this ThemeColors to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -280,10 +280,10 @@ abstract class $ThemeColorsCopyWith<$Res> {
       String warning,
       String secondary,
       String background,
+      List<String> partColors,
       String textPrimary,
       String textSecondary,
-      String buttonForeground,
-      List<String> partColors});
+      String buttonForeground});
 }
 
 /// @nodoc
@@ -310,10 +310,10 @@ class _$ThemeColorsCopyWithImpl<$Res, $Val extends ThemeColors>
     Object? warning = null,
     Object? secondary = null,
     Object? background = null,
+    Object? partColors = null,
     Object? textPrimary = null,
     Object? textSecondary = null,
     Object? buttonForeground = null,
-    Object? partColors = null,
   }) {
     return _then(_value.copyWith(
       info: null == info
@@ -352,6 +352,10 @@ class _$ThemeColorsCopyWithImpl<$Res, $Val extends ThemeColors>
           ? _value.background
           : background // ignore: cast_nullable_to_non_nullable
               as String,
+      partColors: null == partColors
+          ? _value.partColors
+          : partColors // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       textPrimary: null == textPrimary
           ? _value.textPrimary
           : textPrimary // ignore: cast_nullable_to_non_nullable
@@ -364,10 +368,6 @@ class _$ThemeColorsCopyWithImpl<$Res, $Val extends ThemeColors>
           ? _value.buttonForeground
           : buttonForeground // ignore: cast_nullable_to_non_nullable
               as String,
-      partColors: null == partColors
-          ? _value.partColors
-          : partColors // ignore: cast_nullable_to_non_nullable
-              as List<String>,
     ) as $Val);
   }
 }
@@ -390,10 +390,10 @@ abstract class _$$ThemeColorsImplCopyWith<$Res>
       String warning,
       String secondary,
       String background,
+      List<String> partColors,
       String textPrimary,
       String textSecondary,
-      String buttonForeground,
-      List<String> partColors});
+      String buttonForeground});
 }
 
 /// @nodoc
@@ -418,10 +418,10 @@ class __$$ThemeColorsImplCopyWithImpl<$Res>
     Object? warning = null,
     Object? secondary = null,
     Object? background = null,
+    Object? partColors = null,
     Object? textPrimary = null,
     Object? textSecondary = null,
     Object? buttonForeground = null,
-    Object? partColors = null,
   }) {
     return _then(_$ThemeColorsImpl(
       info: null == info
@@ -460,6 +460,10 @@ class __$$ThemeColorsImplCopyWithImpl<$Res>
           ? _value.background
           : background // ignore: cast_nullable_to_non_nullable
               as String,
+      partColors: null == partColors
+          ? _value._partColors
+          : partColors // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       textPrimary: null == textPrimary
           ? _value.textPrimary
           : textPrimary // ignore: cast_nullable_to_non_nullable
@@ -472,10 +476,6 @@ class __$$ThemeColorsImplCopyWithImpl<$Res>
           ? _value.buttonForeground
           : buttonForeground // ignore: cast_nullable_to_non_nullable
               as String,
-      partColors: null == partColors
-          ? _value._partColors
-          : partColors // ignore: cast_nullable_to_non_nullable
-              as List<String>,
     ));
   }
 }
@@ -493,10 +493,10 @@ class _$ThemeColorsImpl implements _ThemeColors {
       required this.warning,
       required this.secondary,
       required this.background,
+      required final List<String> partColors,
       required this.textPrimary,
       required this.textSecondary,
-      required this.buttonForeground,
-      required final List<String> partColors})
+      required this.buttonForeground})
       : _partColors = partColors;
 
   factory _$ThemeColorsImpl.fromJson(Map<String, dynamic> json) =>
@@ -520,12 +520,6 @@ class _$ThemeColorsImpl implements _ThemeColors {
   final String secondary;
   @override
   final String background;
-  @override
-  final String textPrimary;
-  @override
-  final String textSecondary;
-  @override
-  final String buttonForeground;
   final List<String> _partColors;
   @override
   List<String> get partColors {
@@ -535,8 +529,15 @@ class _$ThemeColorsImpl implements _ThemeColors {
   }
 
   @override
+  final String textPrimary;
+  @override
+  final String textSecondary;
+  @override
+  final String buttonForeground;
+
+  @override
   String toString() {
-    return 'ThemeColors(info: $info, error: $error, divider: $divider, primary: $primary, success: $success, surface: $surface, warning: $warning, secondary: $secondary, background: $background, textPrimary: $textPrimary, textSecondary: $textSecondary, buttonForeground: $buttonForeground, partColors: $partColors)';
+    return 'ThemeColors(info: $info, error: $error, divider: $divider, primary: $primary, success: $success, surface: $surface, warning: $warning, secondary: $secondary, background: $background, partColors: $partColors, textPrimary: $textPrimary, textSecondary: $textSecondary, buttonForeground: $buttonForeground)';
   }
 
   @override
@@ -555,14 +556,14 @@ class _$ThemeColorsImpl implements _ThemeColors {
                 other.secondary == secondary) &&
             (identical(other.background, background) ||
                 other.background == background) &&
+            const DeepCollectionEquality()
+                .equals(other._partColors, _partColors) &&
             (identical(other.textPrimary, textPrimary) ||
                 other.textPrimary == textPrimary) &&
             (identical(other.textSecondary, textSecondary) ||
                 other.textSecondary == textSecondary) &&
             (identical(other.buttonForeground, buttonForeground) ||
-                other.buttonForeground == buttonForeground) &&
-            const DeepCollectionEquality()
-                .equals(other._partColors, _partColors));
+                other.buttonForeground == buttonForeground));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -578,10 +579,10 @@ class _$ThemeColorsImpl implements _ThemeColors {
       warning,
       secondary,
       background,
+      const DeepCollectionEquality().hash(_partColors),
       textPrimary,
       textSecondary,
-      buttonForeground,
-      const DeepCollectionEquality().hash(_partColors));
+      buttonForeground);
 
   /// Create a copy of ThemeColors
   /// with the given fields replaced by the non-null parameter values.
@@ -610,10 +611,10 @@ abstract class _ThemeColors implements ThemeColors {
       required final String warning,
       required final String secondary,
       required final String background,
+      required final List<String> partColors,
       required final String textPrimary,
       required final String textSecondary,
-      required final String buttonForeground,
-      required final List<String> partColors}) = _$ThemeColorsImpl;
+      required final String buttonForeground}) = _$ThemeColorsImpl;
 
   factory _ThemeColors.fromJson(Map<String, dynamic> json) =
       _$ThemeColorsImpl.fromJson;
@@ -637,13 +638,13 @@ abstract class _ThemeColors implements ThemeColors {
   @override
   String get background;
   @override
+  List<String> get partColors;
+  @override
   String get textPrimary;
   @override
   String get textSecondary;
   @override
   String get buttonForeground;
-  @override
-  List<String> get partColors;
 
   /// Create a copy of ThemeColors
   /// with the given fields replaced by the non-null parameter values.

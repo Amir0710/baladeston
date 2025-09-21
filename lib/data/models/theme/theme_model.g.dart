@@ -33,12 +33,12 @@ _$ThemeColorsImpl _$$ThemeColorsImplFromJson(Map<String, dynamic> json) =>
       warning: json['warning'] as String,
       secondary: json['secondary'] as String,
       background: json['background'] as String,
-      textPrimary: json['textPrimary'] as String,
-      textSecondary: json['textSecondary'] as String,
-      buttonForeground: json['buttonForeground'] as String,
       partColors: (json['partColors'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
+      textPrimary: json['textPrimary'] as String,
+      textSecondary: json['textSecondary'] as String,
+      buttonForeground: json['buttonForeground'] as String,
     );
 
 Map<String, dynamic> _$$ThemeColorsImplToJson(_$ThemeColorsImpl instance) =>
@@ -52,8 +52,8 @@ Map<String, dynamic> _$$ThemeColorsImplToJson(_$ThemeColorsImpl instance) =>
       'warning': instance.warning,
       'secondary': instance.secondary,
       'background': instance.background,
+      'partColors': instance.partColors,
       'textPrimary': instance.textPrimary,
       'textSecondary': instance.textSecondary,
       'buttonForeground': instance.buttonForeground,
-      'partColors': instance.partColors,
     };

@@ -50,6 +50,7 @@ class ThemeCubit extends Cubit<ThemeState> {
     try {
       final theme = await _getByNameUseCase(name : 'dark');
       if (theme == null) {
+
         emit(ThemeState.success(
           themeData: AppTheme.lightTheme(),
           isDark: false,
