@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 
 // Data
 import 'package:baladeston/data/datasources/remote/report_remote_datasource/report_api.dart';
-import 'package:baladeston/data/repository_implementaion/report_repository_implementation.dart';
+import 'package:baladeston/data/repository_implementation/report_repository_implementation.dart';
 
 // Domain
 import 'package:baladeston/domain/repositories/report_repository.dart';

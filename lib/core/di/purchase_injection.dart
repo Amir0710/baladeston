@@ -10,7 +10,7 @@ import 'package:get_it/get_it.dart';
 
 // Repository & Implementation
 import 'package:baladeston/domain/repositories/purchase_repository.dart';
-import 'package:baladeston/data/repository_implementaion/purchase_repository_implementation.dart';
+import 'package:baladeston/data/repository_implementation/purchase_repository_implementation.dart';
 
 // Cubit
 import 'package:baladeston/presentation/providers/purchase_cubit/purchase_cubit.dart';

@@ -1,3 +1,6 @@
+
+import 'package:baladeston/data/datasources/local/theme_local_datasource/theme_local.dart';
+import 'package:baladeston/data/datasources/local/theme_local_datasource/theme_local_implementation.dart';
 import 'package:baladeston/data/datasources/remote/theme_remote_datasource/theme_api.dart';
 import 'package:baladeston/data/datasources/remote/theme_remote_datasource/theme_api_implementation.dart';
 import 'package:baladeston/domain/repositories/theme_repository.dart';
@@ -6,57 +9,61 @@ import 'package:baladeston/domain/usecase/theme/create_theme_usecase.dart';
 import 'package:baladeston/domain/usecase/theme/delete_theme_by_id_usecase.dart';
 import 'package:baladeston/domain/usecase/theme/delete_theme_by_name_usecase.dart';
 import 'package:baladeston/domain/usecase/theme/get_all_themes_usecase.dart';
-
 import 'package:baladeston/domain/usecase/theme/get_theme_by_id_usecase.dart';
 import 'package:baladeston/domain/usecase/theme/get_theme_by_name_usecase.dart';
 import 'package:baladeston/domain/usecase/theme/update_theme_usecase.dart';
 import 'package:baladeston/presentation/providers/theme_cubit/theme_cubit.dart';
 import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../data/repository_implementaion/theme_repository_implementation.dart';
+import '../../data/repository_implementation/theme_repository_implementation.dart';
 
 final getIt = GetIt.instance;
 
 Future<void> initThemeModule() async {
-  getIt
+  final prefs = await SharedPreferences.getInstance();
 
-    //DateSource
+  getIt
+  // Local DataSource
+    ..registerLazySingleton<ThemeLocal>(() => ThemeLocalImpl())
+
+  // Remote DataSource
     ..registerLazySingleton<ThemeApi>(() => ThemeApiImplementation())
 
-    // Repository
+  // Repository
     ..registerLazySingleton<ThemeRepository>(
-      () => ThemeRepositoryImplementation(api: getIt<ThemeApi>()),
+          () => ThemeRepositoryImplementation(api: getIt<ThemeApi>()),
     )
 
-    // UseCases
+  // UseCases
     ..registerLazySingleton<CreateThemeUseCase>(
-      () => CreateThemeUseCase(getIt<ThemeRepository>()),
+          () => CreateThemeUseCase(getIt<ThemeRepository>()),
     )
     ..registerLazySingleton<UpdateThemeUseCase>(
-      () => UpdateThemeUseCase(getIt<ThemeRepository>()),
+          () => UpdateThemeUseCase(getIt<ThemeRepository>()),
     )
     ..registerLazySingleton<CountAllThemesUseCase>(
-      () => CountAllThemesUseCase(getIt<ThemeRepository>()),
+          () => CountAllThemesUseCase(getIt<ThemeRepository>()),
     )
     ..registerLazySingleton<DeleteThemeByIdUseCase>(
-      () => DeleteThemeByIdUseCase(getIt<ThemeRepository>()),
+          () => DeleteThemeByIdUseCase(getIt<ThemeRepository>()),
     )
     ..registerLazySingleton<DeleteThemeByNameUseCase>(
-      () => DeleteThemeByNameUseCase(getIt<ThemeRepository>()),
+          () => DeleteThemeByNameUseCase(getIt<ThemeRepository>()),
     )
     ..registerLazySingleton<GetThemeByIdUseCase>(
-      () => GetThemeByIdUseCase(getIt<ThemeRepository>()),
+          () => GetThemeByIdUseCase(getIt<ThemeRepository>()),
     )
     ..registerLazySingleton<GetThemeByNameUseCase>(
-      () => GetThemeByNameUseCase(getIt<ThemeRepository>()),
+          () => GetThemeByNameUseCase(getIt<ThemeRepository>()),
     )
     ..registerLazySingleton<GetAllThemesUseCase>(
-      () => GetAllThemesUseCase(getIt<ThemeRepository>()),
+          () => GetAllThemesUseCase(getIt<ThemeRepository>()),
     )
 
-    // Cubit
+  // Cubit
     ..registerFactory<ThemeCubit>(
-      () => ThemeCubit(
+          () => ThemeCubit(
         getAllUseCase: getIt<GetAllThemesUseCase>(),
         getByNameUseCase: getIt<GetThemeByNameUseCase>(),
         getByIdUseCase: getIt<GetThemeByIdUseCase>(),
@@ -65,6 +72,7 @@ Future<void> initThemeModule() async {
         deleteByIdUseCase: getIt<DeleteThemeByIdUseCase>(),
         deleteByNameUseCase: getIt<DeleteThemeByNameUseCase>(),
         countUseCase: getIt<CountAllThemesUseCase>(),
+        themeLocal: getIt<ThemeLocal>(),
       ),
     );
 }

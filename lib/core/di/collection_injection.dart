@@ -3,7 +3,7 @@ import 'package:baladeston/domain/usecase/collection/create_collections_usecase.
 import 'package:baladeston/domain/usecase/collection/delete_collection_by_id_usecase.dart';
 import 'package:baladeston/domain/usecase/collection/get_collection_by_id_usecase.dart';
 import 'package:get_it/get_it.dart';
-import 'package:baladeston/data/repository_implementaion/collection_repository_implementation.dart';
+import 'package:baladeston/data/repository_implementation/collection_repository_implementation.dart';
 import 'package:baladeston/domain/repositories/collection_repository.dart';
 import 'package:baladeston/domain/usecase/collection/update_collection_usecase.dart';
 import 'package:baladeston/domain/usecase/collection/count_all_collections_usecase.dart';

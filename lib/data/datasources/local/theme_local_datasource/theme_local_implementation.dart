@@ -12,7 +12,7 @@ class ThemeLocalImpl implements ThemeLocal {
       SharedPreferences.getInstance();
 
   ThemeModel get _defaultLightTheme => ThemeModel(
-    id: 2,
+    id: 0,
     name: "light",
     isDark: false,
     colors: ThemeColors(

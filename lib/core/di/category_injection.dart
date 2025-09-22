@@ -1,7 +1,7 @@
 import 'package:baladeston/data/datasources/remote/category_remote_datasource/category_api.dart';
 import 'package:baladeston/presentation/providers/category_cubit/category_cubit.dart';
 import 'package:get_it/get_it.dart';
-import 'package:baladeston/data/repository_implementaion/category_repository_implementation.dart';
+import 'package:baladeston/data/repository_implementation/category_repository_implementation.dart';
 import 'package:baladeston/domain/repositories/category_repository.dart';
 import 'package:baladeston/domain/usecase/category/create_category_usecase.dart';
 import 'package:baladeston/domain/usecase/category/update_category_usecase.dart';

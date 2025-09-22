@@ -2,7 +2,7 @@ import 'package:get_it/get_it.dart';
 
 // Data Layer
 import 'package:baladeston/data/datasources/remote/video_remote_datasource/video_api.dart';
-import 'package:baladeston/data/repository_implementaion/video_repository_implementation.dart';
+import 'package:baladeston/data/repository_implementation/video_repository_implementation.dart';
 
 // Domain Layer
 import 'package:baladeston/domain/repositories/video_repository.dart';

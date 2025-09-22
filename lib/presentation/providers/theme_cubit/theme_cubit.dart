@@ -33,7 +33,7 @@ class ThemeCubit extends Cubit<ThemeState> {
     required CreateThemeUseCase createUseCase,
     required UpdateThemeUseCase updateUseCase,
     required DeleteThemeByIdUseCase deleteByIdUseCase,
-    required DeleteThemeByNameUseCase deleteByNameUseCase,
+    required DeleteThemeByNameUseCase deleteByNameUseCase, required themeLocal,
   })  : _countUseCase = countUseCase,
         _getAllUseCase = getAllUseCase,
         _getByNameUseCase = getByNameUseCase,
