@@ -1,3 +1,4 @@
+import 'package:baladeston/data/datasources/local/theme_local_datasource/theme_local.dart';
 import 'package:baladeston/data/datasources/remote/theme_remote_datasource/theme_api.dart';
 import 'package:baladeston/data/mapper/theme_mapper.dart';
 import 'package:baladeston/domain/entitys/theme/theme_entity.dart';
@@ -5,8 +6,10 @@ import 'package:baladeston/domain/repositories/theme_repository.dart';
 
 class ThemeRepositoryImplementation extends ThemeRepository {
   final ThemeApi _api;
+  final ThemeLocal _local ;
 
-  ThemeRepositoryImplementation({required ThemeApi api}) : _api = api;
+  ThemeRepositoryImplementation({required ThemeApi api, required ThemeLocal local}) : _api = api, _local = local;
+
 
   @override
   Future<List<ThemeEntity>?> getAllThemes() async {
@@ -42,6 +45,7 @@ class ThemeRepositoryImplementation extends ThemeRepository {
   Future<ThemeEntity> createTheme({required ThemeEntity theme}) async {
     try {
       final model = theme.toModel();
+
       final createdModel = await _api.createTheme(theme: model);
       return createdModel.toEntity();
     } catch (e) {
@@ -53,6 +57,7 @@ class ThemeRepositoryImplementation extends ThemeRepository {
   Future<ThemeEntity> updateTheme({required ThemeEntity theme}) async {
     try {
       final model = theme.toModel();
+      await _local.saveThemeModel(theme: model ) ;
       final updatedModel = await _api.updateTheme(theme: model);
       return updatedModel.toEntity();
     } catch (e) {
@@ -82,6 +87,29 @@ class ThemeRepositoryImplementation extends ThemeRepository {
   Future<int> countAllThemes() async {
     try {
       return await _api.countAllThemes();
+    } catch (e) {
+      throw Exception('error $e');
+    }
+  }
+
+  @override
+  Future<ThemeEntity?> initTheme() async {
+    try {
+      final model = await _local.loadTheme();
+      return model?.toEntity();
+    } catch (e) {
+      throw Exception('error $e');
+    }
+  }
+
+  @override
+  Future<void> setTheme({required ThemeEntity theme}) async {
+
+    try {
+      final model = theme.toModel();
+
+      final createModel = await _local.saveThemeModel(theme: model);
+      return createModel?.toEntity();
     } catch (e) {
       throw Exception('error $e');
     }

@@ -16,4 +16,5 @@ abstract class ThemeApi {
   Future<void> deleteThemeByName({required String name});
 
   Future<int> countAllThemes();
+
 }

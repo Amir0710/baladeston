@@ -21,8 +21,6 @@ import '../../data/repository_implementation/theme_repository_implementation.dar
 final getIt = GetIt.instance;
 
 Future<void> initThemeModule() async {
-  final prefs = await SharedPreferences.getInstance();
-
   getIt
   // Local DataSource
     ..registerLazySingleton<ThemeLocal>(() => ThemeLocalImpl())
@@ -32,7 +30,10 @@ Future<void> initThemeModule() async {
 
   // Repository
     ..registerLazySingleton<ThemeRepository>(
-          () => ThemeRepositoryImplementation(api: getIt<ThemeApi>()),
+          () => ThemeRepositoryImplementation(
+        api: getIt<ThemeApi>(),
+        local: getIt<ThemeLocal>(),
+      ),
     )
 
   // UseCases

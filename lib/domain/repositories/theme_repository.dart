@@ -1,4 +1,3 @@
-
 import '../entitys/theme/theme_entity.dart';
 
 abstract class ThemeRepository {
@@ -17,4 +16,8 @@ abstract class ThemeRepository {
   Future<void> deleteThemeByName({required String name});
 
   Future<int> countAllThemes();
+
+  Future<ThemeEntity?> initTheme();
+
+  Future<void> setTheme({required ThemeEntity theme}) ;
 }
