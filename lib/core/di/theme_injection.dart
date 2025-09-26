@@ -14,7 +14,6 @@ import 'package:baladeston/domain/usecase/theme/get_theme_by_name_usecase.dart';
 import 'package:baladeston/domain/usecase/theme/update_theme_usecase.dart';
 import 'package:baladeston/presentation/providers/theme_cubit/theme_cubit.dart';
 import 'package:get_it/get_it.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/repository_implementation/theme_repository_implementation.dart';
 
@@ -65,15 +64,7 @@ Future<void> initThemeModule() async {
   // Cubit
     ..registerFactory<ThemeCubit>(
           () => ThemeCubit(
-        getAllUseCase: getIt<GetAllThemesUseCase>(),
-        getByNameUseCase: getIt<GetThemeByNameUseCase>(),
-        getByIdUseCase: getIt<GetThemeByIdUseCase>(),
-        createUseCase: getIt<CreateThemeUseCase>(),
-        updateUseCase: getIt<UpdateThemeUseCase>(),
-        deleteByIdUseCase: getIt<DeleteThemeByIdUseCase>(),
-        deleteByNameUseCase: getIt<DeleteThemeByNameUseCase>(),
-        countUseCase: getIt<CountAllThemesUseCase>(),
-        themeLocal: getIt<ThemeLocal>(),
+        repository: getIt<ThemeRepository>(),
       ),
     );
 }

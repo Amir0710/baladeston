@@ -15,17 +15,17 @@ class ThemeEntity with _$ThemeEntity {
 @freezed
 class ThemeColorsEntity with _$ThemeColorsEntity {
   const factory ThemeColorsEntity({
-    required String info,
-    required String error,
+    required String info, // small text color
+    required String error, // error text color
     required String divider,
-    required String primary,
+    required String primary, // app main color
     required String success,
-    required String surface,
+    required String surface, // widget on background
     required String warning,
-    required String secondary,
+    required String secondary, // app secondary color (pale)
     required String background,
-    required String textPrimary,
-    required String textSecondary,
+    required String textPrimary, // main text color
+    required String textSecondary, // opposite text color
     required String buttonForeground,
     required List<String> partColors,
   }) = _ThemeColorsEntity;

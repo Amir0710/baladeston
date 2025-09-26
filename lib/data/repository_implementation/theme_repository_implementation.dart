@@ -107,9 +107,7 @@ class ThemeRepositoryImplementation extends ThemeRepository {
 
     try {
       final model = theme.toModel();
-
-      final createModel = await _local.saveThemeModel(theme: model);
-      return createModel?.toEntity();
+       await _local.saveThemeModel(theme: model);
     } catch (e) {
       throw Exception('error $e');
     }

@@ -84,7 +84,8 @@ class _IntroductionFirstState extends State<IntroductionFirst>
                           Expanded(child: SizedBox()),
                           Text(
                             'شروع کردن',
-                            style: appTheme.labelLarge,
+
+                            // style: appTheme.labelLarge,
                           ),
                           Expanded(
                             child: Align(

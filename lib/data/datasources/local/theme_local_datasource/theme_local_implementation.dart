@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ui';
 
 import 'package:baladeston/data/models/theme/theme_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -7,7 +8,7 @@ import 'theme_local.dart';
 
 class ThemeLocalImpl implements ThemeLocal {
   static const String _themeKey = 'app_theme';
-
+  Color c = Color(0xff0288D1) ;
   Future<SharedPreferences> get _prefs async =>
       SharedPreferences.getInstance();
 
@@ -16,36 +17,37 @@ class ThemeLocalImpl implements ThemeLocal {
     name: "light",
     isDark: false,
     colors: ThemeColors(
-      info: "#0288D1",
-      error: "#D32F2F",
-      divider: "#BDBDBD",
-      primary: "#4E7411",
-      success: "#388E3C",
-      surface: "#F5F5F5",
-      warning: "#FBC02D",
-      secondary: "#40BAF0",
-      background: "#FFFFFF",
+
+      info: "0xff6F6F79",
+      error: "0xffD32F2F",
+      divider: "0xffBDBDBD",
+      primary: "0xff4E74F9",
+      success: "0xff388E3C",
+      surface: "0xffF5F5F5",
+      warning: "0xffFBC02D",
+      secondary: "0xff40BAF0",
+      background: "0xffFFFFFF",
       partColors: [
-        "#5C5BFD",
-        "#5C5BFD",
-        "#5C5BFD",
-        "#5C5BFD",
-        "#5C5BFD",
-        "#5C5BFD",
-        "#5C5BFD",
-        "#FFD037",
-        "#2CB4EC",
-        "#E1485A",
-        "#5D9B33",
-        "#01B6CD",
-        "#A1887F",
-        "#40B6AC",
-        "#7986CB",
-        "#DCE775",
+        "0xff5C5BFD",
+        "0xff5C5BFD",
+        "0xff5C5BFD",
+        "0xff5C5BFD",
+        "0xff5C5BFD",
+        "0xff5C5BFD",
+        "0xff5C5BFD",
+        "0xffFFD037",
+        "0xff2CB4EC",
+        "0xffE1485A",
+        "0xff5D9B33",
+        "0xff01B6CD",
+        "0xffA1887F",
+        "0xff40B6AC",
+        "0xff7986CB",
+        "0xffDCE775",
       ],
-      textPrimary: "#212121",
-      textSecondary: "#757575",
-      buttonForeground: "#FFFFFF",
+      textPrimary: "0xFF161C2B",
+      textSecondary: "0xFFFFFFFF",
+      buttonForeground: "0xffFFFFFF",
     ),
   );
 
@@ -65,7 +67,6 @@ class ThemeLocalImpl implements ThemeLocal {
     final jsonMap = await _readThemeJson();
 
     if (jsonMap == null) {
-      // fallback → برگردوندن تم پیش‌فرض
       return _defaultLightTheme;
     }
 
