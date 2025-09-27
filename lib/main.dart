@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
           return state.maybeWhen(
             success: (themeData, isDark) {
               return MaterialApp(
+                debugShowCheckedModeBanner: false,
                 title: "baladeston",
                 theme: themeData,
                 home: IntroductionFirst(),

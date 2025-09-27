@@ -53,20 +53,24 @@ class _IntroductionFirstState extends State<IntroductionFirst>
           _buildTopCircles(context),
           Spacer(),
           Padding(
-            padding: EdgeInsetsGeometry.only(left: AppPadding.left , right: AppPadding.right),
+            padding: EdgeInsetsGeometry.symmetric(horizontal: AppPadding.buttonPadding),
             child: Column(
               children: [
                 Text(
                   'بلدستون \nتمام حرفه ها تو جیبت',
                   textAlign: TextAlign.center,
-                  style: appTheme.displaySmall,
+                  style: appTheme.displayLarge,
                 ),
                 const SizedBox(height: 16),
-                Text(
-                  'بلدستون همراه هوشمند توست برای پیدا کردن بهترین مسیر '
-                      'و پیشنهادها بر اساس نیاز و موقعیتت',
-                  style: appTheme.bodyMedium,
-                  textAlign: TextAlign.center,
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: AppPadding.largeTextPadding),
+                  child: Text(
+
+                    'بلدستون همراه هوشمند توست برای پیدا کردن و یادگیری بهترین مسیر '
+                        'و پیشنهادها بر اساس نیاز و موقعیتت',
+                    style: appTheme.labelSmall,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 const SizedBox(height: 32),
                 SizedBox(
@@ -82,14 +86,10 @@ class _IntroductionFirstState extends State<IntroductionFirst>
                       child: Row(
                         children: [
                           Expanded(child: SizedBox()),
-                          Text(
-                            'شروع کردن',
-
-                            // style: appTheme.labelLarge,
-                          ),
+                          Text('شروع کردن'),
                           Expanded(
                             child: Align(
-                              alignment: Alignment.centerRight,
+                              alignment: AlignmentDirectional.centerEnd, // وابسته به direction
                               child: Icon(Icons.arrow_forward_ios),
                             ),
                           ),

@@ -4,6 +4,7 @@ import 'package:baladeston/core/constants/add_padding.dart';
 import 'package:baladeston/core/extensions/media_query_extension.dart';
 import 'package:baladeston/core/theme/app_colors.dart';
 import 'package:baladeston/core/widgets/print_circle.dart';
+import 'package:baladeston/presentation/pages/introduction/login/user_pass_login.dart';
 import 'package:flutter/material.dart';
 
 class IntroductionSecond extends StatelessWidget {
@@ -11,6 +12,7 @@ class IntroductionSecond extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextTheme appTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -84,17 +86,81 @@ class IntroductionSecond extends StatelessWidget {
               radius: 18,
             ),
             Expanded(
-              child: Padding(
-                padding: EdgeInsets.only(
-                    left: AppPadding.left, right: AppPadding.right),
-                child: Column(
-                  children: [
-                    Text("welcome" , ),
-                    Text(
-                      "This is where you gain new skills and grow.\nWith Baladstone, every day brings you closer to your goals.\nStart now—your future is waiting",
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: AppPadding.mediumTextPadding),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          "skip",
+                          style: appTheme.labelMedium,
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: AppPadding.mediumTextPadding),
+                    child: Text(
+                      "معرفی",
+                      style: appTheme.displayMedium,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: AppPadding.mediumTextPadding),
+                    child: Text(
+                      "اینجا جایی است که مهارت‌های جدید کسب می‌کنید و رشد می‌کنید.با بالدستون، هر روز شما را به اهدافتان نزدیک‌تر می‌کند.همین حالا شروع کنید آینده‌تان در انتظار شماست",
+                      style: appTheme.labelMedium,
+                      textAlign: TextAlign.end,
+                    ),
+                  ),
+                  Spacer(),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: AppPadding.buttonPadding),
+                    child: SizedBox(
+                      height: 54,
+                      width: double.infinity,
+                      child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(
+                              builder: (context) {
+                                return UserPassLogin();
+                              },
+                            ));
+                          },
+                          child: Row(
+                            children: [
+                              Expanded(child: SizedBox()),
+                              Text(
+                                'شروع کردن',
+                              ),
+                              Expanded(
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Icon(Icons.arrow_forward_ios),
+                                ),
+                              ),
+                            ],
+                          )),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 38,
+                  )
+                ],
               ),
             ),
           ],
