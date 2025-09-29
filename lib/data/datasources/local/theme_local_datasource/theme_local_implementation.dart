@@ -8,48 +8,38 @@ import 'theme_local.dart';
 
 class ThemeLocalImpl implements ThemeLocal {
   static const String _themeKey = 'app_theme';
-  Color c = Color(0xff0288D1) ;
-  Future<SharedPreferences> get _prefs async =>
-      SharedPreferences.getInstance();
+
+  Future<SharedPreferences> get _prefs async => SharedPreferences.getInstance();
+
+  Color c = Color(0xff838383);
 
   ThemeModel get _defaultLightTheme => ThemeModel(
-    id: 0,
-    name: "light",
-    isDark: false,
-    colors: ThemeColors(
-
-      info: "0xff6F6F79",
-      error: "0xffD32F2F",
-      divider: "0xffBDBDBD",
-      primary: "0xff4E74F9",
-      success: "0xff388E3C",
-      surface: "0xffF5F5F5",
-      warning: "0xffFBC02D",
-      secondary: "0xff40BAF0",
-      background: "0xffFFFFFF",
-      partColors: [
-        "0xff5C5BFD",
-        "0xff5C5BFD",
-        "0xff5C5BFD",
-        "0xff5C5BFD",
-        "0xff5C5BFD",
-        "0xff5C5BFD",
-        "0xff5C5BFD",
-        "0xffFFD037",
-        "0xff2CB4EC",
-        "0xffE1485A",
-        "0xff5D9B33",
-        "0xff01B6CD",
-        "0xffA1887F",
-        "0xff40B6AC",
-        "0xff7986CB",
-        "0xffDCE775",
-      ],
-      textPrimary: "0xFF161C2B",
-      textSecondary: "0xFFFFFFFF",
-      buttonForeground: "0xffFFFFFF",
-    ),
-  );
+        id: 0,
+        name: "light",
+        isDark: false,
+        colors: ThemeColors(
+          info: "0xff838383",
+          error: "0xffD32F2F",
+          divider: "0xffBDBDBD",
+          primary: "0xff4E74F9",
+          success: "0xff388E3C",
+          surface: "0xffF5F5F5",
+          warning: "0xffFBC02D",
+          secondary: "0xff40BAF0",
+          background: "0xffFFFFFF",
+          partColors: [
+            "0xff01B6CD",
+            "0xff5C5BFD",
+            "0xffF9D048",
+            "0xffE14B5A",
+            "0xff409500",
+            "0xfffb944b"
+          ],
+          textPrimary: "0xFF161C2B",
+          textSecondary: "0xFFFFFFFF",
+          buttonForeground: "0xffFFFFFF",
+        ),
+      );
 
   @override
   Future<void> saveThemeModel({required ThemeModel theme}) async {

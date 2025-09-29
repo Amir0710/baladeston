@@ -21,10 +21,10 @@ mixin _$VideoEntity {
   String? get description => throw _privateConstructorUsedError;
   String get videoUrl => throw _privateConstructorUsedError;
   String? get thumbnailUrl => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
+  String? get status => throw _privateConstructorUsedError;
   int get uploaderId => throw _privateConstructorUsedError;
   int get categoryId => throw _privateConstructorUsedError;
-  DateTime get uploadedAt => throw _privateConstructorUsedError;
+  DateTime? get uploadedAt => throw _privateConstructorUsedError;
 
   /// Create a copy of VideoEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -45,10 +45,10 @@ abstract class $VideoEntityCopyWith<$Res> {
       String? description,
       String videoUrl,
       String? thumbnailUrl,
-      String status,
+      String? status,
       int uploaderId,
       int categoryId,
-      DateTime uploadedAt});
+      DateTime? uploadedAt});
 }
 
 /// @nodoc
@@ -71,10 +71,10 @@ class _$VideoEntityCopyWithImpl<$Res, $Val extends VideoEntity>
     Object? description = freezed,
     Object? videoUrl = null,
     Object? thumbnailUrl = freezed,
-    Object? status = null,
+    Object? status = freezed,
     Object? uploaderId = null,
     Object? categoryId = null,
-    Object? uploadedAt = null,
+    Object? uploadedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -97,10 +97,10 @@ class _$VideoEntityCopyWithImpl<$Res, $Val extends VideoEntity>
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: null == status
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       uploaderId: null == uploaderId
           ? _value.uploaderId
           : uploaderId // ignore: cast_nullable_to_non_nullable
@@ -109,10 +109,10 @@ class _$VideoEntityCopyWithImpl<$Res, $Val extends VideoEntity>
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
               as int,
-      uploadedAt: null == uploadedAt
+      uploadedAt: freezed == uploadedAt
           ? _value.uploadedAt
           : uploadedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -131,10 +131,10 @@ abstract class _$$VideoEntityImplCopyWith<$Res>
       String? description,
       String videoUrl,
       String? thumbnailUrl,
-      String status,
+      String? status,
       int uploaderId,
       int categoryId,
-      DateTime uploadedAt});
+      DateTime? uploadedAt});
 }
 
 /// @nodoc
@@ -155,10 +155,10 @@ class __$$VideoEntityImplCopyWithImpl<$Res>
     Object? description = freezed,
     Object? videoUrl = null,
     Object? thumbnailUrl = freezed,
-    Object? status = null,
+    Object? status = freezed,
     Object? uploaderId = null,
     Object? categoryId = null,
-    Object? uploadedAt = null,
+    Object? uploadedAt = freezed,
   }) {
     return _then(_$VideoEntityImpl(
       id: freezed == id
@@ -181,10 +181,10 @@ class __$$VideoEntityImplCopyWithImpl<$Res>
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: null == status
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       uploaderId: null == uploaderId
           ? _value.uploaderId
           : uploaderId // ignore: cast_nullable_to_non_nullable
@@ -193,10 +193,10 @@ class __$$VideoEntityImplCopyWithImpl<$Res>
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
               as int,
-      uploadedAt: null == uploadedAt
+      uploadedAt: freezed == uploadedAt
           ? _value.uploadedAt
           : uploadedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 }
@@ -205,15 +205,15 @@ class __$$VideoEntityImplCopyWithImpl<$Res>
 
 class _$VideoEntityImpl implements _VideoEntity {
   const _$VideoEntityImpl(
-      {required this.id,
+      {this.id,
       required this.title,
-      required this.description,
+      this.description,
       required this.videoUrl,
-      required this.thumbnailUrl,
-      required this.status,
+      this.thumbnailUrl,
+      this.status,
       required this.uploaderId,
       required this.categoryId,
-      required this.uploadedAt});
+      this.uploadedAt});
 
   @override
   final int? id;
@@ -226,13 +226,13 @@ class _$VideoEntityImpl implements _VideoEntity {
   @override
   final String? thumbnailUrl;
   @override
-  final String status;
+  final String? status;
   @override
   final int uploaderId;
   @override
   final int categoryId;
   @override
-  final DateTime uploadedAt;
+  final DateTime? uploadedAt;
 
   @override
   String toString() {
@@ -276,15 +276,15 @@ class _$VideoEntityImpl implements _VideoEntity {
 
 abstract class _VideoEntity implements VideoEntity {
   const factory _VideoEntity(
-      {required final int? id,
+      {final int? id,
       required final String title,
-      required final String? description,
+      final String? description,
       required final String videoUrl,
-      required final String? thumbnailUrl,
-      required final String status,
+      final String? thumbnailUrl,
+      final String? status,
       required final int uploaderId,
       required final int categoryId,
-      required final DateTime uploadedAt}) = _$VideoEntityImpl;
+      final DateTime? uploadedAt}) = _$VideoEntityImpl;
 
   @override
   int? get id;
@@ -297,13 +297,13 @@ abstract class _VideoEntity implements VideoEntity {
   @override
   String? get thumbnailUrl;
   @override
-  String get status;
+  String? get status;
   @override
   int get uploaderId;
   @override
   int get categoryId;
   @override
-  DateTime get uploadedAt;
+  DateTime? get uploadedAt;
 
   /// Create a copy of VideoEntity
   /// with the given fields replaced by the non-null parameter values.

@@ -18,10 +18,13 @@ class ThemeCubit extends Cubit<ThemeState> {
       final themeEntity = await _repository.initTheme();
 
       emit(ThemeState.success(
-        themeData: AppTheme(entity: themeEntity!).theme(),
-
-        isDark: themeEntity.isDark,
+        themeData: () {
+          AppTheme.init(themeEntity!);
+          return AppTheme.theme();
+        }(),
+        isDark: themeEntity!.isDark,
       ));
+
     } catch (e) {
       emit(ThemeState.failure(message: e.toString()));
     }

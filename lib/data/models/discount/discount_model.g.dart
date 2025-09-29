@@ -12,8 +12,13 @@ _$DiscountModelImpl _$$DiscountModelImplFromJson(Map<String, dynamic> json) =>
       id: (json['id'] as num?)?.toInt(),
       category: (json['category'] as num?)?.toInt(),
       percent: (json['percent'] as num).toInt(),
-      status: json['status'] as String,
-      expiresAt: DateTime.parse(json['expiresAt'] as String),
+      status: json['status'] as String?,
+      expiresAt: json['expiresAt'] == null
+          ? null
+          : DateTime.parse(json['expiresAt'] as String),
+      videoId: (json['videoId'] as num?)?.toInt(),
+      maxUse: (json['maxUse'] as num?)?.toInt(),
+      usage: (json['usage'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$DiscountModelImplToJson(_$DiscountModelImpl instance) =>
@@ -23,5 +28,8 @@ Map<String, dynamic> _$$DiscountModelImplToJson(_$DiscountModelImpl instance) =>
       'category': instance.category,
       'percent': instance.percent,
       'status': instance.status,
-      'expiresAt': instance.expiresAt.toIso8601String(),
+      'expiresAt': instance.expiresAt?.toIso8601String(),
+      'videoId': instance.videoId,
+      'maxUse': instance.maxUse,
+      'usage': instance.usage,
     };

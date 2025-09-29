@@ -1,5 +1,9 @@
 import 'package:baladeston/core/constants/add_padding.dart';
-import 'package:baladeston/core/theme/app_colors.dart';
+import 'package:baladeston/core/theme/app_themes.dart';
+import 'package:baladeston/core/theme/app_themes.dart';
+import 'package:baladeston/core/theme/app_themes.dart';
+import 'package:baladeston/core/theme/app_themes.dart';
+import 'package:baladeston/core/theme/app_themes.dart';
 import 'package:baladeston/core/widgets/print_circle.dart';
 import 'package:baladeston/presentation/pages/introduction/introduction_second.dart';
 import 'package:flutter/material.dart';
@@ -24,14 +28,12 @@ class _IntroductionFirstState extends State<IntroductionFirst>
     _moveCtrl = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 4),
-    )
-      ..repeat(reverse: true);
+    )..repeat(reverse: true);
 
     _scaleCtrl = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 3),
-    )
-      ..repeat(reverse: true);
+    )..repeat(reverse: true);
   }
 
   @override
@@ -43,9 +45,7 @@ class _IntroductionFirstState extends State<IntroductionFirst>
 
   @override
   Widget build(BuildContext context) {
-    TextTheme appTheme = Theme
-        .of(context)
-        .textTheme;
+    TextTheme appTheme = Theme.of(context).textTheme;
 
     return Scaffold(
       body: Column(
@@ -53,7 +53,8 @@ class _IntroductionFirstState extends State<IntroductionFirst>
           _buildTopCircles(context),
           Spacer(),
           Padding(
-            padding: EdgeInsetsGeometry.symmetric(horizontal: AppPadding.buttonPadding),
+            padding: EdgeInsetsGeometry.symmetric(
+                horizontal: AppPadding.buttonPadding),
             child: Column(
               children: [
                 Text(
@@ -63,11 +64,11 @@ class _IntroductionFirstState extends State<IntroductionFirst>
                 ),
                 const SizedBox(height: 16),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: AppPadding.largeTextPadding),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: AppPadding.largeTextPadding),
                   child: Text(
-
                     'بلدستون همراه هوشمند توست برای پیدا کردن و یادگیری بهترین مسیر '
-                        'و پیشنهادها بر اساس نیاز و موقعیتت',
+                    'و پیشنهادها بر اساس نیاز و موقعیتت',
                     style: appTheme.labelSmall,
                     textAlign: TextAlign.center,
                   ),
@@ -77,24 +78,27 @@ class _IntroductionFirstState extends State<IntroductionFirst>
                   height: 54,
                   width: double.infinity,
                   child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                            context, MaterialPageRoute(builder: (context) {
+                    onPressed: () {
+                      Navigator.pushReplacement(context, MaterialPageRoute(
+                        builder: (context) {
                           return IntroductionSecond();
-                        },));
-                      },
-                      child: Row(
-                        children: [
-                          Expanded(child: SizedBox()),
-                          Text('شروع کردن'),
-                          Expanded(
-                            child: Align(
-                              alignment: AlignmentDirectional.centerEnd, // وابسته به direction
-                              child: Icon(Icons.arrow_forward_ios),
-                            ),
+                        },
+                      ));
+                    },
+                    child: Row(
+                      children: [
+                        Expanded(child: SizedBox()),
+                        Text('شروع کردن'),
+                        Expanded(
+                          child: Align(
+                            alignment: AlignmentDirectional.centerEnd,
+                            // وابسته به direction
+                            child: Icon(Icons.arrow_forward_ios),
                           ),
-                        ],
-                      )),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: 38,
@@ -119,12 +123,11 @@ class _IntroductionFirstState extends State<IntroductionFirst>
       height: context.screenHeight * 0.6,
       child: Stack(
         children: [
-
           _animatedCircle(
             left: context.screenWidth * 0.15,
             top: context.screenHeight * 0.25,
             size: 24,
-            color: AppColors.partColorsLight[0],
+            color: AppTheme.partColorsList[0],
             moveAnim: moveAnim,
             scaleAnim: scaleAnim,
           ),
@@ -132,7 +135,7 @@ class _IntroductionFirstState extends State<IntroductionFirst>
             top: context.screenHeight * 0.08,
             right: -102,
             size: 184,
-            color: AppColors.partColorsLight[1],
+            color: AppTheme.partColorsList[1],
             moveAnim: moveAnim,
             scaleAnim: scaleAnim,
           ),
@@ -140,7 +143,7 @@ class _IntroductionFirstState extends State<IntroductionFirst>
             left: context.screenWidth * 0.2,
             bottom: context.screenHeight * 0.04,
             size: 188,
-            color: AppColors.partColorsLight[2],
+            color: AppTheme.partColorsList[2],
             moveAnim: moveAnim,
             scaleAnim: scaleAnim,
           ),
@@ -148,7 +151,7 @@ class _IntroductionFirstState extends State<IntroductionFirst>
             right: context.screenWidth * 0.1,
             bottom: context.screenHeight * 0.03,
             size: 24,
-            color: AppColors.partColorsLight[3],
+            color: AppTheme.partColorsList[3],
             moveAnim: moveAnim,
             scaleAnim: scaleAnim,
           ),
@@ -156,7 +159,7 @@ class _IntroductionFirstState extends State<IntroductionFirst>
             left: -59,
             top: context.screenHeight * 0.15,
             size: 96,
-            color: AppColors.partColorsLight[4],
+            color: AppTheme.partColorsList[4],
             moveAnim: moveAnim,
             scaleAnim: scaleAnim,
           ),
@@ -164,6 +167,7 @@ class _IntroductionFirstState extends State<IntroductionFirst>
       ),
     );
   }
+
   Widget _animatedCircle({
     double? left,
     double? top,
@@ -184,18 +188,18 @@ class _IntroductionFirstState extends State<IntroductionFirst>
         child: SizedBox(
           width: size,
           height: size,
-          child:  PrintCircle(
-              center: Offset(size/2, size/2),
-              padding: 0,
-              width: 1,
-              layer: 1,
-              incremental: 0,
-              radius: size/2,
-              color: color,
-              style: PaintingStyle.fill,
-            ),
-
+          child: PrintCircle(
+            center: Offset(size / 2, size / 2),
+            padding: 0,
+            width: 1,
+            layer: 1,
+            incremental: 0,
+            radius: size / 2,
+            color: color,
+            style: PaintingStyle.fill,
+          ),
         ),
       ),
     );
-  }}
+  }
+}

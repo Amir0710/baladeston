@@ -23,7 +23,7 @@ mixin _$CollectionModel {
   int? get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
+  String? get status => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   int get ownerId => throw _privateConstructorUsedError;
   DateTime get lastTransaction => throw _privateConstructorUsedError;
@@ -49,7 +49,7 @@ abstract class $CollectionModelCopyWith<$Res> {
       {int? id,
       String title,
       String password,
-      String status,
+      String? status,
       DateTime createdAt,
       int ownerId,
       DateTime lastTransaction,
@@ -74,7 +74,7 @@ class _$CollectionModelCopyWithImpl<$Res, $Val extends CollectionModel>
     Object? id = freezed,
     Object? title = null,
     Object? password = null,
-    Object? status = null,
+    Object? status = freezed,
     Object? createdAt = null,
     Object? ownerId = null,
     Object? lastTransaction = null,
@@ -93,10 +93,10 @@ class _$CollectionModelCopyWithImpl<$Res, $Val extends CollectionModel>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      status: null == status
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -129,7 +129,7 @@ abstract class _$$CollectionModelImplCopyWith<$Res>
       {int? id,
       String title,
       String password,
-      String status,
+      String? status,
       DateTime createdAt,
       int ownerId,
       DateTime lastTransaction,
@@ -152,7 +152,7 @@ class __$$CollectionModelImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? title = null,
     Object? password = null,
-    Object? status = null,
+    Object? status = freezed,
     Object? createdAt = null,
     Object? ownerId = null,
     Object? lastTransaction = null,
@@ -171,10 +171,10 @@ class __$$CollectionModelImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      status: null == status
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -202,7 +202,7 @@ class _$CollectionModelImpl extends _CollectionModel {
       {this.id,
       required this.title,
       required this.password,
-      required this.status,
+      this.status,
       required this.createdAt,
       required this.ownerId,
       required this.lastTransaction,
@@ -219,7 +219,7 @@ class _$CollectionModelImpl extends _CollectionModel {
   @override
   final String password;
   @override
-  final String status;
+  final String? status;
   @override
   final DateTime createdAt;
   @override
@@ -280,7 +280,7 @@ abstract class _CollectionModel extends CollectionModel {
       {final int? id,
       required final String title,
       required final String password,
-      required final String status,
+      final String? status,
       required final DateTime createdAt,
       required final int ownerId,
       required final DateTime lastTransaction,
@@ -297,7 +297,7 @@ abstract class _CollectionModel extends CollectionModel {
   @override
   String get password;
   @override
-  String get status;
+  String? get status;
   @override
   DateTime get createdAt;
   @override

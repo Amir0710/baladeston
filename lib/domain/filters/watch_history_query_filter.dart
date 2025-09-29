@@ -1,5 +1,4 @@
 class WatchHistoryQueryFilter {
-  final int? id;
   final int? userId;
   final int? videoId;
   final int? lastPositionSeconds;
@@ -10,7 +9,6 @@ class WatchHistoryQueryFilter {
   final String orderBy;
 
   WatchHistoryQueryFilter({
-    this.id,
     this.userId,
     this.videoId,
     this.lastPositionSeconds,

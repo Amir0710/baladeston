@@ -8,11 +8,9 @@ class FavoriteQueryFilter {
   final int offset;
   final String orderBy;
 
-  final String type;
-
 
   FavoriteQueryFilter(
-      { required this.type ,
+      {
       this.userId,
       this.toggleId,
       required this.interestedIn,

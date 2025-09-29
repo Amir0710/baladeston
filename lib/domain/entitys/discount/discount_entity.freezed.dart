@@ -20,8 +20,11 @@ mixin _$DiscountEntity {
   int? get id => throw _privateConstructorUsedError;
   int? get category => throw _privateConstructorUsedError;
   int get percent => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
-  DateTime get expiresAt => throw _privateConstructorUsedError;
+  String? get status => throw _privateConstructorUsedError;
+  DateTime? get expiresAt => throw _privateConstructorUsedError;
+  int? get videoId => throw _privateConstructorUsedError;
+  int? get maxUse => throw _privateConstructorUsedError;
+  int? get usage => throw _privateConstructorUsedError;
 
   /// Create a copy of DiscountEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -41,8 +44,11 @@ abstract class $DiscountEntityCopyWith<$Res> {
       int? id,
       int? category,
       int percent,
-      String status,
-      DateTime expiresAt});
+      String? status,
+      DateTime? expiresAt,
+      int? videoId,
+      int? maxUse,
+      int? usage});
 }
 
 /// @nodoc
@@ -64,8 +70,11 @@ class _$DiscountEntityCopyWithImpl<$Res, $Val extends DiscountEntity>
     Object? id = freezed,
     Object? category = freezed,
     Object? percent = null,
-    Object? status = null,
-    Object? expiresAt = null,
+    Object? status = freezed,
+    Object? expiresAt = freezed,
+    Object? videoId = freezed,
+    Object? maxUse = freezed,
+    Object? usage = freezed,
   }) {
     return _then(_value.copyWith(
       userId: freezed == userId
@@ -84,14 +93,26 @@ class _$DiscountEntityCopyWithImpl<$Res, $Val extends DiscountEntity>
           ? _value.percent
           : percent // ignore: cast_nullable_to_non_nullable
               as int,
-      status: null == status
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      expiresAt: null == expiresAt
+              as String?,
+      expiresAt: freezed == expiresAt
           ? _value.expiresAt
           : expiresAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
+      videoId: freezed == videoId
+          ? _value.videoId
+          : videoId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      maxUse: freezed == maxUse
+          ? _value.maxUse
+          : maxUse // ignore: cast_nullable_to_non_nullable
+              as int?,
+      usage: freezed == usage
+          ? _value.usage
+          : usage // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -109,8 +130,11 @@ abstract class _$$DiscountEntityImplCopyWith<$Res>
       int? id,
       int? category,
       int percent,
-      String status,
-      DateTime expiresAt});
+      String? status,
+      DateTime? expiresAt,
+      int? videoId,
+      int? maxUse,
+      int? usage});
 }
 
 /// @nodoc
@@ -130,8 +154,11 @@ class __$$DiscountEntityImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? category = freezed,
     Object? percent = null,
-    Object? status = null,
-    Object? expiresAt = null,
+    Object? status = freezed,
+    Object? expiresAt = freezed,
+    Object? videoId = freezed,
+    Object? maxUse = freezed,
+    Object? usage = freezed,
   }) {
     return _then(_$DiscountEntityImpl(
       userId: freezed == userId
@@ -150,14 +177,26 @@ class __$$DiscountEntityImplCopyWithImpl<$Res>
           ? _value.percent
           : percent // ignore: cast_nullable_to_non_nullable
               as int,
-      status: null == status
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      expiresAt: null == expiresAt
+              as String?,
+      expiresAt: freezed == expiresAt
           ? _value.expiresAt
           : expiresAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
+      videoId: freezed == videoId
+          ? _value.videoId
+          : videoId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      maxUse: freezed == maxUse
+          ? _value.maxUse
+          : maxUse // ignore: cast_nullable_to_non_nullable
+              as int?,
+      usage: freezed == usage
+          ? _value.usage
+          : usage // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -166,12 +205,15 @@ class __$$DiscountEntityImplCopyWithImpl<$Res>
 
 class _$DiscountEntityImpl implements _DiscountEntity {
   const _$DiscountEntityImpl(
-      {required this.userId,
-      required this.id,
-      required this.category,
+      {this.userId,
+      this.id,
+      this.category,
       required this.percent,
-      required this.status,
-      required this.expiresAt});
+      this.status,
+      this.expiresAt,
+      this.videoId,
+      this.maxUse,
+      this.usage});
 
   @override
   final int? userId;
@@ -182,13 +224,19 @@ class _$DiscountEntityImpl implements _DiscountEntity {
   @override
   final int percent;
   @override
-  final String status;
+  final String? status;
   @override
-  final DateTime expiresAt;
+  final DateTime? expiresAt;
+  @override
+  final int? videoId;
+  @override
+  final int? maxUse;
+  @override
+  final int? usage;
 
   @override
   String toString() {
-    return 'DiscountEntity(userId: $userId, id: $id, category: $category, percent: $percent, status: $status, expiresAt: $expiresAt)';
+    return 'DiscountEntity(userId: $userId, id: $id, category: $category, percent: $percent, status: $status, expiresAt: $expiresAt, videoId: $videoId, maxUse: $maxUse, usage: $usage)';
   }
 
   @override
@@ -203,12 +251,15 @@ class _$DiscountEntityImpl implements _DiscountEntity {
             (identical(other.percent, percent) || other.percent == percent) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.expiresAt, expiresAt) ||
-                other.expiresAt == expiresAt));
+                other.expiresAt == expiresAt) &&
+            (identical(other.videoId, videoId) || other.videoId == videoId) &&
+            (identical(other.maxUse, maxUse) || other.maxUse == maxUse) &&
+            (identical(other.usage, usage) || other.usage == usage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, userId, id, category, percent, status, expiresAt);
+  int get hashCode => Object.hash(runtimeType, userId, id, category, percent,
+      status, expiresAt, videoId, maxUse, usage);
 
   /// Create a copy of DiscountEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -222,12 +273,15 @@ class _$DiscountEntityImpl implements _DiscountEntity {
 
 abstract class _DiscountEntity implements DiscountEntity {
   const factory _DiscountEntity(
-      {required final int? userId,
-      required final int? id,
-      required final int? category,
+      {final int? userId,
+      final int? id,
+      final int? category,
       required final int percent,
-      required final String status,
-      required final DateTime expiresAt}) = _$DiscountEntityImpl;
+      final String? status,
+      final DateTime? expiresAt,
+      final int? videoId,
+      final int? maxUse,
+      final int? usage}) = _$DiscountEntityImpl;
 
   @override
   int? get userId;
@@ -238,9 +292,15 @@ abstract class _DiscountEntity implements DiscountEntity {
   @override
   int get percent;
   @override
-  String get status;
+  String? get status;
   @override
-  DateTime get expiresAt;
+  DateTime? get expiresAt;
+  @override
+  int? get videoId;
+  @override
+  int? get maxUse;
+  @override
+  int? get usage;
 
   /// Create a copy of DiscountEntity
   /// with the given fields replaced by the non-null parameter values.

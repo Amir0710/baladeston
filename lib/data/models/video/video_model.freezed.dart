@@ -25,10 +25,10 @@ mixin _$VideoModel {
   String? get description => throw _privateConstructorUsedError;
   String get videoUrl => throw _privateConstructorUsedError;
   String? get thumbnailUrl => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError; // edit nullable
+  String? get status => throw _privateConstructorUsedError;
   int get uploaderId => throw _privateConstructorUsedError;
   int get categoryId => throw _privateConstructorUsedError;
-  DateTime get uploadedAt => throw _privateConstructorUsedError;
+  DateTime? get uploadedAt => throw _privateConstructorUsedError;
 
   /// Serializes this VideoModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,10 +52,10 @@ abstract class $VideoModelCopyWith<$Res> {
       String? description,
       String videoUrl,
       String? thumbnailUrl,
-      String status,
+      String? status,
       int uploaderId,
       int categoryId,
-      DateTime uploadedAt});
+      DateTime? uploadedAt});
 }
 
 /// @nodoc
@@ -78,10 +78,10 @@ class _$VideoModelCopyWithImpl<$Res, $Val extends VideoModel>
     Object? description = freezed,
     Object? videoUrl = null,
     Object? thumbnailUrl = freezed,
-    Object? status = null,
+    Object? status = freezed,
     Object? uploaderId = null,
     Object? categoryId = null,
-    Object? uploadedAt = null,
+    Object? uploadedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -104,10 +104,10 @@ class _$VideoModelCopyWithImpl<$Res, $Val extends VideoModel>
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: null == status
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       uploaderId: null == uploaderId
           ? _value.uploaderId
           : uploaderId // ignore: cast_nullable_to_non_nullable
@@ -116,10 +116,10 @@ class _$VideoModelCopyWithImpl<$Res, $Val extends VideoModel>
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
               as int,
-      uploadedAt: null == uploadedAt
+      uploadedAt: freezed == uploadedAt
           ? _value.uploadedAt
           : uploadedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -138,10 +138,10 @@ abstract class _$$VideoModelImplCopyWith<$Res>
       String? description,
       String videoUrl,
       String? thumbnailUrl,
-      String status,
+      String? status,
       int uploaderId,
       int categoryId,
-      DateTime uploadedAt});
+      DateTime? uploadedAt});
 }
 
 /// @nodoc
@@ -162,10 +162,10 @@ class __$$VideoModelImplCopyWithImpl<$Res>
     Object? description = freezed,
     Object? videoUrl = null,
     Object? thumbnailUrl = freezed,
-    Object? status = null,
+    Object? status = freezed,
     Object? uploaderId = null,
     Object? categoryId = null,
-    Object? uploadedAt = null,
+    Object? uploadedAt = freezed,
   }) {
     return _then(_$VideoModelImpl(
       id: freezed == id
@@ -188,10 +188,10 @@ class __$$VideoModelImplCopyWithImpl<$Res>
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: null == status
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       uploaderId: null == uploaderId
           ? _value.uploaderId
           : uploaderId // ignore: cast_nullable_to_non_nullable
@@ -200,10 +200,10 @@ class __$$VideoModelImplCopyWithImpl<$Res>
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
               as int,
-      uploadedAt: null == uploadedAt
+      uploadedAt: freezed == uploadedAt
           ? _value.uploadedAt
           : uploadedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 }
@@ -212,15 +212,15 @@ class __$$VideoModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$VideoModelImpl implements _VideoModel {
   const _$VideoModelImpl(
-      {required this.id,
+      {this.id,
       required this.title,
-      required this.description,
+      this.description,
       required this.videoUrl,
-      required this.thumbnailUrl,
-      required this.status,
+      this.thumbnailUrl,
+      this.status,
       required this.uploaderId,
       required this.categoryId,
-      required this.uploadedAt});
+      this.uploadedAt});
 
   factory _$VideoModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$VideoModelImplFromJson(json);
@@ -236,14 +236,13 @@ class _$VideoModelImpl implements _VideoModel {
   @override
   final String? thumbnailUrl;
   @override
-  final String status;
-// edit nullable
+  final String? status;
   @override
   final int uploaderId;
   @override
   final int categoryId;
   @override
-  final DateTime uploadedAt;
+  final DateTime? uploadedAt;
 
   @override
   String toString() {
@@ -295,15 +294,15 @@ class _$VideoModelImpl implements _VideoModel {
 
 abstract class _VideoModel implements VideoModel {
   const factory _VideoModel(
-      {required final int? id,
+      {final int? id,
       required final String title,
-      required final String? description,
+      final String? description,
       required final String videoUrl,
-      required final String? thumbnailUrl,
-      required final String status,
+      final String? thumbnailUrl,
+      final String? status,
       required final int uploaderId,
       required final int categoryId,
-      required final DateTime uploadedAt}) = _$VideoModelImpl;
+      final DateTime? uploadedAt}) = _$VideoModelImpl;
 
   factory _VideoModel.fromJson(Map<String, dynamic> json) =
       _$VideoModelImpl.fromJson;
@@ -319,13 +318,13 @@ abstract class _VideoModel implements VideoModel {
   @override
   String? get thumbnailUrl;
   @override
-  String get status; // edit nullable
+  String? get status;
   @override
   int get uploaderId;
   @override
   int get categoryId;
   @override
-  DateTime get uploadedAt;
+  DateTime? get uploadedAt;
 
   /// Create a copy of VideoModel
   /// with the given fields replaced by the non-null parameter values.

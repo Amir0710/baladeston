@@ -17,15 +17,13 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$PurchaseEntity {
   int? get id => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
+  String? get status => throw _privateConstructorUsedError;
   int get userId => throw _privateConstructorUsedError;
-  int get categoryId => throw _privateConstructorUsedError;
   int? get discountId => throw _privateConstructorUsedError;
   double get finalPrice => throw _privateConstructorUsedError;
-  DateTime get purchaseTime => throw _privateConstructorUsedError;
+  DateTime? get purchaseTime => throw _privateConstructorUsedError;
   DateTime? get expiresAt => throw _privateConstructorUsedError;
   DateTime? get updateAt => throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
 
   /// Create a copy of PurchaseEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -42,15 +40,13 @@ abstract class $PurchaseEntityCopyWith<$Res> {
   @useResult
   $Res call(
       {int? id,
-      String status,
+      String? status,
       int userId,
-      int categoryId,
       int? discountId,
       double finalPrice,
-      DateTime purchaseTime,
+      DateTime? purchaseTime,
       DateTime? expiresAt,
-      DateTime? updateAt,
-      DateTime createdAt});
+      DateTime? updateAt});
 }
 
 /// @nodoc
@@ -69,32 +65,26 @@ class _$PurchaseEntityCopyWithImpl<$Res, $Val extends PurchaseEntity>
   @override
   $Res call({
     Object? id = freezed,
-    Object? status = null,
+    Object? status = freezed,
     Object? userId = null,
-    Object? categoryId = null,
     Object? discountId = freezed,
     Object? finalPrice = null,
-    Object? purchaseTime = null,
+    Object? purchaseTime = freezed,
     Object? expiresAt = freezed,
     Object? updateAt = freezed,
-    Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: null == status
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
               as int,
       discountId: freezed == discountId
           ? _value.discountId
@@ -104,10 +94,10 @@ class _$PurchaseEntityCopyWithImpl<$Res, $Val extends PurchaseEntity>
           ? _value.finalPrice
           : finalPrice // ignore: cast_nullable_to_non_nullable
               as double,
-      purchaseTime: null == purchaseTime
+      purchaseTime: freezed == purchaseTime
           ? _value.purchaseTime
           : purchaseTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       expiresAt: freezed == expiresAt
           ? _value.expiresAt
           : expiresAt // ignore: cast_nullable_to_non_nullable
@@ -116,10 +106,6 @@ class _$PurchaseEntityCopyWithImpl<$Res, $Val extends PurchaseEntity>
           ? _value.updateAt
           : updateAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
     ) as $Val);
   }
 }
@@ -134,15 +120,13 @@ abstract class _$$PurchaseEntityImplCopyWith<$Res>
   @useResult
   $Res call(
       {int? id,
-      String status,
+      String? status,
       int userId,
-      int categoryId,
       int? discountId,
       double finalPrice,
-      DateTime purchaseTime,
+      DateTime? purchaseTime,
       DateTime? expiresAt,
-      DateTime? updateAt,
-      DateTime createdAt});
+      DateTime? updateAt});
 }
 
 /// @nodoc
@@ -159,32 +143,26 @@ class __$$PurchaseEntityImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? status = null,
+    Object? status = freezed,
     Object? userId = null,
-    Object? categoryId = null,
     Object? discountId = freezed,
     Object? finalPrice = null,
-    Object? purchaseTime = null,
+    Object? purchaseTime = freezed,
     Object? expiresAt = freezed,
     Object? updateAt = freezed,
-    Object? createdAt = null,
   }) {
     return _then(_$PurchaseEntityImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: null == status
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
               as int,
       discountId: freezed == discountId
           ? _value.discountId
@@ -194,10 +172,10 @@ class __$$PurchaseEntityImplCopyWithImpl<$Res>
           ? _value.finalPrice
           : finalPrice // ignore: cast_nullable_to_non_nullable
               as double,
-      purchaseTime: null == purchaseTime
+      purchaseTime: freezed == purchaseTime
           ? _value.purchaseTime
           : purchaseTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       expiresAt: freezed == expiresAt
           ? _value.expiresAt
           : expiresAt // ignore: cast_nullable_to_non_nullable
@@ -206,10 +184,6 @@ class __$$PurchaseEntityImplCopyWithImpl<$Res>
           ? _value.updateAt
           : updateAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
     ));
   }
 }
@@ -218,41 +192,35 @@ class __$$PurchaseEntityImplCopyWithImpl<$Res>
 
 class _$PurchaseEntityImpl implements _PurchaseEntity {
   const _$PurchaseEntityImpl(
-      {required this.id,
-      required this.status,
+      {this.id,
+      this.status,
       required this.userId,
-      required this.categoryId,
-      required this.discountId,
+      this.discountId,
       required this.finalPrice,
-      required this.purchaseTime,
-      required this.expiresAt,
-      required this.updateAt,
-      required this.createdAt});
+      this.purchaseTime,
+      this.expiresAt,
+      this.updateAt});
 
   @override
   final int? id;
   @override
-  final String status;
+  final String? status;
   @override
   final int userId;
-  @override
-  final int categoryId;
   @override
   final int? discountId;
   @override
   final double finalPrice;
   @override
-  final DateTime purchaseTime;
+  final DateTime? purchaseTime;
   @override
   final DateTime? expiresAt;
   @override
   final DateTime? updateAt;
-  @override
-  final DateTime createdAt;
 
   @override
   String toString() {
-    return 'PurchaseEntity(id: $id, status: $status, userId: $userId, categoryId: $categoryId, discountId: $discountId, finalPrice: $finalPrice, purchaseTime: $purchaseTime, expiresAt: $expiresAt, updateAt: $updateAt, createdAt: $createdAt)';
+    return 'PurchaseEntity(id: $id, status: $status, userId: $userId, discountId: $discountId, finalPrice: $finalPrice, purchaseTime: $purchaseTime, expiresAt: $expiresAt, updateAt: $updateAt)';
   }
 
   @override
@@ -263,8 +231,6 @@ class _$PurchaseEntityImpl implements _PurchaseEntity {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId) &&
             (identical(other.discountId, discountId) ||
                 other.discountId == discountId) &&
             (identical(other.finalPrice, finalPrice) ||
@@ -274,14 +240,12 @@ class _$PurchaseEntityImpl implements _PurchaseEntity {
             (identical(other.expiresAt, expiresAt) ||
                 other.expiresAt == expiresAt) &&
             (identical(other.updateAt, updateAt) ||
-                other.updateAt == updateAt) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+                other.updateAt == updateAt));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, status, userId, categoryId,
-      discountId, finalPrice, purchaseTime, expiresAt, updateAt, createdAt);
+  int get hashCode => Object.hash(runtimeType, id, status, userId, discountId,
+      finalPrice, purchaseTime, expiresAt, updateAt);
 
   /// Create a copy of PurchaseEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -295,37 +259,31 @@ class _$PurchaseEntityImpl implements _PurchaseEntity {
 
 abstract class _PurchaseEntity implements PurchaseEntity {
   const factory _PurchaseEntity(
-      {required final int? id,
-      required final String status,
+      {final int? id,
+      final String? status,
       required final int userId,
-      required final int categoryId,
-      required final int? discountId,
+      final int? discountId,
       required final double finalPrice,
-      required final DateTime purchaseTime,
-      required final DateTime? expiresAt,
-      required final DateTime? updateAt,
-      required final DateTime createdAt}) = _$PurchaseEntityImpl;
+      final DateTime? purchaseTime,
+      final DateTime? expiresAt,
+      final DateTime? updateAt}) = _$PurchaseEntityImpl;
 
   @override
   int? get id;
   @override
-  String get status;
+  String? get status;
   @override
   int get userId;
-  @override
-  int get categoryId;
   @override
   int? get discountId;
   @override
   double get finalPrice;
   @override
-  DateTime get purchaseTime;
+  DateTime? get purchaseTime;
   @override
   DateTime? get expiresAt;
   @override
   DateTime? get updateAt;
-  @override
-  DateTime get createdAt;
 
   /// Create a copy of PurchaseEntity
   /// with the given fields replaced by the non-null parameter values.

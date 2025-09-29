@@ -10,7 +10,7 @@ abstract class ReportModel with _$ReportModel {
       required int? id,
       required int userId,
       required int targetId,
-      required String response, // edit can be nullable
+      String? response,
       String? reason,
       required DateTime reportedAt,
       DateTime? responseAt,

@@ -9,7 +9,7 @@ abstract class CategoryEntity with _$CategoryEntity {
     int? id,
     required String title,
     required String password,
-    required String status,
+     String? status,
     String? thumbnailUrl,
     required DateTime createdAt,
     required DateTime lastTransaction,

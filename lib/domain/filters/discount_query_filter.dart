@@ -8,6 +8,9 @@ class DiscountQueryFilter {
   final int? maxPercent;
   final String? status;
   final DateTime? expiresAt;
+  final int? videoId;
+  final int? maxUse ;
+  final int? usage ;
 
   final bool ascending;
   final String order;
@@ -23,6 +26,9 @@ class DiscountQueryFilter {
     this.maxPercent,
     this.status,
     this.expiresAt,
+    this.maxUse ,
+    this.usage  ,
+    this.videoId ,
     this.ascending = false,
     this.order = 'expiresAt',
     this.limit = 20,

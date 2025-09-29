@@ -12,7 +12,7 @@ abstract class CollectionModel with _$CollectionModel {
     int? id,
     required String title,
     required String password,
-    required String status,
+     String? status,
     required DateTime createdAt,
     required int ownerId,
     required DateTime lastTransaction,

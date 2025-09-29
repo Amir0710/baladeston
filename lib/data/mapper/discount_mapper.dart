@@ -11,6 +11,9 @@ extension DiscountModelMapper on DiscountModel {
       percent: percent,
       status: status,
       expiresAt: expiresAt,
+      videoId:videoId,
+       maxUse:maxUse ,
+      usage:usage ,
     );
   }
 }
@@ -24,6 +27,9 @@ extension DiscountEntityMapper on DiscountEntity {
       percent: percent,
       status: status,
       expiresAt: expiresAt,
+      videoId:videoId,
+      maxUse:maxUse ,
+      usage:usage ,
     );
   }
 }

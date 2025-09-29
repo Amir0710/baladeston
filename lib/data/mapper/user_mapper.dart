@@ -5,12 +5,13 @@ extension UserModelMapper on UserModel {
   UserEntity toEntity() {
     return UserEntity(
       id: id,
+      createAt  : createAt ,
+      password : password ,
       fullName: fullName,
       email: email,
       phoneNumber: phoneNumber,
       avatarUrl: avatarUrl,
       status: status,
-      role: role,
     );
   }
 }
@@ -19,12 +20,13 @@ extension UserEntityMapper on UserEntity {
   UserModel toModel() {
     return UserModel(
       id: id,
+      createAt  : createAt ,
+      password : password ,
       fullName: fullName,
       email: email,
       phoneNumber: phoneNumber,
       avatarUrl: avatarUrl,
       status: status,
-      role: role,
     );
   }
 }

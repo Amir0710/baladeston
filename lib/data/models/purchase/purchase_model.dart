@@ -8,14 +8,12 @@ part 'purchase_model.g.dart';
 abstract class PurchaseModel with _$PurchaseModel {
   const factory PurchaseModel({
     required int? id,
-    required String status, // edit im add default in database
+     String? status,
     required int userId,
-    required int categoryId, // edit unnecessary
     required int? discountId,
     required double finalPrice,
-    required DateTime purchaseTime,  // edit can be nullable
-    required DateTime? expiresAt,
-    required DateTime createdAt, // edit unnecessary
+     DateTime? purchaseTime,
+     DateTime? expiresAt,
     required DateTime? updateAt,
 
   }) = _PurchaseModel;

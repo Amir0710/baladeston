@@ -6,15 +6,15 @@ part 'video_model.g.dart';
 @freezed
 abstract class VideoModel with _$VideoModel {
   const factory VideoModel({
-    required int? id,
+     int? id,
     required String title,
-    required String? description,
+     String? description,
     required String videoUrl,
-    required String? thumbnailUrl,
-    required String status, // edit nullable
+     String? thumbnailUrl,
+     String? status,
     required int uploaderId,
     required int categoryId,
-    required DateTime uploadedAt, // edit nullable
+     DateTime? uploadedAt,
   }) = _VideoModel;
 
   factory VideoModel.fromJson(Map<String, dynamic> json) =>

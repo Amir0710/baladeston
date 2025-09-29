@@ -20,12 +20,10 @@ WatchHistoryModel _$WatchHistoryModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WatchHistoryModel {
-  int? get id => throw _privateConstructorUsedError; // edit unnecessary
   int get userId => throw _privateConstructorUsedError;
   int get videoId => throw _privateConstructorUsedError;
-  int get lastPositionSeconds =>
-      throw _privateConstructorUsedError; // edit nullable
-  DateTime get updatedAt => throw _privateConstructorUsedError;
+  int? get lastPositionSeconds => throw _privateConstructorUsedError;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
 
   /// Serializes this WatchHistoryModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,11 +42,7 @@ abstract class $WatchHistoryModelCopyWith<$Res> {
       _$WatchHistoryModelCopyWithImpl<$Res, WatchHistoryModel>;
   @useResult
   $Res call(
-      {int? id,
-      int userId,
-      int videoId,
-      int lastPositionSeconds,
-      DateTime updatedAt});
+      {int userId, int videoId, int? lastPositionSeconds, DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -66,17 +60,12 @@ class _$WatchHistoryModelCopyWithImpl<$Res, $Val extends WatchHistoryModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
     Object? userId = null,
     Object? videoId = null,
-    Object? lastPositionSeconds = null,
-    Object? updatedAt = null,
+    Object? lastPositionSeconds = freezed,
+    Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -85,14 +74,14 @@ class _$WatchHistoryModelCopyWithImpl<$Res, $Val extends WatchHistoryModel>
           ? _value.videoId
           : videoId // ignore: cast_nullable_to_non_nullable
               as int,
-      lastPositionSeconds: null == lastPositionSeconds
+      lastPositionSeconds: freezed == lastPositionSeconds
           ? _value.lastPositionSeconds
           : lastPositionSeconds // ignore: cast_nullable_to_non_nullable
-              as int,
-      updatedAt: null == updatedAt
+              as int?,
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -106,11 +95,7 @@ abstract class _$$WatchHistoryModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int? id,
-      int userId,
-      int videoId,
-      int lastPositionSeconds,
-      DateTime updatedAt});
+      {int userId, int videoId, int? lastPositionSeconds, DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -126,17 +111,12 @@ class __$$WatchHistoryModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
     Object? userId = null,
     Object? videoId = null,
-    Object? lastPositionSeconds = null,
-    Object? updatedAt = null,
+    Object? lastPositionSeconds = freezed,
+    Object? updatedAt = freezed,
   }) {
     return _then(_$WatchHistoryModelImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -145,14 +125,14 @@ class __$$WatchHistoryModelImplCopyWithImpl<$Res>
           ? _value.videoId
           : videoId // ignore: cast_nullable_to_non_nullable
               as int,
-      lastPositionSeconds: null == lastPositionSeconds
+      lastPositionSeconds: freezed == lastPositionSeconds
           ? _value.lastPositionSeconds
           : lastPositionSeconds // ignore: cast_nullable_to_non_nullable
-              as int,
-      updatedAt: null == updatedAt
+              as int?,
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 }
@@ -161,31 +141,26 @@ class __$$WatchHistoryModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$WatchHistoryModelImpl implements _WatchHistoryModel {
   const _$WatchHistoryModelImpl(
-      {required this.id,
-      required this.userId,
+      {required this.userId,
       required this.videoId,
-      required this.lastPositionSeconds,
-      required this.updatedAt});
+      this.lastPositionSeconds,
+      this.updatedAt});
 
   factory _$WatchHistoryModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$WatchHistoryModelImplFromJson(json);
 
   @override
-  final int? id;
-// edit unnecessary
-  @override
   final int userId;
   @override
   final int videoId;
   @override
-  final int lastPositionSeconds;
-// edit nullable
+  final int? lastPositionSeconds;
   @override
-  final DateTime updatedAt;
+  final DateTime? updatedAt;
 
   @override
   String toString() {
-    return 'WatchHistoryModel(id: $id, userId: $userId, videoId: $videoId, lastPositionSeconds: $lastPositionSeconds, updatedAt: $updatedAt)';
+    return 'WatchHistoryModel(userId: $userId, videoId: $videoId, lastPositionSeconds: $lastPositionSeconds, updatedAt: $updatedAt)';
   }
 
   @override
@@ -193,7 +168,6 @@ class _$WatchHistoryModelImpl implements _WatchHistoryModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WatchHistoryModelImpl &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.videoId, videoId) || other.videoId == videoId) &&
             (identical(other.lastPositionSeconds, lastPositionSeconds) ||
@@ -204,8 +178,8 @@ class _$WatchHistoryModelImpl implements _WatchHistoryModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, userId, videoId, lastPositionSeconds, updatedAt);
+  int get hashCode =>
+      Object.hash(runtimeType, userId, videoId, lastPositionSeconds, updatedAt);
 
   /// Create a copy of WatchHistoryModel
   /// with the given fields replaced by the non-null parameter values.
@@ -226,25 +200,22 @@ class _$WatchHistoryModelImpl implements _WatchHistoryModel {
 
 abstract class _WatchHistoryModel implements WatchHistoryModel {
   const factory _WatchHistoryModel(
-      {required final int? id,
-      required final int userId,
+      {required final int userId,
       required final int videoId,
-      required final int lastPositionSeconds,
-      required final DateTime updatedAt}) = _$WatchHistoryModelImpl;
+      final int? lastPositionSeconds,
+      final DateTime? updatedAt}) = _$WatchHistoryModelImpl;
 
   factory _WatchHistoryModel.fromJson(Map<String, dynamic> json) =
       _$WatchHistoryModelImpl.fromJson;
 
   @override
-  int? get id; // edit unnecessary
-  @override
   int get userId;
   @override
   int get videoId;
   @override
-  int get lastPositionSeconds; // edit nullable
+  int? get lastPositionSeconds;
   @override
-  DateTime get updatedAt;
+  DateTime? get updatedAt;
 
   /// Create a copy of WatchHistoryModel
   /// with the given fields replaced by the non-null parameter values.

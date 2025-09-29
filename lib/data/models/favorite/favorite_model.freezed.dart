@@ -22,8 +22,6 @@ FavoriteModel _$FavoriteModelFromJson(Map<String, dynamic> json) {
 mixin _$FavoriteModel {
   int? get id => throw _privateConstructorUsedError;
   int get userId => throw _privateConstructorUsedError;
-  String get type =>
-      throw _privateConstructorUsedError; // edit delete unnecessary
   int get targetId => throw _privateConstructorUsedError;
   DateTime? get interestedIn => throw _privateConstructorUsedError;
 
@@ -43,8 +41,7 @@ abstract class $FavoriteModelCopyWith<$Res> {
           FavoriteModel value, $Res Function(FavoriteModel) then) =
       _$FavoriteModelCopyWithImpl<$Res, FavoriteModel>;
   @useResult
-  $Res call(
-      {int? id, int userId, String type, int targetId, DateTime? interestedIn});
+  $Res call({int? id, int userId, int targetId, DateTime? interestedIn});
 }
 
 /// @nodoc
@@ -64,7 +61,6 @@ class _$FavoriteModelCopyWithImpl<$Res, $Val extends FavoriteModel>
   $Res call({
     Object? id = freezed,
     Object? userId = null,
-    Object? type = null,
     Object? targetId = null,
     Object? interestedIn = freezed,
   }) {
@@ -77,10 +73,6 @@ class _$FavoriteModelCopyWithImpl<$Res, $Val extends FavoriteModel>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
       targetId: null == targetId
           ? _value.targetId
           : targetId // ignore: cast_nullable_to_non_nullable
@@ -101,8 +93,7 @@ abstract class _$$FavoriteModelImplCopyWith<$Res>
       __$$FavoriteModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? id, int userId, String type, int targetId, DateTime? interestedIn});
+  $Res call({int? id, int userId, int targetId, DateTime? interestedIn});
 }
 
 /// @nodoc
@@ -120,7 +111,6 @@ class __$$FavoriteModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? userId = null,
-    Object? type = null,
     Object? targetId = null,
     Object? interestedIn = freezed,
   }) {
@@ -133,10 +123,6 @@ class __$$FavoriteModelImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
       targetId: null == targetId
           ? _value.targetId
           : targetId // ignore: cast_nullable_to_non_nullable
@@ -155,7 +141,6 @@ class _$FavoriteModelImpl implements _FavoriteModel {
   const _$FavoriteModelImpl(
       {required this.id,
       required this.userId,
-      required this.type,
       required this.targetId,
       required this.interestedIn});
 
@@ -167,16 +152,13 @@ class _$FavoriteModelImpl implements _FavoriteModel {
   @override
   final int userId;
   @override
-  final String type;
-// edit delete unnecessary
-  @override
   final int targetId;
   @override
   final DateTime? interestedIn;
 
   @override
   String toString() {
-    return 'FavoriteModel(id: $id, userId: $userId, type: $type, targetId: $targetId, interestedIn: $interestedIn)';
+    return 'FavoriteModel(id: $id, userId: $userId, targetId: $targetId, interestedIn: $interestedIn)';
   }
 
   @override
@@ -186,7 +168,6 @@ class _$FavoriteModelImpl implements _FavoriteModel {
             other is _$FavoriteModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.type, type) || other.type == type) &&
             (identical(other.targetId, targetId) ||
                 other.targetId == targetId) &&
             (identical(other.interestedIn, interestedIn) ||
@@ -196,7 +177,7 @@ class _$FavoriteModelImpl implements _FavoriteModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, userId, type, targetId, interestedIn);
+      Object.hash(runtimeType, id, userId, targetId, interestedIn);
 
   /// Create a copy of FavoriteModel
   /// with the given fields replaced by the non-null parameter values.
@@ -218,7 +199,6 @@ abstract class _FavoriteModel implements FavoriteModel {
   const factory _FavoriteModel(
       {required final int? id,
       required final int userId,
-      required final String type,
       required final int targetId,
       required final DateTime? interestedIn}) = _$FavoriteModelImpl;
 
@@ -229,8 +209,6 @@ abstract class _FavoriteModel implements FavoriteModel {
   int? get id;
   @override
   int get userId;
-  @override
-  String get type; // edit delete unnecessary
   @override
   int get targetId;
   @override

@@ -12,7 +12,7 @@ _$CollectionModelImpl _$$CollectionModelImplFromJson(
       id: (json['id'] as num?)?.toInt(),
       title: json['title'] as String,
       password: json['password'] as String,
-      status: json['status'] as String,
+      status: json['status'] as String?,
       createdAt: DateTime.parse(json['createdAt'] as String),
       ownerId: (json['ownerId'] as num).toInt(),
       lastTransaction: DateTime.parse(json['lastTransaction'] as String),

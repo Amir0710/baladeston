@@ -13,10 +13,12 @@ _$VideoModelImpl _$$VideoModelImplFromJson(Map<String, dynamic> json) =>
       description: json['description'] as String?,
       videoUrl: json['videoUrl'] as String,
       thumbnailUrl: json['thumbnailUrl'] as String?,
-      status: json['status'] as String,
+      status: json['status'] as String?,
       uploaderId: (json['uploaderId'] as num).toInt(),
       categoryId: (json['categoryId'] as num).toInt(),
-      uploadedAt: DateTime.parse(json['uploadedAt'] as String),
+      uploadedAt: json['uploadedAt'] == null
+          ? null
+          : DateTime.parse(json['uploadedAt'] as String),
     );
 
 Map<String, dynamic> _$$VideoModelImplToJson(_$VideoModelImpl instance) =>
@@ -29,5 +31,5 @@ Map<String, dynamic> _$$VideoModelImplToJson(_$VideoModelImpl instance) =>
       'status': instance.status,
       'uploaderId': instance.uploaderId,
       'categoryId': instance.categoryId,
-      'uploadedAt': instance.uploadedAt.toIso8601String(),
+      'uploadedAt': instance.uploadedAt?.toIso8601String(),
     };

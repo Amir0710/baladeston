@@ -30,7 +30,7 @@ abstract class CollectionEntity with _$CollectionEntity {
      int? id,
     required String title,
     required String password,
-    required String status,
+     String? status,
     required DateTime createdAt,
     required DateTime lastTransaction,
     required int ownerId,

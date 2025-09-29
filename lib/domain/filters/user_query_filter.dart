@@ -5,7 +5,8 @@ class UserQueryFilter {
   final String? email;
   final String? phoneNumber;
   final String? status;
-  final String? role;
+  final String? password;
+  final DateTime? createAt ;
 
   final String orderBy;
   final int limit;
@@ -13,12 +14,13 @@ class UserQueryFilter {
   final bool ascending;
 
   UserQueryFilter({
+    this.createAt,
+    this.password,
     this.id,
     this.searchTerm,
     this.email,
     this.phoneNumber,
     this.status,
-    this.role,
     this.orderBy = 'name',
     this.limit = 20,
     this.offset = 0,

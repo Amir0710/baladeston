@@ -10,7 +10,7 @@ abstract class CategoryModel with _$CategoryModel {
     int? id,
     required String title,
     required String password,
-    required String status,
+    String? status,
     String? thumbnailUrl,
     required DateTime createdAt,
     required DateTime lastTransaction,

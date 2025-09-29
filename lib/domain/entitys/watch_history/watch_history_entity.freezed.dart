@@ -16,11 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$WatchHistoryEntity {
-  int? get id => throw _privateConstructorUsedError;
   int get userId => throw _privateConstructorUsedError;
   int get videoId => throw _privateConstructorUsedError;
-  int get lastPositionSeconds => throw _privateConstructorUsedError;
-  DateTime get updatedAt => throw _privateConstructorUsedError;
+  int? get lastPositionSeconds => throw _privateConstructorUsedError;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
 
   /// Create a copy of WatchHistoryEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -36,11 +35,7 @@ abstract class $WatchHistoryEntityCopyWith<$Res> {
       _$WatchHistoryEntityCopyWithImpl<$Res, WatchHistoryEntity>;
   @useResult
   $Res call(
-      {int? id,
-      int userId,
-      int videoId,
-      int lastPositionSeconds,
-      DateTime updatedAt});
+      {int userId, int videoId, int? lastPositionSeconds, DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -58,17 +53,12 @@ class _$WatchHistoryEntityCopyWithImpl<$Res, $Val extends WatchHistoryEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
     Object? userId = null,
     Object? videoId = null,
-    Object? lastPositionSeconds = null,
-    Object? updatedAt = null,
+    Object? lastPositionSeconds = freezed,
+    Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -77,14 +67,14 @@ class _$WatchHistoryEntityCopyWithImpl<$Res, $Val extends WatchHistoryEntity>
           ? _value.videoId
           : videoId // ignore: cast_nullable_to_non_nullable
               as int,
-      lastPositionSeconds: null == lastPositionSeconds
+      lastPositionSeconds: freezed == lastPositionSeconds
           ? _value.lastPositionSeconds
           : lastPositionSeconds // ignore: cast_nullable_to_non_nullable
-              as int,
-      updatedAt: null == updatedAt
+              as int?,
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -98,11 +88,7 @@ abstract class _$$WatchHistoryEntityImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int? id,
-      int userId,
-      int videoId,
-      int lastPositionSeconds,
-      DateTime updatedAt});
+      {int userId, int videoId, int? lastPositionSeconds, DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -118,17 +104,12 @@ class __$$WatchHistoryEntityImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
     Object? userId = null,
     Object? videoId = null,
-    Object? lastPositionSeconds = null,
-    Object? updatedAt = null,
+    Object? lastPositionSeconds = freezed,
+    Object? updatedAt = freezed,
   }) {
     return _then(_$WatchHistoryEntityImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -137,14 +118,14 @@ class __$$WatchHistoryEntityImplCopyWithImpl<$Res>
           ? _value.videoId
           : videoId // ignore: cast_nullable_to_non_nullable
               as int,
-      lastPositionSeconds: null == lastPositionSeconds
+      lastPositionSeconds: freezed == lastPositionSeconds
           ? _value.lastPositionSeconds
           : lastPositionSeconds // ignore: cast_nullable_to_non_nullable
-              as int,
-      updatedAt: null == updatedAt
+              as int?,
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 }
@@ -153,26 +134,23 @@ class __$$WatchHistoryEntityImplCopyWithImpl<$Res>
 
 class _$WatchHistoryEntityImpl implements _WatchHistoryEntity {
   const _$WatchHistoryEntityImpl(
-      {required this.id,
-      required this.userId,
+      {required this.userId,
       required this.videoId,
-      required this.lastPositionSeconds,
-      required this.updatedAt});
+      this.lastPositionSeconds,
+      this.updatedAt});
 
-  @override
-  final int? id;
   @override
   final int userId;
   @override
   final int videoId;
   @override
-  final int lastPositionSeconds;
+  final int? lastPositionSeconds;
   @override
-  final DateTime updatedAt;
+  final DateTime? updatedAt;
 
   @override
   String toString() {
-    return 'WatchHistoryEntity(id: $id, userId: $userId, videoId: $videoId, lastPositionSeconds: $lastPositionSeconds, updatedAt: $updatedAt)';
+    return 'WatchHistoryEntity(userId: $userId, videoId: $videoId, lastPositionSeconds: $lastPositionSeconds, updatedAt: $updatedAt)';
   }
 
   @override
@@ -180,7 +158,6 @@ class _$WatchHistoryEntityImpl implements _WatchHistoryEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WatchHistoryEntityImpl &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.videoId, videoId) || other.videoId == videoId) &&
             (identical(other.lastPositionSeconds, lastPositionSeconds) ||
@@ -190,8 +167,8 @@ class _$WatchHistoryEntityImpl implements _WatchHistoryEntity {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, userId, videoId, lastPositionSeconds, updatedAt);
+  int get hashCode =>
+      Object.hash(runtimeType, userId, videoId, lastPositionSeconds, updatedAt);
 
   /// Create a copy of WatchHistoryEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -205,22 +182,19 @@ class _$WatchHistoryEntityImpl implements _WatchHistoryEntity {
 
 abstract class _WatchHistoryEntity implements WatchHistoryEntity {
   const factory _WatchHistoryEntity(
-      {required final int? id,
-      required final int userId,
+      {required final int userId,
       required final int videoId,
-      required final int lastPositionSeconds,
-      required final DateTime updatedAt}) = _$WatchHistoryEntityImpl;
+      final int? lastPositionSeconds,
+      final DateTime? updatedAt}) = _$WatchHistoryEntityImpl;
 
-  @override
-  int? get id;
   @override
   int get userId;
   @override
   int get videoId;
   @override
-  int get lastPositionSeconds;
+  int? get lastPositionSeconds;
   @override
-  DateTime get updatedAt;
+  DateTime? get updatedAt;
 
   /// Create a copy of WatchHistoryEntity
   /// with the given fields replaced by the non-null parameter values.

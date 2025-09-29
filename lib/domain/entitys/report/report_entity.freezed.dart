@@ -19,7 +19,7 @@ mixin _$ReportEntity {
   int? get id => throw _privateConstructorUsedError;
   int get userId => throw _privateConstructorUsedError;
   int get targetId => throw _privateConstructorUsedError;
-  String get response => throw _privateConstructorUsedError;
+  String? get response => throw _privateConstructorUsedError;
   DateTime get reportedAt => throw _privateConstructorUsedError;
   String? get reason => throw _privateConstructorUsedError;
   DateTime? get responseAt => throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ abstract class $ReportEntityCopyWith<$Res> {
       {int? id,
       int userId,
       int targetId,
-      String response,
+      String? response,
       DateTime reportedAt,
       String? reason,
       DateTime? responseAt});
@@ -65,7 +65,7 @@ class _$ReportEntityCopyWithImpl<$Res, $Val extends ReportEntity>
     Object? id = freezed,
     Object? userId = null,
     Object? targetId = null,
-    Object? response = null,
+    Object? response = freezed,
     Object? reportedAt = null,
     Object? reason = freezed,
     Object? responseAt = freezed,
@@ -83,10 +83,10 @@ class _$ReportEntityCopyWithImpl<$Res, $Val extends ReportEntity>
           ? _value.targetId
           : targetId // ignore: cast_nullable_to_non_nullable
               as int,
-      response: null == response
+      response: freezed == response
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       reportedAt: null == reportedAt
           ? _value.reportedAt
           : reportedAt // ignore: cast_nullable_to_non_nullable
@@ -115,7 +115,7 @@ abstract class _$$ReportEntityImplCopyWith<$Res>
       {int? id,
       int userId,
       int targetId,
-      String response,
+      String? response,
       DateTime reportedAt,
       String? reason,
       DateTime? responseAt});
@@ -137,7 +137,7 @@ class __$$ReportEntityImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? userId = null,
     Object? targetId = null,
-    Object? response = null,
+    Object? response = freezed,
     Object? reportedAt = null,
     Object? reason = freezed,
     Object? responseAt = freezed,
@@ -155,10 +155,10 @@ class __$$ReportEntityImplCopyWithImpl<$Res>
           ? _value.targetId
           : targetId // ignore: cast_nullable_to_non_nullable
               as int,
-      response: null == response
+      response: freezed == response
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       reportedAt: null == reportedAt
           ? _value.reportedAt
           : reportedAt // ignore: cast_nullable_to_non_nullable
@@ -182,7 +182,7 @@ class _$ReportEntityImpl implements _ReportEntity {
       {required this.id,
       required this.userId,
       required this.targetId,
-      required this.response,
+      this.response,
       required this.reportedAt,
       required this.reason,
       required this.responseAt});
@@ -194,7 +194,7 @@ class _$ReportEntityImpl implements _ReportEntity {
   @override
   final int targetId;
   @override
-  final String response;
+  final String? response;
   @override
   final DateTime reportedAt;
   @override
@@ -243,7 +243,7 @@ abstract class _ReportEntity implements ReportEntity {
       {required final int? id,
       required final int userId,
       required final int targetId,
-      required final String response,
+      final String? response,
       required final DateTime reportedAt,
       required final String? reason,
       required final DateTime? responseAt}) = _$ReportEntityImpl;
@@ -255,7 +255,7 @@ abstract class _ReportEntity implements ReportEntity {
   @override
   int get targetId;
   @override
-  String get response;
+  String? get response;
   @override
   DateTime get reportedAt;
   @override

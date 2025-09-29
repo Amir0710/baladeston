@@ -6,7 +6,6 @@ extension FavoriteModelMapper on FavoriteModel {
     return FavoriteEntity(
       
       userId: userId,
-      type: type,
       targetId: targetId,
       interestedIn: interestedIn, id: id,
     );
@@ -17,7 +16,6 @@ extension FavoriteEntityMapper on FavoriteEntity {
   FavoriteModel toModel() {
     return FavoriteModel(
       userId: userId,
-      type: type,
       targetId: targetId,
       interestedIn: interestedIn,id: id,
     );

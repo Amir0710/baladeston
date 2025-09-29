@@ -21,17 +21,12 @@ PurchaseModel _$PurchaseModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PurchaseModel {
   int? get id => throw _privateConstructorUsedError;
-  String get status =>
-      throw _privateConstructorUsedError; // edit im add default in database
+  String? get status => throw _privateConstructorUsedError;
   int get userId => throw _privateConstructorUsedError;
-  int get categoryId => throw _privateConstructorUsedError; // edit unnecessary
   int? get discountId => throw _privateConstructorUsedError;
   double get finalPrice => throw _privateConstructorUsedError;
-  DateTime get purchaseTime =>
-      throw _privateConstructorUsedError; // edit can be nullable
+  DateTime? get purchaseTime => throw _privateConstructorUsedError;
   DateTime? get expiresAt => throw _privateConstructorUsedError;
-  DateTime get createdAt =>
-      throw _privateConstructorUsedError; // edit unnecessary
   DateTime? get updateAt => throw _privateConstructorUsedError;
 
   /// Serializes this PurchaseModel to a JSON map.
@@ -52,14 +47,12 @@ abstract class $PurchaseModelCopyWith<$Res> {
   @useResult
   $Res call(
       {int? id,
-      String status,
+      String? status,
       int userId,
-      int categoryId,
       int? discountId,
       double finalPrice,
-      DateTime purchaseTime,
+      DateTime? purchaseTime,
       DateTime? expiresAt,
-      DateTime createdAt,
       DateTime? updateAt});
 }
 
@@ -79,14 +72,12 @@ class _$PurchaseModelCopyWithImpl<$Res, $Val extends PurchaseModel>
   @override
   $Res call({
     Object? id = freezed,
-    Object? status = null,
+    Object? status = freezed,
     Object? userId = null,
-    Object? categoryId = null,
     Object? discountId = freezed,
     Object? finalPrice = null,
-    Object? purchaseTime = null,
+    Object? purchaseTime = freezed,
     Object? expiresAt = freezed,
-    Object? createdAt = null,
     Object? updateAt = freezed,
   }) {
     return _then(_value.copyWith(
@@ -94,17 +85,13 @@ class _$PurchaseModelCopyWithImpl<$Res, $Val extends PurchaseModel>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: null == status
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
               as int,
       discountId: freezed == discountId
           ? _value.discountId
@@ -114,18 +101,14 @@ class _$PurchaseModelCopyWithImpl<$Res, $Val extends PurchaseModel>
           ? _value.finalPrice
           : finalPrice // ignore: cast_nullable_to_non_nullable
               as double,
-      purchaseTime: null == purchaseTime
+      purchaseTime: freezed == purchaseTime
           ? _value.purchaseTime
           : purchaseTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       expiresAt: freezed == expiresAt
           ? _value.expiresAt
           : expiresAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       updateAt: freezed == updateAt
           ? _value.updateAt
           : updateAt // ignore: cast_nullable_to_non_nullable
@@ -144,14 +127,12 @@ abstract class _$$PurchaseModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {int? id,
-      String status,
+      String? status,
       int userId,
-      int categoryId,
       int? discountId,
       double finalPrice,
-      DateTime purchaseTime,
+      DateTime? purchaseTime,
       DateTime? expiresAt,
-      DateTime createdAt,
       DateTime? updateAt});
 }
 
@@ -169,14 +150,12 @@ class __$$PurchaseModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? status = null,
+    Object? status = freezed,
     Object? userId = null,
-    Object? categoryId = null,
     Object? discountId = freezed,
     Object? finalPrice = null,
-    Object? purchaseTime = null,
+    Object? purchaseTime = freezed,
     Object? expiresAt = freezed,
-    Object? createdAt = null,
     Object? updateAt = freezed,
   }) {
     return _then(_$PurchaseModelImpl(
@@ -184,17 +163,13 @@ class __$$PurchaseModelImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: null == status
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
               as int,
       discountId: freezed == discountId
           ? _value.discountId
@@ -204,18 +179,14 @@ class __$$PurchaseModelImplCopyWithImpl<$Res>
           ? _value.finalPrice
           : finalPrice // ignore: cast_nullable_to_non_nullable
               as double,
-      purchaseTime: null == purchaseTime
+      purchaseTime: freezed == purchaseTime
           ? _value.purchaseTime
           : purchaseTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       expiresAt: freezed == expiresAt
           ? _value.expiresAt
           : expiresAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       updateAt: freezed == updateAt
           ? _value.updateAt
           : updateAt // ignore: cast_nullable_to_non_nullable
@@ -229,14 +200,12 @@ class __$$PurchaseModelImplCopyWithImpl<$Res>
 class _$PurchaseModelImpl implements _PurchaseModel {
   const _$PurchaseModelImpl(
       {required this.id,
-      required this.status,
+      this.status,
       required this.userId,
-      required this.categoryId,
       required this.discountId,
       required this.finalPrice,
-      required this.purchaseTime,
-      required this.expiresAt,
-      required this.createdAt,
+      this.purchaseTime,
+      this.expiresAt,
       required this.updateAt});
 
   factory _$PurchaseModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -245,31 +214,23 @@ class _$PurchaseModelImpl implements _PurchaseModel {
   @override
   final int? id;
   @override
-  final String status;
-// edit im add default in database
+  final String? status;
   @override
   final int userId;
-  @override
-  final int categoryId;
-// edit unnecessary
   @override
   final int? discountId;
   @override
   final double finalPrice;
   @override
-  final DateTime purchaseTime;
-// edit can be nullable
+  final DateTime? purchaseTime;
   @override
   final DateTime? expiresAt;
-  @override
-  final DateTime createdAt;
-// edit unnecessary
   @override
   final DateTime? updateAt;
 
   @override
   String toString() {
-    return 'PurchaseModel(id: $id, status: $status, userId: $userId, categoryId: $categoryId, discountId: $discountId, finalPrice: $finalPrice, purchaseTime: $purchaseTime, expiresAt: $expiresAt, createdAt: $createdAt, updateAt: $updateAt)';
+    return 'PurchaseModel(id: $id, status: $status, userId: $userId, discountId: $discountId, finalPrice: $finalPrice, purchaseTime: $purchaseTime, expiresAt: $expiresAt, updateAt: $updateAt)';
   }
 
   @override
@@ -280,8 +241,6 @@ class _$PurchaseModelImpl implements _PurchaseModel {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId) &&
             (identical(other.discountId, discountId) ||
                 other.discountId == discountId) &&
             (identical(other.finalPrice, finalPrice) ||
@@ -290,16 +249,14 @@ class _$PurchaseModelImpl implements _PurchaseModel {
                 other.purchaseTime == purchaseTime) &&
             (identical(other.expiresAt, expiresAt) ||
                 other.expiresAt == expiresAt) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
             (identical(other.updateAt, updateAt) ||
                 other.updateAt == updateAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, status, userId, categoryId,
-      discountId, finalPrice, purchaseTime, expiresAt, createdAt, updateAt);
+  int get hashCode => Object.hash(runtimeType, id, status, userId, discountId,
+      finalPrice, purchaseTime, expiresAt, updateAt);
 
   /// Create a copy of PurchaseModel
   /// with the given fields replaced by the non-null parameter values.
@@ -320,14 +277,12 @@ class _$PurchaseModelImpl implements _PurchaseModel {
 abstract class _PurchaseModel implements PurchaseModel {
   const factory _PurchaseModel(
       {required final int? id,
-      required final String status,
+      final String? status,
       required final int userId,
-      required final int categoryId,
       required final int? discountId,
       required final double finalPrice,
-      required final DateTime purchaseTime,
-      required final DateTime? expiresAt,
-      required final DateTime createdAt,
+      final DateTime? purchaseTime,
+      final DateTime? expiresAt,
       required final DateTime? updateAt}) = _$PurchaseModelImpl;
 
   factory _PurchaseModel.fromJson(Map<String, dynamic> json) =
@@ -336,21 +291,17 @@ abstract class _PurchaseModel implements PurchaseModel {
   @override
   int? get id;
   @override
-  String get status; // edit im add default in database
+  String? get status;
   @override
   int get userId;
-  @override
-  int get categoryId; // edit unnecessary
   @override
   int? get discountId;
   @override
   double get finalPrice;
   @override
-  DateTime get purchaseTime; // edit can be nullable
+  DateTime? get purchaseTime;
   @override
   DateTime? get expiresAt;
-  @override
-  DateTime get createdAt; // edit unnecessary
   @override
   DateTime? get updateAt;
 

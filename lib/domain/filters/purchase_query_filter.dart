@@ -1,13 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 class PurchaseQueryFilter {
   final int? id;
   final String? status;
   final int? userId;
-  final int? categoryId;
   final int? discountId;
   final double? finalPrice;
   final DateTime? purchaseTime;
-  final DateTime? updateAt;
   final String? searchTerm;
   final int? searchId;
   final DateTime? expiresAt;
@@ -22,11 +19,9 @@ class PurchaseQueryFilter {
     this.id,
     this.status,
     this.userId,
-    this.categoryId,
     this.discountId,
     this.finalPrice,
     this.purchaseTime,
-    this.updateAt,
     this.searchTerm,
     this.searchId,
     this.expiresAt,

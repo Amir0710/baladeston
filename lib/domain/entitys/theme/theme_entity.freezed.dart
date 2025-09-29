@@ -215,17 +215,21 @@ abstract class _ThemeEntity implements ThemeEntity {
 
 /// @nodoc
 mixin _$ThemeColorsEntity {
-  String get info => throw _privateConstructorUsedError;
-  String get error => throw _privateConstructorUsedError;
+  String get info => throw _privateConstructorUsedError; // small text color
+  String get error => throw _privateConstructorUsedError; // error text color
   String get divider => throw _privateConstructorUsedError;
-  String get primary => throw _privateConstructorUsedError;
+  String get primary => throw _privateConstructorUsedError; // app main color
   String get success => throw _privateConstructorUsedError;
-  String get surface => throw _privateConstructorUsedError;
+  String get surface =>
+      throw _privateConstructorUsedError; // widget on background
   String get warning => throw _privateConstructorUsedError;
-  String get secondary => throw _privateConstructorUsedError;
+  String get secondary =>
+      throw _privateConstructorUsedError; // app secondary color (pale)
   String get background => throw _privateConstructorUsedError;
-  String get textPrimary => throw _privateConstructorUsedError;
-  String get textSecondary => throw _privateConstructorUsedError;
+  String get textPrimary =>
+      throw _privateConstructorUsedError; // main text color
+  String get textSecondary =>
+      throw _privateConstructorUsedError; // opposite text color
   String get buttonForeground => throw _privateConstructorUsedError;
   List<String> get partColors => throw _privateConstructorUsedError;
 
@@ -473,26 +477,33 @@ class _$ThemeColorsEntityImpl implements _ThemeColorsEntity {
 
   @override
   final String info;
+// small text color
   @override
   final String error;
+// error text color
   @override
   final String divider;
   @override
   final String primary;
+// app main color
   @override
   final String success;
   @override
   final String surface;
+// widget on background
   @override
   final String warning;
   @override
   final String secondary;
+// app secondary color (pale)
   @override
   final String background;
   @override
   final String textPrimary;
+// main text color
   @override
   final String textSecondary;
+// opposite text color
   @override
   final String buttonForeground;
   final List<String> _partColors;
@@ -578,27 +589,27 @@ abstract class _ThemeColorsEntity implements ThemeColorsEntity {
       required final List<String> partColors}) = _$ThemeColorsEntityImpl;
 
   @override
-  String get info;
+  String get info; // small text color
   @override
-  String get error;
+  String get error; // error text color
   @override
   String get divider;
   @override
-  String get primary;
+  String get primary; // app main color
   @override
   String get success;
   @override
-  String get surface;
+  String get surface; // widget on background
   @override
   String get warning;
   @override
-  String get secondary;
+  String get secondary; // app secondary color (pale)
   @override
   String get background;
   @override
-  String get textPrimary;
+  String get textPrimary; // main text color
   @override
-  String get textSecondary;
+  String get textSecondary; // opposite text color
   @override
   String get buttonForeground;
   @override
