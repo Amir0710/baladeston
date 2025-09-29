@@ -2,6 +2,7 @@ import 'package:baladeston/core/constants/add_padding.dart';
 import 'package:baladeston/core/extensions/media_query_extension.dart';
 import 'package:baladeston/core/theme/app_themes.dart';
 import 'package:baladeston/core/widgets/print_circle.dart';
+import 'package:baladeston/presentation/pages/category/category_pages.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -166,7 +167,7 @@ class _UserPassLoginState extends State<UserPassLogin> {
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(
                           builder: (context) {
-                            return UserPassLogin();
+                            return CategoryPages();
                           },
                         ));
                       },

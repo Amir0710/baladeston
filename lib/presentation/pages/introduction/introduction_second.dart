@@ -3,13 +3,8 @@ import 'dart:math';
 import 'package:baladeston/core/constants/add_padding.dart';
 import 'package:baladeston/core/extensions/media_query_extension.dart';
 import 'package:baladeston/core/theme/app_themes.dart';
-import 'package:baladeston/core/theme/app_themes.dart';
-import 'package:baladeston/core/theme/app_themes.dart';
-import 'package:baladeston/core/theme/app_themes.dart';
-import 'package:baladeston/core/theme/app_themes.dart';
-import 'package:baladeston/core/theme/app_themes.dart';
 import 'package:baladeston/core/widgets/print_circle.dart';
-import 'package:baladeston/presentation/pages/introduction/login/user_pass_login.dart';
+import 'package:baladeston/presentation/pages/login/user_pass_login.dart';
 import 'package:flutter/material.dart';
 
 class IntroductionSecond extends StatelessWidget {
