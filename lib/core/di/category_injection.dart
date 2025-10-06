@@ -1,4 +1,5 @@
 import 'package:baladeston/data/datasources/remote/category_remote_datasource/category_api.dart';
+import 'package:baladeston/domain/usecase/category/get_all_category_usecase.dart';
 import 'package:baladeston/presentation/providers/category_cubit/category_cubit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:baladeston/data/repository_implementation/category_repository_implementation.dart';
@@ -44,10 +45,14 @@ Future<void> initCategoryModule() async {
     ..registerLazySingleton<GetCategoryByIdUseCase>(
       () => GetCategoryByIdUseCase(getIt<CategoryRepository>()),
     )
+    ..registerLazySingleton<GetAllCategoryUsecase>(
+          () => GetAllCategoryUsecase(getIt<CategoryRepository>()),
+    )
 
     // Cubit
     ..registerFactory<CategoryCubit>(
       () => CategoryCubit(
+        getAllCategory: getIt<GetAllCategoryUsecase>(),
         createUseCase: getIt<CreateCategoryUseCase>(),
         updateUseCase: getIt<UpdateCategoryUseCase>(),
         countUseCase: getIt<CountAllCategoriesUseCase>(),

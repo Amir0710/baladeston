@@ -79,4 +79,16 @@ class CategoryRepositoryImplementation extends CategoryRepository {
       throw Exception('error $e');
     }
   }
+
+  @override
+  Future<List<CategoryEntity>?> getAllCategory({required CategoryQueryFilter filter}) async {
+    try {
+      final model = await _api.getAllCategory(filter: filter);
+      return model?.map((m) => m.toEntity()).toList();
+    } catch (e) {
+      throw Exception('error $e');
+    }
+  }
+
+
 }

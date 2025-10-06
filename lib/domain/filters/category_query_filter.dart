@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 class CategoryQueryFilter {
   final int? id;
   final String? searchTerm;
@@ -12,6 +11,7 @@ class CategoryQueryFilter {
   final int offset;
   final bool ascending;
   final String order;
+
   CategoryQueryFilter({
     this.id,
     this.searchTerm,

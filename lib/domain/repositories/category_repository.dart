@@ -15,4 +15,5 @@ abstract class CategoryRepository {
   Future<void> deleteCategoryByFilter({required CategoryQueryFilter filter});
 
   Future<int> countAllCategories({required CategoryQueryFilter filter});
+  Future <List<CategoryEntity>?>  getAllCategory({required CategoryQueryFilter filter});
 }
