@@ -1,7 +1,8 @@
-import 'package:baladeston/core/di/theme_injection.dart';
+import 'package:baladeston/core/di/theme_injection.dart' hide getIt;
 import 'package:baladeston/core/di_initialization/init.dart';
 import 'package:baladeston/core/init/supabase_initializer.dart';
 import 'package:baladeston/presentation/pages/introduction/introduction_first.dart';
+import 'package:baladeston/presentation/providers/category_cubit/category_cubit.dart';
 import 'package:baladeston/presentation/providers/theme_cubit/theme_cubit.dart';
 import 'package:baladeston/presentation/providers/theme_cubit/theme_state.dart';
 import 'package:flutter/material.dart';
@@ -19,8 +20,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => getIt<ThemeCubit>()..loadThemeFromSupabase(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<ThemeCubit>(
+          create: (_) => getIt<ThemeCubit>()..loadThemeFromSupabase(),
+        ),
+        BlocProvider<CategoryCubit>(
+          create: (_) => getIt<CategoryCubit>(),
+        ),
+      ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, state) {
           return state.maybeWhen(
@@ -32,18 +40,10 @@ class MyApp extends StatelessWidget {
                 home: IntroductionFirst(),
               );
             },
-            initial: () => Container(
-              color: Colors.blue,
-            ),
-            orElse: () => Container(
-              color: Colors.red,
-            ),
-            failure: (massage) => Container(
-              color: Colors.red,
-            ),
-            loading: () => Container(
-              color: Colors.red,
-            ),
+            initial: () => Container(color: Colors.blue),
+            orElse: () => Container(color: Colors.red),
+            failure: (message) => Container(color: Colors.red),
+            loading: () => Container(color: Colors.red),
           );
         },
       ),

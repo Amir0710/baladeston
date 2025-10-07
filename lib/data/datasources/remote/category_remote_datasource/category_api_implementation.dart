@@ -5,9 +5,12 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'category_api.dart';
 
 class CategoryApiImplementation extends CategoryApi {
-  final SupabaseClient _client = Supabase.instance.client;
+  final SupabaseClient _client;
 
-  /// فیلتر برای عملیات READ (خروجی با select)
+  CategoryApiImplementation(this._client);
+
+  // final SupabaseClient _client = Supabase.instance.client;
+
   PostgrestTransformBuilder _applyFilterSelect(CategoryQueryFilter filter) {
     var query = _client.from('category').select();
 
@@ -25,8 +28,8 @@ class CategoryApiImplementation extends CategoryApi {
   }
 
   /// فیلتر برای DELETE / UPDATE (بدون select)
-  PostgrestFilterBuilder _applyFilterQuery(CategoryQueryFilter filter) {
-    var query = _client.from('category').select();
+  PostgrestFilterBuilder _deleteFilterQuery(CategoryQueryFilter filter) {
+    var query = _client.from('category').delete();
 
     if (filter.id != null) query = query.eq('id', filter.id!);
     if (filter.searchId != null) query = query.eq('id', filter.searchId!);
@@ -95,7 +98,7 @@ class CategoryApiImplementation extends CategoryApi {
   Future<void> deleteCategoryByFilter({
     required CategoryQueryFilter filter,
   }) async {
-    await _applyFilterQuery(filter).delete();
+    await _deleteFilterQuery(filter);
   }
 
   @override

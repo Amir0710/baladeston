@@ -21,7 +21,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   final DeleteCategoryByFilterUseCase _deleteByFilterUseCase;
   final GetCategoryByFilterUseCase _getByFilterUseCase;
   final GetCategoryByIdUseCase _getByIdUseCase;
-  final  GetAllCategoryUsecase _getAllCategory ;
+  final GetAllCategoryUsecase _getAllCategory;
 
   CategoryCubit({
     required CreateCategoryUseCase createUseCase,
@@ -32,7 +32,6 @@ class CategoryCubit extends Cubit<CategoryState> {
     required GetCategoryByFilterUseCase getByFilterUseCase,
     required GetCategoryByIdUseCase getByIdUseCase,
     required GetAllCategoryUsecase getAllCategory,
-
   })  : _createUseCase = createUseCase,
         _updateUseCase = updateUseCase,
         _countUseCase = countUseCase,
@@ -40,7 +39,7 @@ class CategoryCubit extends Cubit<CategoryState> {
         _deleteByFilterUseCase = deleteByFilterUseCase,
         _getByFilterUseCase = getByFilterUseCase,
         _getByIdUseCase = getByIdUseCase,
-        _getAllCategory = getAllCategory ,
+        _getAllCategory = getAllCategory,
         super(const CategoryState.initial());
 
   Future<void> loadCategories(CategoryQueryFilter filter) async {
@@ -54,7 +53,18 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
-  /// دریافت دسته‌بندی با شناسه و نمایش آن به‌صورت Success
+  Future<void> loadAllCategories(CategoryQueryFilter filter) async {
+    emit(const CategoryState.loading());
+    try {
+      final categories = await _getAllCategory(filter) ?? [];
+      final count = await _countUseCase(filter: filter);
+      emit(CategoryState.success(categories: categories, count: count));
+    } catch (e) {
+      emit(CategoryState.failure(message: e.toString()));
+    }
+  }
+
+
   Future<void> loadCategoryById(int id) async {
     emit(const CategoryState.loading());
     try {
@@ -79,7 +89,6 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
-  /// ویرایش دسته‌بندی
   Future<void> updateCategory(CategoryEntity category, CategoryQueryFilter refreshFilter) async {
     emit(const CategoryState.loading());
     try {
@@ -90,7 +99,6 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
-  /// حذف دسته‌بندی با شناسه
   Future<void> deleteCategoryById(int id, CategoryQueryFilter refreshFilter) async {
     emit(const CategoryState.loading());
     try {
@@ -101,7 +109,6 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
-  /// حذف دسته‌بندی‌ها با فیلتر
   Future<void> deleteCategoriesByFilter(CategoryQueryFilter filter, CategoryQueryFilter refreshFilter) async {
     emit(const CategoryState.loading());
     try {

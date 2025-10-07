@@ -1,4 +1,5 @@
 import 'package:baladeston/data/datasources/remote/category_remote_datasource/category_api.dart';
+import 'package:baladeston/data/datasources/remote/category_remote_datasource/category_api_implementation.dart';
 import 'package:baladeston/domain/usecase/category/get_all_category_usecase.dart';
 import 'package:baladeston/presentation/providers/category_cubit/category_cubit.dart';
 import 'package:get_it/get_it.dart';
@@ -11,47 +12,50 @@ import 'package:baladeston/domain/usecase/category/delete_category_by_filter_use
 import 'package:baladeston/domain/usecase/category/delete_category_by_id_usecase.dart';
 import 'package:baladeston/domain/usecase/category/get_category_by_filter_usecase.dart';
 import 'package:baladeston/domain/usecase/category/get_category_by_id_usecase.dart';
-
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 final getIt = GetIt.instance;
 
 Future<void> initCategoryModule() async {
   getIt
-
-    // Repository
+  // ✅ API
+    ..registerLazySingleton<CategoryApi>(
+          () => CategoryApiImplementation(getIt<SupabaseClient>()),
+    )
+  // Repository
     ..registerLazySingleton<CategoryRepository>(
-      () => CategoryRepositoryImplementation(api: getIt<CategoryApi>()),
+          () => CategoryRepositoryImplementation(api: getIt<CategoryApi>()),
     )
 
-    // UseCases
+  // UseCases
     ..registerLazySingleton<CreateCategoryUseCase>(
-      () => CreateCategoryUseCase(getIt<CategoryRepository>()),
+          () => CreateCategoryUseCase(getIt<CategoryRepository>()),
     )
     ..registerLazySingleton<UpdateCategoryUseCase>(
-      () => UpdateCategoryUseCase(getIt<CategoryRepository>()),
+          () => UpdateCategoryUseCase(getIt<CategoryRepository>()),
     )
     ..registerLazySingleton<CountAllCategoriesUseCase>(
-      () => CountAllCategoriesUseCase(getIt<CategoryRepository>()),
+          () => CountAllCategoriesUseCase(getIt<CategoryRepository>()),
     )
     ..registerLazySingleton<DeleteCategoryByIdUseCase>(
-      () => DeleteCategoryByIdUseCase(getIt<CategoryRepository>()),
+          () => DeleteCategoryByIdUseCase(getIt<CategoryRepository>()),
     )
     ..registerLazySingleton<DeleteCategoryByFilterUseCase>(
-      () => DeleteCategoryByFilterUseCase(getIt<CategoryRepository>()),
+          () => DeleteCategoryByFilterUseCase(getIt<CategoryRepository>()),
     )
     ..registerLazySingleton<GetCategoryByFilterUseCase>(
-      () => GetCategoryByFilterUseCase(getIt<CategoryRepository>()),
+          () => GetCategoryByFilterUseCase(getIt<CategoryRepository>()),
     )
     ..registerLazySingleton<GetCategoryByIdUseCase>(
-      () => GetCategoryByIdUseCase(getIt<CategoryRepository>()),
+          () => GetCategoryByIdUseCase(getIt<CategoryRepository>()),
     )
     ..registerLazySingleton<GetAllCategoryUsecase>(
           () => GetAllCategoryUsecase(getIt<CategoryRepository>()),
     )
 
-    // Cubit
+  // Cubit
     ..registerFactory<CategoryCubit>(
-      () => CategoryCubit(
+          () => CategoryCubit(
         getAllCategory: getIt<GetAllCategoryUsecase>(),
         createUseCase: getIt<CreateCategoryUseCase>(),
         updateUseCase: getIt<UpdateCategoryUseCase>(),

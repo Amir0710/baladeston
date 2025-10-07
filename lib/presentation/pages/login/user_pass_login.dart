@@ -167,7 +167,7 @@ class _UserPassLoginState extends State<UserPassLogin> {
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(
                           builder: (context) {
-                            return CategoryPages();
+                            return CategoryListPage();
                           },
                         ));
                       },
