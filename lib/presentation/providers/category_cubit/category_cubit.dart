@@ -22,6 +22,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   final GetCategoryByFilterUseCase _getByFilterUseCase;
   final GetCategoryByIdUseCase _getByIdUseCase;
   final GetAllCategoryUsecase _getAllCategory;
+  // final AddImage _addImage;
 
   CategoryCubit({
     required CreateCategoryUseCase createUseCase,
@@ -32,6 +33,7 @@ class CategoryCubit extends Cubit<CategoryState> {
     required GetCategoryByFilterUseCase getByFilterUseCase,
     required GetCategoryByIdUseCase getByIdUseCase,
     required GetAllCategoryUsecase getAllCategory,
+    // required AddImage addImage,
   })  : _createUseCase = createUseCase,
         _updateUseCase = updateUseCase,
         _countUseCase = countUseCase,
@@ -40,6 +42,7 @@ class CategoryCubit extends Cubit<CategoryState> {
         _getByFilterUseCase = getByFilterUseCase,
         _getByIdUseCase = getByIdUseCase,
         _getAllCategory = getAllCategory,
+        // _addImage = addImage,
         super(const CategoryState.initial());
 
   Future<void> loadCategories(CategoryQueryFilter filter) async {
@@ -64,7 +67,6 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
-
   Future<void> loadCategoryById(int id) async {
     emit(const CategoryState.loading());
     try {
@@ -79,17 +81,20 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
-  Future<void> addCategory(CategoryEntity category, CategoryQueryFilter refreshFilter) async {
+  Future<void> addCategory(
+      CategoryEntity category, CategoryQueryFilter refreshFilter) async {
     emit(const CategoryState.loading());
     try {
-      await _createUseCase(category);
+      final data = await _createUseCase(category);
       await loadCategories(refreshFilter);
+      return data;
     } catch (e) {
       emit(CategoryState.failure(message: e.toString()));
     }
   }
 
-  Future<void> updateCategory(CategoryEntity category, CategoryQueryFilter refreshFilter) async {
+  Future<void> updateCategory(
+      CategoryEntity category, CategoryQueryFilter refreshFilter) async {
     emit(const CategoryState.loading());
     try {
       await _updateUseCase(category);
@@ -99,7 +104,8 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
-  Future<void> deleteCategoryById(int id, CategoryQueryFilter refreshFilter) async {
+  Future<void> deleteCategoryById(
+      int id, CategoryQueryFilter refreshFilter) async {
     emit(const CategoryState.loading());
     try {
       await _deleteByIdUseCase(id);
@@ -109,7 +115,8 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
-  Future<void> deleteCategoriesByFilter(CategoryQueryFilter filter, CategoryQueryFilter refreshFilter) async {
+  Future<void> deleteCategoriesByFilter(
+      CategoryQueryFilter filter, CategoryQueryFilter refreshFilter) async {
     emit(const CategoryState.loading());
     try {
       await _deleteByFilterUseCase(filter);
@@ -118,4 +125,12 @@ class CategoryCubit extends Cubit<CategoryState> {
       emit(CategoryState.failure(message: e.toString()));
     }
   }
+  // Future<void> addImage() async {
+  //   emit(const CategoryState.loading());
+  //   try {
+  //     await _addImage() ;
+  //   } catch (e) {
+  //     emit(CategoryState.failure(message: e.toString()));
+  //   }
+  // }
 }

@@ -21,10 +21,8 @@ class CategoryRepositoryImplementation extends CategoryRepository {
   @override
   Future<CategoryEntity> createCategory({required CategoryEntity category}) async {
     try {
-      // Entity ➡ Model
       final model =category.toModel();
       final resultModel = await _api.createCategory(category: model);
-      // Model ➡ Entity
       return resultModel.toEntity();
     } catch (e) {
       throw Exception('error $e');
