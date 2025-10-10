@@ -1,5 +1,6 @@
 import 'package:baladeston/data/datasources/remote/category_remote_datasource/category_api.dart';
 import 'package:baladeston/data/datasources/remote/category_remote_datasource/category_api_implementation.dart';
+import 'package:baladeston/domain/usecase/category/add_image_usecase.dart';
 import 'package:baladeston/domain/usecase/category/get_all_category_usecase.dart';
 import 'package:baladeston/presentation/providers/category_cubit/category_cubit.dart';
 import 'package:get_it/get_it.dart';
@@ -22,12 +23,13 @@ Future<void> initCategoryModule() async {
     ..registerLazySingleton<CategoryApi>(
           () => CategoryApiImplementation(getIt<SupabaseClient>()),
     )
-  // Repository
+
+  // ✅ Repository
     ..registerLazySingleton<CategoryRepository>(
           () => CategoryRepositoryImplementation(api: getIt<CategoryApi>()),
     )
 
-  // UseCases
+  // ✅ UseCases
     ..registerLazySingleton<CreateCategoryUseCase>(
           () => CreateCategoryUseCase(getIt<CategoryRepository>()),
     )
@@ -53,7 +55,11 @@ Future<void> initCategoryModule() async {
           () => GetAllCategoryUsecase(getIt<CategoryRepository>()),
     )
 
-  // Cubit
+    ..registerLazySingleton<AddImageUseCase>(
+          () => AddImageUseCase(getIt<CategoryRepository>()),
+    )
+
+  // ✅ Cubit
     ..registerFactory<CategoryCubit>(
           () => CategoryCubit(
         getAllCategory: getIt<GetAllCategoryUsecase>(),
@@ -64,6 +70,8 @@ Future<void> initCategoryModule() async {
         deleteByFilterUseCase: getIt<DeleteCategoryByFilterUseCase>(),
         getByFilterUseCase: getIt<GetCategoryByFilterUseCase>(),
         getByIdUseCase: getIt<GetCategoryByIdUseCase>(),
+        addImage: getIt<AddImageUseCase>(),
       ),
     );
 }
+

@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:baladeston/data/models/category/category_model.dart';
 import 'package:baladeston/domain/filters/category_query_filter.dart';
+import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'category_api.dart';
@@ -56,11 +59,8 @@ class CategoryApiImplementation extends CategoryApi {
 
   @override
   Future<CategoryModel?> getCategoryById({required int id}) async {
-    final data = await _client
-        .from('category')
-        .select()
-        .eq('id', id)
-        .maybeSingle();
+    final data =
+        await _client.from('category').select().eq('id', id).maybeSingle();
     if (data == null) return null;
     return CategoryModel.fromJson(Map<String, dynamic>.from(data));
   }
@@ -70,11 +70,8 @@ class CategoryApiImplementation extends CategoryApi {
     required CategoryModel category,
   }) async {
     final insertData = category.toJson()..remove('id');
-    final data = await _client
-        .from('category')
-        .insert(insertData)
-        .select()
-        .single();
+    final data =
+        await _client.from('category').insert(insertData).select().single();
     return CategoryModel.fromJson(Map<String, dynamic>.from(data));
   }
 
@@ -130,5 +127,36 @@ class CategoryApiImplementation extends CategoryApi {
     return (data as List<dynamic>)
         .map((json) => CategoryModel.fromJson(Map<String, dynamic>.from(json)))
         .toList();
+  }
+
+  @override
+  Future<String> addImage({required dynamic imageFile}) async {
+    try {
+      print(_client.auth.currentSession?.accessToken);
+      print(_client.auth.currentUser?.id);
+      final fileName = 'category_${DateTime.now().millisecondsSinceEpoch}.jpg';
+
+      if (kIsWeb && imageFile is Uint8List) {
+        final response = await _client.storage
+            .from('category')
+            .uploadBinary(fileName, imageFile);
+        if (response.isEmpty) {
+          throw Exception('Image upload failed for web.');
+        }
+      } else if (imageFile is File) {
+        // Mobile / Desktop → file upload
+        final response =
+            await _client.storage.from('category').upload(fileName, imageFile);
+        if (response.isEmpty) {
+          throw Exception('Image upload failed for file.');
+        }
+      } else {
+        throw Exception('Unsupported image type.');
+      }
+      final publicUrl = _client.storage.from('category').getPublicUrl(fileName);
+      return publicUrl;
+    } catch (e) {
+      throw Exception('Image upload error: $e');
+    }
   }
 }

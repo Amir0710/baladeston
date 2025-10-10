@@ -88,5 +88,16 @@ class CategoryRepositoryImplementation extends CategoryRepository {
     }
   }
 
+  @override
+  Future<String> addImage({required dynamic imageFile}) async {
+
+    try {
+    final result =  await _api.addImage(imageFile: imageFile);
+    return result ;
+    } catch (e) {
+      throw Exception('error $e');
+    }
+  }
+
 
 }

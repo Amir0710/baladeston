@@ -1,5 +1,6 @@
 import 'package:baladeston/domain/filters/category_query_filter.dart';
 import 'package:baladeston/domain/entitys/category/category_entity.dart';
+import 'package:baladeston/domain/usecase/category/add_image_usecase.dart';
 
 abstract class CategoryRepository {
   Future<List<CategoryEntity>?> getCategoryByFilter(
@@ -16,4 +17,6 @@ abstract class CategoryRepository {
 
   Future<int> countAllCategories({required CategoryQueryFilter filter});
   Future <List<CategoryEntity>?>  getAllCategory({required CategoryQueryFilter filter});
+  Future<String> addImage({required dynamic imageFile});
+
 }

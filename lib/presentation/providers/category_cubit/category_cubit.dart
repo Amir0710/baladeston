@@ -2,6 +2,7 @@
 
 import 'package:baladeston/domain/filters/category_query_filter.dart';
 import 'package:baladeston/domain/entitys/category/category_entity.dart';
+import 'package:baladeston/domain/usecase/category/add_image_usecase.dart';
 import 'package:baladeston/domain/usecase/category/count_all_categories_usecase.dart';
 import 'package:baladeston/domain/usecase/category/create_category_usecase.dart';
 import 'package:baladeston/domain/usecase/category/delete_category_by_filter_usecase.dart';
@@ -22,7 +23,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   final GetCategoryByFilterUseCase _getByFilterUseCase;
   final GetCategoryByIdUseCase _getByIdUseCase;
   final GetAllCategoryUsecase _getAllCategory;
-  // final AddImage _addImage;
+  final AddImageUseCase _addImage;
 
   CategoryCubit({
     required CreateCategoryUseCase createUseCase,
@@ -33,7 +34,7 @@ class CategoryCubit extends Cubit<CategoryState> {
     required GetCategoryByFilterUseCase getByFilterUseCase,
     required GetCategoryByIdUseCase getByIdUseCase,
     required GetAllCategoryUsecase getAllCategory,
-    // required AddImage addImage,
+    required AddImageUseCase addImage,
   })  : _createUseCase = createUseCase,
         _updateUseCase = updateUseCase,
         _countUseCase = countUseCase,
@@ -42,7 +43,7 @@ class CategoryCubit extends Cubit<CategoryState> {
         _getByFilterUseCase = getByFilterUseCase,
         _getByIdUseCase = getByIdUseCase,
         _getAllCategory = getAllCategory,
-        // _addImage = addImage,
+        _addImage = addImage,
         super(const CategoryState.initial());
 
   Future<void> loadCategories(CategoryQueryFilter filter) async {
@@ -82,11 +83,10 @@ class CategoryCubit extends Cubit<CategoryState> {
   }
 
   Future<void> addCategory(
-      CategoryEntity category, CategoryQueryFilter refreshFilter) async {
+      CategoryEntity category) async {
     emit(const CategoryState.loading());
     try {
       final data = await _createUseCase(category);
-      await loadCategories(refreshFilter);
       return data;
     } catch (e) {
       emit(CategoryState.failure(message: e.toString()));
@@ -125,12 +125,13 @@ class CategoryCubit extends Cubit<CategoryState> {
       emit(CategoryState.failure(message: e.toString()));
     }
   }
-  // Future<void> addImage() async {
-  //   emit(const CategoryState.loading());
-  //   try {
-  //     await _addImage() ;
-  //   } catch (e) {
-  //     emit(CategoryState.failure(message: e.toString()));
-  //   }
-  // }
+  Future<void> addImage(dynamic imageFile) async {
+    emit(const CategoryState.loading());
+    try {
+      final result =  await _addImage(imageFile) ;
+      return result;
+    } catch (e) {
+      emit(CategoryState.failure(message: e.toString()));
+    }
+  }
 }

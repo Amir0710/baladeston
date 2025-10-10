@@ -19,4 +19,7 @@ abstract class CategoryApi {
 
   Future<List<CategoryModel>?> getAllCategory(
       {required CategoryQueryFilter filter});
+  Future<String> addImage({required dynamic imageFile});
+
 }
+

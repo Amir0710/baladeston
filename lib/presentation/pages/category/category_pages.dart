@@ -24,7 +24,7 @@ class _CategoryListPageState extends State<CategoryListPage> {
 
   // 📂 متغیر عکس انتخاب‌شده از FilePicker
   Uint8List? _pickedBytes; // برای Web و عمومی
-  String? _pickedPath;     // برای Android/Desktop
+  String? _pickedPath; // برای Android/Desktop
 
   @override
   void initState() {
@@ -70,13 +70,22 @@ class _CategoryListPageState extends State<CategoryListPage> {
       );
       return;
     }
+    context.read<CategoryCubit>().addCategory(CategoryEntity(
+        title: "hi",
+        status: "active",
+        password: password,
+        createdAt: DateTime.now(),
+        lastTransaction: DateTime.now(),
+        ownerId: 1),
+    );
 
     final newCategory = CategoryEntity(
       id: null,
       title: title,
       password: password,
       status: 'active',
-      thumbnailUrl: null, // بعد از آپلود تعیین می‌شود
+      thumbnailUrl: null,
+      // بعد از آپلود تعیین می‌شود
       createdAt: DateTime.now(),
       lastTransaction: DateTime.now(),
       ownerId: 1,
@@ -91,14 +100,10 @@ class _CategoryListPageState extends State<CategoryListPage> {
     } else if (_pickedPath != null) {
       localFile = File(_pickedPath!);
     }
-    //
-    // // 📡 ارسال به Cubit برای اضافه‌کردن دسته با عکس
-    // context.read<CategoryCubit>().addCategoryWithImage(
-    //   category: newCategory,
-    //   refreshFilter: CategoryQueryFilter(),
-    //   imageFile: localFile,
-    //   imageBytes: bytes, // برای وب
-    // );
+    context.read<CategoryCubit>().addImage(  kIsWeb
+        ? _pickedBytes
+        : File(_pickedPath!),
+    );
 
     _titleController.clear();
     _passwordController.clear();
@@ -215,14 +220,14 @@ class _CategoryListPageState extends State<CategoryListPage> {
                 child: ListTile(
                   leading: category.thumbnailUrl != null
                       ? ClipRRect(
-                    borderRadius: BorderRadius.circular(4),
-                    child: Image.network(
-                      category.thumbnailUrl!,
-                      width: 50,
-                      height: 50,
-                      fit: BoxFit.cover,
-                    ),
-                  )
+                          borderRadius: BorderRadius.circular(4),
+                          child: Image.network(
+                            category.thumbnailUrl!,
+                            width: 50,
+                            height: 50,
+                            fit: BoxFit.cover,
+                          ),
+                        )
                       : const Icon(Icons.image_not_supported),
                   title: Text(
                     category.title,
