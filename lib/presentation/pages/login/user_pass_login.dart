@@ -3,6 +3,7 @@ import 'package:baladeston/core/extensions/media_query_extension.dart';
 import 'package:baladeston/core/theme/app_themes.dart';
 import 'package:baladeston/core/widgets/print_circle.dart';
 import 'package:baladeston/presentation/pages/category/category_pages.dart';
+import 'package:baladeston/presentation/pages/signup/user_pass_signup.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -202,6 +203,9 @@ class _UserPassLoginState extends State<UserPassLogin> {
                               .primary,
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) {
+                              return UserPassSignup() ;
+                            },));
                             },
                         ),
                         TextSpan(
