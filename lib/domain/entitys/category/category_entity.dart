@@ -8,8 +8,8 @@ abstract class CategoryEntity with _$CategoryEntity {
   const factory CategoryEntity({
     int? id,
     required String title,
-    required String password,
-     String? status,
+    String? password,
+    String? status,
     String? thumbnailUrl,
     required DateTime createdAt,
     required DateTime lastTransaction,

@@ -10,7 +10,7 @@ _$CategoryModelImpl _$$CategoryModelImplFromJson(Map<String, dynamic> json) =>
     _$CategoryModelImpl(
       id: (json['id'] as num?)?.toInt(),
       title: json['title'] as String,
-      password: json['password'] as String,
+      password: json['password'] as String?,
       status: json['status'] as String?,
       thumbnailUrl: json['thumbnailUrl'] as String?,
       createdAt: DateTime.parse(json['createdAt'] as String),

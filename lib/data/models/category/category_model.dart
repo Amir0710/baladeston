@@ -9,7 +9,7 @@ abstract class CategoryModel with _$CategoryModel {
   const factory CategoryModel({
     int? id,
     required String title,
-    required String password,
+    String? password,
     String? status,
     String? thumbnailUrl,
     required DateTime createdAt,

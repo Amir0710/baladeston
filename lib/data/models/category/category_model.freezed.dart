@@ -22,7 +22,7 @@ CategoryModel _$CategoryModelFromJson(Map<String, dynamic> json) {
 mixin _$CategoryModel {
   int? get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
+  String? get password => throw _privateConstructorUsedError;
   String? get status => throw _privateConstructorUsedError;
   String? get thumbnailUrl => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
@@ -48,7 +48,7 @@ abstract class $CategoryModelCopyWith<$Res> {
   $Res call(
       {int? id,
       String title,
-      String password,
+      String? password,
       String? status,
       String? thumbnailUrl,
       DateTime createdAt,
@@ -73,7 +73,7 @@ class _$CategoryModelCopyWithImpl<$Res, $Val extends CategoryModel>
   $Res call({
     Object? id = freezed,
     Object? title = null,
-    Object? password = null,
+    Object? password = freezed,
     Object? status = freezed,
     Object? thumbnailUrl = freezed,
     Object? createdAt = null,
@@ -89,10 +89,10 @@ class _$CategoryModelCopyWithImpl<$Res, $Val extends CategoryModel>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      password: null == password
+      password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -128,7 +128,7 @@ abstract class _$$CategoryModelImplCopyWith<$Res>
   $Res call(
       {int? id,
       String title,
-      String password,
+      String? password,
       String? status,
       String? thumbnailUrl,
       DateTime createdAt,
@@ -151,7 +151,7 @@ class __$$CategoryModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? title = null,
-    Object? password = null,
+    Object? password = freezed,
     Object? status = freezed,
     Object? thumbnailUrl = freezed,
     Object? createdAt = null,
@@ -167,10 +167,10 @@ class __$$CategoryModelImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      password: null == password
+      password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -201,7 +201,7 @@ class _$CategoryModelImpl implements _CategoryModel {
   const _$CategoryModelImpl(
       {this.id,
       required this.title,
-      required this.password,
+      this.password,
       this.status,
       this.thumbnailUrl,
       required this.createdAt,
@@ -216,7 +216,7 @@ class _$CategoryModelImpl implements _CategoryModel {
   @override
   final String title;
   @override
-  final String password;
+  final String? password;
   @override
   final String? status;
   @override
@@ -277,7 +277,7 @@ abstract class _CategoryModel implements CategoryModel {
   const factory _CategoryModel(
       {final int? id,
       required final String title,
-      required final String password,
+      final String? password,
       final String? status,
       final String? thumbnailUrl,
       required final DateTime createdAt,
@@ -292,7 +292,7 @@ abstract class _CategoryModel implements CategoryModel {
   @override
   String get title;
   @override
-  String get password;
+  String? get password;
   @override
   String? get status;
   @override

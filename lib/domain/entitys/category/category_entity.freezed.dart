@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CategoryEntity {
   int? get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
+  String? get password => throw _privateConstructorUsedError;
   String? get status => throw _privateConstructorUsedError;
   String? get thumbnailUrl => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ abstract class $CategoryEntityCopyWith<$Res> {
   $Res call(
       {int? id,
       String title,
-      String password,
+      String? password,
       String? status,
       String? thumbnailUrl,
       DateTime createdAt,
@@ -66,7 +66,7 @@ class _$CategoryEntityCopyWithImpl<$Res, $Val extends CategoryEntity>
   $Res call({
     Object? id = freezed,
     Object? title = null,
-    Object? password = null,
+    Object? password = freezed,
     Object? status = freezed,
     Object? thumbnailUrl = freezed,
     Object? createdAt = null,
@@ -82,10 +82,10 @@ class _$CategoryEntityCopyWithImpl<$Res, $Val extends CategoryEntity>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      password: null == password
+      password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -121,7 +121,7 @@ abstract class _$$CategoryEntityImplCopyWith<$Res>
   $Res call(
       {int? id,
       String title,
-      String password,
+      String? password,
       String? status,
       String? thumbnailUrl,
       DateTime createdAt,
@@ -144,7 +144,7 @@ class __$$CategoryEntityImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? title = null,
-    Object? password = null,
+    Object? password = freezed,
     Object? status = freezed,
     Object? thumbnailUrl = freezed,
     Object? createdAt = null,
@@ -160,10 +160,10 @@ class __$$CategoryEntityImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      password: null == password
+      password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -194,7 +194,7 @@ class _$CategoryEntityImpl implements _CategoryEntity {
   const _$CategoryEntityImpl(
       {this.id,
       required this.title,
-      required this.password,
+      this.password,
       this.status,
       this.thumbnailUrl,
       required this.createdAt,
@@ -206,7 +206,7 @@ class _$CategoryEntityImpl implements _CategoryEntity {
   @override
   final String title;
   @override
-  final String password;
+  final String? password;
   @override
   final String? status;
   @override
@@ -260,7 +260,7 @@ abstract class _CategoryEntity implements CategoryEntity {
   const factory _CategoryEntity(
       {final int? id,
       required final String title,
-      required final String password,
+      final String? password,
       final String? status,
       final String? thumbnailUrl,
       required final DateTime createdAt,
@@ -272,7 +272,7 @@ abstract class _CategoryEntity implements CategoryEntity {
   @override
   String get title;
   @override
-  String get password;
+  String? get password;
   @override
   String? get status;
   @override

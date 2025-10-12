@@ -176,8 +176,9 @@ class AppTheme {
           ),
         ),
       ),
-      appBarTheme: const AppBarTheme(
+      appBarTheme: AppBarTheme(
         toolbarHeight: 80,
+        color: backgroundColor,
       ),
       primaryColor: primaryColor,
       scaffoldBackgroundColor: backgroundColor,

@@ -4,6 +4,7 @@ import 'package:baladeston/core/theme/app_themes.dart';
 import 'package:baladeston/core/widgets/print_circle.dart';
 import 'package:baladeston/presentation/pages/category/category_pages.dart';
 import 'package:baladeston/presentation/pages/login/user_pass_login.dart';
+import 'package:baladeston/presentation/pages/signup/complete_user_information.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -83,7 +84,7 @@ class _UserPassSignupState extends State<UserPassSignup> {
             PrintCircle(
               incremental: 0,
               color: AppTheme.partColorsList[1],
-              center: Offset(context.screenWidth * 0.9, context.screenHeight * 0.65),
+              center: Offset(context.screenWidth * 0.8, context.screenHeight * 0.65),
               layer: 1,
               padding: 0,
               width: 0,
@@ -93,7 +94,7 @@ class _UserPassSignupState extends State<UserPassSignup> {
             PrintCircle(
               incremental: 0,
               color: AppTheme.partColorsList[4],
-              center: Offset(context.screenWidth * 0.08, context.screenHeight * 0.74),
+              center: Offset(context.screenWidth * 0.08, context.screenHeight * 0.6),
               layer: 1,
               padding: 0,
               width: 0,
@@ -103,7 +104,7 @@ class _UserPassSignupState extends State<UserPassSignup> {
             PrintCircle(
               incremental: 0,
               color: AppTheme.partColorsList[5],
-              center: Offset(context.screenWidth * 0.55, context.screenHeight * 0.82),
+              center: Offset(context.screenWidth * 0.4, context.screenHeight * 0.82),
               layer: 1,
               padding: 0,
               width: 0,
@@ -130,90 +131,12 @@ class _UserPassSignupState extends State<UserPassSignup> {
               style: PaintingStyle.fill,
               radius: 10,
             ),
-            PrintCircle(
-              incremental: 0,
-              color: AppTheme.partColorsList[2],
-              center: Offset(context.screenWidth * 0.42, context.screenHeight * 0.38),
-              layer: 1,
-              padding: 0,
-              width: 0,
-              style: PaintingStyle.fill,
-              radius: 13,
-            ),
-
-            // دایره‌های تزئینی پس‌زمینه
-            // PrintCircle(
-            //   incremental: 0,
-            //   color: AppTheme.partColorsList[0],
-            //   center: Offset(
-            //       context.screenWidth * 0.45, context.screenHeight * 0.07),
-            //   layer: 1,
-            //   padding: 0,
-            //   width: 0,
-            //   style: PaintingStyle.fill,
-            //   radius: 16,
-            // ),
-            // PrintCircle(
-            //   incremental: 0,
-            //   color: AppTheme.partColorsList[4],
-            //   center: Offset(
-            //       context.screenWidth * 0.25, context.screenHeight * 0.3),
-            //   layer: 1,
-            //   padding: 0,
-            //   width: 0,
-            //   style: PaintingStyle.fill,
-            //   radius: 8,
-            // ),
-            // PrintCircle(
-            //   incremental: 0,
-            //   color: AppTheme.partColorsList[2],
-            //   center: Offset(-4, context.screenHeight * 0.6),
-            //   layer: 1,
-            //   padding: 0,
-            //   width: 0,
-            //   style: PaintingStyle.fill,
-            //   radius: 18,
-            // ),
-            // PrintCircle(
-            //   incremental: 0,
-            //   color: AppTheme.partColorsList[3],
-            //   center: Offset(
-            //       context.screenWidth * 0.85, context.screenHeight * 0.5),
-            //   layer: 1,
-            //   padding: 0,
-            //   width: 0,
-            //   style: PaintingStyle.fill,
-            //   radius: 14,
-            // ),
-            // PrintCircle(
-            //   incremental: 0,
-            //   color: AppTheme.partColorsList[1],
-            //   center: Offset(context.screenWidth * 0.6,
-            //       context.screenHeight * 0.8),
-            //   layer: 1,
-            //   padding: 0,
-            //   width: 0,
-            //   style: PaintingStyle.fill,
-            //   radius: 18,
-            // ),
-            // PrintCircle(
-            //   incremental: 0,
-            //   color: AppTheme.partColorsList[5],
-            //   center: Offset(context.screenWidth * 0.9,
-            //       context.screenHeight * 0.19),
-            //   layer: 1,
-            //   padding: 0,
-            //   width: 0,
-            //   style: PaintingStyle.fill,
-            //   radius: 18,
-            // ),
-
-            // محتوا
             SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: AppPadding.buttonPadding, vertical: 8),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // عنوان
@@ -222,14 +145,12 @@ class _UserPassSignupState extends State<UserPassSignup> {
                       style: appTheme.displaySmall,
                     ),
                     const SizedBox(height: 24),
-
-                    // فیلد نام کاربری
                     Text("نام کاربری", style: appTheme.bodySmall),
-                    const SizedBox(height: 8),
+                    // const SizedBox(height: 8),
                     TextField(
                       controller: _usernameController,
                       decoration: InputDecoration(
-                        labelText: "شماره همراه یا نام کاربری خود را وارد کنید",
+                        labelText: "شماره همراه خود را وارد کنید",
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: AppTheme.infoColor.withOpacity(0.1),
@@ -245,66 +166,61 @@ class _UserPassSignupState extends State<UserPassSignup> {
                       ),
                     ),
                     const SizedBox(height: 18),
+                    // Text("رمز عبور", style: appTheme.bodySmall),
+                    // const SizedBox(height: 8),
+                    // TextField(
+                    //   controller: _passwordController,
+                    //   obscureText: true,
+                    //   decoration: InputDecoration(
+                    //     labelText: "رمز عبور خود را وارد کنید",
+                    //     enabledBorder: OutlineInputBorder(
+                    //       borderSide: BorderSide(
+                    //         color: AppTheme.infoColor.withOpacity(0.1),
+                    //         width: 1.5,
+                    //       ),
+                    //       borderRadius: const BorderRadius.all(
+                    //         Radius.circular(12),
+                    //       ),
+                    //     ),
+                    //     border: OutlineInputBorder(
+                    //       borderRadius: BorderRadius.circular(12),
+                    //     ),
+                    //   ),
+                    // ),
+                    // const SizedBox(height: 18),
+                    // Text("تأیید رمز عبور", style: appTheme.bodySmall),
+                    // const SizedBox(height: 8),
+                    // TextField(
+                    //   controller: _confirmPasswordController,
+                    //   obscureText: true,
+                    //   decoration: InputDecoration(
+                    //     labelText: "رمز عبور را تایید کنید",
+                    //     enabledBorder: OutlineInputBorder(
+                    //       borderSide: BorderSide(
+                    //         color: AppTheme.infoColor.withOpacity(0.1),
+                    //         width: 1.5,
+                    //       ),
+                    //       borderRadius: const BorderRadius.all(
+                    //         Radius.circular(12),
+                    //       ),
+                    //     ),
+                    //     border: OutlineInputBorder(
+                    //       borderRadius: BorderRadius.circular(12),
+                    //     ),
+                    //   ),
+                    // ),
+                    // const SizedBox(height: 24),
 
-                    // رمز عبور
-                    Text("رمز عبور", style: appTheme.bodySmall),
-                    const SizedBox(height: 8),
-                    TextField(
-                      controller: _passwordController,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        labelText: "رمز عبور خود را وارد کنید",
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: AppTheme.infoColor.withOpacity(0.1),
-                            width: 1.5,
-                          ),
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(12),
-                          ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 18),
-
-                    // تأیید رمز عبور
-                    Text("تأیید رمز عبور", style: appTheme.bodySmall),
-                    const SizedBox(height: 8),
-                    TextField(
-                      controller: _confirmPasswordController,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        labelText: "رمز عبور را دوباره وارد کنید",
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: AppTheme.infoColor.withOpacity(0.1),
-                            width: 1.5,
-                          ),
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(12),
-                          ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-
-                    // دکمه ثبت نام
                     SizedBox(
                       height: 54,
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
-                          // TODO: در اینجا منطق ثبت نام خودت رو (Supabase یا API) اضافه کن
+
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => const CategoryListPage(),
+                              builder: (_) => const CompleteUserInformation(),
                             ),
                           );
                         },
@@ -334,7 +250,7 @@ class _UserPassSignupState extends State<UserPassSignup> {
                               style: appTheme.labelSmall,
                             ),
                             TextSpan(
-                              text: "ورود",
+                              text: "وارد",
                               style: Theme.of(context)
                                   .extension<CustomTextStyles>()!
                                   .primary,
@@ -349,7 +265,7 @@ class _UserPassSignupState extends State<UserPassSignup> {
                                 },
                             ),
                             TextSpan(
-                              text: " کنید",
+                              text: " شوید",
                               style: appTheme.labelSmall,
                             ),
                           ],
