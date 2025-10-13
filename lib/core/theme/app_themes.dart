@@ -138,15 +138,15 @@ class AppTheme {
         bodyMedium: GoogleFonts.vazirmatn(
           textStyle: TextStyle(
             height: 1.4,
-            fontSize: 20,
-            color: textPrimaryColor,
+            fontSize: 19,
+              color: textPrimaryColor,
             fontWeight: FontWeight.w400,
           ),
         ),
         bodySmall: GoogleFonts.vazirmatn(
           textStyle: TextStyle(
             height: 1.4,
-            fontSize: 18,
+            fontSize: 15,
             color: textPrimaryColor,
             fontWeight: FontWeight.w400,
           ),
@@ -180,6 +180,11 @@ class AppTheme {
         toolbarHeight: 80,
         color: backgroundColor,
       ),
+      checkboxTheme: CheckboxThemeData(
+      side: BorderSide(style: BorderStyle.solid , color: primaryColor),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+        ),),
       primaryColor: primaryColor,
       scaffoldBackgroundColor: backgroundColor,
       dividerColor: dividerColor,

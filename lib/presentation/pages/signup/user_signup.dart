@@ -2,9 +2,9 @@ import 'package:baladeston/core/constants/add_padding.dart';
 import 'package:baladeston/core/extensions/media_query_extension.dart';
 import 'package:baladeston/core/theme/app_themes.dart';
 import 'package:baladeston/core/widgets/print_circle.dart';
-import 'package:baladeston/presentation/pages/category/category_pages.dart';
 import 'package:baladeston/presentation/pages/login/user_pass_login.dart';
 import 'package:baladeston/presentation/pages/signup/complete_user_information.dart';
+import 'package:baladeston/presentation/pages/signup/verify.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -16,9 +16,8 @@ class UserPassSignup extends StatefulWidget {
 }
 
 class _UserPassSignupState extends State<UserPassSignup> {
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
+  final _phoneController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +28,7 @@ class _UserPassSignupState extends State<UserPassSignup> {
         toolbarHeight: 80,
         leading: Padding(
           padding: EdgeInsets.only(
-              top: 18, right: AppPadding.buttonPadding, left: 8),
+              top: 18, right: AppConstraints.buttonPadding, left: 8),
           child: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -54,7 +53,7 @@ class _UserPassSignupState extends State<UserPassSignup> {
             PrintCircle(
               incremental: 0,
               color: AppTheme.partColorsList[0],
-              center: Offset(context.screenWidth * 0.35, context.screenHeight * 0.08),
+              center: Offset(context.screenWidth * 0.35, context.screenHeight * 0.06),
               layer: 1,
               padding: 0,
               width: 0,
@@ -74,7 +73,7 @@ class _UserPassSignupState extends State<UserPassSignup> {
             PrintCircle(
               incremental: 0,
               color: AppTheme.partColorsList[2],
-              center: Offset(context.screenWidth * 0.5, context.screenHeight * 0.31),
+              center: Offset(context.screenWidth * 0.5, context.screenHeight * 0.4),
               layer: 1,
               padding: 0,
               width: 0,
@@ -134,7 +133,7 @@ class _UserPassSignupState extends State<UserPassSignup> {
             SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                    horizontal: AppPadding.buttonPadding, vertical: 8),
+                    horizontal: AppConstraints.buttonPadding, vertical: 8),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -148,7 +147,7 @@ class _UserPassSignupState extends State<UserPassSignup> {
                     Text("نام کاربری", style: appTheme.bodySmall),
                     // const SizedBox(height: 8),
                     TextField(
-                      controller: _usernameController,
+                      controller: _phoneController,
                       decoration: InputDecoration(
                         labelText: "شماره همراه خود را وارد کنید",
                         enabledBorder: OutlineInputBorder(
@@ -166,61 +165,16 @@ class _UserPassSignupState extends State<UserPassSignup> {
                       ),
                     ),
                     const SizedBox(height: 18),
-                    // Text("رمز عبور", style: appTheme.bodySmall),
-                    // const SizedBox(height: 8),
-                    // TextField(
-                    //   controller: _passwordController,
-                    //   obscureText: true,
-                    //   decoration: InputDecoration(
-                    //     labelText: "رمز عبور خود را وارد کنید",
-                    //     enabledBorder: OutlineInputBorder(
-                    //       borderSide: BorderSide(
-                    //         color: AppTheme.infoColor.withOpacity(0.1),
-                    //         width: 1.5,
-                    //       ),
-                    //       borderRadius: const BorderRadius.all(
-                    //         Radius.circular(12),
-                    //       ),
-                    //     ),
-                    //     border: OutlineInputBorder(
-                    //       borderRadius: BorderRadius.circular(12),
-                    //     ),
-                    //   ),
-                    // ),
-                    // const SizedBox(height: 18),
-                    // Text("تأیید رمز عبور", style: appTheme.bodySmall),
-                    // const SizedBox(height: 8),
-                    // TextField(
-                    //   controller: _confirmPasswordController,
-                    //   obscureText: true,
-                    //   decoration: InputDecoration(
-                    //     labelText: "رمز عبور را تایید کنید",
-                    //     enabledBorder: OutlineInputBorder(
-                    //       borderSide: BorderSide(
-                    //         color: AppTheme.infoColor.withOpacity(0.1),
-                    //         width: 1.5,
-                    //       ),
-                    //       borderRadius: const BorderRadius.all(
-                    //         Radius.circular(12),
-                    //       ),
-                    //     ),
-                    //     border: OutlineInputBorder(
-                    //       borderRadius: BorderRadius.circular(12),
-                    //     ),
-                    //   ),
-                    // ),
-                    // const SizedBox(height: 24),
-
                     SizedBox(
-                      height: 54,
-                      width: double.infinity,
+                      height: AppConstraints.elevationButtonHeight,
+                      width: AppConstraints.elevationButtonWidth  ,
                       child: ElevatedButton(
                         onPressed: () {
 
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => const CompleteUserInformation(),
+                              builder: (_) => Verify(phoneNumber: _phoneController.text),
                             ),
                           );
                         },

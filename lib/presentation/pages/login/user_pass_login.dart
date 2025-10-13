@@ -3,7 +3,7 @@ import 'package:baladeston/core/extensions/media_query_extension.dart';
 import 'package:baladeston/core/theme/app_themes.dart';
 import 'package:baladeston/core/widgets/print_circle.dart';
 import 'package:baladeston/presentation/pages/category/category_pages.dart';
-import 'package:baladeston/presentation/pages/signup/user_pass_signup.dart';
+import 'package:baladeston/presentation/pages/signup/user_signup.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +24,7 @@ class _UserPassLoginState extends State<UserPassLogin> {
         toolbarHeight: 80,
         leading: Padding(
           padding: EdgeInsets.only(
-              top: 18, bottom: 0, right: AppPadding.buttonPadding, left: 8),
+              top: 18, bottom: 0, right: AppConstraints.buttonPadding, left: 8),
           child: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {},
@@ -101,7 +101,7 @@ class _UserPassLoginState extends State<UserPassLogin> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: AppPadding.buttonPadding, vertical: 8),
+                  horizontal: AppConstraints.buttonPadding, vertical: 8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -162,8 +162,8 @@ class _UserPassLoginState extends State<UserPassLogin> {
                     height: 20,
                   ),
                   SizedBox(
-                    height: 54,
-                    width: double.infinity,
+                    height: AppConstraints.elevationButtonHeight,
+                    width: AppConstraints.elevationButtonWidth  ,
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(

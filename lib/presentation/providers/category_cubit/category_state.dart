@@ -10,7 +10,6 @@ class CategoryState with _$CategoryState {
   const factory CategoryState.initial() = _Initial;
   const factory CategoryState.loading() = _Loading;
 
-  /// لیست دسته‌بندی‌ها
   const factory CategoryState.success({
     required List<CategoryEntity> categories,
     required int count,

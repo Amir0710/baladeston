@@ -19,17 +19,14 @@ final getIt = GetIt.instance;
 
 Future<void> initCategoryModule() async {
   getIt
-  // ✅ API
     ..registerLazySingleton<CategoryApi>(
           () => CategoryApiImplementation(getIt<SupabaseClient>()),
     )
 
-  // ✅ Repository
     ..registerLazySingleton<CategoryRepository>(
           () => CategoryRepositoryImplementation(api: getIt<CategoryApi>()),
     )
 
-  // ✅ UseCases
     ..registerLazySingleton<CreateCategoryUseCase>(
           () => CreateCategoryUseCase(getIt<CategoryRepository>()),
     )
@@ -59,7 +56,6 @@ Future<void> initCategoryModule() async {
           () => AddImageUseCase(getIt<CategoryRepository>()),
     )
 
-  // ✅ Cubit
     ..registerFactory<CategoryCubit>(
           () => CategoryCubit(
         getAllCategory: getIt<GetAllCategoryUsecase>(),

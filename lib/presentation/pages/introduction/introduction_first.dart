@@ -54,7 +54,7 @@ class _IntroductionFirstState extends State<IntroductionFirst>
           Spacer(),
           Padding(
             padding: EdgeInsetsGeometry.symmetric(
-                horizontal: AppPadding.buttonPadding),
+                horizontal: AppConstraints.buttonPadding),
             child: Column(
               children: [
                 Text(
@@ -65,7 +65,7 @@ class _IntroductionFirstState extends State<IntroductionFirst>
                 const SizedBox(height: 16),
                 Padding(
                   padding: EdgeInsets.symmetric(
-                      horizontal: AppPadding.largeTextPadding),
+                      horizontal: AppConstraints.largeTextPadding),
                   child: Text(
                     'بلدستون همراه هوشمند توست برای پیدا کردن و یادگیری بهترین مسیر '
                     'و پیشنهادها بر اساس نیاز و موقعیتت',

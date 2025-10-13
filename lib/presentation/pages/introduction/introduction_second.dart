@@ -94,7 +94,7 @@ class IntroductionSecond extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(
-                        horizontal: AppPadding.mediumTextPadding),
+                        horizontal: AppConstraints.mediumTextPadding),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -107,7 +107,7 @@ class IntroductionSecond extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(
-                        horizontal: AppPadding.mediumTextPadding),
+                        horizontal: AppConstraints.mediumTextPadding),
                     child: Text(
                       "معرفی",
                       style: appTheme.displayMedium,
@@ -118,7 +118,7 @@ class IntroductionSecond extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(
-                        horizontal: AppPadding.mediumTextPadding),
+                        horizontal: AppConstraints.mediumTextPadding),
                     child: Text(
                       "اینجا جایی است که مهارت‌های جدید کسب می‌کنید و رشد می‌کنید.با بالدستون، هر روز شما را به اهدافتان نزدیک‌تر می‌کند.همین حالا شروع کنید آینده‌تان در انتظار شماست",
                       style: appTheme.labelMedium,
@@ -128,10 +128,10 @@ class IntroductionSecond extends StatelessWidget {
                   Spacer(),
                   Padding(
                     padding: EdgeInsets.symmetric(
-                        horizontal: AppPadding.buttonPadding),
+                        horizontal: AppConstraints.buttonPadding),
                     child: SizedBox(
-                      height: 54,
-                      width: double.infinity,
+                      height: AppConstraints.elevationButtonHeight,
+                      width: AppConstraints.elevationButtonWidth  ,
                       child: ElevatedButton(
                         onPressed: () {
                           Navigator.push(context, MaterialPageRoute(
