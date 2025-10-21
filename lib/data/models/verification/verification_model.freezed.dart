@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'verification_entity.dart';
+part of 'verification_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,41 +14,48 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+VerificationModel _$VerificationModelFromJson(Map<String, dynamic> json) {
+  return _VerificationModel.fromJson(json);
+}
+
 /// @nodoc
-mixin _$VerificationEntity {
+mixin _$VerificationModel {
   String get phone => throw _privateConstructorUsedError;
   bool get isVerified => throw _privateConstructorUsedError;
   String? get sessionId => throw _privateConstructorUsedError;
   DateTime get verifiedAt => throw _privateConstructorUsedError;
 
-  /// Create a copy of VerificationEntity
+  /// Serializes this VerificationModel to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of VerificationModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $VerificationEntityCopyWith<VerificationEntity> get copyWith =>
+  $VerificationModelCopyWith<VerificationModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $VerificationEntityCopyWith<$Res> {
-  factory $VerificationEntityCopyWith(
-          VerificationEntity value, $Res Function(VerificationEntity) then) =
-      _$VerificationEntityCopyWithImpl<$Res, VerificationEntity>;
+abstract class $VerificationModelCopyWith<$Res> {
+  factory $VerificationModelCopyWith(
+          VerificationModel value, $Res Function(VerificationModel) then) =
+      _$VerificationModelCopyWithImpl<$Res, VerificationModel>;
   @useResult
   $Res call(
       {String phone, bool isVerified, String? sessionId, DateTime verifiedAt});
 }
 
 /// @nodoc
-class _$VerificationEntityCopyWithImpl<$Res, $Val extends VerificationEntity>
-    implements $VerificationEntityCopyWith<$Res> {
-  _$VerificationEntityCopyWithImpl(this._value, this._then);
+class _$VerificationModelCopyWithImpl<$Res, $Val extends VerificationModel>
+    implements $VerificationModelCopyWith<$Res> {
+  _$VerificationModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of VerificationEntity
+  /// Create a copy of VerificationModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -80,11 +87,11 @@ class _$VerificationEntityCopyWithImpl<$Res, $Val extends VerificationEntity>
 }
 
 /// @nodoc
-abstract class _$$VerificationEntityImplCopyWith<$Res>
-    implements $VerificationEntityCopyWith<$Res> {
-  factory _$$VerificationEntityImplCopyWith(_$VerificationEntityImpl value,
-          $Res Function(_$VerificationEntityImpl) then) =
-      __$$VerificationEntityImplCopyWithImpl<$Res>;
+abstract class _$$VerificationModelImplCopyWith<$Res>
+    implements $VerificationModelCopyWith<$Res> {
+  factory _$$VerificationModelImplCopyWith(_$VerificationModelImpl value,
+          $Res Function(_$VerificationModelImpl) then) =
+      __$$VerificationModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -92,14 +99,14 @@ abstract class _$$VerificationEntityImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$VerificationEntityImplCopyWithImpl<$Res>
-    extends _$VerificationEntityCopyWithImpl<$Res, _$VerificationEntityImpl>
-    implements _$$VerificationEntityImplCopyWith<$Res> {
-  __$$VerificationEntityImplCopyWithImpl(_$VerificationEntityImpl _value,
-      $Res Function(_$VerificationEntityImpl) _then)
+class __$$VerificationModelImplCopyWithImpl<$Res>
+    extends _$VerificationModelCopyWithImpl<$Res, _$VerificationModelImpl>
+    implements _$$VerificationModelImplCopyWith<$Res> {
+  __$$VerificationModelImplCopyWithImpl(_$VerificationModelImpl _value,
+      $Res Function(_$VerificationModelImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of VerificationEntity
+  /// Create a copy of VerificationModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -109,7 +116,7 @@ class __$$VerificationEntityImplCopyWithImpl<$Res>
     Object? sessionId = freezed,
     Object? verifiedAt = null,
   }) {
-    return _then(_$VerificationEntityImpl(
+    return _then(_$VerificationModelImpl(
       phone: null == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
@@ -131,13 +138,16 @@ class __$$VerificationEntityImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-class _$VerificationEntityImpl implements _VerificationEntity {
-  const _$VerificationEntityImpl(
+@JsonSerializable()
+class _$VerificationModelImpl implements _VerificationModel {
+  const _$VerificationModelImpl(
       {required this.phone,
       required this.isVerified,
       this.sessionId,
       required this.verifiedAt});
+
+  factory _$VerificationModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$VerificationModelImplFromJson(json);
 
   @override
   final String phone;
@@ -150,14 +160,14 @@ class _$VerificationEntityImpl implements _VerificationEntity {
 
   @override
   String toString() {
-    return 'VerificationEntity(phone: $phone, isVerified: $isVerified, sessionId: $sessionId, verifiedAt: $verifiedAt)';
+    return 'VerificationModel(phone: $phone, isVerified: $isVerified, sessionId: $sessionId, verifiedAt: $verifiedAt)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$VerificationEntityImpl &&
+            other is _$VerificationModelImpl &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.isVerified, isVerified) ||
                 other.isVerified == isVerified) &&
@@ -167,26 +177,37 @@ class _$VerificationEntityImpl implements _VerificationEntity {
                 other.verifiedAt == verifiedAt));
   }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, phone, isVerified, sessionId, verifiedAt);
 
-  /// Create a copy of VerificationEntity
+  /// Create a copy of VerificationModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$VerificationEntityImplCopyWith<_$VerificationEntityImpl> get copyWith =>
-      __$$VerificationEntityImplCopyWithImpl<_$VerificationEntityImpl>(
+  _$$VerificationModelImplCopyWith<_$VerificationModelImpl> get copyWith =>
+      __$$VerificationModelImplCopyWithImpl<_$VerificationModelImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$VerificationModelImplToJson(
+      this,
+    );
+  }
 }
 
-abstract class _VerificationEntity implements VerificationEntity {
-  const factory _VerificationEntity(
+abstract class _VerificationModel implements VerificationModel {
+  const factory _VerificationModel(
       {required final String phone,
       required final bool isVerified,
       final String? sessionId,
-      required final DateTime verifiedAt}) = _$VerificationEntityImpl;
+      required final DateTime verifiedAt}) = _$VerificationModelImpl;
+
+  factory _VerificationModel.fromJson(Map<String, dynamic> json) =
+      _$VerificationModelImpl.fromJson;
 
   @override
   String get phone;
@@ -197,10 +218,10 @@ abstract class _VerificationEntity implements VerificationEntity {
   @override
   DateTime get verifiedAt;
 
-  /// Create a copy of VerificationEntity
+  /// Create a copy of VerificationModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$VerificationEntityImplCopyWith<_$VerificationEntityImpl> get copyWith =>
+  _$$VerificationModelImplCopyWith<_$VerificationModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

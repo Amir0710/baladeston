@@ -1,216 +1,224 @@
-import 'dart:async';
-import 'package:baladeston/presentation/pages/signup/complete_user_information.dart';
 import 'package:baladeston/presentation/providers/verify_cubit/verify_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter/services.dart';
+import 'package:get_it/get_it.dart';
 
-
-class Verify extends StatefulWidget {
-  final String phoneNumber;
-
-  const Verify({super.key, required this.phoneNumber});
+class VerificationPage extends StatefulWidget {
+  const VerificationPage({super.key});
 
   @override
-  State<Verify> createState() => _VerifyState();
+  State<VerificationPage> createState() => _VerificationPageState();
 }
 
-class _VerifyState extends State<Verify> {
-  late TextEditingController _codeController;
-  Timer? _timer;
-  int _secondsRemaining = 60;
-  bool _resendEnabled = false;
+class _VerificationPageState extends State<VerificationPage>
+    with TickerProviderStateMixin {
+  final phoneController = TextEditingController();
+  final codeController = TextEditingController();
+  late final VerifyCubit cubit;
+
+  late AnimationController slideController;
+  late Animation<Offset> slideAnimation;
 
   @override
   void initState() {
     super.initState();
-    _codeController = TextEditingController();
-    _startTimer();
+    cubit = GetIt.instance<VerifyCubit>();
+
+    slideController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 650),
+    );
+    slideAnimation = Tween<Offset>(
+      begin: const Offset(1, 0), // از راست به چپ اسلاید می‌شود (RTL خیال‌انگیز)
+      end: Offset.zero,
+    ).animate(CurvedAnimation(parent: slideController, curve: Curves.easeOutCubic));
   }
 
   @override
   void dispose() {
-    _timer?.cancel();
-    _codeController.dispose();
+    slideController.dispose();
     super.dispose();
-  }
-
-  void _startTimer() {
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (_secondsRemaining > 0) {
-        setState(() => _secondsRemaining--);
-      } else {
-        setState(() {
-          _resendEnabled = true;
-        });
-        timer.cancel();
-      }
-    });
-  }
-
-  void _onVerifyPressed(BuildContext context) {
-    final code = _codeController.text.trim();
-    if (code.length != 4) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('کد باید ۴ رقم باشد')),
-      );
-      return;
-    }
-
-    context.read<VerifyCubit>().verifyCode(widget.phoneNumber, code);
-  }
-
-  void _onResendCode(BuildContext context) {
-    context.read<VerifyCubit>().resendCode(widget.phoneNumber);
-    setState(() {
-      _secondsRemaining = 60;
-      _resendEnabled = false;
-    });
-    _startTimer();
   }
 
   @override
   Widget build(BuildContext context) {
-    final isRTL = Directionality.of(context) == TextDirection.rtl;
+    return BlocProvider.value(
+      value: cubit,
+      child: Directionality(
+        textDirection: TextDirection.rtl,
+        child: Scaffold(
+          backgroundColor: const Color(0xFFF8F8F8),
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            elevation: 0,
+            title: const Text(
+              'اعتبارسنجی شماره همراه',
+              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black87),
+            ),
+            centerTitle: true,
+          ),
+          body: BlocConsumer<VerifyCubit, VerifyState>(
+            listener: (context, state) async {
+              state.whenOrNull(
+                success: () {
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: Text("message")));
+                },
+                codeSent: () async {
+                  await Future.delayed(const Duration(milliseconds: 400));
+                  slideController.forward();
+                },
+                  failure: (message) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('تأیید با موفقیت انجام شد ✅')),
+                  );
+                },
+              );
+            },
+            builder: (context, state) {
+              final isLoading = state.maybeWhen(loading: () => true, orElse: () => false);
+              final isCodeSent = state.maybeWhen(
+                codeSent: () => true,
+                resendSuccess: () => true,
+                orElse: () => false,
+              );
 
-    return
-      BlocListener<VerifyCubit, VerifyState>(
-        listener: (context, state) {
-          state.whenOrNull(
-            initial: () {
-              // وضعیت اولیه - مثلاً پاک کردن اینپوت یا چیزی خاص
-              debugPrint('State: initial');
-            },
-            loading: () {
-              // وضعیت در حال بارگذاری
-              debugPrint('State: loading');
-            },
-            codeSent: () {
-              debugPrint('State: codeSent');
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('کد ارسال شد')),
-              );
-            },
-            success: () {
-              // وقتی کد درست بود، برو مرحله بعد
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => CompleteUserInformation(
-                    // phoneNumber: widget.phoneNumber,
-                  ),
-                ),
-              );
-            },
-            failure: (message) {
-              // وقتی خطا وجود داره
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(message)),
-              );
-            },
-            resendSuccess: () {
-              // وقتی ارسال مجدد موفق بود
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('کد مجدداً ارسال شد')),
-              );
-            },
-          );
-        },
-        child:
-      Scaffold(
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-
-
-            Stack(
-              alignment: AlignmentDirectional.center,
-              children: [
-                Positioned(
-                  top: -40,
-                  right: isRTL ? -30 : null,
-                  left: isRTL ? null : -30,
-                  child: Container(
-                    width: 120,
-                    height: 120,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
+              return Stack(
+                children: [
+                  AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 300),
+                    child: isLoading
+                        ? const Center(
+                      child: _LoadingOverlay(),
+                    )
+                        : Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+                      child: SlideTransition(
+                        position: isCodeSent ? slideAnimation : Tween<Offset>(
+                          begin: Offset.zero,
+                          end: const Offset(-1, 0),
+                        ).animate(CurvedAnimation(parent: slideController, curve: Curves.easeIn)),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            AnimatedSwitcher(
+                              duration: const Duration(milliseconds: 600),
+                              switchInCurve: Curves.easeOutCubic,
+                              switchOutCurve: Curves.easeInCubic,
+                              child: isCodeSent
+                                  ? _buildCodeField()
+                                  : _buildPhoneField(),
+                            ),
+                            const SizedBox(height: 24),
+                            ElevatedButton(
+                              onPressed: isLoading
+                                  ? null
+                                  : () {
+                                if (!isCodeSent) {
+                                  cubit.sendCode(phoneController.text.trim());
+                                } else {
+                                  cubit.checkCode(
+                                    phone: phoneController.text.trim(),
+                                    code: codeController.text.trim(),
+                                  );
+                                }
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.teal,
+                                foregroundColor: Colors.white,
+                                minimumSize: const Size(double.infinity, 48),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                              ),
+                              child: Text(
+                                !isCodeSent ? 'ارسال کد تأیید' : 'تأیید کد',
+                                style: const TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            if (isCodeSent) ...[
+                              const SizedBox(height: 12),
+                              TextButton(
+                                onPressed: () =>
+                                    cubit.resendCode(phoneController.text.trim()),
+                                child: const Text(
+                                  'ارسال مجدد کد',
+                                  style: TextStyle(
+                                    color: Colors.black54,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ],
+                        ),
+                      ),
                     ),
                   ),
-                ),
-                Positioned(
-                  top: -20,
-                  left: isRTL ? -40 : null,
-                  right: isRTL ? null : -40,
-                  child: Container(
-                    width: 90,
-                    height: 90,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                    ),
-                  ),
-                ),
-                Text(
-                  'تأیید شماره تلفن',
-
-                ),
-              ],
-            ),
-
-            Text(
-              'کد ارسال‌شده به شماره ${widget.phoneNumber} را وارد کنید',
-              textAlign: TextAlign.center,
-              ),
-
-
-
-            SizedBox(
-              width: 160,
-              child: TextField(
-                controller: _codeController,
-                keyboardType: TextInputType.number,
-                textAlign: TextAlign.center,
-                inputFormatters: [LengthLimitingTextInputFormatter(4)],
-                decoration: InputDecoration(
-                  hintText: '••••',
-                  hintStyle: const TextStyle(letterSpacing: 6),
-                  filled: true,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-              ),
-            ),
-
-
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 64, vertical: 16),
-              ),
-              onPressed: () => _onVerifyPressed(context),
-              child: Text(
-                'تأیید',
-              ),
-            ),
-
-
-            TextButton(
-              onPressed: _resendEnabled
-                  ? () => _onResendCode(context)
-                  : null,
-              child: Text(
-                _resendEnabled
-                    ? 'ارسال مجدد کد'
-                    : 'ارسال مجدد کد (${_secondsRemaining}s)',
-
-              ),
-            ),
-          ],
+                ],
+              );
+            },
+          ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildPhoneField() {
+    return TextField(
+      key: const ValueKey('phoneField'),
+      controller: phoneController,
+      keyboardType: TextInputType.phone,
+      decoration: InputDecoration(
+        labelText: 'شماره همراه',
+        hintText: 'مثلاً 09123456789',
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+      ),
+    );
+  }
+
+  Widget _buildCodeField() {
+    return TextField(
+      key: const ValueKey('codeField'),
+      controller: codeController,
+      keyboardType: TextInputType.number,
+      textAlign: TextAlign.center,
+      decoration: InputDecoration(
+        labelText: 'کد تأیید',
+        hintText: 'کد پیامک را وارد کنید',
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+      ),
+    );
+  }
+}
+
+// 🌊 لودینگ خاص میان‌صفحه
+class _LoadingOverlay extends StatelessWidget {
+  const _LoadingOverlay();
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          SizedBox(
+            height: 90,
+            width: 90,
+            child: CircularProgressIndicator(
+              strokeWidth: 6,
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.teal),
+            ),
+          ),
+          const Text(
+            'در حال ارسال...',
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.black87,
+              // fontWeight: FWeight.bold,
+            ),
+          ),
+        ],
       ),
     );
   }

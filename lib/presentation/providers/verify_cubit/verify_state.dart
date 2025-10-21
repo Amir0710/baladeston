@@ -1,5 +1,3 @@
-// part of verify_cubit.dart;
-
 part of 'verify_cubit.dart';
 
 @freezed

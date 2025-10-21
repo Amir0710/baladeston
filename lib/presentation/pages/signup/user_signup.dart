@@ -174,7 +174,7 @@ class _UserPassSignupState extends State<UserPassSignup> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => Verify(phoneNumber: _phoneController.text),
+                              builder: (_) => VerificationPage(),
                             ),
                           );
                         },
