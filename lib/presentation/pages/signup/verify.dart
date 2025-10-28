@@ -1,6 +1,8 @@
+import 'package:baladeston/core/extensions/media_query_extension.dart';
+import 'package:baladeston/core/theme/app_themes.dart';
+import 'package:baladeston/core/widgets/print_circle.dart';
 import 'package:baladeston/presentation/providers/verify_cubit/verify_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 class VerificationPage extends StatefulWidget {
@@ -19,6 +21,9 @@ class _VerificationPageState extends State<VerificationPage>
   late AnimationController slideController;
   late Animation<Offset> slideAnimation;
 
+  bool _isLoading = false;
+  bool _isCodeSent = false;
+
   @override
   void initState() {
     super.initState();
@@ -26,121 +31,122 @@ class _VerificationPageState extends State<VerificationPage>
 
     slideController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 650),
+      duration: const Duration(milliseconds: 600),
     );
+
     slideAnimation = Tween<Offset>(
-      begin: const Offset(1, 0), // از راست به چپ اسلاید می‌شود (RTL خیال‌انگیز)
+      begin: const Offset(1, 0),
       end: Offset.zero,
-    ).animate(CurvedAnimation(parent: slideController, curve: Curves.easeOutCubic));
+    ).animate(
+      CurvedAnimation(parent: slideController, curve: Curves.easeOutCubic),
+    );
   }
 
   @override
   void dispose() {
     slideController.dispose();
+    phoneController.dispose();
+    codeController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: cubit,
-      child: Directionality(
-        textDirection: TextDirection.rtl,
-        child: Scaffold(
-          backgroundColor: const Color(0xFFF8F8F8),
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            elevation: 0,
-            title: const Text(
-              'اعتبارسنجی شماره همراه',
-              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black87),
-            ),
-            centerTitle: true,
-          ),
-          body: BlocConsumer<VerifyCubit, VerifyState>(
-            listener: (context, state) async {
-              state.whenOrNull(
-                success: () {
-                  ScaffoldMessenger.of(context)
-                      .showSnackBar(SnackBar(content: Text("message")));
-                },
-                codeSent: () async {
-                  await Future.delayed(const Duration(milliseconds: 400));
-                  slideController.forward();
-                },
-                  failure: (message) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('تأیید با موفقیت انجام شد ✅')),
-                  );
-                },
-              );
-            },
-            builder: (context, state) {
-              final isLoading = state.maybeWhen(loading: () => true, orElse: () => false);
-              final isCodeSent = state.maybeWhen(
-                codeSent: () => true,
-                resendSuccess: () => true,
-                orElse: () => false,
-              );
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        title: const Text('اعتبارسنجی شماره همراه'),
+        centerTitle: true,
+      ),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            // 🔹 پس‌زمینه دایره‌های رنگی
+            ..._buildBackgroundDots(context),
 
-              return Stack(
+            // 🔹 محتوای اصلی صفحه
+            SingleChildScrollView(
+              padding:
+              const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 300),
-                    child: isLoading
-                        ? const Center(
-                      child: _LoadingOverlay(),
-                    )
-                        : Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-                      child: SlideTransition(
-                        position: isCodeSent ? slideAnimation : Tween<Offset>(
+                  if (_isLoading)
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 20),
+                      child: _SmoothLoading(),
+                    ),
+
+                  AnimatedBuilder(
+                    animation: slideController,
+                    builder: (context, _) {
+                      return SlideTransition(
+                        position: _isCodeSent
+                            ? slideAnimation
+                            : Tween<Offset>(
                           begin: Offset.zero,
                           end: const Offset(-1, 0),
-                        ).animate(CurvedAnimation(parent: slideController, curve: Curves.easeIn)),
+                        ).animate(
+                          CurvedAnimation(
+                            parent: slideController,
+                            curve: Curves.easeOutCubic,
+                          ),
+                        ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             AnimatedSwitcher(
-                              duration: const Duration(milliseconds: 600),
-                              switchInCurve: Curves.easeOutCubic,
-                              switchOutCurve: Curves.easeInCubic,
-                              child: isCodeSent
+                              duration: const Duration(milliseconds: 400),
+                              switchInCurve: Curves.easeOut,
+                              switchOutCurve: Curves.easeIn,
+                              child: _isCodeSent
                                   ? _buildCodeField()
                                   : _buildPhoneField(),
                             ),
-                            const SizedBox(height: 24),
-                            ElevatedButton(
-                              onPressed: isLoading
-                                  ? null
-                                  : () {
-                                if (!isCodeSent) {
-                                  cubit.sendCode(phoneController.text.trim());
-                                } else {
-                                  cubit.checkCode(
-                                    phone: phoneController.text.trim(),
-                                    code: codeController.text.trim(),
-                                  );
-                                }
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.teal,
-                                foregroundColor: Colors.white,
-                                minimumSize: const Size(double.infinity, 48),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
+                            const SizedBox(height: 28),
+                            SizedBox(
+                              height: 52,
+                              width: double.infinity,
+                              child: ElevatedButton(
+                                onPressed: _isLoading
+                                    ? null
+                                    : () async {
+                                  if (!_isCodeSent) {
+                                    // 👇 حالت ارسال کد نمایشی
+                                    setState(() => _isLoading = true);
+                                    await Future.delayed(
+                                        const Duration(milliseconds: 900));
+                                    setState(() {
+                                      _isLoading = false;
+                                      _isCodeSent = true;
+                                    });
+                                    slideController.forward();
+                                  } else {
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(const SnackBar(
+                                      content: Text('تأیید انجام شد ✅'),
+                                    ));
+                                  }
+                                },
+                                child: Text(
+                                  !_isCodeSent
+                                      ? 'ارسال کد تأیید'
+                                      : 'تأیید کد',
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ),
-                              child: Text(
-                                !isCodeSent ? 'ارسال کد تأیید' : 'تأیید کد',
-                                style: const TextStyle(fontWeight: FontWeight.bold),
-                              ),
                             ),
-                            if (isCodeSent) ...[
-                              const SizedBox(height: 12),
+                            if (_isCodeSent) ...[
+                              const SizedBox(height: 14),
                               TextButton(
-                                onPressed: () =>
-                                    cubit.resendCode(phoneController.text.trim()),
+                                onPressed: () async {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content:
+                                        Text('کد دوباره ارسال شد 📩')),
+                                  );
+                                },
                                 child: const Text(
                                   'ارسال مجدد کد',
                                   style: TextStyle(
@@ -152,23 +158,25 @@ class _VerificationPageState extends State<VerificationPage>
                             ],
                           ],
                         ),
-                      ),
-                    ),
+                      );
+                    },
                   ),
                 ],
-              );
-            },
-          ),
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 
+  // 🔸 فیلد وارد کردن شماره همراه
   Widget _buildPhoneField() {
     return TextField(
       key: const ValueKey('phoneField'),
       controller: phoneController,
       keyboardType: TextInputType.phone,
+      textAlign: TextAlign.start,
       decoration: InputDecoration(
         labelText: 'شماره همراه',
         hintText: 'مثلاً 09123456789',
@@ -177,6 +185,7 @@ class _VerificationPageState extends State<VerificationPage>
     );
   }
 
+  // 🔸 فیلد وارد کردن کد تأیید
   Widget _buildCodeField() {
     return TextField(
       key: const ValueKey('codeField'),
@@ -190,11 +199,105 @@ class _VerificationPageState extends State<VerificationPage>
       ),
     );
   }
+
+  // 🔹 دایره‌های پس‌زمینه
+  List<Widget> _buildBackgroundDots(BuildContext context) => [
+    PrintCircle(
+      incremental: 0,
+      color: AppTheme.partColorsList[3],
+      center: Offset(context.screenWidth * 0.72, context.screenHeight * 0.04),
+      layer: 1,
+      padding: 0,
+      width: 0,
+      style: PaintingStyle.fill,
+      radius: 12,
+    ),
+    PrintCircle(
+      incremental: 0,
+      color: AppTheme.partColorsList[0],
+      center: Offset(context.screenWidth * 0.35, context.screenHeight * 0.06),
+      layer: 1,
+      padding: 0,
+      width: 0,
+      style: PaintingStyle.fill,
+      radius: 18,
+    ),
+    PrintCircle(
+      incremental: 0,
+      color: AppTheme.partColorsList[5],
+      center: Offset(context.screenWidth * 0.87, context.screenHeight * 0.2),
+      layer: 1,
+      padding: 0,
+      width: 0,
+      style: PaintingStyle.fill,
+      radius: 10,
+    ),
+    PrintCircle(
+      incremental: 0,
+      color: AppTheme.partColorsList[2],
+      center: Offset(context.screenWidth * 0.5, context.screenHeight * 0.4),
+      layer: 1,
+      padding: 0,
+      width: 0,
+      style: PaintingStyle.fill,
+      radius: 20,
+    ),
+    PrintCircle(
+      incremental: 0,
+      color: AppTheme.partColorsList[1],
+      center: Offset(context.screenWidth * 0.8, context.screenHeight * 0.65),
+      layer: 1,
+      padding: 0,
+      width: 0,
+      style: PaintingStyle.fill,
+      radius: 16,
+    ),
+    PrintCircle(
+      incremental: 0,
+      color: AppTheme.partColorsList[4],
+      center: Offset(context.screenWidth * 0.08, context.screenHeight * 0.6),
+      layer: 1,
+      padding: 0,
+      width: 0,
+      style: PaintingStyle.fill,
+      radius: 11,
+    ),
+    PrintCircle(
+      incremental: 0,
+      color: AppTheme.partColorsList[5],
+      center: Offset(context.screenWidth * 0.4, context.screenHeight * 0.82),
+      layer: 1,
+      padding: 0,
+      width: 0,
+      style: PaintingStyle.fill,
+      radius: 14,
+    ),
+    PrintCircle(
+      incremental: 0,
+      color: AppTheme.partColorsList[0],
+      center: Offset(context.screenWidth * 0.25, context.screenHeight * 0.92),
+      layer: 1,
+      padding: 0,
+      width: 0,
+      style: PaintingStyle.fill,
+      radius: 9,
+    ),
+    PrintCircle(
+      incremental: 0,
+      color: AppTheme.partColorsList[3],
+      center: Offset(context.screenWidth * 0.95, context.screenHeight * 0.85),
+      layer: 1,
+      padding: 0,
+      width: 0,
+      style: PaintingStyle.fill,
+      radius: 10,
+    ),
+  ];
 }
 
-// 🌊 لودینگ خاص میان‌صفحه
-class _LoadingOverlay extends StatelessWidget {
-  const _LoadingOverlay();
+// 🔹 ویجت اسپینر نرم بارگذاری
+class _SmoothLoading extends StatelessWidget {
+  const _SmoothLoading();
 
   @override
   Widget build(BuildContext context) {
@@ -203,19 +306,20 @@ class _LoadingOverlay extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           SizedBox(
-            height: 90,
-            width: 90,
+            height: 80,
+            width: 80,
             child: CircularProgressIndicator(
               strokeWidth: 6,
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.teal),
+              valueColor: const AlwaysStoppedAnimation(Colors.teal),
+              backgroundColor: Colors.teal.withOpacity(0.15),
             ),
           ),
           const Text(
             'در حال ارسال...',
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
               color: Colors.black87,
-              // fontWeight: FWeight.bold,
             ),
           ),
         ],
