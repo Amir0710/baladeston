@@ -46,7 +46,7 @@ class UserCubit extends Cubit<UserState> {
       _lastFilter = f;
       final users = await _getByFilterUseCase(filter: f);
       final count = await _countUseCase(filter: f);
-      emit(UserState.success(user: users ?? [], count: count));
+      emit(UserState.success(user: users ?? [], count: 10));
     } catch (e) {
       emit(UserState.failure(message: e.toString()));
     }

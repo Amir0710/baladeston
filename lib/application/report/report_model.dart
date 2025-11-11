@@ -1,0 +1,22 @@
+
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'report_model.freezed.dart';
+part 'report_model.g.dart';
+
+@freezed
+abstract class ReportModel with _$ReportModel {
+    const factory ReportModel({
+      required int? id,
+      required int userId,
+      required int targetId,
+      String? response,
+      String? reason,
+      required DateTime reportedAt,
+      DateTime? responseAt,
+    }) = _ReportModel;
+
+    factory ReportModel.fromJson(Map<String, dynamic> json) =>
+        _$ReportModelFromJson(json);
+  }
+

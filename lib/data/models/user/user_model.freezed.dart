@@ -21,9 +21,9 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserModel {
   int? get id => throw _privateConstructorUsedError;
-  String get fullName => throw _privateConstructorUsedError;
+  String? get fullName => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
-  String get phoneNumber => throw _privateConstructorUsedError;
+  String? get phoneNumber => throw _privateConstructorUsedError;
   String? get avatarUrl => throw _privateConstructorUsedError;
   String? get status => throw _privateConstructorUsedError;
   DateTime? get createAt => throw _privateConstructorUsedError;
@@ -46,9 +46,9 @@ abstract class $UserModelCopyWith<$Res> {
   @useResult
   $Res call(
       {int? id,
-      String fullName,
+      String? fullName,
       String? email,
-      String phoneNumber,
+      String? phoneNumber,
       String? avatarUrl,
       String? status,
       DateTime? createAt,
@@ -71,9 +71,9 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   @override
   $Res call({
     Object? id = freezed,
-    Object? fullName = null,
+    Object? fullName = freezed,
     Object? email = freezed,
-    Object? phoneNumber = null,
+    Object? phoneNumber = freezed,
     Object? avatarUrl = freezed,
     Object? status = freezed,
     Object? createAt = freezed,
@@ -84,18 +84,18 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      fullName: null == fullName
+      fullName: freezed == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      phoneNumber: null == phoneNumber
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       avatarUrl: freezed == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
@@ -126,9 +126,9 @@ abstract class _$$UserModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {int? id,
-      String fullName,
+      String? fullName,
       String? email,
-      String phoneNumber,
+      String? phoneNumber,
       String? avatarUrl,
       String? status,
       DateTime? createAt,
@@ -149,9 +149,9 @@ class __$$UserModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? fullName = null,
+    Object? fullName = freezed,
     Object? email = freezed,
-    Object? phoneNumber = null,
+    Object? phoneNumber = freezed,
     Object? avatarUrl = freezed,
     Object? status = freezed,
     Object? createAt = freezed,
@@ -162,18 +162,18 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      fullName: null == fullName
+      fullName: freezed == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      phoneNumber: null == phoneNumber
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       avatarUrl: freezed == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
@@ -199,9 +199,9 @@ class __$$UserModelImplCopyWithImpl<$Res>
 class _$UserModelImpl implements _UserModel {
   const _$UserModelImpl(
       {this.id,
-      required this.fullName,
+      this.fullName,
       this.email,
-      required this.phoneNumber,
+      this.phoneNumber,
       this.avatarUrl,
       this.status,
       this.createAt,
@@ -213,11 +213,11 @@ class _$UserModelImpl implements _UserModel {
   @override
   final int? id;
   @override
-  final String fullName;
+  final String? fullName;
   @override
   final String? email;
   @override
-  final String phoneNumber;
+  final String? phoneNumber;
   @override
   final String? avatarUrl;
   @override
@@ -276,9 +276,9 @@ class _$UserModelImpl implements _UserModel {
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
       {final int? id,
-      required final String fullName,
+      final String? fullName,
       final String? email,
-      required final String phoneNumber,
+      final String? phoneNumber,
       final String? avatarUrl,
       final String? status,
       final DateTime? createAt,
@@ -290,11 +290,11 @@ abstract class _UserModel implements UserModel {
   @override
   int? get id;
   @override
-  String get fullName;
+  String? get fullName;
   @override
   String? get email;
   @override
-  String get phoneNumber;
+  String? get phoneNumber;
   @override
   String? get avatarUrl;
   @override

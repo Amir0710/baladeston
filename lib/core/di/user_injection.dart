@@ -13,41 +13,48 @@ import 'package:baladeston/domain/usecase/user/create_user_usecase.dart';
 
 import 'package:baladeston/presentation/providers/user_cubit/user_cubit.dart';
 
+import 'package:baladeston/data/datasources/remote/user_remote_datasource/user_api_implementation.dart';
+
 final getIt = GetIt.instance;
 
 Future<void> initUserModule() async {
   getIt
-
-    ..registerLazySingleton<UserRepository>(
-      () => UserRepositoryImplementation(api: getIt<UserApi>()),
+  // ✅ اول از همه Api رو رجیستر کن
+    ..registerLazySingleton<UserApi>(
+          () => UserApiImplementation(),
     )
 
-    // UseCases
+  // بعدش Repository
+    ..registerLazySingleton<UserRepository>(
+          () => UserRepositoryImplementation(api: getIt<UserApi>()),
+    )
+
+  // بقیه UseCase‌ها و Cubit هم که نوشتی درست هستند
     ..registerLazySingleton<GetUserByIdUseCase>(
-      () => GetUserByIdUseCase(getIt<UserRepository>()),
+          () => GetUserByIdUseCase(getIt<UserRepository>()),
     )
     ..registerLazySingleton<GetUsersByFilterUseCase>(
-      () => GetUsersByFilterUseCase(getIt<UserRepository>()),
+          () => GetUsersByFilterUseCase(getIt<UserRepository>()),
     )
     ..registerLazySingleton<UpdateUserUseCase>(
-      () => UpdateUserUseCase(getIt<UserRepository>()),
+          () => UpdateUserUseCase(getIt<UserRepository>()),
     )
     ..registerLazySingleton<DeleteUserByIdUseCase>(
-      () => DeleteUserByIdUseCase(getIt<UserRepository>()),
+          () => DeleteUserByIdUseCase(getIt<UserRepository>()),
     )
     ..registerLazySingleton<DeleteUserByFilterUseCase>(
-      () => DeleteUserByFilterUseCase(getIt<UserRepository>()),
+          () => DeleteUserByFilterUseCase(getIt<UserRepository>()),
     )
     ..registerLazySingleton<CreateUserUseCase>(
-      () => CreateUserUseCase(getIt<UserRepository>()),
+          () => CreateUserUseCase(getIt<UserRepository>()),
     )
     ..registerLazySingleton<CountUsersUseCase>(
-      () => CountUsersUseCase(getIt<UserRepository>()),
+          () => CountUsersUseCase(getIt<UserRepository>()),
     )
 
-    // Cubit
+  // Cubit
     ..registerFactory<UserCubit>(
-      () => UserCubit(
+          () => UserCubit(
         countUseCase: getIt<CountUsersUseCase>(),
         getByFilterUseCase: getIt<GetUsersByFilterUseCase>(),
         getByIdUseCase: getIt<GetUserByIdUseCase>(),
