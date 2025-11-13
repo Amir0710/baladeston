@@ -2,7 +2,6 @@ import 'package:baladeston/core/di/theme_injection.dart' hide getIt;
 import 'package:baladeston/core/di_initialization/init.dart';
 import 'package:baladeston/core/init/supabase_initializer.dart';
 import 'package:baladeston/presentation/pages/introduction/introduction_first.dart';
-import 'package:baladeston/presentation/pages/user.dart';
 import 'package:baladeston/presentation/providers/category_cubit/category_cubit.dart';
 import 'package:baladeston/presentation/providers/theme_cubit/theme_cubit.dart';
 import 'package:baladeston/presentation/providers/theme_cubit/theme_state.dart';
@@ -32,7 +31,6 @@ class MyApp extends StatelessWidget {
           create: (_) => getIt<CategoryCubit>(),
         ),
 
-        // ✅ اینو اضافه کن:
         BlocProvider<UserCubit>(
           create: (_) => getIt<UserCubit>(),
         ),
@@ -45,7 +43,7 @@ class MyApp extends StatelessWidget {
                 debugShowCheckedModeBanner: false,
                 title: "Baladeston",
                 theme: themeData,
-                home: const TestUserPage(), // 👈 تست پیج کاربر
+                home: IntroductionFirst()
               );
             },
             initial: () => Container(color: Colors.blue),

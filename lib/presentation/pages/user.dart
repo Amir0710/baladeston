@@ -140,9 +140,9 @@ class _TestUserPageState extends State<TestUserPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           final newUser = UserEntity(
-            fullName: "کاربر تست ${DateTime.now().millisecondsSinceEpoch}",
+            fullName: "amir ${DateTime.now().millisecondsSinceEpoch}",
             email: "test${DateTime.now().millisecondsSinceEpoch}@baladeston.ir",
-            phoneNumber: "09120000000",
+            phoneNumber: "09120000001",
             status: "active",
             password: "123456",
             createAt: DateTime.now(),

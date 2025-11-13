@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:baladeston/core/extensions/error_extension.dart';
 import 'package:baladeston/data/mapper/user_query_filter_mapper.dart';
 import 'package:http/http.dart' as http;
 import 'package:baladeston/config/app_config.dart';
@@ -11,7 +12,6 @@ class UserApiImplementation extends UserApi {
 
   Uri _url(String path) => Uri.parse('$_baseUrl/user/$path');
 
-  /// گرفتن کاربر بر اساس id
   @override
   Future<UserModel>? getUserById({required int id}) async {
     final response = await http.get(_url(id.toString()));
@@ -32,7 +32,7 @@ class UserApiImplementation extends UserApi {
       queryParameters: filter.toJson(),
     );
 
-    final response =  await http.get(uri);
+    final response = await http.get(uri);
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
       return data
@@ -49,14 +49,21 @@ class UserApiImplementation extends UserApi {
     final response = await http.post(
       _url(''),
       headers: {'Content-Type': 'application/json'},
-      body: body  ,
+      body: body,
     );
+    final data = json.decode(response.body);
 
-    if (response.statusCode == 200 || response.statusCode == 201) {
-      final data = json.decode(response.body);
-      return UserModel.fromJson(Map<String, dynamic>.from(data));
+    switch (response.statusCode) {
+      case 200:
+      case 201:
+        return UserModel.fromJson(Map<String, dynamic>.from(data));
+      case 409:
+        throw ConflictException('user_ exists');
+      case 401:
+        throw UnauthorizedException('invalid_token');
+      default:
+        throw ServerException('unknown_error');
     }
-    throw Exception('خطا در ایجاد کاربر جدید: ${response.statusCode}');
   }
 
   @override
@@ -80,7 +87,6 @@ class UserApiImplementation extends UserApi {
     throw Exception('خطا در بروزرسانی کاربر: ${response.statusCode}');
   }
 
-  /// حذف کاربر با شناسه
   @override
   Future<void> deleteUserById({required int id}) async {
     final response = await http.delete(_url(id.toString()));
@@ -89,7 +95,6 @@ class UserApiImplementation extends UserApi {
     }
   }
 
-  /// حذف کاربران بر اساس فیلتر
   @override
   Future<void> deleteUserByFilter({
     required UserQueryFilter filter,
@@ -122,7 +127,6 @@ class UserApiImplementation extends UserApi {
     );
 
     final response = await http.get(uri);
-    print(response);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       return data['count'] ?? 0;
