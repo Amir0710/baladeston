@@ -3,7 +3,6 @@ import 'package:baladeston/core/extensions/media_query_extension.dart';
 import 'package:baladeston/core/theme/app_themes.dart';
 import 'package:baladeston/core/widgets/print_circle.dart';
 import 'package:baladeston/presentation/pages/login/user_pass_login.dart';
-import 'package:baladeston/presentation/pages/signup/complete_user_information.dart';
 import 'package:baladeston/presentation/pages/signup/verify.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -145,7 +144,7 @@ class _UserPassSignupState extends State<UserPassSignup> {
                     ),
                     const SizedBox(height: 24),
                     Text("نام کاربری", style: appTheme.bodySmall),
-                    // const SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     TextField(
                       controller: _phoneController,
                       decoration: InputDecoration(
@@ -171,12 +170,19 @@ class _UserPassSignupState extends State<UserPassSignup> {
                       child: ElevatedButton(
                         onPressed: () {
 
+
+
+
+                          
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => VerificationPage(),
+                              builder: (_) =>
+                                  VerificationPage(),
                             ),
                           );
+
+
                         },
                         child: Row(
                           children: [
@@ -194,7 +200,6 @@ class _UserPassSignupState extends State<UserPassSignup> {
                     ),
                     const SizedBox(height: 24),
 
-                    // لینک برگشت به ورود
                     Center(
                       child: RichText(
                         text: TextSpan(

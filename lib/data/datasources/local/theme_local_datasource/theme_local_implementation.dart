@@ -54,7 +54,7 @@ class ThemeLocalImpl implements ThemeLocal {
 
   @override
   Future<ThemeModel?> loadTheme() async {
-    final jsonMap = await _readThemeJson();
+      final jsonMap = await _readThemeJson();
 
     if (jsonMap == null) {
       return _defaultLightTheme;

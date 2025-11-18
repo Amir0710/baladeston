@@ -1,5 +1,5 @@
 import 'package:baladeston/data/datasources/remote/watch_history_remote_datasource/watch_history_api.dart';
-import 'package:baladeston/data/mapper/watch_history_mapper.dart';
+import 'package:baladeston/data/mapper/entity/watch_history_mapper.dart';
 import 'package:baladeston/domain/entitys/watch_history/watch_history_entity.dart';
 import 'package:baladeston/domain/filters/watch_history_query_filter.dart';
 import 'package:baladeston/domain/repositories/watch_history_repository.dart';

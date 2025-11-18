@@ -20,10 +20,8 @@ VerificationModel _$VerificationModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$VerificationModel {
-  String get phone => throw _privateConstructorUsedError;
-  bool get isVerified => throw _privateConstructorUsedError;
-  String? get sessionId => throw _privateConstructorUsedError;
-  DateTime get verifiedAt => throw _privateConstructorUsedError;
+  String? get message => throw _privateConstructorUsedError;
+  OtpDataModel? get otpData => throw _privateConstructorUsedError;
 
   /// Serializes this VerificationModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,8 +39,9 @@ abstract class $VerificationModelCopyWith<$Res> {
           VerificationModel value, $Res Function(VerificationModel) then) =
       _$VerificationModelCopyWithImpl<$Res, VerificationModel>;
   @useResult
-  $Res call(
-      {String phone, bool isVerified, String? sessionId, DateTime verifiedAt});
+  $Res call({String? message, OtpDataModel? otpData});
+
+  $OtpDataModelCopyWith<$Res>? get otpData;
 }
 
 /// @nodoc
@@ -60,29 +59,33 @@ class _$VerificationModelCopyWithImpl<$Res, $Val extends VerificationModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phone = null,
-    Object? isVerified = null,
-    Object? sessionId = freezed,
-    Object? verifiedAt = null,
+    Object? message = freezed,
+    Object? otpData = freezed,
   }) {
     return _then(_value.copyWith(
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String,
-      isVerified: null == isVerified
-          ? _value.isVerified
-          : isVerified // ignore: cast_nullable_to_non_nullable
-              as bool,
-      sessionId: freezed == sessionId
-          ? _value.sessionId
-          : sessionId // ignore: cast_nullable_to_non_nullable
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      verifiedAt: null == verifiedAt
-          ? _value.verifiedAt
-          : verifiedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      otpData: freezed == otpData
+          ? _value.otpData
+          : otpData // ignore: cast_nullable_to_non_nullable
+              as OtpDataModel?,
     ) as $Val);
+  }
+
+  /// Create a copy of VerificationModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OtpDataModelCopyWith<$Res>? get otpData {
+    if (_value.otpData == null) {
+      return null;
+    }
+
+    return $OtpDataModelCopyWith<$Res>(_value.otpData!, (value) {
+      return _then(_value.copyWith(otpData: value) as $Val);
+    });
   }
 }
 
@@ -94,8 +97,10 @@ abstract class _$$VerificationModelImplCopyWith<$Res>
       __$$VerificationModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String phone, bool isVerified, String? sessionId, DateTime verifiedAt});
+  $Res call({String? message, OtpDataModel? otpData});
+
+  @override
+  $OtpDataModelCopyWith<$Res>? get otpData;
 }
 
 /// @nodoc
@@ -111,28 +116,18 @@ class __$$VerificationModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phone = null,
-    Object? isVerified = null,
-    Object? sessionId = freezed,
-    Object? verifiedAt = null,
+    Object? message = freezed,
+    Object? otpData = freezed,
   }) {
     return _then(_$VerificationModelImpl(
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String,
-      isVerified: null == isVerified
-          ? _value.isVerified
-          : isVerified // ignore: cast_nullable_to_non_nullable
-              as bool,
-      sessionId: freezed == sessionId
-          ? _value.sessionId
-          : sessionId // ignore: cast_nullable_to_non_nullable
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      verifiedAt: null == verifiedAt
-          ? _value.verifiedAt
-          : verifiedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      otpData: freezed == otpData
+          ? _value.otpData
+          : otpData // ignore: cast_nullable_to_non_nullable
+              as OtpDataModel?,
     ));
   }
 }
@@ -140,27 +135,19 @@ class __$$VerificationModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$VerificationModelImpl implements _VerificationModel {
-  const _$VerificationModelImpl(
-      {required this.phone,
-      required this.isVerified,
-      this.sessionId,
-      required this.verifiedAt});
+  const _$VerificationModelImpl({this.message, this.otpData});
 
   factory _$VerificationModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$VerificationModelImplFromJson(json);
 
   @override
-  final String phone;
+  final String? message;
   @override
-  final bool isVerified;
-  @override
-  final String? sessionId;
-  @override
-  final DateTime verifiedAt;
+  final OtpDataModel? otpData;
 
   @override
   String toString() {
-    return 'VerificationModel(phone: $phone, isVerified: $isVerified, sessionId: $sessionId, verifiedAt: $verifiedAt)';
+    return 'VerificationModel(message: $message, otpData: $otpData)';
   }
 
   @override
@@ -168,19 +155,13 @@ class _$VerificationModelImpl implements _VerificationModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VerificationModelImpl &&
-            (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.isVerified, isVerified) ||
-                other.isVerified == isVerified) &&
-            (identical(other.sessionId, sessionId) ||
-                other.sessionId == sessionId) &&
-            (identical(other.verifiedAt, verifiedAt) ||
-                other.verifiedAt == verifiedAt));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.otpData, otpData) || other.otpData == otpData));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, phone, isVerified, sessionId, verifiedAt);
+  int get hashCode => Object.hash(runtimeType, message, otpData);
 
   /// Create a copy of VerificationModel
   /// with the given fields replaced by the non-null parameter values.
@@ -201,27 +182,207 @@ class _$VerificationModelImpl implements _VerificationModel {
 
 abstract class _VerificationModel implements VerificationModel {
   const factory _VerificationModel(
-      {required final String phone,
-      required final bool isVerified,
-      final String? sessionId,
-      required final DateTime verifiedAt}) = _$VerificationModelImpl;
+      {final String? message,
+      final OtpDataModel? otpData}) = _$VerificationModelImpl;
 
   factory _VerificationModel.fromJson(Map<String, dynamic> json) =
       _$VerificationModelImpl.fromJson;
 
   @override
-  String get phone;
+  String? get message;
   @override
-  bool get isVerified;
-  @override
-  String? get sessionId;
-  @override
-  DateTime get verifiedAt;
+  OtpDataModel? get otpData;
 
   /// Create a copy of VerificationModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VerificationModelImplCopyWith<_$VerificationModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+OtpDataModel _$OtpDataModelFromJson(Map<String, dynamic> json) {
+  return _OtpDataModel.fromJson(json);
+}
+
+/// @nodoc
+mixin _$OtpDataModel {
+  int? get otpCode => throw _privateConstructorUsedError;
+  int? get expiresIn => throw _privateConstructorUsedError;
+  int? get createdAt => throw _privateConstructorUsedError;
+
+  /// Serializes this OtpDataModel to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of OtpDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $OtpDataModelCopyWith<OtpDataModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OtpDataModelCopyWith<$Res> {
+  factory $OtpDataModelCopyWith(
+          OtpDataModel value, $Res Function(OtpDataModel) then) =
+      _$OtpDataModelCopyWithImpl<$Res, OtpDataModel>;
+  @useResult
+  $Res call({int? otpCode, int? expiresIn, int? createdAt});
+}
+
+/// @nodoc
+class _$OtpDataModelCopyWithImpl<$Res, $Val extends OtpDataModel>
+    implements $OtpDataModelCopyWith<$Res> {
+  _$OtpDataModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of OtpDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? otpCode = freezed,
+    Object? expiresIn = freezed,
+    Object? createdAt = freezed,
+  }) {
+    return _then(_value.copyWith(
+      otpCode: freezed == otpCode
+          ? _value.otpCode
+          : otpCode // ignore: cast_nullable_to_non_nullable
+              as int?,
+      expiresIn: freezed == expiresIn
+          ? _value.expiresIn
+          : expiresIn // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$OtpDataModelImplCopyWith<$Res>
+    implements $OtpDataModelCopyWith<$Res> {
+  factory _$$OtpDataModelImplCopyWith(
+          _$OtpDataModelImpl value, $Res Function(_$OtpDataModelImpl) then) =
+      __$$OtpDataModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int? otpCode, int? expiresIn, int? createdAt});
+}
+
+/// @nodoc
+class __$$OtpDataModelImplCopyWithImpl<$Res>
+    extends _$OtpDataModelCopyWithImpl<$Res, _$OtpDataModelImpl>
+    implements _$$OtpDataModelImplCopyWith<$Res> {
+  __$$OtpDataModelImplCopyWithImpl(
+      _$OtpDataModelImpl _value, $Res Function(_$OtpDataModelImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of OtpDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? otpCode = freezed,
+    Object? expiresIn = freezed,
+    Object? createdAt = freezed,
+  }) {
+    return _then(_$OtpDataModelImpl(
+      otpCode: freezed == otpCode
+          ? _value.otpCode
+          : otpCode // ignore: cast_nullable_to_non_nullable
+              as int?,
+      expiresIn: freezed == expiresIn
+          ? _value.expiresIn
+          : expiresIn // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$OtpDataModelImpl implements _OtpDataModel {
+  const _$OtpDataModelImpl({this.otpCode, this.expiresIn, this.createdAt});
+
+  factory _$OtpDataModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OtpDataModelImplFromJson(json);
+
+  @override
+  final int? otpCode;
+  @override
+  final int? expiresIn;
+  @override
+  final int? createdAt;
+
+  @override
+  String toString() {
+    return 'OtpDataModel(otpCode: $otpCode, expiresIn: $expiresIn, createdAt: $createdAt)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OtpDataModelImpl &&
+            (identical(other.otpCode, otpCode) || other.otpCode == otpCode) &&
+            (identical(other.expiresIn, expiresIn) ||
+                other.expiresIn == expiresIn) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, otpCode, expiresIn, createdAt);
+
+  /// Create a copy of OtpDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OtpDataModelImplCopyWith<_$OtpDataModelImpl> get copyWith =>
+      __$$OtpDataModelImplCopyWithImpl<_$OtpDataModelImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OtpDataModelImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _OtpDataModel implements OtpDataModel {
+  const factory _OtpDataModel(
+      {final int? otpCode,
+      final int? expiresIn,
+      final int? createdAt}) = _$OtpDataModelImpl;
+
+  factory _OtpDataModel.fromJson(Map<String, dynamic> json) =
+      _$OtpDataModelImpl.fromJson;
+
+  @override
+  int? get otpCode;
+  @override
+  int? get expiresIn;
+  @override
+  int? get createdAt;
+
+  /// Create a copy of OtpDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OtpDataModelImplCopyWith<_$OtpDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

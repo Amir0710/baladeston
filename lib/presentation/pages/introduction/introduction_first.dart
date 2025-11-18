@@ -75,28 +75,30 @@ class _IntroductionFirstState extends State<IntroductionFirst>
                 ),
                 const SizedBox(height: 32),
                 SizedBox(
-                  height: 54,
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushReplacement(context, MaterialPageRoute(
-                        builder: (context) {
-                          return IntroductionSecond();
-                        },
-                      ));
-                    },
-                    child: Row(
-                      children: [
-                        Expanded(child: SizedBox()),
-                        Text('شروع کردن'),
-                        Expanded(
-                          child: Align(
-                            alignment: AlignmentDirectional.centerEnd,
-                            // وابسته به direction
-                            child: Icon(Icons.arrow_forward_ios),
+                  child: SizedBox(
+                    height: AppConstraints.elevationButtonHeight,
+                    width: AppConstraints.elevationButtonWidth,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushReplacement(context, MaterialPageRoute(
+                          builder: (context) {
+                            return IntroductionSecond();
+                          },
+                        ));
+                      },
+                      child: Row(
+                        children: [
+                          Expanded(child: SizedBox()),
+                          Text('شروع کردن'),
+                          Expanded(
+                            child: Align(
+                              alignment: AlignmentDirectional.centerEnd,
+                              // وابسته به direction
+                              child: Icon(Icons.arrow_forward_ios),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),

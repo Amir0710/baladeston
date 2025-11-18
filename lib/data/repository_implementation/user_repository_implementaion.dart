@@ -1,5 +1,5 @@
 import 'package:baladeston/data/datasources/remote/user_remote_datasource/user_api.dart';
-import 'package:baladeston/data/mapper/user_mapper.dart';
+import 'package:baladeston/data/mapper/entity/user_mapper.dart';
 import 'package:baladeston/domain/entitys/user/user_entity.dart';
 import 'package:baladeston/domain/filters/user_query_filter.dart';
 import 'package:baladeston/domain/repositories/user_repository.dart';
@@ -64,19 +64,42 @@ class UserRepositoryImplementation implements UserRepository {
       final resultModel = await _api.getUsersByFilter(filter: filter);
       return resultModel?.map((m) => m.toEntity()).toList();
     } catch (e) {
-            throw Exception('error $e');
-
+      throw Exception('error $e');
     }
   }
 
   @override
   Future<UserEntity> updateUser({required UserEntity user}) async {
-  try {
-    final model = user.toModel() ;
+    try {
+      final model = user.toModel();
       final resultModel = await _api.updateUser(user: model);
       return resultModel.toEntity();
     } catch (e) {
       throw Exception('error $e');
     }
+  }
+
+  @override
+  Future<bool> checkToken() async {
+    try {
+      final result = await _api.checkToken();
+      return result;
+    } catch (e) {
+      throw Exception('error $e');
+    }
+  }
+
+  @override
+  Future<void> login({required int userId, required String password}) async {
+    try {
+      await _api.login(userId: userId, password: password);
+    } catch (e) {
+      throw Exception('error $e');
+    }
+  }
+
+  @override
+  Future<bool> checkUserExists({required String phoneNumber}) {
+
   }
 }

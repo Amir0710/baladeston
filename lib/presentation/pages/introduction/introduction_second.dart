@@ -85,80 +85,63 @@ class IntroductionSecond extends StatelessWidget {
               style: PaintingStyle.fill,
               radius: 18,
             ),
-            Expanded(
+            Positioned.fill(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: 20,
-                  ),
+                  SizedBox(height: 20),
                   Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: AppConstraints.mediumTextPadding),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(
-                          "skip",
-                          style: appTheme.labelMedium,
-                        ),
+                        Text("skip", style: appTheme.labelMedium),
                       ],
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: AppConstraints.mediumTextPadding),
-                    child: Text(
-                      "معرفی",
-                      style: appTheme.displayMedium,
-                    ),
+                    child: Text("introduction", style: appTheme.displayMedium),
                   ),
-                  SizedBox(
-                    height: 12,
-                  ),
+                  SizedBox(height: 12),
                   Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: AppConstraints.mediumTextPadding),
                     child: Text(
-                      "اینجا جایی است که مهارت‌های جدید کسب می‌کنید و رشد می‌کنید.با بالدستون، هر روز شما را به اهدافتان نزدیک‌تر می‌کند.همین حالا شروع کنید آینده‌تان در انتظار شماست",
+                      "This is a place where you acquire new skills and grow...",
                       style: appTheme.labelMedium,
                       textAlign: TextAlign.end,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: AppConstraints.buttonPadding),
                     child: SizedBox(
                       height: AppConstraints.elevationButtonHeight,
-                      width: AppConstraints.elevationButtonWidth  ,
+                      width: AppConstraints.elevationButtonWidth,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(
-                            builder: (context) {
-                              return UserPassLogin();
-                            },
-                          ));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (_) => const UserPassLogin()),
+                          );
                         },
                         child: Row(
-                          children: [
-                            Expanded(child: SizedBox()),
-                            Text('شروع کردن'),
-                            Expanded(
-                              child: Align(
-                                alignment: AlignmentDirectional.centerEnd,
-                                // وابسته به direction
-                                child: Icon(Icons.arrow_forward_ios),
-                              ),
-                            ),
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: const [
+                            SizedBox(width: 24), // برای تعادل سمت چپ (در برا آیکون)
+                            Text('شروع کردن', textAlign: TextAlign.center),
+                            Icon(Icons.arrow_forward_ios),
                           ],
                         ),
                       ),
+
                     ),
                   ),
-                  SizedBox(
-                    height: 38,
-                  )
+                  const SizedBox(height: 38),
                 ],
               ),
             ),

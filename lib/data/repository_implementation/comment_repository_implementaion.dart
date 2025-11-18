@@ -1,5 +1,5 @@
 import 'package:baladeston/data/datasources/remote/comment_remote_datasource/comment_api.dart';
-import 'package:baladeston/data/mapper/comment_mapper.dart';
+import 'package:baladeston/data/mapper/entity/comment_mapper.dart';
 import 'package:baladeston/domain/entitys/comment/comment_entity.dart';
 import 'package:baladeston/domain/filters/comment_query_filter.dart';
 import 'package:baladeston/domain/repositories/comment_repository.dart';

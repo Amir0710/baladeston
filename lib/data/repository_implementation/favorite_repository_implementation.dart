@@ -1,5 +1,5 @@
 import 'package:baladeston/data/datasources/remote/favorite_remote_datasource/favorite_api.dart';
-import 'package:baladeston/data/mapper/favorite_mapper.dart';
+import 'package:baladeston/data/mapper/entity/favorite_mapper.dart';
 import 'package:baladeston/domain/entitys/favorite/favorite_entity.dart';
 import 'package:baladeston/domain/filters/favorite_query_filter.dart';
 import 'package:baladeston/domain/repositories/favorite_repository.dart';

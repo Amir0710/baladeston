@@ -9,4 +9,6 @@ abstract class UserApi {
   Future<void> deleteUserByFilter({required UserQueryFilter filter});
   Future<UserModel> createUser({required UserModel user});
   Future<int> countUser({required UserQueryFilter filter});
+  Future<void> login({required int userId,required String password }) ;
+  Future<bool> checkToken() ;
 }

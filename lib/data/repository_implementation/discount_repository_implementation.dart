@@ -1,5 +1,5 @@
 import 'package:baladeston/data/datasources/remote/discount_remote_datasource/discount_api.dart';
-import 'package:baladeston/data/mapper/discount_mapper.dart';
+import 'package:baladeston/data/mapper/entity/discount_mapper.dart';
 import 'package:baladeston/domain/entitys/discount/discount_entity.dart';
 import 'package:baladeston/domain/filters/discount_query_filter.dart';
 import 'package:baladeston/domain/repositories/discount_repository.dart';

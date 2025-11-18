@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:baladeston/data/datasources/remote/theme_remote_datasource/theme_api.dart';
+import 'package:baladeston/domain/filters/theme_query_filter.dart';
 import 'package:http/http.dart' as http;
 import 'package:baladeston/data/models/theme/theme_model.dart';
 import 'package:baladeston/config/app_config.dart';
@@ -9,9 +10,8 @@ class ThemeApiImplementation extends ThemeApi {
 
   Uri _url(String path) => Uri.parse('$_baseUrl/theme/$path');
 
-  /// گرفتن همه‌ی تم‌ها
   @override
-  Future<List<ThemeModel>?> getAllThemes() async {
+  Future<List<ThemeModel>?> getAllThemes({required ThemeQueryFilter filter }) async {
     final response = await http.get(_url(''));
     if (response.statusCode == 200) {
       final List<dynamic> jsonList = json.decode(response.body);
@@ -22,7 +22,6 @@ class ThemeApiImplementation extends ThemeApi {
     throw Exception('خطا در واکشی تم‌ها: ${response.statusCode}');
   }
 
-  /// دریافت تم بر اساس name
   @override
   Future<ThemeModel?> getThemeByName({required String name}) async {
     final response = await http.get(_url('name/$name'));
@@ -35,7 +34,6 @@ class ThemeApiImplementation extends ThemeApi {
     throw Exception('خطا در دریافت تم بر اساس نام: ${response.statusCode}');
   }
 
-  /// دریافت تم بر اساس شناسه (CUID)
   @override
   Future<ThemeModel?> getThemeById({required int id}) async {
     final response = await http.get(_url(id.toString()));
@@ -48,7 +46,6 @@ class ThemeApiImplementation extends ThemeApi {
     throw Exception('خطا در دریافت تم بر اساس شناسه: ${response.statusCode}');
   }
 
-  /// ساخت تم جدید
   @override
   Future<ThemeModel> createTheme({required ThemeModel theme}) async {
     final body = json.encode(theme.toJson()..remove('id'));
@@ -67,7 +64,6 @@ class ThemeApiImplementation extends ThemeApi {
         'خطا در ایجاد تم جدید: ${response.statusCode} → ${response.body}');
   }
 
-  /// بروزرسانی تم
   @override
   Future<ThemeModel> updateTheme({required ThemeModel theme}) async {
     if (theme.id == null) {
@@ -89,7 +85,6 @@ class ThemeApiImplementation extends ThemeApi {
     throw Exception('خطا در بروزرسانی تم: ${response.statusCode}');
   }
 
-  /// حذف تم بر اساس شناسه (CUID)
   @override
   Future<void> deleteThemeById({required int id}) async {
     final response = await http.delete(_url(id.toString()));
@@ -98,7 +93,6 @@ class ThemeApiImplementation extends ThemeApi {
     }
   }
 
-  /// حذف تم بر اساس name
   @override
   Future<void> deleteThemeByName({required String name}) async {
     final response = await http.delete(_url('name/$name'));
@@ -108,7 +102,6 @@ class ThemeApiImplementation extends ThemeApi {
     }
   }
 
-  /// شمارش کل تم‌ها
   @override
   Future<int> countAllThemes() async {
     final response = await http.get(_url('count'));

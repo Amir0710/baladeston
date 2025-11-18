@@ -1,5 +1,5 @@
 import 'package:baladeston/data/datasources/remote/video_remote_datasource/video_api.dart';
-import 'package:baladeston/data/mapper/video_mapper.dart';
+import 'package:baladeston/data/mapper/entity/video_mapper.dart';
 import 'package:baladeston/domain/entitys/video/video_entity.dart';
 import 'package:baladeston/domain/filters/video_query_filter.dart';
 import 'package:baladeston/domain/repositories/video_repository.dart';

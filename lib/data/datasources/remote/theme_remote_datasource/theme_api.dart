@@ -1,7 +1,8 @@
 import 'package:baladeston/data/models/theme/theme_model.dart';
+import 'package:baladeston/domain/filters/theme_query_filter.dart';
 
 abstract class ThemeApi {
-  Future<List<ThemeModel>?> getAllThemes();
+  Future<List<ThemeModel>?> getAllThemes({required ThemeQueryFilter filter });
 
   Future<ThemeModel?> getThemeByName({required String name});
 

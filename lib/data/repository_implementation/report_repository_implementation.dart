@@ -1,5 +1,5 @@
 import 'package:baladeston/data/datasources/remote/report_remote_datasource/report_api.dart';
-import 'package:baladeston/data/mapper/report_mapper.dart';
+import 'package:baladeston/data/mapper/entity/report_mapper.dart';
 import 'package:baladeston/domain/entitys/report/report_entity.dart';
 import 'package:baladeston/domain/filters/report_query_filter.dart';
 import 'package:baladeston/domain/repositories/report_repository.dart';

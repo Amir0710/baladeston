@@ -1,5 +1,5 @@
 import 'package:baladeston/data/datasources/remote/collection_remote_datasource/collection_api.dart';
-import 'package:baladeston/data/mapper/collection_mapper.dart';
+import 'package:baladeston/data/mapper/entity/collection_mapper.dart';
 import 'package:baladeston/domain/entitys/collection/collection_entity.dart';
 import 'package:baladeston/domain/filters/collection_query_filter.dart';
 import 'package:baladeston/domain/repositories/collection_repository.dart';

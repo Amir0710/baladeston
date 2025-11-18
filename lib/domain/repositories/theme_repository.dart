@@ -1,7 +1,9 @@
+import 'package:baladeston/domain/filters/theme_query_filter.dart';
+
 import '../entitys/theme/theme_entity.dart';
 
 abstract class ThemeRepository {
-  Future<List<ThemeEntity>?> getAllThemes();
+  Future<List<ThemeEntity>?> getAllThemes({required ThemeQueryFilter filter});
 
   Future<ThemeEntity?> getThemeByName({required String name});
 

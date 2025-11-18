@@ -1,5 +1,5 @@
 import 'package:baladeston/data/datasources/remote/purchase_remote_datasource/purchase_api.dart';
-import 'package:baladeston/data/mapper/purchase_mapper.dart';
+import 'package:baladeston/data/mapper/entity/purchase_mapper.dart';
 import 'package:baladeston/domain/entitys/purchase/purchase_entity.dart';
 import 'package:baladeston/domain/filters/purchase_query_filter.dart';
 import 'package:baladeston/domain/repositories/purchase_repository.dart';

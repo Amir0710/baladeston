@@ -16,4 +16,9 @@ class UserState with _$UserState {
   const factory UserState.failure({
     required String message,
   }) = _Failure;
+
+  const factory UserState.loginSuccess() = _LoginSuccess;
+
+  const factory UserState.tokenValid() = _TokenValid;
+  const factory UserState.tokenInvalid() = _TokenInvalid;
 }

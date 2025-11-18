@@ -6,7 +6,7 @@ class AppConstraints {
   static double mediumTextPadding = 32 ;
   static double largeTextPadding = 42 ;
   static double widgetPadding = 26 ;
-  static double elevationButtonHeight = 54 ;
+  static double elevationButtonHeight = 48   ;
   static double elevationButtonWidth = double.infinity ;
 
 }

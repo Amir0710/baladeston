@@ -1,5 +1,5 @@
 import 'package:baladeston/data/datasources/remote/category_remote_datasource/category_api.dart';
-import 'package:baladeston/data/mapper/category_mapper.dart';
+import 'package:baladeston/data/mapper/entity/category_mapper.dart';
 import 'package:baladeston/domain/entitys/category/category_entity.dart';
 import 'package:baladeston/domain/filters/category_query_filter.dart';
 import 'package:baladeston/domain/repositories/category_repository.dart';

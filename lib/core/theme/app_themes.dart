@@ -226,13 +226,14 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         isDense: true,
         contentPadding: const EdgeInsets.symmetric(
-          vertical: 8,
+          vertical: 14,
           horizontal: 12,
         ),
         labelStyle: GoogleFonts.vazirmatn(
           textStyle: TextStyle(
             fontSize: 16,
             color: infoColor.withOpacity(0.5),
+
             fontWeight: FontWeight.w500,
           ),
         ),

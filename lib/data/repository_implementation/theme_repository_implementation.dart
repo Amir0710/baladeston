@@ -1,7 +1,8 @@
 import 'package:baladeston/data/datasources/local/theme_local_datasource/theme_local.dart';
 import 'package:baladeston/data/datasources/remote/theme_remote_datasource/theme_api.dart';
-import 'package:baladeston/data/mapper/theme_mapper.dart';
+import 'package:baladeston/data/mapper/entity/theme_mapper.dart';
 import 'package:baladeston/domain/entitys/theme/theme_entity.dart';
+import 'package:baladeston/domain/filters/theme_query_filter.dart';
 import 'package:baladeston/domain/repositories/theme_repository.dart';
 
 class ThemeRepositoryImplementation extends ThemeRepository {
@@ -12,9 +13,9 @@ class ThemeRepositoryImplementation extends ThemeRepository {
 
 
   @override
-  Future<List<ThemeEntity>?> getAllThemes() async {
+  Future<List<ThemeEntity>?> getAllThemes({required ThemeQueryFilter filter }) async {
     try {
-      final models = await _api.getAllThemes();
+      final models = await _api.getAllThemes(filter: filter );
       return models?.map((m) => m.toEntity()).toList();
     } catch (e) {
       throw Exception('error $e');

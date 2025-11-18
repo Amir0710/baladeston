@@ -1,6 +1,6 @@
 import 'package:baladeston/core/result/result.dart';
 import 'package:baladeston/data/datasources/remote/verificarion_remote_datasource/verification_api.dart';
-import 'package:baladeston/data/mapper/verification_mapper.dart';
+import 'package:baladeston/data/mapper/entity/verification_mapper.dart';
 import 'package:baladeston/domain/entitys/verification/verification_entity.dart';
 import 'package:baladeston/domain/repositories/verification_repository.dart';
 

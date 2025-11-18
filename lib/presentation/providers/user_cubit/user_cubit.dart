@@ -1,5 +1,7 @@
+import 'package:baladeston/domain/usecase/user/check_token_usecase.dart';
 import 'package:baladeston/domain/usecase/user/count_user_usecase.dart';
 import 'package:baladeston/domain/usecase/user/get_user_by_filter_usecase.dart';
+import 'package:baladeston/domain/usecase/user/login_usecase.dart';
 import 'package:bloc/bloc.dart';
 import 'package:baladeston/domain/entitys/user/user_entity.dart';
 import 'package:baladeston/domain/filters/user_query_filter.dart';
@@ -18,10 +20,14 @@ class UserCubit extends Cubit<UserState> {
   final UpdateUserUseCase _updateUseCase;
   final DeleteUserByIdUseCase _deleteByIdUseCase;
   final DeleteUserByFilterUseCase _deleteByFilterUseCase;
+  final LoginUseCase _loginUseCase;
+  final CheckTokenUseCase _checkTokenUseCase;
 
   UserQueryFilter? _lastFilter;
 
   UserCubit({
+    required LoginUseCase loginUseCase,
+    required CheckTokenUseCase checkTokenUseCase,
     required CountUsersUseCase countUseCase,
     required GetUsersByFilterUseCase getByFilterUseCase,
     required GetUserByIdUseCase getByIdUseCase,
@@ -30,15 +36,16 @@ class UserCubit extends Cubit<UserState> {
     required DeleteUserByIdUseCase deleteByIdUseCase,
     required DeleteUserByFilterUseCase deleteByFilterUseCase,
   })  : _countUseCase = countUseCase,
+        _checkTokenUseCase = checkTokenUseCase,
         _getByFilterUseCase = getByFilterUseCase,
         _getByIdUseCase = getByIdUseCase,
         _createUseCase = createUseCase,
         _updateUseCase = updateUseCase,
         _deleteByIdUseCase = deleteByIdUseCase,
         _deleteByFilterUseCase = deleteByFilterUseCase,
+        _loginUseCase = loginUseCase,
         super(const UserState.initial());
 
-  /// بارگذاری کاربران با فیلتر
   Future<void> loadUsers([UserQueryFilter? filter]) async {
     emit(const UserState.loading());
     try {
@@ -46,18 +53,45 @@ class UserCubit extends Cubit<UserState> {
       _lastFilter = f;
       final users = await _getByFilterUseCase(filter: f);
       final count = await _countUseCase(filter: f);
-      emit(UserState.success(user: users ?? [], count: 10));
+      emit(UserState.success(user: users ?? [], count: count));
     } catch (e) {
       emit(UserState.failure(message: e.toString()));
     }
   }
 
-  /// رفرش لیست با آخرین فیلتر
   Future<void> refreshFilter() async {
     await loadUsers(_lastFilter);
   }
 
-  /// گرفتن کاربر بر اساس ID
+
+  Future<void> login({
+    required int userId,
+    required String password,
+  }) async {
+    emit(const UserState.loading());
+    try {
+      await _loginUseCase(userId: userId, password: password);
+      emit(const UserState.loginSuccess());
+    } catch (e) {
+      emit(UserState.failure(message: e.toString()));
+    }
+  }
+
+  Future<void> checkToken() async {
+    emit(const UserState.loading());
+    try {
+      final isValid = await _checkTokenUseCase();
+      if (isValid) {
+        emit(const UserState.tokenValid());
+      } else {
+        emit(const UserState.tokenInvalid());
+      }
+    } catch (e) {
+      emit(UserState.failure(message: e.toString()));
+    }
+  }
+
+
   Future<void> loadUserById(int id) async {
     emit(const UserState.loading());
     try {
@@ -71,7 +105,6 @@ class UserCubit extends Cubit<UserState> {
     }
   }
 
-  /// ایجاد کاربر
   Future<void> createUser(UserEntity user) async {
     emit(const UserState.loading());
     try {
@@ -82,7 +115,6 @@ class UserCubit extends Cubit<UserState> {
     }
   }
 
-  /// بروزرسانی کاربر
   Future<void> updateUser(UserEntity user) async {
     emit(const UserState.loading());
     try {
@@ -93,7 +125,6 @@ class UserCubit extends Cubit<UserState> {
     }
   }
 
-  /// حذف بر اساس ID
   Future<void> deleteUserById(int id) async {
     emit(const UserState.loading());
     try {
@@ -104,7 +135,6 @@ class UserCubit extends Cubit<UserState> {
     }
   }
 
-  /// حذف بر اساس فیلتر
   Future<void> deleteUsersByFilter(UserQueryFilter filter) async {
     emit(const UserState.loading());
     try {
