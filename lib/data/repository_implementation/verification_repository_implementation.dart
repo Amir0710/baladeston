@@ -4,34 +4,49 @@ import 'package:baladeston/data/mapper/entity/verification_mapper.dart';
 import 'package:baladeston/domain/entitys/verification/verification_entity.dart';
 import 'package:baladeston/domain/repositories/verification_repository.dart';
 
-class VerifyRepositoryImplementation extends VerifyRepository {
+class VerificationRepositoryImplementation extends VerificationRepository {
   final VerificationApi _api;
 
-  VerifyRepositoryImplementation({required VerificationApi api}) : _api = api;
+  VerificationRepositoryImplementation({required VerificationApi api})
+      : _api = api;
 
   @override
   Future<Result<VerificationEntity>> sendVerificationCode(String phone) async {
     try {
       final model = await _api.sendVerificationCode(phone);
 
-      final entity = model.toEntity();
+      final result = model.toEntity();
 
-      return Result.success(entity);
+      return Result.success(result);
     } catch (e) {
       return Result.failure('خطا در ارسال کد تأیید: $e');
     }
   }
 
   @override
-  Future<Result<VerificationEntity>> checkVerificationCode(String phone, String code) async {
+  Future<Result<VerificationEntity>> resendVerificationCode(
+      String phone) async {
     try {
-      final model = await _api.checkVerificationCode(phone, code);
+      final model = await _api.resendVerificationCode(phone);
 
-      final entity = model.toEntity();
+      final result = model.toEntity();
 
-      return Result.success(entity);
+      return Result.success(result);
     } catch (e) {
-      return Result.failure('کد تأیید اشتباه است یا ارتباط با سرور قطع شد: $e');
+      return Result.failure('خطا در ارسال کد تأیید: $e');
+    }
+  }
+
+  @override
+  Future<Result<String>> checkVerificationCode({
+    required VerificationEntity verification,
+  }) async {
+    try {
+      final model = verification.toModel();
+      final token = await _api.checkVerificationCode(verification: model);
+      return Result.success(token);
+    } catch (e) {
+      return Result.failure("کد تایید اشتباه است یا ارتباط با سرور مشکل دارد");
     }
   }
 }

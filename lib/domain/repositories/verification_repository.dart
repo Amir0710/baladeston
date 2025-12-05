@@ -1,7 +1,10 @@
 import 'package:baladeston/core/result/result.dart';
 import 'package:baladeston/domain/entitys/verification/verification_entity.dart';
 
-abstract class VerifyRepository {
+abstract class VerificationRepository {
   Future<Result<VerificationEntity>> sendVerificationCode(String phone);
-  Future<Result<VerificationEntity>> checkVerificationCode(String phone, String code);
+  Future<Result<VerificationEntity>> resendVerificationCode(String phone);
+  Future<Result<String>> checkVerificationCode({
+    required VerificationEntity verification,
+  });
 }

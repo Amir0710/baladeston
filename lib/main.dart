@@ -1,6 +1,4 @@
-import 'package:baladeston/core/di/theme_injection.dart' hide getIt;
 import 'package:baladeston/core/di_initialization/init.dart';
-import 'package:baladeston/core/init/supabase_initializer.dart';
 import 'package:baladeston/presentation/pages/introduction/introduction_first.dart';
 import 'package:baladeston/presentation/providers/category_cubit/category_cubit.dart';
 import 'package:baladeston/presentation/providers/theme_cubit/theme_cubit.dart';
@@ -9,10 +7,12 @@ import 'package:baladeston/presentation/providers/user_cubit/user_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'core/di/auth_injection.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initSupabase();
+
   await initDependencies();
   runApp(const MyApp());
 }
@@ -25,12 +25,11 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<ThemeCubit>(
-          create: (_) => getIt<ThemeCubit>()..loadThemeFromSupabase(),
+          create: (_) => getIt<ThemeCubit>(),
         ),
         BlocProvider<CategoryCubit>(
           create: (_) => getIt<CategoryCubit>(),
         ),
-
         BlocProvider<UserCubit>(
           create: (_) => getIt<UserCubit>(),
         ),

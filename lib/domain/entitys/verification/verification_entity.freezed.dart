@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$VerificationEntity {
-  String? get message => throw _privateConstructorUsedError;
+  String? get phone => throw _privateConstructorUsedError;
   int? get otpCode => throw _privateConstructorUsedError;
   int? get expiresIn => throw _privateConstructorUsedError;
   int? get createdAt => throw _privateConstructorUsedError;
@@ -34,7 +34,7 @@ abstract class $VerificationEntityCopyWith<$Res> {
           VerificationEntity value, $Res Function(VerificationEntity) then) =
       _$VerificationEntityCopyWithImpl<$Res, VerificationEntity>;
   @useResult
-  $Res call({String? message, int? otpCode, int? expiresIn, int? createdAt});
+  $Res call({String? phone, int? otpCode, int? expiresIn, int? createdAt});
 }
 
 /// @nodoc
@@ -52,15 +52,15 @@ class _$VerificationEntityCopyWithImpl<$Res, $Val extends VerificationEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = freezed,
+    Object? phone = freezed,
     Object? otpCode = freezed,
     Object? expiresIn = freezed,
     Object? createdAt = freezed,
   }) {
     return _then(_value.copyWith(
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+      phone: freezed == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
               as String?,
       otpCode: freezed == otpCode
           ? _value.otpCode
@@ -86,7 +86,7 @@ abstract class _$$VerificationEntityImplCopyWith<$Res>
       __$$VerificationEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? message, int? otpCode, int? expiresIn, int? createdAt});
+  $Res call({String? phone, int? otpCode, int? expiresIn, int? createdAt});
 }
 
 /// @nodoc
@@ -102,15 +102,15 @@ class __$$VerificationEntityImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = freezed,
+    Object? phone = freezed,
     Object? otpCode = freezed,
     Object? expiresIn = freezed,
     Object? createdAt = freezed,
   }) {
     return _then(_$VerificationEntityImpl(
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+      phone: freezed == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
               as String?,
       otpCode: freezed == otpCode
           ? _value.otpCode
@@ -132,10 +132,10 @@ class __$$VerificationEntityImplCopyWithImpl<$Res>
 
 class _$VerificationEntityImpl implements _VerificationEntity {
   const _$VerificationEntityImpl(
-      {this.message, this.otpCode, this.expiresIn, this.createdAt});
+      {this.phone, this.otpCode, this.expiresIn, this.createdAt});
 
   @override
-  final String? message;
+  final String? phone;
   @override
   final int? otpCode;
   @override
@@ -145,7 +145,7 @@ class _$VerificationEntityImpl implements _VerificationEntity {
 
   @override
   String toString() {
-    return 'VerificationEntity(message: $message, otpCode: $otpCode, expiresIn: $expiresIn, createdAt: $createdAt)';
+    return 'VerificationEntity(phone: $phone, otpCode: $otpCode, expiresIn: $expiresIn, createdAt: $createdAt)';
   }
 
   @override
@@ -153,7 +153,7 @@ class _$VerificationEntityImpl implements _VerificationEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VerificationEntityImpl &&
-            (identical(other.message, message) || other.message == message) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.otpCode, otpCode) || other.otpCode == otpCode) &&
             (identical(other.expiresIn, expiresIn) ||
                 other.expiresIn == expiresIn) &&
@@ -163,7 +163,7 @@ class _$VerificationEntityImpl implements _VerificationEntity {
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, message, otpCode, expiresIn, createdAt);
+      Object.hash(runtimeType, phone, otpCode, expiresIn, createdAt);
 
   /// Create a copy of VerificationEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -177,13 +177,13 @@ class _$VerificationEntityImpl implements _VerificationEntity {
 
 abstract class _VerificationEntity implements VerificationEntity {
   const factory _VerificationEntity(
-      {final String? message,
+      {final String? phone,
       final int? otpCode,
       final int? expiresIn,
       final int? createdAt}) = _$VerificationEntityImpl;
 
   @override
-  String? get message;
+  String? get phone;
   @override
   int? get otpCode;
   @override

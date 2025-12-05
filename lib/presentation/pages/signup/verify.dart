@@ -1,7 +1,7 @@
 import 'package:baladeston/core/extensions/media_query_extension.dart';
 import 'package:baladeston/core/theme/app_themes.dart';
 import 'package:baladeston/core/widgets/print_circle.dart';
-import 'package:baladeston/presentation/providers/verify_cubit/verify_cubit.dart';
+import 'package:baladeston/presentation/providers/verification_cubit/verification_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
@@ -16,7 +16,7 @@ class _VerificationPageState extends State<VerificationPage>
     with TickerProviderStateMixin {
   final phoneController = TextEditingController();
   final codeController = TextEditingController();
-  late final VerifyCubit cubit;
+  late final VerificationCubit cubit;
 
   late AnimationController slideController;
   late Animation<Offset> slideAnimation;
@@ -27,7 +27,7 @@ class _VerificationPageState extends State<VerificationPage>
   @override
   void initState() {
     super.initState();
-    cubit = GetIt.instance<VerifyCubit>();
+    cubit = GetIt.instance<VerificationCubit>();
 
     slideController = AnimationController(
       vsync: this,

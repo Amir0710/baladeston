@@ -1,27 +1,23 @@
 import 'package:baladeston/data/datasources/remote/category_remote_datasource/category_api.dart';
-import 'package:baladeston/data/datasources/remote/category_remote_datasource/category_api_implementation.dart';
-import 'package:baladeston/domain/usecase/category/add_image_usecase.dart';
-import 'package:baladeston/domain/usecase/category/get_all_category_usecase.dart';
-import 'package:baladeston/presentation/providers/category_cubit/category_cubit.dart';
-import 'package:get_it/get_it.dart';
 import 'package:baladeston/data/repository_implementation/category_repository_implementation.dart';
 import 'package:baladeston/domain/repositories/category_repository.dart';
-import 'package:baladeston/domain/usecase/category/create_category_usecase.dart';
-import 'package:baladeston/domain/usecase/category/update_category_usecase.dart';
+import 'package:baladeston/domain/usecase/category/add_image_usecase.dart';
 import 'package:baladeston/domain/usecase/category/count_all_categories_usecase.dart';
+import 'package:baladeston/domain/usecase/category/create_category_usecase.dart';
 import 'package:baladeston/domain/usecase/category/delete_category_by_filter_usecase.dart';
 import 'package:baladeston/domain/usecase/category/delete_category_by_id_usecase.dart';
+import 'package:baladeston/domain/usecase/category/get_all_category_usecase.dart';
 import 'package:baladeston/domain/usecase/category/get_category_by_filter_usecase.dart';
 import 'package:baladeston/domain/usecase/category/get_category_by_id_usecase.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:baladeston/domain/usecase/category/update_category_usecase.dart';
+import 'package:baladeston/presentation/providers/category_cubit/category_cubit.dart';
+import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
 
 Future<void> initCategoryModule() async {
   getIt
-    ..registerLazySingleton<CategoryApi>(
-          () => CategoryApiImplementation(getIt<SupabaseClient>()),
-    )
+
 
     ..registerLazySingleton<CategoryRepository>(
           () => CategoryRepositoryImplementation(api: getIt<CategoryApi>()),

@@ -23,8 +23,6 @@ mixin _$UserState {
     required TResult Function(List<UserEntity> user, int count) success,
     required TResult Function(String message) failure,
     required TResult Function() loginSuccess,
-    required TResult Function() tokenValid,
-    required TResult Function() tokenInvalid,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,8 +32,6 @@ mixin _$UserState {
     TResult? Function(List<UserEntity> user, int count)? success,
     TResult? Function(String message)? failure,
     TResult? Function()? loginSuccess,
-    TResult? Function()? tokenValid,
-    TResult? Function()? tokenInvalid,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -45,8 +41,6 @@ mixin _$UserState {
     TResult Function(List<UserEntity> user, int count)? success,
     TResult Function(String message)? failure,
     TResult Function()? loginSuccess,
-    TResult Function()? tokenValid,
-    TResult Function()? tokenInvalid,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -57,8 +51,6 @@ mixin _$UserState {
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
     required TResult Function(_LoginSuccess value) loginSuccess,
-    required TResult Function(_TokenValid value) tokenValid,
-    required TResult Function(_TokenInvalid value) tokenInvalid,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,8 +60,6 @@ mixin _$UserState {
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_LoginSuccess value)? loginSuccess,
-    TResult? Function(_TokenValid value)? tokenValid,
-    TResult? Function(_TokenInvalid value)? tokenInvalid,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -79,8 +69,6 @@ mixin _$UserState {
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     TResult Function(_LoginSuccess value)? loginSuccess,
-    TResult Function(_TokenValid value)? tokenValid,
-    TResult Function(_TokenInvalid value)? tokenInvalid,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -152,8 +140,6 @@ class _$InitialImpl implements _Initial {
     required TResult Function(List<UserEntity> user, int count) success,
     required TResult Function(String message) failure,
     required TResult Function() loginSuccess,
-    required TResult Function() tokenValid,
-    required TResult Function() tokenInvalid,
   }) {
     return initial();
   }
@@ -166,8 +152,6 @@ class _$InitialImpl implements _Initial {
     TResult? Function(List<UserEntity> user, int count)? success,
     TResult? Function(String message)? failure,
     TResult? Function()? loginSuccess,
-    TResult? Function()? tokenValid,
-    TResult? Function()? tokenInvalid,
   }) {
     return initial?.call();
   }
@@ -180,8 +164,6 @@ class _$InitialImpl implements _Initial {
     TResult Function(List<UserEntity> user, int count)? success,
     TResult Function(String message)? failure,
     TResult Function()? loginSuccess,
-    TResult Function()? tokenValid,
-    TResult Function()? tokenInvalid,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -198,8 +180,6 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
     required TResult Function(_LoginSuccess value) loginSuccess,
-    required TResult Function(_TokenValid value) tokenValid,
-    required TResult Function(_TokenInvalid value) tokenInvalid,
   }) {
     return initial(this);
   }
@@ -212,8 +192,6 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_LoginSuccess value)? loginSuccess,
-    TResult? Function(_TokenValid value)? tokenValid,
-    TResult? Function(_TokenInvalid value)? tokenInvalid,
   }) {
     return initial?.call(this);
   }
@@ -226,8 +204,6 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     TResult Function(_LoginSuccess value)? loginSuccess,
-    TResult Function(_TokenValid value)? tokenValid,
-    TResult Function(_TokenInvalid value)? tokenInvalid,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -287,8 +263,6 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(List<UserEntity> user, int count) success,
     required TResult Function(String message) failure,
     required TResult Function() loginSuccess,
-    required TResult Function() tokenValid,
-    required TResult Function() tokenInvalid,
   }) {
     return loading();
   }
@@ -301,8 +275,6 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(List<UserEntity> user, int count)? success,
     TResult? Function(String message)? failure,
     TResult? Function()? loginSuccess,
-    TResult? Function()? tokenValid,
-    TResult? Function()? tokenInvalid,
   }) {
     return loading?.call();
   }
@@ -315,8 +287,6 @@ class _$LoadingImpl implements _Loading {
     TResult Function(List<UserEntity> user, int count)? success,
     TResult Function(String message)? failure,
     TResult Function()? loginSuccess,
-    TResult Function()? tokenValid,
-    TResult Function()? tokenInvalid,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -333,8 +303,6 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
     required TResult Function(_LoginSuccess value) loginSuccess,
-    required TResult Function(_TokenValid value) tokenValid,
-    required TResult Function(_TokenInvalid value) tokenInvalid,
   }) {
     return loading(this);
   }
@@ -347,8 +315,6 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_LoginSuccess value)? loginSuccess,
-    TResult? Function(_TokenValid value)? tokenValid,
-    TResult? Function(_TokenInvalid value)? tokenInvalid,
   }) {
     return loading?.call(this);
   }
@@ -361,8 +327,6 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     TResult Function(_LoginSuccess value)? loginSuccess,
-    TResult Function(_TokenValid value)? tokenValid,
-    TResult Function(_TokenInvalid value)? tokenInvalid,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -466,8 +430,6 @@ class _$SuccessImpl implements _Success {
     required TResult Function(List<UserEntity> user, int count) success,
     required TResult Function(String message) failure,
     required TResult Function() loginSuccess,
-    required TResult Function() tokenValid,
-    required TResult Function() tokenInvalid,
   }) {
     return success(user, count);
   }
@@ -480,8 +442,6 @@ class _$SuccessImpl implements _Success {
     TResult? Function(List<UserEntity> user, int count)? success,
     TResult? Function(String message)? failure,
     TResult? Function()? loginSuccess,
-    TResult? Function()? tokenValid,
-    TResult? Function()? tokenInvalid,
   }) {
     return success?.call(user, count);
   }
@@ -494,8 +454,6 @@ class _$SuccessImpl implements _Success {
     TResult Function(List<UserEntity> user, int count)? success,
     TResult Function(String message)? failure,
     TResult Function()? loginSuccess,
-    TResult Function()? tokenValid,
-    TResult Function()? tokenInvalid,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -512,8 +470,6 @@ class _$SuccessImpl implements _Success {
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
     required TResult Function(_LoginSuccess value) loginSuccess,
-    required TResult Function(_TokenValid value) tokenValid,
-    required TResult Function(_TokenInvalid value) tokenInvalid,
   }) {
     return success(this);
   }
@@ -526,8 +482,6 @@ class _$SuccessImpl implements _Success {
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_LoginSuccess value)? loginSuccess,
-    TResult? Function(_TokenValid value)? tokenValid,
-    TResult? Function(_TokenInvalid value)? tokenInvalid,
   }) {
     return success?.call(this);
   }
@@ -540,8 +494,6 @@ class _$SuccessImpl implements _Success {
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     TResult Function(_LoginSuccess value)? loginSuccess,
-    TResult Function(_TokenValid value)? tokenValid,
-    TResult Function(_TokenInvalid value)? tokenInvalid,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -639,8 +591,6 @@ class _$FailureImpl implements _Failure {
     required TResult Function(List<UserEntity> user, int count) success,
     required TResult Function(String message) failure,
     required TResult Function() loginSuccess,
-    required TResult Function() tokenValid,
-    required TResult Function() tokenInvalid,
   }) {
     return failure(message);
   }
@@ -653,8 +603,6 @@ class _$FailureImpl implements _Failure {
     TResult? Function(List<UserEntity> user, int count)? success,
     TResult? Function(String message)? failure,
     TResult? Function()? loginSuccess,
-    TResult? Function()? tokenValid,
-    TResult? Function()? tokenInvalid,
   }) {
     return failure?.call(message);
   }
@@ -667,8 +615,6 @@ class _$FailureImpl implements _Failure {
     TResult Function(List<UserEntity> user, int count)? success,
     TResult Function(String message)? failure,
     TResult Function()? loginSuccess,
-    TResult Function()? tokenValid,
-    TResult Function()? tokenInvalid,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -685,8 +631,6 @@ class _$FailureImpl implements _Failure {
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
     required TResult Function(_LoginSuccess value) loginSuccess,
-    required TResult Function(_TokenValid value) tokenValid,
-    required TResult Function(_TokenInvalid value) tokenInvalid,
   }) {
     return failure(this);
   }
@@ -699,8 +643,6 @@ class _$FailureImpl implements _Failure {
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_LoginSuccess value)? loginSuccess,
-    TResult? Function(_TokenValid value)? tokenValid,
-    TResult? Function(_TokenInvalid value)? tokenInvalid,
   }) {
     return failure?.call(this);
   }
@@ -713,8 +655,6 @@ class _$FailureImpl implements _Failure {
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     TResult Function(_LoginSuccess value)? loginSuccess,
-    TResult Function(_TokenValid value)? tokenValid,
-    TResult Function(_TokenInvalid value)? tokenInvalid,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -782,8 +722,6 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     required TResult Function(List<UserEntity> user, int count) success,
     required TResult Function(String message) failure,
     required TResult Function() loginSuccess,
-    required TResult Function() tokenValid,
-    required TResult Function() tokenInvalid,
   }) {
     return loginSuccess();
   }
@@ -796,8 +734,6 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     TResult? Function(List<UserEntity> user, int count)? success,
     TResult? Function(String message)? failure,
     TResult? Function()? loginSuccess,
-    TResult? Function()? tokenValid,
-    TResult? Function()? tokenInvalid,
   }) {
     return loginSuccess?.call();
   }
@@ -810,8 +746,6 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     TResult Function(List<UserEntity> user, int count)? success,
     TResult Function(String message)? failure,
     TResult Function()? loginSuccess,
-    TResult Function()? tokenValid,
-    TResult Function()? tokenInvalid,
     required TResult orElse(),
   }) {
     if (loginSuccess != null) {
@@ -828,8 +762,6 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
     required TResult Function(_LoginSuccess value) loginSuccess,
-    required TResult Function(_TokenValid value) tokenValid,
-    required TResult Function(_TokenInvalid value) tokenInvalid,
   }) {
     return loginSuccess(this);
   }
@@ -842,8 +774,6 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_LoginSuccess value)? loginSuccess,
-    TResult? Function(_TokenValid value)? tokenValid,
-    TResult? Function(_TokenInvalid value)? tokenInvalid,
   }) {
     return loginSuccess?.call(this);
   }
@@ -856,8 +786,6 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     TResult Function(_LoginSuccess value)? loginSuccess,
-    TResult Function(_TokenValid value)? tokenValid,
-    TResult Function(_TokenInvalid value)? tokenInvalid,
     required TResult orElse(),
   }) {
     if (loginSuccess != null) {
@@ -869,274 +797,4 @@ class _$LoginSuccessImpl implements _LoginSuccess {
 
 abstract class _LoginSuccess implements UserState {
   const factory _LoginSuccess() = _$LoginSuccessImpl;
-}
-
-/// @nodoc
-abstract class _$$TokenValidImplCopyWith<$Res> {
-  factory _$$TokenValidImplCopyWith(
-          _$TokenValidImpl value, $Res Function(_$TokenValidImpl) then) =
-      __$$TokenValidImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$TokenValidImplCopyWithImpl<$Res>
-    extends _$UserStateCopyWithImpl<$Res, _$TokenValidImpl>
-    implements _$$TokenValidImplCopyWith<$Res> {
-  __$$TokenValidImplCopyWithImpl(
-      _$TokenValidImpl _value, $Res Function(_$TokenValidImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of UserState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$TokenValidImpl implements _TokenValid {
-  const _$TokenValidImpl();
-
-  @override
-  String toString() {
-    return 'UserState.tokenValid()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$TokenValidImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<UserEntity> user, int count) success,
-    required TResult Function(String message) failure,
-    required TResult Function() loginSuccess,
-    required TResult Function() tokenValid,
-    required TResult Function() tokenInvalid,
-  }) {
-    return tokenValid();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<UserEntity> user, int count)? success,
-    TResult? Function(String message)? failure,
-    TResult? Function()? loginSuccess,
-    TResult? Function()? tokenValid,
-    TResult? Function()? tokenInvalid,
-  }) {
-    return tokenValid?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<UserEntity> user, int count)? success,
-    TResult Function(String message)? failure,
-    TResult Function()? loginSuccess,
-    TResult Function()? tokenValid,
-    TResult Function()? tokenInvalid,
-    required TResult orElse(),
-  }) {
-    if (tokenValid != null) {
-      return tokenValid();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-    required TResult Function(_LoginSuccess value) loginSuccess,
-    required TResult Function(_TokenValid value) tokenValid,
-    required TResult Function(_TokenInvalid value) tokenInvalid,
-  }) {
-    return tokenValid(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-    TResult? Function(_LoginSuccess value)? loginSuccess,
-    TResult? Function(_TokenValid value)? tokenValid,
-    TResult? Function(_TokenInvalid value)? tokenInvalid,
-  }) {
-    return tokenValid?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    TResult Function(_LoginSuccess value)? loginSuccess,
-    TResult Function(_TokenValid value)? tokenValid,
-    TResult Function(_TokenInvalid value)? tokenInvalid,
-    required TResult orElse(),
-  }) {
-    if (tokenValid != null) {
-      return tokenValid(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _TokenValid implements UserState {
-  const factory _TokenValid() = _$TokenValidImpl;
-}
-
-/// @nodoc
-abstract class _$$TokenInvalidImplCopyWith<$Res> {
-  factory _$$TokenInvalidImplCopyWith(
-          _$TokenInvalidImpl value, $Res Function(_$TokenInvalidImpl) then) =
-      __$$TokenInvalidImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$TokenInvalidImplCopyWithImpl<$Res>
-    extends _$UserStateCopyWithImpl<$Res, _$TokenInvalidImpl>
-    implements _$$TokenInvalidImplCopyWith<$Res> {
-  __$$TokenInvalidImplCopyWithImpl(
-      _$TokenInvalidImpl _value, $Res Function(_$TokenInvalidImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of UserState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$TokenInvalidImpl implements _TokenInvalid {
-  const _$TokenInvalidImpl();
-
-  @override
-  String toString() {
-    return 'UserState.tokenInvalid()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$TokenInvalidImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<UserEntity> user, int count) success,
-    required TResult Function(String message) failure,
-    required TResult Function() loginSuccess,
-    required TResult Function() tokenValid,
-    required TResult Function() tokenInvalid,
-  }) {
-    return tokenInvalid();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<UserEntity> user, int count)? success,
-    TResult? Function(String message)? failure,
-    TResult? Function()? loginSuccess,
-    TResult? Function()? tokenValid,
-    TResult? Function()? tokenInvalid,
-  }) {
-    return tokenInvalid?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<UserEntity> user, int count)? success,
-    TResult Function(String message)? failure,
-    TResult Function()? loginSuccess,
-    TResult Function()? tokenValid,
-    TResult Function()? tokenInvalid,
-    required TResult orElse(),
-  }) {
-    if (tokenInvalid != null) {
-      return tokenInvalid();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-    required TResult Function(_LoginSuccess value) loginSuccess,
-    required TResult Function(_TokenValid value) tokenValid,
-    required TResult Function(_TokenInvalid value) tokenInvalid,
-  }) {
-    return tokenInvalid(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-    TResult? Function(_LoginSuccess value)? loginSuccess,
-    TResult? Function(_TokenValid value)? tokenValid,
-    TResult? Function(_TokenInvalid value)? tokenInvalid,
-  }) {
-    return tokenInvalid?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    TResult Function(_LoginSuccess value)? loginSuccess,
-    TResult Function(_TokenValid value)? tokenValid,
-    TResult Function(_TokenInvalid value)? tokenInvalid,
-    required TResult orElse(),
-  }) {
-    if (tokenInvalid != null) {
-      return tokenInvalid(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _TokenInvalid implements UserState {
-  const factory _TokenInvalid() = _$TokenInvalidImpl;
 }

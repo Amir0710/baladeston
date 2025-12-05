@@ -1,9 +1,9 @@
 import 'package:baladeston/domain/repositories/user_repository.dart';
 
-class CheckUserExistsUsecase {
+class CheckUserExistsUseCase {
   final UserRepository repository;
 
-  CheckUserExistsUsecase(this.repository);
+  CheckUserExistsUseCase(this.repository);
 
   Future<bool> call({required String phoneNumber}) {
     return repository.checkUserExists(phoneNumber : phoneNumber);

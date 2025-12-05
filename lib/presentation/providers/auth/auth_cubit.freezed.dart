@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'verify_cubit.dart';
+part of 'auth_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$VerifyState {
+mixin _$AuthState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -24,6 +24,9 @@ mixin _$VerifyState {
     required TResult Function() success,
     required TResult Function(String message) failure,
     required TResult Function() resendSuccess,
+    required TResult Function() tokenValid,
+    required TResult Function() tokenInvalid,
+    required TResult Function() otpVerified,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +37,9 @@ mixin _$VerifyState {
     TResult? Function()? success,
     TResult? Function(String message)? failure,
     TResult? Function()? resendSuccess,
+    TResult? Function()? tokenValid,
+    TResult? Function()? tokenInvalid,
+    TResult? Function()? otpVerified,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +50,9 @@ mixin _$VerifyState {
     TResult Function()? success,
     TResult Function(String message)? failure,
     TResult Function()? resendSuccess,
+    TResult Function()? tokenValid,
+    TResult Function()? tokenInvalid,
+    TResult Function()? otpVerified,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +64,9 @@ mixin _$VerifyState {
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
     required TResult Function(_ResendSuccess value) resendSuccess,
+    required TResult Function(_TokenValid value) tokenValid,
+    required TResult Function(_TokenInvalid value) tokenInvalid,
+    required TResult Function(_OtpVerified value) otpVerified,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +77,9 @@ mixin _$VerifyState {
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_ResendSuccess value)? resendSuccess,
+    TResult? Function(_TokenValid value)? tokenValid,
+    TResult? Function(_TokenInvalid value)? tokenInvalid,
+    TResult? Function(_OtpVerified value)? otpVerified,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,29 +90,31 @@ mixin _$VerifyState {
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     TResult Function(_ResendSuccess value)? resendSuccess,
+    TResult Function(_TokenValid value)? tokenValid,
+    TResult Function(_TokenInvalid value)? tokenInvalid,
+    TResult Function(_OtpVerified value)? otpVerified,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $VerifyStateCopyWith<$Res> {
-  factory $VerifyStateCopyWith(
-          VerifyState value, $Res Function(VerifyState) then) =
-      _$VerifyStateCopyWithImpl<$Res, VerifyState>;
+abstract class $AuthStateCopyWith<$Res> {
+  factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
+      _$AuthStateCopyWithImpl<$Res, AuthState>;
 }
 
 /// @nodoc
-class _$VerifyStateCopyWithImpl<$Res, $Val extends VerifyState>
-    implements $VerifyStateCopyWith<$Res> {
-  _$VerifyStateCopyWithImpl(this._value, this._then);
+class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
+    implements $AuthStateCopyWith<$Res> {
+  _$AuthStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of VerifyState
+  /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -110,13 +127,13 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$VerifyStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$AuthStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of VerifyState
+  /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -127,7 +144,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'VerifyState.initial()';
+    return 'AuthState.initial()';
   }
 
   @override
@@ -148,6 +165,9 @@ class _$InitialImpl implements _Initial {
     required TResult Function() success,
     required TResult Function(String message) failure,
     required TResult Function() resendSuccess,
+    required TResult Function() tokenValid,
+    required TResult Function() tokenInvalid,
+    required TResult Function() otpVerified,
   }) {
     return initial();
   }
@@ -161,6 +181,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? success,
     TResult? Function(String message)? failure,
     TResult? Function()? resendSuccess,
+    TResult? Function()? tokenValid,
+    TResult? Function()? tokenInvalid,
+    TResult? Function()? otpVerified,
   }) {
     return initial?.call();
   }
@@ -174,6 +197,9 @@ class _$InitialImpl implements _Initial {
     TResult Function()? success,
     TResult Function(String message)? failure,
     TResult Function()? resendSuccess,
+    TResult Function()? tokenValid,
+    TResult Function()? tokenInvalid,
+    TResult Function()? otpVerified,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -191,6 +217,9 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
     required TResult Function(_ResendSuccess value) resendSuccess,
+    required TResult Function(_TokenValid value) tokenValid,
+    required TResult Function(_TokenInvalid value) tokenInvalid,
+    required TResult Function(_OtpVerified value) otpVerified,
   }) {
     return initial(this);
   }
@@ -204,6 +233,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_ResendSuccess value)? resendSuccess,
+    TResult? Function(_TokenValid value)? tokenValid,
+    TResult? Function(_TokenInvalid value)? tokenInvalid,
+    TResult? Function(_OtpVerified value)? otpVerified,
   }) {
     return initial?.call(this);
   }
@@ -217,6 +249,9 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     TResult Function(_ResendSuccess value)? resendSuccess,
+    TResult Function(_TokenValid value)? tokenValid,
+    TResult Function(_TokenInvalid value)? tokenInvalid,
+    TResult Function(_OtpVerified value)? otpVerified,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -226,7 +261,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements VerifyState {
+abstract class _Initial implements AuthState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -239,13 +274,13 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$VerifyStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$AuthStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of VerifyState
+  /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -256,7 +291,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'VerifyState.loading()';
+    return 'AuthState.loading()';
   }
 
   @override
@@ -277,6 +312,9 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() success,
     required TResult Function(String message) failure,
     required TResult Function() resendSuccess,
+    required TResult Function() tokenValid,
+    required TResult Function() tokenInvalid,
+    required TResult Function() otpVerified,
   }) {
     return loading();
   }
@@ -290,6 +328,9 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? success,
     TResult? Function(String message)? failure,
     TResult? Function()? resendSuccess,
+    TResult? Function()? tokenValid,
+    TResult? Function()? tokenInvalid,
+    TResult? Function()? otpVerified,
   }) {
     return loading?.call();
   }
@@ -303,6 +344,9 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? success,
     TResult Function(String message)? failure,
     TResult Function()? resendSuccess,
+    TResult Function()? tokenValid,
+    TResult Function()? tokenInvalid,
+    TResult Function()? otpVerified,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -320,6 +364,9 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
     required TResult Function(_ResendSuccess value) resendSuccess,
+    required TResult Function(_TokenValid value) tokenValid,
+    required TResult Function(_TokenInvalid value) tokenInvalid,
+    required TResult Function(_OtpVerified value) otpVerified,
   }) {
     return loading(this);
   }
@@ -333,6 +380,9 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_ResendSuccess value)? resendSuccess,
+    TResult? Function(_TokenValid value)? tokenValid,
+    TResult? Function(_TokenInvalid value)? tokenInvalid,
+    TResult? Function(_OtpVerified value)? otpVerified,
   }) {
     return loading?.call(this);
   }
@@ -346,6 +396,9 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     TResult Function(_ResendSuccess value)? resendSuccess,
+    TResult Function(_TokenValid value)? tokenValid,
+    TResult Function(_TokenInvalid value)? tokenInvalid,
+    TResult Function(_OtpVerified value)? otpVerified,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -355,7 +408,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements VerifyState {
+abstract class _Loading implements AuthState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -368,13 +421,13 @@ abstract class _$$CodeSentImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$CodeSentImplCopyWithImpl<$Res>
-    extends _$VerifyStateCopyWithImpl<$Res, _$CodeSentImpl>
+    extends _$AuthStateCopyWithImpl<$Res, _$CodeSentImpl>
     implements _$$CodeSentImplCopyWith<$Res> {
   __$$CodeSentImplCopyWithImpl(
       _$CodeSentImpl _value, $Res Function(_$CodeSentImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of VerifyState
+  /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -385,7 +438,7 @@ class _$CodeSentImpl implements _CodeSent {
 
   @override
   String toString() {
-    return 'VerifyState.codeSent()';
+    return 'AuthState.codeSent()';
   }
 
   @override
@@ -406,6 +459,9 @@ class _$CodeSentImpl implements _CodeSent {
     required TResult Function() success,
     required TResult Function(String message) failure,
     required TResult Function() resendSuccess,
+    required TResult Function() tokenValid,
+    required TResult Function() tokenInvalid,
+    required TResult Function() otpVerified,
   }) {
     return codeSent();
   }
@@ -419,6 +475,9 @@ class _$CodeSentImpl implements _CodeSent {
     TResult? Function()? success,
     TResult? Function(String message)? failure,
     TResult? Function()? resendSuccess,
+    TResult? Function()? tokenValid,
+    TResult? Function()? tokenInvalid,
+    TResult? Function()? otpVerified,
   }) {
     return codeSent?.call();
   }
@@ -432,6 +491,9 @@ class _$CodeSentImpl implements _CodeSent {
     TResult Function()? success,
     TResult Function(String message)? failure,
     TResult Function()? resendSuccess,
+    TResult Function()? tokenValid,
+    TResult Function()? tokenInvalid,
+    TResult Function()? otpVerified,
     required TResult orElse(),
   }) {
     if (codeSent != null) {
@@ -449,6 +511,9 @@ class _$CodeSentImpl implements _CodeSent {
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
     required TResult Function(_ResendSuccess value) resendSuccess,
+    required TResult Function(_TokenValid value) tokenValid,
+    required TResult Function(_TokenInvalid value) tokenInvalid,
+    required TResult Function(_OtpVerified value) otpVerified,
   }) {
     return codeSent(this);
   }
@@ -462,6 +527,9 @@ class _$CodeSentImpl implements _CodeSent {
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_ResendSuccess value)? resendSuccess,
+    TResult? Function(_TokenValid value)? tokenValid,
+    TResult? Function(_TokenInvalid value)? tokenInvalid,
+    TResult? Function(_OtpVerified value)? otpVerified,
   }) {
     return codeSent?.call(this);
   }
@@ -475,6 +543,9 @@ class _$CodeSentImpl implements _CodeSent {
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     TResult Function(_ResendSuccess value)? resendSuccess,
+    TResult Function(_TokenValid value)? tokenValid,
+    TResult Function(_TokenInvalid value)? tokenInvalid,
+    TResult Function(_OtpVerified value)? otpVerified,
     required TResult orElse(),
   }) {
     if (codeSent != null) {
@@ -484,7 +555,7 @@ class _$CodeSentImpl implements _CodeSent {
   }
 }
 
-abstract class _CodeSent implements VerifyState {
+abstract class _CodeSent implements AuthState {
   const factory _CodeSent() = _$CodeSentImpl;
 }
 
@@ -497,13 +568,13 @@ abstract class _$$SuccessImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$VerifyStateCopyWithImpl<$Res, _$SuccessImpl>
+    extends _$AuthStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of VerifyState
+  /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -514,7 +585,7 @@ class _$SuccessImpl implements _Success {
 
   @override
   String toString() {
-    return 'VerifyState.success()';
+    return 'AuthState.success()';
   }
 
   @override
@@ -535,6 +606,9 @@ class _$SuccessImpl implements _Success {
     required TResult Function() success,
     required TResult Function(String message) failure,
     required TResult Function() resendSuccess,
+    required TResult Function() tokenValid,
+    required TResult Function() tokenInvalid,
+    required TResult Function() otpVerified,
   }) {
     return success();
   }
@@ -548,6 +622,9 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? success,
     TResult? Function(String message)? failure,
     TResult? Function()? resendSuccess,
+    TResult? Function()? tokenValid,
+    TResult? Function()? tokenInvalid,
+    TResult? Function()? otpVerified,
   }) {
     return success?.call();
   }
@@ -561,6 +638,9 @@ class _$SuccessImpl implements _Success {
     TResult Function()? success,
     TResult Function(String message)? failure,
     TResult Function()? resendSuccess,
+    TResult Function()? tokenValid,
+    TResult Function()? tokenInvalid,
+    TResult Function()? otpVerified,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -578,6 +658,9 @@ class _$SuccessImpl implements _Success {
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
     required TResult Function(_ResendSuccess value) resendSuccess,
+    required TResult Function(_TokenValid value) tokenValid,
+    required TResult Function(_TokenInvalid value) tokenInvalid,
+    required TResult Function(_OtpVerified value) otpVerified,
   }) {
     return success(this);
   }
@@ -591,6 +674,9 @@ class _$SuccessImpl implements _Success {
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_ResendSuccess value)? resendSuccess,
+    TResult? Function(_TokenValid value)? tokenValid,
+    TResult? Function(_TokenInvalid value)? tokenInvalid,
+    TResult? Function(_OtpVerified value)? otpVerified,
   }) {
     return success?.call(this);
   }
@@ -604,6 +690,9 @@ class _$SuccessImpl implements _Success {
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     TResult Function(_ResendSuccess value)? resendSuccess,
+    TResult Function(_TokenValid value)? tokenValid,
+    TResult Function(_TokenInvalid value)? tokenInvalid,
+    TResult Function(_OtpVerified value)? otpVerified,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -613,7 +702,7 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements VerifyState {
+abstract class _Success implements AuthState {
   const factory _Success() = _$SuccessImpl;
 }
 
@@ -628,13 +717,13 @@ abstract class _$$FailureImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FailureImplCopyWithImpl<$Res>
-    extends _$VerifyStateCopyWithImpl<$Res, _$FailureImpl>
+    extends _$AuthStateCopyWithImpl<$Res, _$FailureImpl>
     implements _$$FailureImplCopyWith<$Res> {
   __$$FailureImplCopyWithImpl(
       _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of VerifyState
+  /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -660,7 +749,7 @@ class _$FailureImpl implements _Failure {
 
   @override
   String toString() {
-    return 'VerifyState.failure(message: $message)';
+    return 'AuthState.failure(message: $message)';
   }
 
   @override
@@ -674,7 +763,7 @@ class _$FailureImpl implements _Failure {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of VerifyState
+  /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -691,6 +780,9 @@ class _$FailureImpl implements _Failure {
     required TResult Function() success,
     required TResult Function(String message) failure,
     required TResult Function() resendSuccess,
+    required TResult Function() tokenValid,
+    required TResult Function() tokenInvalid,
+    required TResult Function() otpVerified,
   }) {
     return failure(message);
   }
@@ -704,6 +796,9 @@ class _$FailureImpl implements _Failure {
     TResult? Function()? success,
     TResult? Function(String message)? failure,
     TResult? Function()? resendSuccess,
+    TResult? Function()? tokenValid,
+    TResult? Function()? tokenInvalid,
+    TResult? Function()? otpVerified,
   }) {
     return failure?.call(message);
   }
@@ -717,6 +812,9 @@ class _$FailureImpl implements _Failure {
     TResult Function()? success,
     TResult Function(String message)? failure,
     TResult Function()? resendSuccess,
+    TResult Function()? tokenValid,
+    TResult Function()? tokenInvalid,
+    TResult Function()? otpVerified,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -734,6 +832,9 @@ class _$FailureImpl implements _Failure {
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
     required TResult Function(_ResendSuccess value) resendSuccess,
+    required TResult Function(_TokenValid value) tokenValid,
+    required TResult Function(_TokenInvalid value) tokenInvalid,
+    required TResult Function(_OtpVerified value) otpVerified,
   }) {
     return failure(this);
   }
@@ -747,6 +848,9 @@ class _$FailureImpl implements _Failure {
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_ResendSuccess value)? resendSuccess,
+    TResult? Function(_TokenValid value)? tokenValid,
+    TResult? Function(_TokenInvalid value)? tokenInvalid,
+    TResult? Function(_OtpVerified value)? otpVerified,
   }) {
     return failure?.call(this);
   }
@@ -760,6 +864,9 @@ class _$FailureImpl implements _Failure {
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     TResult Function(_ResendSuccess value)? resendSuccess,
+    TResult Function(_TokenValid value)? tokenValid,
+    TResult Function(_TokenInvalid value)? tokenInvalid,
+    TResult Function(_OtpVerified value)? otpVerified,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -769,12 +876,12 @@ class _$FailureImpl implements _Failure {
   }
 }
 
-abstract class _Failure implements VerifyState {
+abstract class _Failure implements AuthState {
   const factory _Failure(final String message) = _$FailureImpl;
 
   String get message;
 
-  /// Create a copy of VerifyState
+  /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
@@ -790,13 +897,13 @@ abstract class _$$ResendSuccessImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ResendSuccessImplCopyWithImpl<$Res>
-    extends _$VerifyStateCopyWithImpl<$Res, _$ResendSuccessImpl>
+    extends _$AuthStateCopyWithImpl<$Res, _$ResendSuccessImpl>
     implements _$$ResendSuccessImplCopyWith<$Res> {
   __$$ResendSuccessImplCopyWithImpl(
       _$ResendSuccessImpl _value, $Res Function(_$ResendSuccessImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of VerifyState
+  /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -807,7 +914,7 @@ class _$ResendSuccessImpl implements _ResendSuccess {
 
   @override
   String toString() {
-    return 'VerifyState.resendSuccess()';
+    return 'AuthState.resendSuccess()';
   }
 
   @override
@@ -828,6 +935,9 @@ class _$ResendSuccessImpl implements _ResendSuccess {
     required TResult Function() success,
     required TResult Function(String message) failure,
     required TResult Function() resendSuccess,
+    required TResult Function() tokenValid,
+    required TResult Function() tokenInvalid,
+    required TResult Function() otpVerified,
   }) {
     return resendSuccess();
   }
@@ -841,6 +951,9 @@ class _$ResendSuccessImpl implements _ResendSuccess {
     TResult? Function()? success,
     TResult? Function(String message)? failure,
     TResult? Function()? resendSuccess,
+    TResult? Function()? tokenValid,
+    TResult? Function()? tokenInvalid,
+    TResult? Function()? otpVerified,
   }) {
     return resendSuccess?.call();
   }
@@ -854,6 +967,9 @@ class _$ResendSuccessImpl implements _ResendSuccess {
     TResult Function()? success,
     TResult Function(String message)? failure,
     TResult Function()? resendSuccess,
+    TResult Function()? tokenValid,
+    TResult Function()? tokenInvalid,
+    TResult Function()? otpVerified,
     required TResult orElse(),
   }) {
     if (resendSuccess != null) {
@@ -871,6 +987,9 @@ class _$ResendSuccessImpl implements _ResendSuccess {
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
     required TResult Function(_ResendSuccess value) resendSuccess,
+    required TResult Function(_TokenValid value) tokenValid,
+    required TResult Function(_TokenInvalid value) tokenInvalid,
+    required TResult Function(_OtpVerified value) otpVerified,
   }) {
     return resendSuccess(this);
   }
@@ -884,6 +1003,9 @@ class _$ResendSuccessImpl implements _ResendSuccess {
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_ResendSuccess value)? resendSuccess,
+    TResult? Function(_TokenValid value)? tokenValid,
+    TResult? Function(_TokenInvalid value)? tokenInvalid,
+    TResult? Function(_OtpVerified value)? otpVerified,
   }) {
     return resendSuccess?.call(this);
   }
@@ -897,6 +1019,9 @@ class _$ResendSuccessImpl implements _ResendSuccess {
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     TResult Function(_ResendSuccess value)? resendSuccess,
+    TResult Function(_TokenValid value)? tokenValid,
+    TResult Function(_TokenInvalid value)? tokenInvalid,
+    TResult Function(_OtpVerified value)? otpVerified,
     required TResult orElse(),
   }) {
     if (resendSuccess != null) {
@@ -906,6 +1031,447 @@ class _$ResendSuccessImpl implements _ResendSuccess {
   }
 }
 
-abstract class _ResendSuccess implements VerifyState {
+abstract class _ResendSuccess implements AuthState {
   const factory _ResendSuccess() = _$ResendSuccessImpl;
+}
+
+/// @nodoc
+abstract class _$$TokenValidImplCopyWith<$Res> {
+  factory _$$TokenValidImplCopyWith(
+          _$TokenValidImpl value, $Res Function(_$TokenValidImpl) then) =
+      __$$TokenValidImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$TokenValidImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$TokenValidImpl>
+    implements _$$TokenValidImplCopyWith<$Res> {
+  __$$TokenValidImplCopyWithImpl(
+      _$TokenValidImpl _value, $Res Function(_$TokenValidImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$TokenValidImpl implements _TokenValid {
+  const _$TokenValidImpl();
+
+  @override
+  String toString() {
+    return 'AuthState.tokenValid()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$TokenValidImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() codeSent,
+    required TResult Function() success,
+    required TResult Function(String message) failure,
+    required TResult Function() resendSuccess,
+    required TResult Function() tokenValid,
+    required TResult Function() tokenInvalid,
+    required TResult Function() otpVerified,
+  }) {
+    return tokenValid();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? codeSent,
+    TResult? Function()? success,
+    TResult? Function(String message)? failure,
+    TResult? Function()? resendSuccess,
+    TResult? Function()? tokenValid,
+    TResult? Function()? tokenInvalid,
+    TResult? Function()? otpVerified,
+  }) {
+    return tokenValid?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? codeSent,
+    TResult Function()? success,
+    TResult Function(String message)? failure,
+    TResult Function()? resendSuccess,
+    TResult Function()? tokenValid,
+    TResult Function()? tokenInvalid,
+    TResult Function()? otpVerified,
+    required TResult orElse(),
+  }) {
+    if (tokenValid != null) {
+      return tokenValid();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_CodeSent value) codeSent,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+    required TResult Function(_ResendSuccess value) resendSuccess,
+    required TResult Function(_TokenValid value) tokenValid,
+    required TResult Function(_TokenInvalid value) tokenInvalid,
+    required TResult Function(_OtpVerified value) otpVerified,
+  }) {
+    return tokenValid(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_CodeSent value)? codeSent,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+    TResult? Function(_ResendSuccess value)? resendSuccess,
+    TResult? Function(_TokenValid value)? tokenValid,
+    TResult? Function(_TokenInvalid value)? tokenInvalid,
+    TResult? Function(_OtpVerified value)? otpVerified,
+  }) {
+    return tokenValid?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_CodeSent value)? codeSent,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
+    TResult Function(_ResendSuccess value)? resendSuccess,
+    TResult Function(_TokenValid value)? tokenValid,
+    TResult Function(_TokenInvalid value)? tokenInvalid,
+    TResult Function(_OtpVerified value)? otpVerified,
+    required TResult orElse(),
+  }) {
+    if (tokenValid != null) {
+      return tokenValid(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TokenValid implements AuthState {
+  const factory _TokenValid() = _$TokenValidImpl;
+}
+
+/// @nodoc
+abstract class _$$TokenInvalidImplCopyWith<$Res> {
+  factory _$$TokenInvalidImplCopyWith(
+          _$TokenInvalidImpl value, $Res Function(_$TokenInvalidImpl) then) =
+      __$$TokenInvalidImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$TokenInvalidImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$TokenInvalidImpl>
+    implements _$$TokenInvalidImplCopyWith<$Res> {
+  __$$TokenInvalidImplCopyWithImpl(
+      _$TokenInvalidImpl _value, $Res Function(_$TokenInvalidImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$TokenInvalidImpl implements _TokenInvalid {
+  const _$TokenInvalidImpl();
+
+  @override
+  String toString() {
+    return 'AuthState.tokenInvalid()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$TokenInvalidImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() codeSent,
+    required TResult Function() success,
+    required TResult Function(String message) failure,
+    required TResult Function() resendSuccess,
+    required TResult Function() tokenValid,
+    required TResult Function() tokenInvalid,
+    required TResult Function() otpVerified,
+  }) {
+    return tokenInvalid();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? codeSent,
+    TResult? Function()? success,
+    TResult? Function(String message)? failure,
+    TResult? Function()? resendSuccess,
+    TResult? Function()? tokenValid,
+    TResult? Function()? tokenInvalid,
+    TResult? Function()? otpVerified,
+  }) {
+    return tokenInvalid?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? codeSent,
+    TResult Function()? success,
+    TResult Function(String message)? failure,
+    TResult Function()? resendSuccess,
+    TResult Function()? tokenValid,
+    TResult Function()? tokenInvalid,
+    TResult Function()? otpVerified,
+    required TResult orElse(),
+  }) {
+    if (tokenInvalid != null) {
+      return tokenInvalid();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_CodeSent value) codeSent,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+    required TResult Function(_ResendSuccess value) resendSuccess,
+    required TResult Function(_TokenValid value) tokenValid,
+    required TResult Function(_TokenInvalid value) tokenInvalid,
+    required TResult Function(_OtpVerified value) otpVerified,
+  }) {
+    return tokenInvalid(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_CodeSent value)? codeSent,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+    TResult? Function(_ResendSuccess value)? resendSuccess,
+    TResult? Function(_TokenValid value)? tokenValid,
+    TResult? Function(_TokenInvalid value)? tokenInvalid,
+    TResult? Function(_OtpVerified value)? otpVerified,
+  }) {
+    return tokenInvalid?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_CodeSent value)? codeSent,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
+    TResult Function(_ResendSuccess value)? resendSuccess,
+    TResult Function(_TokenValid value)? tokenValid,
+    TResult Function(_TokenInvalid value)? tokenInvalid,
+    TResult Function(_OtpVerified value)? otpVerified,
+    required TResult orElse(),
+  }) {
+    if (tokenInvalid != null) {
+      return tokenInvalid(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TokenInvalid implements AuthState {
+  const factory _TokenInvalid() = _$TokenInvalidImpl;
+}
+
+/// @nodoc
+abstract class _$$OtpVerifiedImplCopyWith<$Res> {
+  factory _$$OtpVerifiedImplCopyWith(
+          _$OtpVerifiedImpl value, $Res Function(_$OtpVerifiedImpl) then) =
+      __$$OtpVerifiedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$OtpVerifiedImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$OtpVerifiedImpl>
+    implements _$$OtpVerifiedImplCopyWith<$Res> {
+  __$$OtpVerifiedImplCopyWithImpl(
+      _$OtpVerifiedImpl _value, $Res Function(_$OtpVerifiedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$OtpVerifiedImpl implements _OtpVerified {
+  const _$OtpVerifiedImpl();
+
+  @override
+  String toString() {
+    return 'AuthState.otpVerified()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$OtpVerifiedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() codeSent,
+    required TResult Function() success,
+    required TResult Function(String message) failure,
+    required TResult Function() resendSuccess,
+    required TResult Function() tokenValid,
+    required TResult Function() tokenInvalid,
+    required TResult Function() otpVerified,
+  }) {
+    return otpVerified();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? codeSent,
+    TResult? Function()? success,
+    TResult? Function(String message)? failure,
+    TResult? Function()? resendSuccess,
+    TResult? Function()? tokenValid,
+    TResult? Function()? tokenInvalid,
+    TResult? Function()? otpVerified,
+  }) {
+    return otpVerified?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? codeSent,
+    TResult Function()? success,
+    TResult Function(String message)? failure,
+    TResult Function()? resendSuccess,
+    TResult Function()? tokenValid,
+    TResult Function()? tokenInvalid,
+    TResult Function()? otpVerified,
+    required TResult orElse(),
+  }) {
+    if (otpVerified != null) {
+      return otpVerified();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_CodeSent value) codeSent,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+    required TResult Function(_ResendSuccess value) resendSuccess,
+    required TResult Function(_TokenValid value) tokenValid,
+    required TResult Function(_TokenInvalid value) tokenInvalid,
+    required TResult Function(_OtpVerified value) otpVerified,
+  }) {
+    return otpVerified(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_CodeSent value)? codeSent,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+    TResult? Function(_ResendSuccess value)? resendSuccess,
+    TResult? Function(_TokenValid value)? tokenValid,
+    TResult? Function(_TokenInvalid value)? tokenInvalid,
+    TResult? Function(_OtpVerified value)? otpVerified,
+  }) {
+    return otpVerified?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_CodeSent value)? codeSent,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
+    TResult Function(_ResendSuccess value)? resendSuccess,
+    TResult Function(_TokenValid value)? tokenValid,
+    TResult Function(_TokenInvalid value)? tokenInvalid,
+    TResult Function(_OtpVerified value)? otpVerified,
+    required TResult orElse(),
+  }) {
+    if (otpVerified != null) {
+      return otpVerified(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OtpVerified implements AuthState {
+  const factory _OtpVerified() = _$OtpVerifiedImpl;
 }

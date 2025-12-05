@@ -3,6 +3,7 @@ import 'package:baladeston/core/extensions/error_extension.dart';
 import 'package:baladeston/config/app_config.dart';
 import 'package:baladeston/core/storage.dart';
 import 'package:baladeston/data/models/user/user_model.dart';
+import 'package:baladeston/data/models/verification/verification_model.dart';
 import 'package:baladeston/domain/filters/user_query_filter.dart';
 import 'package:baladeston/data/mapper/query_filter/user_query_filter_mapper.dart';
 import 'package:baladeston/data/datasources/remote/user_remote_datasource/user_api.dart';
@@ -229,6 +230,18 @@ class UserApiImplementation implements UserApi {
     } catch (e) {
       throw Exception('خطا در بررسی اعتبار توکن: $e');
     }
+  }
+
+  @override
+  Future<bool> checkUserExists({required String phoneNumber}) {
+    // TODO: implement checkUserExists
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<VerificationModel> sendOtp({required String phoneNumber}) {
+    // TODO: implement sendOtp
+    throw UnimplementedError();
   }
 
 }

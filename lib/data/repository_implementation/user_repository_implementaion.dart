@@ -1,6 +1,8 @@
 import 'package:baladeston/data/datasources/remote/user_remote_datasource/user_api.dart';
 import 'package:baladeston/data/mapper/entity/user_mapper.dart';
+import 'package:baladeston/data/mapper/entity/verification_mapper.dart';
 import 'package:baladeston/domain/entitys/user/user_entity.dart';
+import 'package:baladeston/domain/entitys/verification/verification_entity.dart';
 import 'package:baladeston/domain/filters/user_query_filter.dart';
 import 'package:baladeston/domain/repositories/user_repository.dart';
 
@@ -99,7 +101,22 @@ class UserRepositoryImplementation implements UserRepository {
   }
 
   @override
-  Future<bool> checkUserExists({required String phoneNumber}) {
+  Future<bool> checkUserExists({required String phoneNumber}) async {
+    try {
+      final result = await _api.checkUserExists(phoneNumber: phoneNumber);
+      return result;
+    } catch (e) {
+      throw Exception('error $e');
+    }
+  }
 
+  @override
+  Future<VerificationEntity> sendOtp({required String phoneNumber}) async {
+    try {
+      final resultModel = await _api.sendOtp(phoneNumber: phoneNumber);
+      return resultModel.toEntity();
+    } catch (e) {
+      throw ('error $e');
+    }
   }
 }

@@ -6,7 +6,7 @@ class UpdateUserUseCase {
 
   UpdateUserUseCase(this.repository);
 
-  Future<UserEntity> call(UserEntity user) {
+  Future<UserEntity> call({required UserEntity user}) {
     return repository.updateUser(user: user);
   }
 }

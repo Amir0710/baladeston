@@ -4,10 +4,10 @@ import 'package:baladeston/domain/entitys/verification/verification_entity.dart'
 extension VerificationModelMapper on VerificationModel {
   VerificationEntity toEntity() {
     return VerificationEntity(
-      message: message,
-      otpCode: otpData?.otpCode,
-      expiresIn: otpData?.expiresIn,
-      createdAt: otpData?.createdAt,
+      phone: phone,
+      otpCode: otpCode,
+      expiresIn: expiresIn,
+      createdAt: createdAt,
     );
   }
 }
@@ -15,12 +15,10 @@ extension VerificationModelMapper on VerificationModel {
 extension VerificationEntityMapper on VerificationEntity {
   VerificationModel toModel() {
     return VerificationModel(
-      message: message,
-      otpData: OtpDataModel(
-        otpCode: otpCode,
-        expiresIn: expiresIn,
-        createdAt: createdAt,
-      ),
+      phone: phone,
+      otpCode: otpCode,
+      expiresIn: expiresIn,
+      createdAt: createdAt,
     );
   }
 }
