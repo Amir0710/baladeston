@@ -21,13 +21,10 @@ final getIt = GetIt.instance;
 
 Future<void> initThemeModule() async {
   getIt
-  // Local DataSource
     ..registerLazySingleton<ThemeLocal>(() => ThemeLocalImpl())
 
-  // Remote DataSource
     ..registerLazySingleton<ThemeApi>(() => ThemeApiImplementation())
 
-  // Repository
     ..registerLazySingleton<ThemeRepository>(
           () => ThemeRepositoryImplementation(
         api: getIt<ThemeApi>(),
@@ -35,7 +32,6 @@ Future<void> initThemeModule() async {
       ),
     )
 
-  // UseCases
     ..registerLazySingleton<CreateThemeUseCase>(
           () => CreateThemeUseCase(getIt<ThemeRepository>()),
     )

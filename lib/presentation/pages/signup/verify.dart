@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 class VerificationPage extends StatefulWidget {
-  const VerificationPage({super.key});
+  final String phone ;
+
+  const VerificationPage({super.key, required this.phone});
 
   @override
   State<VerificationPage> createState() => _VerificationPageState();
@@ -61,10 +63,7 @@ class _VerificationPageState extends State<VerificationPage>
       body: SafeArea(
         child: Stack(
           children: [
-            // 🔹 پس‌زمینه دایره‌های رنگی
             ..._buildBackgroundDots(context),
-
-            // 🔹 محتوای اصلی صفحه
             SingleChildScrollView(
               padding:
               const EdgeInsets.symmetric(horizontal: 24, vertical: 32),

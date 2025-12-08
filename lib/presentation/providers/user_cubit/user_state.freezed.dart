@@ -23,6 +23,8 @@ mixin _$UserState {
     required TResult Function(List<UserEntity> user, int count) success,
     required TResult Function(String message) failure,
     required TResult Function() loginSuccess,
+    required TResult Function() userExist,
+    required TResult Function() userNotExist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +34,8 @@ mixin _$UserState {
     TResult? Function(List<UserEntity> user, int count)? success,
     TResult? Function(String message)? failure,
     TResult? Function()? loginSuccess,
+    TResult? Function()? userExist,
+    TResult? Function()? userNotExist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +45,8 @@ mixin _$UserState {
     TResult Function(List<UserEntity> user, int count)? success,
     TResult Function(String message)? failure,
     TResult Function()? loginSuccess,
+    TResult Function()? userExist,
+    TResult Function()? userNotExist,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +57,8 @@ mixin _$UserState {
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
     required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_UserExist value) userExist,
+    required TResult Function(_UserNotExist value) userNotExist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +68,8 @@ mixin _$UserState {
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_UserExist value)? userExist,
+    TResult? Function(_UserNotExist value)? userNotExist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +79,8 @@ mixin _$UserState {
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_UserExist value)? userExist,
+    TResult Function(_UserNotExist value)? userNotExist,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -140,6 +152,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function(List<UserEntity> user, int count) success,
     required TResult Function(String message) failure,
     required TResult Function() loginSuccess,
+    required TResult Function() userExist,
+    required TResult Function() userNotExist,
   }) {
     return initial();
   }
@@ -152,6 +166,8 @@ class _$InitialImpl implements _Initial {
     TResult? Function(List<UserEntity> user, int count)? success,
     TResult? Function(String message)? failure,
     TResult? Function()? loginSuccess,
+    TResult? Function()? userExist,
+    TResult? Function()? userNotExist,
   }) {
     return initial?.call();
   }
@@ -164,6 +180,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(List<UserEntity> user, int count)? success,
     TResult Function(String message)? failure,
     TResult Function()? loginSuccess,
+    TResult Function()? userExist,
+    TResult Function()? userNotExist,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -180,6 +198,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
     required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_UserExist value) userExist,
+    required TResult Function(_UserNotExist value) userNotExist,
   }) {
     return initial(this);
   }
@@ -192,6 +212,8 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_UserExist value)? userExist,
+    TResult? Function(_UserNotExist value)? userNotExist,
   }) {
     return initial?.call(this);
   }
@@ -204,6 +226,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_UserExist value)? userExist,
+    TResult Function(_UserNotExist value)? userNotExist,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -263,6 +287,8 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(List<UserEntity> user, int count) success,
     required TResult Function(String message) failure,
     required TResult Function() loginSuccess,
+    required TResult Function() userExist,
+    required TResult Function() userNotExist,
   }) {
     return loading();
   }
@@ -275,6 +301,8 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(List<UserEntity> user, int count)? success,
     TResult? Function(String message)? failure,
     TResult? Function()? loginSuccess,
+    TResult? Function()? userExist,
+    TResult? Function()? userNotExist,
   }) {
     return loading?.call();
   }
@@ -287,6 +315,8 @@ class _$LoadingImpl implements _Loading {
     TResult Function(List<UserEntity> user, int count)? success,
     TResult Function(String message)? failure,
     TResult Function()? loginSuccess,
+    TResult Function()? userExist,
+    TResult Function()? userNotExist,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -303,6 +333,8 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
     required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_UserExist value) userExist,
+    required TResult Function(_UserNotExist value) userNotExist,
   }) {
     return loading(this);
   }
@@ -315,6 +347,8 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_UserExist value)? userExist,
+    TResult? Function(_UserNotExist value)? userNotExist,
   }) {
     return loading?.call(this);
   }
@@ -327,6 +361,8 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_UserExist value)? userExist,
+    TResult Function(_UserNotExist value)? userNotExist,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -430,6 +466,8 @@ class _$SuccessImpl implements _Success {
     required TResult Function(List<UserEntity> user, int count) success,
     required TResult Function(String message) failure,
     required TResult Function() loginSuccess,
+    required TResult Function() userExist,
+    required TResult Function() userNotExist,
   }) {
     return success(user, count);
   }
@@ -442,6 +480,8 @@ class _$SuccessImpl implements _Success {
     TResult? Function(List<UserEntity> user, int count)? success,
     TResult? Function(String message)? failure,
     TResult? Function()? loginSuccess,
+    TResult? Function()? userExist,
+    TResult? Function()? userNotExist,
   }) {
     return success?.call(user, count);
   }
@@ -454,6 +494,8 @@ class _$SuccessImpl implements _Success {
     TResult Function(List<UserEntity> user, int count)? success,
     TResult Function(String message)? failure,
     TResult Function()? loginSuccess,
+    TResult Function()? userExist,
+    TResult Function()? userNotExist,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -470,6 +512,8 @@ class _$SuccessImpl implements _Success {
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
     required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_UserExist value) userExist,
+    required TResult Function(_UserNotExist value) userNotExist,
   }) {
     return success(this);
   }
@@ -482,6 +526,8 @@ class _$SuccessImpl implements _Success {
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_UserExist value)? userExist,
+    TResult? Function(_UserNotExist value)? userNotExist,
   }) {
     return success?.call(this);
   }
@@ -494,6 +540,8 @@ class _$SuccessImpl implements _Success {
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_UserExist value)? userExist,
+    TResult Function(_UserNotExist value)? userNotExist,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -591,6 +639,8 @@ class _$FailureImpl implements _Failure {
     required TResult Function(List<UserEntity> user, int count) success,
     required TResult Function(String message) failure,
     required TResult Function() loginSuccess,
+    required TResult Function() userExist,
+    required TResult Function() userNotExist,
   }) {
     return failure(message);
   }
@@ -603,6 +653,8 @@ class _$FailureImpl implements _Failure {
     TResult? Function(List<UserEntity> user, int count)? success,
     TResult? Function(String message)? failure,
     TResult? Function()? loginSuccess,
+    TResult? Function()? userExist,
+    TResult? Function()? userNotExist,
   }) {
     return failure?.call(message);
   }
@@ -615,6 +667,8 @@ class _$FailureImpl implements _Failure {
     TResult Function(List<UserEntity> user, int count)? success,
     TResult Function(String message)? failure,
     TResult Function()? loginSuccess,
+    TResult Function()? userExist,
+    TResult Function()? userNotExist,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -631,6 +685,8 @@ class _$FailureImpl implements _Failure {
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
     required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_UserExist value) userExist,
+    required TResult Function(_UserNotExist value) userNotExist,
   }) {
     return failure(this);
   }
@@ -643,6 +699,8 @@ class _$FailureImpl implements _Failure {
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_UserExist value)? userExist,
+    TResult? Function(_UserNotExist value)? userNotExist,
   }) {
     return failure?.call(this);
   }
@@ -655,6 +713,8 @@ class _$FailureImpl implements _Failure {
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_UserExist value)? userExist,
+    TResult Function(_UserNotExist value)? userNotExist,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -722,6 +782,8 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     required TResult Function(List<UserEntity> user, int count) success,
     required TResult Function(String message) failure,
     required TResult Function() loginSuccess,
+    required TResult Function() userExist,
+    required TResult Function() userNotExist,
   }) {
     return loginSuccess();
   }
@@ -734,6 +796,8 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     TResult? Function(List<UserEntity> user, int count)? success,
     TResult? Function(String message)? failure,
     TResult? Function()? loginSuccess,
+    TResult? Function()? userExist,
+    TResult? Function()? userNotExist,
   }) {
     return loginSuccess?.call();
   }
@@ -746,6 +810,8 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     TResult Function(List<UserEntity> user, int count)? success,
     TResult Function(String message)? failure,
     TResult Function()? loginSuccess,
+    TResult Function()? userExist,
+    TResult Function()? userNotExist,
     required TResult orElse(),
   }) {
     if (loginSuccess != null) {
@@ -762,6 +828,8 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
     required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_UserExist value) userExist,
+    required TResult Function(_UserNotExist value) userNotExist,
   }) {
     return loginSuccess(this);
   }
@@ -774,6 +842,8 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_UserExist value)? userExist,
+    TResult? Function(_UserNotExist value)? userNotExist,
   }) {
     return loginSuccess?.call(this);
   }
@@ -786,6 +856,8 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_UserExist value)? userExist,
+    TResult Function(_UserNotExist value)? userNotExist,
     required TResult orElse(),
   }) {
     if (loginSuccess != null) {
@@ -797,4 +869,274 @@ class _$LoginSuccessImpl implements _LoginSuccess {
 
 abstract class _LoginSuccess implements UserState {
   const factory _LoginSuccess() = _$LoginSuccessImpl;
+}
+
+/// @nodoc
+abstract class _$$UserExistImplCopyWith<$Res> {
+  factory _$$UserExistImplCopyWith(
+          _$UserExistImpl value, $Res Function(_$UserExistImpl) then) =
+      __$$UserExistImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UserExistImplCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res, _$UserExistImpl>
+    implements _$$UserExistImplCopyWith<$Res> {
+  __$$UserExistImplCopyWithImpl(
+      _$UserExistImpl _value, $Res Function(_$UserExistImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$UserExistImpl implements _UserExist {
+  const _$UserExistImpl();
+
+  @override
+  String toString() {
+    return 'UserState.userExist()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UserExistImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<UserEntity> user, int count) success,
+    required TResult Function(String message) failure,
+    required TResult Function() loginSuccess,
+    required TResult Function() userExist,
+    required TResult Function() userNotExist,
+  }) {
+    return userExist();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<UserEntity> user, int count)? success,
+    TResult? Function(String message)? failure,
+    TResult? Function()? loginSuccess,
+    TResult? Function()? userExist,
+    TResult? Function()? userNotExist,
+  }) {
+    return userExist?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<UserEntity> user, int count)? success,
+    TResult Function(String message)? failure,
+    TResult Function()? loginSuccess,
+    TResult Function()? userExist,
+    TResult Function()? userNotExist,
+    required TResult orElse(),
+  }) {
+    if (userExist != null) {
+      return userExist();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_UserExist value) userExist,
+    required TResult Function(_UserNotExist value) userNotExist,
+  }) {
+    return userExist(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_UserExist value)? userExist,
+    TResult? Function(_UserNotExist value)? userNotExist,
+  }) {
+    return userExist?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_UserExist value)? userExist,
+    TResult Function(_UserNotExist value)? userNotExist,
+    required TResult orElse(),
+  }) {
+    if (userExist != null) {
+      return userExist(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserExist implements UserState {
+  const factory _UserExist() = _$UserExistImpl;
+}
+
+/// @nodoc
+abstract class _$$UserNotExistImplCopyWith<$Res> {
+  factory _$$UserNotExistImplCopyWith(
+          _$UserNotExistImpl value, $Res Function(_$UserNotExistImpl) then) =
+      __$$UserNotExistImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UserNotExistImplCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res, _$UserNotExistImpl>
+    implements _$$UserNotExistImplCopyWith<$Res> {
+  __$$UserNotExistImplCopyWithImpl(
+      _$UserNotExistImpl _value, $Res Function(_$UserNotExistImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$UserNotExistImpl implements _UserNotExist {
+  const _$UserNotExistImpl();
+
+  @override
+  String toString() {
+    return 'UserState.userNotExist()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UserNotExistImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<UserEntity> user, int count) success,
+    required TResult Function(String message) failure,
+    required TResult Function() loginSuccess,
+    required TResult Function() userExist,
+    required TResult Function() userNotExist,
+  }) {
+    return userNotExist();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<UserEntity> user, int count)? success,
+    TResult? Function(String message)? failure,
+    TResult? Function()? loginSuccess,
+    TResult? Function()? userExist,
+    TResult? Function()? userNotExist,
+  }) {
+    return userNotExist?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<UserEntity> user, int count)? success,
+    TResult Function(String message)? failure,
+    TResult Function()? loginSuccess,
+    TResult Function()? userExist,
+    TResult Function()? userNotExist,
+    required TResult orElse(),
+  }) {
+    if (userNotExist != null) {
+      return userNotExist();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_UserExist value) userExist,
+    required TResult Function(_UserNotExist value) userNotExist,
+  }) {
+    return userNotExist(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_UserExist value)? userExist,
+    TResult? Function(_UserNotExist value)? userNotExist,
+  }) {
+    return userNotExist?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_UserExist value)? userExist,
+    TResult Function(_UserNotExist value)? userNotExist,
+    required TResult orElse(),
+  }) {
+    if (userNotExist != null) {
+      return userNotExist(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserNotExist implements UserState {
+  const factory _UserNotExist() = _$UserNotExistImpl;
 }

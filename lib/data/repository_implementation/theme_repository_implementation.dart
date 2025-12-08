@@ -96,6 +96,8 @@ class ThemeRepositoryImplementation extends ThemeRepository {
   @override
   Future<ThemeEntity?> initTheme() async {
     try {
+      // print('!!!!!!') ;
+      // final model = await _api.getThemeById(id: 4);
       final model = await _local.loadTheme();
       return model?.toEntity();
     } catch (e) {

@@ -34,6 +34,9 @@ Future<void> initVerificationModule() async {
     ..registerLazySingleton<SendVerificationUseCase>(
           () => SendVerificationUseCase(getIt<VerificationRepository>()),
     )
+    ..registerLazySingleton<ResendVerificationUseCase>(
+          () => ResendVerificationUseCase(getIt<VerificationRepository>()),
+    )
     ..registerLazySingleton<CheckVerificationUseCase>(
           () => CheckVerificationUseCase(getIt<VerificationRepository>()),
     )

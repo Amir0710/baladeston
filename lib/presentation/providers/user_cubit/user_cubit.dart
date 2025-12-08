@@ -101,7 +101,7 @@ class UserCubit extends Cubit<UserState> {
     emit(const UserState.loading());
     try {
       await _createUseCase(user);
-      await refreshFilter();
+      // await refreshFilter();
     } catch (e) {
       emit(UserState.failure(message: e.toString()));
     }
@@ -111,7 +111,7 @@ class UserCubit extends Cubit<UserState> {
     emit(const UserState.loading());
     try {
       await _updateUseCase(user: user);
-      await refreshFilter();
+      // await refreshFilter();
     } catch (e) {
       emit(UserState.failure(message: e.toString()));
     }
@@ -121,7 +121,7 @@ class UserCubit extends Cubit<UserState> {
     emit(const UserState.loading());
     try {
       await _deleteByIdUseCase(id: id);
-      await refreshFilter();
+      // await refreshFilter();
     } catch (e) {
       emit(UserState.failure(message: e.toString()));
     }
@@ -131,7 +131,7 @@ class UserCubit extends Cubit<UserState> {
     emit(const UserState.loading());
     try {
       await _deleteByFilterUseCase(filter: filter);
-      await refreshFilter();
+      // await refreshFilter();
     } catch (e) {
       emit(UserState.failure(message: e.toString()));
     }
@@ -140,8 +140,14 @@ class UserCubit extends Cubit<UserState> {
   Future<void> checkUserExists(String phoneNumber) async {
     emit(const UserState.loading());
     try {
-      await _checkUserExistsUseCase(phoneNumber: phoneNumber);
-      await refreshFilter();
+      final exist = await _checkUserExistsUseCase(phoneNumber: phoneNumber);
+      if(exist) {
+        emit(const UserState.userExist());
+      }else
+        {
+          emit(const UserState.userNotExist());
+        }
+      // // await refreshFilter();
     } catch (e) {
       emit(UserState.failure(message: e.toString()));
     }

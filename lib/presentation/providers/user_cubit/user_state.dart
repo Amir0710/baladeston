@@ -18,6 +18,6 @@ class UserState with _$UserState {
   }) = _Failure;
 
   const factory UserState.loginSuccess() = _LoginSuccess;
-
-
+  const factory UserState.userExist() = _UserExist;
+  const factory UserState.userNotExist() = _UserNotExist;
 }

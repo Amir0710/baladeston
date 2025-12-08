@@ -14,6 +14,7 @@ class ThemeCubit extends Cubit<ThemeState> {
   Future<void>_initTheme() async {
     emit(const ThemeState.loading());
     try {
+      // print('!!!!!!') ;
       final themeEntity = await _repository.initTheme();
 
       emit(ThemeState.success(

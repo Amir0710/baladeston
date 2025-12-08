@@ -16,22 +16,18 @@ class UserApiImplementation implements UserApi {
   late final http.Client _client;
 
   UserApiImplementation() {
-    // استفاده از AuthClient برای تزریق خودکار توکن در درخواست‌ها
     _client = AuthClient(tokenStorage: _tokenStorage);
   }
 
   Uri _url(String path) => Uri.parse('$_baseUrl/user/$path');
 
-  // =====================================================================
-  // 🟩 Login
-  // =====================================================================
   @override
-  Future<void> login({required int userId,required String password }) async {
+  Future<void> login({required int userId, required String password }) async {
     final uri = Uri.parse('$_baseUrl/auth/login');
     final response = await http.post(
       uri,
       headers: {'Content-Type': 'application/json'},
-      body: jsonEncode({'user_id': userId , 'password' : password}),
+      body: jsonEncode({'user_id': userId, 'password': password}),
     );
 
     final data = json.decode(response.body);
@@ -55,9 +51,6 @@ class UserApiImplementation implements UserApi {
     }
   }
 
-  // =====================================================================
-  // 🟦 Get User by ID (Protected)
-  // =====================================================================
   @override
   Future<UserModel>? getUserById({required int id}) async {
     final response = await _client.get(_url(id.toString()));
@@ -72,9 +65,6 @@ class UserApiImplementation implements UserApi {
     throw Exception('خطا در دریافت کاربر با شناسه: ${response.statusCode}');
   }
 
-  // =====================================================================
-  // 🟨 Get Users by Filter (Protected)
-  // =====================================================================
   @override
   Future<List<UserModel>?> getUsersByFilter({
     required UserQueryFilter filter,
@@ -95,12 +85,10 @@ class UserApiImplementation implements UserApi {
     throw Exception('خطا در واکشی کاربران: ${response.statusCode}');
   }
 
-  // =====================================================================
-  // 🟧 Create User
-  // =====================================================================
   @override
   Future<UserModel> createUser({required UserModel user}) async {
-    final body = json.encode(user.toJson()..remove('id'));
+    final body = json.encode(user.toJson()
+      ..remove('id'));
 
     final response = await _client.post(
       _url(''),
@@ -123,9 +111,6 @@ class UserApiImplementation implements UserApi {
     }
   }
 
-  // =====================================================================
-  // 🟪 Update User (Protected)
-  // =====================================================================
   @override
   Future<UserModel> updateUser({required UserModel user}) async {
     if (user.id == null) {
@@ -150,9 +135,6 @@ class UserApiImplementation implements UserApi {
     throw Exception('خطا در بروزرسانی کاربر: ${response.statusCode}');
   }
 
-  // =====================================================================
-  // 🟥 Delete User by ID (Protected)
-  // =====================================================================
   @override
   Future<void> deleteUserById({required int id}) async {
     final response = await _client.delete(_url(id.toString()));
@@ -163,9 +145,6 @@ class UserApiImplementation implements UserApi {
     throw Exception('خطا در حذف کاربر با شناسه $id: ${response.statusCode}');
   }
 
-  // =====================================================================
-  // 🟫 Delete By Filter
-  // =====================================================================
   @override
   Future<void> deleteUserByFilter({
     required UserQueryFilter filter,
@@ -179,9 +158,7 @@ class UserApiImplementation implements UserApi {
     throw Exception('خطا در حذف کاربران با فیلتر: ${response.statusCode}');
   }
 
-  // =====================================================================
   // ⬛ Down (maybe remove or deactivate users)
-  // =====================================================================
   Future<void> down(UserQueryFilter filter) async {
     final uri = Uri.parse('$_baseUrl/user').replace(
       queryParameters: filter.toJson(),
@@ -192,9 +169,6 @@ class UserApiImplementation implements UserApi {
     throw Exception('خطا در اجرای down برای کاربران: ${response.statusCode}');
   }
 
-  // =====================================================================
-  // 🟦 Count User
-  // =====================================================================
   @override
   Future<int> countUser({required UserQueryFilter filter}) async {
     final uri = Uri.parse('$_baseUrl/user/count').replace(
@@ -209,9 +183,6 @@ class UserApiImplementation implements UserApi {
     throw Exception('خطا در شمارش کاربران: ${response.statusCode}');
   }
 
-  // =====================================================================
-  // 🟩 Check Token Validity
-  // =====================================================================
   @override
   Future<bool> checkToken() async {
     final uri = Uri.parse('$_baseUrl/auth/verify');
@@ -233,9 +204,30 @@ class UserApiImplementation implements UserApi {
   }
 
   @override
-  Future<bool> checkUserExists({required String phoneNumber}) {
-    // TODO: implement checkUserExists
-    throw UnimplementedError();
+  Future<bool> checkUserExists({required String phoneNumber}) async {
+    try {
+      final uri = Uri.parse('$_baseUrl/user/check-exists')
+          .replace(queryParameters: {
+        'phone_number': phoneNumber,
+      });
+
+      final response = await http.get(uri);
+
+      if (response.statusCode != 200) {
+        throw Exception('Failed to check user exists: ${response.statusCode}');
+      }
+
+      final data = jsonDecode(response.body);
+
+      // انتظار داریم API این را برگرداند: {"exists": true/false}
+      if (data is Map && data.containsKey('exists')) {
+        return data['exists'] == true;
+      } else {
+        throw Exception('Invalid response format: $data');
+      }
+    } catch (e) {
+      throw Exception('checkUserExists error: $e');
+    }
   }
 
   @override
@@ -243,5 +235,4 @@ class UserApiImplementation implements UserApi {
     // TODO: implement sendOtp
     throw UnimplementedError();
   }
-
 }

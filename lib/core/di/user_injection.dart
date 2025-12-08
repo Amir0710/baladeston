@@ -59,7 +59,7 @@ Future<void> initUserModule() async {
 
     // Cubit
     ..registerFactory<UserCubit>(
-      () => UserCubit(
+      () => UserCubit(  
         countUseCase: getIt<CountUsersUseCase>(),
         getByFilterUseCase: getIt<GetUsersByFilterUseCase>(),
         getByIdUseCase: getIt<GetUserByIdUseCase>(),

@@ -1,4 +1,5 @@
 import 'package:baladeston/data/datasources/remote/category_remote_datasource/category_api.dart';
+import 'package:baladeston/data/datasources/remote/category_remote_datasource/category_api_implementation.dart';
 import 'package:baladeston/data/repository_implementation/category_repository_implementation.dart';
 import 'package:baladeston/domain/repositories/category_repository.dart';
 import 'package:baladeston/domain/usecase/category/add_image_usecase.dart';
@@ -18,11 +19,17 @@ final getIt = GetIt.instance;
 Future<void> initCategoryModule() async {
   getIt
 
+  // 1. API
+    ..registerLazySingleton<CategoryApi>(() => CategoryApiImplementation())
 
+  // 2. Repository
     ..registerLazySingleton<CategoryRepository>(
-          () => CategoryRepositoryImplementation(api: getIt<CategoryApi>()),
+          () => CategoryRepositoryImplementation(
+        api: getIt<CategoryApi>(),
+      ),
     )
 
+  // 3. UseCases
     ..registerLazySingleton<CreateCategoryUseCase>(
           () => CreateCategoryUseCase(getIt<CategoryRepository>()),
     )
@@ -47,11 +54,11 @@ Future<void> initCategoryModule() async {
     ..registerLazySingleton<GetAllCategoryUsecase>(
           () => GetAllCategoryUsecase(getIt<CategoryRepository>()),
     )
-
     ..registerLazySingleton<AddImageUseCase>(
           () => AddImageUseCase(getIt<CategoryRepository>()),
     )
 
+  // 4. Cubit
     ..registerFactory<CategoryCubit>(
           () => CategoryCubit(
         getAllCategory: getIt<GetAllCategoryUsecase>(),
@@ -66,4 +73,3 @@ Future<void> initCategoryModule() async {
       ),
     );
 }
-
