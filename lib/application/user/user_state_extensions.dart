@@ -15,7 +15,7 @@ extension UserStateX on UserState {
   bool get isSuccess => maybeWhen(success: (_, __) => true, orElse: () => false);
 
   /// Returns true if the state is [_Failure].
-  bool get isFailure => maybeWhen(failure: (_) => true, orElse: () => false);
+  bool get isFailure => maybeWhen(loginFailure: (_) => true, orElse: () => false);
 
   /// Returns the list of users when available,
   /// otherwise returns `null`.
@@ -29,5 +29,5 @@ extension UserStateX on UserState {
 
   /// Returns the failure message if present, otherwise `null`.
   String? get messageOrNull =>
-      whenOrNull(failure: (message) => message);
+      whenOrNull(loginFailure: (message) => message);
 }

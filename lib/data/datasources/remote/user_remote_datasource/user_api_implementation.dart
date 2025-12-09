@@ -22,12 +22,12 @@ class UserApiImplementation implements UserApi {
   Uri _url(String path) => Uri.parse('$_baseUrl/user/$path');
 
   @override
-  Future<void> login({required int userId, required String password }) async {
+  Future<void> login({required String phoneNumber, required String password }) async {
     final uri = Uri.parse('$_baseUrl/auth/login');
     final response = await http.post(
       uri,
       headers: {'Content-Type': 'application/json'},
-      body: jsonEncode({'user_id': userId, 'password': password}),
+      body: jsonEncode({'phone_number': phoneNumber, 'password': password}),
     );
 
     final data = json.decode(response.body);

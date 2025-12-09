@@ -13,7 +13,7 @@ class UserState with _$UserState {
     required int count,
   }) = _Success;
 
-  const factory UserState.failure({
+  const factory UserState.loginFailure({
     required String message,
   }) = _Failure;
 

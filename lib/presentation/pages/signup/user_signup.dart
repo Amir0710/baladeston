@@ -187,7 +187,6 @@
                           width: AppConstraints.elevationButtonWidth,
                           child: ElevatedButton(
                             onPressed: () {
-                              print('!!!!!!!!!!!!');
                               final phone = _phoneController.text.trim();
                               if (phone.isEmpty) {
                                 ScaffoldMessenger.of(context).showSnackBar(
@@ -203,7 +202,6 @@
                                 );
                                 return;
                               }
-                              print('##########');
                               context.read<UserCubit>().checkUserExists(phone);
                             },
                             child: Row(

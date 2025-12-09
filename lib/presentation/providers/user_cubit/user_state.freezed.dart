@@ -21,7 +21,7 @@ mixin _$UserState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<UserEntity> user, int count) success,
-    required TResult Function(String message) failure,
+    required TResult Function(String message) loginFailure,
     required TResult Function() loginSuccess,
     required TResult Function() userExist,
     required TResult Function() userNotExist,
@@ -32,7 +32,7 @@ mixin _$UserState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<UserEntity> user, int count)? success,
-    TResult? Function(String message)? failure,
+    TResult? Function(String message)? loginFailure,
     TResult? Function()? loginSuccess,
     TResult? Function()? userExist,
     TResult? Function()? userNotExist,
@@ -43,7 +43,7 @@ mixin _$UserState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<UserEntity> user, int count)? success,
-    TResult Function(String message)? failure,
+    TResult Function(String message)? loginFailure,
     TResult Function()? loginSuccess,
     TResult Function()? userExist,
     TResult Function()? userNotExist,
@@ -55,7 +55,7 @@ mixin _$UserState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(_Failure value) loginFailure,
     required TResult Function(_LoginSuccess value) loginSuccess,
     required TResult Function(_UserExist value) userExist,
     required TResult Function(_UserNotExist value) userNotExist,
@@ -66,7 +66,7 @@ mixin _$UserState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(_Failure value)? loginFailure,
     TResult? Function(_LoginSuccess value)? loginSuccess,
     TResult? Function(_UserExist value)? userExist,
     TResult? Function(_UserNotExist value)? userNotExist,
@@ -77,7 +77,7 @@ mixin _$UserState {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(_Failure value)? loginFailure,
     TResult Function(_LoginSuccess value)? loginSuccess,
     TResult Function(_UserExist value)? userExist,
     TResult Function(_UserNotExist value)? userNotExist,
@@ -150,7 +150,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<UserEntity> user, int count) success,
-    required TResult Function(String message) failure,
+    required TResult Function(String message) loginFailure,
     required TResult Function() loginSuccess,
     required TResult Function() userExist,
     required TResult Function() userNotExist,
@@ -164,7 +164,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<UserEntity> user, int count)? success,
-    TResult? Function(String message)? failure,
+    TResult? Function(String message)? loginFailure,
     TResult? Function()? loginSuccess,
     TResult? Function()? userExist,
     TResult? Function()? userNotExist,
@@ -178,7 +178,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<UserEntity> user, int count)? success,
-    TResult Function(String message)? failure,
+    TResult Function(String message)? loginFailure,
     TResult Function()? loginSuccess,
     TResult Function()? userExist,
     TResult Function()? userNotExist,
@@ -196,7 +196,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(_Failure value) loginFailure,
     required TResult Function(_LoginSuccess value) loginSuccess,
     required TResult Function(_UserExist value) userExist,
     required TResult Function(_UserNotExist value) userNotExist,
@@ -210,7 +210,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(_Failure value)? loginFailure,
     TResult? Function(_LoginSuccess value)? loginSuccess,
     TResult? Function(_UserExist value)? userExist,
     TResult? Function(_UserNotExist value)? userNotExist,
@@ -224,7 +224,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(_Failure value)? loginFailure,
     TResult Function(_LoginSuccess value)? loginSuccess,
     TResult Function(_UserExist value)? userExist,
     TResult Function(_UserNotExist value)? userNotExist,
@@ -285,7 +285,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<UserEntity> user, int count) success,
-    required TResult Function(String message) failure,
+    required TResult Function(String message) loginFailure,
     required TResult Function() loginSuccess,
     required TResult Function() userExist,
     required TResult Function() userNotExist,
@@ -299,7 +299,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<UserEntity> user, int count)? success,
-    TResult? Function(String message)? failure,
+    TResult? Function(String message)? loginFailure,
     TResult? Function()? loginSuccess,
     TResult? Function()? userExist,
     TResult? Function()? userNotExist,
@@ -313,7 +313,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<UserEntity> user, int count)? success,
-    TResult Function(String message)? failure,
+    TResult Function(String message)? loginFailure,
     TResult Function()? loginSuccess,
     TResult Function()? userExist,
     TResult Function()? userNotExist,
@@ -331,7 +331,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(_Failure value) loginFailure,
     required TResult Function(_LoginSuccess value) loginSuccess,
     required TResult Function(_UserExist value) userExist,
     required TResult Function(_UserNotExist value) userNotExist,
@@ -345,7 +345,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(_Failure value)? loginFailure,
     TResult? Function(_LoginSuccess value)? loginSuccess,
     TResult? Function(_UserExist value)? userExist,
     TResult? Function(_UserNotExist value)? userNotExist,
@@ -359,7 +359,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(_Failure value)? loginFailure,
     TResult Function(_LoginSuccess value)? loginSuccess,
     TResult Function(_UserExist value)? userExist,
     TResult Function(_UserNotExist value)? userNotExist,
@@ -464,7 +464,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<UserEntity> user, int count) success,
-    required TResult Function(String message) failure,
+    required TResult Function(String message) loginFailure,
     required TResult Function() loginSuccess,
     required TResult Function() userExist,
     required TResult Function() userNotExist,
@@ -478,7 +478,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<UserEntity> user, int count)? success,
-    TResult? Function(String message)? failure,
+    TResult? Function(String message)? loginFailure,
     TResult? Function()? loginSuccess,
     TResult? Function()? userExist,
     TResult? Function()? userNotExist,
@@ -492,7 +492,7 @@ class _$SuccessImpl implements _Success {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<UserEntity> user, int count)? success,
-    TResult Function(String message)? failure,
+    TResult Function(String message)? loginFailure,
     TResult Function()? loginSuccess,
     TResult Function()? userExist,
     TResult Function()? userNotExist,
@@ -510,7 +510,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(_Failure value) loginFailure,
     required TResult Function(_LoginSuccess value) loginSuccess,
     required TResult Function(_UserExist value) userExist,
     required TResult Function(_UserNotExist value) userNotExist,
@@ -524,7 +524,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(_Failure value)? loginFailure,
     TResult? Function(_LoginSuccess value)? loginSuccess,
     TResult? Function(_UserExist value)? userExist,
     TResult? Function(_UserNotExist value)? userNotExist,
@@ -538,7 +538,7 @@ class _$SuccessImpl implements _Success {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(_Failure value)? loginFailure,
     TResult Function(_LoginSuccess value)? loginSuccess,
     TResult Function(_UserExist value)? userExist,
     TResult Function(_UserNotExist value)? userNotExist,
@@ -609,7 +609,7 @@ class _$FailureImpl implements _Failure {
 
   @override
   String toString() {
-    return 'UserState.failure(message: $message)';
+    return 'UserState.loginFailure(message: $message)';
   }
 
   @override
@@ -637,12 +637,12 @@ class _$FailureImpl implements _Failure {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<UserEntity> user, int count) success,
-    required TResult Function(String message) failure,
+    required TResult Function(String message) loginFailure,
     required TResult Function() loginSuccess,
     required TResult Function() userExist,
     required TResult Function() userNotExist,
   }) {
-    return failure(message);
+    return loginFailure(message);
   }
 
   @override
@@ -651,12 +651,12 @@ class _$FailureImpl implements _Failure {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<UserEntity> user, int count)? success,
-    TResult? Function(String message)? failure,
+    TResult? Function(String message)? loginFailure,
     TResult? Function()? loginSuccess,
     TResult? Function()? userExist,
     TResult? Function()? userNotExist,
   }) {
-    return failure?.call(message);
+    return loginFailure?.call(message);
   }
 
   @override
@@ -665,14 +665,14 @@ class _$FailureImpl implements _Failure {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<UserEntity> user, int count)? success,
-    TResult Function(String message)? failure,
+    TResult Function(String message)? loginFailure,
     TResult Function()? loginSuccess,
     TResult Function()? userExist,
     TResult Function()? userNotExist,
     required TResult orElse(),
   }) {
-    if (failure != null) {
-      return failure(message);
+    if (loginFailure != null) {
+      return loginFailure(message);
     }
     return orElse();
   }
@@ -683,12 +683,12 @@ class _$FailureImpl implements _Failure {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(_Failure value) loginFailure,
     required TResult Function(_LoginSuccess value) loginSuccess,
     required TResult Function(_UserExist value) userExist,
     required TResult Function(_UserNotExist value) userNotExist,
   }) {
-    return failure(this);
+    return loginFailure(this);
   }
 
   @override
@@ -697,12 +697,12 @@ class _$FailureImpl implements _Failure {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(_Failure value)? loginFailure,
     TResult? Function(_LoginSuccess value)? loginSuccess,
     TResult? Function(_UserExist value)? userExist,
     TResult? Function(_UserNotExist value)? userNotExist,
   }) {
-    return failure?.call(this);
+    return loginFailure?.call(this);
   }
 
   @override
@@ -711,14 +711,14 @@ class _$FailureImpl implements _Failure {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(_Failure value)? loginFailure,
     TResult Function(_LoginSuccess value)? loginSuccess,
     TResult Function(_UserExist value)? userExist,
     TResult Function(_UserNotExist value)? userNotExist,
     required TResult orElse(),
   }) {
-    if (failure != null) {
-      return failure(this);
+    if (loginFailure != null) {
+      return loginFailure(this);
     }
     return orElse();
   }
@@ -780,7 +780,7 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<UserEntity> user, int count) success,
-    required TResult Function(String message) failure,
+    required TResult Function(String message) loginFailure,
     required TResult Function() loginSuccess,
     required TResult Function() userExist,
     required TResult Function() userNotExist,
@@ -794,7 +794,7 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<UserEntity> user, int count)? success,
-    TResult? Function(String message)? failure,
+    TResult? Function(String message)? loginFailure,
     TResult? Function()? loginSuccess,
     TResult? Function()? userExist,
     TResult? Function()? userNotExist,
@@ -808,7 +808,7 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<UserEntity> user, int count)? success,
-    TResult Function(String message)? failure,
+    TResult Function(String message)? loginFailure,
     TResult Function()? loginSuccess,
     TResult Function()? userExist,
     TResult Function()? userNotExist,
@@ -826,7 +826,7 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(_Failure value) loginFailure,
     required TResult Function(_LoginSuccess value) loginSuccess,
     required TResult Function(_UserExist value) userExist,
     required TResult Function(_UserNotExist value) userNotExist,
@@ -840,7 +840,7 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(_Failure value)? loginFailure,
     TResult? Function(_LoginSuccess value)? loginSuccess,
     TResult? Function(_UserExist value)? userExist,
     TResult? Function(_UserNotExist value)? userNotExist,
@@ -854,7 +854,7 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(_Failure value)? loginFailure,
     TResult Function(_LoginSuccess value)? loginSuccess,
     TResult Function(_UserExist value)? userExist,
     TResult Function(_UserNotExist value)? userNotExist,
@@ -915,7 +915,7 @@ class _$UserExistImpl implements _UserExist {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<UserEntity> user, int count) success,
-    required TResult Function(String message) failure,
+    required TResult Function(String message) loginFailure,
     required TResult Function() loginSuccess,
     required TResult Function() userExist,
     required TResult Function() userNotExist,
@@ -929,7 +929,7 @@ class _$UserExistImpl implements _UserExist {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<UserEntity> user, int count)? success,
-    TResult? Function(String message)? failure,
+    TResult? Function(String message)? loginFailure,
     TResult? Function()? loginSuccess,
     TResult? Function()? userExist,
     TResult? Function()? userNotExist,
@@ -943,7 +943,7 @@ class _$UserExistImpl implements _UserExist {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<UserEntity> user, int count)? success,
-    TResult Function(String message)? failure,
+    TResult Function(String message)? loginFailure,
     TResult Function()? loginSuccess,
     TResult Function()? userExist,
     TResult Function()? userNotExist,
@@ -961,7 +961,7 @@ class _$UserExistImpl implements _UserExist {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(_Failure value) loginFailure,
     required TResult Function(_LoginSuccess value) loginSuccess,
     required TResult Function(_UserExist value) userExist,
     required TResult Function(_UserNotExist value) userNotExist,
@@ -975,7 +975,7 @@ class _$UserExistImpl implements _UserExist {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(_Failure value)? loginFailure,
     TResult? Function(_LoginSuccess value)? loginSuccess,
     TResult? Function(_UserExist value)? userExist,
     TResult? Function(_UserNotExist value)? userNotExist,
@@ -989,7 +989,7 @@ class _$UserExistImpl implements _UserExist {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(_Failure value)? loginFailure,
     TResult Function(_LoginSuccess value)? loginSuccess,
     TResult Function(_UserExist value)? userExist,
     TResult Function(_UserNotExist value)? userNotExist,
@@ -1050,7 +1050,7 @@ class _$UserNotExistImpl implements _UserNotExist {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<UserEntity> user, int count) success,
-    required TResult Function(String message) failure,
+    required TResult Function(String message) loginFailure,
     required TResult Function() loginSuccess,
     required TResult Function() userExist,
     required TResult Function() userNotExist,
@@ -1064,7 +1064,7 @@ class _$UserNotExistImpl implements _UserNotExist {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<UserEntity> user, int count)? success,
-    TResult? Function(String message)? failure,
+    TResult? Function(String message)? loginFailure,
     TResult? Function()? loginSuccess,
     TResult? Function()? userExist,
     TResult? Function()? userNotExist,
@@ -1078,7 +1078,7 @@ class _$UserNotExistImpl implements _UserNotExist {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<UserEntity> user, int count)? success,
-    TResult Function(String message)? failure,
+    TResult Function(String message)? loginFailure,
     TResult Function()? loginSuccess,
     TResult Function()? userExist,
     TResult Function()? userNotExist,
@@ -1096,7 +1096,7 @@ class _$UserNotExistImpl implements _UserNotExist {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(_Failure value) loginFailure,
     required TResult Function(_LoginSuccess value) loginSuccess,
     required TResult Function(_UserExist value) userExist,
     required TResult Function(_UserNotExist value) userNotExist,
@@ -1110,7 +1110,7 @@ class _$UserNotExistImpl implements _UserNotExist {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(_Failure value)? loginFailure,
     TResult? Function(_LoginSuccess value)? loginSuccess,
     TResult? Function(_UserExist value)? userExist,
     TResult? Function(_UserNotExist value)? userNotExist,
@@ -1124,7 +1124,7 @@ class _$UserNotExistImpl implements _UserNotExist {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(_Failure value)? loginFailure,
     TResult Function(_LoginSuccess value)? loginSuccess,
     TResult Function(_UserExist value)? userExist,
     TResult Function(_UserNotExist value)? userNotExist,

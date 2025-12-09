@@ -9,7 +9,7 @@ abstract class UserRepository {
   Future<void> deleteUserByFilter({required UserQueryFilter filter});
   Future<UserEntity> createUser({required UserEntity user});
   Future<int> countUser({required UserQueryFilter filter});
-  Future<void> login({required int userId,required String password }) ;
+  Future<void> login({required String phoneNumber,required String password }) ;
   Future<bool> checkUserExists({required String phoneNumber});
 
 }

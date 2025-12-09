@@ -92,9 +92,9 @@ class UserRepositoryImplementation implements UserRepository {
   }
 
   @override
-  Future<void> login({required int userId, required String password}) async {
+  Future<void> login({required String phoneNumber, required String password}) async {
     try {
-      await _api.login(userId: userId, password: password);
+      await _api.login(phoneNumber: phoneNumber, password: password);
     } catch (e) {
       throw Exception('error $e');
     }

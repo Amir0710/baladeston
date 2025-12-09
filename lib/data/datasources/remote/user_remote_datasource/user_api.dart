@@ -10,7 +10,7 @@ abstract class UserApi {
   Future<void> deleteUserByFilter({required UserQueryFilter filter});
   Future<UserModel> createUser({required UserModel user});
   Future<int> countUser({required UserQueryFilter filter});
-  Future<void> login({required int userId,required String password }) ;
+  Future<void> login({required String phoneNumber,required String password }) ;
   Future<bool> checkToken() ;
   Future<bool> checkUserExists({required String phoneNumber});
   Future<VerificationModel> sendOtp({required String phoneNumber}) ;

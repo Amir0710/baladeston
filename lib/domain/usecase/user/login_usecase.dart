@@ -5,7 +5,7 @@ class LoginUseCase {
 
   LoginUseCase(this.repository);
 
-  Future<void> call({required int userId,required String password }) {
-    return repository.login(userId: userId, password: password);
+  Future<void> call({required String phoneNumber,required String password }) {
+    return repository.login(phoneNumber: phoneNumber, password: password);
   }
 }

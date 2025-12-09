@@ -61,7 +61,7 @@ class UserCubit extends Cubit<UserState> {
       final count = await _countUseCase(filter: f);
       emit(UserState.success(user: users ?? [], count: count));
     } catch (e) {
-      emit(UserState.failure(message: e.toString()));
+      emit(UserState.loginFailure(message: e.toString()));
     }
   }
 
@@ -70,15 +70,15 @@ class UserCubit extends Cubit<UserState> {
   }
 
   Future<void> login({
-    required int userId,
+    required String phoneNumber,
     required String password,
   }) async {
     emit(const UserState.loading());
     try {
-      await _loginUseCase(userId: userId, password: password);
+      await _loginUseCase(phoneNumber: phoneNumber, password: password);
       emit(const UserState.loginSuccess());
     } catch (e) {
-      emit(UserState.failure(message: e.toString()));
+      emit(UserState.loginFailure(message: e.toString()));
     }
   }
 
@@ -93,7 +93,7 @@ class UserCubit extends Cubit<UserState> {
         count: user != null ? 1 : 0,
       ));
     } catch (e) {
-      emit(UserState.failure(message: e.toString()));
+      emit(UserState.loginFailure(message: e.toString()));
     }
   }
 
@@ -103,7 +103,7 @@ class UserCubit extends Cubit<UserState> {
       await _createUseCase(user);
       // await refreshFilter();
     } catch (e) {
-      emit(UserState.failure(message: e.toString()));
+      emit(UserState.loginFailure(message: e.toString()));
     }
   }
 
@@ -113,7 +113,7 @@ class UserCubit extends Cubit<UserState> {
       await _updateUseCase(user: user);
       // await refreshFilter();
     } catch (e) {
-      emit(UserState.failure(message: e.toString()));
+      emit(UserState.loginFailure(message: e.toString()));
     }
   }
 
@@ -123,7 +123,7 @@ class UserCubit extends Cubit<UserState> {
       await _deleteByIdUseCase(id: id);
       // await refreshFilter();
     } catch (e) {
-      emit(UserState.failure(message: e.toString()));
+      emit(UserState.loginFailure(message: e.toString()));
     }
   }
 
@@ -133,7 +133,7 @@ class UserCubit extends Cubit<UserState> {
       await _deleteByFilterUseCase(filter: filter);
       // await refreshFilter();
     } catch (e) {
-      emit(UserState.failure(message: e.toString()));
+      emit(UserState.loginFailure(message: e.toString()));
     }
   }
 
@@ -149,10 +149,7 @@ class UserCubit extends Cubit<UserState> {
         }
       // // await refreshFilter();
     } catch (e) {
-      emit(UserState.failure(message: e.toString()));
+      emit(UserState.loginFailure(message: e.toString()));
     }
   }
-
-
-
 }
