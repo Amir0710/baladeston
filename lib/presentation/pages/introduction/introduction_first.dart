@@ -4,7 +4,7 @@ import 'package:baladeston/core/theme/app_themes.dart';
 import 'package:baladeston/core/theme/app_themes.dart';
 import 'package:baladeston/core/theme/app_themes.dart';
 import 'package:baladeston/core/theme/app_themes.dart';
-import 'package:baladeston/core/widgets/print_circle.dart';
+import 'package:baladeston/presentation/widgets/print_circle.dart';
 import 'package:baladeston/presentation/pages/introduction/introduction_second.dart';
 import 'package:flutter/material.dart';
 import 'package:baladeston/core/extensions/media_query_extension.dart';

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class AppConstraints {
   static double buttonPadding = 20  ;

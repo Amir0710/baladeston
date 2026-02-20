@@ -4,15 +4,15 @@ import 'package:get_it/get_it.dart';
 
 // API
 import 'package:baladeston/data/datasources/remote/verificarion_remote_datasource/verification_api.dart';
-import 'package:baladeston/data/datasources/remote/verificarion_remote_datasource/verification_api_implementaoin.dart';
+import 'package:baladeston/data/verification/datasource/remote/verificarion_remote_datasource/verification_api_implementaoin.dart';
 
 // Repository
-import 'package:baladeston/domain/repositories/verification_repository.dart';
-import 'package:baladeston/data/repository_implementation/verification_repository_implementation.dart';
+import 'package:baladeston/domain/verification/repository/verification_repository.dart';
+import 'package:baladeston/data/verification/repository_implementation/verification_repository_implementation.dart';
 
 // UseCases
-import 'package:baladeston/domain/usecase/verification/send_verification_usecase.dart';
-import 'package:baladeston/domain/usecase/verification/check_verification_usecase.dart';
+import 'package:baladeston/domain/verification/usecase/send_verification/send_verification_usecase.dart';
+import 'package:baladeston/domain/verification/usecase/check_verification/check_verification_usecase.dart';
 
 // Cubit
 

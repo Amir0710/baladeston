@@ -2,15 +2,15 @@ import 'package:baladeston/presentation/providers/report_cubit/report_cubit.dart
 import 'package:get_it/get_it.dart';
 
 // Data
-import 'package:baladeston/data/datasources/remote/report_remote_datasource/report_api.dart';
-import 'package:baladeston/data/repository_implementation/report_repository_implementation.dart';
+import 'package:baladeston/data/report/datasource/remote/report_remote_datasource/report_api.dart';
+import 'package:baladeston/data/report/repository_implementation/report_repository_implementation.dart';
 
 // Domain
-import 'package:baladeston/domain/repositories/report_repository.dart';
+import 'package:baladeston/domain/report/repository/report_repository.dart';
 import 'package:baladeston/domain/usecase/report/get_report_by_filter_usecase.dart';
 import 'package:baladeston/domain/usecase/report/get_report_by_id_usecase.dart';
-import 'package:baladeston/domain/usecase/report/create_report_usecase.dart';
-import 'package:baladeston/domain/usecase/report/update_report_usecase.dart';
+import 'package:baladeston/domain/report/usecase/create_report/create_report_usecase.dart';
+import 'package:baladeston/domain/report/usecase/update_report_usecase.dart';
 import 'package:baladeston/domain/usecase/report/delete_report_by_id_usecase.dart';
 import 'package:baladeston/domain/usecase/report/delete_report_by_filter_usecase.dart';
 import 'package:baladeston/domain/usecase/report/count_all_report_usecase.dart';

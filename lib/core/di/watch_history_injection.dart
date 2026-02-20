@@ -5,11 +5,11 @@ import 'package:baladeston/domain/usecase/watch_history/get_last_position_by_id_
 import 'package:get_it/get_it.dart';
 
 // Repository
-import 'package:baladeston/domain/repositories/watch_history_repository.dart';
+import 'package:baladeston/domain/watch_history/repository/watch_history_repository.dart';
 
 // UseCases
-import 'package:baladeston/domain/usecase/watch_history/count_watch_history_usecase.dart';
-import 'package:baladeston/domain/usecase/watch_history/create_watch_history_usecase.dart';
+import 'package:baladeston/domain/watch_history/usecase/count_watch_history/count_watch_history_usecase.dart';
+import 'package:baladeston/domain/watch_history/usecase/create_watch_history/create_watch_history_usecase.dart';
 import 'package:baladeston/domain/usecase/watch_history/update_last_position_usecase.dart';
 
 // Cubit

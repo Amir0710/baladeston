@@ -1,10 +1,8 @@
-
-
-import 'package:baladeston/application/user/user_state_extensions.dart';
-import 'package:baladeston/domain/entitys/user/user_entity.dart';
-import 'package:baladeston/domain/filters/user_query_filter.dart';
-import 'package:baladeston/presentation/providers/user_cubit/user_cubit.dart';
-import 'package:baladeston/presentation/providers/user_cubit/user_state.dart';
+import 'package:baladeston/application/providers/user_cubit/user_cubit.dart';
+import 'package:baladeston/application/providers/user_cubit/user_state.dart';
+import 'package:baladeston/core/enum/user_status.dart';
+import 'package:baladeston/data/user/filter/user_query_filter.dart';
+import 'package:baladeston/domain/user/entity/user_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -46,15 +44,14 @@ class _TestUserPageState extends State<TestUserPage> {
             return const Center(child: CircularProgressIndicator());
           }
 
-
-          if (state.isFailure) {
-            return Center(
-              child: Text(
-                "❌ خطا: ${state}",
-                style: const TextStyle(color: Colors.red),
-              ),
-            );
-          }
+          // if (state.isFailure) {
+          //   return Center(
+          //     child: Text(
+          //       "❌ خطا: ${state}",
+          //       style: const TextStyle(color: Colors.red),
+          //     ),
+          //   );
+          // }
 
           final users = state.whenOrNull(success: (user, _) => user) ?? [];
 
@@ -96,8 +93,8 @@ class _TestUserPageState extends State<TestUserPage> {
                     itemBuilder: (context, index) {
                       final user = users[index];
                       return Card(
-                        margin:
-                        const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 4, horizontal: 8),
                         child: ListTile(
                           title: Text(user.fullName ?? "—"),
                           subtitle: Text(
@@ -143,7 +140,7 @@ class _TestUserPageState extends State<TestUserPage> {
             fullName: "amir ${DateTime.now().millisecondsSinceEpoch}",
             email: "test${DateTime.now().millisecondsSinceEpoch}@baladeston.ir",
             phoneNumber: "09120000001",
-            status: "active",
+            status: UserStatus.active,
             password: "123456",
             createAt: DateTime.now(),
           );

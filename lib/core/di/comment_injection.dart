@@ -1,15 +1,15 @@
-import 'package:baladeston/data/datasources/remote/comment_remote_datasource/comment_api.dart';
+import 'package:baladeston/data/comment/datasource/remote/comment_remote_datasource/comment_api.dart';
 import 'package:baladeston/domain/usecase/comment/delete_comment_by_filter_usecase.dart';
 import 'package:baladeston/domain/usecase/comment/get_comment_by_id_usecase.dart';
 import 'package:get_it/get_it.dart';
 
-import 'package:baladeston/data/repository_implementation/comment_repository_implementaion.dart';
-import 'package:baladeston/domain/repositories/comment_repository.dart';
+import 'package:baladeston/data/comment/repository_implementation/comment_repository_implementaion.dart';
+import 'package:baladeston/domain/comment/repository/comment_repository.dart';
 
 import 'package:baladeston/domain/usecase/comment/create_comment_usecase.dart';
 import 'package:baladeston/domain/usecase/comment/update_comment_usecase.dart';
-import 'package:baladeston/domain/usecase/comment/count_comment_usecase.dart';
-import 'package:baladeston/domain/usecase/comment/delete_comment_by_id_usecase.dart';
+import 'package:baladeston/domain/comment/usecase/count_comment/count_comment_usecase.dart';
+import 'package:baladeston/domain/comment/delete_comment_by_id_usecase.dart';
 import 'package:baladeston/domain/usecase/comment/get_comment_by_filter_usecase.dart';
 
 import 'package:baladeston/presentation/providers/comment_cubit/comment_cubit.dart';

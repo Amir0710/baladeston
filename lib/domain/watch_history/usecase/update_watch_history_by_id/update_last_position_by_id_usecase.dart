@@ -1,0 +1,38 @@
+import 'package:baladeston/core/result/result.dart';
+import 'package:baladeston/domain/watch_history/entity/watch_history_entity.dart';
+import 'package:baladeston/domain/watch_history/exception/watch_history_entity_exception.dart';
+import 'package:baladeston/domain/watch_history/exception/watch_history_id_exception.dart';
+import 'package:baladeston/domain/watch_history/failure/watch_history_failure.dart';
+import 'package:baladeston/domain/watch_history/repository/watch_history_repository.dart';
+
+import 'update_last_position_by_id_usecase_business_rule.dart';
+
+class UpdateLastPositionByIdUseCase {
+  final WatchHistoryRepository repository;
+
+  const UpdateLastPositionByIdUseCase({required this.repository});
+
+  Future<Result<WatchHistoryEntity, WatchHistoryFailure>> call({
+    required int id,
+    required WatchHistoryEntity watchHistory,
+  }) async {
+    try {
+      final rule =
+      UpdateLastPositionByIdUseCaseBusinessRule(id, watchHistory);
+      rule.validate();
+    } on WatchHistoryIdException catch (e) {
+      return Result.failure(
+        WatchHistoryValidationFailure(e.message),
+      );
+    } on WatchHistoryEntityException catch (e) {
+      return Result.failure(
+        WatchHistoryValidationFailure(e.message),
+      );
+    }
+
+    return repository.updateLastPositionById(
+      id: id,
+      watchHistory: watchHistory,
+    );
+  }
+}

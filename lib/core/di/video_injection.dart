@@ -1,17 +1,17 @@
 import 'package:get_it/get_it.dart';
 
 // Data Layer
-import 'package:baladeston/data/datasources/remote/video_remote_datasource/video_api.dart';
-import 'package:baladeston/data/repository_implementation/video_repository_implementation.dart';
+import 'package:baladeston/data/video/datasource/remote/video_remote_datasource/video_api.dart';
+import 'package:baladeston/data/video/repository_implementation/video_repository_implementation.dart';
 
 // Domain Layer
-import 'package:baladeston/domain/repositories/video_repository.dart';
-import 'package:baladeston/domain/usecase/video/get_video_by_id_usecase.dart';
-import 'package:baladeston/domain/usecase/video/get_video_by_filter_usecase.dart';
+import 'package:baladeston/domain/video/repository/video_repository.dart';
+import 'package:baladeston/domain/video/get_video_by_id_usecase.dart';
+import 'package:baladeston/domain/video/get_video_by_filter_usecase.dart';
 import 'package:baladeston/domain/usecase/video/upload_video_usecase.dart';
 import 'package:baladeston/domain/usecase/video/update_video_usecase.dart';
 import 'package:baladeston/domain/usecase/video/delete_video_by_id_usecase.dart';
-import 'package:baladeston/domain/usecase/video/delete_video_list_by_filter_usecase.dart';
+import 'package:baladeston/domain/video/usecase/get_video_by_filter/delete_video_list_by_filter_usecase.dart';
 import 'package:baladeston/domain/usecase/video/count_video_usecase.dart';
 
 // Presentation Layer

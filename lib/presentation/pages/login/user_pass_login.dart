@@ -1,11 +1,10 @@
+import 'package:baladeston/application/providers/user_cubit/user_cubit.dart';
+import 'package:baladeston/application/providers/user_cubit/user_state.dart';
 import 'package:baladeston/core/constants/add_padding.dart';
 import 'package:baladeston/core/extensions/media_query_extension.dart';
 import 'package:baladeston/core/theme/app_themes.dart';
-import 'package:baladeston/core/widgets/print_circle.dart';
-import 'package:baladeston/presentation/pages/category/category_pages.dart';
 import 'package:baladeston/presentation/pages/signup/user_signup.dart';
-import 'package:baladeston/presentation/providers/user_cubit/user_cubit.dart';
-import 'package:baladeston/presentation/providers/user_cubit/user_state.dart';
+import 'package:baladeston/presentation/widgets/print_circle.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,15 +38,19 @@ class _UserPassLoginState extends State<UserPassLogin> {
       ),
       body: BlocListener<UserCubit, UserState>(
         listener: (context, state) {
-          state.whenOrNull(loginSuccess: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text("Login is success"),
-              ),
-            );
-          },loginFailure:(message) {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Error $message")));
-          }, );
+          state.whenOrNull(
+            loginSuccess: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text("Login is success"),
+                ),
+              );
+            },
+            loginFailure: (message) {
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text("Error $message")));
+            },
+          );
         },
         child: SafeArea(
           child: Stack(
@@ -154,7 +157,6 @@ class _UserPassLoginState extends State<UserPassLogin> {
                       controller: _password,
                       decoration: InputDecoration(
                         labelText: "رمز عبور خود را وارد کنید ",
-
                       ),
                     ),
                     SizedBox(
@@ -165,12 +167,11 @@ class _UserPassLoginState extends State<UserPassLogin> {
                       width: AppConstraints.elevationButtonWidth,
                       child: ElevatedButton(
                         onPressed: () {
-
                           final password = _password.text;
                           final phoneNumber = _phoneNumber.text;
 
-
-                          context.read<UserCubit>().login(phoneNumber: phoneNumber, password: password);
+                          // context.read<UserCubit>().login(
+                          //     phoneNumber: phoneNumber, password: password);
                         },
                         child: Row(
                           children: [

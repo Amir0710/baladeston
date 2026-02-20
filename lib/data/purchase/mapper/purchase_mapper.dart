@@ -1,0 +1,32 @@
+import 'package:baladeston/data/purchase/model/purchase_model.dart';
+import 'package:baladeston/domain/purchase/entity/purchase_entity.dart';
+
+extension PurchaseModelMapper on PurchaseModel {
+  PurchaseEntity toEntity() {
+    return PurchaseEntity(
+      id: id,
+      status: status,
+      userId: userId,
+      discountId: discountId,
+      finalPrice: finalPrice,
+      purchaseTime: purchaseTime,
+      expiresAt: expiresAt,
+      updateAt: updateAt,
+    );
+  }
+}
+
+extension PurchaseEntityMapper on PurchaseEntity {
+  PurchaseModel toModel() {
+    return PurchaseModel(
+      id: id,
+      status: status,
+      userId: userId,
+      discountId: discountId,
+      finalPrice: finalPrice,
+      purchaseTime: purchaseTime,
+      expiresAt: expiresAt,
+      updateAt: updateAt,
+    );
+  }
+}

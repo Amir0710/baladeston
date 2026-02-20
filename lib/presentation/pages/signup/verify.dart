@@ -1,7 +1,7 @@
+import 'package:baladeston/application/providers/verification_cubit/verification_cubit.dart';
 import 'package:baladeston/core/extensions/media_query_extension.dart';
 import 'package:baladeston/core/theme/app_themes.dart';
-import 'package:baladeston/core/widgets/print_circle.dart';
-import 'package:baladeston/presentation/providers/verification_cubit/verification_cubit.dart';
+import 'package:baladeston/presentation/widgets/print_circle.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 

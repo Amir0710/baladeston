@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:baladeston/core/constants/add_padding.dart';
 import 'package:baladeston/core/extensions/media_query_extension.dart';
 import 'package:baladeston/core/theme/app_themes.dart';
-import 'package:baladeston/core/widgets/print_circle.dart';
+import 'package:baladeston/presentation/widgets/print_circle.dart';
 import 'package:baladeston/presentation/pages/signup/signup_rules.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';

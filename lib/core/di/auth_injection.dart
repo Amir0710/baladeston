@@ -1,42 +1,52 @@
-import 'package:baladeston/data/datasources/remote/auth_remote_datasource/auth_api_implementation.dart';
-import 'package:baladeston/presentation/providers/auth/auth_cubit.dart';
+import 'package:baladeston/application/providers/auth_cubit/auth_cubit.dart';
+import 'package:baladeston/data/auth/datasource/remote/auth_datasource_remote/auth_api.dart';
+import 'package:baladeston/data/auth/datasource/remote/auth_datasource_remote/auth_api_implementation.dart';
+import 'package:baladeston/data/auth/repository_implementation/auth_repository_implementation.dart';
+import 'package:baladeston/domain/auth/repository/auth_repository.dart';
+import 'package:baladeston/domain/auth/usecase/check_token/check_token_usecase.dart';
+import 'package:baladeston/domain/auth/usecase/check_user_exists/check_user_exists_usecase.dart';
+import 'package:baladeston/domain/auth/usecase/login_with_password/login_with_password_usecase.dart';
+import 'package:baladeston/domain/auth/usecase/send_otp/send_otp_usecase.dart';
 import 'package:get_it/get_it.dart';
-
-// API
-import 'package:baladeston/data/datasources/remote/auth_remote_datasource/auth_api.dart';
-
-// Repository
-import 'package:baladeston/domain/repositories/auth_repository.dart';
-import 'package:baladeston/data/repository_implementation/auth_repository_implementation.dart';
-
-// UseCase
-import 'package:baladeston/domain/usecase/auth/check_token_usecase.dart';
-
-// Cubit
+import 'package:http/http.dart' as http;
 
 final getIt = GetIt.instance;
 
 Future<void> initAuthModule() async {
+  // Register http.Client
+  getIt.registerLazySingleton<http.Client>(() => http.Client());
+
+  // Register AuthApi with dependency
   getIt
-  // API
     ..registerLazySingleton<AuthApi>(
-          () => AuthApiImplementation(),
+      () => AuthApiImplementation(getIt<http.Client>()),
     )
 
-  // Repository
+    // Register AuthRepository
     ..registerLazySingleton<AuthRepository>(
-          () => AuthRepositoryImplementation(api: getIt<AuthApi>()),
+      () => AuthRepositoryImplementation(api: getIt<AuthApi>()),
     )
 
-  // UseCase
+    // Register UseCases
+    ..registerLazySingleton<CheckUserExistsUseCase>(
+      () => CheckUserExistsUseCase(repository: getIt<AuthRepository>()),
+    )
+    ..registerLazySingleton<LoginWithPasswordUseCase>(
+      () => LoginWithPasswordUseCase(repository: getIt<AuthRepository>()),
+    )
     ..registerLazySingleton<CheckTokenUseCase>(
-          () => CheckTokenUseCase(getIt<AuthRepository>()),
+      () => CheckTokenUseCase(repository: getIt<AuthRepository>()),
     )
+    ..registerLazySingleton<SendOtpUseCase>(
+        () => SendOtpUseCase(repository: getIt<AuthRepository>()))
 
-  // Cubit
+    // Register AuthCubit
     ..registerFactory<AuthCubit>(
-          () => AuthCubit(
+      () => AuthCubit(
+        checkUserExistsUseCase: getIt<CheckUserExistsUseCase>(),
         checkTokenUseCase: getIt<CheckTokenUseCase>(),
+        loginWithPasswordUseCase: getIt<LoginWithPasswordUseCase>(),
+        sendOtpUseCase: getIt<SendOtpUseCase>(),
       ),
     );
 }

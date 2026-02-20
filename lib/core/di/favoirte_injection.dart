@@ -1,18 +1,18 @@
-import 'package:baladeston/domain/usecase/favorite/count_favorite_usecase.dart';
+import 'package:baladeston/domain/favorite/usecase/count_favorite/count_favorite_usecase.dart';
 import 'package:baladeston/domain/usecase/favorite/get_favotite_by_id_usecase.dart';
 import 'package:get_it/get_it.dart';
 
 // Data Layer
-import 'package:baladeston/data/datasources/remote/favorite_remote_datasource/favorite_api.dart';
-import 'package:baladeston/data/repository_implementation/favorite_repository_implementation.dart';
+import 'package:baladeston/data/favorite/datasource/remote/favorite_remote_datasource/favorite_api.dart';
+import 'package:baladeston/data/favorite/repository_implementation/favorite_repository_implementation.dart';
 
 // Domain Layer
-import 'package:baladeston/domain/repositories/favorite_repository.dart';
+import 'package:baladeston/domain/favorite/repository/favorite_repository.dart';
 import 'package:baladeston/domain/usecase/favorite/create_favorite_usecase.dart';
 import 'package:baladeston/domain/usecase/favorite/update_favorite_usecase.dart';
 import 'package:baladeston/domain/usecase/favorite/get_favorite_by_filter_usecase.dart';
-import 'package:baladeston/domain/usecase/favorite/delete_favorite_by_id_usecase.dart';
-import 'package:baladeston/domain/usecase/favorite/delete_favorite_by_filter_usecase.dart';
+import 'package:baladeston/domain/favorite/usecase/delete_favorite_by_id/delete_favorite_by_id_usecase.dart';
+import 'package:baladeston/domain/favorite/usecase/delete_favorite_by_filter/delete_favorite_by_filter_usecase.dart';
 
 // Presentation Layer
 import 'package:baladeston/presentation/providers/favorite_cubit/favorite_cubit.dart';

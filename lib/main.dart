@@ -1,12 +1,12 @@
 import 'package:baladeston/core/di_initialization/init.dart';
 import 'package:baladeston/presentation/pages/introduction/introduction_first.dart';
-import 'package:baladeston/presentation/providers/category_cubit/category_cubit.dart';
-import 'package:baladeston/presentation/providers/theme_cubit/theme_cubit.dart';
-import 'package:baladeston/presentation/providers/theme_cubit/theme_state.dart';
-import 'package:baladeston/presentation/providers/user_cubit/user_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'application/providers/category_cubit/category_cubit.dart';
+import 'application/providers/theme_cubit/theme_cubit.dart';
+import 'application/providers/theme_cubit/theme_state.dart';
+import 'application/providers/user_cubit/user_cubit.dart';
 import 'core/di/auth_injection.dart';
 
 

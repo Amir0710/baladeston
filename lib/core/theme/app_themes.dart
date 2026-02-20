@@ -1,4 +1,4 @@
-import 'package:baladeston/domain/entitys/theme/theme_entity.dart';
+import 'package:baladeston/domain/theme/entity/theme_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -54,7 +54,7 @@ class AppTheme {
   static late Color buttonForegroundColor;
   static late List<Color> partColorsList;
 
-  static void init(ThemeEntity entity) {
+  static void init({required ThemeEntity entity}) {
     _entity = entity;
 
     infoColor = _parseColor(entity.colors.info);

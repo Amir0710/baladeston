@@ -1,16 +1,16 @@
-import 'package:baladeston/data/datasources/remote/purchase_remote_datasource/purchase_api.dart';
+import 'package:baladeston/data/purchase/datasource/remote/purchase_remote_datasource/purchase_api.dart';
 import 'package:baladeston/domain/usecase/pruchase/count_purchase_usacase.dart';
-import 'package:baladeston/domain/usecase/pruchase/create_purchase_usecase.dart';
+import 'package:baladeston/domain/pruchase/usecase/create_purchase_usecase.dart';
 import 'package:baladeston/domain/usecase/pruchase/delete_purchase_by_id_usacase.dart';
 import 'package:baladeston/domain/usecase/pruchase/delete_purchase_usecase_by_filter.dart';
-import 'package:baladeston/domain/usecase/pruchase/edit_purchase_usecase.dart';
+import 'package:baladeston/domain/pruchase/edit_purchase_usecase.dart';
 import 'package:baladeston/domain/usecase/pruchase/get_purchase_by_id_usacase.dart';
 import 'package:baladeston/domain/usecase/pruchase/get_purchase_usecase_by_filter.dart';
 import 'package:get_it/get_it.dart';
 
 // Repository & Implementation
-import 'package:baladeston/domain/repositories/purchase_repository.dart';
-import 'package:baladeston/data/repository_implementation/purchase_repository_implementation.dart';
+import 'package:baladeston/domain/pruchase/repository/purchase_repository.dart';
+import 'package:baladeston/data/purchase/repository_implementation/purchase_repository_implementation.dart';
 
 // Cubit
 import 'package:baladeston/presentation/providers/purchase_cubit/purchase_cubit.dart';
