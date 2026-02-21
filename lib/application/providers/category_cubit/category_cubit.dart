@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:baladeston/data/category/filter/category_query_filter.dart';
 import 'package:baladeston/domain/category/entity/category_entity.dart';
-import 'package:baladeston/domain/category/usecase/add_image/add_image_category_usecase.dart';
 import 'package:baladeston/domain/category/usecase/count_all/count_all_category_usecase.dart';
 import 'package:baladeston/domain/category/usecase/create_category/create_category_usecase.dart';
 import 'package:baladeston/domain/category/usecase/delete_by_filter/delete_category_by_filter_usecase.dart';
@@ -12,10 +11,11 @@ import 'package:baladeston/domain/category/usecase/get_by_filter/get_category_by
 import 'package:baladeston/domain/category/usecase/get_by_id/get_category_by_id_usecase.dart';
 import 'package:baladeston/domain/category/usecase/update_by_filter/update_category_by_filter_usecase.dart';
 import 'package:baladeston/domain/category/usecase/update_by_id/update_category_by_id_usecase.dart';
-import 'package:baladeston/domain/category/usecase/update_image/update_image_category_usecase.dart';
+import 'package:baladeston/domain/category/usecase/upload_category_image/upload_category_image_usecase.dart';
 import 'package:bloc/bloc.dart';
 
 import 'category_state.dart';
+
 class CategoryCubit extends Cubit<CategoryState> {
   final CreateCategoryUseCase _createUseCase;
   final UpdateCategoryByFilterUseCase _updateByFilterUseCase;
@@ -27,7 +27,6 @@ class CategoryCubit extends Cubit<CategoryState> {
   final GetCategoryByIdUseCase _getByIdUseCase;
   final GetAllCategoryUseCase _getAllCategory;
   final UploadCategoryImageUseCase _addImage;
-  final UpdateImageCategoryUseCase _updateImage;
 
   CategoryCubit({
     required CreateCategoryUseCase createUseCase,
@@ -38,10 +37,8 @@ class CategoryCubit extends Cubit<CategoryState> {
     required DeleteCategoryByFilterUseCase deleteByFilterUseCase,
     required GetCategoryByFilterUseCase getByFilterUseCase,
     required GetCategoryByIdUseCase getByIdUseCase,
-    required GetAllCategoryUseCase getAllCategory,
-    required UploadCategoryImageUseCase addImage,
-    required UpdateImageCategoryUseCase updateImage,
-
+    required GetAllCategoryUseCase getAllCategoryUseCase,
+    required UploadCategoryImageUseCase addImageUseCase,
   })  : _createUseCase = createUseCase,
         _updateByFilterUseCase = updateByFilterUseCase,
         _updateByIdUseCase = updateByIdUseCase,
@@ -50,14 +47,14 @@ class CategoryCubit extends Cubit<CategoryState> {
         _deleteByFilterUseCase = deleteByFilterUseCase,
         _getByFilterUseCase = getByFilterUseCase,
         _getByIdUseCase = getByIdUseCase,
-        _getAllCategory = getAllCategory,
-        _addImage = addImage,
-        _updateImage = updateImage,
+        _getAllCategory = getAllCategoryUseCase,
+        _addImage = addImageUseCase,
         super(const CategoryState.initial());
 
   /* ------------------------------ LOAD LIST ------------------------------ */
 
-  Future<void> loadCategoryByFilter({required CategoryQueryFilter filter}) async {
+  Future<void> loadCategoryByFilter(
+      {required CategoryQueryFilter filter}) async {
     emit(const CategoryState.fetchingCategory());
 
     final result = await _getByFilterUseCase(filter: filter);
@@ -77,7 +74,7 @@ class CategoryCubit extends Cubit<CategoryState> {
         ));
       },
       failure: (error) {
-        emit( CategoryState.error(
+        emit(CategoryState.error(
           error: CategoryStateError.errorWhileGettingCategory,
           errorMessage: 'خطا در دریافت لیست دسته‌بندی$error',
         ));
@@ -106,7 +103,7 @@ class CategoryCubit extends Cubit<CategoryState> {
         ));
       },
       failure: (error) {
-        emit( CategoryState.error(
+        emit(CategoryState.error(
           error: CategoryStateError.errorWhileGettingAllCategory,
           errorMessage: 'خطا در دریافت همه دسته‌بندی‌ها$error',
         ));
@@ -126,7 +123,7 @@ class CategoryCubit extends Cubit<CategoryState> {
         emit(CategoryState.successSingleLoaded(category: category));
       },
       failure: (error) {
-        emit( CategoryState.error(
+        emit(CategoryState.error(
           error: CategoryStateError.categoryNotFound,
           errorMessage: 'دسته‌بندی پیدا نشد$error',
         ));
@@ -148,7 +145,7 @@ class CategoryCubit extends Cubit<CategoryState> {
         ));
       },
       failure: (error) {
-        emit( CategoryState.error(
+        emit(CategoryState.error(
           error: CategoryStateError.errorWhileAddingCategory,
           errorMessage: 'خطا در افزودن دسته‌بندی$error',
         ));
@@ -190,7 +187,7 @@ class CategoryCubit extends Cubit<CategoryState> {
         ));
       },
       failure: (error) {
-        emit( CategoryState.error(
+        emit(CategoryState.error(
           error: CategoryStateError.errorWhileUpdatingCategory,
           errorMessage: 'خطا در ویرایش دسته‌بندی$error',
         ));
@@ -206,19 +203,14 @@ class CategoryCubit extends Cubit<CategoryState> {
   }) async {
     emit(const CategoryState.updatingCategory());
 
-    final result = await _updateByIdUseCase(
-      id : id ,
-      category : category
-    );
+    final result = await _updateByIdUseCase(id: id, category: category);
 
     await result.when(
       success: (value) async {
-        emit(CategoryState.updatedSingleCategory(
-          category: value
-        ));
+        emit(CategoryState.updatedSingleCategory(category: value));
       },
       failure: (error) {
-        emit( CategoryState.error(
+        emit(CategoryState.error(
           error: CategoryStateError.errorWhileUpdatingCategory,
           errorMessage: 'خطا در ویرایش دسته‌بندی$error',
         ));
@@ -238,16 +230,18 @@ class CategoryCubit extends Cubit<CategoryState> {
         emit(CategoryState.deletedSingleCategory(id: value));
       },
       failure: (error) {
-        emit( CategoryState.error(
+        emit(CategoryState.error(
           error: CategoryStateError.errorWhileDeletingCategory,
           errorMessage: 'خطا در حذف دسته‌بندی$error',
         ));
       },
     );
   }
+
   /* --------------------------- DELETE BY FILTER --------------------------- */
 
-  Future<void> deleteCategoryByFilter({required CategoryQueryFilter filter}) async {
+  Future<void> deleteCategoryByFilter(
+      {required CategoryQueryFilter filter}) async {
     emit(const CategoryState.deletingCategory());
 
     final result = await _deleteByFilterUseCase(filter: filter);
@@ -257,7 +251,7 @@ class CategoryCubit extends Cubit<CategoryState> {
         emit(CategoryState.deletedListCategory(id: value));
       },
       failure: (error) {
-        emit( CategoryState.error(
+        emit(CategoryState.error(
           error: CategoryStateError.errorWhileDeletingCategory,
           errorMessage: 'خطا در حذف دسته‌بندی‌ها$error',
         ));
@@ -280,56 +274,31 @@ class CategoryCubit extends Cubit<CategoryState> {
         emit(CategoryState.uploadedImageCategory(path: value));
       },
       failure: (error) {
-        emit( CategoryState.error(
+        emit(CategoryState.error(
           error: CategoryStateError.errorWhileAddingImage,
           errorMessage: ' خطا در افزودن تصویر$error',
         ));
       },
     );
-  }
 
-  /* ----------------------------- UPDATE IMAGE ---------------------------- */
-
-  Future<void> updateCategoryImage({
-    required int categoryId,
-    required File imageFile,
-  }) async {
-    emit(const CategoryState.uploadingImageCategory());
-
-    final result = await _updateImage(id: categoryId, image: imageFile);
-
-    result.when(
-      success: (value) {
-        emit(CategoryState.updatedImageCategory(path: value));
-      },
-      failure: (error) {
-        emit( CategoryState.error(
-          error: CategoryStateError.errorWhileUpdatingImage,
-          errorMessage: 'خطا در ویرایش تصویر$error',
-        ));
-      },
-    );
   }
 
 /* ----------------------------- UPDATE IMAGE ---------------------------- */
-  Future<void> countCategory({
-    required CategoryQueryFilter filter
-  }) async {
+  Future<void> countCategory({required CategoryQueryFilter filter}) async {
     emit(const CategoryState.countingCategory());
 
-    final result = await _countUseCase(filter:  filter);
+    final result = await _countUseCase(filter: filter);
 
     result.when(
       success: (value) {
         emit(CategoryState.countedCategory(count: value));
       },
       failure: (error) {
-        emit( CategoryState.error(
+        emit(CategoryState.error(
           error: CategoryStateError.errorWhileCountCategory,
           errorMessage: 'خطا در ویرایش تصویر$error',
         ));
       },
     );
   }
-
 }

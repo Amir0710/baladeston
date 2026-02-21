@@ -6,10 +6,10 @@ import 'package:baladeston/domain/collection/failure/collection_failure.dart';
 import 'package:baladeston/domain/collection/repository/collection_repository.dart';
 import 'package:baladeston/domain/collection/usecase/add_collection_image/add_collection_image_usecase_business_rule.dart';
 
-class AddCollectionImageUseCase {
+class UploadCollectionImageUseCase {
   final CollectionRepository repository;
 
-  const AddCollectionImageUseCase({
+  const UploadCollectionImageUseCase({
     required this.repository,
   });
 

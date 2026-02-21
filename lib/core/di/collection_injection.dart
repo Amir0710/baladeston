@@ -1,16 +1,17 @@
-import 'package:baladeston/data/collection/datasource/remote/collection_remote_datasource/collection_api.dart';
-import 'package:baladeston/domain/usecase/collection/create_collections_usecase.dart';
-import 'package:baladeston/domain/usecase/collection/delete_collection_by_id_usecase.dart';
-import 'package:baladeston/domain/usecase/collection/get_collection_by_id_usecase.dart';
-import 'package:get_it/get_it.dart';
-import 'package:baladeston/data/collection/repository_implementation/collection_repository_implementation.dart';
-import 'package:baladeston/domain/collection/repository/collection_repository.dart';
-import 'package:baladeston/domain/usecase/collection/update_collection_usecase.dart';
-import 'package:baladeston/domain/usecase/collection/count_all_collections_usecase.dart';
-import 'package:baladeston/domain/usecase/collection/delete_collection_by_filter_usecase.dart';
-import 'package:baladeston/domain/usecase/collection/get_collection_by_filter_usecase.dart';
 
 import 'package:baladeston/application/providers/collection_cubit/collection_cubit.dart';
+import 'package:baladeston/data/collection/datasource/remote/collection_remote_datasource/collection_api.dart';
+import 'package:baladeston/data/collection/repository_implementation/collection_repository_implementation.dart';
+import 'package:baladeston/domain/collection/repository/collection_repository.dart';
+import 'package:baladeston/domain/collection/usecase/count_all/count_all_collection_usecase.dart';
+import 'package:baladeston/domain/collection/usecase/create_collection/create_collection_usecase.dart';
+import 'package:baladeston/domain/collection/usecase/delete_collection_by_filter/delete_collection_by_filter_usecase.dart';
+import 'package:baladeston/domain/collection/usecase/delete_collection_by_id/delete_collection_by_id_usecase.dart';
+import 'package:baladeston/domain/collection/usecase/get_collection_by_filter/get_collection_by_filter_usecase.dart';
+import 'package:baladeston/domain/collection/usecase/get_collection_by_id/get_collection_by_id_usecase.dart';
+import 'package:baladeston/domain/collection/usecase/update_collection_by_filter/update_collection_by_filter_usecase.dart';
+import 'package:baladeston/domain/collection/usecase/update_collection_by_id/update_collection_by_id_usecase.dart';
+import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
 
@@ -24,31 +25,38 @@ Future<void> initCollectionModule() async {
 
     // UseCases
     ..registerLazySingleton<CreateCollectionUseCase>(
-      () => CreateCollectionUseCase(getIt<CollectionRepository>()),
+      () => CreateCollectionUseCase(repository :getIt<CollectionRepository>()),
     )
-    ..registerLazySingleton<UpdateCollectionUseCase>(
-      () => UpdateCollectionUseCase(getIt<CollectionRepository>()),
+    ..registerLazySingleton<UpdateCollectionByFilterUseCase>(
+      () => UpdateCollectionByFilterUseCase(repository :getIt<CollectionRepository>()),
+    )
+    ..registerLazySingleton<UpdateCollectionByIdUseCase>(
+          () => UpdateCollectionByIdUseCase(repository :getIt<CollectionRepository>()),
     )
     ..registerLazySingleton<CountAllCollectionUseCase>(
-      () => CountAllCollectionUseCase(getIt<CollectionRepository>()),
+      () => CountAllCollectionUseCase(repository :getIt<CollectionRepository>()),
     )
     ..registerLazySingleton<DeleteCollectionByFilterUseCase>(
-      () => DeleteCollectionByFilterUseCase(getIt<CollectionRepository>()),
+      () => DeleteCollectionByFilterUseCase(repository :getIt<CollectionRepository>()),
     )
     ..registerLazySingleton<GetCollectionByFilterUseCase>(
-      () => GetCollectionByFilterUseCase(getIt<CollectionRepository>()),
+          () => GetCollectionByFilterUseCase(repository :getIt<CollectionRepository>()),
+    )
+    ..registerLazySingleton<GetCollectionByIdUseCase>(
+          () => GetCollectionByIdUseCase(repository :getIt<CollectionRepository>()),
     )
 
     // Cubit
     ..registerFactory<CollectionCubit>(
       () => CollectionCubit(
         createUseCase: getIt<CreateCollectionUseCase>(),
-        updateUseCase: getIt<UpdateCollectionUseCase>(),
         countUseCase: getIt<CountAllCollectionUseCase>(),
         deleteByFilterUseCase: getIt<DeleteCollectionByFilterUseCase>(),
         getByFilterUseCase: getIt<GetCollectionByFilterUseCase>(),
         deleteByIdUseCase:  getIt<DeleteCollectionByIdUseCase>(),
         getByIdUseCase:  getIt<GetCollectionByIdUseCase>(),
+        updateByIdUseCase: getIt<UpdateCollectionByIdUseCase>() ,
+        updateByFilterUseCase: getIt<UpdateCollectionByFilterUseCase>(),
       ),
     );
 }

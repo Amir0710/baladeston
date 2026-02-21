@@ -22,6 +22,7 @@ mixin _$CommentEntity {
   double get rating => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
+  CommentStatus get status => throw _privateConstructorUsedError;
 
   /// Create a copy of CommentEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -42,7 +43,8 @@ abstract class $CommentEntityCopyWith<$Res> {
       String content,
       double rating,
       DateTime createdAt,
-      DateTime updatedAt});
+      DateTime updatedAt,
+      CommentStatus status});
 }
 
 /// @nodoc
@@ -66,6 +68,7 @@ class _$CommentEntityCopyWithImpl<$Res, $Val extends CommentEntity>
     Object? rating = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? status = freezed,
   }) {
     return _then(_value.copyWith(
       userId: null == userId
@@ -92,6 +95,10 @@ class _$CommentEntityCopyWithImpl<$Res, $Val extends CommentEntity>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as CommentStatus,
     ) as $Val);
   }
 }
@@ -110,7 +117,8 @@ abstract class _$$CommentEntityImplCopyWith<$Res>
       String content,
       double rating,
       DateTime createdAt,
-      DateTime updatedAt});
+      DateTime updatedAt,
+      CommentStatus status});
 }
 
 /// @nodoc
@@ -132,6 +140,7 @@ class __$$CommentEntityImplCopyWithImpl<$Res>
     Object? rating = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? status = freezed,
   }) {
     return _then(_$CommentEntityImpl(
       userId: null == userId
@@ -158,6 +167,10 @@ class __$$CommentEntityImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as CommentStatus,
     ));
   }
 }
@@ -171,7 +184,8 @@ class _$CommentEntityImpl implements _CommentEntity {
       required this.content,
       required this.rating,
       required this.createdAt,
-      required this.updatedAt});
+      required this.updatedAt,
+      required this.status});
 
   @override
   final int userId;
@@ -185,10 +199,12 @@ class _$CommentEntityImpl implements _CommentEntity {
   final DateTime createdAt;
   @override
   final DateTime updatedAt;
+  @override
+  final CommentStatus status;
 
   @override
   String toString() {
-    return 'CommentEntity(userId: $userId, targetId: $targetId, content: $content, rating: $rating, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'CommentEntity(userId: $userId, targetId: $targetId, content: $content, rating: $rating, createdAt: $createdAt, updatedAt: $updatedAt, status: $status)';
   }
 
   @override
@@ -204,12 +220,20 @@ class _$CommentEntityImpl implements _CommentEntity {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            const DeepCollectionEquality().equals(other.status, status));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, userId, targetId, content, rating, createdAt, updatedAt);
+      runtimeType,
+      userId,
+      targetId,
+      content,
+      rating,
+      createdAt,
+      updatedAt,
+      const DeepCollectionEquality().hash(status));
 
   /// Create a copy of CommentEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -227,7 +251,8 @@ abstract class _CommentEntity implements CommentEntity {
       required final String content,
       required final double rating,
       required final DateTime createdAt,
-      required final DateTime updatedAt}) = _$CommentEntityImpl;
+      required final DateTime updatedAt,
+      required final CommentStatus status}) = _$CommentEntityImpl;
 
   @override
   int get userId;
@@ -241,6 +266,8 @@ abstract class _CommentEntity implements CommentEntity {
   DateTime get createdAt;
   @override
   DateTime get updatedAt;
+  @override
+  CommentStatus get status;
 
   /// Create a copy of CommentEntity
   /// with the given fields replaced by the non-null parameter values.

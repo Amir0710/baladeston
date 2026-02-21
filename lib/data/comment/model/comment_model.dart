@@ -1,3 +1,4 @@
+import 'package:baladeston/core/enum/comment_status.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'comment_model.freezed.dart';
@@ -12,6 +13,8 @@ abstract class CommentModel with _$CommentModel {
     required double rating,
     required DateTime createdAt,
     required DateTime updatedAt,
+    required CommentStatus status,
+
   }) = _CommentModel;
 
   factory CommentModel.fromJson(Map<String, dynamic> json) =>

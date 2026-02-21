@@ -1,0 +1,4 @@
+enum CommentStatus{
+  deleted,
+  active,
+}

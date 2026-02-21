@@ -1,3 +1,5 @@
+import 'package:baladeston/core/enum/comment_status.dart';
+
 class CommentQueryFilter {
   final int? userId;
   final int? targetId;
@@ -7,7 +9,7 @@ class CommentQueryFilter {
   final double? maxRating;
   final DateTime? createdAfter;
   final DateTime? createdBefore;
-
+  final CommentStatus? status ;
   final String orderBy;
   final bool ascending;
   final int limit;
@@ -22,6 +24,7 @@ class CommentQueryFilter {
     this.maxRating,
     this.createdAfter,
     this.createdBefore,
+    this.status,
     this.orderBy = 'createdAt',
     this.ascending = false,
     this.limit = 20,

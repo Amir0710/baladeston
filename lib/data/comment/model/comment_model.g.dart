@@ -14,6 +14,7 @@ _$CommentModelImpl _$$CommentModelImplFromJson(Map<String, dynamic> json) =>
       rating: (json['rating'] as num).toDouble(),
       createdAt: DateTime.parse(json['createdAt'] as String),
       updatedAt: DateTime.parse(json['updatedAt'] as String),
+      status: $enumDecode(_$CommentStatusEnumMap, json['status']),
     );
 
 Map<String, dynamic> _$$CommentModelImplToJson(_$CommentModelImpl instance) =>
@@ -24,4 +25,10 @@ Map<String, dynamic> _$$CommentModelImplToJson(_$CommentModelImpl instance) =>
       'rating': instance.rating,
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt.toIso8601String(),
+      'status': _$CommentStatusEnumMap[instance.status]!,
     };
+
+const _$CommentStatusEnumMap = {
+  CommentStatus.deleted: 'deleted',
+  CommentStatus.active: 'active',
+};

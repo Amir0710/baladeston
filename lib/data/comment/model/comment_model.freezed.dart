@@ -26,6 +26,7 @@ mixin _$CommentModel {
   double get rating => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
+  CommentStatus get status => throw _privateConstructorUsedError;
 
   /// Serializes this CommentModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +50,8 @@ abstract class $CommentModelCopyWith<$Res> {
       String content,
       double rating,
       DateTime createdAt,
-      DateTime updatedAt});
+      DateTime updatedAt,
+      CommentStatus status});
 }
 
 /// @nodoc
@@ -73,6 +75,7 @@ class _$CommentModelCopyWithImpl<$Res, $Val extends CommentModel>
     Object? rating = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? status = null,
   }) {
     return _then(_value.copyWith(
       userId: null == userId
@@ -99,6 +102,10 @@ class _$CommentModelCopyWithImpl<$Res, $Val extends CommentModel>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as CommentStatus,
     ) as $Val);
   }
 }
@@ -117,7 +124,8 @@ abstract class _$$CommentModelImplCopyWith<$Res>
       String content,
       double rating,
       DateTime createdAt,
-      DateTime updatedAt});
+      DateTime updatedAt,
+      CommentStatus status});
 }
 
 /// @nodoc
@@ -139,6 +147,7 @@ class __$$CommentModelImplCopyWithImpl<$Res>
     Object? rating = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? status = null,
   }) {
     return _then(_$CommentModelImpl(
       userId: null == userId
@@ -165,6 +174,10 @@ class __$$CommentModelImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as CommentStatus,
     ));
   }
 }
@@ -178,7 +191,8 @@ class _$CommentModelImpl implements _CommentModel {
       required this.content,
       required this.rating,
       required this.createdAt,
-      required this.updatedAt});
+      required this.updatedAt,
+      required this.status});
 
   factory _$CommentModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CommentModelImplFromJson(json);
@@ -195,10 +209,12 @@ class _$CommentModelImpl implements _CommentModel {
   final DateTime createdAt;
   @override
   final DateTime updatedAt;
+  @override
+  final CommentStatus status;
 
   @override
   String toString() {
-    return 'CommentModel(userId: $userId, targetId: $targetId, content: $content, rating: $rating, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'CommentModel(userId: $userId, targetId: $targetId, content: $content, rating: $rating, createdAt: $createdAt, updatedAt: $updatedAt, status: $status)';
   }
 
   @override
@@ -214,13 +230,14 @@ class _$CommentModelImpl implements _CommentModel {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, userId, targetId, content, rating, createdAt, updatedAt);
+  int get hashCode => Object.hash(runtimeType, userId, targetId, content,
+      rating, createdAt, updatedAt, status);
 
   /// Create a copy of CommentModel
   /// with the given fields replaced by the non-null parameter values.
@@ -245,7 +262,8 @@ abstract class _CommentModel implements CommentModel {
       required final String content,
       required final double rating,
       required final DateTime createdAt,
-      required final DateTime updatedAt}) = _$CommentModelImpl;
+      required final DateTime updatedAt,
+      required final CommentStatus status}) = _$CommentModelImpl;
 
   factory _CommentModel.fromJson(Map<String, dynamic> json) =
       _$CommentModelImpl.fromJson;
@@ -262,6 +280,8 @@ abstract class _CommentModel implements CommentModel {
   DateTime get createdAt;
   @override
   DateTime get updatedAt;
+  @override
+  CommentStatus get status;
 
   /// Create a copy of CommentModel
   /// with the given fields replaced by the non-null parameter values.
