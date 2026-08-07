@@ -1,20 +1,24 @@
-import 'package:baladeston/domain/video/exception/video_id_exception.dart';
+import 'package:baladeston/core/result/result.dart';
+import 'package:baladeston/domain/video/failure/base_video_failure.dart';
+import 'package:baladeston/domain/video/failure/domain/validation/video_id_failure.dart';
 
-class DeleteVideoByIdUseCaseBusinessRule {
+class DeleteVideoByIdUsecaseBusinessRule {
   final int id;
 
-  const DeleteVideoByIdUseCaseBusinessRule({
+  const DeleteVideoByIdUsecaseBusinessRule({
     required this.id,
   });
 
-  void validate() {
-    _validateId();
+  Result<void, VideoFailure> validate() {
+      return videoIdValidation();
   }
 
-
-  void _validateId() {
+  Result<void,VideoFailure> videoIdValidation()
+  {
     if (id <= 0) {
-      throw const VideoIdInvalidException();
+      return const Result.failure(VideoIdInvalidFailure());
     }
+
+    return const Result.success(null);
   }
 }

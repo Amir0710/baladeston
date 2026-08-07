@@ -9,7 +9,7 @@ import 'package:baladeston/domain/user/entity/user_entity.dart';
 class CompleteOnboardingUseCase {
   final OnboardingRepository repository;
 
-  const CompleteOnboardingUseCase(this.repository);
+  const CompleteOnboardingUseCase({required this.repository});
 
   Future<Result<AuthSessionEntity, OnboardingFailure>> call({
     required UserEntity user,

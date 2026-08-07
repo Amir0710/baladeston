@@ -13,7 +13,7 @@ import 'package:baladeston/domain/user/entity/user_entity.dart';
 class OnboardingRepositoryImplementation implements OnboardingRepository {
   final OnboardingApi api;
 
-  const OnboardingRepositoryImplementation(this.api);
+  const OnboardingRepositoryImplementation({required this.api});
 
   @override
   Future<Result<AuthSessionEntity, OnboardingFailure>>

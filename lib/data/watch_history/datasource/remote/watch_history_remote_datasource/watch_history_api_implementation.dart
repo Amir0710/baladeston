@@ -21,7 +21,7 @@ class WatchHistoryApiImplementation implements WatchHistoryApi {
   // Update
 
   @override
-  Future<WatchHistoryModel> updateLastPositionById({
+  Future<WatchHistoryModel> updateWatchHistoryById({
     required int id,
     required WatchHistoryModel watchHistory,
   }) async {
@@ -33,7 +33,7 @@ class WatchHistoryApiImplementation implements WatchHistoryApi {
   }
 
   @override
-  Future<WatchHistoryModel> updateLastPositionByFilter({
+  Future<List<WatchHistoryModel>> updateWatchHistoryByFilter({
     required WatchHistoryQueryFilter filter,
     required WatchHistoryModel watchHistory,
   }) async {
@@ -47,7 +47,7 @@ class WatchHistoryApiImplementation implements WatchHistoryApi {
   // Read
 
   @override
-  Future<WatchHistoryModel> getLastPositionById({
+  Future<WatchHistoryModel> getWatchHistoryById({
     required int id,
   }) async {
     _validateId(id);
@@ -56,7 +56,7 @@ class WatchHistoryApiImplementation implements WatchHistoryApi {
   }
 
   @override
-  Future<List<WatchHistoryModel>> getLastPositionByFilter({
+  Future<List<WatchHistoryModel>> getWatchHistoryByFilter({
     required WatchHistoryQueryFilter filter,
   }) async {
     _validateFilter(filter);

@@ -8,7 +8,7 @@ import 'count_theme_usecase_business_rule.dart';
 class CountThemeUseCase {
   final ThemeRepository repository;
 
-  const CountThemeUseCase(this.repository);
+  const CountThemeUseCase({required this.repository});
 
   Future<Result<int, ThemeFailure>> call({
     required ThemeQueryFilter filter,

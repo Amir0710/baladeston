@@ -1,33 +1,38 @@
-import 'package:baladeston/presentation/providers/report_cubit/report_cubit.dart';
-import 'package:get_it/get_it.dart';
-
+import 'package:baladeston/application/providers/report_cubit/report_cubit.dart';
 // Data
 import 'package:baladeston/data/report/datasource/remote/report_remote_datasource/report_api.dart';
 import 'package:baladeston/data/report/repository_implementation/report_repository_implementation.dart';
-
-// Domain
+// Domain - Repository
 import 'package:baladeston/domain/report/repository/report_repository.dart';
-import 'package:baladeston/domain/usecase/report/get_report_by_filter_usecase.dart';
-import 'package:baladeston/domain/usecase/report/get_report_by_id_usecase.dart';
+import 'package:baladeston/domain/report/usecase/count_report/count_report_usecase.dart';
 import 'package:baladeston/domain/report/usecase/create_report/create_report_usecase.dart';
-import 'package:baladeston/domain/report/usecase/update_report_usecase.dart';
-import 'package:baladeston/domain/usecase/report/delete_report_by_id_usecase.dart';
-import 'package:baladeston/domain/usecase/report/delete_report_by_filter_usecase.dart';
-import 'package:baladeston/domain/usecase/report/count_all_report_usecase.dart';
-
-// Application
+import 'package:baladeston/domain/report/usecase/delete_report_by_filter/delete_report_by_filter_usecase.dart';
+import 'package:baladeston/domain/report/usecase/delete_report_by_id/delete_report_by_id_usecase.dart';
+// Domain - UseCases
+import 'package:baladeston/domain/report/usecase/get_report_by_filter/get_report_by_filter_usecase.dart';
+import 'package:baladeston/domain/report/usecase/get_report_by_id/get_report_by_id_usecase.dart';
+import 'package:baladeston/domain/report/usecase/update_report_by_filter/update_report_by_filter_usecase.dart';
+import 'package:baladeston/domain/report/usecase/update_report_by_id/update_report_by_id_usecase.dart';
+import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
 
 Future<void> initReportModule() async {
+  /* -------------------------------------------------------------------------- */
+  /*                                Repository                                  */
+  /* -------------------------------------------------------------------------- */
+
+  getIt.registerLazySingleton<ReportRepository>(
+    () => ReportRepositoryImplementation(
+      api: getIt<ReportApi>(),
+    ),
+  );
+
+  /* -------------------------------------------------------------------------- */
+  /*                                 UseCases                                   */
+  /* -------------------------------------------------------------------------- */
+
   getIt
-
-    // Repository
-    ..registerLazySingleton<ReportRepository>(
-      () => ReportRepositoryImplementation(api: getIt<ReportApi>()),
-    )
-
-    // UseCases
     ..registerLazySingleton<GetReportByFilterUseCase>(
       () => GetReportByFilterUseCase(getIt<ReportRepository>()),
     )
@@ -37,8 +42,11 @@ Future<void> initReportModule() async {
     ..registerLazySingleton<CreateReportUseCase>(
       () => CreateReportUseCase(getIt<ReportRepository>()),
     )
-    ..registerLazySingleton<UpdateReportUseCase>(
-      () => UpdateReportUseCase(getIt<ReportRepository>()),
+    ..registerLazySingleton<UpdateReportByIdUseCase>(
+      () => UpdateReportByIdUseCase(getIt<ReportRepository>()),
+    )
+    ..registerLazySingleton<UpdateReportByFilterUseCase>(
+      () => UpdateReportByFilterUseCase(getIt<ReportRepository>()),
     )
     ..registerLazySingleton<DeleteReportByIdUseCase>(
       () => DeleteReportByIdUseCase(getIt<ReportRepository>()),
@@ -46,20 +54,24 @@ Future<void> initReportModule() async {
     ..registerLazySingleton<DeleteReportByFilterUseCase>(
       () => DeleteReportByFilterUseCase(getIt<ReportRepository>()),
     )
-    ..registerLazySingleton<CountAllReportUseCase>(
-      () => CountAllReportUseCase(getIt<ReportRepository>()),
-    )
-
-    // Cubit
-    ..registerFactory<ReportCubit>(
-      () => ReportCubit(
-        countUseCase: getIt<CountAllReportUseCase>(),
-        getByFilterUseCase: getIt<GetReportByFilterUseCase>(),
-        getByIdUseCase: getIt<GetReportByIdUseCase>(),
-        createUseCase: getIt<CreateReportUseCase>(),
-        updateUseCase: getIt<UpdateReportUseCase>(),
-        deleteByIdUseCase: getIt<DeleteReportByIdUseCase>(),
-        deleteByFilterUseCase: getIt<DeleteReportByFilterUseCase>(),
-      ),
+    ..registerLazySingleton<CountReportUseCase>(
+      () => CountReportUseCase(getIt<ReportRepository>()),
     );
+
+  /* -------------------------------------------------------------------------- */
+  /*                                   Cubit                                    */
+  /* -------------------------------------------------------------------------- */
+
+  getIt.registerFactory<ReportCubit>(
+    () => ReportCubit(
+      countUseCase: getIt<CountReportUseCase>(),
+      getByFilterUseCase: getIt<GetReportByFilterUseCase>(),
+      getByIdUseCase: getIt<GetReportByIdUseCase>(),
+      createUseCase: getIt<CreateReportUseCase>(),
+      updateByIdUseCase: getIt<UpdateReportByIdUseCase>(),
+      updateByFilterUseCase: getIt<UpdateReportByFilterUseCase>(),
+      deleteByIdUseCase: getIt<DeleteReportByIdUseCase>(),
+      deleteByFilterUseCase: getIt<DeleteReportByFilterUseCase>(),
+    ),
+  );
 }

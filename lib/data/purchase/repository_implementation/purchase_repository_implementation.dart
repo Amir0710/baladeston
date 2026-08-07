@@ -10,7 +10,7 @@ import 'package:baladeston/domain/purchase/repository/purchase_repository.dart';
 class PurchaseRepositoryImplementation implements PurchaseRepository {
   final PurchaseApi api;
 
-  const PurchaseRepositoryImplementation(this.api);
+  const PurchaseRepositoryImplementation({required this.api});
 
   @override
   Future<Result<List<PurchaseEntity>, PurchaseFailure>>

@@ -8,13 +8,20 @@ part of 'watch_history_model.dart';
 
 _$WatchHistoryModelImpl _$$WatchHistoryModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$WatchHistoryModelImpl(
-      userId: (json['userId'] as num).toInt(),
-      videoId: (json['videoId'] as num).toInt(),
-      lastPositionSeconds: (json['lastPositionSeconds'] as num?)?.toInt(),
-      updatedAt: json['updatedAt'] == null
-          ? null
-          : DateTime.parse(json['updatedAt'] as String),
+    $checkedCreate(
+      r'_$WatchHistoryModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$WatchHistoryModelImpl(
+          userId: $checkedConvert('userId', (v) => (v as num).toInt()),
+          videoId: $checkedConvert('videoId', (v) => (v as num).toInt()),
+          lastPositionSeconds: $checkedConvert(
+              'lastPositionSeconds', (v) => (v as num?)?.toInt()),
+          updatedAt: $checkedConvert('updatedAt',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$WatchHistoryModelImplToJson(

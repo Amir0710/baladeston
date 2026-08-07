@@ -1,10 +1,9 @@
 import 'package:baladeston/core/result/result.dart';
+import 'package:baladeston/data/theme/filter/theme_query_filter.dart';
 import 'package:baladeston/domain/theme/entity/theme_entity.dart';
 import 'package:baladeston/domain/theme/failure/theme_failure.dart';
-import 'package:baladeston/data/theme/filter/theme_query_filter.dart';
 
 abstract class ThemeRepository {
-
   /// Get all themes by filter
   Future<Result<List<ThemeEntity>, ThemeFailure>> getAllThemes({
     required ThemeQueryFilter filter,
@@ -16,7 +15,7 @@ abstract class ThemeRepository {
   });
 
   /// Get theme by name
-  Future<Result<ThemeEntity, ThemeFailure>> getThemeByName({
+  Future<Result<List<ThemeEntity>, ThemeFailure>> getThemeByName({
     required String name,
   });
 
@@ -32,7 +31,7 @@ abstract class ThemeRepository {
   });
 
   /// Update theme by filter
-  Future<Result<ThemeEntity, ThemeFailure>> updateThemeByFilter({
+  Future<Result<List<ThemeEntity>, ThemeFailure>> updateThemeByFilter({
     required ThemeQueryFilter filter,
     required ThemeEntity theme,
   });
@@ -43,8 +42,8 @@ abstract class ThemeRepository {
   });
 
   /// Delete theme by name
-  Future<Result<int, ThemeFailure>> deleteThemeByName({
-    required String name,
+  Future<Result<List<int>, ThemeFailure>> deleteThemeByFilter({
+    required ThemeQueryFilter filter,
   });
 
   /// Count all themes by filter

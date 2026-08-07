@@ -10,7 +10,7 @@ import 'get_all_theme_usecase_business_rule.dart';
 class GetAllThemeUseCase {
   final ThemeRepository repository;
 
-  const GetAllThemeUseCase(this.repository);
+  const GetAllThemeUseCase({required this.repository});
 
   Future<Result<List<ThemeEntity>, ThemeFailure>> call({
     required ThemeQueryFilter filter,

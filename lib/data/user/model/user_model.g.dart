@@ -7,32 +7,38 @@ part of 'user_model.dart';
 // **************************************************************************
 
 _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
-    _$UserModelImpl(
-      id: (json['id'] as num?)?.toInt(),
-      fullName: json['fullName'] as String?,
-      email: json['email'] as String?,
-      phoneNumber: json['phoneNumber'] as String?,
-      avatarUrl: json['avatarUrl'] as String?,
-      status: $enumDecodeNullable(_$UserStatusEnumMap, json['status']),
-      createAt: json['createAt'] == null
-          ? null
-          : DateTime.parse(json['createAt'] as String),
-      password: json['password'] as String?,
-      gender: $enumDecodeNullable(_$UserGenderEnumMap, json['gender']),
-      birthday: json['birthday'] == null
-          ? null
-          : DateTime.parse(json['birthday'] as String),
-      bio: json['bio'] as String?,
-      country: json['country'] as String?,
-      language: json['language'] as String?,
-      timezone: json['timezone'] as String?,
-      failedLoginAttempts: (json['failedLoginAttempts'] as num?)?.toInt(),
-      lastLoginAt: json['lastLoginAt'] == null
-          ? null
-          : DateTime.parse(json['lastLoginAt'] as String),
-      updatedAt: json['updatedAt'] == null
-          ? null
-          : DateTime.parse(json['updatedAt'] as String),
+    $checkedCreate(
+      r'_$UserModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$UserModelImpl(
+          id: $checkedConvert('id', (v) => (v as num?)?.toInt()),
+          fullName: $checkedConvert('fullName', (v) => v as String?),
+          email: $checkedConvert('email', (v) => v as String?),
+          phoneNumber: $checkedConvert('phoneNumber', (v) => v as String?),
+          avatarUrl: $checkedConvert('avatarUrl', (v) => v as String?),
+          status: $checkedConvert(
+              'status', (v) => $enumDecodeNullable(_$UserStatusEnumMap, v)),
+          createAt: $checkedConvert('createAt',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+          password: $checkedConvert('password', (v) => v as String?),
+          gender: $checkedConvert(
+              'gender', (v) => $enumDecodeNullable(_$UserGenderEnumMap, v)),
+          birthday: $checkedConvert('birthday',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+          bio: $checkedConvert('bio', (v) => v as String?),
+          country: $checkedConvert('country', (v) => v as String?),
+          language: $checkedConvert('language', (v) => v as String?),
+          timezone: $checkedConvert('timezone', (v) => v as String?),
+          failedLoginAttempts: $checkedConvert(
+              'failedLoginAttempts', (v) => (v as num?)?.toInt()),
+          lastLoginAt: $checkedConvert('lastLoginAt',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+          updatedAt: $checkedConvert('updatedAt',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
@@ -58,9 +64,9 @@ Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
 
 const _$UserStatusEnumMap = {
   UserStatus.active: 'active',
-  UserStatus.inactive: 'inactive',
-  UserStatus.blocked: 'blocked',
-  UserStatus.pending: 'pending',
+  UserStatus.suspended: 'suspended',
+  UserStatus.banned: 'banned',
+  UserStatus.deleted: 'deleted',
 };
 
 const _$UserGenderEnumMap = {

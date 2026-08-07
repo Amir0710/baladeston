@@ -1,28 +1,31 @@
-import 'package:baladeston/domain/theme/usecase/count_all_themes_usecase.dart';
-import 'package:baladeston/domain/theme/usecase/get_all_themes_usecase.dart';
-import 'package:bloc/bloc.dart';
-import 'theme_state.dart';
-import 'package:baladeston/domain/theme/entity/theme_entity.dart';
 import 'package:baladeston/data/theme/filter/theme_query_filter.dart';
+import 'package:baladeston/domain/theme/entity/theme_entity.dart';
+// UseCases
+import 'package:baladeston/domain/theme/usecase/count_theme/count_theme_usecase.dart';
+import 'package:baladeston/domain/theme/usecase/create_theme/create_theme_usecase.dart';
+import 'package:baladeston/domain/theme/usecase/delete_theme_by_filter/delete_theme_by_filter_usecase.dart';
+import 'package:baladeston/domain/theme/usecase/delete_theme_by_id/delete_theme_by_id_usecase.dart';
+import 'package:baladeston/domain/theme/usecase/get_all_theme/get_all_theme_usecase.dart';
+import 'package:baladeston/domain/theme/usecase/get_theme_by_id/get_theme_by_id_usecase.dart';
+import 'package:baladeston/domain/theme/usecase/get_theme_by_name/get_theme_by_name_usecase.dart';
+import 'package:baladeston/domain/theme/usecase/init_theme/init_theme_usecase.dart';
+import 'package:baladeston/domain/theme/usecase/set_theme/set_theme_usecase.dart';
+import 'package:baladeston/domain/theme/usecase/update_theme_by_filter/update_theme_by_filter_usecase.dart';
+import 'package:baladeston/domain/theme/usecase/update_theme_by_id/update_theme_by_id_usecase.dart';
+import 'package:bloc/bloc.dart';
 
-import 'package:baladeston/domain/theme/usecase/get_theme_by_id_usecase.dart';
-import 'package:baladeston/domain/theme/usecase/get_theme_by_name_usecase.dart';
-import 'package:baladeston/domain/theme/usecase/create_theme_usecase.dart';
-import 'package:baladeston/domain/theme/usecase/update_theme_usecase.dart';
-import 'package:baladeston/domain/theme/usecase/delete_theme_by_id_usecase.dart';
-import 'package:baladeston/domain/theme/usecase/delete_theme_by_name_usecase.dart';
-import 'package:baladeston/domain/theme/usecase/init_theme_usecase.dart';
-import 'package:baladeston/domain/theme/usecase/set_theme_usecase.dart';
+import 'theme_state.dart';
 
 class ThemeCubit extends Cubit<ThemeState> {
   final GetAllThemeUseCase _getAllUseCase;
   final GetThemeByIdUseCase _getByIdUseCase;
   final GetThemeByNameUseCase _getByNameUseCase;
   final CreateThemeUseCase _createUseCase;
-  final UpdateThemeUseCase _updateUseCase;
+  final UpdateThemeByIdUseCase _updateByIdUseCase;
+  final UpdateThemeByFilterUseCase _updateByFilterUseCase;
   final DeleteThemeByIdUseCase _deleteByIdUseCase;
-  final DeleteThemeByNameUseCase _deleteByNameUseCase;
-  final CountAllThemeUseCase _countUseCase;
+  final DeleteThemeByFilterUseCase _deleteByFilterUseCase;
+  final CountThemeUseCase _countUseCase;
   final InitThemeUseCase _initUseCase;
   final SetThemeUseCase _setThemeUseCase;
 
@@ -31,317 +34,251 @@ class ThemeCubit extends Cubit<ThemeState> {
     required GetThemeByIdUseCase getByIdUseCase,
     required GetThemeByNameUseCase getByNameUseCase,
     required CreateThemeUseCase createUseCase,
-    required UpdateThemeUseCase updateUseCase,
+    required UpdateThemeByIdUseCase updateByIdUseCase,
+    required UpdateThemeByFilterUseCase updateByFilterUseCase,
     required DeleteThemeByIdUseCase deleteByIdUseCase,
-    required DeleteThemeByNameUseCase deleteByNameUseCase,
-    required CountAllThemeUseCase countUseCase,
+    required DeleteThemeByFilterUseCase deleteByFilterUseCase,
+    required CountThemeUseCase countUseCase,
     required InitThemeUseCase initUseCase,
     required SetThemeUseCase setThemeUseCase,
-  })
-      : _getAllUseCase = getAllUseCase,
+  })  : _getAllUseCase = getAllUseCase,
         _getByIdUseCase = getByIdUseCase,
         _getByNameUseCase = getByNameUseCase,
         _createUseCase = createUseCase,
-        _updateUseCase = updateUseCase,
+        _updateByIdUseCase = updateByIdUseCase,
+        _updateByFilterUseCase = updateByFilterUseCase,
         _deleteByIdUseCase = deleteByIdUseCase,
-        _deleteByNameUseCase = deleteByNameUseCase,
+        _deleteByFilterUseCase = deleteByFilterUseCase,
         _countUseCase = countUseCase,
         _initUseCase = initUseCase,
         _setThemeUseCase = setThemeUseCase,
-        super( ThemeState.initial());
+        super(const ThemeState.initial());
 
-  // --------------------------------------------------------------------
-  // لود لیست تم‌ها با فیلتر
-  // --------------------------------------------------------------------
+  /* -------------------------------------------------------------------------- */
+  /*                                   List                                     */
+  /* -------------------------------------------------------------------------- */
+
   Future<void> loadThemes({required ThemeQueryFilter filter}) async {
-    emit( ThemeState.fetchingList());
+    emit(const ThemeState.fetchingMultiTheme());
 
     final listResult = await _getAllUseCase(filter: filter);
 
-    await listResult.when(
+    listResult.when(
       success: (themes) async {
+        int count = themes.length;
+
         final countResult = await _countUseCase(filter: filter);
-        final count = countResult.when(
-          success: (value) => value,
-          failure: (_) => themes.length,
+        countResult.when(
+          success: (value) => count = value,
+          failure: (_) {},
         );
-        emit(ThemeState.successListLoaded(theme: themes, count: count));
+
+        emit(
+          ThemeState.fetchedMultiTheme(
+            theme: themes,
+            count: count,
+          ),
+        );
       },
-      failure: (_) {
-        emit(ThemeState.error(
-          error: ThemeStateError.errorWhileLoadingThemes,
+      failure: (_) => emit(
+        const ThemeState.error(
+          error: ThemeStateError.errorWhileLoadingTheme,
           message: 'خطا در دریافت لیست تم‌ها',
-        ));
-      },
+        ),
+      ),
     );
   }
 
-  // --------------------------------------------------------------------
-  // لود یک تم خاص با شناسه
-  // --------------------------------------------------------------------
+  /* -------------------------------------------------------------------------- */
+  /*                                  Single                                    */
+  /* -------------------------------------------------------------------------- */
+
   Future<void> loadThemeById({required int id}) async {
-    emit( ThemeState.fetchingSingle());
+    emit(const ThemeState.fetchingSingleTheme());
 
     final result = await _getByIdUseCase(id: id);
 
     result.when(
-      success: (theme) {
-        emit(ThemeState.successSingleLoaded(theme: theme));
-      },
-      failure: (_) {
-        emit( ThemeState.error(
-          error: ThemeStateError.errorWhileLoadingSingle,
+      success: (theme) => emit(ThemeState.fetchedSingleTheme(theme: theme)),
+      failure: (_) => emit(
+        const ThemeState.error(
+          error: ThemeStateError.errorWhileLoadingTheme,
           message: 'خطا در دریافت تم',
-        ));
-      },
+        ),
+      ),
     );
   }
 
-  // --------------------------------------------------------------------
-  // لود یک تم خاص با نام
-  // --------------------------------------------------------------------
   Future<void> loadThemeByName({required String name}) async {
-    emit( ThemeState.fetchingSingle());
+    final listResult = await _getByNameUseCase(name: name);
 
-    final result = await _getByNameUseCase(name: name);
+    listResult.when(
+      success: (themes) async {
+        int count = themes.length;
 
-    result.when(
-      success: (theme) {
-        emit(ThemeState.successSingleLoaded(theme: theme));
+        final countResult = await _countUseCase(
+          filter: ThemeQueryFilter(searchTerm: name),
+        );
+        countResult.when(
+          success: (value) => count = value,
+          failure: (_) {},
+        );
+
+        emit(
+          ThemeState.fetchedMultiTheme(
+            theme: themes,
+            count: count,
+          ),
+        );
       },
-      failure: (_) {
-        emit( ThemeState.error(
-          error: ThemeStateError.errorWhileLoadingSingle,
-          message: 'خطا در دریافت تم بر اساس نام',
-        ));
-      },
+      failure: (_) => emit(
+        const ThemeState.error(
+          error: ThemeStateError.errorWhileLoadingTheme,
+          message: 'خطا در دریافت لیست تم‌ها',
+        ),
+      ),
     );
   }
 
-  // --------------------------------------------------------------------
-  // ایجاد تم جدید و رفرش لیست
-  // --------------------------------------------------------------------
+  /* -------------------------------------------------------------------------- */
+  /*                                  Create                                    */
+  /* -------------------------------------------------------------------------- */
+
   Future<void> createTheme({
     required ThemeEntity theme,
     required ThemeQueryFilter refreshFilter,
   }) async {
-    emit( ThemeState.creating());
+    emit(const ThemeState.creatingTheme());
 
     final result = await _createUseCase(theme: theme);
 
-    bool shouldRefresh = false;
-
     result.when(
-      success: (_) => shouldRefresh = true,
-      emit(ThemeState.created()),
-      failure: (_) {
-        emit( ThemeState.error(
-          error: ThemeStateError.errorWhileCreating,
+      success: (theme) => emit(ThemeState.createdTheme(theme: theme)),
+      failure: (_) => emit(
+        const ThemeState.error(
+          error: ThemeStateError.errorWhileCreatingTheme,
           message: 'خطا در ایجاد تم',
-        ));
-      },
+        ),
+      ),
     );
-
-    if (shouldRefresh) await loadThemes(filter: refreshFilter);
   }
 
-  // --------------------------------------------------------------------
-  // ویرایش تم و رفرش لیست
-  // --------------------------------------------------------------------
-  Future<void> updateTheme({
+  /* -------------------------------------------------------------------------- */
+  /*                                  Update                                    */
+  /* -------------------------------------------------------------------------- */
+
+  Future<void> updateThemeById({
+    required int id,
     required ThemeEntity theme,
-    required ThemeQueryFilter refreshFilter,
   }) async {
-    emit( ThemeState.editing());
+    emit(const ThemeState.updatingTheme());
 
-    final result = await _updateUseCase(theme: theme);
-
-    bool shouldRefresh = false;
+    final result = await _updateByIdUseCase(id: id, theme: theme);
 
     result.when(
-      success: (_) => shouldRefresh = true,
-      failure: (_) {
-        emit( ThemeState.error(
-          error: ThemeStateError.errorWhileEditing,
+      success: (theme) => emit(ThemeState.updatedSingleTheme(theme: theme)),
+      failure: (_) => emit(
+        const ThemeState.error(
+          error: ThemeStateError.errorWhileUpdatingTheme,
           message: 'خطا در ویرایش تم',
-        ));
-      },
+        ),
+      ),
     );
-
-    if (shouldRefresh) await loadThemes(filter: refreshFilter);
   }
 
-  // --------------------------------------------------------------------
-  // حذف تم بر اساس Id و رفرش لیست
-  // --------------------------------------------------------------------
+  Future<void> updateThemeByFilter({
+    required ThemeQueryFilter filter,
+    required ThemeEntity theme,
+  }) async {
+    emit(const ThemeState.updatingTheme());
+
+    final result = await _updateByFilterUseCase(filter: filter, theme: theme);
+
+    result.when(
+      success: (theme) => emit(ThemeState.updatedMultiTheme(theme: theme)),
+      failure: (_) => emit(
+        const ThemeState.error(
+          error: ThemeStateError.errorWhileUpdatingTheme,
+          message: 'خطا در ویرایش گروهی تم‌ها',
+        ),
+      ),
+    );
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                                  Delete                                    */
+  /* -------------------------------------------------------------------------- */
+
   Future<void> deleteThemeById({
+    required int id,
+  }) async {
+    emit(const ThemeState.deletingTheme());
+
+    final result = await _deleteByIdUseCase(id: id);
+
+    result.when(
+      success: (theme) => emit(ThemeState.deletedSingleTheme(theme: theme)),
+      failure: (_) => emit(
+        const ThemeState.error(
+          error: ThemeStateError.errorWhileLoadingTheme,
+          message: 'خطا در حذف تم',
+        ),
+      ),
+    );
+  }
+
+  Future<void> deleteThemeByFilter({required ThemeQueryFilter filter}) async {
+    emit(const ThemeState.deletingTheme());
+
+    final result = await _deleteByFilterUseCase(filter: filter);
+
+    result.when(
+      success: (theme) => emit(ThemeState.deletedMultiTheme(theme: theme)),
+      failure: (_) => emit(
+        const ThemeState.error(
+          error: ThemeStateError.errorWhileDeletingTheme,
+          message: 'خطا در حذف تم بر اساس نام',
+        ),
+      ),
+    );
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                             Init / Set Theme                                */
+  /* -------------------------------------------------------------------------- */
+
+  Future<void> initTheme() async {
+    emit(const ThemeState.initializingTheme());
+
+    final result = await _initUseCase();
+
+    result.when(
+      success: (theme) => emit(ThemeState.initializedTheme(theme: theme)),
+      failure: (_) => emit(
+        ThemeState.error(
+          error: ThemeStateError.errorWhileInitializingTheme,
+          message: 'خطا در مقداردهی اولیه تم',
+        ),
+      ),
+    );
+  }
+
+  Future<void> setTheme({
     required int id,
     required ThemeQueryFilter refreshFilter,
   }) async {
-    emit( ThemeState.deletingById());
+    emit(const ThemeState.settingTheme());
 
-    final result = await _deleteByIdUseCase(id: id);
-    bool shouldRefresh = false;
+    final result = await _setThemeUseCase(id: id);
 
     result.when(
-      success: (_) => shouldRefresh = true,
-      failure: (_) {
-        emit( ThemeState.error(
-          error: ThemeStateError.errorWhileDeletingById,
-          message: 'خطا در حذف تم (شناسه)',
-        ));
-      },
+      success: (_) => loadThemes(filter: refreshFilter),
+      failure: (_) => emit(
+        const ThemeState.error(
+          error: ThemeStateError.errorWhileSettingTheme,
+          message: 'خطا در تنظیم تم فعال',
+        ),
+      ),
     );
-
-    if (shouldRefresh) await loadThemes(filter: refreshFilter);
   }
-
-  // --------------------------------------------------------------------
-  // حذف تم بر اساس Name و رفرش لیست
-  required int
-
-  id
-
-  ,
-
-  required ThemeQueryFilter
-
-  refreshFilter
-
-  ,
-}) async {emit
-(
- ThemeState.deletingById());
-
-final result = await _deleteByIdUseCase(id: id);
-bool shouldRefresh = false;
-
-result.when(
-success: (_) => shouldRefresh = true,
-failure: (_) {
-emit( ThemeState.error(
-error: ThemeStateError.errorWhileDeletingById,
-message: 'خطا در حذف تم (شناسه)',
-));
-},
-);
-
-if (shouldRefresh) await loadThemes(filter: refreshFilter);
-}
-
-// --------------------------------------------------------------------
-// حذف تم بر اساس Name و رفرش لیست
-// --------------------------------------------------------------------
-Future<void> deleteThemeByName({
-required String name,
-required ThemeQueryFilter refreshFilter,
-}) async {
-emit( ThemeState.deletingByFilter());
-
-final result = await _deleteByNameUseCase(name: name);
-bool shouldRefresh = false;
-
-result.when(
-success: (_) => shouldRefresh = true,
-failure: (_) {
-emit( ThemeState.error(
-error: ThemeStateError.errorWhileDeletingByFilter,
-message: 'خطا در حذف تم‌ها بر اساس نام',
-));
-},
-);
-
-if (shouldRefresh) await loadThemes(filter: refreshFilter);
-}
-
-// --------------------------------------------------------------------
-// --------------------------------------------------------------------
-Future<void> deleteThemeByName({
-required String name,
-required ThemeQueryFilter refreshFilter,
-}) async {
-emit( ThemeState.deletingByFilter());
-
-final result = await _deleteByNameUseCase(name: name);
-bool shouldRefresh = false;
-
-result.when(
-success: (_) => shouldRefresh = true,
-failure: (_) {
-emit( ThemeState.error(
-error: ThemeStateError.errorWhileDeletingByFilter,
-message: 'خطا در حذف تم‌ها بر اساس نام',
-));
-},
-);
-
-if (shouldRefresh) await loadThemes(filter: refreshFilter);
-}
-
-// --------------------------------------------------------------------
-// شمارش کل تم‌ها
-// --------------------------------------------------------------------
-Future<void> countAllThemes({required ThemeQueryFilter filter}) async {
-emit( ThemeState.fetchingList());
-
-final result = await _countUseCase(filter: filter);
-
-result.when(
-success: (count) {
-emit(ThemeState.successCountLoaded(count: count));
-},
-failure: (_) {
-emit( ThemeState.error(
-error: ThemeStateError.errorWhileCounting,
-message: 'خطا در شمارش تم‌ها',
-));
-},
-);
-}
-
-// --------------------------------------------------------------------
-// Init Theme (اولین تم یا تم پیش‌فرض)
-// --------------------------------------------------------------------
-Future<void> initTheme() async {
-emit( ThemeState.fetchingSingle());
-
-final result = await _initUseCase();
-
-result.when(
-success: (theme) {
-emit(ThemeState.successSingleLoaded(theme: theme));
-},
-failure: (_) {
-emit( ThemeState.error(
-error: ThemeStateError.errorWhileLoadingSingle,
-message: 'خطا در بارگذاری تم اولیه',
-));
-},
-);
-}
-
-// --------------------------------------------------------------------
-// Set Theme (اعمال تم فعال)
-// --------------------------------------------------------------------
-Future<void> setTheme({
-required int id,
-required ThemeQueryFilter refreshFilter,
-}) async {
-emit( ThemeState.editing());
-
-final result = await _setThemeUseCase(id: id);
-bool shouldRefresh = false;
-
-result.when(
-success: (_) => shouldRefresh = true,
-failure: (_) {
-emit( ThemeState.error(
-error: ThemeStateError.errorWhileEditing,
-message: 'خطا در تغییر تم فعال',
-));
-},
-);
-
-if (shouldRefresh) await loadThemes(filter: refreshFilter);
-}
 }

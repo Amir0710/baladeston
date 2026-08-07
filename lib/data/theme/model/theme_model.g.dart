@@ -7,11 +7,19 @@ part of 'theme_model.dart';
 // **************************************************************************
 
 _$ThemeModelImpl _$$ThemeModelImplFromJson(Map<String, dynamic> json) =>
-    _$ThemeModelImpl(
-      id: (json['id'] as num?)?.toInt(),
-      name: json['name'] as String,
-      isDark: json['isDark'] as bool,
-      colors: ThemeColors.fromJson(json['colors'] as Map<String, dynamic>),
+    $checkedCreate(
+      r'_$ThemeModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$ThemeModelImpl(
+          id: $checkedConvert('id', (v) => (v as num?)?.toInt()),
+          name: $checkedConvert('name', (v) => v as String),
+          isDark: $checkedConvert('isDark', (v) => v as bool),
+          colors: $checkedConvert(
+              'colors', (v) => ThemeColors.fromJson(v as Map<String, dynamic>)),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$ThemeModelImplToJson(_$ThemeModelImpl instance) =>
@@ -23,22 +31,29 @@ Map<String, dynamic> _$$ThemeModelImplToJson(_$ThemeModelImpl instance) =>
     };
 
 _$ThemeColorsImpl _$$ThemeColorsImplFromJson(Map<String, dynamic> json) =>
-    _$ThemeColorsImpl(
-      info: json['info'] as String,
-      error: json['error'] as String,
-      divider: json['divider'] as String,
-      primary: json['primary'] as String,
-      success: json['success'] as String,
-      surface: json['surface'] as String,
-      warning: json['warning'] as String,
-      secondary: json['secondary'] as String,
-      background: json['background'] as String,
-      textPrimary: json['textPrimary'] as String,
-      textSecondary: json['textSecondary'] as String,
-      buttonForeground: json['buttonForeground'] as String,
-      partColors: (json['partColors'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
+    $checkedCreate(
+      r'_$ThemeColorsImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$ThemeColorsImpl(
+          info: $checkedConvert('info', (v) => v as String),
+          error: $checkedConvert('error', (v) => v as String),
+          divider: $checkedConvert('divider', (v) => v as String),
+          primary: $checkedConvert('primary', (v) => v as String),
+          success: $checkedConvert('success', (v) => v as String),
+          surface: $checkedConvert('surface', (v) => v as String),
+          warning: $checkedConvert('warning', (v) => v as String),
+          secondary: $checkedConvert('secondary', (v) => v as String),
+          background: $checkedConvert('background', (v) => v as String),
+          textPrimary: $checkedConvert('textPrimary', (v) => v as String),
+          textSecondary: $checkedConvert('textSecondary', (v) => v as String),
+          buttonForeground:
+              $checkedConvert('buttonForeground', (v) => v as String),
+          partColors: $checkedConvert('partColors',
+              (v) => (v as List<dynamic>).map((e) => e as String).toList()),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$ThemeColorsImplToJson(_$ThemeColorsImpl instance) =>

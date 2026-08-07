@@ -1,5 +1,5 @@
-  import 'package:baladeston/core/enum/user_gender.dart';
-  import 'package:baladeston/core/enum/user_status.dart';
+  import 'package:baladeston/core/enum/user/user_gender.dart';
+  import 'package:baladeston/core/enum/user/user_status.dart';
   import 'package:freezed_annotation/freezed_annotation.dart';
 
   part 'user_entity.freezed.dart';

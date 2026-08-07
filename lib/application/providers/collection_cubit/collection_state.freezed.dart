@@ -23,8 +23,8 @@ mixin _$CollectionState {
     required TResult Function(List<CollectionEntity> collections, int count)
         successListLoaded,
     required TResult Function(CollectionEntity collection) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CollectionStateError error, String? errorMessage)
+    required TResult Function(
+            CollectionStateError error, CollectionFailure failure)
         error,
     required TResult Function() fetchingCollection,
     required TResult Function() fetchingAllCollection,
@@ -33,13 +33,14 @@ mixin _$CollectionState {
     required TResult Function() updatingCollection,
     required TResult Function(CollectionEntity collection)
         updatedSingleCollection,
-    required TResult Function(List<CollectionEntity> collections)
-        updatedListCollection,
+    required TResult Function(int updatedCollection) updatedListCollection,
     required TResult Function() deletingCollection,
     required TResult Function(int id) deletedSingleCollection,
     required TResult Function(List<int> ids) deletedListCollection,
     required TResult Function() countingCollection,
     required TResult Function(int count) countedCollection,
+    required TResult Function() uploadingImageCollection,
+    required TResult Function(String url) uploadedImageCollection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -49,21 +50,22 @@ mixin _$CollectionState {
     TResult? Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult? Function(CollectionEntity collection)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CollectionStateError error, String? errorMessage)? error,
+    TResult? Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult? Function()? fetchingCollection,
     TResult? Function()? fetchingAllCollection,
     TResult? Function()? creatingCollection,
     TResult? Function(CollectionEntity collection)? createdCollection,
     TResult? Function()? updatingCollection,
     TResult? Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult? Function(List<CollectionEntity> collections)?
-        updatedListCollection,
+    TResult? Function(int updatedCollection)? updatedListCollection,
     TResult? Function()? deletingCollection,
     TResult? Function(int id)? deletedSingleCollection,
     TResult? Function(List<int> ids)? deletedListCollection,
     TResult? Function()? countingCollection,
     TResult? Function(int count)? countedCollection,
+    TResult? Function()? uploadingImageCollection,
+    TResult? Function(String url)? uploadedImageCollection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,20 +75,22 @@ mixin _$CollectionState {
     TResult Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult Function(CollectionEntity collection)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CollectionStateError error, String? errorMessage)? error,
+    TResult Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult Function()? fetchingCollection,
     TResult Function()? fetchingAllCollection,
     TResult Function()? creatingCollection,
     TResult Function(CollectionEntity collection)? createdCollection,
     TResult Function()? updatingCollection,
     TResult Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult Function(List<CollectionEntity> collections)? updatedListCollection,
+    TResult Function(int updatedCollection)? updatedListCollection,
     TResult Function()? deletingCollection,
     TResult Function(int id)? deletedSingleCollection,
     TResult Function(List<int> ids)? deletedListCollection,
     TResult Function()? countingCollection,
     TResult Function(int count)? countedCollection,
+    TResult Function()? uploadingImageCollection,
+    TResult Function(String url)? uploadedImageCollection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -96,7 +100,6 @@ mixin _$CollectionState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCollection value) fetchingCollection,
     required TResult Function(_FetchingAllCollection value)
@@ -115,6 +118,10 @@ mixin _$CollectionState {
         deletedListCollection,
     required TResult Function(_CountingCollection value) countingCollection,
     required TResult Function(_CountedCollection value) countedCollection,
+    required TResult Function(_UploadingImageCollection value)
+        uploadingImageCollection,
+    required TResult Function(_UploadedImageCollection value)
+        uploadedImageCollection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -123,7 +130,6 @@ mixin _$CollectionState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCollection value)? fetchingCollection,
     TResult? Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -137,6 +143,9 @@ mixin _$CollectionState {
     TResult? Function(_DeletedListCollection value)? deletedListCollection,
     TResult? Function(_CountingCollection value)? countingCollection,
     TResult? Function(_CountedCollection value)? countedCollection,
+    TResult? Function(_UploadingImageCollection value)?
+        uploadingImageCollection,
+    TResult? Function(_UploadedImageCollection value)? uploadedImageCollection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -145,7 +154,6 @@ mixin _$CollectionState {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCollection value)? fetchingCollection,
     TResult Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -159,6 +167,8 @@ mixin _$CollectionState {
     TResult Function(_DeletedListCollection value)? deletedListCollection,
     TResult Function(_CountingCollection value)? countingCollection,
     TResult Function(_CountedCollection value)? countedCollection,
+    TResult Function(_UploadingImageCollection value)? uploadingImageCollection,
+    TResult Function(_UploadedImageCollection value)? uploadedImageCollection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -231,8 +241,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function(List<CollectionEntity> collections, int count)
         successListLoaded,
     required TResult Function(CollectionEntity collection) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CollectionStateError error, String? errorMessage)
+    required TResult Function(
+            CollectionStateError error, CollectionFailure failure)
         error,
     required TResult Function() fetchingCollection,
     required TResult Function() fetchingAllCollection,
@@ -241,13 +251,14 @@ class _$InitialImpl implements _Initial {
     required TResult Function() updatingCollection,
     required TResult Function(CollectionEntity collection)
         updatedSingleCollection,
-    required TResult Function(List<CollectionEntity> collections)
-        updatedListCollection,
+    required TResult Function(int updatedCollection) updatedListCollection,
     required TResult Function() deletingCollection,
     required TResult Function(int id) deletedSingleCollection,
     required TResult Function(List<int> ids) deletedListCollection,
     required TResult Function() countingCollection,
     required TResult Function(int count) countedCollection,
+    required TResult Function() uploadingImageCollection,
+    required TResult Function(String url) uploadedImageCollection,
   }) {
     return initial();
   }
@@ -260,21 +271,22 @@ class _$InitialImpl implements _Initial {
     TResult? Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult? Function(CollectionEntity collection)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CollectionStateError error, String? errorMessage)? error,
+    TResult? Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult? Function()? fetchingCollection,
     TResult? Function()? fetchingAllCollection,
     TResult? Function()? creatingCollection,
     TResult? Function(CollectionEntity collection)? createdCollection,
     TResult? Function()? updatingCollection,
     TResult? Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult? Function(List<CollectionEntity> collections)?
-        updatedListCollection,
+    TResult? Function(int updatedCollection)? updatedListCollection,
     TResult? Function()? deletingCollection,
     TResult? Function(int id)? deletedSingleCollection,
     TResult? Function(List<int> ids)? deletedListCollection,
     TResult? Function()? countingCollection,
     TResult? Function(int count)? countedCollection,
+    TResult? Function()? uploadingImageCollection,
+    TResult? Function(String url)? uploadedImageCollection,
   }) {
     return initial?.call();
   }
@@ -287,20 +299,22 @@ class _$InitialImpl implements _Initial {
     TResult Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult Function(CollectionEntity collection)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CollectionStateError error, String? errorMessage)? error,
+    TResult Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult Function()? fetchingCollection,
     TResult Function()? fetchingAllCollection,
     TResult Function()? creatingCollection,
     TResult Function(CollectionEntity collection)? createdCollection,
     TResult Function()? updatingCollection,
     TResult Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult Function(List<CollectionEntity> collections)? updatedListCollection,
+    TResult Function(int updatedCollection)? updatedListCollection,
     TResult Function()? deletingCollection,
     TResult Function(int id)? deletedSingleCollection,
     TResult Function(List<int> ids)? deletedListCollection,
     TResult Function()? countingCollection,
     TResult Function(int count)? countedCollection,
+    TResult Function()? uploadingImageCollection,
+    TResult Function(String url)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -316,7 +330,6 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCollection value) fetchingCollection,
     required TResult Function(_FetchingAllCollection value)
@@ -335,6 +348,10 @@ class _$InitialImpl implements _Initial {
         deletedListCollection,
     required TResult Function(_CountingCollection value) countingCollection,
     required TResult Function(_CountedCollection value) countedCollection,
+    required TResult Function(_UploadingImageCollection value)
+        uploadingImageCollection,
+    required TResult Function(_UploadedImageCollection value)
+        uploadedImageCollection,
   }) {
     return initial(this);
   }
@@ -346,7 +363,6 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCollection value)? fetchingCollection,
     TResult? Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -360,6 +376,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_DeletedListCollection value)? deletedListCollection,
     TResult? Function(_CountingCollection value)? countingCollection,
     TResult? Function(_CountedCollection value)? countedCollection,
+    TResult? Function(_UploadingImageCollection value)?
+        uploadingImageCollection,
+    TResult? Function(_UploadedImageCollection value)? uploadedImageCollection,
   }) {
     return initial?.call(this);
   }
@@ -371,7 +390,6 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCollection value)? fetchingCollection,
     TResult Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -385,6 +403,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(_DeletedListCollection value)? deletedListCollection,
     TResult Function(_CountingCollection value)? countingCollection,
     TResult Function(_CountedCollection value)? countedCollection,
+    TResult Function(_UploadingImageCollection value)? uploadingImageCollection,
+    TResult Function(_UploadedImageCollection value)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -444,8 +464,8 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(List<CollectionEntity> collections, int count)
         successListLoaded,
     required TResult Function(CollectionEntity collection) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CollectionStateError error, String? errorMessage)
+    required TResult Function(
+            CollectionStateError error, CollectionFailure failure)
         error,
     required TResult Function() fetchingCollection,
     required TResult Function() fetchingAllCollection,
@@ -454,13 +474,14 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() updatingCollection,
     required TResult Function(CollectionEntity collection)
         updatedSingleCollection,
-    required TResult Function(List<CollectionEntity> collections)
-        updatedListCollection,
+    required TResult Function(int updatedCollection) updatedListCollection,
     required TResult Function() deletingCollection,
     required TResult Function(int id) deletedSingleCollection,
     required TResult Function(List<int> ids) deletedListCollection,
     required TResult Function() countingCollection,
     required TResult Function(int count) countedCollection,
+    required TResult Function() uploadingImageCollection,
+    required TResult Function(String url) uploadedImageCollection,
   }) {
     return loading();
   }
@@ -473,21 +494,22 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult? Function(CollectionEntity collection)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CollectionStateError error, String? errorMessage)? error,
+    TResult? Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult? Function()? fetchingCollection,
     TResult? Function()? fetchingAllCollection,
     TResult? Function()? creatingCollection,
     TResult? Function(CollectionEntity collection)? createdCollection,
     TResult? Function()? updatingCollection,
     TResult? Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult? Function(List<CollectionEntity> collections)?
-        updatedListCollection,
+    TResult? Function(int updatedCollection)? updatedListCollection,
     TResult? Function()? deletingCollection,
     TResult? Function(int id)? deletedSingleCollection,
     TResult? Function(List<int> ids)? deletedListCollection,
     TResult? Function()? countingCollection,
     TResult? Function(int count)? countedCollection,
+    TResult? Function()? uploadingImageCollection,
+    TResult? Function(String url)? uploadedImageCollection,
   }) {
     return loading?.call();
   }
@@ -500,20 +522,22 @@ class _$LoadingImpl implements _Loading {
     TResult Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult Function(CollectionEntity collection)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CollectionStateError error, String? errorMessage)? error,
+    TResult Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult Function()? fetchingCollection,
     TResult Function()? fetchingAllCollection,
     TResult Function()? creatingCollection,
     TResult Function(CollectionEntity collection)? createdCollection,
     TResult Function()? updatingCollection,
     TResult Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult Function(List<CollectionEntity> collections)? updatedListCollection,
+    TResult Function(int updatedCollection)? updatedListCollection,
     TResult Function()? deletingCollection,
     TResult Function(int id)? deletedSingleCollection,
     TResult Function(List<int> ids)? deletedListCollection,
     TResult Function()? countingCollection,
     TResult Function(int count)? countedCollection,
+    TResult Function()? uploadingImageCollection,
+    TResult Function(String url)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -529,7 +553,6 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCollection value) fetchingCollection,
     required TResult Function(_FetchingAllCollection value)
@@ -548,6 +571,10 @@ class _$LoadingImpl implements _Loading {
         deletedListCollection,
     required TResult Function(_CountingCollection value) countingCollection,
     required TResult Function(_CountedCollection value) countedCollection,
+    required TResult Function(_UploadingImageCollection value)
+        uploadingImageCollection,
+    required TResult Function(_UploadedImageCollection value)
+        uploadedImageCollection,
   }) {
     return loading(this);
   }
@@ -559,7 +586,6 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCollection value)? fetchingCollection,
     TResult? Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -573,6 +599,9 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_DeletedListCollection value)? deletedListCollection,
     TResult? Function(_CountingCollection value)? countingCollection,
     TResult? Function(_CountedCollection value)? countedCollection,
+    TResult? Function(_UploadingImageCollection value)?
+        uploadingImageCollection,
+    TResult? Function(_UploadedImageCollection value)? uploadedImageCollection,
   }) {
     return loading?.call(this);
   }
@@ -584,7 +613,6 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCollection value)? fetchingCollection,
     TResult Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -598,6 +626,8 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_DeletedListCollection value)? deletedListCollection,
     TResult Function(_CountingCollection value)? countingCollection,
     TResult Function(_CountedCollection value)? countedCollection,
+    TResult Function(_UploadingImageCollection value)? uploadingImageCollection,
+    TResult Function(_UploadedImageCollection value)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -703,8 +733,8 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
     required TResult Function(List<CollectionEntity> collections, int count)
         successListLoaded,
     required TResult Function(CollectionEntity collection) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CollectionStateError error, String? errorMessage)
+    required TResult Function(
+            CollectionStateError error, CollectionFailure failure)
         error,
     required TResult Function() fetchingCollection,
     required TResult Function() fetchingAllCollection,
@@ -713,13 +743,14 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
     required TResult Function() updatingCollection,
     required TResult Function(CollectionEntity collection)
         updatedSingleCollection,
-    required TResult Function(List<CollectionEntity> collections)
-        updatedListCollection,
+    required TResult Function(int updatedCollection) updatedListCollection,
     required TResult Function() deletingCollection,
     required TResult Function(int id) deletedSingleCollection,
     required TResult Function(List<int> ids) deletedListCollection,
     required TResult Function() countingCollection,
     required TResult Function(int count) countedCollection,
+    required TResult Function() uploadingImageCollection,
+    required TResult Function(String url) uploadedImageCollection,
   }) {
     return successListLoaded(collections, count);
   }
@@ -732,21 +763,22 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
     TResult? Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult? Function(CollectionEntity collection)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CollectionStateError error, String? errorMessage)? error,
+    TResult? Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult? Function()? fetchingCollection,
     TResult? Function()? fetchingAllCollection,
     TResult? Function()? creatingCollection,
     TResult? Function(CollectionEntity collection)? createdCollection,
     TResult? Function()? updatingCollection,
     TResult? Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult? Function(List<CollectionEntity> collections)?
-        updatedListCollection,
+    TResult? Function(int updatedCollection)? updatedListCollection,
     TResult? Function()? deletingCollection,
     TResult? Function(int id)? deletedSingleCollection,
     TResult? Function(List<int> ids)? deletedListCollection,
     TResult? Function()? countingCollection,
     TResult? Function(int count)? countedCollection,
+    TResult? Function()? uploadingImageCollection,
+    TResult? Function(String url)? uploadedImageCollection,
   }) {
     return successListLoaded?.call(collections, count);
   }
@@ -759,20 +791,22 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
     TResult Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult Function(CollectionEntity collection)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CollectionStateError error, String? errorMessage)? error,
+    TResult Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult Function()? fetchingCollection,
     TResult Function()? fetchingAllCollection,
     TResult Function()? creatingCollection,
     TResult Function(CollectionEntity collection)? createdCollection,
     TResult Function()? updatingCollection,
     TResult Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult Function(List<CollectionEntity> collections)? updatedListCollection,
+    TResult Function(int updatedCollection)? updatedListCollection,
     TResult Function()? deletingCollection,
     TResult Function(int id)? deletedSingleCollection,
     TResult Function(List<int> ids)? deletedListCollection,
     TResult Function()? countingCollection,
     TResult Function(int count)? countedCollection,
+    TResult Function()? uploadingImageCollection,
+    TResult Function(String url)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (successListLoaded != null) {
@@ -788,7 +822,6 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCollection value) fetchingCollection,
     required TResult Function(_FetchingAllCollection value)
@@ -807,6 +840,10 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
         deletedListCollection,
     required TResult Function(_CountingCollection value) countingCollection,
     required TResult Function(_CountedCollection value) countedCollection,
+    required TResult Function(_UploadingImageCollection value)
+        uploadingImageCollection,
+    required TResult Function(_UploadedImageCollection value)
+        uploadedImageCollection,
   }) {
     return successListLoaded(this);
   }
@@ -818,7 +855,6 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCollection value)? fetchingCollection,
     TResult? Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -832,6 +868,9 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
     TResult? Function(_DeletedListCollection value)? deletedListCollection,
     TResult? Function(_CountingCollection value)? countingCollection,
     TResult? Function(_CountedCollection value)? countedCollection,
+    TResult? Function(_UploadingImageCollection value)?
+        uploadingImageCollection,
+    TResult? Function(_UploadedImageCollection value)? uploadedImageCollection,
   }) {
     return successListLoaded?.call(this);
   }
@@ -843,7 +882,6 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCollection value)? fetchingCollection,
     TResult Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -857,6 +895,8 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
     TResult Function(_DeletedListCollection value)? deletedListCollection,
     TResult Function(_CountingCollection value)? countingCollection,
     TResult Function(_CountedCollection value)? countedCollection,
+    TResult Function(_UploadingImageCollection value)? uploadingImageCollection,
+    TResult Function(_UploadedImageCollection value)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (successListLoaded != null) {
@@ -968,8 +1008,8 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
     required TResult Function(List<CollectionEntity> collections, int count)
         successListLoaded,
     required TResult Function(CollectionEntity collection) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CollectionStateError error, String? errorMessage)
+    required TResult Function(
+            CollectionStateError error, CollectionFailure failure)
         error,
     required TResult Function() fetchingCollection,
     required TResult Function() fetchingAllCollection,
@@ -978,13 +1018,14 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
     required TResult Function() updatingCollection,
     required TResult Function(CollectionEntity collection)
         updatedSingleCollection,
-    required TResult Function(List<CollectionEntity> collections)
-        updatedListCollection,
+    required TResult Function(int updatedCollection) updatedListCollection,
     required TResult Function() deletingCollection,
     required TResult Function(int id) deletedSingleCollection,
     required TResult Function(List<int> ids) deletedListCollection,
     required TResult Function() countingCollection,
     required TResult Function(int count) countedCollection,
+    required TResult Function() uploadingImageCollection,
+    required TResult Function(String url) uploadedImageCollection,
   }) {
     return successSingleLoaded(collection);
   }
@@ -997,21 +1038,22 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
     TResult? Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult? Function(CollectionEntity collection)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CollectionStateError error, String? errorMessage)? error,
+    TResult? Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult? Function()? fetchingCollection,
     TResult? Function()? fetchingAllCollection,
     TResult? Function()? creatingCollection,
     TResult? Function(CollectionEntity collection)? createdCollection,
     TResult? Function()? updatingCollection,
     TResult? Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult? Function(List<CollectionEntity> collections)?
-        updatedListCollection,
+    TResult? Function(int updatedCollection)? updatedListCollection,
     TResult? Function()? deletingCollection,
     TResult? Function(int id)? deletedSingleCollection,
     TResult? Function(List<int> ids)? deletedListCollection,
     TResult? Function()? countingCollection,
     TResult? Function(int count)? countedCollection,
+    TResult? Function()? uploadingImageCollection,
+    TResult? Function(String url)? uploadedImageCollection,
   }) {
     return successSingleLoaded?.call(collection);
   }
@@ -1024,20 +1066,22 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
     TResult Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult Function(CollectionEntity collection)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CollectionStateError error, String? errorMessage)? error,
+    TResult Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult Function()? fetchingCollection,
     TResult Function()? fetchingAllCollection,
     TResult Function()? creatingCollection,
     TResult Function(CollectionEntity collection)? createdCollection,
     TResult Function()? updatingCollection,
     TResult Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult Function(List<CollectionEntity> collections)? updatedListCollection,
+    TResult Function(int updatedCollection)? updatedListCollection,
     TResult Function()? deletingCollection,
     TResult Function(int id)? deletedSingleCollection,
     TResult Function(List<int> ids)? deletedListCollection,
     TResult Function()? countingCollection,
     TResult Function(int count)? countedCollection,
+    TResult Function()? uploadingImageCollection,
+    TResult Function(String url)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (successSingleLoaded != null) {
@@ -1053,7 +1097,6 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCollection value) fetchingCollection,
     required TResult Function(_FetchingAllCollection value)
@@ -1072,6 +1115,10 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
         deletedListCollection,
     required TResult Function(_CountingCollection value) countingCollection,
     required TResult Function(_CountedCollection value) countedCollection,
+    required TResult Function(_UploadingImageCollection value)
+        uploadingImageCollection,
+    required TResult Function(_UploadedImageCollection value)
+        uploadedImageCollection,
   }) {
     return successSingleLoaded(this);
   }
@@ -1083,7 +1130,6 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCollection value)? fetchingCollection,
     TResult? Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -1097,6 +1143,9 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
     TResult? Function(_DeletedListCollection value)? deletedListCollection,
     TResult? Function(_CountingCollection value)? countingCollection,
     TResult? Function(_CountedCollection value)? countedCollection,
+    TResult? Function(_UploadingImageCollection value)?
+        uploadingImageCollection,
+    TResult? Function(_UploadedImageCollection value)? uploadedImageCollection,
   }) {
     return successSingleLoaded?.call(this);
   }
@@ -1108,7 +1157,6 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCollection value)? fetchingCollection,
     TResult Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -1122,6 +1170,8 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
     TResult Function(_DeletedListCollection value)? deletedListCollection,
     TResult Function(_CountingCollection value)? countingCollection,
     TResult Function(_CountedCollection value)? countedCollection,
+    TResult Function(_UploadingImageCollection value)? uploadingImageCollection,
+    TResult Function(_UploadedImageCollection value)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (successSingleLoaded != null) {
@@ -1145,260 +1195,12 @@ abstract class _SuccessSingleLoaded implements CollectionState {
 }
 
 /// @nodoc
-abstract class _$$FailureImplCopyWith<$Res> {
-  factory _$$FailureImplCopyWith(
-          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
-      __$$FailureImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
-}
-
-/// @nodoc
-class __$$FailureImplCopyWithImpl<$Res>
-    extends _$CollectionStateCopyWithImpl<$Res, _$FailureImpl>
-    implements _$$FailureImplCopyWith<$Res> {
-  __$$FailureImplCopyWithImpl(
-      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of CollectionState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$FailureImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$FailureImpl implements _Failure {
-  const _$FailureImpl({required this.message});
-
-  @override
-  final String message;
-
-  @override
-  String toString() {
-    return 'CollectionState.failure(message: $message)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FailureImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  /// Create a copy of CollectionState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<CollectionEntity> collections, int count)
-        successListLoaded,
-    required TResult Function(CollectionEntity collection) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CollectionStateError error, String? errorMessage)
-        error,
-    required TResult Function() fetchingCollection,
-    required TResult Function() fetchingAllCollection,
-    required TResult Function() creatingCollection,
-    required TResult Function(CollectionEntity collection) createdCollection,
-    required TResult Function() updatingCollection,
-    required TResult Function(CollectionEntity collection)
-        updatedSingleCollection,
-    required TResult Function(List<CollectionEntity> collections)
-        updatedListCollection,
-    required TResult Function() deletingCollection,
-    required TResult Function(int id) deletedSingleCollection,
-    required TResult Function(List<int> ids) deletedListCollection,
-    required TResult Function() countingCollection,
-    required TResult Function(int count) countedCollection,
-  }) {
-    return failure(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<CollectionEntity> collections, int count)?
-        successListLoaded,
-    TResult? Function(CollectionEntity collection)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CollectionStateError error, String? errorMessage)? error,
-    TResult? Function()? fetchingCollection,
-    TResult? Function()? fetchingAllCollection,
-    TResult? Function()? creatingCollection,
-    TResult? Function(CollectionEntity collection)? createdCollection,
-    TResult? Function()? updatingCollection,
-    TResult? Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult? Function(List<CollectionEntity> collections)?
-        updatedListCollection,
-    TResult? Function()? deletingCollection,
-    TResult? Function(int id)? deletedSingleCollection,
-    TResult? Function(List<int> ids)? deletedListCollection,
-    TResult? Function()? countingCollection,
-    TResult? Function(int count)? countedCollection,
-  }) {
-    return failure?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<CollectionEntity> collections, int count)?
-        successListLoaded,
-    TResult Function(CollectionEntity collection)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CollectionStateError error, String? errorMessage)? error,
-    TResult Function()? fetchingCollection,
-    TResult Function()? fetchingAllCollection,
-    TResult Function()? creatingCollection,
-    TResult Function(CollectionEntity collection)? createdCollection,
-    TResult Function()? updatingCollection,
-    TResult Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult Function(List<CollectionEntity> collections)? updatedListCollection,
-    TResult Function()? deletingCollection,
-    TResult Function(int id)? deletedSingleCollection,
-    TResult Function(List<int> ids)? deletedListCollection,
-    TResult Function()? countingCollection,
-    TResult Function(int count)? countedCollection,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_SuccessListLoaded value) successListLoaded,
-    required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
-    required TResult Function(_Error value) error,
-    required TResult Function(_FetchingCollection value) fetchingCollection,
-    required TResult Function(_FetchingAllCollection value)
-        fetchingAllCollection,
-    required TResult Function(_CreatingCollection value) creatingCollection,
-    required TResult Function(_CreatedCollection value) createdCollection,
-    required TResult Function(_UpdatingCollection value) updatingCollection,
-    required TResult Function(_UpdatedSingleCollection value)
-        updatedSingleCollection,
-    required TResult Function(_UpdatedListCollection value)
-        updatedListCollection,
-    required TResult Function(_DeletingCollection value) deletingCollection,
-    required TResult Function(_DeletedSingleCollection value)
-        deletedSingleCollection,
-    required TResult Function(_DeletedListCollection value)
-        deletedListCollection,
-    required TResult Function(_CountingCollection value) countingCollection,
-    required TResult Function(_CountedCollection value) countedCollection,
-  }) {
-    return failure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_SuccessListLoaded value)? successListLoaded,
-    TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_FetchingCollection value)? fetchingCollection,
-    TResult? Function(_FetchingAllCollection value)? fetchingAllCollection,
-    TResult? Function(_CreatingCollection value)? creatingCollection,
-    TResult? Function(_CreatedCollection value)? createdCollection,
-    TResult? Function(_UpdatingCollection value)? updatingCollection,
-    TResult? Function(_UpdatedSingleCollection value)? updatedSingleCollection,
-    TResult? Function(_UpdatedListCollection value)? updatedListCollection,
-    TResult? Function(_DeletingCollection value)? deletingCollection,
-    TResult? Function(_DeletedSingleCollection value)? deletedSingleCollection,
-    TResult? Function(_DeletedListCollection value)? deletedListCollection,
-    TResult? Function(_CountingCollection value)? countingCollection,
-    TResult? Function(_CountedCollection value)? countedCollection,
-  }) {
-    return failure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_SuccessListLoaded value)? successListLoaded,
-    TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
-    TResult Function(_Error value)? error,
-    TResult Function(_FetchingCollection value)? fetchingCollection,
-    TResult Function(_FetchingAllCollection value)? fetchingAllCollection,
-    TResult Function(_CreatingCollection value)? creatingCollection,
-    TResult Function(_CreatedCollection value)? createdCollection,
-    TResult Function(_UpdatingCollection value)? updatingCollection,
-    TResult Function(_UpdatedSingleCollection value)? updatedSingleCollection,
-    TResult Function(_UpdatedListCollection value)? updatedListCollection,
-    TResult Function(_DeletingCollection value)? deletingCollection,
-    TResult Function(_DeletedSingleCollection value)? deletedSingleCollection,
-    TResult Function(_DeletedListCollection value)? deletedListCollection,
-    TResult Function(_CountingCollection value)? countingCollection,
-    TResult Function(_CountedCollection value)? countedCollection,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Failure implements CollectionState {
-  const factory _Failure({required final String message}) = _$FailureImpl;
-
-  String get message;
-
-  /// Create a copy of CollectionState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 abstract class _$$ErrorImplCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
           _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
       __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({CollectionStateError error, String? errorMessage});
+  $Res call({CollectionStateError error, CollectionFailure failure});
 }
 
 /// @nodoc
@@ -1415,17 +1217,17 @@ class __$$ErrorImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? error = null,
-    Object? errorMessage = freezed,
+    Object? failure = null,
   }) {
     return _then(_$ErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as CollectionStateError,
-      errorMessage: freezed == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as CollectionFailure,
     ));
   }
 }
@@ -1433,16 +1235,16 @@ class __$$ErrorImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ErrorImpl implements _Error {
-  const _$ErrorImpl({required this.error, required this.errorMessage});
+  const _$ErrorImpl({required this.error, required this.failure});
 
   @override
   final CollectionStateError error;
   @override
-  final String? errorMessage;
+  final CollectionFailure failure;
 
   @override
   String toString() {
-    return 'CollectionState.error(error: $error, errorMessage: $errorMessage)';
+    return 'CollectionState.error(error: $error, failure: $failure)';
   }
 
   @override
@@ -1451,12 +1253,11 @@ class _$ErrorImpl implements _Error {
         (other.runtimeType == runtimeType &&
             other is _$ErrorImpl &&
             (identical(other.error, error) || other.error == error) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, error, errorMessage);
+  int get hashCode => Object.hash(runtimeType, error, failure);
 
   /// Create a copy of CollectionState
   /// with the given fields replaced by the non-null parameter values.
@@ -1474,8 +1275,8 @@ class _$ErrorImpl implements _Error {
     required TResult Function(List<CollectionEntity> collections, int count)
         successListLoaded,
     required TResult Function(CollectionEntity collection) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CollectionStateError error, String? errorMessage)
+    required TResult Function(
+            CollectionStateError error, CollectionFailure failure)
         error,
     required TResult Function() fetchingCollection,
     required TResult Function() fetchingAllCollection,
@@ -1484,15 +1285,16 @@ class _$ErrorImpl implements _Error {
     required TResult Function() updatingCollection,
     required TResult Function(CollectionEntity collection)
         updatedSingleCollection,
-    required TResult Function(List<CollectionEntity> collections)
-        updatedListCollection,
+    required TResult Function(int updatedCollection) updatedListCollection,
     required TResult Function() deletingCollection,
     required TResult Function(int id) deletedSingleCollection,
     required TResult Function(List<int> ids) deletedListCollection,
     required TResult Function() countingCollection,
     required TResult Function(int count) countedCollection,
+    required TResult Function() uploadingImageCollection,
+    required TResult Function(String url) uploadedImageCollection,
   }) {
-    return error(this.error, errorMessage);
+    return error(this.error, failure);
   }
 
   @override
@@ -1503,23 +1305,24 @@ class _$ErrorImpl implements _Error {
     TResult? Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult? Function(CollectionEntity collection)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CollectionStateError error, String? errorMessage)? error,
+    TResult? Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult? Function()? fetchingCollection,
     TResult? Function()? fetchingAllCollection,
     TResult? Function()? creatingCollection,
     TResult? Function(CollectionEntity collection)? createdCollection,
     TResult? Function()? updatingCollection,
     TResult? Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult? Function(List<CollectionEntity> collections)?
-        updatedListCollection,
+    TResult? Function(int updatedCollection)? updatedListCollection,
     TResult? Function()? deletingCollection,
     TResult? Function(int id)? deletedSingleCollection,
     TResult? Function(List<int> ids)? deletedListCollection,
     TResult? Function()? countingCollection,
     TResult? Function(int count)? countedCollection,
+    TResult? Function()? uploadingImageCollection,
+    TResult? Function(String url)? uploadedImageCollection,
   }) {
-    return error?.call(this.error, errorMessage);
+    return error?.call(this.error, failure);
   }
 
   @override
@@ -1530,24 +1333,26 @@ class _$ErrorImpl implements _Error {
     TResult Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult Function(CollectionEntity collection)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CollectionStateError error, String? errorMessage)? error,
+    TResult Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult Function()? fetchingCollection,
     TResult Function()? fetchingAllCollection,
     TResult Function()? creatingCollection,
     TResult Function(CollectionEntity collection)? createdCollection,
     TResult Function()? updatingCollection,
     TResult Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult Function(List<CollectionEntity> collections)? updatedListCollection,
+    TResult Function(int updatedCollection)? updatedListCollection,
     TResult Function()? deletingCollection,
     TResult Function(int id)? deletedSingleCollection,
     TResult Function(List<int> ids)? deletedListCollection,
     TResult Function()? countingCollection,
     TResult Function(int count)? countedCollection,
+    TResult Function()? uploadingImageCollection,
+    TResult Function(String url)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(this.error, errorMessage);
+      return error(this.error, failure);
     }
     return orElse();
   }
@@ -1559,7 +1364,6 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCollection value) fetchingCollection,
     required TResult Function(_FetchingAllCollection value)
@@ -1578,6 +1382,10 @@ class _$ErrorImpl implements _Error {
         deletedListCollection,
     required TResult Function(_CountingCollection value) countingCollection,
     required TResult Function(_CountedCollection value) countedCollection,
+    required TResult Function(_UploadingImageCollection value)
+        uploadingImageCollection,
+    required TResult Function(_UploadedImageCollection value)
+        uploadedImageCollection,
   }) {
     return error(this);
   }
@@ -1589,7 +1397,6 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCollection value)? fetchingCollection,
     TResult? Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -1603,6 +1410,9 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_DeletedListCollection value)? deletedListCollection,
     TResult? Function(_CountingCollection value)? countingCollection,
     TResult? Function(_CountedCollection value)? countedCollection,
+    TResult? Function(_UploadingImageCollection value)?
+        uploadingImageCollection,
+    TResult? Function(_UploadedImageCollection value)? uploadedImageCollection,
   }) {
     return error?.call(this);
   }
@@ -1614,7 +1424,6 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCollection value)? fetchingCollection,
     TResult Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -1628,6 +1437,8 @@ class _$ErrorImpl implements _Error {
     TResult Function(_DeletedListCollection value)? deletedListCollection,
     TResult Function(_CountingCollection value)? countingCollection,
     TResult Function(_CountedCollection value)? countedCollection,
+    TResult Function(_UploadingImageCollection value)? uploadingImageCollection,
+    TResult Function(_UploadedImageCollection value)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1640,10 +1451,10 @@ class _$ErrorImpl implements _Error {
 abstract class _Error implements CollectionState {
   const factory _Error(
       {required final CollectionStateError error,
-      required final String? errorMessage}) = _$ErrorImpl;
+      required final CollectionFailure failure}) = _$ErrorImpl;
 
   CollectionStateError get error;
-  String? get errorMessage;
+  CollectionFailure get failure;
 
   /// Create a copy of CollectionState
   /// with the given fields replaced by the non-null parameter values.
@@ -1698,8 +1509,8 @@ class _$FetchingCollectionImpl implements _FetchingCollection {
     required TResult Function(List<CollectionEntity> collections, int count)
         successListLoaded,
     required TResult Function(CollectionEntity collection) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CollectionStateError error, String? errorMessage)
+    required TResult Function(
+            CollectionStateError error, CollectionFailure failure)
         error,
     required TResult Function() fetchingCollection,
     required TResult Function() fetchingAllCollection,
@@ -1708,13 +1519,14 @@ class _$FetchingCollectionImpl implements _FetchingCollection {
     required TResult Function() updatingCollection,
     required TResult Function(CollectionEntity collection)
         updatedSingleCollection,
-    required TResult Function(List<CollectionEntity> collections)
-        updatedListCollection,
+    required TResult Function(int updatedCollection) updatedListCollection,
     required TResult Function() deletingCollection,
     required TResult Function(int id) deletedSingleCollection,
     required TResult Function(List<int> ids) deletedListCollection,
     required TResult Function() countingCollection,
     required TResult Function(int count) countedCollection,
+    required TResult Function() uploadingImageCollection,
+    required TResult Function(String url) uploadedImageCollection,
   }) {
     return fetchingCollection();
   }
@@ -1727,21 +1539,22 @@ class _$FetchingCollectionImpl implements _FetchingCollection {
     TResult? Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult? Function(CollectionEntity collection)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CollectionStateError error, String? errorMessage)? error,
+    TResult? Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult? Function()? fetchingCollection,
     TResult? Function()? fetchingAllCollection,
     TResult? Function()? creatingCollection,
     TResult? Function(CollectionEntity collection)? createdCollection,
     TResult? Function()? updatingCollection,
     TResult? Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult? Function(List<CollectionEntity> collections)?
-        updatedListCollection,
+    TResult? Function(int updatedCollection)? updatedListCollection,
     TResult? Function()? deletingCollection,
     TResult? Function(int id)? deletedSingleCollection,
     TResult? Function(List<int> ids)? deletedListCollection,
     TResult? Function()? countingCollection,
     TResult? Function(int count)? countedCollection,
+    TResult? Function()? uploadingImageCollection,
+    TResult? Function(String url)? uploadedImageCollection,
   }) {
     return fetchingCollection?.call();
   }
@@ -1754,20 +1567,22 @@ class _$FetchingCollectionImpl implements _FetchingCollection {
     TResult Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult Function(CollectionEntity collection)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CollectionStateError error, String? errorMessage)? error,
+    TResult Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult Function()? fetchingCollection,
     TResult Function()? fetchingAllCollection,
     TResult Function()? creatingCollection,
     TResult Function(CollectionEntity collection)? createdCollection,
     TResult Function()? updatingCollection,
     TResult Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult Function(List<CollectionEntity> collections)? updatedListCollection,
+    TResult Function(int updatedCollection)? updatedListCollection,
     TResult Function()? deletingCollection,
     TResult Function(int id)? deletedSingleCollection,
     TResult Function(List<int> ids)? deletedListCollection,
     TResult Function()? countingCollection,
     TResult Function(int count)? countedCollection,
+    TResult Function()? uploadingImageCollection,
+    TResult Function(String url)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (fetchingCollection != null) {
@@ -1783,7 +1598,6 @@ class _$FetchingCollectionImpl implements _FetchingCollection {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCollection value) fetchingCollection,
     required TResult Function(_FetchingAllCollection value)
@@ -1802,6 +1616,10 @@ class _$FetchingCollectionImpl implements _FetchingCollection {
         deletedListCollection,
     required TResult Function(_CountingCollection value) countingCollection,
     required TResult Function(_CountedCollection value) countedCollection,
+    required TResult Function(_UploadingImageCollection value)
+        uploadingImageCollection,
+    required TResult Function(_UploadedImageCollection value)
+        uploadedImageCollection,
   }) {
     return fetchingCollection(this);
   }
@@ -1813,7 +1631,6 @@ class _$FetchingCollectionImpl implements _FetchingCollection {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCollection value)? fetchingCollection,
     TResult? Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -1827,6 +1644,9 @@ class _$FetchingCollectionImpl implements _FetchingCollection {
     TResult? Function(_DeletedListCollection value)? deletedListCollection,
     TResult? Function(_CountingCollection value)? countingCollection,
     TResult? Function(_CountedCollection value)? countedCollection,
+    TResult? Function(_UploadingImageCollection value)?
+        uploadingImageCollection,
+    TResult? Function(_UploadedImageCollection value)? uploadedImageCollection,
   }) {
     return fetchingCollection?.call(this);
   }
@@ -1838,7 +1658,6 @@ class _$FetchingCollectionImpl implements _FetchingCollection {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCollection value)? fetchingCollection,
     TResult Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -1852,6 +1671,8 @@ class _$FetchingCollectionImpl implements _FetchingCollection {
     TResult Function(_DeletedListCollection value)? deletedListCollection,
     TResult Function(_CountingCollection value)? countingCollection,
     TResult Function(_CountedCollection value)? countedCollection,
+    TResult Function(_UploadingImageCollection value)? uploadingImageCollection,
+    TResult Function(_UploadedImageCollection value)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (fetchingCollection != null) {
@@ -1913,8 +1734,8 @@ class _$FetchingAllCollectionImpl implements _FetchingAllCollection {
     required TResult Function(List<CollectionEntity> collections, int count)
         successListLoaded,
     required TResult Function(CollectionEntity collection) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CollectionStateError error, String? errorMessage)
+    required TResult Function(
+            CollectionStateError error, CollectionFailure failure)
         error,
     required TResult Function() fetchingCollection,
     required TResult Function() fetchingAllCollection,
@@ -1923,13 +1744,14 @@ class _$FetchingAllCollectionImpl implements _FetchingAllCollection {
     required TResult Function() updatingCollection,
     required TResult Function(CollectionEntity collection)
         updatedSingleCollection,
-    required TResult Function(List<CollectionEntity> collections)
-        updatedListCollection,
+    required TResult Function(int updatedCollection) updatedListCollection,
     required TResult Function() deletingCollection,
     required TResult Function(int id) deletedSingleCollection,
     required TResult Function(List<int> ids) deletedListCollection,
     required TResult Function() countingCollection,
     required TResult Function(int count) countedCollection,
+    required TResult Function() uploadingImageCollection,
+    required TResult Function(String url) uploadedImageCollection,
   }) {
     return fetchingAllCollection();
   }
@@ -1942,21 +1764,22 @@ class _$FetchingAllCollectionImpl implements _FetchingAllCollection {
     TResult? Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult? Function(CollectionEntity collection)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CollectionStateError error, String? errorMessage)? error,
+    TResult? Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult? Function()? fetchingCollection,
     TResult? Function()? fetchingAllCollection,
     TResult? Function()? creatingCollection,
     TResult? Function(CollectionEntity collection)? createdCollection,
     TResult? Function()? updatingCollection,
     TResult? Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult? Function(List<CollectionEntity> collections)?
-        updatedListCollection,
+    TResult? Function(int updatedCollection)? updatedListCollection,
     TResult? Function()? deletingCollection,
     TResult? Function(int id)? deletedSingleCollection,
     TResult? Function(List<int> ids)? deletedListCollection,
     TResult? Function()? countingCollection,
     TResult? Function(int count)? countedCollection,
+    TResult? Function()? uploadingImageCollection,
+    TResult? Function(String url)? uploadedImageCollection,
   }) {
     return fetchingAllCollection?.call();
   }
@@ -1969,20 +1792,22 @@ class _$FetchingAllCollectionImpl implements _FetchingAllCollection {
     TResult Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult Function(CollectionEntity collection)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CollectionStateError error, String? errorMessage)? error,
+    TResult Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult Function()? fetchingCollection,
     TResult Function()? fetchingAllCollection,
     TResult Function()? creatingCollection,
     TResult Function(CollectionEntity collection)? createdCollection,
     TResult Function()? updatingCollection,
     TResult Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult Function(List<CollectionEntity> collections)? updatedListCollection,
+    TResult Function(int updatedCollection)? updatedListCollection,
     TResult Function()? deletingCollection,
     TResult Function(int id)? deletedSingleCollection,
     TResult Function(List<int> ids)? deletedListCollection,
     TResult Function()? countingCollection,
     TResult Function(int count)? countedCollection,
+    TResult Function()? uploadingImageCollection,
+    TResult Function(String url)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (fetchingAllCollection != null) {
@@ -1998,7 +1823,6 @@ class _$FetchingAllCollectionImpl implements _FetchingAllCollection {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCollection value) fetchingCollection,
     required TResult Function(_FetchingAllCollection value)
@@ -2017,6 +1841,10 @@ class _$FetchingAllCollectionImpl implements _FetchingAllCollection {
         deletedListCollection,
     required TResult Function(_CountingCollection value) countingCollection,
     required TResult Function(_CountedCollection value) countedCollection,
+    required TResult Function(_UploadingImageCollection value)
+        uploadingImageCollection,
+    required TResult Function(_UploadedImageCollection value)
+        uploadedImageCollection,
   }) {
     return fetchingAllCollection(this);
   }
@@ -2028,7 +1856,6 @@ class _$FetchingAllCollectionImpl implements _FetchingAllCollection {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCollection value)? fetchingCollection,
     TResult? Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -2042,6 +1869,9 @@ class _$FetchingAllCollectionImpl implements _FetchingAllCollection {
     TResult? Function(_DeletedListCollection value)? deletedListCollection,
     TResult? Function(_CountingCollection value)? countingCollection,
     TResult? Function(_CountedCollection value)? countedCollection,
+    TResult? Function(_UploadingImageCollection value)?
+        uploadingImageCollection,
+    TResult? Function(_UploadedImageCollection value)? uploadedImageCollection,
   }) {
     return fetchingAllCollection?.call(this);
   }
@@ -2053,7 +1883,6 @@ class _$FetchingAllCollectionImpl implements _FetchingAllCollection {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCollection value)? fetchingCollection,
     TResult Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -2067,6 +1896,8 @@ class _$FetchingAllCollectionImpl implements _FetchingAllCollection {
     TResult Function(_DeletedListCollection value)? deletedListCollection,
     TResult Function(_CountingCollection value)? countingCollection,
     TResult Function(_CountedCollection value)? countedCollection,
+    TResult Function(_UploadingImageCollection value)? uploadingImageCollection,
+    TResult Function(_UploadedImageCollection value)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (fetchingAllCollection != null) {
@@ -2126,8 +1957,8 @@ class _$CreatingCollectionImpl implements _CreatingCollection {
     required TResult Function(List<CollectionEntity> collections, int count)
         successListLoaded,
     required TResult Function(CollectionEntity collection) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CollectionStateError error, String? errorMessage)
+    required TResult Function(
+            CollectionStateError error, CollectionFailure failure)
         error,
     required TResult Function() fetchingCollection,
     required TResult Function() fetchingAllCollection,
@@ -2136,13 +1967,14 @@ class _$CreatingCollectionImpl implements _CreatingCollection {
     required TResult Function() updatingCollection,
     required TResult Function(CollectionEntity collection)
         updatedSingleCollection,
-    required TResult Function(List<CollectionEntity> collections)
-        updatedListCollection,
+    required TResult Function(int updatedCollection) updatedListCollection,
     required TResult Function() deletingCollection,
     required TResult Function(int id) deletedSingleCollection,
     required TResult Function(List<int> ids) deletedListCollection,
     required TResult Function() countingCollection,
     required TResult Function(int count) countedCollection,
+    required TResult Function() uploadingImageCollection,
+    required TResult Function(String url) uploadedImageCollection,
   }) {
     return creatingCollection();
   }
@@ -2155,21 +1987,22 @@ class _$CreatingCollectionImpl implements _CreatingCollection {
     TResult? Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult? Function(CollectionEntity collection)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CollectionStateError error, String? errorMessage)? error,
+    TResult? Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult? Function()? fetchingCollection,
     TResult? Function()? fetchingAllCollection,
     TResult? Function()? creatingCollection,
     TResult? Function(CollectionEntity collection)? createdCollection,
     TResult? Function()? updatingCollection,
     TResult? Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult? Function(List<CollectionEntity> collections)?
-        updatedListCollection,
+    TResult? Function(int updatedCollection)? updatedListCollection,
     TResult? Function()? deletingCollection,
     TResult? Function(int id)? deletedSingleCollection,
     TResult? Function(List<int> ids)? deletedListCollection,
     TResult? Function()? countingCollection,
     TResult? Function(int count)? countedCollection,
+    TResult? Function()? uploadingImageCollection,
+    TResult? Function(String url)? uploadedImageCollection,
   }) {
     return creatingCollection?.call();
   }
@@ -2182,20 +2015,22 @@ class _$CreatingCollectionImpl implements _CreatingCollection {
     TResult Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult Function(CollectionEntity collection)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CollectionStateError error, String? errorMessage)? error,
+    TResult Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult Function()? fetchingCollection,
     TResult Function()? fetchingAllCollection,
     TResult Function()? creatingCollection,
     TResult Function(CollectionEntity collection)? createdCollection,
     TResult Function()? updatingCollection,
     TResult Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult Function(List<CollectionEntity> collections)? updatedListCollection,
+    TResult Function(int updatedCollection)? updatedListCollection,
     TResult Function()? deletingCollection,
     TResult Function(int id)? deletedSingleCollection,
     TResult Function(List<int> ids)? deletedListCollection,
     TResult Function()? countingCollection,
     TResult Function(int count)? countedCollection,
+    TResult Function()? uploadingImageCollection,
+    TResult Function(String url)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (creatingCollection != null) {
@@ -2211,7 +2046,6 @@ class _$CreatingCollectionImpl implements _CreatingCollection {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCollection value) fetchingCollection,
     required TResult Function(_FetchingAllCollection value)
@@ -2230,6 +2064,10 @@ class _$CreatingCollectionImpl implements _CreatingCollection {
         deletedListCollection,
     required TResult Function(_CountingCollection value) countingCollection,
     required TResult Function(_CountedCollection value) countedCollection,
+    required TResult Function(_UploadingImageCollection value)
+        uploadingImageCollection,
+    required TResult Function(_UploadedImageCollection value)
+        uploadedImageCollection,
   }) {
     return creatingCollection(this);
   }
@@ -2241,7 +2079,6 @@ class _$CreatingCollectionImpl implements _CreatingCollection {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCollection value)? fetchingCollection,
     TResult? Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -2255,6 +2092,9 @@ class _$CreatingCollectionImpl implements _CreatingCollection {
     TResult? Function(_DeletedListCollection value)? deletedListCollection,
     TResult? Function(_CountingCollection value)? countingCollection,
     TResult? Function(_CountedCollection value)? countedCollection,
+    TResult? Function(_UploadingImageCollection value)?
+        uploadingImageCollection,
+    TResult? Function(_UploadedImageCollection value)? uploadedImageCollection,
   }) {
     return creatingCollection?.call(this);
   }
@@ -2266,7 +2106,6 @@ class _$CreatingCollectionImpl implements _CreatingCollection {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCollection value)? fetchingCollection,
     TResult Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -2280,6 +2119,8 @@ class _$CreatingCollectionImpl implements _CreatingCollection {
     TResult Function(_DeletedListCollection value)? deletedListCollection,
     TResult Function(_CountingCollection value)? countingCollection,
     TResult Function(_CountedCollection value)? countedCollection,
+    TResult Function(_UploadingImageCollection value)? uploadingImageCollection,
+    TResult Function(_UploadedImageCollection value)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (creatingCollection != null) {
@@ -2380,8 +2221,8 @@ class _$CreatedCollectionImpl implements _CreatedCollection {
     required TResult Function(List<CollectionEntity> collections, int count)
         successListLoaded,
     required TResult Function(CollectionEntity collection) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CollectionStateError error, String? errorMessage)
+    required TResult Function(
+            CollectionStateError error, CollectionFailure failure)
         error,
     required TResult Function() fetchingCollection,
     required TResult Function() fetchingAllCollection,
@@ -2390,13 +2231,14 @@ class _$CreatedCollectionImpl implements _CreatedCollection {
     required TResult Function() updatingCollection,
     required TResult Function(CollectionEntity collection)
         updatedSingleCollection,
-    required TResult Function(List<CollectionEntity> collections)
-        updatedListCollection,
+    required TResult Function(int updatedCollection) updatedListCollection,
     required TResult Function() deletingCollection,
     required TResult Function(int id) deletedSingleCollection,
     required TResult Function(List<int> ids) deletedListCollection,
     required TResult Function() countingCollection,
     required TResult Function(int count) countedCollection,
+    required TResult Function() uploadingImageCollection,
+    required TResult Function(String url) uploadedImageCollection,
   }) {
     return createdCollection(collection);
   }
@@ -2409,21 +2251,22 @@ class _$CreatedCollectionImpl implements _CreatedCollection {
     TResult? Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult? Function(CollectionEntity collection)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CollectionStateError error, String? errorMessage)? error,
+    TResult? Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult? Function()? fetchingCollection,
     TResult? Function()? fetchingAllCollection,
     TResult? Function()? creatingCollection,
     TResult? Function(CollectionEntity collection)? createdCollection,
     TResult? Function()? updatingCollection,
     TResult? Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult? Function(List<CollectionEntity> collections)?
-        updatedListCollection,
+    TResult? Function(int updatedCollection)? updatedListCollection,
     TResult? Function()? deletingCollection,
     TResult? Function(int id)? deletedSingleCollection,
     TResult? Function(List<int> ids)? deletedListCollection,
     TResult? Function()? countingCollection,
     TResult? Function(int count)? countedCollection,
+    TResult? Function()? uploadingImageCollection,
+    TResult? Function(String url)? uploadedImageCollection,
   }) {
     return createdCollection?.call(collection);
   }
@@ -2436,20 +2279,22 @@ class _$CreatedCollectionImpl implements _CreatedCollection {
     TResult Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult Function(CollectionEntity collection)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CollectionStateError error, String? errorMessage)? error,
+    TResult Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult Function()? fetchingCollection,
     TResult Function()? fetchingAllCollection,
     TResult Function()? creatingCollection,
     TResult Function(CollectionEntity collection)? createdCollection,
     TResult Function()? updatingCollection,
     TResult Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult Function(List<CollectionEntity> collections)? updatedListCollection,
+    TResult Function(int updatedCollection)? updatedListCollection,
     TResult Function()? deletingCollection,
     TResult Function(int id)? deletedSingleCollection,
     TResult Function(List<int> ids)? deletedListCollection,
     TResult Function()? countingCollection,
     TResult Function(int count)? countedCollection,
+    TResult Function()? uploadingImageCollection,
+    TResult Function(String url)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (createdCollection != null) {
@@ -2465,7 +2310,6 @@ class _$CreatedCollectionImpl implements _CreatedCollection {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCollection value) fetchingCollection,
     required TResult Function(_FetchingAllCollection value)
@@ -2484,6 +2328,10 @@ class _$CreatedCollectionImpl implements _CreatedCollection {
         deletedListCollection,
     required TResult Function(_CountingCollection value) countingCollection,
     required TResult Function(_CountedCollection value) countedCollection,
+    required TResult Function(_UploadingImageCollection value)
+        uploadingImageCollection,
+    required TResult Function(_UploadedImageCollection value)
+        uploadedImageCollection,
   }) {
     return createdCollection(this);
   }
@@ -2495,7 +2343,6 @@ class _$CreatedCollectionImpl implements _CreatedCollection {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCollection value)? fetchingCollection,
     TResult? Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -2509,6 +2356,9 @@ class _$CreatedCollectionImpl implements _CreatedCollection {
     TResult? Function(_DeletedListCollection value)? deletedListCollection,
     TResult? Function(_CountingCollection value)? countingCollection,
     TResult? Function(_CountedCollection value)? countedCollection,
+    TResult? Function(_UploadingImageCollection value)?
+        uploadingImageCollection,
+    TResult? Function(_UploadedImageCollection value)? uploadedImageCollection,
   }) {
     return createdCollection?.call(this);
   }
@@ -2520,7 +2370,6 @@ class _$CreatedCollectionImpl implements _CreatedCollection {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCollection value)? fetchingCollection,
     TResult Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -2534,6 +2383,8 @@ class _$CreatedCollectionImpl implements _CreatedCollection {
     TResult Function(_DeletedListCollection value)? deletedListCollection,
     TResult Function(_CountingCollection value)? countingCollection,
     TResult Function(_CountedCollection value)? countedCollection,
+    TResult Function(_UploadingImageCollection value)? uploadingImageCollection,
+    TResult Function(_UploadedImageCollection value)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (createdCollection != null) {
@@ -2602,8 +2453,8 @@ class _$UpdatingCollectionImpl implements _UpdatingCollection {
     required TResult Function(List<CollectionEntity> collections, int count)
         successListLoaded,
     required TResult Function(CollectionEntity collection) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CollectionStateError error, String? errorMessage)
+    required TResult Function(
+            CollectionStateError error, CollectionFailure failure)
         error,
     required TResult Function() fetchingCollection,
     required TResult Function() fetchingAllCollection,
@@ -2612,13 +2463,14 @@ class _$UpdatingCollectionImpl implements _UpdatingCollection {
     required TResult Function() updatingCollection,
     required TResult Function(CollectionEntity collection)
         updatedSingleCollection,
-    required TResult Function(List<CollectionEntity> collections)
-        updatedListCollection,
+    required TResult Function(int updatedCollection) updatedListCollection,
     required TResult Function() deletingCollection,
     required TResult Function(int id) deletedSingleCollection,
     required TResult Function(List<int> ids) deletedListCollection,
     required TResult Function() countingCollection,
     required TResult Function(int count) countedCollection,
+    required TResult Function() uploadingImageCollection,
+    required TResult Function(String url) uploadedImageCollection,
   }) {
     return updatingCollection();
   }
@@ -2631,21 +2483,22 @@ class _$UpdatingCollectionImpl implements _UpdatingCollection {
     TResult? Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult? Function(CollectionEntity collection)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CollectionStateError error, String? errorMessage)? error,
+    TResult? Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult? Function()? fetchingCollection,
     TResult? Function()? fetchingAllCollection,
     TResult? Function()? creatingCollection,
     TResult? Function(CollectionEntity collection)? createdCollection,
     TResult? Function()? updatingCollection,
     TResult? Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult? Function(List<CollectionEntity> collections)?
-        updatedListCollection,
+    TResult? Function(int updatedCollection)? updatedListCollection,
     TResult? Function()? deletingCollection,
     TResult? Function(int id)? deletedSingleCollection,
     TResult? Function(List<int> ids)? deletedListCollection,
     TResult? Function()? countingCollection,
     TResult? Function(int count)? countedCollection,
+    TResult? Function()? uploadingImageCollection,
+    TResult? Function(String url)? uploadedImageCollection,
   }) {
     return updatingCollection?.call();
   }
@@ -2658,20 +2511,22 @@ class _$UpdatingCollectionImpl implements _UpdatingCollection {
     TResult Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult Function(CollectionEntity collection)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CollectionStateError error, String? errorMessage)? error,
+    TResult Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult Function()? fetchingCollection,
     TResult Function()? fetchingAllCollection,
     TResult Function()? creatingCollection,
     TResult Function(CollectionEntity collection)? createdCollection,
     TResult Function()? updatingCollection,
     TResult Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult Function(List<CollectionEntity> collections)? updatedListCollection,
+    TResult Function(int updatedCollection)? updatedListCollection,
     TResult Function()? deletingCollection,
     TResult Function(int id)? deletedSingleCollection,
     TResult Function(List<int> ids)? deletedListCollection,
     TResult Function()? countingCollection,
     TResult Function(int count)? countedCollection,
+    TResult Function()? uploadingImageCollection,
+    TResult Function(String url)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (updatingCollection != null) {
@@ -2687,7 +2542,6 @@ class _$UpdatingCollectionImpl implements _UpdatingCollection {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCollection value) fetchingCollection,
     required TResult Function(_FetchingAllCollection value)
@@ -2706,6 +2560,10 @@ class _$UpdatingCollectionImpl implements _UpdatingCollection {
         deletedListCollection,
     required TResult Function(_CountingCollection value) countingCollection,
     required TResult Function(_CountedCollection value) countedCollection,
+    required TResult Function(_UploadingImageCollection value)
+        uploadingImageCollection,
+    required TResult Function(_UploadedImageCollection value)
+        uploadedImageCollection,
   }) {
     return updatingCollection(this);
   }
@@ -2717,7 +2575,6 @@ class _$UpdatingCollectionImpl implements _UpdatingCollection {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCollection value)? fetchingCollection,
     TResult? Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -2731,6 +2588,9 @@ class _$UpdatingCollectionImpl implements _UpdatingCollection {
     TResult? Function(_DeletedListCollection value)? deletedListCollection,
     TResult? Function(_CountingCollection value)? countingCollection,
     TResult? Function(_CountedCollection value)? countedCollection,
+    TResult? Function(_UploadingImageCollection value)?
+        uploadingImageCollection,
+    TResult? Function(_UploadedImageCollection value)? uploadedImageCollection,
   }) {
     return updatingCollection?.call(this);
   }
@@ -2742,7 +2602,6 @@ class _$UpdatingCollectionImpl implements _UpdatingCollection {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCollection value)? fetchingCollection,
     TResult Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -2756,6 +2615,8 @@ class _$UpdatingCollectionImpl implements _UpdatingCollection {
     TResult Function(_DeletedListCollection value)? deletedListCollection,
     TResult Function(_CountingCollection value)? countingCollection,
     TResult Function(_CountedCollection value)? countedCollection,
+    TResult Function(_UploadingImageCollection value)? uploadingImageCollection,
+    TResult Function(_UploadedImageCollection value)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (updatingCollection != null) {
@@ -2858,8 +2719,8 @@ class _$UpdatedSingleCollectionImpl implements _UpdatedSingleCollection {
     required TResult Function(List<CollectionEntity> collections, int count)
         successListLoaded,
     required TResult Function(CollectionEntity collection) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CollectionStateError error, String? errorMessage)
+    required TResult Function(
+            CollectionStateError error, CollectionFailure failure)
         error,
     required TResult Function() fetchingCollection,
     required TResult Function() fetchingAllCollection,
@@ -2868,13 +2729,14 @@ class _$UpdatedSingleCollectionImpl implements _UpdatedSingleCollection {
     required TResult Function() updatingCollection,
     required TResult Function(CollectionEntity collection)
         updatedSingleCollection,
-    required TResult Function(List<CollectionEntity> collections)
-        updatedListCollection,
+    required TResult Function(int updatedCollection) updatedListCollection,
     required TResult Function() deletingCollection,
     required TResult Function(int id) deletedSingleCollection,
     required TResult Function(List<int> ids) deletedListCollection,
     required TResult Function() countingCollection,
     required TResult Function(int count) countedCollection,
+    required TResult Function() uploadingImageCollection,
+    required TResult Function(String url) uploadedImageCollection,
   }) {
     return updatedSingleCollection(collection);
   }
@@ -2887,21 +2749,22 @@ class _$UpdatedSingleCollectionImpl implements _UpdatedSingleCollection {
     TResult? Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult? Function(CollectionEntity collection)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CollectionStateError error, String? errorMessage)? error,
+    TResult? Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult? Function()? fetchingCollection,
     TResult? Function()? fetchingAllCollection,
     TResult? Function()? creatingCollection,
     TResult? Function(CollectionEntity collection)? createdCollection,
     TResult? Function()? updatingCollection,
     TResult? Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult? Function(List<CollectionEntity> collections)?
-        updatedListCollection,
+    TResult? Function(int updatedCollection)? updatedListCollection,
     TResult? Function()? deletingCollection,
     TResult? Function(int id)? deletedSingleCollection,
     TResult? Function(List<int> ids)? deletedListCollection,
     TResult? Function()? countingCollection,
     TResult? Function(int count)? countedCollection,
+    TResult? Function()? uploadingImageCollection,
+    TResult? Function(String url)? uploadedImageCollection,
   }) {
     return updatedSingleCollection?.call(collection);
   }
@@ -2914,20 +2777,22 @@ class _$UpdatedSingleCollectionImpl implements _UpdatedSingleCollection {
     TResult Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult Function(CollectionEntity collection)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CollectionStateError error, String? errorMessage)? error,
+    TResult Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult Function()? fetchingCollection,
     TResult Function()? fetchingAllCollection,
     TResult Function()? creatingCollection,
     TResult Function(CollectionEntity collection)? createdCollection,
     TResult Function()? updatingCollection,
     TResult Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult Function(List<CollectionEntity> collections)? updatedListCollection,
+    TResult Function(int updatedCollection)? updatedListCollection,
     TResult Function()? deletingCollection,
     TResult Function(int id)? deletedSingleCollection,
     TResult Function(List<int> ids)? deletedListCollection,
     TResult Function()? countingCollection,
     TResult Function(int count)? countedCollection,
+    TResult Function()? uploadingImageCollection,
+    TResult Function(String url)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (updatedSingleCollection != null) {
@@ -2943,7 +2808,6 @@ class _$UpdatedSingleCollectionImpl implements _UpdatedSingleCollection {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCollection value) fetchingCollection,
     required TResult Function(_FetchingAllCollection value)
@@ -2962,6 +2826,10 @@ class _$UpdatedSingleCollectionImpl implements _UpdatedSingleCollection {
         deletedListCollection,
     required TResult Function(_CountingCollection value) countingCollection,
     required TResult Function(_CountedCollection value) countedCollection,
+    required TResult Function(_UploadingImageCollection value)
+        uploadingImageCollection,
+    required TResult Function(_UploadedImageCollection value)
+        uploadedImageCollection,
   }) {
     return updatedSingleCollection(this);
   }
@@ -2973,7 +2841,6 @@ class _$UpdatedSingleCollectionImpl implements _UpdatedSingleCollection {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCollection value)? fetchingCollection,
     TResult? Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -2987,6 +2854,9 @@ class _$UpdatedSingleCollectionImpl implements _UpdatedSingleCollection {
     TResult? Function(_DeletedListCollection value)? deletedListCollection,
     TResult? Function(_CountingCollection value)? countingCollection,
     TResult? Function(_CountedCollection value)? countedCollection,
+    TResult? Function(_UploadingImageCollection value)?
+        uploadingImageCollection,
+    TResult? Function(_UploadedImageCollection value)? uploadedImageCollection,
   }) {
     return updatedSingleCollection?.call(this);
   }
@@ -2998,7 +2868,6 @@ class _$UpdatedSingleCollectionImpl implements _UpdatedSingleCollection {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCollection value)? fetchingCollection,
     TResult Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -3012,6 +2881,8 @@ class _$UpdatedSingleCollectionImpl implements _UpdatedSingleCollection {
     TResult Function(_DeletedListCollection value)? deletedListCollection,
     TResult Function(_CountingCollection value)? countingCollection,
     TResult Function(_CountedCollection value)? countedCollection,
+    TResult Function(_UploadingImageCollection value)? uploadingImageCollection,
+    TResult Function(_UploadedImageCollection value)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (updatedSingleCollection != null) {
@@ -3042,7 +2913,7 @@ abstract class _$$UpdatedListCollectionImplCopyWith<$Res> {
           $Res Function(_$UpdatedListCollectionImpl) then) =
       __$$UpdatedListCollectionImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<CollectionEntity> collections});
+  $Res call({int updatedCollection});
 }
 
 /// @nodoc
@@ -3058,13 +2929,13 @@ class __$$UpdatedListCollectionImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? collections = null,
+    Object? updatedCollection = null,
   }) {
     return _then(_$UpdatedListCollectionImpl(
-      collections: null == collections
-          ? _value._collections
-          : collections // ignore: cast_nullable_to_non_nullable
-              as List<CollectionEntity>,
+      updatedCollection: null == updatedCollection
+          ? _value.updatedCollection
+          : updatedCollection // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -3072,21 +2943,14 @@ class __$$UpdatedListCollectionImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UpdatedListCollectionImpl implements _UpdatedListCollection {
-  const _$UpdatedListCollectionImpl(
-      {required final List<CollectionEntity> collections})
-      : _collections = collections;
+  const _$UpdatedListCollectionImpl({required this.updatedCollection});
 
-  final List<CollectionEntity> _collections;
   @override
-  List<CollectionEntity> get collections {
-    if (_collections is EqualUnmodifiableListView) return _collections;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_collections);
-  }
+  final int updatedCollection;
 
   @override
   String toString() {
-    return 'CollectionState.updatedListCollection(collections: $collections)';
+    return 'CollectionState.updatedListCollection(updatedCollection: $updatedCollection)';
   }
 
   @override
@@ -3094,13 +2958,12 @@ class _$UpdatedListCollectionImpl implements _UpdatedListCollection {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdatedListCollectionImpl &&
-            const DeepCollectionEquality()
-                .equals(other._collections, _collections));
+            (identical(other.updatedCollection, updatedCollection) ||
+                other.updatedCollection == updatedCollection));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_collections));
+  int get hashCode => Object.hash(runtimeType, updatedCollection);
 
   /// Create a copy of CollectionState
   /// with the given fields replaced by the non-null parameter values.
@@ -3119,8 +2982,8 @@ class _$UpdatedListCollectionImpl implements _UpdatedListCollection {
     required TResult Function(List<CollectionEntity> collections, int count)
         successListLoaded,
     required TResult Function(CollectionEntity collection) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CollectionStateError error, String? errorMessage)
+    required TResult Function(
+            CollectionStateError error, CollectionFailure failure)
         error,
     required TResult Function() fetchingCollection,
     required TResult Function() fetchingAllCollection,
@@ -3129,15 +2992,16 @@ class _$UpdatedListCollectionImpl implements _UpdatedListCollection {
     required TResult Function() updatingCollection,
     required TResult Function(CollectionEntity collection)
         updatedSingleCollection,
-    required TResult Function(List<CollectionEntity> collections)
-        updatedListCollection,
+    required TResult Function(int updatedCollection) updatedListCollection,
     required TResult Function() deletingCollection,
     required TResult Function(int id) deletedSingleCollection,
     required TResult Function(List<int> ids) deletedListCollection,
     required TResult Function() countingCollection,
     required TResult Function(int count) countedCollection,
+    required TResult Function() uploadingImageCollection,
+    required TResult Function(String url) uploadedImageCollection,
   }) {
-    return updatedListCollection(collections);
+    return updatedListCollection(updatedCollection);
   }
 
   @override
@@ -3148,23 +3012,24 @@ class _$UpdatedListCollectionImpl implements _UpdatedListCollection {
     TResult? Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult? Function(CollectionEntity collection)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CollectionStateError error, String? errorMessage)? error,
+    TResult? Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult? Function()? fetchingCollection,
     TResult? Function()? fetchingAllCollection,
     TResult? Function()? creatingCollection,
     TResult? Function(CollectionEntity collection)? createdCollection,
     TResult? Function()? updatingCollection,
     TResult? Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult? Function(List<CollectionEntity> collections)?
-        updatedListCollection,
+    TResult? Function(int updatedCollection)? updatedListCollection,
     TResult? Function()? deletingCollection,
     TResult? Function(int id)? deletedSingleCollection,
     TResult? Function(List<int> ids)? deletedListCollection,
     TResult? Function()? countingCollection,
     TResult? Function(int count)? countedCollection,
+    TResult? Function()? uploadingImageCollection,
+    TResult? Function(String url)? uploadedImageCollection,
   }) {
-    return updatedListCollection?.call(collections);
+    return updatedListCollection?.call(updatedCollection);
   }
 
   @override
@@ -3175,24 +3040,26 @@ class _$UpdatedListCollectionImpl implements _UpdatedListCollection {
     TResult Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult Function(CollectionEntity collection)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CollectionStateError error, String? errorMessage)? error,
+    TResult Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult Function()? fetchingCollection,
     TResult Function()? fetchingAllCollection,
     TResult Function()? creatingCollection,
     TResult Function(CollectionEntity collection)? createdCollection,
     TResult Function()? updatingCollection,
     TResult Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult Function(List<CollectionEntity> collections)? updatedListCollection,
+    TResult Function(int updatedCollection)? updatedListCollection,
     TResult Function()? deletingCollection,
     TResult Function(int id)? deletedSingleCollection,
     TResult Function(List<int> ids)? deletedListCollection,
     TResult Function()? countingCollection,
     TResult Function(int count)? countedCollection,
+    TResult Function()? uploadingImageCollection,
+    TResult Function(String url)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (updatedListCollection != null) {
-      return updatedListCollection(collections);
+      return updatedListCollection(updatedCollection);
     }
     return orElse();
   }
@@ -3204,7 +3071,6 @@ class _$UpdatedListCollectionImpl implements _UpdatedListCollection {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCollection value) fetchingCollection,
     required TResult Function(_FetchingAllCollection value)
@@ -3223,6 +3089,10 @@ class _$UpdatedListCollectionImpl implements _UpdatedListCollection {
         deletedListCollection,
     required TResult Function(_CountingCollection value) countingCollection,
     required TResult Function(_CountedCollection value) countedCollection,
+    required TResult Function(_UploadingImageCollection value)
+        uploadingImageCollection,
+    required TResult Function(_UploadedImageCollection value)
+        uploadedImageCollection,
   }) {
     return updatedListCollection(this);
   }
@@ -3234,7 +3104,6 @@ class _$UpdatedListCollectionImpl implements _UpdatedListCollection {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCollection value)? fetchingCollection,
     TResult? Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -3248,6 +3117,9 @@ class _$UpdatedListCollectionImpl implements _UpdatedListCollection {
     TResult? Function(_DeletedListCollection value)? deletedListCollection,
     TResult? Function(_CountingCollection value)? countingCollection,
     TResult? Function(_CountedCollection value)? countedCollection,
+    TResult? Function(_UploadingImageCollection value)?
+        uploadingImageCollection,
+    TResult? Function(_UploadedImageCollection value)? uploadedImageCollection,
   }) {
     return updatedListCollection?.call(this);
   }
@@ -3259,7 +3131,6 @@ class _$UpdatedListCollectionImpl implements _UpdatedListCollection {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCollection value)? fetchingCollection,
     TResult Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -3273,6 +3144,8 @@ class _$UpdatedListCollectionImpl implements _UpdatedListCollection {
     TResult Function(_DeletedListCollection value)? deletedListCollection,
     TResult Function(_CountingCollection value)? countingCollection,
     TResult Function(_CountedCollection value)? countedCollection,
+    TResult Function(_UploadingImageCollection value)? uploadingImageCollection,
+    TResult Function(_UploadedImageCollection value)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (updatedListCollection != null) {
@@ -3283,11 +3156,10 @@ class _$UpdatedListCollectionImpl implements _UpdatedListCollection {
 }
 
 abstract class _UpdatedListCollection implements CollectionState {
-  const factory _UpdatedListCollection(
-          {required final List<CollectionEntity> collections}) =
+  const factory _UpdatedListCollection({required final int updatedCollection}) =
       _$UpdatedListCollectionImpl;
 
-  List<CollectionEntity> get collections;
+  int get updatedCollection;
 
   /// Create a copy of CollectionState
   /// with the given fields replaced by the non-null parameter values.
@@ -3342,8 +3214,8 @@ class _$DeletingCollectionImpl implements _DeletingCollection {
     required TResult Function(List<CollectionEntity> collections, int count)
         successListLoaded,
     required TResult Function(CollectionEntity collection) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CollectionStateError error, String? errorMessage)
+    required TResult Function(
+            CollectionStateError error, CollectionFailure failure)
         error,
     required TResult Function() fetchingCollection,
     required TResult Function() fetchingAllCollection,
@@ -3352,13 +3224,14 @@ class _$DeletingCollectionImpl implements _DeletingCollection {
     required TResult Function() updatingCollection,
     required TResult Function(CollectionEntity collection)
         updatedSingleCollection,
-    required TResult Function(List<CollectionEntity> collections)
-        updatedListCollection,
+    required TResult Function(int updatedCollection) updatedListCollection,
     required TResult Function() deletingCollection,
     required TResult Function(int id) deletedSingleCollection,
     required TResult Function(List<int> ids) deletedListCollection,
     required TResult Function() countingCollection,
     required TResult Function(int count) countedCollection,
+    required TResult Function() uploadingImageCollection,
+    required TResult Function(String url) uploadedImageCollection,
   }) {
     return deletingCollection();
   }
@@ -3371,21 +3244,22 @@ class _$DeletingCollectionImpl implements _DeletingCollection {
     TResult? Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult? Function(CollectionEntity collection)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CollectionStateError error, String? errorMessage)? error,
+    TResult? Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult? Function()? fetchingCollection,
     TResult? Function()? fetchingAllCollection,
     TResult? Function()? creatingCollection,
     TResult? Function(CollectionEntity collection)? createdCollection,
     TResult? Function()? updatingCollection,
     TResult? Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult? Function(List<CollectionEntity> collections)?
-        updatedListCollection,
+    TResult? Function(int updatedCollection)? updatedListCollection,
     TResult? Function()? deletingCollection,
     TResult? Function(int id)? deletedSingleCollection,
     TResult? Function(List<int> ids)? deletedListCollection,
     TResult? Function()? countingCollection,
     TResult? Function(int count)? countedCollection,
+    TResult? Function()? uploadingImageCollection,
+    TResult? Function(String url)? uploadedImageCollection,
   }) {
     return deletingCollection?.call();
   }
@@ -3398,20 +3272,22 @@ class _$DeletingCollectionImpl implements _DeletingCollection {
     TResult Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult Function(CollectionEntity collection)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CollectionStateError error, String? errorMessage)? error,
+    TResult Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult Function()? fetchingCollection,
     TResult Function()? fetchingAllCollection,
     TResult Function()? creatingCollection,
     TResult Function(CollectionEntity collection)? createdCollection,
     TResult Function()? updatingCollection,
     TResult Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult Function(List<CollectionEntity> collections)? updatedListCollection,
+    TResult Function(int updatedCollection)? updatedListCollection,
     TResult Function()? deletingCollection,
     TResult Function(int id)? deletedSingleCollection,
     TResult Function(List<int> ids)? deletedListCollection,
     TResult Function()? countingCollection,
     TResult Function(int count)? countedCollection,
+    TResult Function()? uploadingImageCollection,
+    TResult Function(String url)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (deletingCollection != null) {
@@ -3427,7 +3303,6 @@ class _$DeletingCollectionImpl implements _DeletingCollection {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCollection value) fetchingCollection,
     required TResult Function(_FetchingAllCollection value)
@@ -3446,6 +3321,10 @@ class _$DeletingCollectionImpl implements _DeletingCollection {
         deletedListCollection,
     required TResult Function(_CountingCollection value) countingCollection,
     required TResult Function(_CountedCollection value) countedCollection,
+    required TResult Function(_UploadingImageCollection value)
+        uploadingImageCollection,
+    required TResult Function(_UploadedImageCollection value)
+        uploadedImageCollection,
   }) {
     return deletingCollection(this);
   }
@@ -3457,7 +3336,6 @@ class _$DeletingCollectionImpl implements _DeletingCollection {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCollection value)? fetchingCollection,
     TResult? Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -3471,6 +3349,9 @@ class _$DeletingCollectionImpl implements _DeletingCollection {
     TResult? Function(_DeletedListCollection value)? deletedListCollection,
     TResult? Function(_CountingCollection value)? countingCollection,
     TResult? Function(_CountedCollection value)? countedCollection,
+    TResult? Function(_UploadingImageCollection value)?
+        uploadingImageCollection,
+    TResult? Function(_UploadedImageCollection value)? uploadedImageCollection,
   }) {
     return deletingCollection?.call(this);
   }
@@ -3482,7 +3363,6 @@ class _$DeletingCollectionImpl implements _DeletingCollection {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCollection value)? fetchingCollection,
     TResult Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -3496,6 +3376,8 @@ class _$DeletingCollectionImpl implements _DeletingCollection {
     TResult Function(_DeletedListCollection value)? deletedListCollection,
     TResult Function(_CountingCollection value)? countingCollection,
     TResult Function(_CountedCollection value)? countedCollection,
+    TResult Function(_UploadingImageCollection value)? uploadingImageCollection,
+    TResult Function(_UploadedImageCollection value)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (deletingCollection != null) {
@@ -3585,8 +3467,8 @@ class _$DeletedSingleCollectionImpl implements _DeletedSingleCollection {
     required TResult Function(List<CollectionEntity> collections, int count)
         successListLoaded,
     required TResult Function(CollectionEntity collection) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CollectionStateError error, String? errorMessage)
+    required TResult Function(
+            CollectionStateError error, CollectionFailure failure)
         error,
     required TResult Function() fetchingCollection,
     required TResult Function() fetchingAllCollection,
@@ -3595,13 +3477,14 @@ class _$DeletedSingleCollectionImpl implements _DeletedSingleCollection {
     required TResult Function() updatingCollection,
     required TResult Function(CollectionEntity collection)
         updatedSingleCollection,
-    required TResult Function(List<CollectionEntity> collections)
-        updatedListCollection,
+    required TResult Function(int updatedCollection) updatedListCollection,
     required TResult Function() deletingCollection,
     required TResult Function(int id) deletedSingleCollection,
     required TResult Function(List<int> ids) deletedListCollection,
     required TResult Function() countingCollection,
     required TResult Function(int count) countedCollection,
+    required TResult Function() uploadingImageCollection,
+    required TResult Function(String url) uploadedImageCollection,
   }) {
     return deletedSingleCollection(id);
   }
@@ -3614,21 +3497,22 @@ class _$DeletedSingleCollectionImpl implements _DeletedSingleCollection {
     TResult? Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult? Function(CollectionEntity collection)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CollectionStateError error, String? errorMessage)? error,
+    TResult? Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult? Function()? fetchingCollection,
     TResult? Function()? fetchingAllCollection,
     TResult? Function()? creatingCollection,
     TResult? Function(CollectionEntity collection)? createdCollection,
     TResult? Function()? updatingCollection,
     TResult? Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult? Function(List<CollectionEntity> collections)?
-        updatedListCollection,
+    TResult? Function(int updatedCollection)? updatedListCollection,
     TResult? Function()? deletingCollection,
     TResult? Function(int id)? deletedSingleCollection,
     TResult? Function(List<int> ids)? deletedListCollection,
     TResult? Function()? countingCollection,
     TResult? Function(int count)? countedCollection,
+    TResult? Function()? uploadingImageCollection,
+    TResult? Function(String url)? uploadedImageCollection,
   }) {
     return deletedSingleCollection?.call(id);
   }
@@ -3641,20 +3525,22 @@ class _$DeletedSingleCollectionImpl implements _DeletedSingleCollection {
     TResult Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult Function(CollectionEntity collection)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CollectionStateError error, String? errorMessage)? error,
+    TResult Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult Function()? fetchingCollection,
     TResult Function()? fetchingAllCollection,
     TResult Function()? creatingCollection,
     TResult Function(CollectionEntity collection)? createdCollection,
     TResult Function()? updatingCollection,
     TResult Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult Function(List<CollectionEntity> collections)? updatedListCollection,
+    TResult Function(int updatedCollection)? updatedListCollection,
     TResult Function()? deletingCollection,
     TResult Function(int id)? deletedSingleCollection,
     TResult Function(List<int> ids)? deletedListCollection,
     TResult Function()? countingCollection,
     TResult Function(int count)? countedCollection,
+    TResult Function()? uploadingImageCollection,
+    TResult Function(String url)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (deletedSingleCollection != null) {
@@ -3670,7 +3556,6 @@ class _$DeletedSingleCollectionImpl implements _DeletedSingleCollection {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCollection value) fetchingCollection,
     required TResult Function(_FetchingAllCollection value)
@@ -3689,6 +3574,10 @@ class _$DeletedSingleCollectionImpl implements _DeletedSingleCollection {
         deletedListCollection,
     required TResult Function(_CountingCollection value) countingCollection,
     required TResult Function(_CountedCollection value) countedCollection,
+    required TResult Function(_UploadingImageCollection value)
+        uploadingImageCollection,
+    required TResult Function(_UploadedImageCollection value)
+        uploadedImageCollection,
   }) {
     return deletedSingleCollection(this);
   }
@@ -3700,7 +3589,6 @@ class _$DeletedSingleCollectionImpl implements _DeletedSingleCollection {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCollection value)? fetchingCollection,
     TResult? Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -3714,6 +3602,9 @@ class _$DeletedSingleCollectionImpl implements _DeletedSingleCollection {
     TResult? Function(_DeletedListCollection value)? deletedListCollection,
     TResult? Function(_CountingCollection value)? countingCollection,
     TResult? Function(_CountedCollection value)? countedCollection,
+    TResult? Function(_UploadingImageCollection value)?
+        uploadingImageCollection,
+    TResult? Function(_UploadedImageCollection value)? uploadedImageCollection,
   }) {
     return deletedSingleCollection?.call(this);
   }
@@ -3725,7 +3616,6 @@ class _$DeletedSingleCollectionImpl implements _DeletedSingleCollection {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCollection value)? fetchingCollection,
     TResult Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -3739,6 +3629,8 @@ class _$DeletedSingleCollectionImpl implements _DeletedSingleCollection {
     TResult Function(_DeletedListCollection value)? deletedListCollection,
     TResult Function(_CountingCollection value)? countingCollection,
     TResult Function(_CountedCollection value)? countedCollection,
+    TResult Function(_UploadingImageCollection value)? uploadingImageCollection,
+    TResult Function(_UploadedImageCollection value)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (deletedSingleCollection != null) {
@@ -3843,8 +3735,8 @@ class _$DeletedListCollectionImpl implements _DeletedListCollection {
     required TResult Function(List<CollectionEntity> collections, int count)
         successListLoaded,
     required TResult Function(CollectionEntity collection) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CollectionStateError error, String? errorMessage)
+    required TResult Function(
+            CollectionStateError error, CollectionFailure failure)
         error,
     required TResult Function() fetchingCollection,
     required TResult Function() fetchingAllCollection,
@@ -3853,13 +3745,14 @@ class _$DeletedListCollectionImpl implements _DeletedListCollection {
     required TResult Function() updatingCollection,
     required TResult Function(CollectionEntity collection)
         updatedSingleCollection,
-    required TResult Function(List<CollectionEntity> collections)
-        updatedListCollection,
+    required TResult Function(int updatedCollection) updatedListCollection,
     required TResult Function() deletingCollection,
     required TResult Function(int id) deletedSingleCollection,
     required TResult Function(List<int> ids) deletedListCollection,
     required TResult Function() countingCollection,
     required TResult Function(int count) countedCollection,
+    required TResult Function() uploadingImageCollection,
+    required TResult Function(String url) uploadedImageCollection,
   }) {
     return deletedListCollection(ids);
   }
@@ -3872,21 +3765,22 @@ class _$DeletedListCollectionImpl implements _DeletedListCollection {
     TResult? Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult? Function(CollectionEntity collection)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CollectionStateError error, String? errorMessage)? error,
+    TResult? Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult? Function()? fetchingCollection,
     TResult? Function()? fetchingAllCollection,
     TResult? Function()? creatingCollection,
     TResult? Function(CollectionEntity collection)? createdCollection,
     TResult? Function()? updatingCollection,
     TResult? Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult? Function(List<CollectionEntity> collections)?
-        updatedListCollection,
+    TResult? Function(int updatedCollection)? updatedListCollection,
     TResult? Function()? deletingCollection,
     TResult? Function(int id)? deletedSingleCollection,
     TResult? Function(List<int> ids)? deletedListCollection,
     TResult? Function()? countingCollection,
     TResult? Function(int count)? countedCollection,
+    TResult? Function()? uploadingImageCollection,
+    TResult? Function(String url)? uploadedImageCollection,
   }) {
     return deletedListCollection?.call(ids);
   }
@@ -3899,20 +3793,22 @@ class _$DeletedListCollectionImpl implements _DeletedListCollection {
     TResult Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult Function(CollectionEntity collection)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CollectionStateError error, String? errorMessage)? error,
+    TResult Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult Function()? fetchingCollection,
     TResult Function()? fetchingAllCollection,
     TResult Function()? creatingCollection,
     TResult Function(CollectionEntity collection)? createdCollection,
     TResult Function()? updatingCollection,
     TResult Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult Function(List<CollectionEntity> collections)? updatedListCollection,
+    TResult Function(int updatedCollection)? updatedListCollection,
     TResult Function()? deletingCollection,
     TResult Function(int id)? deletedSingleCollection,
     TResult Function(List<int> ids)? deletedListCollection,
     TResult Function()? countingCollection,
     TResult Function(int count)? countedCollection,
+    TResult Function()? uploadingImageCollection,
+    TResult Function(String url)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (deletedListCollection != null) {
@@ -3928,7 +3824,6 @@ class _$DeletedListCollectionImpl implements _DeletedListCollection {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCollection value) fetchingCollection,
     required TResult Function(_FetchingAllCollection value)
@@ -3947,6 +3842,10 @@ class _$DeletedListCollectionImpl implements _DeletedListCollection {
         deletedListCollection,
     required TResult Function(_CountingCollection value) countingCollection,
     required TResult Function(_CountedCollection value) countedCollection,
+    required TResult Function(_UploadingImageCollection value)
+        uploadingImageCollection,
+    required TResult Function(_UploadedImageCollection value)
+        uploadedImageCollection,
   }) {
     return deletedListCollection(this);
   }
@@ -3958,7 +3857,6 @@ class _$DeletedListCollectionImpl implements _DeletedListCollection {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCollection value)? fetchingCollection,
     TResult? Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -3972,6 +3870,9 @@ class _$DeletedListCollectionImpl implements _DeletedListCollection {
     TResult? Function(_DeletedListCollection value)? deletedListCollection,
     TResult? Function(_CountingCollection value)? countingCollection,
     TResult? Function(_CountedCollection value)? countedCollection,
+    TResult? Function(_UploadingImageCollection value)?
+        uploadingImageCollection,
+    TResult? Function(_UploadedImageCollection value)? uploadedImageCollection,
   }) {
     return deletedListCollection?.call(this);
   }
@@ -3983,7 +3884,6 @@ class _$DeletedListCollectionImpl implements _DeletedListCollection {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCollection value)? fetchingCollection,
     TResult Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -3997,6 +3897,8 @@ class _$DeletedListCollectionImpl implements _DeletedListCollection {
     TResult Function(_DeletedListCollection value)? deletedListCollection,
     TResult Function(_CountingCollection value)? countingCollection,
     TResult Function(_CountedCollection value)? countedCollection,
+    TResult Function(_UploadingImageCollection value)? uploadingImageCollection,
+    TResult Function(_UploadedImageCollection value)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (deletedListCollection != null) {
@@ -4065,8 +3967,8 @@ class _$CountingCollectionImpl implements _CountingCollection {
     required TResult Function(List<CollectionEntity> collections, int count)
         successListLoaded,
     required TResult Function(CollectionEntity collection) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CollectionStateError error, String? errorMessage)
+    required TResult Function(
+            CollectionStateError error, CollectionFailure failure)
         error,
     required TResult Function() fetchingCollection,
     required TResult Function() fetchingAllCollection,
@@ -4075,13 +3977,14 @@ class _$CountingCollectionImpl implements _CountingCollection {
     required TResult Function() updatingCollection,
     required TResult Function(CollectionEntity collection)
         updatedSingleCollection,
-    required TResult Function(List<CollectionEntity> collections)
-        updatedListCollection,
+    required TResult Function(int updatedCollection) updatedListCollection,
     required TResult Function() deletingCollection,
     required TResult Function(int id) deletedSingleCollection,
     required TResult Function(List<int> ids) deletedListCollection,
     required TResult Function() countingCollection,
     required TResult Function(int count) countedCollection,
+    required TResult Function() uploadingImageCollection,
+    required TResult Function(String url) uploadedImageCollection,
   }) {
     return countingCollection();
   }
@@ -4094,21 +3997,22 @@ class _$CountingCollectionImpl implements _CountingCollection {
     TResult? Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult? Function(CollectionEntity collection)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CollectionStateError error, String? errorMessage)? error,
+    TResult? Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult? Function()? fetchingCollection,
     TResult? Function()? fetchingAllCollection,
     TResult? Function()? creatingCollection,
     TResult? Function(CollectionEntity collection)? createdCollection,
     TResult? Function()? updatingCollection,
     TResult? Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult? Function(List<CollectionEntity> collections)?
-        updatedListCollection,
+    TResult? Function(int updatedCollection)? updatedListCollection,
     TResult? Function()? deletingCollection,
     TResult? Function(int id)? deletedSingleCollection,
     TResult? Function(List<int> ids)? deletedListCollection,
     TResult? Function()? countingCollection,
     TResult? Function(int count)? countedCollection,
+    TResult? Function()? uploadingImageCollection,
+    TResult? Function(String url)? uploadedImageCollection,
   }) {
     return countingCollection?.call();
   }
@@ -4121,20 +4025,22 @@ class _$CountingCollectionImpl implements _CountingCollection {
     TResult Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult Function(CollectionEntity collection)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CollectionStateError error, String? errorMessage)? error,
+    TResult Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult Function()? fetchingCollection,
     TResult Function()? fetchingAllCollection,
     TResult Function()? creatingCollection,
     TResult Function(CollectionEntity collection)? createdCollection,
     TResult Function()? updatingCollection,
     TResult Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult Function(List<CollectionEntity> collections)? updatedListCollection,
+    TResult Function(int updatedCollection)? updatedListCollection,
     TResult Function()? deletingCollection,
     TResult Function(int id)? deletedSingleCollection,
     TResult Function(List<int> ids)? deletedListCollection,
     TResult Function()? countingCollection,
     TResult Function(int count)? countedCollection,
+    TResult Function()? uploadingImageCollection,
+    TResult Function(String url)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (countingCollection != null) {
@@ -4150,7 +4056,6 @@ class _$CountingCollectionImpl implements _CountingCollection {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCollection value) fetchingCollection,
     required TResult Function(_FetchingAllCollection value)
@@ -4169,6 +4074,10 @@ class _$CountingCollectionImpl implements _CountingCollection {
         deletedListCollection,
     required TResult Function(_CountingCollection value) countingCollection,
     required TResult Function(_CountedCollection value) countedCollection,
+    required TResult Function(_UploadingImageCollection value)
+        uploadingImageCollection,
+    required TResult Function(_UploadedImageCollection value)
+        uploadedImageCollection,
   }) {
     return countingCollection(this);
   }
@@ -4180,7 +4089,6 @@ class _$CountingCollectionImpl implements _CountingCollection {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCollection value)? fetchingCollection,
     TResult? Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -4194,6 +4102,9 @@ class _$CountingCollectionImpl implements _CountingCollection {
     TResult? Function(_DeletedListCollection value)? deletedListCollection,
     TResult? Function(_CountingCollection value)? countingCollection,
     TResult? Function(_CountedCollection value)? countedCollection,
+    TResult? Function(_UploadingImageCollection value)?
+        uploadingImageCollection,
+    TResult? Function(_UploadedImageCollection value)? uploadedImageCollection,
   }) {
     return countingCollection?.call(this);
   }
@@ -4205,7 +4116,6 @@ class _$CountingCollectionImpl implements _CountingCollection {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCollection value)? fetchingCollection,
     TResult Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -4219,6 +4129,8 @@ class _$CountingCollectionImpl implements _CountingCollection {
     TResult Function(_DeletedListCollection value)? deletedListCollection,
     TResult Function(_CountingCollection value)? countingCollection,
     TResult Function(_CountedCollection value)? countedCollection,
+    TResult Function(_UploadingImageCollection value)? uploadingImageCollection,
+    TResult Function(_UploadedImageCollection value)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (countingCollection != null) {
@@ -4306,8 +4218,8 @@ class _$CountedCollectionImpl implements _CountedCollection {
     required TResult Function(List<CollectionEntity> collections, int count)
         successListLoaded,
     required TResult Function(CollectionEntity collection) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CollectionStateError error, String? errorMessage)
+    required TResult Function(
+            CollectionStateError error, CollectionFailure failure)
         error,
     required TResult Function() fetchingCollection,
     required TResult Function() fetchingAllCollection,
@@ -4316,13 +4228,14 @@ class _$CountedCollectionImpl implements _CountedCollection {
     required TResult Function() updatingCollection,
     required TResult Function(CollectionEntity collection)
         updatedSingleCollection,
-    required TResult Function(List<CollectionEntity> collections)
-        updatedListCollection,
+    required TResult Function(int updatedCollection) updatedListCollection,
     required TResult Function() deletingCollection,
     required TResult Function(int id) deletedSingleCollection,
     required TResult Function(List<int> ids) deletedListCollection,
     required TResult Function() countingCollection,
     required TResult Function(int count) countedCollection,
+    required TResult Function() uploadingImageCollection,
+    required TResult Function(String url) uploadedImageCollection,
   }) {
     return countedCollection(count);
   }
@@ -4335,21 +4248,22 @@ class _$CountedCollectionImpl implements _CountedCollection {
     TResult? Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult? Function(CollectionEntity collection)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CollectionStateError error, String? errorMessage)? error,
+    TResult? Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult? Function()? fetchingCollection,
     TResult? Function()? fetchingAllCollection,
     TResult? Function()? creatingCollection,
     TResult? Function(CollectionEntity collection)? createdCollection,
     TResult? Function()? updatingCollection,
     TResult? Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult? Function(List<CollectionEntity> collections)?
-        updatedListCollection,
+    TResult? Function(int updatedCollection)? updatedListCollection,
     TResult? Function()? deletingCollection,
     TResult? Function(int id)? deletedSingleCollection,
     TResult? Function(List<int> ids)? deletedListCollection,
     TResult? Function()? countingCollection,
     TResult? Function(int count)? countedCollection,
+    TResult? Function()? uploadingImageCollection,
+    TResult? Function(String url)? uploadedImageCollection,
   }) {
     return countedCollection?.call(count);
   }
@@ -4362,20 +4276,22 @@ class _$CountedCollectionImpl implements _CountedCollection {
     TResult Function(List<CollectionEntity> collections, int count)?
         successListLoaded,
     TResult Function(CollectionEntity collection)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CollectionStateError error, String? errorMessage)? error,
+    TResult Function(CollectionStateError error, CollectionFailure failure)?
+        error,
     TResult Function()? fetchingCollection,
     TResult Function()? fetchingAllCollection,
     TResult Function()? creatingCollection,
     TResult Function(CollectionEntity collection)? createdCollection,
     TResult Function()? updatingCollection,
     TResult Function(CollectionEntity collection)? updatedSingleCollection,
-    TResult Function(List<CollectionEntity> collections)? updatedListCollection,
+    TResult Function(int updatedCollection)? updatedListCollection,
     TResult Function()? deletingCollection,
     TResult Function(int id)? deletedSingleCollection,
     TResult Function(List<int> ids)? deletedListCollection,
     TResult Function()? countingCollection,
     TResult Function(int count)? countedCollection,
+    TResult Function()? uploadingImageCollection,
+    TResult Function(String url)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (countedCollection != null) {
@@ -4391,7 +4307,6 @@ class _$CountedCollectionImpl implements _CountedCollection {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCollection value) fetchingCollection,
     required TResult Function(_FetchingAllCollection value)
@@ -4410,6 +4325,10 @@ class _$CountedCollectionImpl implements _CountedCollection {
         deletedListCollection,
     required TResult Function(_CountingCollection value) countingCollection,
     required TResult Function(_CountedCollection value) countedCollection,
+    required TResult Function(_UploadingImageCollection value)
+        uploadingImageCollection,
+    required TResult Function(_UploadedImageCollection value)
+        uploadedImageCollection,
   }) {
     return countedCollection(this);
   }
@@ -4421,7 +4340,6 @@ class _$CountedCollectionImpl implements _CountedCollection {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCollection value)? fetchingCollection,
     TResult? Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -4435,6 +4353,9 @@ class _$CountedCollectionImpl implements _CountedCollection {
     TResult? Function(_DeletedListCollection value)? deletedListCollection,
     TResult? Function(_CountingCollection value)? countingCollection,
     TResult? Function(_CountedCollection value)? countedCollection,
+    TResult? Function(_UploadingImageCollection value)?
+        uploadingImageCollection,
+    TResult? Function(_UploadedImageCollection value)? uploadedImageCollection,
   }) {
     return countedCollection?.call(this);
   }
@@ -4446,7 +4367,6 @@ class _$CountedCollectionImpl implements _CountedCollection {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCollection value)? fetchingCollection,
     TResult Function(_FetchingAllCollection value)? fetchingAllCollection,
@@ -4460,6 +4380,8 @@ class _$CountedCollectionImpl implements _CountedCollection {
     TResult Function(_DeletedListCollection value)? deletedListCollection,
     TResult Function(_CountingCollection value)? countingCollection,
     TResult Function(_CountedCollection value)? countedCollection,
+    TResult Function(_UploadingImageCollection value)? uploadingImageCollection,
+    TResult Function(_UploadedImageCollection value)? uploadedImageCollection,
     required TResult orElse(),
   }) {
     if (countedCollection != null) {
@@ -4480,4 +4402,492 @@ abstract class _CountedCollection implements CollectionState {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CountedCollectionImplCopyWith<_$CountedCollectionImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UploadingImageCollectionImplCopyWith<$Res> {
+  factory _$$UploadingImageCollectionImplCopyWith(
+          _$UploadingImageCollectionImpl value,
+          $Res Function(_$UploadingImageCollectionImpl) then) =
+      __$$UploadingImageCollectionImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UploadingImageCollectionImplCopyWithImpl<$Res>
+    extends _$CollectionStateCopyWithImpl<$Res, _$UploadingImageCollectionImpl>
+    implements _$$UploadingImageCollectionImplCopyWith<$Res> {
+  __$$UploadingImageCollectionImplCopyWithImpl(
+      _$UploadingImageCollectionImpl _value,
+      $Res Function(_$UploadingImageCollectionImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CollectionState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$UploadingImageCollectionImpl implements _UploadingImageCollection {
+  const _$UploadingImageCollectionImpl();
+
+  @override
+  String toString() {
+    return 'CollectionState.uploadingImageCollection()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UploadingImageCollectionImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<CollectionEntity> collections, int count)
+        successListLoaded,
+    required TResult Function(CollectionEntity collection) successSingleLoaded,
+    required TResult Function(
+            CollectionStateError error, CollectionFailure failure)
+        error,
+    required TResult Function() fetchingCollection,
+    required TResult Function() fetchingAllCollection,
+    required TResult Function() creatingCollection,
+    required TResult Function(CollectionEntity collection) createdCollection,
+    required TResult Function() updatingCollection,
+    required TResult Function(CollectionEntity collection)
+        updatedSingleCollection,
+    required TResult Function(int updatedCollection) updatedListCollection,
+    required TResult Function() deletingCollection,
+    required TResult Function(int id) deletedSingleCollection,
+    required TResult Function(List<int> ids) deletedListCollection,
+    required TResult Function() countingCollection,
+    required TResult Function(int count) countedCollection,
+    required TResult Function() uploadingImageCollection,
+    required TResult Function(String url) uploadedImageCollection,
+  }) {
+    return uploadingImageCollection();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<CollectionEntity> collections, int count)?
+        successListLoaded,
+    TResult? Function(CollectionEntity collection)? successSingleLoaded,
+    TResult? Function(CollectionStateError error, CollectionFailure failure)?
+        error,
+    TResult? Function()? fetchingCollection,
+    TResult? Function()? fetchingAllCollection,
+    TResult? Function()? creatingCollection,
+    TResult? Function(CollectionEntity collection)? createdCollection,
+    TResult? Function()? updatingCollection,
+    TResult? Function(CollectionEntity collection)? updatedSingleCollection,
+    TResult? Function(int updatedCollection)? updatedListCollection,
+    TResult? Function()? deletingCollection,
+    TResult? Function(int id)? deletedSingleCollection,
+    TResult? Function(List<int> ids)? deletedListCollection,
+    TResult? Function()? countingCollection,
+    TResult? Function(int count)? countedCollection,
+    TResult? Function()? uploadingImageCollection,
+    TResult? Function(String url)? uploadedImageCollection,
+  }) {
+    return uploadingImageCollection?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<CollectionEntity> collections, int count)?
+        successListLoaded,
+    TResult Function(CollectionEntity collection)? successSingleLoaded,
+    TResult Function(CollectionStateError error, CollectionFailure failure)?
+        error,
+    TResult Function()? fetchingCollection,
+    TResult Function()? fetchingAllCollection,
+    TResult Function()? creatingCollection,
+    TResult Function(CollectionEntity collection)? createdCollection,
+    TResult Function()? updatingCollection,
+    TResult Function(CollectionEntity collection)? updatedSingleCollection,
+    TResult Function(int updatedCollection)? updatedListCollection,
+    TResult Function()? deletingCollection,
+    TResult Function(int id)? deletedSingleCollection,
+    TResult Function(List<int> ids)? deletedListCollection,
+    TResult Function()? countingCollection,
+    TResult Function(int count)? countedCollection,
+    TResult Function()? uploadingImageCollection,
+    TResult Function(String url)? uploadedImageCollection,
+    required TResult orElse(),
+  }) {
+    if (uploadingImageCollection != null) {
+      return uploadingImageCollection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_SuccessListLoaded value) successListLoaded,
+    required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_FetchingCollection value) fetchingCollection,
+    required TResult Function(_FetchingAllCollection value)
+        fetchingAllCollection,
+    required TResult Function(_CreatingCollection value) creatingCollection,
+    required TResult Function(_CreatedCollection value) createdCollection,
+    required TResult Function(_UpdatingCollection value) updatingCollection,
+    required TResult Function(_UpdatedSingleCollection value)
+        updatedSingleCollection,
+    required TResult Function(_UpdatedListCollection value)
+        updatedListCollection,
+    required TResult Function(_DeletingCollection value) deletingCollection,
+    required TResult Function(_DeletedSingleCollection value)
+        deletedSingleCollection,
+    required TResult Function(_DeletedListCollection value)
+        deletedListCollection,
+    required TResult Function(_CountingCollection value) countingCollection,
+    required TResult Function(_CountedCollection value) countedCollection,
+    required TResult Function(_UploadingImageCollection value)
+        uploadingImageCollection,
+    required TResult Function(_UploadedImageCollection value)
+        uploadedImageCollection,
+  }) {
+    return uploadingImageCollection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_SuccessListLoaded value)? successListLoaded,
+    TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_FetchingCollection value)? fetchingCollection,
+    TResult? Function(_FetchingAllCollection value)? fetchingAllCollection,
+    TResult? Function(_CreatingCollection value)? creatingCollection,
+    TResult? Function(_CreatedCollection value)? createdCollection,
+    TResult? Function(_UpdatingCollection value)? updatingCollection,
+    TResult? Function(_UpdatedSingleCollection value)? updatedSingleCollection,
+    TResult? Function(_UpdatedListCollection value)? updatedListCollection,
+    TResult? Function(_DeletingCollection value)? deletingCollection,
+    TResult? Function(_DeletedSingleCollection value)? deletedSingleCollection,
+    TResult? Function(_DeletedListCollection value)? deletedListCollection,
+    TResult? Function(_CountingCollection value)? countingCollection,
+    TResult? Function(_CountedCollection value)? countedCollection,
+    TResult? Function(_UploadingImageCollection value)?
+        uploadingImageCollection,
+    TResult? Function(_UploadedImageCollection value)? uploadedImageCollection,
+  }) {
+    return uploadingImageCollection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessListLoaded value)? successListLoaded,
+    TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_FetchingCollection value)? fetchingCollection,
+    TResult Function(_FetchingAllCollection value)? fetchingAllCollection,
+    TResult Function(_CreatingCollection value)? creatingCollection,
+    TResult Function(_CreatedCollection value)? createdCollection,
+    TResult Function(_UpdatingCollection value)? updatingCollection,
+    TResult Function(_UpdatedSingleCollection value)? updatedSingleCollection,
+    TResult Function(_UpdatedListCollection value)? updatedListCollection,
+    TResult Function(_DeletingCollection value)? deletingCollection,
+    TResult Function(_DeletedSingleCollection value)? deletedSingleCollection,
+    TResult Function(_DeletedListCollection value)? deletedListCollection,
+    TResult Function(_CountingCollection value)? countingCollection,
+    TResult Function(_CountedCollection value)? countedCollection,
+    TResult Function(_UploadingImageCollection value)? uploadingImageCollection,
+    TResult Function(_UploadedImageCollection value)? uploadedImageCollection,
+    required TResult orElse(),
+  }) {
+    if (uploadingImageCollection != null) {
+      return uploadingImageCollection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UploadingImageCollection implements CollectionState {
+  const factory _UploadingImageCollection() = _$UploadingImageCollectionImpl;
+}
+
+/// @nodoc
+abstract class _$$UploadedImageCollectionImplCopyWith<$Res> {
+  factory _$$UploadedImageCollectionImplCopyWith(
+          _$UploadedImageCollectionImpl value,
+          $Res Function(_$UploadedImageCollectionImpl) then) =
+      __$$UploadedImageCollectionImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String url});
+}
+
+/// @nodoc
+class __$$UploadedImageCollectionImplCopyWithImpl<$Res>
+    extends _$CollectionStateCopyWithImpl<$Res, _$UploadedImageCollectionImpl>
+    implements _$$UploadedImageCollectionImplCopyWith<$Res> {
+  __$$UploadedImageCollectionImplCopyWithImpl(
+      _$UploadedImageCollectionImpl _value,
+      $Res Function(_$UploadedImageCollectionImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CollectionState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? url = null,
+  }) {
+    return _then(_$UploadedImageCollectionImpl(
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UploadedImageCollectionImpl implements _UploadedImageCollection {
+  const _$UploadedImageCollectionImpl({required this.url});
+
+  @override
+  final String url;
+
+  @override
+  String toString() {
+    return 'CollectionState.uploadedImageCollection(url: $url)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UploadedImageCollectionImpl &&
+            (identical(other.url, url) || other.url == url));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, url);
+
+  /// Create a copy of CollectionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UploadedImageCollectionImplCopyWith<_$UploadedImageCollectionImpl>
+      get copyWith => __$$UploadedImageCollectionImplCopyWithImpl<
+          _$UploadedImageCollectionImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<CollectionEntity> collections, int count)
+        successListLoaded,
+    required TResult Function(CollectionEntity collection) successSingleLoaded,
+    required TResult Function(
+            CollectionStateError error, CollectionFailure failure)
+        error,
+    required TResult Function() fetchingCollection,
+    required TResult Function() fetchingAllCollection,
+    required TResult Function() creatingCollection,
+    required TResult Function(CollectionEntity collection) createdCollection,
+    required TResult Function() updatingCollection,
+    required TResult Function(CollectionEntity collection)
+        updatedSingleCollection,
+    required TResult Function(int updatedCollection) updatedListCollection,
+    required TResult Function() deletingCollection,
+    required TResult Function(int id) deletedSingleCollection,
+    required TResult Function(List<int> ids) deletedListCollection,
+    required TResult Function() countingCollection,
+    required TResult Function(int count) countedCollection,
+    required TResult Function() uploadingImageCollection,
+    required TResult Function(String url) uploadedImageCollection,
+  }) {
+    return uploadedImageCollection(url);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<CollectionEntity> collections, int count)?
+        successListLoaded,
+    TResult? Function(CollectionEntity collection)? successSingleLoaded,
+    TResult? Function(CollectionStateError error, CollectionFailure failure)?
+        error,
+    TResult? Function()? fetchingCollection,
+    TResult? Function()? fetchingAllCollection,
+    TResult? Function()? creatingCollection,
+    TResult? Function(CollectionEntity collection)? createdCollection,
+    TResult? Function()? updatingCollection,
+    TResult? Function(CollectionEntity collection)? updatedSingleCollection,
+    TResult? Function(int updatedCollection)? updatedListCollection,
+    TResult? Function()? deletingCollection,
+    TResult? Function(int id)? deletedSingleCollection,
+    TResult? Function(List<int> ids)? deletedListCollection,
+    TResult? Function()? countingCollection,
+    TResult? Function(int count)? countedCollection,
+    TResult? Function()? uploadingImageCollection,
+    TResult? Function(String url)? uploadedImageCollection,
+  }) {
+    return uploadedImageCollection?.call(url);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<CollectionEntity> collections, int count)?
+        successListLoaded,
+    TResult Function(CollectionEntity collection)? successSingleLoaded,
+    TResult Function(CollectionStateError error, CollectionFailure failure)?
+        error,
+    TResult Function()? fetchingCollection,
+    TResult Function()? fetchingAllCollection,
+    TResult Function()? creatingCollection,
+    TResult Function(CollectionEntity collection)? createdCollection,
+    TResult Function()? updatingCollection,
+    TResult Function(CollectionEntity collection)? updatedSingleCollection,
+    TResult Function(int updatedCollection)? updatedListCollection,
+    TResult Function()? deletingCollection,
+    TResult Function(int id)? deletedSingleCollection,
+    TResult Function(List<int> ids)? deletedListCollection,
+    TResult Function()? countingCollection,
+    TResult Function(int count)? countedCollection,
+    TResult Function()? uploadingImageCollection,
+    TResult Function(String url)? uploadedImageCollection,
+    required TResult orElse(),
+  }) {
+    if (uploadedImageCollection != null) {
+      return uploadedImageCollection(url);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_SuccessListLoaded value) successListLoaded,
+    required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_FetchingCollection value) fetchingCollection,
+    required TResult Function(_FetchingAllCollection value)
+        fetchingAllCollection,
+    required TResult Function(_CreatingCollection value) creatingCollection,
+    required TResult Function(_CreatedCollection value) createdCollection,
+    required TResult Function(_UpdatingCollection value) updatingCollection,
+    required TResult Function(_UpdatedSingleCollection value)
+        updatedSingleCollection,
+    required TResult Function(_UpdatedListCollection value)
+        updatedListCollection,
+    required TResult Function(_DeletingCollection value) deletingCollection,
+    required TResult Function(_DeletedSingleCollection value)
+        deletedSingleCollection,
+    required TResult Function(_DeletedListCollection value)
+        deletedListCollection,
+    required TResult Function(_CountingCollection value) countingCollection,
+    required TResult Function(_CountedCollection value) countedCollection,
+    required TResult Function(_UploadingImageCollection value)
+        uploadingImageCollection,
+    required TResult Function(_UploadedImageCollection value)
+        uploadedImageCollection,
+  }) {
+    return uploadedImageCollection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_SuccessListLoaded value)? successListLoaded,
+    TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_FetchingCollection value)? fetchingCollection,
+    TResult? Function(_FetchingAllCollection value)? fetchingAllCollection,
+    TResult? Function(_CreatingCollection value)? creatingCollection,
+    TResult? Function(_CreatedCollection value)? createdCollection,
+    TResult? Function(_UpdatingCollection value)? updatingCollection,
+    TResult? Function(_UpdatedSingleCollection value)? updatedSingleCollection,
+    TResult? Function(_UpdatedListCollection value)? updatedListCollection,
+    TResult? Function(_DeletingCollection value)? deletingCollection,
+    TResult? Function(_DeletedSingleCollection value)? deletedSingleCollection,
+    TResult? Function(_DeletedListCollection value)? deletedListCollection,
+    TResult? Function(_CountingCollection value)? countingCollection,
+    TResult? Function(_CountedCollection value)? countedCollection,
+    TResult? Function(_UploadingImageCollection value)?
+        uploadingImageCollection,
+    TResult? Function(_UploadedImageCollection value)? uploadedImageCollection,
+  }) {
+    return uploadedImageCollection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessListLoaded value)? successListLoaded,
+    TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_FetchingCollection value)? fetchingCollection,
+    TResult Function(_FetchingAllCollection value)? fetchingAllCollection,
+    TResult Function(_CreatingCollection value)? creatingCollection,
+    TResult Function(_CreatedCollection value)? createdCollection,
+    TResult Function(_UpdatingCollection value)? updatingCollection,
+    TResult Function(_UpdatedSingleCollection value)? updatedSingleCollection,
+    TResult Function(_UpdatedListCollection value)? updatedListCollection,
+    TResult Function(_DeletingCollection value)? deletingCollection,
+    TResult Function(_DeletedSingleCollection value)? deletedSingleCollection,
+    TResult Function(_DeletedListCollection value)? deletedListCollection,
+    TResult Function(_CountingCollection value)? countingCollection,
+    TResult Function(_CountedCollection value)? countedCollection,
+    TResult Function(_UploadingImageCollection value)? uploadingImageCollection,
+    TResult Function(_UploadedImageCollection value)? uploadedImageCollection,
+    required TResult orElse(),
+  }) {
+    if (uploadedImageCollection != null) {
+      return uploadedImageCollection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UploadedImageCollection implements CollectionState {
+  const factory _UploadedImageCollection({required final String url}) =
+      _$UploadedImageCollectionImpl;
+
+  String get url;
+
+  /// Create a copy of CollectionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UploadedImageCollectionImplCopyWith<_$UploadedImageCollectionImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

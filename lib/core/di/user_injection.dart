@@ -1,70 +1,94 @@
+import 'package:get_it/get_it.dart';
+
+// -----------------------------------------------------------------------------
+// Datasource
+// -----------------------------------------------------------------------------
 import 'package:baladeston/data/user/datasource/remote/user_remote_datasource/user_api.dart';
-import 'package:baladeston/data/datasources/remote/user_remote_datasource/user_api_implementation.dart';
 import 'package:baladeston/data/user/datasource/remote/user_remote_datasource/user_api_implementation.dart';
+
+// -----------------------------------------------------------------------------
+// Repository
+// -----------------------------------------------------------------------------
 import 'package:baladeston/data/user/repository_implementation/user_repository_implementaion.dart';
 import 'package:baladeston/domain/user/repository/user_repository.dart';
-import 'package:baladeston/domain/user/usecase/count_user_usecase.dart';
-import 'package:baladeston/domain/usecase/user/create_user_usecase.dart';
-import 'package:baladeston/domain/usecase/user/delete_user_by_filter_usecase.dart';
-import 'package:baladeston/domain/usecase/user/delete_user_by_id_usecase.dart';
-import 'package:baladeston/domain/usecase/user/get_user_by_filter_usecase.dart';
-import 'package:baladeston/domain/usecase/user/get_user_by_id_usecase.dart';
-import 'package:baladeston/domain/user/login_usecase.dart';
-import 'package:baladeston/domain/usecase/user/update_user_usecase.dart';
-import 'package:baladeston/presentation/providers/user_cubit/user_cubit.dart';
-import 'package:get_it/get_it.dart';
+
+// -----------------------------------------------------------------------------
+// UseCases
+// -----------------------------------------------------------------------------
+import 'package:baladeston/domain/user/usecase/count_user/count_user_usecase.dart';
+import 'package:baladeston/domain/user/usecase/delete_user_by_filter/delete_user_by_filter_usecase.dart';
+import 'package:baladeston/domain/user/usecase/delete_user_by_id/delete_user_by_id_usecase.dart';
+import 'package:baladeston/domain/user/usecase/get_user_by_filter/get_user_by_filter_usecase.dart';
+import 'package:baladeston/domain/user/usecase/get_user_by_id/get_user_by_id_usecase.dart';
+import 'package:baladeston/domain/user/usecase/update_user_by_id/update_user_by_id_usecase.dart';
+import 'package:baladeston/domain/user/usecase/update_user_by_filter/update_user_by_filter.dart';
+
+// -----------------------------------------------------------------------------
+// Cubit
+// -----------------------------------------------------------------------------
+import 'package:baladeston/application/providers/user_cubit/user_cubit.dart';
 
 final getIt = GetIt.instance;
 
 Future<void> initUserModule() async {
+  /* -------------------------------------------------------------------------- */
+  /*                                DataSource                                  */
+  /* -------------------------------------------------------------------------- */
+
+  getIt.registerLazySingleton<UserApi>(
+        () => UserApiImplementation(),
+  );
+
+  /* -------------------------------------------------------------------------- */
+  /*                                Repository                                  */
+  /* -------------------------------------------------------------------------- */
+
+  getIt.registerLazySingleton<UserRepository>(
+        () => UserRepositoryImplementation(
+      api: getIt<UserApi>(),
+    ),
+  );
+
+  /* -------------------------------------------------------------------------- */
+  /*                                  UseCases                                  */
+  /* -------------------------------------------------------------------------- */
+
   getIt
-    ..registerLazySingleton<UserApi>(
-      () => UserApiImplementation(),
-    )
-
-    // بعدش Repository
-    ..registerLazySingleton<UserRepository>(
-      () => UserRepositoryImplementation(api: getIt<UserApi>()),
-    )
-
-    // بقیه UseCase‌ها و Cubit هم که نوشتی درست هستند
     ..registerLazySingleton<GetUserByIdUseCase>(
-      () => GetUserByIdUseCase(getIt<UserRepository>()),
+          () => GetUserByIdUseCase(getIt<UserRepository>()),
     )
-    ..registerLazySingleton<GetUsersByFilterUseCase>(
-      () => GetUsersByFilterUseCase(getIt<UserRepository>()),
+    ..registerLazySingleton<GetUserByFilterUseCase>(
+          () => GetUserByFilterUseCase(getIt<UserRepository>()),
     )
-    ..registerLazySingleton<UpdateUserUseCase>(
-      () => UpdateUserUseCase(getIt<UserRepository>()),
+    ..registerLazySingleton<UpdateUserByIdUseCase>(
+          () => UpdateUserByIdUseCase(getIt<UserRepository>()),
+    )
+    ..registerLazySingleton<UpdateUserByFilterUseCase>(
+          () => UpdateUserByFilterUseCase(getIt<UserRepository>()),
     )
     ..registerLazySingleton<DeleteUserByIdUseCase>(
-      () => DeleteUserByIdUseCase(getIt<UserRepository>()),
+          () => DeleteUserByIdUseCase(getIt<UserRepository>()),
     )
     ..registerLazySingleton<DeleteUserByFilterUseCase>(
-      () => DeleteUserByFilterUseCase(getIt<UserRepository>()),
+          () => DeleteUserByFilterUseCase(getIt<UserRepository>()),
     )
-    ..registerLazySingleton<CreateUserUseCase>(
-      () => CreateUserUseCase(getIt<UserRepository>()),
-    )
-    ..registerLazySingleton<CountUsersUseCase>(
-      () => CountUsersUseCase(getIt<UserRepository>()),
-    )
-    ..registerLazySingleton<LoginUseCase>(
-      () => LoginUseCase(getIt<UserRepository>()),
-    )
-
-
-    // Cubit
-    ..registerFactory<UserCubit>(
-      () => UserCubit(  
-        countUseCase: getIt<CountUsersUseCase>(),
-        getByFilterUseCase: getIt<GetUsersByFilterUseCase>(),
-        getByIdUseCase: getIt<GetUserByIdUseCase>(),
-        createUseCase: getIt<CreateUserUseCase>(),
-        updateUseCase: getIt<UpdateUserUseCase>(),
-        deleteByIdUseCase: getIt<DeleteUserByIdUseCase>(),
-        deleteByFilterUseCase: getIt<DeleteUserByFilterUseCase>(),
-        loginUseCase: getIt<LoginUseCase>(),
-      ),
+    ..registerLazySingleton<CountUserUseCase>(
+          () => CountUserUseCase(getIt<UserRepository>()),
     );
+
+  /* -------------------------------------------------------------------------- */
+  /*                                   Cubit                                    */
+  /* -------------------------------------------------------------------------- */
+
+  getIt.registerFactory<UserCubit>(
+        () => UserCubit(
+      countUseCase: getIt<CountUserUseCase>(),
+      getByFilterUseCase: getIt<GetUserByFilterUseCase>(),
+      getByIdUseCase: getIt<GetUserByIdUseCase>(),
+      updateByIdUseCase: getIt<UpdateUserByIdUseCase>(),
+      updateByFilterUseCase: getIt<UpdateUserByFilterUseCase>(),
+      deleteByIdUseCase: getIt<DeleteUserByIdUseCase>(),
+      deleteByFilterUseCase: getIt<DeleteUserByFilterUseCase>(),
+    ),
+  );
 }

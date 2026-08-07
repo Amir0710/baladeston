@@ -8,7 +8,7 @@ class PrintCircle extends StatelessWidget {
   final int incremental;
   final Color color;
   final PaintingStyle style;
-  final Offset? center; // ← مرکز اختیاری
+  final Offset? center;
 
   const PrintCircle({
     super.key,

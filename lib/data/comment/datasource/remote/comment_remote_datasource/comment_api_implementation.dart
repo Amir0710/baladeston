@@ -1,6 +1,6 @@
 import 'package:baladeston/config/app_config.dart';
 import 'package:baladeston/data/comment/datasource/remote/comment_remote_datasource/comment_api.dart';
-import 'package:baladeston/data/comment/filter/comment_query_filter.dart';
+import 'package:baladeston/data/comment/filter/comment/comment_query_filter.dart';
 import 'package:baladeston/data/comment/model/comment_model.dart';
 
 class CommentApiImplementation extends CommentApi {

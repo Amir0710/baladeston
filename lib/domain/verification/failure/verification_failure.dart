@@ -1,25 +1,72 @@
 abstract class VerificationFailure {
-  final String message;
-
-  const VerificationFailure(this.message);
+  const VerificationFailure();
 }
 
-class ValidationFailure extends VerificationFailure {
-  const ValidationFailure([String? message])
-      : super(message ?? 'کد تأیید نامعتبر است.');
+// ======================================================
+// Infrastructure Failures
+// ======================================================
+
+abstract class VerificationInfrastructureFailure extends VerificationFailure {
+  const VerificationInfrastructureFailure();
 }
 
-class UserDataInvalidFailure extends VerificationFailure {
-  const UserDataInvalidFailure([String? message])
-      : super(message ?? 'داده کاربر معتبر نیست.');
+class VerificationNetworkFailure extends VerificationInfrastructureFailure {
+  const VerificationNetworkFailure();
 }
 
-class NetworkFailure extends VerificationFailure {
-  const NetworkFailure([String? message])
-      : super(message ?? 'ارتباط با سرور برقرار نشد.');
+class VerificationServerFailure extends VerificationInfrastructureFailure {
+  const VerificationServerFailure();
 }
 
-class UnknownFailure extends VerificationFailure {
-  const UnknownFailure([String? message])
-      : super(message ?? 'خطای ناشناخته‌ای رخ داده است.');
+class VerificationTimeoutFailure extends VerificationInfrastructureFailure {
+  const VerificationTimeoutFailure();
+}
+
+class VerificationInvalidDataFailure extends VerificationInfrastructureFailure {
+  const VerificationInvalidDataFailure();
+}
+
+// ======================================================
+// Domain Failures
+// ======================================================
+
+abstract class VerificationDomainFailure extends VerificationFailure {
+  const VerificationDomainFailure();
+}
+
+// ------------------------------------------------------
+// Validation Failures
+// ------------------------------------------------------
+
+abstract class VerificationValidationFailure
+    extends VerificationDomainFailure {
+  const VerificationValidationFailure();
+}
+
+class VerificationCodeInvalidFailure extends VerificationValidationFailure {
+  const VerificationCodeInvalidFailure();
+}
+
+class VerificationUserDataInvalidFailure extends VerificationValidationFailure {
+  const VerificationUserDataInvalidFailure();
+}
+
+// ------------------------------------------------------
+// Business Rule Failures
+// ------------------------------------------------------
+
+class VerificationAttemptExceededFailure extends VerificationDomainFailure {
+  const VerificationAttemptExceededFailure();
+}
+
+class VerificationBlockedUserFailure extends VerificationDomainFailure {
+  const VerificationBlockedUserFailure();
+}
+
+// ======================================================
+// Unknown Failure
+// ======================================================
+
+class VerificationUnknownFailure extends VerificationFailure {
+  const VerificationUnknownFailure();
 }

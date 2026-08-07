@@ -10,7 +10,7 @@ import 'package:baladeston/domain/report/repository/report_repository.dart';
 class ReportRepositoryImplementation implements ReportRepository {
   final ReportApi api;
 
-  const ReportRepositoryImplementation(this.api);
+  const ReportRepositoryImplementation({required this.api});
 
   @override
   Future<Result<List<ReportEntity>, ReportFailure>> getReportByFilter({

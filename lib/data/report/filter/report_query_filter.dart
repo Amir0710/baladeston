@@ -1,5 +1,5 @@
-import 'package:baladeston/core/enum/report_status.dart';
-import 'package:baladeston/core/enum/report_type.dart';
+import 'package:baladeston/core/enum/report/report_status.dart';
+import 'package:baladeston/core/enum/report/report_type.dart';
 
 class ReportQueryFilter {
   final int? id;

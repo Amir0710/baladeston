@@ -9,9 +9,9 @@ import 'get_theme_by_name_usecase_business_rule.dart';
 class GetThemeByNameUseCase {
   final ThemeRepository repository;
 
-  const GetThemeByNameUseCase(this.repository);
+  const GetThemeByNameUseCase({required this.repository});
 
-  Future<Result<ThemeEntity, ThemeFailure>> call({
+  Future<Result<List<ThemeEntity>, ThemeFailure>> call({
     required String name,
   }) async {
     try {

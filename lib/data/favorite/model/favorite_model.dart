@@ -1,5 +1,5 @@
 // data/models/favorite_model.dart
-import 'package:baladeston/core/enum/favorite_type.dart';
+import 'package:baladeston/core/enum/favorite/favorite_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'favorite_model.freezed.dart';

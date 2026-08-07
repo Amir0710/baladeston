@@ -9,7 +9,7 @@ import 'get_theme_by_id_usecase_business_rule.dart';
 class GetThemeByIdUseCase {
   final ThemeRepository repository;
 
-  const GetThemeByIdUseCase(this.repository);
+  const GetThemeByIdUseCase({required this.repository});
 
   Future<Result<ThemeEntity, ThemeFailure>> call({
     required int id,

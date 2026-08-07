@@ -1,44 +1,40 @@
 import 'dart:io';
 
-import 'package:baladeston/data/category/filter/category_query_filter.dart';
-import 'package:baladeston/domain/category/entity/category_entity.dart';
-import 'package:baladeston/domain/category/usecase/count_all/count_all_category_usecase.dart';
+import 'package:baladeston/application/providers/category_cubit/category_state.dart';
+import 'package:baladeston/data/category/filter/model/category_query_filter.dart';
+import 'package:baladeston/domain/category/usecase/category/count_category/count_category_usecase.dart';
 import 'package:baladeston/domain/category/usecase/create_category/create_category_usecase.dart';
 import 'package:baladeston/domain/category/usecase/delete_by_filter/delete_category_by_filter_usecase.dart';
 import 'package:baladeston/domain/category/usecase/delete_by_id/delete_category_by_id_usecase.dart';
-import 'package:baladeston/domain/category/usecase/get_all/get_all_category_usecase.dart';
 import 'package:baladeston/domain/category/usecase/get_by_filter/get_category_by_filter_usecase.dart';
 import 'package:baladeston/domain/category/usecase/get_by_id/get_category_by_id_usecase.dart';
 import 'package:baladeston/domain/category/usecase/update_by_filter/update_category_by_filter_usecase.dart';
 import 'package:baladeston/domain/category/usecase/update_by_id/update_category_by_id_usecase.dart';
 import 'package:baladeston/domain/category/usecase/upload_category_image/upload_category_image_usecase.dart';
+import 'package:baladeston/presentation/mapper/comment/category_failure_mapper.dart';
 import 'package:bloc/bloc.dart';
-
-import 'category_state.dart';
 
 class CategoryCubit extends Cubit<CategoryState> {
   final CreateCategoryUseCase _createUseCase;
   final UpdateCategoryByFilterUseCase _updateByFilterUseCase;
   final UpdateCategoryByIdUseCase _updateByIdUseCase;
-  final CountAllCategoryUseCase _countUseCase;
+  final CountCategoryUseCase _countUseCase;
   final DeleteCategoryByIdUseCase _deleteByIdUseCase;
   final DeleteCategoryByFilterUseCase _deleteByFilterUseCase;
   final GetCategoryByFilterUseCase _getByFilterUseCase;
   final GetCategoryByIdUseCase _getByIdUseCase;
-  final GetAllCategoryUseCase _getAllCategory;
-  final UploadCategoryImageUseCase _addImage;
+  final UploadCategoryImageUseCase _uploadImageUseCase;
 
   CategoryCubit({
     required CreateCategoryUseCase createUseCase,
     required UpdateCategoryByFilterUseCase updateByFilterUseCase,
     required UpdateCategoryByIdUseCase updateByIdUseCase,
-    required CountAllCategoryUseCase countUseCase,
+    required CountCategoryUseCase countUseCase,
     required DeleteCategoryByIdUseCase deleteByIdUseCase,
     required DeleteCategoryByFilterUseCase deleteByFilterUseCase,
     required GetCategoryByFilterUseCase getByFilterUseCase,
     required GetCategoryByIdUseCase getByIdUseCase,
-    required GetAllCategoryUseCase getAllCategoryUseCase,
-    required UploadCategoryImageUseCase addImageUseCase,
+    required UploadCategoryImageUseCase uploadImageUseCase,
   })  : _createUseCase = createUseCase,
         _updateByFilterUseCase = updateByFilterUseCase,
         _updateByIdUseCase = updateByIdUseCase,
@@ -47,113 +43,103 @@ class CategoryCubit extends Cubit<CategoryState> {
         _deleteByFilterUseCase = deleteByFilterUseCase,
         _getByFilterUseCase = getByFilterUseCase,
         _getByIdUseCase = getByIdUseCase,
-        _getAllCategory = getAllCategoryUseCase,
-        _addImage = addImageUseCase,
+        _uploadImageUseCase = uploadImageUseCase,
         super(const CategoryState.initial());
 
-  /* ------------------------------ LOAD LIST ------------------------------ */
+  // ------------------------------------------------
+  // Internal Failure Handler
+  // ------------------------------------------------
 
-  Future<void> loadCategoryByFilter(
-      {required CategoryQueryFilter filter}) async {
+  void _emitFailure(CategoryFailure failure) {
+    emit(
+      CategoryState.error(
+        error: mapCategoryFailureToStateError(failure),
+        failure: failure,
+      ),
+    );
+  }
+
+  // ------------------------------------------------
+  // READ
+  // ------------------------------------------------
+
+  Future<void> getCategoriesByFilter({
+    required CategoryQueryFilter filter,
+  }) async {
     emit(const CategoryState.fetchingCategory());
 
-    final result = await _getByFilterUseCase(filter: filter);
+    // اجرای همزمان دریافت لیست و تعداد کل
+    final (listResult, countResult) = await (
+      _getByFilterUseCase(categoryItemFilter: filter),
+      _countUseCase(filter: filter),
+    ).wait;
 
-    await result.when(
-      success: (categories) async {
-        final countResult = await _countUseCase(filter: filter);
-
-        final count = countResult.when(
-          success: (value) => value,
-          failure: (error) => 0,
+    listResult.when(
+      success: (categories) {
+        countResult.when(
+          success: (count) {
+            emit(
+              CategoryState.successListLoaded(
+                categories: categories,
+                count: count,
+              ),
+            );
+          },
+          failure: _emitFailure,
         );
-
-        emit(CategoryState.successListLoaded(
-          category: categories,
-          count: count,
-        ));
       },
-      failure: (error) {
-        emit(CategoryState.error(
-          error: CategoryStateError.errorWhileGettingCategory,
-          errorMessage: 'خطا در دریافت لیست دسته‌بندی$error',
-        ));
-      },
+      failure: _emitFailure,
     );
   }
 
-  /* ---------------------------- LOAD ALL LIST ---------------------------- */
-
-  Future<void> loadAllCategory({required CategoryQueryFilter filter}) async {
-    emit(const CategoryState.fetchingAllCategory());
-
-    final result = await _getAllCategory(filter: filter);
-
-    await result.when(
-      success: (categories) async {
-        final countResult = await _countUseCase(filter: filter);
-        final count = countResult.when(
-          success: (value) => value,
-          failure: (error) => 0,
-        );
-
-        emit(CategoryState.successListLoaded(
-          category: categories,
-          count: count,
-        ));
-      },
-      failure: (error) {
-        emit(CategoryState.error(
-          error: CategoryStateError.errorWhileGettingAllCategory,
-          errorMessage: 'خطا در دریافت همه دسته‌بندی‌ها$error',
-        ));
-      },
-    );
-  }
-
-  /* -------------------------------- LOAD SINGLE -------------------------------- */
-
-  Future<void> loadCategoryById({required int id}) async {
+  Future<void> getCategoryById({required int id}) async {
     emit(const CategoryState.fetchingCategory());
 
     final result = await _getByIdUseCase(id: id);
 
     result.when(
-      success: (category) {
-        emit(CategoryState.successSingleLoaded(category: category));
-      },
-      failure: (error) {
-        emit(CategoryState.error(
-          error: CategoryStateError.categoryNotFound,
-          errorMessage: 'دسته‌بندی پیدا نشد$error',
-        ));
-      },
+      success: (category) =>
+          emit(CategoryState.successSingleLoaded(category: category)),
+      failure: _emitFailure,
     );
   }
 
-  /* -------------------------------- CREATE -------------------------------- */
+  // ------------------------------------------------
+  // CREATE
+  // ------------------------------------------------
 
-  Future<void> addCategory({required CategoryEntity category}) async {
-    emit(CategoryState.createdCategory(category: category));
+  Future<void> createCategory({
+    required CategoryEntity category,
+  }) async {
+    emit(const CategoryState.creatingCategory()); // وضعیت در حال ساخت
 
     final result = await _createUseCase(category: category);
 
     result.when(
-      success: (createdCategory) {
-        emit(CategoryState.createdCategory(
-          category: createdCategory,
-        ));
-      },
-      failure: (error) {
-        emit(CategoryState.error(
-          error: CategoryStateError.errorWhileAddingCategory,
-          errorMessage: 'خطا در افزودن دسته‌بندی$error',
-        ));
-      },
+      success: (created) =>
+          emit(CategoryState.createdCategory(category: created)),
+      failure: _emitFailure,
     );
   }
 
-  /* -------------------------------- UPDATE BY FILTER -------------------------------- */
+  // ------------------------------------------------
+  // UPDATE
+  // ------------------------------------------------
+
+  Future<void> updateCategoryById({
+    required int id,
+    required CategoryEntity category,
+  }) async {
+    emit(const CategoryState.updatingCategory());
+
+    final result = await _updateByIdUseCase(id: id, category: category);
+
+    result.when(
+      success: (updated) =>
+          emit(CategoryState.updatedSingleCategory(category: updated)),
+      failure: _emitFailure,
+    );
+  }
 
   Future<void> updateCategoryByFilter({
     required CategoryEntity category,
@@ -163,62 +149,19 @@ class CategoryCubit extends Cubit<CategoryState> {
 
     final result = await _updateByFilterUseCase(
       category: category,
-      filter: filter,
+      categoryItemFilter: filter,
     );
 
-    await result.when(
-      success: (error) async {
-        final listResult = await _getByFilterUseCase(filter: filter);
-        final countResult = await _countUseCase(filter: filter);
-
-        final categories = listResult.when(
-          success: (list) => list,
-          failure: (error) => <CategoryEntity>[],
-        );
-
-        final count = countResult.when(
-          success: (value) => value,
-          failure: (error) => 0,
-        );
-
-        emit(CategoryState.successListLoaded(
-          category: categories,
-          count: count,
-        ));
-      },
-      failure: (error) {
-        emit(CategoryState.error(
-          error: CategoryStateError.errorWhileUpdatingCategory,
-          errorMessage: 'خطا در ویرایش دسته‌بندی$error',
-        ));
-      },
+    result.when(
+      success: (updatedList) =>
+          emit(CategoryState.updatedListCategory(categories: updatedList)),
+      failure: _emitFailure,
     );
   }
 
-  /* -------------------------------- UPDATE BY ID -------------------------------- */
-
-  Future<void> updateCategoryById({
-    required CategoryEntity category,
-    required int id,
-  }) async {
-    emit(const CategoryState.updatingCategory());
-
-    final result = await _updateByIdUseCase(id: id, category: category);
-
-    await result.when(
-      success: (value) async {
-        emit(CategoryState.updatedSingleCategory(category: value));
-      },
-      failure: (error) {
-        emit(CategoryState.error(
-          error: CategoryStateError.errorWhileUpdatingCategory,
-          errorMessage: 'خطا در ویرایش دسته‌بندی$error',
-        ));
-      },
-    );
-  }
-
-  /* ----------------------------- DELETE BY ID ----------------------------- */
+  // ------------------------------------------------
+  // DELETE
+  // ------------------------------------------------
 
   Future<void> deleteCategoryById({required int id}) async {
     emit(const CategoryState.deletingCategory());
@@ -226,79 +169,60 @@ class CategoryCubit extends Cubit<CategoryState> {
     final result = await _deleteByIdUseCase(id: id);
 
     result.when(
-      success: (value) {
-        emit(CategoryState.deletedSingleCategory(id: value));
-      },
-      failure: (error) {
-        emit(CategoryState.error(
-          error: CategoryStateError.errorWhileDeletingCategory,
-          errorMessage: 'خطا در حذف دسته‌بندی$error',
-        ));
-      },
+      success: (deletedId) =>
+          emit(CategoryState.deletedSingleCategory(id: deletedId)),
+      failure: _emitFailure,
     );
   }
 
-  /* --------------------------- DELETE BY FILTER --------------------------- */
-
-  Future<void> deleteCategoryByFilter(
-      {required CategoryQueryFilter filter}) async {
+  Future<void> deleteCategoryByFilter({
+    required CategoryQueryFilter filter,
+  }) async {
     emit(const CategoryState.deletingCategory());
 
-    final result = await _deleteByFilterUseCase(filter: filter);
+    final result = await _deleteByFilterUseCase(categoryItemFilter: filter);
 
     result.when(
-      success: (value) {
-        emit(CategoryState.deletedListCategory(id: value));
-      },
-      failure: (error) {
-        emit(CategoryState.error(
-          error: CategoryStateError.errorWhileDeletingCategory,
-          errorMessage: 'خطا در حذف دسته‌بندی‌ها$error',
-        ));
-      },
+      success: (ids) => emit(CategoryState.deletedListCategory(ids: ids)),
+      failure: _emitFailure,
     );
   }
 
-  /* ------------------------------ ADD IMAGE ------------------------------ */
+  // ------------------------------------------------
+  // COUNT
+  // ------------------------------------------------
 
-  Future<void> addCategoryImage({
-    required int categoryId,
-    required File imageFile,
+  Future<void> countCategories({
+    required CategoryQueryFilter filter,
   }) async {
-    emit(const CategoryState.uploadingImageCategory());
-
-    final result = await _addImage(id: categoryId, image: imageFile);
-
-    result.when(
-      success: (value) {
-        emit(CategoryState.uploadedImageCategory(path: value));
-      },
-      failure: (error) {
-        emit(CategoryState.error(
-          error: CategoryStateError.errorWhileAddingImage,
-          errorMessage: ' خطا در افزودن تصویر$error',
-        ));
-      },
-    );
-
-  }
-
-/* ----------------------------- UPDATE IMAGE ---------------------------- */
-  Future<void> countCategory({required CategoryQueryFilter filter}) async {
     emit(const CategoryState.countingCategory());
 
     final result = await _countUseCase(filter: filter);
 
     result.when(
-      success: (value) {
-        emit(CategoryState.countedCategory(count: value));
-      },
-      failure: (error) {
-        emit(CategoryState.error(
-          error: CategoryStateError.errorWhileCountCategory,
-          errorMessage: 'خطا در ویرایش تصویر$error',
-        ));
-      },
+      success: (count) => emit(CategoryState.countedCategory(count: count)),
+      failure: _emitFailure,
+    );
+  }
+
+  // ------------------------------------------------
+  // IMAGE
+  // ------------------------------------------------
+
+  Future<void> uploadCategoryImage({
+    required File image,
+    required int id,
+  }) async {
+    emit(const CategoryState.uploadingImageCategory());
+
+    final result = await _uploadImageUseCase(
+      image: image,
+      id: id,
+    );
+
+    result.when(
+      success: (url) => emit(CategoryState.uploadedImageCategory(url: url)),
+      failure: _emitFailure,
     );
   }
 }

@@ -1,36 +1,55 @@
+import 'package:baladeston/core/constants/limits.dart';
+import 'package:baladeston/core/result/result.dart';
 import 'package:baladeston/data/video/filter/video_query_filter.dart';
-import 'package:baladeston/domain/video/exception/video_filter_exception.dart';
+import 'package:baladeston/domain/video/failure/base_video_failure.dart';
+import 'package:baladeston/domain/video/failure/domain/validation/video_filter_failure.dart';
 
-class DeleteVideoByFilterUseCaseBusinessRule {
+class DeleteVideoByFilterUsecaseBusinessRule {
   final VideoQueryFilter filter;
 
-  const DeleteVideoByFilterUseCaseBusinessRule({
+  const DeleteVideoByFilterUsecaseBusinessRule({
     required this.filter,
   });
 
-  void validate() {
-    _validateNotEmpty();
-    _validatePagination();
-    _validateOrderBy();
+  Result<void, VideoFailure> validate() {
+    return videoFilterValidation();
   }
 
-  void _validateNotEmpty() {
-
-  }
-
-  void _validatePagination() {
-    if (filter.limit <= 0) {
-      throw const VideoFilterLimitException();
+  Result<void, VideoFailure> videoFilterValidation() {
+    final limit = Limits();
+    if (filter.limit < limit.minFilterLimitSize ||
+        filter.limit > limit.maxFilterLimitSize) {
+      return Result.failure(VideoFilterLimitInvalidFailure());
     }
     if (filter.offset < 0) {
-      throw const VideoFilterOffsetException();
+      return Result.failure(VideoFilterOffsetInvalidFailure());
     }
-  }
 
-  void _validateOrderBy() {
-    const allowedFields = ['id', 'title', 'duration', 'created_at'];
-    if (filter.orderBy != null && !allowedFields.contains(filter.orderBy)) {
-      throw const VideoFilterOrderException();
+    if (filter.maxRating != null && filter.maxRating! > limit.maxFilterRate) {
+      return Result.failure(VideoFilterRatingInvalidFailure());
     }
+
+    if (filter.minRating != null && filter.minRating! < limit.minFilterRate) {
+      return Result.failure(VideoFilterRatingInvalidFailure());
+    }
+
+    if (filter.ownerId != null && filter.ownerId! < 0) {
+      return Result.failure(VideoFilterOwnerInvalidFailure());
+    }
+
+    final hasAnyFilter = filter.ownerId != null ||
+        (filter.searchTerm != null && filter.searchTerm!.isNotEmpty) ||
+        filter.status != null ||
+        filter.minRating != null ||
+        filter.maxRating != null ||
+        filter.level != null ||
+        filter.minPrice != null ||
+        filter.maxPrice != null;
+
+    if (!hasAnyFilter) {
+      return const Result.failure(VideoFilterEmptyFailure());
+    }
+
+    return const Result.success(null);
   }
 }

@@ -10,7 +10,7 @@ class DeleteUserByIdUseCase {
 
   const DeleteUserByIdUseCase(this.repository);
 
-  Future<Result<void, UserFailure>> call({
+  Future<Result<int, UserFailure>> call({
     required int id,
   }) async {
     try {

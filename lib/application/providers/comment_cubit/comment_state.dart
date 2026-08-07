@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:baladeston/domain/comment/entity/comment_entity.dart';
+import 'package:baladeston/domain/comment/entity/comment/comment_entity.dart';
 
 part 'comment_state.freezed.dart';
 

@@ -1,59 +1,48 @@
-abstract class UserEntityException implements Exception {
-  final String message;
 
-  const UserEntityException({required this.message});
-
-  @override
-  String toString() => message;
+abstract class UserEntityFailure extends AuthDomainFailure {
+  const UserEntityFailure();
 }
 
 /// ------------------------------------------------------
 /// Required field validations
 /// ------------------------------------------------------
 
-class UserNameEmptyException extends UserEntityException {
-  const UserNameEmptyException()
-      : super(message: 'User name must not be empty');
+class UserEntityNameEmptyFailure extends UserEntityFailure {
+  const UserEntityNameEmptyFailure();
 }
 
-class UserPhoneRequiredException extends UserEntityException {
-  const UserPhoneRequiredException()
-      : super(message: 'User phone is required');
+class UserEntityPhoneRequiredFailure extends UserEntityFailure {
+  const UserEntityPhoneRequiredFailure();
 }
 
 /// ------------------------------------------------------
 /// Value & format validations
 /// ------------------------------------------------------
 
-class UserPhoneInvalidException extends UserEntityException {
-  const UserPhoneInvalidException()
-      : super(message: 'Invalid phone number format');
+class UserEntityPhoneInvalidFailure extends UserEntityFailure {
+  const UserEntityPhoneInvalidFailure();
 }
 
-class UserEmailInvalidException extends UserEntityException {
-  const UserEmailInvalidException()
-      : super(message: 'Invalid email format');
+class UserEntityEmailInvalidFailure extends UserEntityFailure {
+  const UserEntityEmailInvalidFailure();
 }
 
-class UserStatusInvalidException extends UserEntityException {
-  const UserStatusInvalidException()
-      : super(message: 'Invalid user status');
+class UserEntityStatusInvalidFailure extends UserEntityFailure {
+  const UserEntityStatusInvalidFailure();
 }
 
 /// ------------------------------------------------------
 /// Security & business constraints
 /// ------------------------------------------------------
 
-class UserVerificationRequiredException extends UserEntityException {
-  const UserVerificationRequiredException()
-      : super(message: 'User verification is required');
+class UserEntityVerificationRequiredFailure extends UserEntityFailure {
+  const UserEntityVerificationRequiredFailure();
 }
 
 /// ------------------------------------------------------
 /// Update / Partial update specific
 /// ------------------------------------------------------
 
-class UserNoUpdatableFieldsException extends UserEntityException {
-  const UserNoUpdatableFieldsException()
-      : super(message: 'No updatable fields provided');
+class UserEntityNoUpdatableFieldsFailure extends UserEntityFailure {
+  const UserEntityNoUpdatableFieldsFailure();
 }

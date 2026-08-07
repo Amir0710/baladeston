@@ -8,22 +8,22 @@ abstract class WatchHistoryApi {
   });
 
   /// Update
-  Future<WatchHistoryModel> updateLastPositionById({
+  Future<WatchHistoryModel> updateWatchHistoryById({
     required int id,
     required WatchHistoryModel watchHistory,
   });
 
-  Future<WatchHistoryModel> updateLastPositionByFilter({
+  Future<List<WatchHistoryModel>> updateWatchHistoryByFilter({
     required WatchHistoryQueryFilter filter,
     required WatchHistoryModel watchHistory,
   });
 
   /// Read
-  Future<WatchHistoryModel> getLastPositionById({
+  Future<WatchHistoryModel> getWatchHistoryById({
     required int id,
   });
 
-  Future<List<WatchHistoryModel>> getLastPositionByFilter({
+  Future<List<WatchHistoryModel>> getWatchHistoryByFilter({
     required WatchHistoryQueryFilter filter,
   });
 

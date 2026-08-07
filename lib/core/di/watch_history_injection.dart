@@ -1,58 +1,70 @@
-import 'package:baladeston/domain/usecase/watch_history/dalete_watch_history_by_filter_usecase.dart';
-import 'package:baladeston/domain/usecase/watch_history/dalete_watch_history_by_id_usecase.dart';
-import 'package:baladeston/domain/usecase/watch_history/get_last_position_by_filter_usecase.dart';
-import 'package:baladeston/domain/usecase/watch_history/get_last_position_by_id_usecase.dart';
-import 'package:get_it/get_it.dart';
-
-// Repository
+import 'package:baladeston/application/providers/watch_history_cubit/watch_history_cubit.dart';
 import 'package:baladeston/domain/watch_history/repository/watch_history_repository.dart';
-
-// UseCases
 import 'package:baladeston/domain/watch_history/usecase/count_watch_history/count_watch_history_usecase.dart';
 import 'package:baladeston/domain/watch_history/usecase/create_watch_history/create_watch_history_usecase.dart';
-import 'package:baladeston/domain/usecase/watch_history/update_last_position_usecase.dart';
+import 'package:baladeston/domain/watch_history/usecase/delete_watch_history_by_filter/delete_watch_history_by_filter_usecase.dart';
+import 'package:baladeston/domain/watch_history/usecase/delete_watch_history_by_id/delete_watch_history_by_id_usecase.dart';
+import 'package:baladeston/domain/watch_history/usecase/get_watch_history_by_filter/get_watch_history_by_filter_usecase.dart';
+import 'package:baladeston/domain/watch_history/usecase/get_watch_history_by_id/get_watch_history_by_id_usecase.dart';
+import 'package:baladeston/domain/watch_history/usecase/update_watch_history_by_filter/update_watch_history_by_filter_usecase.dart';
+import 'package:baladeston/domain/watch_history/usecase/update_watch_history_by_id/update_watch_history_by_id_usecase.dart';
+import 'package:get_it/get_it.dart';
 
-// Cubit
-import 'package:baladeston/presentation/providers/watch_history_cubit/watch_history_cubit.dart';
-
-final getIt = GetIt.instance;
+final GetIt getIt = GetIt.instance;
 
 Future<void> initWatchHistoryModule() async {
   getIt
-
-    // UseCases
-    ..registerLazySingleton<CountWatchHistoryUseCase>(
-      () => CountWatchHistoryUseCase(repository: getIt<WatchHistoryRepository>()),
+    ..registerLazySingleton<CreateWatchHistoryUseCase>(
+      () => CreateWatchHistoryUseCase(
+        repository: getIt<WatchHistoryRepository>(),
+      ),
     )
-    ..registerLazySingleton<GetWatchHistoryByFilterUseCase>(
-      () => GetWatchHistoryByFilterUseCase(repository: getIt<WatchHistoryRepository>()),
+    ..registerLazySingleton<UpdateWatchHistoryByIdUseCase>(
+      () => UpdateWatchHistoryByIdUseCase(
+        repository: getIt<WatchHistoryRepository>(),
+      ),
+    )
+    ..registerLazySingleton<UpdateWatchHistoryByFilterUseCase>(
+      () => UpdateWatchHistoryByFilterUseCase(
+        repository: getIt<WatchHistoryRepository>(),
+      ),
     )
     ..registerLazySingleton<GetWatchHistoryByIdUseCase>(
-      () => GetWatchHistoryByIdUseCase(repository: getIt<WatchHistoryRepository>()),
+      () => GetWatchHistoryByIdUseCase(
+        repository: getIt<WatchHistoryRepository>(),
+      ),
     )
-    ..registerLazySingleton<CreateWatchHistoryUseCase>(
-      () => CreateWatchHistoryUseCase(repository: getIt<WatchHistoryRepository>()),
-    )
-    ..registerLazySingleton<UpdateWatchHistoryUseCase>(
-      () => UpdateWatchHistoryUseCase(repository: getIt<WatchHistoryRepository>()),
+    ..registerLazySingleton<GetWatchHistoryByFilterUseCase>(
+      () => GetWatchHistoryByFilterUseCase(
+        repository: getIt<WatchHistoryRepository>(),
+      ),
     )
     ..registerLazySingleton<DeleteWatchHistoryByIdUseCase>(
-      () => DeleteWatchHistoryByIdUseCase(repository: getIt<WatchHistoryRepository>()),
+      () => DeleteWatchHistoryByIdUseCase(
+        repository: getIt<WatchHistoryRepository>(),
+      ),
     )
     ..registerLazySingleton<DeleteWatchHistoryByFilterUseCase>(
-      () => DeleteWatchHistoryByFilterUseCase(repository: getIt<WatchHistoryRepository>()),
+      () => DeleteWatchHistoryByFilterUseCase(
+        repository: getIt<WatchHistoryRepository>(),
+      ),
+    )
+    ..registerLazySingleton<CountWatchHistoryUseCase>(
+      () => CountWatchHistoryUseCase(
+        repository: getIt<WatchHistoryRepository>(),
+      ),
     )
 
-    // Cubit
     ..registerFactory<WatchHistoryCubit>(
       () => WatchHistoryCubit(
-        countUseCase: getIt<CountWatchHistoryUseCase>(),
-        getByFilterUseCase: getIt<GetWatchHistoryByFilterUseCase>(),
-        getByIdUseCase: getIt<GetWatchHistoryByIdUseCase>(),
         createUseCase: getIt<CreateWatchHistoryUseCase>(),
-        updateUseCase: getIt<UpdateWatchHistoryUseCase>(),
+        updateByIdUseCase: getIt<UpdateWatchHistoryByIdUseCase>(),
+        updateByFilterUseCase: getIt<UpdateWatchHistoryByFilterUseCase>(),
+        getByIdUseCase: getIt<GetWatchHistoryByIdUseCase>(),
+        getByFilterUseCase: getIt<GetWatchHistoryByFilterUseCase>(),
         deleteByIdUseCase: getIt<DeleteWatchHistoryByIdUseCase>(),
         deleteByFilterUseCase: getIt<DeleteWatchHistoryByFilterUseCase>(),
+        countUseCase: getIt<CountWatchHistoryUseCase>(),
       ),
     );
 }

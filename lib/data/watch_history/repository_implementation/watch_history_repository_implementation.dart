@@ -29,14 +29,14 @@ class WatchHistoryRepositoryImplementation implements WatchHistoryRepository {
 
   @override
   Future<Result<WatchHistoryEntity, WatchHistoryFailure>>
-      updateLastPositionById({
+      updateWatchHistoryById({
     required int id,
     required WatchHistoryEntity watchHistory,
   }) async {
     try {
       final model = watchHistory.toModel();
 
-      final result = await api.updateLastPositionById(
+      final result = await api.updateWatchHistoryById(
         id: id,
         watchHistory: model,
       );
@@ -48,31 +48,33 @@ class WatchHistoryRepositoryImplementation implements WatchHistoryRepository {
   }
 
   @override
-  Future<Result<WatchHistoryEntity, WatchHistoryFailure>>
-      updateLastPositionByFilter({
+  Future<Result<List<WatchHistoryEntity>, WatchHistoryFailure>>
+      updateWatchHistoryByFilter({
     required WatchHistoryQueryFilter filter,
     required WatchHistoryEntity watchHistory,
   }) async {
     try {
       final model = watchHistory.toModel();
 
-      final result = await api.updateLastPositionByFilter(
+      final result = await api.updateWatchHistoryByFilter(
         filter: filter,
         watchHistory: model,
       );
 
-      return Result.success(result.toEntity());
+      return Result.success(
+        result.map((e) => e.toEntity()).toList(),
+      );
     } catch (e) {
       return Result.failure(mapWatchHistoryException(e));
     }
   }
 
   @override
-  Future<Result<WatchHistoryEntity, WatchHistoryFailure>> getLastPositionById({
+  Future<Result<WatchHistoryEntity, WatchHistoryFailure>> getWatchHistoryById({
     required int id,
   }) async {
     try {
-      final result = await api.getLastPositionById(id: id);
+      final result = await api.getWatchHistoryById(id: id);
       return Result.success(result.toEntity());
     } catch (e) {
       return Result.failure(mapWatchHistoryException(e));
@@ -81,11 +83,11 @@ class WatchHistoryRepositoryImplementation implements WatchHistoryRepository {
 
   @override
   Future<Result<List<WatchHistoryEntity>, WatchHistoryFailure>>
-      getLastPositionByFilter({
+      getWatchHistoryByFilter({
     required WatchHistoryQueryFilter filter,
   }) async {
     try {
-      final result = await api.getLastPositionByFilter(filter: filter);
+      final result = await api.getWatchHistoryByFilter(filter: filter);
 
       return Result.success(
         result.map((e) => e.toEntity()).toList(),

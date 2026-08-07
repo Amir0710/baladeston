@@ -7,21 +7,27 @@ part of 'purchase_model.dart';
 // **************************************************************************
 
 _$PurchaseModelImpl _$$PurchaseModelImplFromJson(Map<String, dynamic> json) =>
-    _$PurchaseModelImpl(
-      id: (json['id'] as num?)?.toInt(),
-      status: json['status'] as String?,
-      userId: (json['userId'] as num).toInt(),
-      discountId: (json['discountId'] as num?)?.toInt(),
-      finalPrice: (json['finalPrice'] as num).toDouble(),
-      purchaseTime: json['purchaseTime'] == null
-          ? null
-          : DateTime.parse(json['purchaseTime'] as String),
-      expiresAt: json['expiresAt'] == null
-          ? null
-          : DateTime.parse(json['expiresAt'] as String),
-      updateAt: json['updateAt'] == null
-          ? null
-          : DateTime.parse(json['updateAt'] as String),
+    $checkedCreate(
+      r'_$PurchaseModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$PurchaseModelImpl(
+          id: $checkedConvert('id', (v) => (v as num?)?.toInt()),
+          status: $checkedConvert('status', (v) => v as String?),
+          userId: $checkedConvert('userId', (v) => (v as num).toInt()),
+          discountId:
+              $checkedConvert('discountId', (v) => (v as num?)?.toInt()),
+          finalPrice:
+              $checkedConvert('finalPrice', (v) => (v as num).toDouble()),
+          purchaseTime: $checkedConvert('purchaseTime',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+          expiresAt: $checkedConvert('expiresAt',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+          updateAt: $checkedConvert('updateAt',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$PurchaseModelImplToJson(_$PurchaseModelImpl instance) =>

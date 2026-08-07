@@ -4,39 +4,60 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'theme_state.freezed.dart';
 
 enum ThemeStateError {
-  errorWhileInitializing,
-  errorWhileLoadingThemes,
+  errorWhileInitializingTheme,
+  errorWhileLoadingTheme,
   errorWhileSettingTheme,
-  errorWhileLoadingSingle, errorWhileCreating
+  errorWhileCreatingTheme,
+  errorWhileUpdatingTheme,
+  errorWhileDeletingTheme
 }
 
 @freezed
 class ThemeState with _$ThemeState {
-  const factory ThemeState.initial() = _Initial;
+  const factory ThemeState.initial() = _Initil;
 
-  const factory ThemeState.creating() = _Creating;
-  const factory ThemeState.created() = _Created;
+  const factory ThemeState.initializingTheme() = _InitializingTheme;
 
-  const factory ThemeState.fetchingList() = _FetchingList;
+  const factory ThemeState.initializedTheme({required ThemeEntity theme}) =
+      _InitializedTheme;
 
-  const factory ThemeState.fetchingSingle() = _FetchingSingle;
+  const factory ThemeState.creatingTheme() = _CreatingTheme;
 
-  const factory ThemeState.initializing() = _Initializing;
+  const factory ThemeState.createdTheme({required ThemeEntity theme}) =
+      _CreatedTheme;
 
-  const factory ThemeState.initialized() = _Initialized;
+  const factory ThemeState.updatingTheme() = _UpdatingTheme;
 
-  const factory ThemeState.loadingAllThemes() = _LoadingAllThemes;
+  const factory ThemeState.updatedSingleTheme({required ThemeEntity theme}) =
+      _UpdatedSingleTheme;
+
+  const factory ThemeState.updatedMultiTheme(
+      {required List<ThemeEntity> theme}) = _UpdatedMultiTheme;
+
+  const factory ThemeState.deletingTheme() = _DeletingTheme;
+
+  const factory ThemeState.deletedSingleTheme({required int theme}) =
+      _DeletedSingleTheme;
+
+  const factory ThemeState.deletedMultiTheme({required List<int> theme}) =
+      _DeletedMultiTheme;
 
   const factory ThemeState.settingTheme() = _SettingTheme;
 
-  const factory ThemeState.successListLoaded({
+  const factory ThemeState.setTheme() = _SetTheme;
+
+  const factory ThemeState.fetchedMultiTheme({
     required List<ThemeEntity> theme,
     required int count,
-  }) = _SuccessListLoaded;
+  }) = _FetchedMultiTheme;
 
-  const factory ThemeState.successSingleLoaded({
+  const factory ThemeState.fetchedSingleTheme({
     required ThemeEntity theme,
-  }) = _Success;
+  }) = _FetchedSingleTheme;
+
+  const factory ThemeState.fetchingMultiTheme() = _FetchingMultiTheme;
+
+  const factory ThemeState.fetchingSingleTheme() = _FetchingSingleTheme;
 
   const factory ThemeState.error({
     required ThemeStateError error,

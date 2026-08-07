@@ -1,71 +1,84 @@
-import 'package:baladeston/domain/verification/entity/verification_entity.dart';
-import 'package:baladeston/domain/verification/usecase/check_verification/check_verification_usecase.dart';
-import 'package:baladeston/domain/verification/usecase/send_verification/send_verification_usecase.dart';
+import 'package:baladeston/application/providers/verification_cubit/verification_state.dart';
+import 'package:baladeston/domain/verification/entity/verification_check/verification_check_entity.dart';
+import 'package:baladeston/domain/verification/entity/verification_request/verification_request_entity.dart';
+import 'package:baladeston/domain/verification/failure/verification_failure.dart';
+import 'package:baladeston/domain/verification/usecase/check_action_verification_code/check_action_verification_code_usecase.dart';
+import 'package:baladeston/domain/verification/usecase/check_login_verification_code/check_login_verification_code_usecase.dart';
+import 'package:baladeston/domain/verification/usecase/send_verification_request/send_verification_request_usecase.dart';
+import 'package:baladeston/presentation/mapper/verification/verification_failure_mapper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-
-part 'verification_state.dart';
-part 'verification_cubit.freezed.dart';
 
 class VerificationCubit extends Cubit<VerificationState> {
-  final SendVerificationUseCase _sendVerificationUseCase;
-  final CheckVerificationUseCase _checkVerificationUseCase;
-
+  final SendVerificationRequestUseCase _sendVerificationRequestUseCase;
+  final CheckLoginVerificationCodeUseCase _checkLoginVerificationCodeUseCase;
+  final CheckActionVerificationCodeUseCase _checkActionVerificationCodeUseCase;
 
   VerificationCubit({
-    required SendVerificationUseCase sendVerificationUseCase,
-    required CheckVerificationUseCase checkVerificationUseCase,
-  })  :
-        _sendVerificationUseCase = sendVerificationUseCase,
-        _checkVerificationUseCase = checkVerificationUseCase,
+    required SendVerificationRequestUseCase sendVerificationRequestUseCase,
+    required CheckLoginVerificationCodeUseCase
+        checkLoginVerificationCodeUseCase,
+    required CheckActionVerificationCodeUseCase
+        checkActionVerificationCodeUseCase,
+  })  : _sendVerificationRequestUseCase = sendVerificationRequestUseCase,
+        _checkLoginVerificationCodeUseCase = checkLoginVerificationCodeUseCase,
+        _checkActionVerificationCodeUseCase =
+            checkActionVerificationCodeUseCase,
         super(const VerificationState.initial());
 
-  Future<void> sendVerification(String phone) async {
-    emit(const VerificationState.loading());
-
-    final result = await _sendVerificationUseCase();
-
-    result.when(
-      success: (VerificationEntity data) {
-        emit(const VerificationState.codeSent());
-      },
-      failure: (String message) {
-        emit(VerificationState.failure(message));
-      },
+  void _emitFailure(VerificationFailure failure) {
+    emit(
+      VerificationState.error(
+        error: mapVerificationFailureToStateError(failure),
+        failure: failure,
+      ),
     );
   }
 
+  Future<void> requestVerificationCode({
+    required VerificationRequestEntity verificationRequest,
+  }) async {
+    emit(const VerificationState.requestingCode());
 
-  Future<void> resendVerification(String phone) async {
-    emit(const VerificationState.loading());
-
-    final result = await _resendVerificationUseCase(phone: phone);
+    final result = await _sendVerificationRequestUseCase(
+      verificationRequest: verificationRequest,
+    );
 
     result.when(
-      success: (VerificationEntity data) {
-        emit(const VerificationState.resendSuccess());
-      },
-      failure: (String message) {
-        emit(VerificationState.failure(message));
-      },
+      success: (response) =>
+          emit(VerificationState.codeRequested(response: response)),
+      failure: _emitFailure,
     );
   }
 
+  Future<void> checkLoginVerificationCode({
+    required VerificationCheckEntity verificationCheck,
+  }) async {
+    emit(const VerificationState.verifyingLoginCode());
 
-  Future<void> checkVerification({required VerificationEntity verification}) async {
-    emit(const VerificationState.loading());
-
-    final result = await _checkVerificationUseCase(verification: verification);
+    final result = await _checkLoginVerificationCodeUseCase(
+      verificationCheck: verificationCheck,
+    );
 
     result.when(
-      success: (String token) {
-        emit(const VerificationState.otpVerified());
-      },
-      failure: (String message) {
-        emit(VerificationState.failure(message));
-      },
+      success: (authSession) =>
+          emit(VerificationState.loginVerified(session: authSession)),
+      failure: _emitFailure,
     );
   }
 
+  Future<void> checkActionVerificationCode({
+    required VerificationCheckEntity verificationCheck,
+  }) async {
+    emit(const VerificationState.verifyingActionCode());
+
+    final result = await _checkActionVerificationCodeUseCase(
+      verificationCheck: verificationCheck,
+    );
+
+    result.when(
+      success: (success) =>
+          emit(VerificationState.actionVerified(success: success)),
+      failure: _emitFailure,
+    );
+  }
 }

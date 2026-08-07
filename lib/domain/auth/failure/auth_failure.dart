@@ -1,32 +1,79 @@
+// ======================================================
+// Base Failure
+// ======================================================
+
 abstract class AuthFailure {
-  final String message;
-  const AuthFailure(this.message);
+  const AuthFailure();
 }
 
-class NetworkFailure extends AuthFailure {
-  const NetworkFailure([String? message]):super(message ?? 'عدم دسترسی به اینترنت') ;
+// ======================================================
+// Infrastructure Failures
+// ======================================================
+
+abstract class AuthInfrastructureFailure extends AuthFailure {
+  const AuthInfrastructureFailure();
 }
 
-class UserNotFoundFailure extends AuthFailure {
-  const UserNotFoundFailure([String? message]) : super(message ?? 'User not found');
+class AuthNetworkFailure extends AuthInfrastructureFailure {
+  const AuthNetworkFailure();
 }
 
-class UnauthorizedFailure extends AuthFailure {
-  const UnauthorizedFailure([String? message]) : super(message ?? 'Unauthorized');
+class AuthServerFailure extends AuthInfrastructureFailure {
+  const AuthServerFailure();
 }
 
-class UnknownFailure extends AuthFailure {
-  const UnknownFailure([String? message]) : super(message ?? 'Unknown error');
+class AuthTimeoutFailure extends AuthInfrastructureFailure {
+  const AuthTimeoutFailure();
 }
 
-class InvalidPhoneFailure extends AuthFailure {
-  const InvalidPhoneFailure([String? message]) : super(message ?? 'Invalid phone number');
+class AuthInvalidResponseFailure extends AuthInfrastructureFailure {
+  const AuthInvalidResponseFailure();
 }
 
-class InvalidPasswordFailure extends AuthFailure {
-  const InvalidPasswordFailure([String? message]) : super(message ?? 'Invalid password');
+class AuthStorageFailure extends AuthInfrastructureFailure {
+  const AuthStorageFailure();
 }
 
-class AuthValidationFailure extends AuthFailure {
-  const AuthValidationFailure([String? message]) : super(message ?? 'Invalid VerificationEntity');
+class AuthInvalidDataFailure extends AuthInfrastructureFailure {
+  const AuthInvalidDataFailure();
+}
+
+// ======================================================
+// Domain Failures
+// ======================================================
+
+abstract class AuthDomainFailure extends AuthFailure {
+  const AuthDomainFailure();
+}
+
+// ------------------------------------------------------
+// Authentication Logic Failures
+// ------------------------------------------------------
+
+class AuthUserNotFoundFailure extends AuthDomainFailure {
+  const AuthUserNotFoundFailure();
+}
+
+class AuthUnauthorizedFailure extends AuthDomainFailure {
+  const AuthUnauthorizedFailure();
+}
+
+class AuthInvalidCredentialsFailure extends AuthDomainFailure {
+  const AuthInvalidCredentialsFailure();
+}
+
+// ------------------------------------------------------
+// Permission Failures
+// ------------------------------------------------------
+
+class AuthPermissionFailure extends AuthDomainFailure {
+  const AuthPermissionFailure();
+}
+
+// ======================================================
+// Unknown Failure
+// ======================================================
+
+class AuthUnknownFailure extends AuthFailure {
+  const AuthUnknownFailure();
 }

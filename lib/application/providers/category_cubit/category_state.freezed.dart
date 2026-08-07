@@ -20,11 +20,10 @@ mixin _$CategoryState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
+    required TResult Function(List<CategoryEntity> categories, int count)
         successListLoaded,
     required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
+    required TResult Function(CategoryStateError error, CategoryFailure failure)
         error,
     required TResult Function() fetchingCategory,
     required TResult Function() fetchingAllCategory,
@@ -32,70 +31,63 @@ mixin _$CategoryState {
     required TResult Function(CategoryEntity category) createdCategory,
     required TResult Function() updatingCategory,
     required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
+    required TResult Function(List<CategoryEntity> categories)
+        updatedListCategory,
     required TResult Function() deletingCategory,
     required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
+    required TResult Function(List<int> ids) deletedListCategory,
     required TResult Function() countingCategory,
     required TResult Function(int count) countedCategory,
+    required TResult Function() uploadingImageCategory,
+    required TResult Function(String url) uploadedImageCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
+    TResult? Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
+    TResult? Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult? Function()? fetchingCategory,
     TResult? Function()? fetchingAllCategory,
     TResult? Function()? creatingCategory,
     TResult? Function(CategoryEntity category)? createdCategory,
     TResult? Function()? updatingCategory,
     TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
+    TResult? Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult? Function()? deletingCategory,
     TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
+    TResult? Function(List<int> ids)? deletedListCategory,
     TResult? Function()? countingCategory,
     TResult? Function(int count)? countedCategory,
+    TResult? Function()? uploadingImageCategory,
+    TResult? Function(String url)? uploadedImageCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
+    TResult Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
+    TResult Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult Function()? fetchingCategory,
     TResult Function()? fetchingAllCategory,
     TResult Function()? creatingCategory,
     TResult Function(CategoryEntity category)? createdCategory,
     TResult Function()? updatingCategory,
     TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
+    TResult Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult Function()? deletingCategory,
     TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
+    TResult Function(List<int> ids)? deletedListCategory,
     TResult Function()? countingCategory,
     TResult Function(int count)? countedCategory,
+    TResult Function()? uploadingImageCategory,
+    TResult Function(String url)? uploadedImageCategory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -105,7 +97,6 @@ mixin _$CategoryState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCategory value) fetchingCategory,
     required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
@@ -115,18 +106,16 @@ mixin _$CategoryState {
     required TResult Function(_UpdatedSingleCategory value)
         updatedSingleCategory,
     required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
     required TResult Function(_DeletingCategory value) deletingCategory,
     required TResult Function(_DeletedSingleCategory value)
         deletedSingleCategory,
     required TResult Function(_DeletedListCategory value) deletedListCategory,
     required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
+    required TResult Function(_CountedCategory value) countedCategory,
+    required TResult Function(_UploadingImageCategory value)
+        uploadingImageCategory,
+    required TResult Function(_UploadedImageCategory value)
+        uploadedImageCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -135,7 +124,6 @@ mixin _$CategoryState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCategory value)? fetchingCategory,
     TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -144,15 +132,13 @@ mixin _$CategoryState {
     TResult? Function(_UpdatingCategory value)? updatingCategory,
     TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult? Function(_DeletingCategory value)? deletingCategory,
     TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult? Function(_DeletedListCategory value)? deletedListCategory,
     TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
+    TResult? Function(_CountedCategory value)? countedCategory,
+    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -161,7 +147,6 @@ mixin _$CategoryState {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCategory value)? fetchingCategory,
     TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -170,15 +155,13 @@ mixin _$CategoryState {
     TResult Function(_UpdatingCategory value)? updatingCategory,
     TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult Function(_DeletingCategory value)? deletingCategory,
     TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult Function(_DeletedListCategory value)? deletedListCategory,
     TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
+    TResult Function(_CountedCategory value)? countedCategory,
+    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -248,11 +231,10 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
+    required TResult Function(List<CategoryEntity> categories, int count)
         successListLoaded,
     required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
+    required TResult Function(CategoryStateError error, CategoryFailure failure)
         error,
     required TResult Function() fetchingCategory,
     required TResult Function() fetchingAllCategory,
@@ -260,16 +242,15 @@ class _$InitialImpl implements _Initial {
     required TResult Function(CategoryEntity category) createdCategory,
     required TResult Function() updatingCategory,
     required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
+    required TResult Function(List<CategoryEntity> categories)
+        updatedListCategory,
     required TResult Function() deletingCategory,
     required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
+    required TResult Function(List<int> ids) deletedListCategory,
     required TResult Function() countingCategory,
     required TResult Function(int count) countedCategory,
+    required TResult Function() uploadingImageCategory,
+    required TResult Function(String url) uploadedImageCategory,
   }) {
     return initial();
   }
@@ -279,27 +260,24 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
+    TResult? Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
+    TResult? Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult? Function()? fetchingCategory,
     TResult? Function()? fetchingAllCategory,
     TResult? Function()? creatingCategory,
     TResult? Function(CategoryEntity category)? createdCategory,
     TResult? Function()? updatingCategory,
     TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
+    TResult? Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult? Function()? deletingCategory,
     TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
+    TResult? Function(List<int> ids)? deletedListCategory,
     TResult? Function()? countingCategory,
     TResult? Function(int count)? countedCategory,
+    TResult? Function()? uploadingImageCategory,
+    TResult? Function(String url)? uploadedImageCategory,
   }) {
     return initial?.call();
   }
@@ -309,27 +287,24 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
+    TResult Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
+    TResult Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult Function()? fetchingCategory,
     TResult Function()? fetchingAllCategory,
     TResult Function()? creatingCategory,
     TResult Function(CategoryEntity category)? createdCategory,
     TResult Function()? updatingCategory,
     TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
+    TResult Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult Function()? deletingCategory,
     TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
+    TResult Function(List<int> ids)? deletedListCategory,
     TResult Function()? countingCategory,
     TResult Function(int count)? countedCategory,
+    TResult Function()? uploadingImageCategory,
+    TResult Function(String url)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -345,7 +320,6 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCategory value) fetchingCategory,
     required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
@@ -355,18 +329,16 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_UpdatedSingleCategory value)
         updatedSingleCategory,
     required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
     required TResult Function(_DeletingCategory value) deletingCategory,
     required TResult Function(_DeletedSingleCategory value)
         deletedSingleCategory,
     required TResult Function(_DeletedListCategory value) deletedListCategory,
     required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
+    required TResult Function(_CountedCategory value) countedCategory,
+    required TResult Function(_UploadingImageCategory value)
+        uploadingImageCategory,
+    required TResult Function(_UploadedImageCategory value)
+        uploadedImageCategory,
   }) {
     return initial(this);
   }
@@ -378,7 +350,6 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCategory value)? fetchingCategory,
     TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -387,15 +358,13 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_UpdatingCategory value)? updatingCategory,
     TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult? Function(_DeletingCategory value)? deletingCategory,
     TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult? Function(_DeletedListCategory value)? deletedListCategory,
     TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
+    TResult? Function(_CountedCategory value)? countedCategory,
+    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
   }) {
     return initial?.call(this);
   }
@@ -407,7 +376,6 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCategory value)? fetchingCategory,
     TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -416,15 +384,13 @@ class _$InitialImpl implements _Initial {
     TResult Function(_UpdatingCategory value)? updatingCategory,
     TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult Function(_DeletingCategory value)? deletingCategory,
     TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult Function(_DeletedListCategory value)? deletedListCategory,
     TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
+    TResult Function(_CountedCategory value)? countedCategory,
+    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -481,11 +447,10 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
+    required TResult Function(List<CategoryEntity> categories, int count)
         successListLoaded,
     required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
+    required TResult Function(CategoryStateError error, CategoryFailure failure)
         error,
     required TResult Function() fetchingCategory,
     required TResult Function() fetchingAllCategory,
@@ -493,16 +458,15 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(CategoryEntity category) createdCategory,
     required TResult Function() updatingCategory,
     required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
+    required TResult Function(List<CategoryEntity> categories)
+        updatedListCategory,
     required TResult Function() deletingCategory,
     required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
+    required TResult Function(List<int> ids) deletedListCategory,
     required TResult Function() countingCategory,
     required TResult Function(int count) countedCategory,
+    required TResult Function() uploadingImageCategory,
+    required TResult Function(String url) uploadedImageCategory,
   }) {
     return loading();
   }
@@ -512,27 +476,24 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
+    TResult? Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
+    TResult? Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult? Function()? fetchingCategory,
     TResult? Function()? fetchingAllCategory,
     TResult? Function()? creatingCategory,
     TResult? Function(CategoryEntity category)? createdCategory,
     TResult? Function()? updatingCategory,
     TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
+    TResult? Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult? Function()? deletingCategory,
     TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
+    TResult? Function(List<int> ids)? deletedListCategory,
     TResult? Function()? countingCategory,
     TResult? Function(int count)? countedCategory,
+    TResult? Function()? uploadingImageCategory,
+    TResult? Function(String url)? uploadedImageCategory,
   }) {
     return loading?.call();
   }
@@ -542,27 +503,24 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
+    TResult Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
+    TResult Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult Function()? fetchingCategory,
     TResult Function()? fetchingAllCategory,
     TResult Function()? creatingCategory,
     TResult Function(CategoryEntity category)? createdCategory,
     TResult Function()? updatingCategory,
     TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
+    TResult Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult Function()? deletingCategory,
     TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
+    TResult Function(List<int> ids)? deletedListCategory,
     TResult Function()? countingCategory,
     TResult Function(int count)? countedCategory,
+    TResult Function()? uploadingImageCategory,
+    TResult Function(String url)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -578,7 +536,6 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCategory value) fetchingCategory,
     required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
@@ -588,18 +545,16 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_UpdatedSingleCategory value)
         updatedSingleCategory,
     required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
     required TResult Function(_DeletingCategory value) deletingCategory,
     required TResult Function(_DeletedSingleCategory value)
         deletedSingleCategory,
     required TResult Function(_DeletedListCategory value) deletedListCategory,
     required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
+    required TResult Function(_CountedCategory value) countedCategory,
+    required TResult Function(_UploadingImageCategory value)
+        uploadingImageCategory,
+    required TResult Function(_UploadedImageCategory value)
+        uploadedImageCategory,
   }) {
     return loading(this);
   }
@@ -611,7 +566,6 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCategory value)? fetchingCategory,
     TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -620,15 +574,13 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_UpdatingCategory value)? updatingCategory,
     TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult? Function(_DeletingCategory value)? deletingCategory,
     TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult? Function(_DeletedListCategory value)? deletedListCategory,
     TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
+    TResult? Function(_CountedCategory value)? countedCategory,
+    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
   }) {
     return loading?.call(this);
   }
@@ -640,7 +592,6 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCategory value)? fetchingCategory,
     TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -649,15 +600,13 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_UpdatingCategory value)? updatingCategory,
     TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult Function(_DeletingCategory value)? deletingCategory,
     TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult Function(_DeletedListCategory value)? deletedListCategory,
     TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
+    TResult Function(_CountedCategory value)? countedCategory,
+    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -677,7 +626,7 @@ abstract class _$$SuccessListLoadedImplCopyWith<$Res> {
           $Res Function(_$SuccessListLoadedImpl) then) =
       __$$SuccessListLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<CategoryEntity> category, int count});
+  $Res call({List<CategoryEntity> categories, int count});
 }
 
 /// @nodoc
@@ -693,13 +642,13 @@ class __$$SuccessListLoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? category = null,
+    Object? categories = null,
     Object? count = null,
   }) {
     return _then(_$SuccessListLoadedImpl(
-      category: null == category
-          ? _value._category
-          : category // ignore: cast_nullable_to_non_nullable
+      categories: null == categories
+          ? _value._categories
+          : categories // ignore: cast_nullable_to_non_nullable
               as List<CategoryEntity>,
       count: null == count
           ? _value.count
@@ -713,15 +662,15 @@ class __$$SuccessListLoadedImplCopyWithImpl<$Res>
 
 class _$SuccessListLoadedImpl implements _SuccessListLoaded {
   const _$SuccessListLoadedImpl(
-      {required final List<CategoryEntity> category, required this.count})
-      : _category = category;
+      {required final List<CategoryEntity> categories, required this.count})
+      : _categories = categories;
 
-  final List<CategoryEntity> _category;
+  final List<CategoryEntity> _categories;
   @override
-  List<CategoryEntity> get category {
-    if (_category is EqualUnmodifiableListView) return _category;
+  List<CategoryEntity> get categories {
+    if (_categories is EqualUnmodifiableListView) return _categories;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_category);
+    return EqualUnmodifiableListView(_categories);
   }
 
   @override
@@ -729,7 +678,7 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
 
   @override
   String toString() {
-    return 'CategoryState.successListLoaded(category: $category, count: $count)';
+    return 'CategoryState.successListLoaded(categories: $categories, count: $count)';
   }
 
   @override
@@ -737,13 +686,14 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessListLoadedImpl &&
-            const DeepCollectionEquality().equals(other._category, _category) &&
+            const DeepCollectionEquality()
+                .equals(other._categories, _categories) &&
             (identical(other.count, count) || other.count == count));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_category), count);
+      runtimeType, const DeepCollectionEquality().hash(_categories), count);
 
   /// Create a copy of CategoryState
   /// with the given fields replaced by the non-null parameter values.
@@ -759,11 +709,10 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
+    required TResult Function(List<CategoryEntity> categories, int count)
         successListLoaded,
     required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
+    required TResult Function(CategoryStateError error, CategoryFailure failure)
         error,
     required TResult Function() fetchingCategory,
     required TResult Function() fetchingAllCategory,
@@ -771,18 +720,17 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
     required TResult Function(CategoryEntity category) createdCategory,
     required TResult Function() updatingCategory,
     required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
+    required TResult Function(List<CategoryEntity> categories)
+        updatedListCategory,
     required TResult Function() deletingCategory,
     required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
+    required TResult Function(List<int> ids) deletedListCategory,
     required TResult Function() countingCategory,
     required TResult Function(int count) countedCategory,
+    required TResult Function() uploadingImageCategory,
+    required TResult Function(String url) uploadedImageCategory,
   }) {
-    return successListLoaded(category, count);
+    return successListLoaded(categories, count);
   }
 
   @override
@@ -790,29 +738,26 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
+    TResult? Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
+    TResult? Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult? Function()? fetchingCategory,
     TResult? Function()? fetchingAllCategory,
     TResult? Function()? creatingCategory,
     TResult? Function(CategoryEntity category)? createdCategory,
     TResult? Function()? updatingCategory,
     TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
+    TResult? Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult? Function()? deletingCategory,
     TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
+    TResult? Function(List<int> ids)? deletedListCategory,
     TResult? Function()? countingCategory,
     TResult? Function(int count)? countedCategory,
+    TResult? Function()? uploadingImageCategory,
+    TResult? Function(String url)? uploadedImageCategory,
   }) {
-    return successListLoaded?.call(category, count);
+    return successListLoaded?.call(categories, count);
   }
 
   @override
@@ -820,31 +765,28 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
+    TResult Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
+    TResult Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult Function()? fetchingCategory,
     TResult Function()? fetchingAllCategory,
     TResult Function()? creatingCategory,
     TResult Function(CategoryEntity category)? createdCategory,
     TResult Function()? updatingCategory,
     TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
+    TResult Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult Function()? deletingCategory,
     TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
+    TResult Function(List<int> ids)? deletedListCategory,
     TResult Function()? countingCategory,
     TResult Function(int count)? countedCategory,
+    TResult Function()? uploadingImageCategory,
+    TResult Function(String url)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (successListLoaded != null) {
-      return successListLoaded(category, count);
+      return successListLoaded(categories, count);
     }
     return orElse();
   }
@@ -856,7 +798,6 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCategory value) fetchingCategory,
     required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
@@ -866,18 +807,16 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
     required TResult Function(_UpdatedSingleCategory value)
         updatedSingleCategory,
     required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
     required TResult Function(_DeletingCategory value) deletingCategory,
     required TResult Function(_DeletedSingleCategory value)
         deletedSingleCategory,
     required TResult Function(_DeletedListCategory value) deletedListCategory,
     required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
+    required TResult Function(_CountedCategory value) countedCategory,
+    required TResult Function(_UploadingImageCategory value)
+        uploadingImageCategory,
+    required TResult Function(_UploadedImageCategory value)
+        uploadedImageCategory,
   }) {
     return successListLoaded(this);
   }
@@ -889,7 +828,6 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCategory value)? fetchingCategory,
     TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -898,15 +836,13 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
     TResult? Function(_UpdatingCategory value)? updatingCategory,
     TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult? Function(_DeletingCategory value)? deletingCategory,
     TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult? Function(_DeletedListCategory value)? deletedListCategory,
     TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
+    TResult? Function(_CountedCategory value)? countedCategory,
+    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
   }) {
     return successListLoaded?.call(this);
   }
@@ -918,7 +854,6 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCategory value)? fetchingCategory,
     TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -927,15 +862,13 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
     TResult Function(_UpdatingCategory value)? updatingCategory,
     TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult Function(_DeletingCategory value)? deletingCategory,
     TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult Function(_DeletedListCategory value)? deletedListCategory,
     TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
+    TResult Function(_CountedCategory value)? countedCategory,
+    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (successListLoaded != null) {
@@ -947,10 +880,10 @@ class _$SuccessListLoadedImpl implements _SuccessListLoaded {
 
 abstract class _SuccessListLoaded implements CategoryState {
   const factory _SuccessListLoaded(
-      {required final List<CategoryEntity> category,
+      {required final List<CategoryEntity> categories,
       required final int count}) = _$SuccessListLoadedImpl;
 
-  List<CategoryEntity> get category;
+  List<CategoryEntity> get categories;
   int get count;
 
   /// Create a copy of CategoryState
@@ -967,8 +900,6 @@ abstract class _$$SuccessSingleLoadedImplCopyWith<$Res> {
       __$$SuccessSingleLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CategoryEntity category});
-
-  $CategoryEntityCopyWith<$Res> get category;
 }
 
 /// @nodoc
@@ -984,24 +915,14 @@ class __$$SuccessSingleLoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? category = null,
+    Object? category = freezed,
   }) {
     return _then(_$SuccessSingleLoadedImpl(
-      category: null == category
+      category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as CategoryEntity,
     ));
-  }
-
-  /// Create a copy of CategoryState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $CategoryEntityCopyWith<$Res> get category {
-    return $CategoryEntityCopyWith<$Res>(_value.category, (value) {
-      return _then(_value.copyWith(category: value));
-    });
   }
 }
 
@@ -1023,12 +944,12 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessSingleLoadedImpl &&
-            (identical(other.category, category) ||
-                other.category == category));
+            const DeepCollectionEquality().equals(other.category, category));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, category);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(category));
 
   /// Create a copy of CategoryState
   /// with the given fields replaced by the non-null parameter values.
@@ -1044,11 +965,10 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
+    required TResult Function(List<CategoryEntity> categories, int count)
         successListLoaded,
     required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
+    required TResult Function(CategoryStateError error, CategoryFailure failure)
         error,
     required TResult Function() fetchingCategory,
     required TResult Function() fetchingAllCategory,
@@ -1056,16 +976,15 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
     required TResult Function(CategoryEntity category) createdCategory,
     required TResult Function() updatingCategory,
     required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
+    required TResult Function(List<CategoryEntity> categories)
+        updatedListCategory,
     required TResult Function() deletingCategory,
     required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
+    required TResult Function(List<int> ids) deletedListCategory,
     required TResult Function() countingCategory,
     required TResult Function(int count) countedCategory,
+    required TResult Function() uploadingImageCategory,
+    required TResult Function(String url) uploadedImageCategory,
   }) {
     return successSingleLoaded(category);
   }
@@ -1075,27 +994,24 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
+    TResult? Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
+    TResult? Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult? Function()? fetchingCategory,
     TResult? Function()? fetchingAllCategory,
     TResult? Function()? creatingCategory,
     TResult? Function(CategoryEntity category)? createdCategory,
     TResult? Function()? updatingCategory,
     TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
+    TResult? Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult? Function()? deletingCategory,
     TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
+    TResult? Function(List<int> ids)? deletedListCategory,
     TResult? Function()? countingCategory,
     TResult? Function(int count)? countedCategory,
+    TResult? Function()? uploadingImageCategory,
+    TResult? Function(String url)? uploadedImageCategory,
   }) {
     return successSingleLoaded?.call(category);
   }
@@ -1105,27 +1021,24 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
+    TResult Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
+    TResult Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult Function()? fetchingCategory,
     TResult Function()? fetchingAllCategory,
     TResult Function()? creatingCategory,
     TResult Function(CategoryEntity category)? createdCategory,
     TResult Function()? updatingCategory,
     TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
+    TResult Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult Function()? deletingCategory,
     TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
+    TResult Function(List<int> ids)? deletedListCategory,
     TResult Function()? countingCategory,
     TResult Function(int count)? countedCategory,
+    TResult Function()? uploadingImageCategory,
+    TResult Function(String url)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (successSingleLoaded != null) {
@@ -1141,7 +1054,6 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCategory value) fetchingCategory,
     required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
@@ -1151,18 +1063,16 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
     required TResult Function(_UpdatedSingleCategory value)
         updatedSingleCategory,
     required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
     required TResult Function(_DeletingCategory value) deletingCategory,
     required TResult Function(_DeletedSingleCategory value)
         deletedSingleCategory,
     required TResult Function(_DeletedListCategory value) deletedListCategory,
     required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
+    required TResult Function(_CountedCategory value) countedCategory,
+    required TResult Function(_UploadingImageCategory value)
+        uploadingImageCategory,
+    required TResult Function(_UploadedImageCategory value)
+        uploadedImageCategory,
   }) {
     return successSingleLoaded(this);
   }
@@ -1174,7 +1084,6 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCategory value)? fetchingCategory,
     TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -1183,15 +1092,13 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
     TResult? Function(_UpdatingCategory value)? updatingCategory,
     TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult? Function(_DeletingCategory value)? deletingCategory,
     TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult? Function(_DeletedListCategory value)? deletedListCategory,
     TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
+    TResult? Function(_CountedCategory value)? countedCategory,
+    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
   }) {
     return successSingleLoaded?.call(this);
   }
@@ -1203,7 +1110,6 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCategory value)? fetchingCategory,
     TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -1212,15 +1118,13 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
     TResult Function(_UpdatingCategory value)? updatingCategory,
     TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult Function(_DeletingCategory value)? deletingCategory,
     TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult Function(_DeletedListCategory value)? deletedListCategory,
     TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
+    TResult Function(_CountedCategory value)? countedCategory,
+    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (successSingleLoaded != null) {
@@ -1244,280 +1148,12 @@ abstract class _SuccessSingleLoaded implements CategoryState {
 }
 
 /// @nodoc
-abstract class _$$FailureImplCopyWith<$Res> {
-  factory _$$FailureImplCopyWith(
-          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
-      __$$FailureImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
-}
-
-/// @nodoc
-class __$$FailureImplCopyWithImpl<$Res>
-    extends _$CategoryStateCopyWithImpl<$Res, _$FailureImpl>
-    implements _$$FailureImplCopyWith<$Res> {
-  __$$FailureImplCopyWithImpl(
-      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of CategoryState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$FailureImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$FailureImpl implements _Failure {
-  const _$FailureImpl({required this.message});
-
-  @override
-  final String message;
-
-  @override
-  String toString() {
-    return 'CategoryState.failure(message: $message)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FailureImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  /// Create a copy of CategoryState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
-        successListLoaded,
-    required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
-        error,
-    required TResult Function() fetchingCategory,
-    required TResult Function() fetchingAllCategory,
-    required TResult Function() creatingCategory,
-    required TResult Function(CategoryEntity category) createdCategory,
-    required TResult Function() updatingCategory,
-    required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
-    required TResult Function() deletingCategory,
-    required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
-    required TResult Function() countingCategory,
-    required TResult Function(int count) countedCategory,
-  }) {
-    return failure(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
-        successListLoaded,
-    TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
-    TResult? Function()? fetchingCategory,
-    TResult? Function()? fetchingAllCategory,
-    TResult? Function()? creatingCategory,
-    TResult? Function(CategoryEntity category)? createdCategory,
-    TResult? Function()? updatingCategory,
-    TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
-    TResult? Function()? deletingCategory,
-    TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
-    TResult? Function()? countingCategory,
-    TResult? Function(int count)? countedCategory,
-  }) {
-    return failure?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
-        successListLoaded,
-    TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
-    TResult Function()? fetchingCategory,
-    TResult Function()? fetchingAllCategory,
-    TResult Function()? creatingCategory,
-    TResult Function(CategoryEntity category)? createdCategory,
-    TResult Function()? updatingCategory,
-    TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
-    TResult Function()? deletingCategory,
-    TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
-    TResult Function()? countingCategory,
-    TResult Function(int count)? countedCategory,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_SuccessListLoaded value) successListLoaded,
-    required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
-    required TResult Function(_Error value) error,
-    required TResult Function(_FetchingCategory value) fetchingCategory,
-    required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
-    required TResult Function(_CreatingCategory value) creatingCategory,
-    required TResult Function(_CreatedCategory value) createdCategory,
-    required TResult Function(_UpdatingCategory value) updatingCategory,
-    required TResult Function(_UpdatedSingleCategory value)
-        updatedSingleCategory,
-    required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
-    required TResult Function(_DeletingCategory value) deletingCategory,
-    required TResult Function(_DeletedSingleCategory value)
-        deletedSingleCategory,
-    required TResult Function(_DeletedListCategory value) deletedListCategory,
-    required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
-  }) {
-    return failure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_SuccessListLoaded value)? successListLoaded,
-    TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_FetchingCategory value)? fetchingCategory,
-    TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
-    TResult? Function(_CreatingCategory value)? creatingCategory,
-    TResult? Function(_CreatedCategory value)? createdCategory,
-    TResult? Function(_UpdatingCategory value)? updatingCategory,
-    TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
-    TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
-    TResult? Function(_DeletingCategory value)? deletingCategory,
-    TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
-    TResult? Function(_DeletedListCategory value)? deletedListCategory,
-    TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
-  }) {
-    return failure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_SuccessListLoaded value)? successListLoaded,
-    TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
-    TResult Function(_Error value)? error,
-    TResult Function(_FetchingCategory value)? fetchingCategory,
-    TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
-    TResult Function(_CreatingCategory value)? creatingCategory,
-    TResult Function(_CreatedCategory value)? createdCategory,
-    TResult Function(_UpdatingCategory value)? updatingCategory,
-    TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
-    TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
-    TResult Function(_DeletingCategory value)? deletingCategory,
-    TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
-    TResult Function(_DeletedListCategory value)? deletedListCategory,
-    TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Failure implements CategoryState {
-  const factory _Failure({required final String message}) = _$FailureImpl;
-
-  String get message;
-
-  /// Create a copy of CategoryState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 abstract class _$$ErrorImplCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
           _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
       __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({CategoryStateError error, String? errorMessage});
+  $Res call({CategoryStateError error, CategoryFailure failure});
 }
 
 /// @nodoc
@@ -1534,17 +1170,17 @@ class __$$ErrorImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? error = null,
-    Object? errorMessage = freezed,
+    Object? failure = freezed,
   }) {
     return _then(_$ErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as CategoryStateError,
-      errorMessage: freezed == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+      failure: freezed == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as CategoryFailure,
     ));
   }
 }
@@ -1552,16 +1188,16 @@ class __$$ErrorImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ErrorImpl implements _Error {
-  const _$ErrorImpl({required this.error, required this.errorMessage});
+  const _$ErrorImpl({required this.error, required this.failure});
 
   @override
   final CategoryStateError error;
   @override
-  final String? errorMessage;
+  final CategoryFailure failure;
 
   @override
   String toString() {
-    return 'CategoryState.error(error: $error, errorMessage: $errorMessage)';
+    return 'CategoryState.error(error: $error, failure: $failure)';
   }
 
   @override
@@ -1570,12 +1206,12 @@ class _$ErrorImpl implements _Error {
         (other.runtimeType == runtimeType &&
             other is _$ErrorImpl &&
             (identical(other.error, error) || other.error == error) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+            const DeepCollectionEquality().equals(other.failure, failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, error, errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType, error, const DeepCollectionEquality().hash(failure));
 
   /// Create a copy of CategoryState
   /// with the given fields replaced by the non-null parameter values.
@@ -1590,11 +1226,10 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
+    required TResult Function(List<CategoryEntity> categories, int count)
         successListLoaded,
     required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
+    required TResult Function(CategoryStateError error, CategoryFailure failure)
         error,
     required TResult Function() fetchingCategory,
     required TResult Function() fetchingAllCategory,
@@ -1602,18 +1237,17 @@ class _$ErrorImpl implements _Error {
     required TResult Function(CategoryEntity category) createdCategory,
     required TResult Function() updatingCategory,
     required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
+    required TResult Function(List<CategoryEntity> categories)
+        updatedListCategory,
     required TResult Function() deletingCategory,
     required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
+    required TResult Function(List<int> ids) deletedListCategory,
     required TResult Function() countingCategory,
     required TResult Function(int count) countedCategory,
+    required TResult Function() uploadingImageCategory,
+    required TResult Function(String url) uploadedImageCategory,
   }) {
-    return error(this.error, errorMessage);
+    return error(this.error, failure);
   }
 
   @override
@@ -1621,29 +1255,26 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
+    TResult? Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
+    TResult? Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult? Function()? fetchingCategory,
     TResult? Function()? fetchingAllCategory,
     TResult? Function()? creatingCategory,
     TResult? Function(CategoryEntity category)? createdCategory,
     TResult? Function()? updatingCategory,
     TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
+    TResult? Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult? Function()? deletingCategory,
     TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
+    TResult? Function(List<int> ids)? deletedListCategory,
     TResult? Function()? countingCategory,
     TResult? Function(int count)? countedCategory,
+    TResult? Function()? uploadingImageCategory,
+    TResult? Function(String url)? uploadedImageCategory,
   }) {
-    return error?.call(this.error, errorMessage);
+    return error?.call(this.error, failure);
   }
 
   @override
@@ -1651,31 +1282,28 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
+    TResult Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
+    TResult Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult Function()? fetchingCategory,
     TResult Function()? fetchingAllCategory,
     TResult Function()? creatingCategory,
     TResult Function(CategoryEntity category)? createdCategory,
     TResult Function()? updatingCategory,
     TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
+    TResult Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult Function()? deletingCategory,
     TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
+    TResult Function(List<int> ids)? deletedListCategory,
     TResult Function()? countingCategory,
     TResult Function(int count)? countedCategory,
+    TResult Function()? uploadingImageCategory,
+    TResult Function(String url)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(this.error, errorMessage);
+      return error(this.error, failure);
     }
     return orElse();
   }
@@ -1687,7 +1315,6 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCategory value) fetchingCategory,
     required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
@@ -1697,18 +1324,16 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_UpdatedSingleCategory value)
         updatedSingleCategory,
     required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
     required TResult Function(_DeletingCategory value) deletingCategory,
     required TResult Function(_DeletedSingleCategory value)
         deletedSingleCategory,
     required TResult Function(_DeletedListCategory value) deletedListCategory,
     required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
+    required TResult Function(_CountedCategory value) countedCategory,
+    required TResult Function(_UploadingImageCategory value)
+        uploadingImageCategory,
+    required TResult Function(_UploadedImageCategory value)
+        uploadedImageCategory,
   }) {
     return error(this);
   }
@@ -1720,7 +1345,6 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCategory value)? fetchingCategory,
     TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -1729,15 +1353,13 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_UpdatingCategory value)? updatingCategory,
     TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult? Function(_DeletingCategory value)? deletingCategory,
     TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult? Function(_DeletedListCategory value)? deletedListCategory,
     TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
+    TResult? Function(_CountedCategory value)? countedCategory,
+    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
   }) {
     return error?.call(this);
   }
@@ -1749,7 +1371,6 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCategory value)? fetchingCategory,
     TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -1758,15 +1379,13 @@ class _$ErrorImpl implements _Error {
     TResult Function(_UpdatingCategory value)? updatingCategory,
     TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult Function(_DeletingCategory value)? deletingCategory,
     TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult Function(_DeletedListCategory value)? deletedListCategory,
     TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
+    TResult Function(_CountedCategory value)? countedCategory,
+    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1779,10 +1398,10 @@ class _$ErrorImpl implements _Error {
 abstract class _Error implements CategoryState {
   const factory _Error(
       {required final CategoryStateError error,
-      required final String? errorMessage}) = _$ErrorImpl;
+      required final CategoryFailure failure}) = _$ErrorImpl;
 
   CategoryStateError get error;
-  String? get errorMessage;
+  CategoryFailure get failure;
 
   /// Create a copy of CategoryState
   /// with the given fields replaced by the non-null parameter values.
@@ -1834,11 +1453,10 @@ class _$FetchingCategoryImpl implements _FetchingCategory {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
+    required TResult Function(List<CategoryEntity> categories, int count)
         successListLoaded,
     required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
+    required TResult Function(CategoryStateError error, CategoryFailure failure)
         error,
     required TResult Function() fetchingCategory,
     required TResult Function() fetchingAllCategory,
@@ -1846,16 +1464,15 @@ class _$FetchingCategoryImpl implements _FetchingCategory {
     required TResult Function(CategoryEntity category) createdCategory,
     required TResult Function() updatingCategory,
     required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
+    required TResult Function(List<CategoryEntity> categories)
+        updatedListCategory,
     required TResult Function() deletingCategory,
     required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
+    required TResult Function(List<int> ids) deletedListCategory,
     required TResult Function() countingCategory,
     required TResult Function(int count) countedCategory,
+    required TResult Function() uploadingImageCategory,
+    required TResult Function(String url) uploadedImageCategory,
   }) {
     return fetchingCategory();
   }
@@ -1865,27 +1482,24 @@ class _$FetchingCategoryImpl implements _FetchingCategory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
+    TResult? Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
+    TResult? Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult? Function()? fetchingCategory,
     TResult? Function()? fetchingAllCategory,
     TResult? Function()? creatingCategory,
     TResult? Function(CategoryEntity category)? createdCategory,
     TResult? Function()? updatingCategory,
     TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
+    TResult? Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult? Function()? deletingCategory,
     TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
+    TResult? Function(List<int> ids)? deletedListCategory,
     TResult? Function()? countingCategory,
     TResult? Function(int count)? countedCategory,
+    TResult? Function()? uploadingImageCategory,
+    TResult? Function(String url)? uploadedImageCategory,
   }) {
     return fetchingCategory?.call();
   }
@@ -1895,27 +1509,24 @@ class _$FetchingCategoryImpl implements _FetchingCategory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
+    TResult Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
+    TResult Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult Function()? fetchingCategory,
     TResult Function()? fetchingAllCategory,
     TResult Function()? creatingCategory,
     TResult Function(CategoryEntity category)? createdCategory,
     TResult Function()? updatingCategory,
     TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
+    TResult Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult Function()? deletingCategory,
     TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
+    TResult Function(List<int> ids)? deletedListCategory,
     TResult Function()? countingCategory,
     TResult Function(int count)? countedCategory,
+    TResult Function()? uploadingImageCategory,
+    TResult Function(String url)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (fetchingCategory != null) {
@@ -1931,7 +1542,6 @@ class _$FetchingCategoryImpl implements _FetchingCategory {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCategory value) fetchingCategory,
     required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
@@ -1941,18 +1551,16 @@ class _$FetchingCategoryImpl implements _FetchingCategory {
     required TResult Function(_UpdatedSingleCategory value)
         updatedSingleCategory,
     required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
     required TResult Function(_DeletingCategory value) deletingCategory,
     required TResult Function(_DeletedSingleCategory value)
         deletedSingleCategory,
     required TResult Function(_DeletedListCategory value) deletedListCategory,
     required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
+    required TResult Function(_CountedCategory value) countedCategory,
+    required TResult Function(_UploadingImageCategory value)
+        uploadingImageCategory,
+    required TResult Function(_UploadedImageCategory value)
+        uploadedImageCategory,
   }) {
     return fetchingCategory(this);
   }
@@ -1964,7 +1572,6 @@ class _$FetchingCategoryImpl implements _FetchingCategory {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCategory value)? fetchingCategory,
     TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -1973,15 +1580,13 @@ class _$FetchingCategoryImpl implements _FetchingCategory {
     TResult? Function(_UpdatingCategory value)? updatingCategory,
     TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult? Function(_DeletingCategory value)? deletingCategory,
     TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult? Function(_DeletedListCategory value)? deletedListCategory,
     TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
+    TResult? Function(_CountedCategory value)? countedCategory,
+    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
   }) {
     return fetchingCategory?.call(this);
   }
@@ -1993,7 +1598,6 @@ class _$FetchingCategoryImpl implements _FetchingCategory {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCategory value)? fetchingCategory,
     TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -2002,15 +1606,13 @@ class _$FetchingCategoryImpl implements _FetchingCategory {
     TResult Function(_UpdatingCategory value)? updatingCategory,
     TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult Function(_DeletingCategory value)? deletingCategory,
     TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult Function(_DeletedListCategory value)? deletedListCategory,
     TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
+    TResult Function(_CountedCategory value)? countedCategory,
+    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (fetchingCategory != null) {
@@ -2068,11 +1670,10 @@ class _$FetchingAllCategoryImpl implements _FetchingAllCategory {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
+    required TResult Function(List<CategoryEntity> categories, int count)
         successListLoaded,
     required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
+    required TResult Function(CategoryStateError error, CategoryFailure failure)
         error,
     required TResult Function() fetchingCategory,
     required TResult Function() fetchingAllCategory,
@@ -2080,16 +1681,15 @@ class _$FetchingAllCategoryImpl implements _FetchingAllCategory {
     required TResult Function(CategoryEntity category) createdCategory,
     required TResult Function() updatingCategory,
     required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
+    required TResult Function(List<CategoryEntity> categories)
+        updatedListCategory,
     required TResult Function() deletingCategory,
     required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
+    required TResult Function(List<int> ids) deletedListCategory,
     required TResult Function() countingCategory,
     required TResult Function(int count) countedCategory,
+    required TResult Function() uploadingImageCategory,
+    required TResult Function(String url) uploadedImageCategory,
   }) {
     return fetchingAllCategory();
   }
@@ -2099,27 +1699,24 @@ class _$FetchingAllCategoryImpl implements _FetchingAllCategory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
+    TResult? Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
+    TResult? Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult? Function()? fetchingCategory,
     TResult? Function()? fetchingAllCategory,
     TResult? Function()? creatingCategory,
     TResult? Function(CategoryEntity category)? createdCategory,
     TResult? Function()? updatingCategory,
     TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
+    TResult? Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult? Function()? deletingCategory,
     TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
+    TResult? Function(List<int> ids)? deletedListCategory,
     TResult? Function()? countingCategory,
     TResult? Function(int count)? countedCategory,
+    TResult? Function()? uploadingImageCategory,
+    TResult? Function(String url)? uploadedImageCategory,
   }) {
     return fetchingAllCategory?.call();
   }
@@ -2129,27 +1726,24 @@ class _$FetchingAllCategoryImpl implements _FetchingAllCategory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
+    TResult Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
+    TResult Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult Function()? fetchingCategory,
     TResult Function()? fetchingAllCategory,
     TResult Function()? creatingCategory,
     TResult Function(CategoryEntity category)? createdCategory,
     TResult Function()? updatingCategory,
     TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
+    TResult Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult Function()? deletingCategory,
     TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
+    TResult Function(List<int> ids)? deletedListCategory,
     TResult Function()? countingCategory,
     TResult Function(int count)? countedCategory,
+    TResult Function()? uploadingImageCategory,
+    TResult Function(String url)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (fetchingAllCategory != null) {
@@ -2165,7 +1759,6 @@ class _$FetchingAllCategoryImpl implements _FetchingAllCategory {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCategory value) fetchingCategory,
     required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
@@ -2175,18 +1768,16 @@ class _$FetchingAllCategoryImpl implements _FetchingAllCategory {
     required TResult Function(_UpdatedSingleCategory value)
         updatedSingleCategory,
     required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
     required TResult Function(_DeletingCategory value) deletingCategory,
     required TResult Function(_DeletedSingleCategory value)
         deletedSingleCategory,
     required TResult Function(_DeletedListCategory value) deletedListCategory,
     required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
+    required TResult Function(_CountedCategory value) countedCategory,
+    required TResult Function(_UploadingImageCategory value)
+        uploadingImageCategory,
+    required TResult Function(_UploadedImageCategory value)
+        uploadedImageCategory,
   }) {
     return fetchingAllCategory(this);
   }
@@ -2198,7 +1789,6 @@ class _$FetchingAllCategoryImpl implements _FetchingAllCategory {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCategory value)? fetchingCategory,
     TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -2207,15 +1797,13 @@ class _$FetchingAllCategoryImpl implements _FetchingAllCategory {
     TResult? Function(_UpdatingCategory value)? updatingCategory,
     TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult? Function(_DeletingCategory value)? deletingCategory,
     TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult? Function(_DeletedListCategory value)? deletedListCategory,
     TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
+    TResult? Function(_CountedCategory value)? countedCategory,
+    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
   }) {
     return fetchingAllCategory?.call(this);
   }
@@ -2227,7 +1815,6 @@ class _$FetchingAllCategoryImpl implements _FetchingAllCategory {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCategory value)? fetchingCategory,
     TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -2236,15 +1823,13 @@ class _$FetchingAllCategoryImpl implements _FetchingAllCategory {
     TResult Function(_UpdatingCategory value)? updatingCategory,
     TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult Function(_DeletingCategory value)? deletingCategory,
     TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult Function(_DeletedListCategory value)? deletedListCategory,
     TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
+    TResult Function(_CountedCategory value)? countedCategory,
+    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (fetchingAllCategory != null) {
@@ -2301,11 +1886,10 @@ class _$CreatingCategoryImpl implements _CreatingCategory {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
+    required TResult Function(List<CategoryEntity> categories, int count)
         successListLoaded,
     required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
+    required TResult Function(CategoryStateError error, CategoryFailure failure)
         error,
     required TResult Function() fetchingCategory,
     required TResult Function() fetchingAllCategory,
@@ -2313,16 +1897,15 @@ class _$CreatingCategoryImpl implements _CreatingCategory {
     required TResult Function(CategoryEntity category) createdCategory,
     required TResult Function() updatingCategory,
     required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
+    required TResult Function(List<CategoryEntity> categories)
+        updatedListCategory,
     required TResult Function() deletingCategory,
     required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
+    required TResult Function(List<int> ids) deletedListCategory,
     required TResult Function() countingCategory,
     required TResult Function(int count) countedCategory,
+    required TResult Function() uploadingImageCategory,
+    required TResult Function(String url) uploadedImageCategory,
   }) {
     return creatingCategory();
   }
@@ -2332,27 +1915,24 @@ class _$CreatingCategoryImpl implements _CreatingCategory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
+    TResult? Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
+    TResult? Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult? Function()? fetchingCategory,
     TResult? Function()? fetchingAllCategory,
     TResult? Function()? creatingCategory,
     TResult? Function(CategoryEntity category)? createdCategory,
     TResult? Function()? updatingCategory,
     TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
+    TResult? Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult? Function()? deletingCategory,
     TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
+    TResult? Function(List<int> ids)? deletedListCategory,
     TResult? Function()? countingCategory,
     TResult? Function(int count)? countedCategory,
+    TResult? Function()? uploadingImageCategory,
+    TResult? Function(String url)? uploadedImageCategory,
   }) {
     return creatingCategory?.call();
   }
@@ -2362,27 +1942,24 @@ class _$CreatingCategoryImpl implements _CreatingCategory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
+    TResult Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
+    TResult Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult Function()? fetchingCategory,
     TResult Function()? fetchingAllCategory,
     TResult Function()? creatingCategory,
     TResult Function(CategoryEntity category)? createdCategory,
     TResult Function()? updatingCategory,
     TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
+    TResult Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult Function()? deletingCategory,
     TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
+    TResult Function(List<int> ids)? deletedListCategory,
     TResult Function()? countingCategory,
     TResult Function(int count)? countedCategory,
+    TResult Function()? uploadingImageCategory,
+    TResult Function(String url)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (creatingCategory != null) {
@@ -2398,7 +1975,6 @@ class _$CreatingCategoryImpl implements _CreatingCategory {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCategory value) fetchingCategory,
     required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
@@ -2408,18 +1984,16 @@ class _$CreatingCategoryImpl implements _CreatingCategory {
     required TResult Function(_UpdatedSingleCategory value)
         updatedSingleCategory,
     required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
     required TResult Function(_DeletingCategory value) deletingCategory,
     required TResult Function(_DeletedSingleCategory value)
         deletedSingleCategory,
     required TResult Function(_DeletedListCategory value) deletedListCategory,
     required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
+    required TResult Function(_CountedCategory value) countedCategory,
+    required TResult Function(_UploadingImageCategory value)
+        uploadingImageCategory,
+    required TResult Function(_UploadedImageCategory value)
+        uploadedImageCategory,
   }) {
     return creatingCategory(this);
   }
@@ -2431,7 +2005,6 @@ class _$CreatingCategoryImpl implements _CreatingCategory {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCategory value)? fetchingCategory,
     TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -2440,15 +2013,13 @@ class _$CreatingCategoryImpl implements _CreatingCategory {
     TResult? Function(_UpdatingCategory value)? updatingCategory,
     TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult? Function(_DeletingCategory value)? deletingCategory,
     TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult? Function(_DeletedListCategory value)? deletedListCategory,
     TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
+    TResult? Function(_CountedCategory value)? countedCategory,
+    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
   }) {
     return creatingCategory?.call(this);
   }
@@ -2460,7 +2031,6 @@ class _$CreatingCategoryImpl implements _CreatingCategory {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCategory value)? fetchingCategory,
     TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -2469,15 +2039,13 @@ class _$CreatingCategoryImpl implements _CreatingCategory {
     TResult Function(_UpdatingCategory value)? updatingCategory,
     TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult Function(_DeletingCategory value)? deletingCategory,
     TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult Function(_DeletedListCategory value)? deletedListCategory,
     TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
+    TResult Function(_CountedCategory value)? countedCategory,
+    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (creatingCategory != null) {
@@ -2498,8 +2066,6 @@ abstract class _$$CreatedCategoryImplCopyWith<$Res> {
       __$$CreatedCategoryImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CategoryEntity category});
-
-  $CategoryEntityCopyWith<$Res> get category;
 }
 
 /// @nodoc
@@ -2515,24 +2081,14 @@ class __$$CreatedCategoryImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? category = null,
+    Object? category = freezed,
   }) {
     return _then(_$CreatedCategoryImpl(
-      category: null == category
+      category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as CategoryEntity,
     ));
-  }
-
-  /// Create a copy of CategoryState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $CategoryEntityCopyWith<$Res> get category {
-    return $CategoryEntityCopyWith<$Res>(_value.category, (value) {
-      return _then(_value.copyWith(category: value));
-    });
   }
 }
 
@@ -2554,12 +2110,12 @@ class _$CreatedCategoryImpl implements _CreatedCategory {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreatedCategoryImpl &&
-            (identical(other.category, category) ||
-                other.category == category));
+            const DeepCollectionEquality().equals(other.category, category));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, category);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(category));
 
   /// Create a copy of CategoryState
   /// with the given fields replaced by the non-null parameter values.
@@ -2575,11 +2131,10 @@ class _$CreatedCategoryImpl implements _CreatedCategory {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
+    required TResult Function(List<CategoryEntity> categories, int count)
         successListLoaded,
     required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
+    required TResult Function(CategoryStateError error, CategoryFailure failure)
         error,
     required TResult Function() fetchingCategory,
     required TResult Function() fetchingAllCategory,
@@ -2587,16 +2142,15 @@ class _$CreatedCategoryImpl implements _CreatedCategory {
     required TResult Function(CategoryEntity category) createdCategory,
     required TResult Function() updatingCategory,
     required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
+    required TResult Function(List<CategoryEntity> categories)
+        updatedListCategory,
     required TResult Function() deletingCategory,
     required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
+    required TResult Function(List<int> ids) deletedListCategory,
     required TResult Function() countingCategory,
     required TResult Function(int count) countedCategory,
+    required TResult Function() uploadingImageCategory,
+    required TResult Function(String url) uploadedImageCategory,
   }) {
     return createdCategory(category);
   }
@@ -2606,27 +2160,24 @@ class _$CreatedCategoryImpl implements _CreatedCategory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
+    TResult? Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
+    TResult? Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult? Function()? fetchingCategory,
     TResult? Function()? fetchingAllCategory,
     TResult? Function()? creatingCategory,
     TResult? Function(CategoryEntity category)? createdCategory,
     TResult? Function()? updatingCategory,
     TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
+    TResult? Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult? Function()? deletingCategory,
     TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
+    TResult? Function(List<int> ids)? deletedListCategory,
     TResult? Function()? countingCategory,
     TResult? Function(int count)? countedCategory,
+    TResult? Function()? uploadingImageCategory,
+    TResult? Function(String url)? uploadedImageCategory,
   }) {
     return createdCategory?.call(category);
   }
@@ -2636,27 +2187,24 @@ class _$CreatedCategoryImpl implements _CreatedCategory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
+    TResult Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
+    TResult Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult Function()? fetchingCategory,
     TResult Function()? fetchingAllCategory,
     TResult Function()? creatingCategory,
     TResult Function(CategoryEntity category)? createdCategory,
     TResult Function()? updatingCategory,
     TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
+    TResult Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult Function()? deletingCategory,
     TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
+    TResult Function(List<int> ids)? deletedListCategory,
     TResult Function()? countingCategory,
     TResult Function(int count)? countedCategory,
+    TResult Function()? uploadingImageCategory,
+    TResult Function(String url)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (createdCategory != null) {
@@ -2672,7 +2220,6 @@ class _$CreatedCategoryImpl implements _CreatedCategory {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCategory value) fetchingCategory,
     required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
@@ -2682,18 +2229,16 @@ class _$CreatedCategoryImpl implements _CreatedCategory {
     required TResult Function(_UpdatedSingleCategory value)
         updatedSingleCategory,
     required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
     required TResult Function(_DeletingCategory value) deletingCategory,
     required TResult Function(_DeletedSingleCategory value)
         deletedSingleCategory,
     required TResult Function(_DeletedListCategory value) deletedListCategory,
     required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
+    required TResult Function(_CountedCategory value) countedCategory,
+    required TResult Function(_UploadingImageCategory value)
+        uploadingImageCategory,
+    required TResult Function(_UploadedImageCategory value)
+        uploadedImageCategory,
   }) {
     return createdCategory(this);
   }
@@ -2705,7 +2250,6 @@ class _$CreatedCategoryImpl implements _CreatedCategory {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCategory value)? fetchingCategory,
     TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -2714,15 +2258,13 @@ class _$CreatedCategoryImpl implements _CreatedCategory {
     TResult? Function(_UpdatingCategory value)? updatingCategory,
     TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult? Function(_DeletingCategory value)? deletingCategory,
     TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult? Function(_DeletedListCategory value)? deletedListCategory,
     TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
+    TResult? Function(_CountedCategory value)? countedCategory,
+    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
   }) {
     return createdCategory?.call(this);
   }
@@ -2734,7 +2276,6 @@ class _$CreatedCategoryImpl implements _CreatedCategory {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCategory value)? fetchingCategory,
     TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -2743,15 +2284,13 @@ class _$CreatedCategoryImpl implements _CreatedCategory {
     TResult Function(_UpdatingCategory value)? updatingCategory,
     TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult Function(_DeletingCategory value)? deletingCategory,
     TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult Function(_DeletedListCategory value)? deletedListCategory,
     TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
+    TResult Function(_CountedCategory value)? countedCategory,
+    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (createdCategory != null) {
@@ -2817,11 +2356,10 @@ class _$UpdatingCategoryImpl implements _UpdatingCategory {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
+    required TResult Function(List<CategoryEntity> categories, int count)
         successListLoaded,
     required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
+    required TResult Function(CategoryStateError error, CategoryFailure failure)
         error,
     required TResult Function() fetchingCategory,
     required TResult Function() fetchingAllCategory,
@@ -2829,16 +2367,15 @@ class _$UpdatingCategoryImpl implements _UpdatingCategory {
     required TResult Function(CategoryEntity category) createdCategory,
     required TResult Function() updatingCategory,
     required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
+    required TResult Function(List<CategoryEntity> categories)
+        updatedListCategory,
     required TResult Function() deletingCategory,
     required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
+    required TResult Function(List<int> ids) deletedListCategory,
     required TResult Function() countingCategory,
     required TResult Function(int count) countedCategory,
+    required TResult Function() uploadingImageCategory,
+    required TResult Function(String url) uploadedImageCategory,
   }) {
     return updatingCategory();
   }
@@ -2848,27 +2385,24 @@ class _$UpdatingCategoryImpl implements _UpdatingCategory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
+    TResult? Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
+    TResult? Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult? Function()? fetchingCategory,
     TResult? Function()? fetchingAllCategory,
     TResult? Function()? creatingCategory,
     TResult? Function(CategoryEntity category)? createdCategory,
     TResult? Function()? updatingCategory,
     TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
+    TResult? Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult? Function()? deletingCategory,
     TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
+    TResult? Function(List<int> ids)? deletedListCategory,
     TResult? Function()? countingCategory,
     TResult? Function(int count)? countedCategory,
+    TResult? Function()? uploadingImageCategory,
+    TResult? Function(String url)? uploadedImageCategory,
   }) {
     return updatingCategory?.call();
   }
@@ -2878,27 +2412,24 @@ class _$UpdatingCategoryImpl implements _UpdatingCategory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
+    TResult Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
+    TResult Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult Function()? fetchingCategory,
     TResult Function()? fetchingAllCategory,
     TResult Function()? creatingCategory,
     TResult Function(CategoryEntity category)? createdCategory,
     TResult Function()? updatingCategory,
     TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
+    TResult Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult Function()? deletingCategory,
     TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
+    TResult Function(List<int> ids)? deletedListCategory,
     TResult Function()? countingCategory,
     TResult Function(int count)? countedCategory,
+    TResult Function()? uploadingImageCategory,
+    TResult Function(String url)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (updatingCategory != null) {
@@ -2914,7 +2445,6 @@ class _$UpdatingCategoryImpl implements _UpdatingCategory {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCategory value) fetchingCategory,
     required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
@@ -2924,18 +2454,16 @@ class _$UpdatingCategoryImpl implements _UpdatingCategory {
     required TResult Function(_UpdatedSingleCategory value)
         updatedSingleCategory,
     required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
     required TResult Function(_DeletingCategory value) deletingCategory,
     required TResult Function(_DeletedSingleCategory value)
         deletedSingleCategory,
     required TResult Function(_DeletedListCategory value) deletedListCategory,
     required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
+    required TResult Function(_CountedCategory value) countedCategory,
+    required TResult Function(_UploadingImageCategory value)
+        uploadingImageCategory,
+    required TResult Function(_UploadedImageCategory value)
+        uploadedImageCategory,
   }) {
     return updatingCategory(this);
   }
@@ -2947,7 +2475,6 @@ class _$UpdatingCategoryImpl implements _UpdatingCategory {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCategory value)? fetchingCategory,
     TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -2956,15 +2483,13 @@ class _$UpdatingCategoryImpl implements _UpdatingCategory {
     TResult? Function(_UpdatingCategory value)? updatingCategory,
     TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult? Function(_DeletingCategory value)? deletingCategory,
     TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult? Function(_DeletedListCategory value)? deletedListCategory,
     TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
+    TResult? Function(_CountedCategory value)? countedCategory,
+    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
   }) {
     return updatingCategory?.call(this);
   }
@@ -2976,7 +2501,6 @@ class _$UpdatingCategoryImpl implements _UpdatingCategory {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCategory value)? fetchingCategory,
     TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -2985,15 +2509,13 @@ class _$UpdatingCategoryImpl implements _UpdatingCategory {
     TResult Function(_UpdatingCategory value)? updatingCategory,
     TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult Function(_DeletingCategory value)? deletingCategory,
     TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult Function(_DeletedListCategory value)? deletedListCategory,
     TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
+    TResult Function(_CountedCategory value)? countedCategory,
+    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (updatingCategory != null) {
@@ -3015,8 +2537,6 @@ abstract class _$$UpdatedSingleCategoryImplCopyWith<$Res> {
       __$$UpdatedSingleCategoryImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CategoryEntity category});
-
-  $CategoryEntityCopyWith<$Res> get category;
 }
 
 /// @nodoc
@@ -3032,24 +2552,14 @@ class __$$UpdatedSingleCategoryImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? category = null,
+    Object? category = freezed,
   }) {
     return _then(_$UpdatedSingleCategoryImpl(
-      category: null == category
+      category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as CategoryEntity,
     ));
-  }
-
-  /// Create a copy of CategoryState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $CategoryEntityCopyWith<$Res> get category {
-    return $CategoryEntityCopyWith<$Res>(_value.category, (value) {
-      return _then(_value.copyWith(category: value));
-    });
   }
 }
 
@@ -3071,12 +2581,12 @@ class _$UpdatedSingleCategoryImpl implements _UpdatedSingleCategory {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdatedSingleCategoryImpl &&
-            (identical(other.category, category) ||
-                other.category == category));
+            const DeepCollectionEquality().equals(other.category, category));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, category);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(category));
 
   /// Create a copy of CategoryState
   /// with the given fields replaced by the non-null parameter values.
@@ -3092,11 +2602,10 @@ class _$UpdatedSingleCategoryImpl implements _UpdatedSingleCategory {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
+    required TResult Function(List<CategoryEntity> categories, int count)
         successListLoaded,
     required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
+    required TResult Function(CategoryStateError error, CategoryFailure failure)
         error,
     required TResult Function() fetchingCategory,
     required TResult Function() fetchingAllCategory,
@@ -3104,16 +2613,15 @@ class _$UpdatedSingleCategoryImpl implements _UpdatedSingleCategory {
     required TResult Function(CategoryEntity category) createdCategory,
     required TResult Function() updatingCategory,
     required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
+    required TResult Function(List<CategoryEntity> categories)
+        updatedListCategory,
     required TResult Function() deletingCategory,
     required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
+    required TResult Function(List<int> ids) deletedListCategory,
     required TResult Function() countingCategory,
     required TResult Function(int count) countedCategory,
+    required TResult Function() uploadingImageCategory,
+    required TResult Function(String url) uploadedImageCategory,
   }) {
     return updatedSingleCategory(category);
   }
@@ -3123,27 +2631,24 @@ class _$UpdatedSingleCategoryImpl implements _UpdatedSingleCategory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
+    TResult? Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
+    TResult? Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult? Function()? fetchingCategory,
     TResult? Function()? fetchingAllCategory,
     TResult? Function()? creatingCategory,
     TResult? Function(CategoryEntity category)? createdCategory,
     TResult? Function()? updatingCategory,
     TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
+    TResult? Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult? Function()? deletingCategory,
     TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
+    TResult? Function(List<int> ids)? deletedListCategory,
     TResult? Function()? countingCategory,
     TResult? Function(int count)? countedCategory,
+    TResult? Function()? uploadingImageCategory,
+    TResult? Function(String url)? uploadedImageCategory,
   }) {
     return updatedSingleCategory?.call(category);
   }
@@ -3153,27 +2658,24 @@ class _$UpdatedSingleCategoryImpl implements _UpdatedSingleCategory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
+    TResult Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
+    TResult Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult Function()? fetchingCategory,
     TResult Function()? fetchingAllCategory,
     TResult Function()? creatingCategory,
     TResult Function(CategoryEntity category)? createdCategory,
     TResult Function()? updatingCategory,
     TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
+    TResult Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult Function()? deletingCategory,
     TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
+    TResult Function(List<int> ids)? deletedListCategory,
     TResult Function()? countingCategory,
     TResult Function(int count)? countedCategory,
+    TResult Function()? uploadingImageCategory,
+    TResult Function(String url)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (updatedSingleCategory != null) {
@@ -3189,7 +2691,6 @@ class _$UpdatedSingleCategoryImpl implements _UpdatedSingleCategory {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCategory value) fetchingCategory,
     required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
@@ -3199,18 +2700,16 @@ class _$UpdatedSingleCategoryImpl implements _UpdatedSingleCategory {
     required TResult Function(_UpdatedSingleCategory value)
         updatedSingleCategory,
     required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
     required TResult Function(_DeletingCategory value) deletingCategory,
     required TResult Function(_DeletedSingleCategory value)
         deletedSingleCategory,
     required TResult Function(_DeletedListCategory value) deletedListCategory,
     required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
+    required TResult Function(_CountedCategory value) countedCategory,
+    required TResult Function(_UploadingImageCategory value)
+        uploadingImageCategory,
+    required TResult Function(_UploadedImageCategory value)
+        uploadedImageCategory,
   }) {
     return updatedSingleCategory(this);
   }
@@ -3222,7 +2721,6 @@ class _$UpdatedSingleCategoryImpl implements _UpdatedSingleCategory {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCategory value)? fetchingCategory,
     TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -3231,15 +2729,13 @@ class _$UpdatedSingleCategoryImpl implements _UpdatedSingleCategory {
     TResult? Function(_UpdatingCategory value)? updatingCategory,
     TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult? Function(_DeletingCategory value)? deletingCategory,
     TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult? Function(_DeletedListCategory value)? deletedListCategory,
     TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
+    TResult? Function(_CountedCategory value)? countedCategory,
+    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
   }) {
     return updatedSingleCategory?.call(this);
   }
@@ -3251,7 +2747,6 @@ class _$UpdatedSingleCategoryImpl implements _UpdatedSingleCategory {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCategory value)? fetchingCategory,
     TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -3260,15 +2755,13 @@ class _$UpdatedSingleCategoryImpl implements _UpdatedSingleCategory {
     TResult Function(_UpdatingCategory value)? updatingCategory,
     TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult Function(_DeletingCategory value)? deletingCategory,
     TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult Function(_DeletedListCategory value)? deletedListCategory,
     TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
+    TResult Function(_CountedCategory value)? countedCategory,
+    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (updatedSingleCategory != null) {
@@ -3297,9 +2790,7 @@ abstract class _$$UpdatedListCategoryImplCopyWith<$Res> {
           $Res Function(_$UpdatedListCategoryImpl) then) =
       __$$UpdatedListCategoryImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({CategoryEntity category});
-
-  $CategoryEntityCopyWith<$Res> get category;
+  $Res call({List<CategoryEntity> categories});
 }
 
 /// @nodoc
@@ -3315,38 +2806,35 @@ class __$$UpdatedListCategoryImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? category = null,
+    Object? categories = null,
   }) {
     return _then(_$UpdatedListCategoryImpl(
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as CategoryEntity,
+      categories: null == categories
+          ? _value._categories
+          : categories // ignore: cast_nullable_to_non_nullable
+              as List<CategoryEntity>,
     ));
-  }
-
-  /// Create a copy of CategoryState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $CategoryEntityCopyWith<$Res> get category {
-    return $CategoryEntityCopyWith<$Res>(_value.category, (value) {
-      return _then(_value.copyWith(category: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$UpdatedListCategoryImpl implements _UpdatedListCategory {
-  const _$UpdatedListCategoryImpl({required this.category});
+  const _$UpdatedListCategoryImpl(
+      {required final List<CategoryEntity> categories})
+      : _categories = categories;
 
+  final List<CategoryEntity> _categories;
   @override
-  final CategoryEntity category;
+  List<CategoryEntity> get categories {
+    if (_categories is EqualUnmodifiableListView) return _categories;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_categories);
+  }
 
   @override
   String toString() {
-    return 'CategoryState.updatedListCategory(category: $category)';
+    return 'CategoryState.updatedListCategory(categories: $categories)';
   }
 
   @override
@@ -3354,12 +2842,13 @@ class _$UpdatedListCategoryImpl implements _UpdatedListCategory {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdatedListCategoryImpl &&
-            (identical(other.category, category) ||
-                other.category == category));
+            const DeepCollectionEquality()
+                .equals(other._categories, _categories));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, category);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_categories));
 
   /// Create a copy of CategoryState
   /// with the given fields replaced by the non-null parameter values.
@@ -3375,11 +2864,10 @@ class _$UpdatedListCategoryImpl implements _UpdatedListCategory {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
+    required TResult Function(List<CategoryEntity> categories, int count)
         successListLoaded,
     required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
+    required TResult Function(CategoryStateError error, CategoryFailure failure)
         error,
     required TResult Function() fetchingCategory,
     required TResult Function() fetchingAllCategory,
@@ -3387,18 +2875,17 @@ class _$UpdatedListCategoryImpl implements _UpdatedListCategory {
     required TResult Function(CategoryEntity category) createdCategory,
     required TResult Function() updatingCategory,
     required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
+    required TResult Function(List<CategoryEntity> categories)
+        updatedListCategory,
     required TResult Function() deletingCategory,
     required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
+    required TResult Function(List<int> ids) deletedListCategory,
     required TResult Function() countingCategory,
     required TResult Function(int count) countedCategory,
+    required TResult Function() uploadingImageCategory,
+    required TResult Function(String url) uploadedImageCategory,
   }) {
-    return updatedListCategory(category);
+    return updatedListCategory(categories);
   }
 
   @override
@@ -3406,29 +2893,26 @@ class _$UpdatedListCategoryImpl implements _UpdatedListCategory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
+    TResult? Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
+    TResult? Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult? Function()? fetchingCategory,
     TResult? Function()? fetchingAllCategory,
     TResult? Function()? creatingCategory,
     TResult? Function(CategoryEntity category)? createdCategory,
     TResult? Function()? updatingCategory,
     TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
+    TResult? Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult? Function()? deletingCategory,
     TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
+    TResult? Function(List<int> ids)? deletedListCategory,
     TResult? Function()? countingCategory,
     TResult? Function(int count)? countedCategory,
+    TResult? Function()? uploadingImageCategory,
+    TResult? Function(String url)? uploadedImageCategory,
   }) {
-    return updatedListCategory?.call(category);
+    return updatedListCategory?.call(categories);
   }
 
   @override
@@ -3436,31 +2920,28 @@ class _$UpdatedListCategoryImpl implements _UpdatedListCategory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
+    TResult Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
+    TResult Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult Function()? fetchingCategory,
     TResult Function()? fetchingAllCategory,
     TResult Function()? creatingCategory,
     TResult Function(CategoryEntity category)? createdCategory,
     TResult Function()? updatingCategory,
     TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
+    TResult Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult Function()? deletingCategory,
     TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
+    TResult Function(List<int> ids)? deletedListCategory,
     TResult Function()? countingCategory,
     TResult Function(int count)? countedCategory,
+    TResult Function()? uploadingImageCategory,
+    TResult Function(String url)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (updatedListCategory != null) {
-      return updatedListCategory(category);
+      return updatedListCategory(categories);
     }
     return orElse();
   }
@@ -3472,7 +2953,6 @@ class _$UpdatedListCategoryImpl implements _UpdatedListCategory {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCategory value) fetchingCategory,
     required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
@@ -3482,18 +2962,16 @@ class _$UpdatedListCategoryImpl implements _UpdatedListCategory {
     required TResult Function(_UpdatedSingleCategory value)
         updatedSingleCategory,
     required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
     required TResult Function(_DeletingCategory value) deletingCategory,
     required TResult Function(_DeletedSingleCategory value)
         deletedSingleCategory,
     required TResult Function(_DeletedListCategory value) deletedListCategory,
     required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
+    required TResult Function(_CountedCategory value) countedCategory,
+    required TResult Function(_UploadingImageCategory value)
+        uploadingImageCategory,
+    required TResult Function(_UploadedImageCategory value)
+        uploadedImageCategory,
   }) {
     return updatedListCategory(this);
   }
@@ -3505,7 +2983,6 @@ class _$UpdatedListCategoryImpl implements _UpdatedListCategory {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCategory value)? fetchingCategory,
     TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -3514,15 +2991,13 @@ class _$UpdatedListCategoryImpl implements _UpdatedListCategory {
     TResult? Function(_UpdatingCategory value)? updatingCategory,
     TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult? Function(_DeletingCategory value)? deletingCategory,
     TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult? Function(_DeletedListCategory value)? deletedListCategory,
     TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
+    TResult? Function(_CountedCategory value)? countedCategory,
+    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
   }) {
     return updatedListCategory?.call(this);
   }
@@ -3534,7 +3009,6 @@ class _$UpdatedListCategoryImpl implements _UpdatedListCategory {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCategory value)? fetchingCategory,
     TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -3543,15 +3017,13 @@ class _$UpdatedListCategoryImpl implements _UpdatedListCategory {
     TResult Function(_UpdatingCategory value)? updatingCategory,
     TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult Function(_DeletingCategory value)? deletingCategory,
     TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult Function(_DeletedListCategory value)? deletedListCategory,
     TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
+    TResult Function(_CountedCategory value)? countedCategory,
+    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (updatedListCategory != null) {
@@ -3562,1028 +3034,17 @@ class _$UpdatedListCategoryImpl implements _UpdatedListCategory {
 }
 
 abstract class _UpdatedListCategory implements CategoryState {
-  const factory _UpdatedListCategory({required final CategoryEntity category}) =
+  const factory _UpdatedListCategory(
+          {required final List<CategoryEntity> categories}) =
       _$UpdatedListCategoryImpl;
 
-  CategoryEntity get category;
+  List<CategoryEntity> get categories;
 
   /// Create a copy of CategoryState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdatedListCategoryImplCopyWith<_$UpdatedListCategoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$UploadingImageCategoryImplCopyWith<$Res> {
-  factory _$$UploadingImageCategoryImplCopyWith(
-          _$UploadingImageCategoryImpl value,
-          $Res Function(_$UploadingImageCategoryImpl) then) =
-      __$$UploadingImageCategoryImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$UploadingImageCategoryImplCopyWithImpl<$Res>
-    extends _$CategoryStateCopyWithImpl<$Res, _$UploadingImageCategoryImpl>
-    implements _$$UploadingImageCategoryImplCopyWith<$Res> {
-  __$$UploadingImageCategoryImplCopyWithImpl(
-      _$UploadingImageCategoryImpl _value,
-      $Res Function(_$UploadingImageCategoryImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of CategoryState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$UploadingImageCategoryImpl implements _UploadingImageCategory {
-  const _$UploadingImageCategoryImpl();
-
-  @override
-  String toString() {
-    return 'CategoryState.uploadingImageCategory()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UploadingImageCategoryImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
-        successListLoaded,
-    required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
-        error,
-    required TResult Function() fetchingCategory,
-    required TResult Function() fetchingAllCategory,
-    required TResult Function() creatingCategory,
-    required TResult Function(CategoryEntity category) createdCategory,
-    required TResult Function() updatingCategory,
-    required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
-    required TResult Function() deletingCategory,
-    required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
-    required TResult Function() countingCategory,
-    required TResult Function(int count) countedCategory,
-  }) {
-    return uploadingImageCategory();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
-        successListLoaded,
-    TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
-    TResult? Function()? fetchingCategory,
-    TResult? Function()? fetchingAllCategory,
-    TResult? Function()? creatingCategory,
-    TResult? Function(CategoryEntity category)? createdCategory,
-    TResult? Function()? updatingCategory,
-    TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
-    TResult? Function()? deletingCategory,
-    TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
-    TResult? Function()? countingCategory,
-    TResult? Function(int count)? countedCategory,
-  }) {
-    return uploadingImageCategory?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
-        successListLoaded,
-    TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
-    TResult Function()? fetchingCategory,
-    TResult Function()? fetchingAllCategory,
-    TResult Function()? creatingCategory,
-    TResult Function(CategoryEntity category)? createdCategory,
-    TResult Function()? updatingCategory,
-    TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
-    TResult Function()? deletingCategory,
-    TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
-    TResult Function()? countingCategory,
-    TResult Function(int count)? countedCategory,
-    required TResult orElse(),
-  }) {
-    if (uploadingImageCategory != null) {
-      return uploadingImageCategory();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_SuccessListLoaded value) successListLoaded,
-    required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
-    required TResult Function(_Error value) error,
-    required TResult Function(_FetchingCategory value) fetchingCategory,
-    required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
-    required TResult Function(_CreatingCategory value) creatingCategory,
-    required TResult Function(_CreatedCategory value) createdCategory,
-    required TResult Function(_UpdatingCategory value) updatingCategory,
-    required TResult Function(_UpdatedSingleCategory value)
-        updatedSingleCategory,
-    required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
-    required TResult Function(_DeletingCategory value) deletingCategory,
-    required TResult Function(_DeletedSingleCategory value)
-        deletedSingleCategory,
-    required TResult Function(_DeletedListCategory value) deletedListCategory,
-    required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
-  }) {
-    return uploadingImageCategory(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_SuccessListLoaded value)? successListLoaded,
-    TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_FetchingCategory value)? fetchingCategory,
-    TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
-    TResult? Function(_CreatingCategory value)? creatingCategory,
-    TResult? Function(_CreatedCategory value)? createdCategory,
-    TResult? Function(_UpdatingCategory value)? updatingCategory,
-    TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
-    TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
-    TResult? Function(_DeletingCategory value)? deletingCategory,
-    TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
-    TResult? Function(_DeletedListCategory value)? deletedListCategory,
-    TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
-  }) {
-    return uploadingImageCategory?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_SuccessListLoaded value)? successListLoaded,
-    TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
-    TResult Function(_Error value)? error,
-    TResult Function(_FetchingCategory value)? fetchingCategory,
-    TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
-    TResult Function(_CreatingCategory value)? creatingCategory,
-    TResult Function(_CreatedCategory value)? createdCategory,
-    TResult Function(_UpdatingCategory value)? updatingCategory,
-    TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
-    TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
-    TResult Function(_DeletingCategory value)? deletingCategory,
-    TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
-    TResult Function(_DeletedListCategory value)? deletedListCategory,
-    TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
-    required TResult orElse(),
-  }) {
-    if (uploadingImageCategory != null) {
-      return uploadingImageCategory(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UploadingImageCategory implements CategoryState {
-  const factory _UploadingImageCategory() = _$UploadingImageCategoryImpl;
-}
-
-/// @nodoc
-abstract class _$$UploadedImageCategoryImplCopyWith<$Res> {
-  factory _$$UploadedImageCategoryImplCopyWith(
-          _$UploadedImageCategoryImpl value,
-          $Res Function(_$UploadedImageCategoryImpl) then) =
-      __$$UploadedImageCategoryImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String path});
-}
-
-/// @nodoc
-class __$$UploadedImageCategoryImplCopyWithImpl<$Res>
-    extends _$CategoryStateCopyWithImpl<$Res, _$UploadedImageCategoryImpl>
-    implements _$$UploadedImageCategoryImplCopyWith<$Res> {
-  __$$UploadedImageCategoryImplCopyWithImpl(_$UploadedImageCategoryImpl _value,
-      $Res Function(_$UploadedImageCategoryImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of CategoryState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? path = null,
-  }) {
-    return _then(_$UploadedImageCategoryImpl(
-      path: null == path
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$UploadedImageCategoryImpl implements _UploadedImageCategory {
-  const _$UploadedImageCategoryImpl({required this.path});
-
-  @override
-  final String path;
-
-  @override
-  String toString() {
-    return 'CategoryState.uploadedImageCategory(path: $path)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UploadedImageCategoryImpl &&
-            (identical(other.path, path) || other.path == path));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, path);
-
-  /// Create a copy of CategoryState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UploadedImageCategoryImplCopyWith<_$UploadedImageCategoryImpl>
-      get copyWith => __$$UploadedImageCategoryImplCopyWithImpl<
-          _$UploadedImageCategoryImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
-        successListLoaded,
-    required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
-        error,
-    required TResult Function() fetchingCategory,
-    required TResult Function() fetchingAllCategory,
-    required TResult Function() creatingCategory,
-    required TResult Function(CategoryEntity category) createdCategory,
-    required TResult Function() updatingCategory,
-    required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
-    required TResult Function() deletingCategory,
-    required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
-    required TResult Function() countingCategory,
-    required TResult Function(int count) countedCategory,
-  }) {
-    return uploadedImageCategory(path);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
-        successListLoaded,
-    TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
-    TResult? Function()? fetchingCategory,
-    TResult? Function()? fetchingAllCategory,
-    TResult? Function()? creatingCategory,
-    TResult? Function(CategoryEntity category)? createdCategory,
-    TResult? Function()? updatingCategory,
-    TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
-    TResult? Function()? deletingCategory,
-    TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
-    TResult? Function()? countingCategory,
-    TResult? Function(int count)? countedCategory,
-  }) {
-    return uploadedImageCategory?.call(path);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
-        successListLoaded,
-    TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
-    TResult Function()? fetchingCategory,
-    TResult Function()? fetchingAllCategory,
-    TResult Function()? creatingCategory,
-    TResult Function(CategoryEntity category)? createdCategory,
-    TResult Function()? updatingCategory,
-    TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
-    TResult Function()? deletingCategory,
-    TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
-    TResult Function()? countingCategory,
-    TResult Function(int count)? countedCategory,
-    required TResult orElse(),
-  }) {
-    if (uploadedImageCategory != null) {
-      return uploadedImageCategory(path);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_SuccessListLoaded value) successListLoaded,
-    required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
-    required TResult Function(_Error value) error,
-    required TResult Function(_FetchingCategory value) fetchingCategory,
-    required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
-    required TResult Function(_CreatingCategory value) creatingCategory,
-    required TResult Function(_CreatedCategory value) createdCategory,
-    required TResult Function(_UpdatingCategory value) updatingCategory,
-    required TResult Function(_UpdatedSingleCategory value)
-        updatedSingleCategory,
-    required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
-    required TResult Function(_DeletingCategory value) deletingCategory,
-    required TResult Function(_DeletedSingleCategory value)
-        deletedSingleCategory,
-    required TResult Function(_DeletedListCategory value) deletedListCategory,
-    required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
-  }) {
-    return uploadedImageCategory(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_SuccessListLoaded value)? successListLoaded,
-    TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_FetchingCategory value)? fetchingCategory,
-    TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
-    TResult? Function(_CreatingCategory value)? creatingCategory,
-    TResult? Function(_CreatedCategory value)? createdCategory,
-    TResult? Function(_UpdatingCategory value)? updatingCategory,
-    TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
-    TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
-    TResult? Function(_DeletingCategory value)? deletingCategory,
-    TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
-    TResult? Function(_DeletedListCategory value)? deletedListCategory,
-    TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
-  }) {
-    return uploadedImageCategory?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_SuccessListLoaded value)? successListLoaded,
-    TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
-    TResult Function(_Error value)? error,
-    TResult Function(_FetchingCategory value)? fetchingCategory,
-    TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
-    TResult Function(_CreatingCategory value)? creatingCategory,
-    TResult Function(_CreatedCategory value)? createdCategory,
-    TResult Function(_UpdatingCategory value)? updatingCategory,
-    TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
-    TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
-    TResult Function(_DeletingCategory value)? deletingCategory,
-    TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
-    TResult Function(_DeletedListCategory value)? deletedListCategory,
-    TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
-    required TResult orElse(),
-  }) {
-    if (uploadedImageCategory != null) {
-      return uploadedImageCategory(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UploadedImageCategory implements CategoryState {
-  const factory _UploadedImageCategory({required final String path}) =
-      _$UploadedImageCategoryImpl;
-
-  String get path;
-
-  /// Create a copy of CategoryState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UploadedImageCategoryImplCopyWith<_$UploadedImageCategoryImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$UpdateImageCategoryImplCopyWith<$Res> {
-  factory _$$UpdateImageCategoryImplCopyWith(_$UpdateImageCategoryImpl value,
-          $Res Function(_$UpdateImageCategoryImpl) then) =
-      __$$UpdateImageCategoryImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$UpdateImageCategoryImplCopyWithImpl<$Res>
-    extends _$CategoryStateCopyWithImpl<$Res, _$UpdateImageCategoryImpl>
-    implements _$$UpdateImageCategoryImplCopyWith<$Res> {
-  __$$UpdateImageCategoryImplCopyWithImpl(_$UpdateImageCategoryImpl _value,
-      $Res Function(_$UpdateImageCategoryImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of CategoryState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$UpdateImageCategoryImpl implements _UpdateImageCategory {
-  const _$UpdateImageCategoryImpl();
-
-  @override
-  String toString() {
-    return 'CategoryState.updateImageCategory()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdateImageCategoryImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
-        successListLoaded,
-    required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
-        error,
-    required TResult Function() fetchingCategory,
-    required TResult Function() fetchingAllCategory,
-    required TResult Function() creatingCategory,
-    required TResult Function(CategoryEntity category) createdCategory,
-    required TResult Function() updatingCategory,
-    required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
-    required TResult Function() deletingCategory,
-    required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
-    required TResult Function() countingCategory,
-    required TResult Function(int count) countedCategory,
-  }) {
-    return updateImageCategory();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
-        successListLoaded,
-    TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
-    TResult? Function()? fetchingCategory,
-    TResult? Function()? fetchingAllCategory,
-    TResult? Function()? creatingCategory,
-    TResult? Function(CategoryEntity category)? createdCategory,
-    TResult? Function()? updatingCategory,
-    TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
-    TResult? Function()? deletingCategory,
-    TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
-    TResult? Function()? countingCategory,
-    TResult? Function(int count)? countedCategory,
-  }) {
-    return updateImageCategory?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
-        successListLoaded,
-    TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
-    TResult Function()? fetchingCategory,
-    TResult Function()? fetchingAllCategory,
-    TResult Function()? creatingCategory,
-    TResult Function(CategoryEntity category)? createdCategory,
-    TResult Function()? updatingCategory,
-    TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
-    TResult Function()? deletingCategory,
-    TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
-    TResult Function()? countingCategory,
-    TResult Function(int count)? countedCategory,
-    required TResult orElse(),
-  }) {
-    if (updateImageCategory != null) {
-      return updateImageCategory();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_SuccessListLoaded value) successListLoaded,
-    required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
-    required TResult Function(_Error value) error,
-    required TResult Function(_FetchingCategory value) fetchingCategory,
-    required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
-    required TResult Function(_CreatingCategory value) creatingCategory,
-    required TResult Function(_CreatedCategory value) createdCategory,
-    required TResult Function(_UpdatingCategory value) updatingCategory,
-    required TResult Function(_UpdatedSingleCategory value)
-        updatedSingleCategory,
-    required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
-    required TResult Function(_DeletingCategory value) deletingCategory,
-    required TResult Function(_DeletedSingleCategory value)
-        deletedSingleCategory,
-    required TResult Function(_DeletedListCategory value) deletedListCategory,
-    required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
-  }) {
-    return updateImageCategory(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_SuccessListLoaded value)? successListLoaded,
-    TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_FetchingCategory value)? fetchingCategory,
-    TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
-    TResult? Function(_CreatingCategory value)? creatingCategory,
-    TResult? Function(_CreatedCategory value)? createdCategory,
-    TResult? Function(_UpdatingCategory value)? updatingCategory,
-    TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
-    TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
-    TResult? Function(_DeletingCategory value)? deletingCategory,
-    TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
-    TResult? Function(_DeletedListCategory value)? deletedListCategory,
-    TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
-  }) {
-    return updateImageCategory?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_SuccessListLoaded value)? successListLoaded,
-    TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
-    TResult Function(_Error value)? error,
-    TResult Function(_FetchingCategory value)? fetchingCategory,
-    TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
-    TResult Function(_CreatingCategory value)? creatingCategory,
-    TResult Function(_CreatedCategory value)? createdCategory,
-    TResult Function(_UpdatingCategory value)? updatingCategory,
-    TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
-    TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
-    TResult Function(_DeletingCategory value)? deletingCategory,
-    TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
-    TResult Function(_DeletedListCategory value)? deletedListCategory,
-    TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
-    required TResult orElse(),
-  }) {
-    if (updateImageCategory != null) {
-      return updateImageCategory(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UpdateImageCategory implements CategoryState {
-  const factory _UpdateImageCategory() = _$UpdateImageCategoryImpl;
-}
-
-/// @nodoc
-abstract class _$$UpdatedImageCategoryImplCopyWith<$Res> {
-  factory _$$UpdatedImageCategoryImplCopyWith(_$UpdatedImageCategoryImpl value,
-          $Res Function(_$UpdatedImageCategoryImpl) then) =
-      __$$UpdatedImageCategoryImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String path});
-}
-
-/// @nodoc
-class __$$UpdatedImageCategoryImplCopyWithImpl<$Res>
-    extends _$CategoryStateCopyWithImpl<$Res, _$UpdatedImageCategoryImpl>
-    implements _$$UpdatedImageCategoryImplCopyWith<$Res> {
-  __$$UpdatedImageCategoryImplCopyWithImpl(_$UpdatedImageCategoryImpl _value,
-      $Res Function(_$UpdatedImageCategoryImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of CategoryState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? path = null,
-  }) {
-    return _then(_$UpdatedImageCategoryImpl(
-      path: null == path
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$UpdatedImageCategoryImpl implements _UpdatedImageCategory {
-  const _$UpdatedImageCategoryImpl({required this.path});
-
-  @override
-  final String path;
-
-  @override
-  String toString() {
-    return 'CategoryState.updatedImageCategory(path: $path)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdatedImageCategoryImpl &&
-            (identical(other.path, path) || other.path == path));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, path);
-
-  /// Create a copy of CategoryState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdatedImageCategoryImplCopyWith<_$UpdatedImageCategoryImpl>
-      get copyWith =>
-          __$$UpdatedImageCategoryImplCopyWithImpl<_$UpdatedImageCategoryImpl>(
-              this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
-        successListLoaded,
-    required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
-        error,
-    required TResult Function() fetchingCategory,
-    required TResult Function() fetchingAllCategory,
-    required TResult Function() creatingCategory,
-    required TResult Function(CategoryEntity category) createdCategory,
-    required TResult Function() updatingCategory,
-    required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
-    required TResult Function() deletingCategory,
-    required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
-    required TResult Function() countingCategory,
-    required TResult Function(int count) countedCategory,
-  }) {
-    return updatedImageCategory(path);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
-        successListLoaded,
-    TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
-    TResult? Function()? fetchingCategory,
-    TResult? Function()? fetchingAllCategory,
-    TResult? Function()? creatingCategory,
-    TResult? Function(CategoryEntity category)? createdCategory,
-    TResult? Function()? updatingCategory,
-    TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
-    TResult? Function()? deletingCategory,
-    TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
-    TResult? Function()? countingCategory,
-    TResult? Function(int count)? countedCategory,
-  }) {
-    return updatedImageCategory?.call(path);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
-        successListLoaded,
-    TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
-    TResult Function()? fetchingCategory,
-    TResult Function()? fetchingAllCategory,
-    TResult Function()? creatingCategory,
-    TResult Function(CategoryEntity category)? createdCategory,
-    TResult Function()? updatingCategory,
-    TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
-    TResult Function()? deletingCategory,
-    TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
-    TResult Function()? countingCategory,
-    TResult Function(int count)? countedCategory,
-    required TResult orElse(),
-  }) {
-    if (updatedImageCategory != null) {
-      return updatedImageCategory(path);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_SuccessListLoaded value) successListLoaded,
-    required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
-    required TResult Function(_Error value) error,
-    required TResult Function(_FetchingCategory value) fetchingCategory,
-    required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
-    required TResult Function(_CreatingCategory value) creatingCategory,
-    required TResult Function(_CreatedCategory value) createdCategory,
-    required TResult Function(_UpdatingCategory value) updatingCategory,
-    required TResult Function(_UpdatedSingleCategory value)
-        updatedSingleCategory,
-    required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
-    required TResult Function(_DeletingCategory value) deletingCategory,
-    required TResult Function(_DeletedSingleCategory value)
-        deletedSingleCategory,
-    required TResult Function(_DeletedListCategory value) deletedListCategory,
-    required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
-  }) {
-    return updatedImageCategory(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_SuccessListLoaded value)? successListLoaded,
-    TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_FetchingCategory value)? fetchingCategory,
-    TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
-    TResult? Function(_CreatingCategory value)? creatingCategory,
-    TResult? Function(_CreatedCategory value)? createdCategory,
-    TResult? Function(_UpdatingCategory value)? updatingCategory,
-    TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
-    TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
-    TResult? Function(_DeletingCategory value)? deletingCategory,
-    TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
-    TResult? Function(_DeletedListCategory value)? deletedListCategory,
-    TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
-  }) {
-    return updatedImageCategory?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_SuccessListLoaded value)? successListLoaded,
-    TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
-    TResult Function(_Error value)? error,
-    TResult Function(_FetchingCategory value)? fetchingCategory,
-    TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
-    TResult Function(_CreatingCategory value)? creatingCategory,
-    TResult Function(_CreatedCategory value)? createdCategory,
-    TResult Function(_UpdatingCategory value)? updatingCategory,
-    TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
-    TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
-    TResult Function(_DeletingCategory value)? deletingCategory,
-    TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
-    TResult Function(_DeletedListCategory value)? deletedListCategory,
-    TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
-    required TResult orElse(),
-  }) {
-    if (updatedImageCategory != null) {
-      return updatedImageCategory(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UpdatedImageCategory implements CategoryState {
-  const factory _UpdatedImageCategory({required final String path}) =
-      _$UpdatedImageCategoryImpl;
-
-  String get path;
-
-  /// Create a copy of CategoryState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdatedImageCategoryImplCopyWith<_$UpdatedImageCategoryImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -4629,11 +3090,10 @@ class _$DeletingCategoryImpl implements _DeletingCategory {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
+    required TResult Function(List<CategoryEntity> categories, int count)
         successListLoaded,
     required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
+    required TResult Function(CategoryStateError error, CategoryFailure failure)
         error,
     required TResult Function() fetchingCategory,
     required TResult Function() fetchingAllCategory,
@@ -4641,16 +3101,15 @@ class _$DeletingCategoryImpl implements _DeletingCategory {
     required TResult Function(CategoryEntity category) createdCategory,
     required TResult Function() updatingCategory,
     required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
+    required TResult Function(List<CategoryEntity> categories)
+        updatedListCategory,
     required TResult Function() deletingCategory,
     required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
+    required TResult Function(List<int> ids) deletedListCategory,
     required TResult Function() countingCategory,
     required TResult Function(int count) countedCategory,
+    required TResult Function() uploadingImageCategory,
+    required TResult Function(String url) uploadedImageCategory,
   }) {
     return deletingCategory();
   }
@@ -4660,27 +3119,24 @@ class _$DeletingCategoryImpl implements _DeletingCategory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
+    TResult? Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
+    TResult? Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult? Function()? fetchingCategory,
     TResult? Function()? fetchingAllCategory,
     TResult? Function()? creatingCategory,
     TResult? Function(CategoryEntity category)? createdCategory,
     TResult? Function()? updatingCategory,
     TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
+    TResult? Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult? Function()? deletingCategory,
     TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
+    TResult? Function(List<int> ids)? deletedListCategory,
     TResult? Function()? countingCategory,
     TResult? Function(int count)? countedCategory,
+    TResult? Function()? uploadingImageCategory,
+    TResult? Function(String url)? uploadedImageCategory,
   }) {
     return deletingCategory?.call();
   }
@@ -4690,27 +3146,24 @@ class _$DeletingCategoryImpl implements _DeletingCategory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
+    TResult Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
+    TResult Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult Function()? fetchingCategory,
     TResult Function()? fetchingAllCategory,
     TResult Function()? creatingCategory,
     TResult Function(CategoryEntity category)? createdCategory,
     TResult Function()? updatingCategory,
     TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
+    TResult Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult Function()? deletingCategory,
     TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
+    TResult Function(List<int> ids)? deletedListCategory,
     TResult Function()? countingCategory,
     TResult Function(int count)? countedCategory,
+    TResult Function()? uploadingImageCategory,
+    TResult Function(String url)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (deletingCategory != null) {
@@ -4726,7 +3179,6 @@ class _$DeletingCategoryImpl implements _DeletingCategory {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCategory value) fetchingCategory,
     required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
@@ -4736,18 +3188,16 @@ class _$DeletingCategoryImpl implements _DeletingCategory {
     required TResult Function(_UpdatedSingleCategory value)
         updatedSingleCategory,
     required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
     required TResult Function(_DeletingCategory value) deletingCategory,
     required TResult Function(_DeletedSingleCategory value)
         deletedSingleCategory,
     required TResult Function(_DeletedListCategory value) deletedListCategory,
     required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
+    required TResult Function(_CountedCategory value) countedCategory,
+    required TResult Function(_UploadingImageCategory value)
+        uploadingImageCategory,
+    required TResult Function(_UploadedImageCategory value)
+        uploadedImageCategory,
   }) {
     return deletingCategory(this);
   }
@@ -4759,7 +3209,6 @@ class _$DeletingCategoryImpl implements _DeletingCategory {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCategory value)? fetchingCategory,
     TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -4768,15 +3217,13 @@ class _$DeletingCategoryImpl implements _DeletingCategory {
     TResult? Function(_UpdatingCategory value)? updatingCategory,
     TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult? Function(_DeletingCategory value)? deletingCategory,
     TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult? Function(_DeletedListCategory value)? deletedListCategory,
     TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
+    TResult? Function(_CountedCategory value)? countedCategory,
+    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
   }) {
     return deletingCategory?.call(this);
   }
@@ -4788,7 +3235,6 @@ class _$DeletingCategoryImpl implements _DeletingCategory {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCategory value)? fetchingCategory,
     TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -4797,15 +3243,13 @@ class _$DeletingCategoryImpl implements _DeletingCategory {
     TResult Function(_UpdatingCategory value)? updatingCategory,
     TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult Function(_DeletingCategory value)? deletingCategory,
     TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult Function(_DeletedListCategory value)? deletedListCategory,
     TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
+    TResult Function(_CountedCategory value)? countedCategory,
+    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (deletingCategory != null) {
@@ -4891,11 +3335,10 @@ class _$DeletedSingleCategoryImpl implements _DeletedSingleCategory {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
+    required TResult Function(List<CategoryEntity> categories, int count)
         successListLoaded,
     required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
+    required TResult Function(CategoryStateError error, CategoryFailure failure)
         error,
     required TResult Function() fetchingCategory,
     required TResult Function() fetchingAllCategory,
@@ -4903,16 +3346,15 @@ class _$DeletedSingleCategoryImpl implements _DeletedSingleCategory {
     required TResult Function(CategoryEntity category) createdCategory,
     required TResult Function() updatingCategory,
     required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
+    required TResult Function(List<CategoryEntity> categories)
+        updatedListCategory,
     required TResult Function() deletingCategory,
     required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
+    required TResult Function(List<int> ids) deletedListCategory,
     required TResult Function() countingCategory,
     required TResult Function(int count) countedCategory,
+    required TResult Function() uploadingImageCategory,
+    required TResult Function(String url) uploadedImageCategory,
   }) {
     return deletedSingleCategory(id);
   }
@@ -4922,27 +3364,24 @@ class _$DeletedSingleCategoryImpl implements _DeletedSingleCategory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
+    TResult? Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
+    TResult? Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult? Function()? fetchingCategory,
     TResult? Function()? fetchingAllCategory,
     TResult? Function()? creatingCategory,
     TResult? Function(CategoryEntity category)? createdCategory,
     TResult? Function()? updatingCategory,
     TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
+    TResult? Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult? Function()? deletingCategory,
     TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
+    TResult? Function(List<int> ids)? deletedListCategory,
     TResult? Function()? countingCategory,
     TResult? Function(int count)? countedCategory,
+    TResult? Function()? uploadingImageCategory,
+    TResult? Function(String url)? uploadedImageCategory,
   }) {
     return deletedSingleCategory?.call(id);
   }
@@ -4952,27 +3391,24 @@ class _$DeletedSingleCategoryImpl implements _DeletedSingleCategory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
+    TResult Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
+    TResult Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult Function()? fetchingCategory,
     TResult Function()? fetchingAllCategory,
     TResult Function()? creatingCategory,
     TResult Function(CategoryEntity category)? createdCategory,
     TResult Function()? updatingCategory,
     TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
+    TResult Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult Function()? deletingCategory,
     TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
+    TResult Function(List<int> ids)? deletedListCategory,
     TResult Function()? countingCategory,
     TResult Function(int count)? countedCategory,
+    TResult Function()? uploadingImageCategory,
+    TResult Function(String url)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (deletedSingleCategory != null) {
@@ -4988,7 +3424,6 @@ class _$DeletedSingleCategoryImpl implements _DeletedSingleCategory {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCategory value) fetchingCategory,
     required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
@@ -4998,18 +3433,16 @@ class _$DeletedSingleCategoryImpl implements _DeletedSingleCategory {
     required TResult Function(_UpdatedSingleCategory value)
         updatedSingleCategory,
     required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
     required TResult Function(_DeletingCategory value) deletingCategory,
     required TResult Function(_DeletedSingleCategory value)
         deletedSingleCategory,
     required TResult Function(_DeletedListCategory value) deletedListCategory,
     required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
+    required TResult Function(_CountedCategory value) countedCategory,
+    required TResult Function(_UploadingImageCategory value)
+        uploadingImageCategory,
+    required TResult Function(_UploadedImageCategory value)
+        uploadedImageCategory,
   }) {
     return deletedSingleCategory(this);
   }
@@ -5021,7 +3454,6 @@ class _$DeletedSingleCategoryImpl implements _DeletedSingleCategory {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCategory value)? fetchingCategory,
     TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -5030,15 +3462,13 @@ class _$DeletedSingleCategoryImpl implements _DeletedSingleCategory {
     TResult? Function(_UpdatingCategory value)? updatingCategory,
     TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult? Function(_DeletingCategory value)? deletingCategory,
     TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult? Function(_DeletedListCategory value)? deletedListCategory,
     TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
+    TResult? Function(_CountedCategory value)? countedCategory,
+    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
   }) {
     return deletedSingleCategory?.call(this);
   }
@@ -5050,7 +3480,6 @@ class _$DeletedSingleCategoryImpl implements _DeletedSingleCategory {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCategory value)? fetchingCategory,
     TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -5059,15 +3488,13 @@ class _$DeletedSingleCategoryImpl implements _DeletedSingleCategory {
     TResult Function(_UpdatingCategory value)? updatingCategory,
     TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult Function(_DeletingCategory value)? deletingCategory,
     TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult Function(_DeletedListCategory value)? deletedListCategory,
     TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
+    TResult Function(_CountedCategory value)? countedCategory,
+    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (deletedSingleCategory != null) {
@@ -5096,7 +3523,7 @@ abstract class _$$DeletedListCategoryImplCopyWith<$Res> {
           $Res Function(_$DeletedListCategoryImpl) then) =
       __$$DeletedListCategoryImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<int> id});
+  $Res call({List<int> ids});
 }
 
 /// @nodoc
@@ -5112,12 +3539,12 @@ class __$$DeletedListCategoryImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? ids = null,
   }) {
     return _then(_$DeletedListCategoryImpl(
-      id: null == id
-          ? _value._id
-          : id // ignore: cast_nullable_to_non_nullable
+      ids: null == ids
+          ? _value._ids
+          : ids // ignore: cast_nullable_to_non_nullable
               as List<int>,
     ));
   }
@@ -5126,19 +3553,19 @@ class __$$DeletedListCategoryImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DeletedListCategoryImpl implements _DeletedListCategory {
-  const _$DeletedListCategoryImpl({required final List<int> id}) : _id = id;
+  const _$DeletedListCategoryImpl({required final List<int> ids}) : _ids = ids;
 
-  final List<int> _id;
+  final List<int> _ids;
   @override
-  List<int> get id {
-    if (_id is EqualUnmodifiableListView) return _id;
+  List<int> get ids {
+    if (_ids is EqualUnmodifiableListView) return _ids;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_id);
+    return EqualUnmodifiableListView(_ids);
   }
 
   @override
   String toString() {
-    return 'CategoryState.deletedListCategory(id: $id)';
+    return 'CategoryState.deletedListCategory(ids: $ids)';
   }
 
   @override
@@ -5146,12 +3573,12 @@ class _$DeletedListCategoryImpl implements _DeletedListCategory {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeletedListCategoryImpl &&
-            const DeepCollectionEquality().equals(other._id, _id));
+            const DeepCollectionEquality().equals(other._ids, _ids));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_id));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_ids));
 
   /// Create a copy of CategoryState
   /// with the given fields replaced by the non-null parameter values.
@@ -5167,11 +3594,10 @@ class _$DeletedListCategoryImpl implements _DeletedListCategory {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
+    required TResult Function(List<CategoryEntity> categories, int count)
         successListLoaded,
     required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
+    required TResult Function(CategoryStateError error, CategoryFailure failure)
         error,
     required TResult Function() fetchingCategory,
     required TResult Function() fetchingAllCategory,
@@ -5179,18 +3605,17 @@ class _$DeletedListCategoryImpl implements _DeletedListCategory {
     required TResult Function(CategoryEntity category) createdCategory,
     required TResult Function() updatingCategory,
     required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
+    required TResult Function(List<CategoryEntity> categories)
+        updatedListCategory,
     required TResult Function() deletingCategory,
     required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
+    required TResult Function(List<int> ids) deletedListCategory,
     required TResult Function() countingCategory,
     required TResult Function(int count) countedCategory,
+    required TResult Function() uploadingImageCategory,
+    required TResult Function(String url) uploadedImageCategory,
   }) {
-    return deletedListCategory(id);
+    return deletedListCategory(ids);
   }
 
   @override
@@ -5198,29 +3623,26 @@ class _$DeletedListCategoryImpl implements _DeletedListCategory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
+    TResult? Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
+    TResult? Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult? Function()? fetchingCategory,
     TResult? Function()? fetchingAllCategory,
     TResult? Function()? creatingCategory,
     TResult? Function(CategoryEntity category)? createdCategory,
     TResult? Function()? updatingCategory,
     TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
+    TResult? Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult? Function()? deletingCategory,
     TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
+    TResult? Function(List<int> ids)? deletedListCategory,
     TResult? Function()? countingCategory,
     TResult? Function(int count)? countedCategory,
+    TResult? Function()? uploadingImageCategory,
+    TResult? Function(String url)? uploadedImageCategory,
   }) {
-    return deletedListCategory?.call(id);
+    return deletedListCategory?.call(ids);
   }
 
   @override
@@ -5228,31 +3650,28 @@ class _$DeletedListCategoryImpl implements _DeletedListCategory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
+    TResult Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
+    TResult Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult Function()? fetchingCategory,
     TResult Function()? fetchingAllCategory,
     TResult Function()? creatingCategory,
     TResult Function(CategoryEntity category)? createdCategory,
     TResult Function()? updatingCategory,
     TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
+    TResult Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult Function()? deletingCategory,
     TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
+    TResult Function(List<int> ids)? deletedListCategory,
     TResult Function()? countingCategory,
     TResult Function(int count)? countedCategory,
+    TResult Function()? uploadingImageCategory,
+    TResult Function(String url)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (deletedListCategory != null) {
-      return deletedListCategory(id);
+      return deletedListCategory(ids);
     }
     return orElse();
   }
@@ -5264,7 +3683,6 @@ class _$DeletedListCategoryImpl implements _DeletedListCategory {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCategory value) fetchingCategory,
     required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
@@ -5274,18 +3692,16 @@ class _$DeletedListCategoryImpl implements _DeletedListCategory {
     required TResult Function(_UpdatedSingleCategory value)
         updatedSingleCategory,
     required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
     required TResult Function(_DeletingCategory value) deletingCategory,
     required TResult Function(_DeletedSingleCategory value)
         deletedSingleCategory,
     required TResult Function(_DeletedListCategory value) deletedListCategory,
     required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
+    required TResult Function(_CountedCategory value) countedCategory,
+    required TResult Function(_UploadingImageCategory value)
+        uploadingImageCategory,
+    required TResult Function(_UploadedImageCategory value)
+        uploadedImageCategory,
   }) {
     return deletedListCategory(this);
   }
@@ -5297,7 +3713,6 @@ class _$DeletedListCategoryImpl implements _DeletedListCategory {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCategory value)? fetchingCategory,
     TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -5306,15 +3721,13 @@ class _$DeletedListCategoryImpl implements _DeletedListCategory {
     TResult? Function(_UpdatingCategory value)? updatingCategory,
     TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult? Function(_DeletingCategory value)? deletingCategory,
     TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult? Function(_DeletedListCategory value)? deletedListCategory,
     TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
+    TResult? Function(_CountedCategory value)? countedCategory,
+    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
   }) {
     return deletedListCategory?.call(this);
   }
@@ -5326,7 +3739,6 @@ class _$DeletedListCategoryImpl implements _DeletedListCategory {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCategory value)? fetchingCategory,
     TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -5335,15 +3747,13 @@ class _$DeletedListCategoryImpl implements _DeletedListCategory {
     TResult Function(_UpdatingCategory value)? updatingCategory,
     TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult Function(_DeletingCategory value)? deletingCategory,
     TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult Function(_DeletedListCategory value)? deletedListCategory,
     TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
+    TResult Function(_CountedCategory value)? countedCategory,
+    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (deletedListCategory != null) {
@@ -5354,10 +3764,10 @@ class _$DeletedListCategoryImpl implements _DeletedListCategory {
 }
 
 abstract class _DeletedListCategory implements CategoryState {
-  const factory _DeletedListCategory({required final List<int> id}) =
+  const factory _DeletedListCategory({required final List<int> ids}) =
       _$DeletedListCategoryImpl;
 
-  List<int> get id;
+  List<int> get ids;
 
   /// Create a copy of CategoryState
   /// with the given fields replaced by the non-null parameter values.
@@ -5409,11 +3819,10 @@ class _$CountingCategoryImpl implements _CountingCategory {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
+    required TResult Function(List<CategoryEntity> categories, int count)
         successListLoaded,
     required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
+    required TResult Function(CategoryStateError error, CategoryFailure failure)
         error,
     required TResult Function() fetchingCategory,
     required TResult Function() fetchingAllCategory,
@@ -5421,16 +3830,15 @@ class _$CountingCategoryImpl implements _CountingCategory {
     required TResult Function(CategoryEntity category) createdCategory,
     required TResult Function() updatingCategory,
     required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
+    required TResult Function(List<CategoryEntity> categories)
+        updatedListCategory,
     required TResult Function() deletingCategory,
     required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
+    required TResult Function(List<int> ids) deletedListCategory,
     required TResult Function() countingCategory,
     required TResult Function(int count) countedCategory,
+    required TResult Function() uploadingImageCategory,
+    required TResult Function(String url) uploadedImageCategory,
   }) {
     return countingCategory();
   }
@@ -5440,27 +3848,24 @@ class _$CountingCategoryImpl implements _CountingCategory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
+    TResult? Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
+    TResult? Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult? Function()? fetchingCategory,
     TResult? Function()? fetchingAllCategory,
     TResult? Function()? creatingCategory,
     TResult? Function(CategoryEntity category)? createdCategory,
     TResult? Function()? updatingCategory,
     TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
+    TResult? Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult? Function()? deletingCategory,
     TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
+    TResult? Function(List<int> ids)? deletedListCategory,
     TResult? Function()? countingCategory,
     TResult? Function(int count)? countedCategory,
+    TResult? Function()? uploadingImageCategory,
+    TResult? Function(String url)? uploadedImageCategory,
   }) {
     return countingCategory?.call();
   }
@@ -5470,27 +3875,24 @@ class _$CountingCategoryImpl implements _CountingCategory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
+    TResult Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
+    TResult Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult Function()? fetchingCategory,
     TResult Function()? fetchingAllCategory,
     TResult Function()? creatingCategory,
     TResult Function(CategoryEntity category)? createdCategory,
     TResult Function()? updatingCategory,
     TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
+    TResult Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult Function()? deletingCategory,
     TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
+    TResult Function(List<int> ids)? deletedListCategory,
     TResult Function()? countingCategory,
     TResult Function(int count)? countedCategory,
+    TResult Function()? uploadingImageCategory,
+    TResult Function(String url)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (countingCategory != null) {
@@ -5506,7 +3908,6 @@ class _$CountingCategoryImpl implements _CountingCategory {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCategory value) fetchingCategory,
     required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
@@ -5516,18 +3917,16 @@ class _$CountingCategoryImpl implements _CountingCategory {
     required TResult Function(_UpdatedSingleCategory value)
         updatedSingleCategory,
     required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
     required TResult Function(_DeletingCategory value) deletingCategory,
     required TResult Function(_DeletedSingleCategory value)
         deletedSingleCategory,
     required TResult Function(_DeletedListCategory value) deletedListCategory,
     required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
+    required TResult Function(_CountedCategory value) countedCategory,
+    required TResult Function(_UploadingImageCategory value)
+        uploadingImageCategory,
+    required TResult Function(_UploadedImageCategory value)
+        uploadedImageCategory,
   }) {
     return countingCategory(this);
   }
@@ -5539,7 +3938,6 @@ class _$CountingCategoryImpl implements _CountingCategory {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCategory value)? fetchingCategory,
     TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -5548,15 +3946,13 @@ class _$CountingCategoryImpl implements _CountingCategory {
     TResult? Function(_UpdatingCategory value)? updatingCategory,
     TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult? Function(_DeletingCategory value)? deletingCategory,
     TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult? Function(_DeletedListCategory value)? deletedListCategory,
     TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
+    TResult? Function(_CountedCategory value)? countedCategory,
+    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
   }) {
     return countingCategory?.call(this);
   }
@@ -5568,7 +3964,6 @@ class _$CountingCategoryImpl implements _CountingCategory {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCategory value)? fetchingCategory,
     TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -5577,15 +3972,13 @@ class _$CountingCategoryImpl implements _CountingCategory {
     TResult Function(_UpdatingCategory value)? updatingCategory,
     TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult Function(_DeletingCategory value)? deletingCategory,
     TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult Function(_DeletedListCategory value)? deletedListCategory,
     TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
+    TResult Function(_CountedCategory value)? countedCategory,
+    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (countingCategory != null) {
@@ -5634,7 +4027,7 @@ class __$$CountedCategoryImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CountedCategoryImpl implements CountedCategory {
+class _$CountedCategoryImpl implements _CountedCategory {
   const _$CountedCategoryImpl({required this.count});
 
   @override
@@ -5670,11 +4063,10 @@ class _$CountedCategoryImpl implements CountedCategory {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryEntity> category, int count)
+    required TResult Function(List<CategoryEntity> categories, int count)
         successListLoaded,
     required TResult Function(CategoryEntity category) successSingleLoaded,
-    required TResult Function(String message) failure,
-    required TResult Function(CategoryStateError error, String? errorMessage)
+    required TResult Function(CategoryStateError error, CategoryFailure failure)
         error,
     required TResult Function() fetchingCategory,
     required TResult Function() fetchingAllCategory,
@@ -5682,16 +4074,15 @@ class _$CountedCategoryImpl implements CountedCategory {
     required TResult Function(CategoryEntity category) createdCategory,
     required TResult Function() updatingCategory,
     required TResult Function(CategoryEntity category) updatedSingleCategory,
-    required TResult Function(CategoryEntity category) updatedListCategory,
-    required TResult Function() uploadingImageCategory,
-    required TResult Function(String path) uploadedImageCategory,
-    required TResult Function() updateImageCategory,
-    required TResult Function(String path) updatedImageCategory,
+    required TResult Function(List<CategoryEntity> categories)
+        updatedListCategory,
     required TResult Function() deletingCategory,
     required TResult Function(int id) deletedSingleCategory,
-    required TResult Function(List<int> id) deletedListCategory,
+    required TResult Function(List<int> ids) deletedListCategory,
     required TResult Function() countingCategory,
     required TResult Function(int count) countedCategory,
+    required TResult Function() uploadingImageCategory,
+    required TResult Function(String url) uploadedImageCategory,
   }) {
     return countedCategory(count);
   }
@@ -5701,27 +4092,24 @@ class _$CountedCategoryImpl implements CountedCategory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity> category, int count)?
+    TResult? Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult? Function(CategoryEntity category)? successSingleLoaded,
-    TResult? Function(String message)? failure,
-    TResult? Function(CategoryStateError error, String? errorMessage)? error,
+    TResult? Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult? Function()? fetchingCategory,
     TResult? Function()? fetchingAllCategory,
     TResult? Function()? creatingCategory,
     TResult? Function(CategoryEntity category)? createdCategory,
     TResult? Function()? updatingCategory,
     TResult? Function(CategoryEntity category)? updatedSingleCategory,
-    TResult? Function(CategoryEntity category)? updatedListCategory,
-    TResult? Function()? uploadingImageCategory,
-    TResult? Function(String path)? uploadedImageCategory,
-    TResult? Function()? updateImageCategory,
-    TResult? Function(String path)? updatedImageCategory,
+    TResult? Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult? Function()? deletingCategory,
     TResult? Function(int id)? deletedSingleCategory,
-    TResult? Function(List<int> id)? deletedListCategory,
+    TResult? Function(List<int> ids)? deletedListCategory,
     TResult? Function()? countingCategory,
     TResult? Function(int count)? countedCategory,
+    TResult? Function()? uploadingImageCategory,
+    TResult? Function(String url)? uploadedImageCategory,
   }) {
     return countedCategory?.call(count);
   }
@@ -5731,27 +4119,24 @@ class _$CountedCategoryImpl implements CountedCategory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryEntity> category, int count)?
+    TResult Function(List<CategoryEntity> categories, int count)?
         successListLoaded,
     TResult Function(CategoryEntity category)? successSingleLoaded,
-    TResult Function(String message)? failure,
-    TResult Function(CategoryStateError error, String? errorMessage)? error,
+    TResult Function(CategoryStateError error, CategoryFailure failure)? error,
     TResult Function()? fetchingCategory,
     TResult Function()? fetchingAllCategory,
     TResult Function()? creatingCategory,
     TResult Function(CategoryEntity category)? createdCategory,
     TResult Function()? updatingCategory,
     TResult Function(CategoryEntity category)? updatedSingleCategory,
-    TResult Function(CategoryEntity category)? updatedListCategory,
-    TResult Function()? uploadingImageCategory,
-    TResult Function(String path)? uploadedImageCategory,
-    TResult Function()? updateImageCategory,
-    TResult Function(String path)? updatedImageCategory,
+    TResult Function(List<CategoryEntity> categories)? updatedListCategory,
     TResult Function()? deletingCategory,
     TResult Function(int id)? deletedSingleCategory,
-    TResult Function(List<int> id)? deletedListCategory,
+    TResult Function(List<int> ids)? deletedListCategory,
     TResult Function()? countingCategory,
     TResult Function(int count)? countedCategory,
+    TResult Function()? uploadingImageCategory,
+    TResult Function(String url)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (countedCategory != null) {
@@ -5767,7 +4152,6 @@ class _$CountedCategoryImpl implements CountedCategory {
     required TResult Function(_Loading value) loading,
     required TResult Function(_SuccessListLoaded value) successListLoaded,
     required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_FetchingCategory value) fetchingCategory,
     required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
@@ -5777,18 +4161,16 @@ class _$CountedCategoryImpl implements CountedCategory {
     required TResult Function(_UpdatedSingleCategory value)
         updatedSingleCategory,
     required TResult Function(_UpdatedListCategory value) updatedListCategory,
-    required TResult Function(_UploadingImageCategory value)
-        uploadingImageCategory,
-    required TResult Function(_UploadedImageCategory value)
-        uploadedImageCategory,
-    required TResult Function(_UpdateImageCategory value) updateImageCategory,
-    required TResult Function(_UpdatedImageCategory value) updatedImageCategory,
     required TResult Function(_DeletingCategory value) deletingCategory,
     required TResult Function(_DeletedSingleCategory value)
         deletedSingleCategory,
     required TResult Function(_DeletedListCategory value) deletedListCategory,
     required TResult Function(_CountingCategory value) countingCategory,
-    required TResult Function(CountedCategory value) countedCategory,
+    required TResult Function(_CountedCategory value) countedCategory,
+    required TResult Function(_UploadingImageCategory value)
+        uploadingImageCategory,
+    required TResult Function(_UploadedImageCategory value)
+        uploadedImageCategory,
   }) {
     return countedCategory(this);
   }
@@ -5800,7 +4182,6 @@ class _$CountedCategoryImpl implements CountedCategory {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_SuccessListLoaded value)? successListLoaded,
     TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_FetchingCategory value)? fetchingCategory,
     TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -5809,15 +4190,13 @@ class _$CountedCategoryImpl implements CountedCategory {
     TResult? Function(_UpdatingCategory value)? updatingCategory,
     TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult? Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult? Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult? Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult? Function(_DeletingCategory value)? deletingCategory,
     TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult? Function(_DeletedListCategory value)? deletedListCategory,
     TResult? Function(_CountingCategory value)? countingCategory,
-    TResult? Function(CountedCategory value)? countedCategory,
+    TResult? Function(_CountedCategory value)? countedCategory,
+    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
   }) {
     return countedCategory?.call(this);
   }
@@ -5829,7 +4208,6 @@ class _$CountedCategoryImpl implements CountedCategory {
     TResult Function(_Loading value)? loading,
     TResult Function(_SuccessListLoaded value)? successListLoaded,
     TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_FetchingCategory value)? fetchingCategory,
     TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
@@ -5838,15 +4216,13 @@ class _$CountedCategoryImpl implements CountedCategory {
     TResult Function(_UpdatingCategory value)? updatingCategory,
     TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
     TResult Function(_UpdatedListCategory value)? updatedListCategory,
-    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
-    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
-    TResult Function(_UpdateImageCategory value)? updateImageCategory,
-    TResult Function(_UpdatedImageCategory value)? updatedImageCategory,
     TResult Function(_DeletingCategory value)? deletingCategory,
     TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
     TResult Function(_DeletedListCategory value)? deletedListCategory,
     TResult Function(_CountingCategory value)? countingCategory,
-    TResult Function(CountedCategory value)? countedCategory,
+    TResult Function(_CountedCategory value)? countedCategory,
+    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
     required TResult orElse(),
   }) {
     if (countedCategory != null) {
@@ -5856,8 +4232,8 @@ class _$CountedCategoryImpl implements CountedCategory {
   }
 }
 
-abstract class CountedCategory implements CategoryState {
-  const factory CountedCategory({required final int count}) =
+abstract class _CountedCategory implements CategoryState {
+  const factory _CountedCategory({required final int count}) =
       _$CountedCategoryImpl;
 
   int get count;
@@ -5867,4 +4243,477 @@ abstract class CountedCategory implements CategoryState {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CountedCategoryImplCopyWith<_$CountedCategoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UploadingImageCategoryImplCopyWith<$Res> {
+  factory _$$UploadingImageCategoryImplCopyWith(
+          _$UploadingImageCategoryImpl value,
+          $Res Function(_$UploadingImageCategoryImpl) then) =
+      __$$UploadingImageCategoryImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UploadingImageCategoryImplCopyWithImpl<$Res>
+    extends _$CategoryStateCopyWithImpl<$Res, _$UploadingImageCategoryImpl>
+    implements _$$UploadingImageCategoryImplCopyWith<$Res> {
+  __$$UploadingImageCategoryImplCopyWithImpl(
+      _$UploadingImageCategoryImpl _value,
+      $Res Function(_$UploadingImageCategoryImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CategoryState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$UploadingImageCategoryImpl implements _UploadingImageCategory {
+  const _$UploadingImageCategoryImpl();
+
+  @override
+  String toString() {
+    return 'CategoryState.uploadingImageCategory()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UploadingImageCategoryImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<CategoryEntity> categories, int count)
+        successListLoaded,
+    required TResult Function(CategoryEntity category) successSingleLoaded,
+    required TResult Function(CategoryStateError error, CategoryFailure failure)
+        error,
+    required TResult Function() fetchingCategory,
+    required TResult Function() fetchingAllCategory,
+    required TResult Function() creatingCategory,
+    required TResult Function(CategoryEntity category) createdCategory,
+    required TResult Function() updatingCategory,
+    required TResult Function(CategoryEntity category) updatedSingleCategory,
+    required TResult Function(List<CategoryEntity> categories)
+        updatedListCategory,
+    required TResult Function() deletingCategory,
+    required TResult Function(int id) deletedSingleCategory,
+    required TResult Function(List<int> ids) deletedListCategory,
+    required TResult Function() countingCategory,
+    required TResult Function(int count) countedCategory,
+    required TResult Function() uploadingImageCategory,
+    required TResult Function(String url) uploadedImageCategory,
+  }) {
+    return uploadingImageCategory();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<CategoryEntity> categories, int count)?
+        successListLoaded,
+    TResult? Function(CategoryEntity category)? successSingleLoaded,
+    TResult? Function(CategoryStateError error, CategoryFailure failure)? error,
+    TResult? Function()? fetchingCategory,
+    TResult? Function()? fetchingAllCategory,
+    TResult? Function()? creatingCategory,
+    TResult? Function(CategoryEntity category)? createdCategory,
+    TResult? Function()? updatingCategory,
+    TResult? Function(CategoryEntity category)? updatedSingleCategory,
+    TResult? Function(List<CategoryEntity> categories)? updatedListCategory,
+    TResult? Function()? deletingCategory,
+    TResult? Function(int id)? deletedSingleCategory,
+    TResult? Function(List<int> ids)? deletedListCategory,
+    TResult? Function()? countingCategory,
+    TResult? Function(int count)? countedCategory,
+    TResult? Function()? uploadingImageCategory,
+    TResult? Function(String url)? uploadedImageCategory,
+  }) {
+    return uploadingImageCategory?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<CategoryEntity> categories, int count)?
+        successListLoaded,
+    TResult Function(CategoryEntity category)? successSingleLoaded,
+    TResult Function(CategoryStateError error, CategoryFailure failure)? error,
+    TResult Function()? fetchingCategory,
+    TResult Function()? fetchingAllCategory,
+    TResult Function()? creatingCategory,
+    TResult Function(CategoryEntity category)? createdCategory,
+    TResult Function()? updatingCategory,
+    TResult Function(CategoryEntity category)? updatedSingleCategory,
+    TResult Function(List<CategoryEntity> categories)? updatedListCategory,
+    TResult Function()? deletingCategory,
+    TResult Function(int id)? deletedSingleCategory,
+    TResult Function(List<int> ids)? deletedListCategory,
+    TResult Function()? countingCategory,
+    TResult Function(int count)? countedCategory,
+    TResult Function()? uploadingImageCategory,
+    TResult Function(String url)? uploadedImageCategory,
+    required TResult orElse(),
+  }) {
+    if (uploadingImageCategory != null) {
+      return uploadingImageCategory();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_SuccessListLoaded value) successListLoaded,
+    required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_FetchingCategory value) fetchingCategory,
+    required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
+    required TResult Function(_CreatingCategory value) creatingCategory,
+    required TResult Function(_CreatedCategory value) createdCategory,
+    required TResult Function(_UpdatingCategory value) updatingCategory,
+    required TResult Function(_UpdatedSingleCategory value)
+        updatedSingleCategory,
+    required TResult Function(_UpdatedListCategory value) updatedListCategory,
+    required TResult Function(_DeletingCategory value) deletingCategory,
+    required TResult Function(_DeletedSingleCategory value)
+        deletedSingleCategory,
+    required TResult Function(_DeletedListCategory value) deletedListCategory,
+    required TResult Function(_CountingCategory value) countingCategory,
+    required TResult Function(_CountedCategory value) countedCategory,
+    required TResult Function(_UploadingImageCategory value)
+        uploadingImageCategory,
+    required TResult Function(_UploadedImageCategory value)
+        uploadedImageCategory,
+  }) {
+    return uploadingImageCategory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_SuccessListLoaded value)? successListLoaded,
+    TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_FetchingCategory value)? fetchingCategory,
+    TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
+    TResult? Function(_CreatingCategory value)? creatingCategory,
+    TResult? Function(_CreatedCategory value)? createdCategory,
+    TResult? Function(_UpdatingCategory value)? updatingCategory,
+    TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
+    TResult? Function(_UpdatedListCategory value)? updatedListCategory,
+    TResult? Function(_DeletingCategory value)? deletingCategory,
+    TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
+    TResult? Function(_DeletedListCategory value)? deletedListCategory,
+    TResult? Function(_CountingCategory value)? countingCategory,
+    TResult? Function(_CountedCategory value)? countedCategory,
+    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
+  }) {
+    return uploadingImageCategory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessListLoaded value)? successListLoaded,
+    TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_FetchingCategory value)? fetchingCategory,
+    TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
+    TResult Function(_CreatingCategory value)? creatingCategory,
+    TResult Function(_CreatedCategory value)? createdCategory,
+    TResult Function(_UpdatingCategory value)? updatingCategory,
+    TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
+    TResult Function(_UpdatedListCategory value)? updatedListCategory,
+    TResult Function(_DeletingCategory value)? deletingCategory,
+    TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
+    TResult Function(_DeletedListCategory value)? deletedListCategory,
+    TResult Function(_CountingCategory value)? countingCategory,
+    TResult Function(_CountedCategory value)? countedCategory,
+    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
+    required TResult orElse(),
+  }) {
+    if (uploadingImageCategory != null) {
+      return uploadingImageCategory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UploadingImageCategory implements CategoryState {
+  const factory _UploadingImageCategory() = _$UploadingImageCategoryImpl;
+}
+
+/// @nodoc
+abstract class _$$UploadedImageCategoryImplCopyWith<$Res> {
+  factory _$$UploadedImageCategoryImplCopyWith(
+          _$UploadedImageCategoryImpl value,
+          $Res Function(_$UploadedImageCategoryImpl) then) =
+      __$$UploadedImageCategoryImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String url});
+}
+
+/// @nodoc
+class __$$UploadedImageCategoryImplCopyWithImpl<$Res>
+    extends _$CategoryStateCopyWithImpl<$Res, _$UploadedImageCategoryImpl>
+    implements _$$UploadedImageCategoryImplCopyWith<$Res> {
+  __$$UploadedImageCategoryImplCopyWithImpl(_$UploadedImageCategoryImpl _value,
+      $Res Function(_$UploadedImageCategoryImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CategoryState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? url = null,
+  }) {
+    return _then(_$UploadedImageCategoryImpl(
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UploadedImageCategoryImpl implements _UploadedImageCategory {
+  const _$UploadedImageCategoryImpl({required this.url});
+
+  @override
+  final String url;
+
+  @override
+  String toString() {
+    return 'CategoryState.uploadedImageCategory(url: $url)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UploadedImageCategoryImpl &&
+            (identical(other.url, url) || other.url == url));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, url);
+
+  /// Create a copy of CategoryState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UploadedImageCategoryImplCopyWith<_$UploadedImageCategoryImpl>
+      get copyWith => __$$UploadedImageCategoryImplCopyWithImpl<
+          _$UploadedImageCategoryImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<CategoryEntity> categories, int count)
+        successListLoaded,
+    required TResult Function(CategoryEntity category) successSingleLoaded,
+    required TResult Function(CategoryStateError error, CategoryFailure failure)
+        error,
+    required TResult Function() fetchingCategory,
+    required TResult Function() fetchingAllCategory,
+    required TResult Function() creatingCategory,
+    required TResult Function(CategoryEntity category) createdCategory,
+    required TResult Function() updatingCategory,
+    required TResult Function(CategoryEntity category) updatedSingleCategory,
+    required TResult Function(List<CategoryEntity> categories)
+        updatedListCategory,
+    required TResult Function() deletingCategory,
+    required TResult Function(int id) deletedSingleCategory,
+    required TResult Function(List<int> ids) deletedListCategory,
+    required TResult Function() countingCategory,
+    required TResult Function(int count) countedCategory,
+    required TResult Function() uploadingImageCategory,
+    required TResult Function(String url) uploadedImageCategory,
+  }) {
+    return uploadedImageCategory(url);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<CategoryEntity> categories, int count)?
+        successListLoaded,
+    TResult? Function(CategoryEntity category)? successSingleLoaded,
+    TResult? Function(CategoryStateError error, CategoryFailure failure)? error,
+    TResult? Function()? fetchingCategory,
+    TResult? Function()? fetchingAllCategory,
+    TResult? Function()? creatingCategory,
+    TResult? Function(CategoryEntity category)? createdCategory,
+    TResult? Function()? updatingCategory,
+    TResult? Function(CategoryEntity category)? updatedSingleCategory,
+    TResult? Function(List<CategoryEntity> categories)? updatedListCategory,
+    TResult? Function()? deletingCategory,
+    TResult? Function(int id)? deletedSingleCategory,
+    TResult? Function(List<int> ids)? deletedListCategory,
+    TResult? Function()? countingCategory,
+    TResult? Function(int count)? countedCategory,
+    TResult? Function()? uploadingImageCategory,
+    TResult? Function(String url)? uploadedImageCategory,
+  }) {
+    return uploadedImageCategory?.call(url);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<CategoryEntity> categories, int count)?
+        successListLoaded,
+    TResult Function(CategoryEntity category)? successSingleLoaded,
+    TResult Function(CategoryStateError error, CategoryFailure failure)? error,
+    TResult Function()? fetchingCategory,
+    TResult Function()? fetchingAllCategory,
+    TResult Function()? creatingCategory,
+    TResult Function(CategoryEntity category)? createdCategory,
+    TResult Function()? updatingCategory,
+    TResult Function(CategoryEntity category)? updatedSingleCategory,
+    TResult Function(List<CategoryEntity> categories)? updatedListCategory,
+    TResult Function()? deletingCategory,
+    TResult Function(int id)? deletedSingleCategory,
+    TResult Function(List<int> ids)? deletedListCategory,
+    TResult Function()? countingCategory,
+    TResult Function(int count)? countedCategory,
+    TResult Function()? uploadingImageCategory,
+    TResult Function(String url)? uploadedImageCategory,
+    required TResult orElse(),
+  }) {
+    if (uploadedImageCategory != null) {
+      return uploadedImageCategory(url);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_SuccessListLoaded value) successListLoaded,
+    required TResult Function(_SuccessSingleLoaded value) successSingleLoaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_FetchingCategory value) fetchingCategory,
+    required TResult Function(_FetchingAllCategory value) fetchingAllCategory,
+    required TResult Function(_CreatingCategory value) creatingCategory,
+    required TResult Function(_CreatedCategory value) createdCategory,
+    required TResult Function(_UpdatingCategory value) updatingCategory,
+    required TResult Function(_UpdatedSingleCategory value)
+        updatedSingleCategory,
+    required TResult Function(_UpdatedListCategory value) updatedListCategory,
+    required TResult Function(_DeletingCategory value) deletingCategory,
+    required TResult Function(_DeletedSingleCategory value)
+        deletedSingleCategory,
+    required TResult Function(_DeletedListCategory value) deletedListCategory,
+    required TResult Function(_CountingCategory value) countingCategory,
+    required TResult Function(_CountedCategory value) countedCategory,
+    required TResult Function(_UploadingImageCategory value)
+        uploadingImageCategory,
+    required TResult Function(_UploadedImageCategory value)
+        uploadedImageCategory,
+  }) {
+    return uploadedImageCategory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_SuccessListLoaded value)? successListLoaded,
+    TResult? Function(_SuccessSingleLoaded value)? successSingleLoaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_FetchingCategory value)? fetchingCategory,
+    TResult? Function(_FetchingAllCategory value)? fetchingAllCategory,
+    TResult? Function(_CreatingCategory value)? creatingCategory,
+    TResult? Function(_CreatedCategory value)? createdCategory,
+    TResult? Function(_UpdatingCategory value)? updatingCategory,
+    TResult? Function(_UpdatedSingleCategory value)? updatedSingleCategory,
+    TResult? Function(_UpdatedListCategory value)? updatedListCategory,
+    TResult? Function(_DeletingCategory value)? deletingCategory,
+    TResult? Function(_DeletedSingleCategory value)? deletedSingleCategory,
+    TResult? Function(_DeletedListCategory value)? deletedListCategory,
+    TResult? Function(_CountingCategory value)? countingCategory,
+    TResult? Function(_CountedCategory value)? countedCategory,
+    TResult? Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult? Function(_UploadedImageCategory value)? uploadedImageCategory,
+  }) {
+    return uploadedImageCategory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessListLoaded value)? successListLoaded,
+    TResult Function(_SuccessSingleLoaded value)? successSingleLoaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_FetchingCategory value)? fetchingCategory,
+    TResult Function(_FetchingAllCategory value)? fetchingAllCategory,
+    TResult Function(_CreatingCategory value)? creatingCategory,
+    TResult Function(_CreatedCategory value)? createdCategory,
+    TResult Function(_UpdatingCategory value)? updatingCategory,
+    TResult Function(_UpdatedSingleCategory value)? updatedSingleCategory,
+    TResult Function(_UpdatedListCategory value)? updatedListCategory,
+    TResult Function(_DeletingCategory value)? deletingCategory,
+    TResult Function(_DeletedSingleCategory value)? deletedSingleCategory,
+    TResult Function(_DeletedListCategory value)? deletedListCategory,
+    TResult Function(_CountingCategory value)? countingCategory,
+    TResult Function(_CountedCategory value)? countedCategory,
+    TResult Function(_UploadingImageCategory value)? uploadingImageCategory,
+    TResult Function(_UploadedImageCategory value)? uploadedImageCategory,
+    required TResult orElse(),
+  }) {
+    if (uploadedImageCategory != null) {
+      return uploadedImageCategory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UploadedImageCategory implements CategoryState {
+  const factory _UploadedImageCategory({required final String url}) =
+      _$UploadedImageCategoryImpl;
+
+  String get url;
+
+  /// Create a copy of CategoryState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UploadedImageCategoryImplCopyWith<_$UploadedImageCategoryImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

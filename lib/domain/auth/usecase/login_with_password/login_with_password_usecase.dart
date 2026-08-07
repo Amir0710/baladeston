@@ -1,9 +1,8 @@
 import 'package:baladeston/core/result/result.dart';
+import 'package:baladeston/domain/auth/entity/user_password/user_password_entity.dart';
 import 'package:baladeston/domain/auth/failure/auth_failure.dart';
 import 'package:baladeston/domain/auth/repository/auth_repository.dart';
 import 'package:baladeston/domain/auth/usecase/login_with_password/login_with_password_usecase_business_rule.dart';
-import 'package:baladeston/domain/auth/value_object/login_credentials.dart';
-import 'package:baladeston/domain/verification/exception/verification_entity_exception.dart';
 
 class LoginWithPasswordUseCase {
   final AuthRepository repository;
@@ -13,21 +12,19 @@ class LoginWithPasswordUseCase {
   });
 
   Future<Result<bool, AuthFailure>> call({
-    required LoginWithPasswordAttribute attribute,
+    required UserPasswordEntity credentials,
   }) async {
-    try {
-      final rule = LoginWithPasswordUseCaseBusinessRule(
-        attribute: attribute,
-      );
-      rule.validate();
-    } on VerificationEntityException catch (e) {
-      return Result.failure(
-        AuthValidationFailure(e.message),
-      );
-    }
+    final rule = LoginWithPasswordUseCaseBusinessRule(
+      attribute: credentials,
+    );
 
-    return repository.loginWithPassword(
-      attribute: attribute,
+    final validation = rule.validate();
+
+    return validation.when(
+      success: (_) => repository.loginWithPassword(
+        loginWithPassword: credentials,
+      ),
+      failure: (failure) => Result.failure(failure),
     );
   }
 }

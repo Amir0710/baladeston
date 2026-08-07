@@ -9,7 +9,7 @@ import 'create_theme_usecase_business_rule.dart';
 class CreateThemeUseCase {
   final ThemeRepository repository;
 
-  const CreateThemeUseCase(this.repository);
+  const CreateThemeUseCase({required this.repository});
 
   Future<Result<ThemeEntity, ThemeFailure>> call({
     required ThemeEntity theme,

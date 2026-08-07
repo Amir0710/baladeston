@@ -1,8 +1,9 @@
-import 'package:baladeston/application/providers/user_cubit/user_cubit.dart';
-import 'package:baladeston/application/providers/user_cubit/user_state.dart';
+import 'package:baladeston/application/providers/auth_cubit/auth_cubit.dart';
+import 'package:baladeston/application/providers/auth_cubit/auth_state.dart';
 import 'package:baladeston/core/constants/add_padding.dart';
 import 'package:baladeston/core/extensions/media_query_extension.dart';
 import 'package:baladeston/core/theme/app_themes.dart';
+import 'package:baladeston/domain/auth/entity/user_password/user_password_entity.dart';
 import 'package:baladeston/presentation/pages/signup/user_signup.dart';
 import 'package:baladeston/presentation/widgets/print_circle.dart';
 import 'package:flutter/gestures.dart';
@@ -36,19 +37,19 @@ class _UserPassLoginState extends State<UserPassLogin> {
           ),
         ),
       ),
-      body: BlocListener<UserCubit, UserState>(
+      body: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
           state.whenOrNull(
-            loginSuccess: () {
+            authenticated: () {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text("Login is success"),
                 ),
               );
             },
-            loginFailure: (message) {
+            error: (error, errorMessage) {
               ScaffoldMessenger.of(context)
-                  .showSnackBar(SnackBar(content: Text("Error $message")));
+                  .showSnackBar(SnackBar(content: Text("Error $errorMessage")));
             },
           );
         },
@@ -170,8 +171,9 @@ class _UserPassLoginState extends State<UserPassLogin> {
                           final password = _password.text;
                           final phoneNumber = _phoneNumber.text;
 
-                          // context.read<UserCubit>().login(
-                          //     phoneNumber: phoneNumber, password: password);
+                          context.read<AuthCubit>().loginWithPassword(
+                              credentials: UserPasswordEntity(
+                                  identifier: phoneNumber, password: password));
                         },
                         child: Row(
                           children: [

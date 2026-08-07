@@ -20,51 +20,51 @@ mixin _$AuthState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() checkingUser,
+    required TResult Function(bool exists) userChecked,
     required TResult Function() loggingIn,
-    required TResult Function() sendingOtp,
-    required TResult Function() checkingToken,
-    required TResult Function() checkingUserExists,
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(VerificationEntity verification) otpSent,
-    required TResult Function(bool isValid) tokenChecked,
-    required TResult Function(bool exists) userExistsChecked,
-    required TResult Function(String message) failure,
-    required TResult Function(AuthStateError error, String? errorMessage) error,
+    required TResult Function() checkingToken,
+    required TResult Function() refreshingToken,
+    required TResult Function() finishingOnboarding,
+    required TResult Function() skippingOnboarding,
+    required TResult Function() loggingOut,
+    required TResult Function(AuthStateError error, AuthFailure failure) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? checkingUser,
+    TResult? Function(bool exists)? userChecked,
     TResult? Function()? loggingIn,
-    TResult? Function()? sendingOtp,
-    TResult? Function()? checkingToken,
-    TResult? Function()? checkingUserExists,
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(VerificationEntity verification)? otpSent,
-    TResult? Function(bool isValid)? tokenChecked,
-    TResult? Function(bool exists)? userExistsChecked,
-    TResult? Function(String message)? failure,
-    TResult? Function(AuthStateError error, String? errorMessage)? error,
+    TResult? Function()? checkingToken,
+    TResult? Function()? refreshingToken,
+    TResult? Function()? finishingOnboarding,
+    TResult? Function()? skippingOnboarding,
+    TResult? Function()? loggingOut,
+    TResult? Function(AuthStateError error, AuthFailure failure)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? checkingUser,
+    TResult Function(bool exists)? userChecked,
     TResult Function()? loggingIn,
-    TResult Function()? sendingOtp,
-    TResult Function()? checkingToken,
-    TResult Function()? checkingUserExists,
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(VerificationEntity verification)? otpSent,
-    TResult Function(bool isValid)? tokenChecked,
-    TResult Function(bool exists)? userExistsChecked,
-    TResult Function(String message)? failure,
-    TResult Function(AuthStateError error, String? errorMessage)? error,
+    TResult Function()? checkingToken,
+    TResult Function()? refreshingToken,
+    TResult Function()? finishingOnboarding,
+    TResult Function()? skippingOnboarding,
+    TResult Function()? loggingOut,
+    TResult Function(AuthStateError error, AuthFailure failure)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -72,16 +72,16 @@ mixin _$AuthState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_CheckingUser value) checkingUser,
+    required TResult Function(_UserChecked value) userChecked,
     required TResult Function(_LoggingIn value) loggingIn,
-    required TResult Function(_SendingOtp value) sendingOtp,
-    required TResult Function(_CheckingToken value) checkingToken,
-    required TResult Function(_CheckingUserExists value) checkingUserExists,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_OtpSent value) otpSent,
-    required TResult Function(_TokenChecked value) tokenChecked,
-    required TResult Function(_UserExistsChecked value) userExistsChecked,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(_CheckingToken value) checkingToken,
+    required TResult Function(_RefreshingToken value) refreshingToken,
+    required TResult Function(_FinishingOnboarding value) finishingOnboarding,
+    required TResult Function(_SkippingOnboarding value) skippingOnboarding,
+    required TResult Function(_LoggingOut value) loggingOut,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -89,16 +89,16 @@ mixin _$AuthState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_CheckingUser value)? checkingUser,
+    TResult? Function(_UserChecked value)? userChecked,
     TResult? Function(_LoggingIn value)? loggingIn,
-    TResult? Function(_SendingOtp value)? sendingOtp,
-    TResult? Function(_CheckingToken value)? checkingToken,
-    TResult? Function(_CheckingUserExists value)? checkingUserExists,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(_OtpSent value)? otpSent,
-    TResult? Function(_TokenChecked value)? tokenChecked,
-    TResult? Function(_UserExistsChecked value)? userExistsChecked,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(_CheckingToken value)? checkingToken,
+    TResult? Function(_RefreshingToken value)? refreshingToken,
+    TResult? Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult? Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult? Function(_LoggingOut value)? loggingOut,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -106,16 +106,16 @@ mixin _$AuthState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_CheckingUser value)? checkingUser,
+    TResult Function(_UserChecked value)? userChecked,
     TResult Function(_LoggingIn value)? loggingIn,
-    TResult Function(_SendingOtp value)? sendingOtp,
-    TResult Function(_CheckingToken value)? checkingToken,
-    TResult Function(_CheckingUserExists value)? checkingUserExists,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_OtpSent value)? otpSent,
-    TResult Function(_TokenChecked value)? tokenChecked,
-    TResult Function(_UserExistsChecked value)? userExistsChecked,
-    TResult Function(_Failure value)? failure,
+    TResult Function(_CheckingToken value)? checkingToken,
+    TResult Function(_RefreshingToken value)? refreshingToken,
+    TResult Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult Function(_LoggingOut value)? loggingOut,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -163,8 +163,8 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$InitialImpl extends _Initial {
+  const _$InitialImpl() : super._();
 
   @override
   String toString() {
@@ -185,17 +185,17 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() checkingUser,
+    required TResult Function(bool exists) userChecked,
     required TResult Function() loggingIn,
-    required TResult Function() sendingOtp,
-    required TResult Function() checkingToken,
-    required TResult Function() checkingUserExists,
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(VerificationEntity verification) otpSent,
-    required TResult Function(bool isValid) tokenChecked,
-    required TResult Function(bool exists) userExistsChecked,
-    required TResult Function(String message) failure,
-    required TResult Function(AuthStateError error, String? errorMessage) error,
+    required TResult Function() checkingToken,
+    required TResult Function() refreshingToken,
+    required TResult Function() finishingOnboarding,
+    required TResult Function() skippingOnboarding,
+    required TResult Function() loggingOut,
+    required TResult Function(AuthStateError error, AuthFailure failure) error,
   }) {
     return initial();
   }
@@ -205,17 +205,17 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? checkingUser,
+    TResult? Function(bool exists)? userChecked,
     TResult? Function()? loggingIn,
-    TResult? Function()? sendingOtp,
-    TResult? Function()? checkingToken,
-    TResult? Function()? checkingUserExists,
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(VerificationEntity verification)? otpSent,
-    TResult? Function(bool isValid)? tokenChecked,
-    TResult? Function(bool exists)? userExistsChecked,
-    TResult? Function(String message)? failure,
-    TResult? Function(AuthStateError error, String? errorMessage)? error,
+    TResult? Function()? checkingToken,
+    TResult? Function()? refreshingToken,
+    TResult? Function()? finishingOnboarding,
+    TResult? Function()? skippingOnboarding,
+    TResult? Function()? loggingOut,
+    TResult? Function(AuthStateError error, AuthFailure failure)? error,
   }) {
     return initial?.call();
   }
@@ -225,17 +225,17 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? checkingUser,
+    TResult Function(bool exists)? userChecked,
     TResult Function()? loggingIn,
-    TResult Function()? sendingOtp,
-    TResult Function()? checkingToken,
-    TResult Function()? checkingUserExists,
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(VerificationEntity verification)? otpSent,
-    TResult Function(bool isValid)? tokenChecked,
-    TResult Function(bool exists)? userExistsChecked,
-    TResult Function(String message)? failure,
-    TResult Function(AuthStateError error, String? errorMessage)? error,
+    TResult Function()? checkingToken,
+    TResult Function()? refreshingToken,
+    TResult Function()? finishingOnboarding,
+    TResult Function()? skippingOnboarding,
+    TResult Function()? loggingOut,
+    TResult Function(AuthStateError error, AuthFailure failure)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -249,16 +249,16 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_CheckingUser value) checkingUser,
+    required TResult Function(_UserChecked value) userChecked,
     required TResult Function(_LoggingIn value) loggingIn,
-    required TResult Function(_SendingOtp value) sendingOtp,
-    required TResult Function(_CheckingToken value) checkingToken,
-    required TResult Function(_CheckingUserExists value) checkingUserExists,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_OtpSent value) otpSent,
-    required TResult Function(_TokenChecked value) tokenChecked,
-    required TResult Function(_UserExistsChecked value) userExistsChecked,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(_CheckingToken value) checkingToken,
+    required TResult Function(_RefreshingToken value) refreshingToken,
+    required TResult Function(_FinishingOnboarding value) finishingOnboarding,
+    required TResult Function(_SkippingOnboarding value) skippingOnboarding,
+    required TResult Function(_LoggingOut value) loggingOut,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -269,16 +269,16 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_CheckingUser value)? checkingUser,
+    TResult? Function(_UserChecked value)? userChecked,
     TResult? Function(_LoggingIn value)? loggingIn,
-    TResult? Function(_SendingOtp value)? sendingOtp,
-    TResult? Function(_CheckingToken value)? checkingToken,
-    TResult? Function(_CheckingUserExists value)? checkingUserExists,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(_OtpSent value)? otpSent,
-    TResult? Function(_TokenChecked value)? tokenChecked,
-    TResult? Function(_UserExistsChecked value)? userExistsChecked,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(_CheckingToken value)? checkingToken,
+    TResult? Function(_RefreshingToken value)? refreshingToken,
+    TResult? Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult? Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult? Function(_LoggingOut value)? loggingOut,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -289,16 +289,16 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_CheckingUser value)? checkingUser,
+    TResult Function(_UserChecked value)? userChecked,
     TResult Function(_LoggingIn value)? loggingIn,
-    TResult Function(_SendingOtp value)? sendingOtp,
-    TResult Function(_CheckingToken value)? checkingToken,
-    TResult Function(_CheckingUserExists value)? checkingUserExists,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_OtpSent value)? otpSent,
-    TResult Function(_TokenChecked value)? tokenChecked,
-    TResult Function(_UserExistsChecked value)? userExistsChecked,
-    TResult Function(_Failure value)? failure,
+    TResult Function(_CheckingToken value)? checkingToken,
+    TResult Function(_RefreshingToken value)? refreshingToken,
+    TResult Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult Function(_LoggingOut value)? loggingOut,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -309,8 +309,9 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements AuthState {
+abstract class _Initial extends AuthState {
   const factory _Initial() = _$InitialImpl;
+  const _Initial._() : super._();
 }
 
 /// @nodoc
@@ -334,8 +335,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
+class _$LoadingImpl extends _Loading {
+  const _$LoadingImpl() : super._();
 
   @override
   String toString() {
@@ -356,17 +357,17 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() checkingUser,
+    required TResult Function(bool exists) userChecked,
     required TResult Function() loggingIn,
-    required TResult Function() sendingOtp,
-    required TResult Function() checkingToken,
-    required TResult Function() checkingUserExists,
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(VerificationEntity verification) otpSent,
-    required TResult Function(bool isValid) tokenChecked,
-    required TResult Function(bool exists) userExistsChecked,
-    required TResult Function(String message) failure,
-    required TResult Function(AuthStateError error, String? errorMessage) error,
+    required TResult Function() checkingToken,
+    required TResult Function() refreshingToken,
+    required TResult Function() finishingOnboarding,
+    required TResult Function() skippingOnboarding,
+    required TResult Function() loggingOut,
+    required TResult Function(AuthStateError error, AuthFailure failure) error,
   }) {
     return loading();
   }
@@ -376,17 +377,17 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? checkingUser,
+    TResult? Function(bool exists)? userChecked,
     TResult? Function()? loggingIn,
-    TResult? Function()? sendingOtp,
-    TResult? Function()? checkingToken,
-    TResult? Function()? checkingUserExists,
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(VerificationEntity verification)? otpSent,
-    TResult? Function(bool isValid)? tokenChecked,
-    TResult? Function(bool exists)? userExistsChecked,
-    TResult? Function(String message)? failure,
-    TResult? Function(AuthStateError error, String? errorMessage)? error,
+    TResult? Function()? checkingToken,
+    TResult? Function()? refreshingToken,
+    TResult? Function()? finishingOnboarding,
+    TResult? Function()? skippingOnboarding,
+    TResult? Function()? loggingOut,
+    TResult? Function(AuthStateError error, AuthFailure failure)? error,
   }) {
     return loading?.call();
   }
@@ -396,17 +397,17 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? checkingUser,
+    TResult Function(bool exists)? userChecked,
     TResult Function()? loggingIn,
-    TResult Function()? sendingOtp,
-    TResult Function()? checkingToken,
-    TResult Function()? checkingUserExists,
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(VerificationEntity verification)? otpSent,
-    TResult Function(bool isValid)? tokenChecked,
-    TResult Function(bool exists)? userExistsChecked,
-    TResult Function(String message)? failure,
-    TResult Function(AuthStateError error, String? errorMessage)? error,
+    TResult Function()? checkingToken,
+    TResult Function()? refreshingToken,
+    TResult Function()? finishingOnboarding,
+    TResult Function()? skippingOnboarding,
+    TResult Function()? loggingOut,
+    TResult Function(AuthStateError error, AuthFailure failure)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -420,16 +421,16 @@ class _$LoadingImpl implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_CheckingUser value) checkingUser,
+    required TResult Function(_UserChecked value) userChecked,
     required TResult Function(_LoggingIn value) loggingIn,
-    required TResult Function(_SendingOtp value) sendingOtp,
-    required TResult Function(_CheckingToken value) checkingToken,
-    required TResult Function(_CheckingUserExists value) checkingUserExists,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_OtpSent value) otpSent,
-    required TResult Function(_TokenChecked value) tokenChecked,
-    required TResult Function(_UserExistsChecked value) userExistsChecked,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(_CheckingToken value) checkingToken,
+    required TResult Function(_RefreshingToken value) refreshingToken,
+    required TResult Function(_FinishingOnboarding value) finishingOnboarding,
+    required TResult Function(_SkippingOnboarding value) skippingOnboarding,
+    required TResult Function(_LoggingOut value) loggingOut,
     required TResult Function(_Error value) error,
   }) {
     return loading(this);
@@ -440,16 +441,16 @@ class _$LoadingImpl implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_CheckingUser value)? checkingUser,
+    TResult? Function(_UserChecked value)? userChecked,
     TResult? Function(_LoggingIn value)? loggingIn,
-    TResult? Function(_SendingOtp value)? sendingOtp,
-    TResult? Function(_CheckingToken value)? checkingToken,
-    TResult? Function(_CheckingUserExists value)? checkingUserExists,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(_OtpSent value)? otpSent,
-    TResult? Function(_TokenChecked value)? tokenChecked,
-    TResult? Function(_UserExistsChecked value)? userExistsChecked,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(_CheckingToken value)? checkingToken,
+    TResult? Function(_RefreshingToken value)? refreshingToken,
+    TResult? Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult? Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult? Function(_LoggingOut value)? loggingOut,
     TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
@@ -460,16 +461,16 @@ class _$LoadingImpl implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_CheckingUser value)? checkingUser,
+    TResult Function(_UserChecked value)? userChecked,
     TResult Function(_LoggingIn value)? loggingIn,
-    TResult Function(_SendingOtp value)? sendingOtp,
-    TResult Function(_CheckingToken value)? checkingToken,
-    TResult Function(_CheckingUserExists value)? checkingUserExists,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_OtpSent value)? otpSent,
-    TResult Function(_TokenChecked value)? tokenChecked,
-    TResult Function(_UserExistsChecked value)? userExistsChecked,
-    TResult Function(_Failure value)? failure,
+    TResult Function(_CheckingToken value)? checkingToken,
+    TResult Function(_RefreshingToken value)? refreshingToken,
+    TResult Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult Function(_LoggingOut value)? loggingOut,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -480,8 +481,388 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements AuthState {
+abstract class _Loading extends AuthState {
   const factory _Loading() = _$LoadingImpl;
+  const _Loading._() : super._();
+}
+
+/// @nodoc
+abstract class _$$CheckingUserImplCopyWith<$Res> {
+  factory _$$CheckingUserImplCopyWith(
+          _$CheckingUserImpl value, $Res Function(_$CheckingUserImpl) then) =
+      __$$CheckingUserImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CheckingUserImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$CheckingUserImpl>
+    implements _$$CheckingUserImplCopyWith<$Res> {
+  __$$CheckingUserImplCopyWithImpl(
+      _$CheckingUserImpl _value, $Res Function(_$CheckingUserImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$CheckingUserImpl extends _CheckingUser {
+  const _$CheckingUserImpl() : super._();
+
+  @override
+  String toString() {
+    return 'AuthState.checkingUser()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CheckingUserImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() checkingUser,
+    required TResult Function(bool exists) userChecked,
+    required TResult Function() loggingIn,
+    required TResult Function() authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function() checkingToken,
+    required TResult Function() refreshingToken,
+    required TResult Function() finishingOnboarding,
+    required TResult Function() skippingOnboarding,
+    required TResult Function() loggingOut,
+    required TResult Function(AuthStateError error, AuthFailure failure) error,
+  }) {
+    return checkingUser();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? checkingUser,
+    TResult? Function(bool exists)? userChecked,
+    TResult? Function()? loggingIn,
+    TResult? Function()? authenticated,
+    TResult? Function()? unauthenticated,
+    TResult? Function()? checkingToken,
+    TResult? Function()? refreshingToken,
+    TResult? Function()? finishingOnboarding,
+    TResult? Function()? skippingOnboarding,
+    TResult? Function()? loggingOut,
+    TResult? Function(AuthStateError error, AuthFailure failure)? error,
+  }) {
+    return checkingUser?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? checkingUser,
+    TResult Function(bool exists)? userChecked,
+    TResult Function()? loggingIn,
+    TResult Function()? authenticated,
+    TResult Function()? unauthenticated,
+    TResult Function()? checkingToken,
+    TResult Function()? refreshingToken,
+    TResult Function()? finishingOnboarding,
+    TResult Function()? skippingOnboarding,
+    TResult Function()? loggingOut,
+    TResult Function(AuthStateError error, AuthFailure failure)? error,
+    required TResult orElse(),
+  }) {
+    if (checkingUser != null) {
+      return checkingUser();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_CheckingUser value) checkingUser,
+    required TResult Function(_UserChecked value) userChecked,
+    required TResult Function(_LoggingIn value) loggingIn,
+    required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_Unauthenticated value) unauthenticated,
+    required TResult Function(_CheckingToken value) checkingToken,
+    required TResult Function(_RefreshingToken value) refreshingToken,
+    required TResult Function(_FinishingOnboarding value) finishingOnboarding,
+    required TResult Function(_SkippingOnboarding value) skippingOnboarding,
+    required TResult Function(_LoggingOut value) loggingOut,
+    required TResult Function(_Error value) error,
+  }) {
+    return checkingUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_CheckingUser value)? checkingUser,
+    TResult? Function(_UserChecked value)? userChecked,
+    TResult? Function(_LoggingIn value)? loggingIn,
+    TResult? Function(_Authenticated value)? authenticated,
+    TResult? Function(_Unauthenticated value)? unauthenticated,
+    TResult? Function(_CheckingToken value)? checkingToken,
+    TResult? Function(_RefreshingToken value)? refreshingToken,
+    TResult? Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult? Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult? Function(_LoggingOut value)? loggingOut,
+    TResult? Function(_Error value)? error,
+  }) {
+    return checkingUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_CheckingUser value)? checkingUser,
+    TResult Function(_UserChecked value)? userChecked,
+    TResult Function(_LoggingIn value)? loggingIn,
+    TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unauthenticated value)? unauthenticated,
+    TResult Function(_CheckingToken value)? checkingToken,
+    TResult Function(_RefreshingToken value)? refreshingToken,
+    TResult Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult Function(_LoggingOut value)? loggingOut,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (checkingUser != null) {
+      return checkingUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CheckingUser extends AuthState {
+  const factory _CheckingUser() = _$CheckingUserImpl;
+  const _CheckingUser._() : super._();
+}
+
+/// @nodoc
+abstract class _$$UserCheckedImplCopyWith<$Res> {
+  factory _$$UserCheckedImplCopyWith(
+          _$UserCheckedImpl value, $Res Function(_$UserCheckedImpl) then) =
+      __$$UserCheckedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool exists});
+}
+
+/// @nodoc
+class __$$UserCheckedImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$UserCheckedImpl>
+    implements _$$UserCheckedImplCopyWith<$Res> {
+  __$$UserCheckedImplCopyWithImpl(
+      _$UserCheckedImpl _value, $Res Function(_$UserCheckedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? exists = null,
+  }) {
+    return _then(_$UserCheckedImpl(
+      exists: null == exists
+          ? _value.exists
+          : exists // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UserCheckedImpl extends _UserChecked {
+  const _$UserCheckedImpl({required this.exists}) : super._();
+
+  @override
+  final bool exists;
+
+  @override
+  String toString() {
+    return 'AuthState.userChecked(exists: $exists)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserCheckedImpl &&
+            (identical(other.exists, exists) || other.exists == exists));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, exists);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserCheckedImplCopyWith<_$UserCheckedImpl> get copyWith =>
+      __$$UserCheckedImplCopyWithImpl<_$UserCheckedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() checkingUser,
+    required TResult Function(bool exists) userChecked,
+    required TResult Function() loggingIn,
+    required TResult Function() authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function() checkingToken,
+    required TResult Function() refreshingToken,
+    required TResult Function() finishingOnboarding,
+    required TResult Function() skippingOnboarding,
+    required TResult Function() loggingOut,
+    required TResult Function(AuthStateError error, AuthFailure failure) error,
+  }) {
+    return userChecked(exists);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? checkingUser,
+    TResult? Function(bool exists)? userChecked,
+    TResult? Function()? loggingIn,
+    TResult? Function()? authenticated,
+    TResult? Function()? unauthenticated,
+    TResult? Function()? checkingToken,
+    TResult? Function()? refreshingToken,
+    TResult? Function()? finishingOnboarding,
+    TResult? Function()? skippingOnboarding,
+    TResult? Function()? loggingOut,
+    TResult? Function(AuthStateError error, AuthFailure failure)? error,
+  }) {
+    return userChecked?.call(exists);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? checkingUser,
+    TResult Function(bool exists)? userChecked,
+    TResult Function()? loggingIn,
+    TResult Function()? authenticated,
+    TResult Function()? unauthenticated,
+    TResult Function()? checkingToken,
+    TResult Function()? refreshingToken,
+    TResult Function()? finishingOnboarding,
+    TResult Function()? skippingOnboarding,
+    TResult Function()? loggingOut,
+    TResult Function(AuthStateError error, AuthFailure failure)? error,
+    required TResult orElse(),
+  }) {
+    if (userChecked != null) {
+      return userChecked(exists);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_CheckingUser value) checkingUser,
+    required TResult Function(_UserChecked value) userChecked,
+    required TResult Function(_LoggingIn value) loggingIn,
+    required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_Unauthenticated value) unauthenticated,
+    required TResult Function(_CheckingToken value) checkingToken,
+    required TResult Function(_RefreshingToken value) refreshingToken,
+    required TResult Function(_FinishingOnboarding value) finishingOnboarding,
+    required TResult Function(_SkippingOnboarding value) skippingOnboarding,
+    required TResult Function(_LoggingOut value) loggingOut,
+    required TResult Function(_Error value) error,
+  }) {
+    return userChecked(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_CheckingUser value)? checkingUser,
+    TResult? Function(_UserChecked value)? userChecked,
+    TResult? Function(_LoggingIn value)? loggingIn,
+    TResult? Function(_Authenticated value)? authenticated,
+    TResult? Function(_Unauthenticated value)? unauthenticated,
+    TResult? Function(_CheckingToken value)? checkingToken,
+    TResult? Function(_RefreshingToken value)? refreshingToken,
+    TResult? Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult? Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult? Function(_LoggingOut value)? loggingOut,
+    TResult? Function(_Error value)? error,
+  }) {
+    return userChecked?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_CheckingUser value)? checkingUser,
+    TResult Function(_UserChecked value)? userChecked,
+    TResult Function(_LoggingIn value)? loggingIn,
+    TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unauthenticated value)? unauthenticated,
+    TResult Function(_CheckingToken value)? checkingToken,
+    TResult Function(_RefreshingToken value)? refreshingToken,
+    TResult Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult Function(_LoggingOut value)? loggingOut,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (userChecked != null) {
+      return userChecked(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserChecked extends AuthState {
+  const factory _UserChecked({required final bool exists}) = _$UserCheckedImpl;
+  const _UserChecked._() : super._();
+
+  bool get exists;
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UserCheckedImplCopyWith<_$UserCheckedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -505,8 +886,8 @@ class __$$LoggingInImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoggingInImpl implements _LoggingIn {
-  const _$LoggingInImpl();
+class _$LoggingInImpl extends _LoggingIn {
+  const _$LoggingInImpl() : super._();
 
   @override
   String toString() {
@@ -527,17 +908,17 @@ class _$LoggingInImpl implements _LoggingIn {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() checkingUser,
+    required TResult Function(bool exists) userChecked,
     required TResult Function() loggingIn,
-    required TResult Function() sendingOtp,
-    required TResult Function() checkingToken,
-    required TResult Function() checkingUserExists,
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(VerificationEntity verification) otpSent,
-    required TResult Function(bool isValid) tokenChecked,
-    required TResult Function(bool exists) userExistsChecked,
-    required TResult Function(String message) failure,
-    required TResult Function(AuthStateError error, String? errorMessage) error,
+    required TResult Function() checkingToken,
+    required TResult Function() refreshingToken,
+    required TResult Function() finishingOnboarding,
+    required TResult Function() skippingOnboarding,
+    required TResult Function() loggingOut,
+    required TResult Function(AuthStateError error, AuthFailure failure) error,
   }) {
     return loggingIn();
   }
@@ -547,17 +928,17 @@ class _$LoggingInImpl implements _LoggingIn {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? checkingUser,
+    TResult? Function(bool exists)? userChecked,
     TResult? Function()? loggingIn,
-    TResult? Function()? sendingOtp,
-    TResult? Function()? checkingToken,
-    TResult? Function()? checkingUserExists,
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(VerificationEntity verification)? otpSent,
-    TResult? Function(bool isValid)? tokenChecked,
-    TResult? Function(bool exists)? userExistsChecked,
-    TResult? Function(String message)? failure,
-    TResult? Function(AuthStateError error, String? errorMessage)? error,
+    TResult? Function()? checkingToken,
+    TResult? Function()? refreshingToken,
+    TResult? Function()? finishingOnboarding,
+    TResult? Function()? skippingOnboarding,
+    TResult? Function()? loggingOut,
+    TResult? Function(AuthStateError error, AuthFailure failure)? error,
   }) {
     return loggingIn?.call();
   }
@@ -567,17 +948,17 @@ class _$LoggingInImpl implements _LoggingIn {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? checkingUser,
+    TResult Function(bool exists)? userChecked,
     TResult Function()? loggingIn,
-    TResult Function()? sendingOtp,
-    TResult Function()? checkingToken,
-    TResult Function()? checkingUserExists,
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(VerificationEntity verification)? otpSent,
-    TResult Function(bool isValid)? tokenChecked,
-    TResult Function(bool exists)? userExistsChecked,
-    TResult Function(String message)? failure,
-    TResult Function(AuthStateError error, String? errorMessage)? error,
+    TResult Function()? checkingToken,
+    TResult Function()? refreshingToken,
+    TResult Function()? finishingOnboarding,
+    TResult Function()? skippingOnboarding,
+    TResult Function()? loggingOut,
+    TResult Function(AuthStateError error, AuthFailure failure)? error,
     required TResult orElse(),
   }) {
     if (loggingIn != null) {
@@ -591,16 +972,16 @@ class _$LoggingInImpl implements _LoggingIn {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_CheckingUser value) checkingUser,
+    required TResult Function(_UserChecked value) userChecked,
     required TResult Function(_LoggingIn value) loggingIn,
-    required TResult Function(_SendingOtp value) sendingOtp,
-    required TResult Function(_CheckingToken value) checkingToken,
-    required TResult Function(_CheckingUserExists value) checkingUserExists,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_OtpSent value) otpSent,
-    required TResult Function(_TokenChecked value) tokenChecked,
-    required TResult Function(_UserExistsChecked value) userExistsChecked,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(_CheckingToken value) checkingToken,
+    required TResult Function(_RefreshingToken value) refreshingToken,
+    required TResult Function(_FinishingOnboarding value) finishingOnboarding,
+    required TResult Function(_SkippingOnboarding value) skippingOnboarding,
+    required TResult Function(_LoggingOut value) loggingOut,
     required TResult Function(_Error value) error,
   }) {
     return loggingIn(this);
@@ -611,16 +992,16 @@ class _$LoggingInImpl implements _LoggingIn {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_CheckingUser value)? checkingUser,
+    TResult? Function(_UserChecked value)? userChecked,
     TResult? Function(_LoggingIn value)? loggingIn,
-    TResult? Function(_SendingOtp value)? sendingOtp,
-    TResult? Function(_CheckingToken value)? checkingToken,
-    TResult? Function(_CheckingUserExists value)? checkingUserExists,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(_OtpSent value)? otpSent,
-    TResult? Function(_TokenChecked value)? tokenChecked,
-    TResult? Function(_UserExistsChecked value)? userExistsChecked,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(_CheckingToken value)? checkingToken,
+    TResult? Function(_RefreshingToken value)? refreshingToken,
+    TResult? Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult? Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult? Function(_LoggingOut value)? loggingOut,
     TResult? Function(_Error value)? error,
   }) {
     return loggingIn?.call(this);
@@ -631,16 +1012,16 @@ class _$LoggingInImpl implements _LoggingIn {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_CheckingUser value)? checkingUser,
+    TResult Function(_UserChecked value)? userChecked,
     TResult Function(_LoggingIn value)? loggingIn,
-    TResult Function(_SendingOtp value)? sendingOtp,
-    TResult Function(_CheckingToken value)? checkingToken,
-    TResult Function(_CheckingUserExists value)? checkingUserExists,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_OtpSent value)? otpSent,
-    TResult Function(_TokenChecked value)? tokenChecked,
-    TResult Function(_UserExistsChecked value)? userExistsChecked,
-    TResult Function(_Failure value)? failure,
+    TResult Function(_CheckingToken value)? checkingToken,
+    TResult Function(_RefreshingToken value)? refreshingToken,
+    TResult Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult Function(_LoggingOut value)? loggingOut,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -651,521 +1032,9 @@ class _$LoggingInImpl implements _LoggingIn {
   }
 }
 
-abstract class _LoggingIn implements AuthState {
+abstract class _LoggingIn extends AuthState {
   const factory _LoggingIn() = _$LoggingInImpl;
-}
-
-/// @nodoc
-abstract class _$$SendingOtpImplCopyWith<$Res> {
-  factory _$$SendingOtpImplCopyWith(
-          _$SendingOtpImpl value, $Res Function(_$SendingOtpImpl) then) =
-      __$$SendingOtpImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$SendingOtpImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$SendingOtpImpl>
-    implements _$$SendingOtpImplCopyWith<$Res> {
-  __$$SendingOtpImplCopyWithImpl(
-      _$SendingOtpImpl _value, $Res Function(_$SendingOtpImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$SendingOtpImpl implements _SendingOtp {
-  const _$SendingOtpImpl();
-
-  @override
-  String toString() {
-    return 'AuthState.sendingOtp()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SendingOtpImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() loggingIn,
-    required TResult Function() sendingOtp,
-    required TResult Function() checkingToken,
-    required TResult Function() checkingUserExists,
-    required TResult Function() authenticated,
-    required TResult Function() unauthenticated,
-    required TResult Function(VerificationEntity verification) otpSent,
-    required TResult Function(bool isValid) tokenChecked,
-    required TResult Function(bool exists) userExistsChecked,
-    required TResult Function(String message) failure,
-    required TResult Function(AuthStateError error, String? errorMessage) error,
-  }) {
-    return sendingOtp();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? loggingIn,
-    TResult? Function()? sendingOtp,
-    TResult? Function()? checkingToken,
-    TResult? Function()? checkingUserExists,
-    TResult? Function()? authenticated,
-    TResult? Function()? unauthenticated,
-    TResult? Function(VerificationEntity verification)? otpSent,
-    TResult? Function(bool isValid)? tokenChecked,
-    TResult? Function(bool exists)? userExistsChecked,
-    TResult? Function(String message)? failure,
-    TResult? Function(AuthStateError error, String? errorMessage)? error,
-  }) {
-    return sendingOtp?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? loggingIn,
-    TResult Function()? sendingOtp,
-    TResult Function()? checkingToken,
-    TResult Function()? checkingUserExists,
-    TResult Function()? authenticated,
-    TResult Function()? unauthenticated,
-    TResult Function(VerificationEntity verification)? otpSent,
-    TResult Function(bool isValid)? tokenChecked,
-    TResult Function(bool exists)? userExistsChecked,
-    TResult Function(String message)? failure,
-    TResult Function(AuthStateError error, String? errorMessage)? error,
-    required TResult orElse(),
-  }) {
-    if (sendingOtp != null) {
-      return sendingOtp();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LoggingIn value) loggingIn,
-    required TResult Function(_SendingOtp value) sendingOtp,
-    required TResult Function(_CheckingToken value) checkingToken,
-    required TResult Function(_CheckingUserExists value) checkingUserExists,
-    required TResult Function(_Authenticated value) authenticated,
-    required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_OtpSent value) otpSent,
-    required TResult Function(_TokenChecked value) tokenChecked,
-    required TResult Function(_UserExistsChecked value) userExistsChecked,
-    required TResult Function(_Failure value) failure,
-    required TResult Function(_Error value) error,
-  }) {
-    return sendingOtp(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoggingIn value)? loggingIn,
-    TResult? Function(_SendingOtp value)? sendingOtp,
-    TResult? Function(_CheckingToken value)? checkingToken,
-    TResult? Function(_CheckingUserExists value)? checkingUserExists,
-    TResult? Function(_Authenticated value)? authenticated,
-    TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(_OtpSent value)? otpSent,
-    TResult? Function(_TokenChecked value)? tokenChecked,
-    TResult? Function(_UserExistsChecked value)? userExistsChecked,
-    TResult? Function(_Failure value)? failure,
-    TResult? Function(_Error value)? error,
-  }) {
-    return sendingOtp?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LoggingIn value)? loggingIn,
-    TResult Function(_SendingOtp value)? sendingOtp,
-    TResult Function(_CheckingToken value)? checkingToken,
-    TResult Function(_CheckingUserExists value)? checkingUserExists,
-    TResult Function(_Authenticated value)? authenticated,
-    TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_OtpSent value)? otpSent,
-    TResult Function(_TokenChecked value)? tokenChecked,
-    TResult Function(_UserExistsChecked value)? userExistsChecked,
-    TResult Function(_Failure value)? failure,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (sendingOtp != null) {
-      return sendingOtp(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SendingOtp implements AuthState {
-  const factory _SendingOtp() = _$SendingOtpImpl;
-}
-
-/// @nodoc
-abstract class _$$CheckingTokenImplCopyWith<$Res> {
-  factory _$$CheckingTokenImplCopyWith(
-          _$CheckingTokenImpl value, $Res Function(_$CheckingTokenImpl) then) =
-      __$$CheckingTokenImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$CheckingTokenImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$CheckingTokenImpl>
-    implements _$$CheckingTokenImplCopyWith<$Res> {
-  __$$CheckingTokenImplCopyWithImpl(
-      _$CheckingTokenImpl _value, $Res Function(_$CheckingTokenImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$CheckingTokenImpl implements _CheckingToken {
-  const _$CheckingTokenImpl();
-
-  @override
-  String toString() {
-    return 'AuthState.checkingToken()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$CheckingTokenImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() loggingIn,
-    required TResult Function() sendingOtp,
-    required TResult Function() checkingToken,
-    required TResult Function() checkingUserExists,
-    required TResult Function() authenticated,
-    required TResult Function() unauthenticated,
-    required TResult Function(VerificationEntity verification) otpSent,
-    required TResult Function(bool isValid) tokenChecked,
-    required TResult Function(bool exists) userExistsChecked,
-    required TResult Function(String message) failure,
-    required TResult Function(AuthStateError error, String? errorMessage) error,
-  }) {
-    return checkingToken();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? loggingIn,
-    TResult? Function()? sendingOtp,
-    TResult? Function()? checkingToken,
-    TResult? Function()? checkingUserExists,
-    TResult? Function()? authenticated,
-    TResult? Function()? unauthenticated,
-    TResult? Function(VerificationEntity verification)? otpSent,
-    TResult? Function(bool isValid)? tokenChecked,
-    TResult? Function(bool exists)? userExistsChecked,
-    TResult? Function(String message)? failure,
-    TResult? Function(AuthStateError error, String? errorMessage)? error,
-  }) {
-    return checkingToken?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? loggingIn,
-    TResult Function()? sendingOtp,
-    TResult Function()? checkingToken,
-    TResult Function()? checkingUserExists,
-    TResult Function()? authenticated,
-    TResult Function()? unauthenticated,
-    TResult Function(VerificationEntity verification)? otpSent,
-    TResult Function(bool isValid)? tokenChecked,
-    TResult Function(bool exists)? userExistsChecked,
-    TResult Function(String message)? failure,
-    TResult Function(AuthStateError error, String? errorMessage)? error,
-    required TResult orElse(),
-  }) {
-    if (checkingToken != null) {
-      return checkingToken();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LoggingIn value) loggingIn,
-    required TResult Function(_SendingOtp value) sendingOtp,
-    required TResult Function(_CheckingToken value) checkingToken,
-    required TResult Function(_CheckingUserExists value) checkingUserExists,
-    required TResult Function(_Authenticated value) authenticated,
-    required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_OtpSent value) otpSent,
-    required TResult Function(_TokenChecked value) tokenChecked,
-    required TResult Function(_UserExistsChecked value) userExistsChecked,
-    required TResult Function(_Failure value) failure,
-    required TResult Function(_Error value) error,
-  }) {
-    return checkingToken(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoggingIn value)? loggingIn,
-    TResult? Function(_SendingOtp value)? sendingOtp,
-    TResult? Function(_CheckingToken value)? checkingToken,
-    TResult? Function(_CheckingUserExists value)? checkingUserExists,
-    TResult? Function(_Authenticated value)? authenticated,
-    TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(_OtpSent value)? otpSent,
-    TResult? Function(_TokenChecked value)? tokenChecked,
-    TResult? Function(_UserExistsChecked value)? userExistsChecked,
-    TResult? Function(_Failure value)? failure,
-    TResult? Function(_Error value)? error,
-  }) {
-    return checkingToken?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LoggingIn value)? loggingIn,
-    TResult Function(_SendingOtp value)? sendingOtp,
-    TResult Function(_CheckingToken value)? checkingToken,
-    TResult Function(_CheckingUserExists value)? checkingUserExists,
-    TResult Function(_Authenticated value)? authenticated,
-    TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_OtpSent value)? otpSent,
-    TResult Function(_TokenChecked value)? tokenChecked,
-    TResult Function(_UserExistsChecked value)? userExistsChecked,
-    TResult Function(_Failure value)? failure,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (checkingToken != null) {
-      return checkingToken(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _CheckingToken implements AuthState {
-  const factory _CheckingToken() = _$CheckingTokenImpl;
-}
-
-/// @nodoc
-abstract class _$$CheckingUserExistsImplCopyWith<$Res> {
-  factory _$$CheckingUserExistsImplCopyWith(_$CheckingUserExistsImpl value,
-          $Res Function(_$CheckingUserExistsImpl) then) =
-      __$$CheckingUserExistsImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$CheckingUserExistsImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$CheckingUserExistsImpl>
-    implements _$$CheckingUserExistsImplCopyWith<$Res> {
-  __$$CheckingUserExistsImplCopyWithImpl(_$CheckingUserExistsImpl _value,
-      $Res Function(_$CheckingUserExistsImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$CheckingUserExistsImpl implements _CheckingUserExists {
-  const _$CheckingUserExistsImpl();
-
-  @override
-  String toString() {
-    return 'AuthState.checkingUserExists()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$CheckingUserExistsImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() loggingIn,
-    required TResult Function() sendingOtp,
-    required TResult Function() checkingToken,
-    required TResult Function() checkingUserExists,
-    required TResult Function() authenticated,
-    required TResult Function() unauthenticated,
-    required TResult Function(VerificationEntity verification) otpSent,
-    required TResult Function(bool isValid) tokenChecked,
-    required TResult Function(bool exists) userExistsChecked,
-    required TResult Function(String message) failure,
-    required TResult Function(AuthStateError error, String? errorMessage) error,
-  }) {
-    return checkingUserExists();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? loggingIn,
-    TResult? Function()? sendingOtp,
-    TResult? Function()? checkingToken,
-    TResult? Function()? checkingUserExists,
-    TResult? Function()? authenticated,
-    TResult? Function()? unauthenticated,
-    TResult? Function(VerificationEntity verification)? otpSent,
-    TResult? Function(bool isValid)? tokenChecked,
-    TResult? Function(bool exists)? userExistsChecked,
-    TResult? Function(String message)? failure,
-    TResult? Function(AuthStateError error, String? errorMessage)? error,
-  }) {
-    return checkingUserExists?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? loggingIn,
-    TResult Function()? sendingOtp,
-    TResult Function()? checkingToken,
-    TResult Function()? checkingUserExists,
-    TResult Function()? authenticated,
-    TResult Function()? unauthenticated,
-    TResult Function(VerificationEntity verification)? otpSent,
-    TResult Function(bool isValid)? tokenChecked,
-    TResult Function(bool exists)? userExistsChecked,
-    TResult Function(String message)? failure,
-    TResult Function(AuthStateError error, String? errorMessage)? error,
-    required TResult orElse(),
-  }) {
-    if (checkingUserExists != null) {
-      return checkingUserExists();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LoggingIn value) loggingIn,
-    required TResult Function(_SendingOtp value) sendingOtp,
-    required TResult Function(_CheckingToken value) checkingToken,
-    required TResult Function(_CheckingUserExists value) checkingUserExists,
-    required TResult Function(_Authenticated value) authenticated,
-    required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_OtpSent value) otpSent,
-    required TResult Function(_TokenChecked value) tokenChecked,
-    required TResult Function(_UserExistsChecked value) userExistsChecked,
-    required TResult Function(_Failure value) failure,
-    required TResult Function(_Error value) error,
-  }) {
-    return checkingUserExists(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoggingIn value)? loggingIn,
-    TResult? Function(_SendingOtp value)? sendingOtp,
-    TResult? Function(_CheckingToken value)? checkingToken,
-    TResult? Function(_CheckingUserExists value)? checkingUserExists,
-    TResult? Function(_Authenticated value)? authenticated,
-    TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(_OtpSent value)? otpSent,
-    TResult? Function(_TokenChecked value)? tokenChecked,
-    TResult? Function(_UserExistsChecked value)? userExistsChecked,
-    TResult? Function(_Failure value)? failure,
-    TResult? Function(_Error value)? error,
-  }) {
-    return checkingUserExists?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LoggingIn value)? loggingIn,
-    TResult Function(_SendingOtp value)? sendingOtp,
-    TResult Function(_CheckingToken value)? checkingToken,
-    TResult Function(_CheckingUserExists value)? checkingUserExists,
-    TResult Function(_Authenticated value)? authenticated,
-    TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_OtpSent value)? otpSent,
-    TResult Function(_TokenChecked value)? tokenChecked,
-    TResult Function(_UserExistsChecked value)? userExistsChecked,
-    TResult Function(_Failure value)? failure,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (checkingUserExists != null) {
-      return checkingUserExists(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _CheckingUserExists implements AuthState {
-  const factory _CheckingUserExists() = _$CheckingUserExistsImpl;
+  const _LoggingIn._() : super._();
 }
 
 /// @nodoc
@@ -1189,8 +1058,8 @@ class __$$AuthenticatedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AuthenticatedImpl implements _Authenticated {
-  const _$AuthenticatedImpl();
+class _$AuthenticatedImpl extends _Authenticated {
+  const _$AuthenticatedImpl() : super._();
 
   @override
   String toString() {
@@ -1211,17 +1080,17 @@ class _$AuthenticatedImpl implements _Authenticated {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() checkingUser,
+    required TResult Function(bool exists) userChecked,
     required TResult Function() loggingIn,
-    required TResult Function() sendingOtp,
-    required TResult Function() checkingToken,
-    required TResult Function() checkingUserExists,
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(VerificationEntity verification) otpSent,
-    required TResult Function(bool isValid) tokenChecked,
-    required TResult Function(bool exists) userExistsChecked,
-    required TResult Function(String message) failure,
-    required TResult Function(AuthStateError error, String? errorMessage) error,
+    required TResult Function() checkingToken,
+    required TResult Function() refreshingToken,
+    required TResult Function() finishingOnboarding,
+    required TResult Function() skippingOnboarding,
+    required TResult Function() loggingOut,
+    required TResult Function(AuthStateError error, AuthFailure failure) error,
   }) {
     return authenticated();
   }
@@ -1231,17 +1100,17 @@ class _$AuthenticatedImpl implements _Authenticated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? checkingUser,
+    TResult? Function(bool exists)? userChecked,
     TResult? Function()? loggingIn,
-    TResult? Function()? sendingOtp,
-    TResult? Function()? checkingToken,
-    TResult? Function()? checkingUserExists,
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(VerificationEntity verification)? otpSent,
-    TResult? Function(bool isValid)? tokenChecked,
-    TResult? Function(bool exists)? userExistsChecked,
-    TResult? Function(String message)? failure,
-    TResult? Function(AuthStateError error, String? errorMessage)? error,
+    TResult? Function()? checkingToken,
+    TResult? Function()? refreshingToken,
+    TResult? Function()? finishingOnboarding,
+    TResult? Function()? skippingOnboarding,
+    TResult? Function()? loggingOut,
+    TResult? Function(AuthStateError error, AuthFailure failure)? error,
   }) {
     return authenticated?.call();
   }
@@ -1251,17 +1120,17 @@ class _$AuthenticatedImpl implements _Authenticated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? checkingUser,
+    TResult Function(bool exists)? userChecked,
     TResult Function()? loggingIn,
-    TResult Function()? sendingOtp,
-    TResult Function()? checkingToken,
-    TResult Function()? checkingUserExists,
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(VerificationEntity verification)? otpSent,
-    TResult Function(bool isValid)? tokenChecked,
-    TResult Function(bool exists)? userExistsChecked,
-    TResult Function(String message)? failure,
-    TResult Function(AuthStateError error, String? errorMessage)? error,
+    TResult Function()? checkingToken,
+    TResult Function()? refreshingToken,
+    TResult Function()? finishingOnboarding,
+    TResult Function()? skippingOnboarding,
+    TResult Function()? loggingOut,
+    TResult Function(AuthStateError error, AuthFailure failure)? error,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
@@ -1275,16 +1144,16 @@ class _$AuthenticatedImpl implements _Authenticated {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_CheckingUser value) checkingUser,
+    required TResult Function(_UserChecked value) userChecked,
     required TResult Function(_LoggingIn value) loggingIn,
-    required TResult Function(_SendingOtp value) sendingOtp,
-    required TResult Function(_CheckingToken value) checkingToken,
-    required TResult Function(_CheckingUserExists value) checkingUserExists,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_OtpSent value) otpSent,
-    required TResult Function(_TokenChecked value) tokenChecked,
-    required TResult Function(_UserExistsChecked value) userExistsChecked,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(_CheckingToken value) checkingToken,
+    required TResult Function(_RefreshingToken value) refreshingToken,
+    required TResult Function(_FinishingOnboarding value) finishingOnboarding,
+    required TResult Function(_SkippingOnboarding value) skippingOnboarding,
+    required TResult Function(_LoggingOut value) loggingOut,
     required TResult Function(_Error value) error,
   }) {
     return authenticated(this);
@@ -1295,16 +1164,16 @@ class _$AuthenticatedImpl implements _Authenticated {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_CheckingUser value)? checkingUser,
+    TResult? Function(_UserChecked value)? userChecked,
     TResult? Function(_LoggingIn value)? loggingIn,
-    TResult? Function(_SendingOtp value)? sendingOtp,
-    TResult? Function(_CheckingToken value)? checkingToken,
-    TResult? Function(_CheckingUserExists value)? checkingUserExists,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(_OtpSent value)? otpSent,
-    TResult? Function(_TokenChecked value)? tokenChecked,
-    TResult? Function(_UserExistsChecked value)? userExistsChecked,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(_CheckingToken value)? checkingToken,
+    TResult? Function(_RefreshingToken value)? refreshingToken,
+    TResult? Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult? Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult? Function(_LoggingOut value)? loggingOut,
     TResult? Function(_Error value)? error,
   }) {
     return authenticated?.call(this);
@@ -1315,16 +1184,16 @@ class _$AuthenticatedImpl implements _Authenticated {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_CheckingUser value)? checkingUser,
+    TResult Function(_UserChecked value)? userChecked,
     TResult Function(_LoggingIn value)? loggingIn,
-    TResult Function(_SendingOtp value)? sendingOtp,
-    TResult Function(_CheckingToken value)? checkingToken,
-    TResult Function(_CheckingUserExists value)? checkingUserExists,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_OtpSent value)? otpSent,
-    TResult Function(_TokenChecked value)? tokenChecked,
-    TResult Function(_UserExistsChecked value)? userExistsChecked,
-    TResult Function(_Failure value)? failure,
+    TResult Function(_CheckingToken value)? checkingToken,
+    TResult Function(_RefreshingToken value)? refreshingToken,
+    TResult Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult Function(_LoggingOut value)? loggingOut,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1335,8 +1204,9 @@ class _$AuthenticatedImpl implements _Authenticated {
   }
 }
 
-abstract class _Authenticated implements AuthState {
+abstract class _Authenticated extends AuthState {
   const factory _Authenticated() = _$AuthenticatedImpl;
+  const _Authenticated._() : super._();
 }
 
 /// @nodoc
@@ -1360,8 +1230,8 @@ class __$$UnauthenticatedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$UnauthenticatedImpl implements _Unauthenticated {
-  const _$UnauthenticatedImpl();
+class _$UnauthenticatedImpl extends _Unauthenticated {
+  const _$UnauthenticatedImpl() : super._();
 
   @override
   String toString() {
@@ -1382,17 +1252,17 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() checkingUser,
+    required TResult Function(bool exists) userChecked,
     required TResult Function() loggingIn,
-    required TResult Function() sendingOtp,
-    required TResult Function() checkingToken,
-    required TResult Function() checkingUserExists,
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(VerificationEntity verification) otpSent,
-    required TResult Function(bool isValid) tokenChecked,
-    required TResult Function(bool exists) userExistsChecked,
-    required TResult Function(String message) failure,
-    required TResult Function(AuthStateError error, String? errorMessage) error,
+    required TResult Function() checkingToken,
+    required TResult Function() refreshingToken,
+    required TResult Function() finishingOnboarding,
+    required TResult Function() skippingOnboarding,
+    required TResult Function() loggingOut,
+    required TResult Function(AuthStateError error, AuthFailure failure) error,
   }) {
     return unauthenticated();
   }
@@ -1402,17 +1272,17 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? checkingUser,
+    TResult? Function(bool exists)? userChecked,
     TResult? Function()? loggingIn,
-    TResult? Function()? sendingOtp,
-    TResult? Function()? checkingToken,
-    TResult? Function()? checkingUserExists,
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(VerificationEntity verification)? otpSent,
-    TResult? Function(bool isValid)? tokenChecked,
-    TResult? Function(bool exists)? userExistsChecked,
-    TResult? Function(String message)? failure,
-    TResult? Function(AuthStateError error, String? errorMessage)? error,
+    TResult? Function()? checkingToken,
+    TResult? Function()? refreshingToken,
+    TResult? Function()? finishingOnboarding,
+    TResult? Function()? skippingOnboarding,
+    TResult? Function()? loggingOut,
+    TResult? Function(AuthStateError error, AuthFailure failure)? error,
   }) {
     return unauthenticated?.call();
   }
@@ -1422,17 +1292,17 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? checkingUser,
+    TResult Function(bool exists)? userChecked,
     TResult Function()? loggingIn,
-    TResult Function()? sendingOtp,
-    TResult Function()? checkingToken,
-    TResult Function()? checkingUserExists,
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(VerificationEntity verification)? otpSent,
-    TResult Function(bool isValid)? tokenChecked,
-    TResult Function(bool exists)? userExistsChecked,
-    TResult Function(String message)? failure,
-    TResult Function(AuthStateError error, String? errorMessage)? error,
+    TResult Function()? checkingToken,
+    TResult Function()? refreshingToken,
+    TResult Function()? finishingOnboarding,
+    TResult Function()? skippingOnboarding,
+    TResult Function()? loggingOut,
+    TResult Function(AuthStateError error, AuthFailure failure)? error,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
@@ -1446,16 +1316,16 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_CheckingUser value) checkingUser,
+    required TResult Function(_UserChecked value) userChecked,
     required TResult Function(_LoggingIn value) loggingIn,
-    required TResult Function(_SendingOtp value) sendingOtp,
-    required TResult Function(_CheckingToken value) checkingToken,
-    required TResult Function(_CheckingUserExists value) checkingUserExists,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_OtpSent value) otpSent,
-    required TResult Function(_TokenChecked value) tokenChecked,
-    required TResult Function(_UserExistsChecked value) userExistsChecked,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(_CheckingToken value) checkingToken,
+    required TResult Function(_RefreshingToken value) refreshingToken,
+    required TResult Function(_FinishingOnboarding value) finishingOnboarding,
+    required TResult Function(_SkippingOnboarding value) skippingOnboarding,
+    required TResult Function(_LoggingOut value) loggingOut,
     required TResult Function(_Error value) error,
   }) {
     return unauthenticated(this);
@@ -1466,16 +1336,16 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_CheckingUser value)? checkingUser,
+    TResult? Function(_UserChecked value)? userChecked,
     TResult? Function(_LoggingIn value)? loggingIn,
-    TResult? Function(_SendingOtp value)? sendingOtp,
-    TResult? Function(_CheckingToken value)? checkingToken,
-    TResult? Function(_CheckingUserExists value)? checkingUserExists,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(_OtpSent value)? otpSent,
-    TResult? Function(_TokenChecked value)? tokenChecked,
-    TResult? Function(_UserExistsChecked value)? userExistsChecked,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(_CheckingToken value)? checkingToken,
+    TResult? Function(_RefreshingToken value)? refreshingToken,
+    TResult? Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult? Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult? Function(_LoggingOut value)? loggingOut,
     TResult? Function(_Error value)? error,
   }) {
     return unauthenticated?.call(this);
@@ -1486,16 +1356,16 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_CheckingUser value)? checkingUser,
+    TResult Function(_UserChecked value)? userChecked,
     TResult Function(_LoggingIn value)? loggingIn,
-    TResult Function(_SendingOtp value)? sendingOtp,
-    TResult Function(_CheckingToken value)? checkingToken,
-    TResult Function(_CheckingUserExists value)? checkingUserExists,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_OtpSent value)? otpSent,
-    TResult Function(_TokenChecked value)? tokenChecked,
-    TResult Function(_UserExistsChecked value)? userExistsChecked,
-    TResult Function(_Failure value)? failure,
+    TResult Function(_CheckingToken value)? checkingToken,
+    TResult Function(_RefreshingToken value)? refreshingToken,
+    TResult Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult Function(_LoggingOut value)? loggingOut,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1506,106 +1376,67 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   }
 }
 
-abstract class _Unauthenticated implements AuthState {
+abstract class _Unauthenticated extends AuthState {
   const factory _Unauthenticated() = _$UnauthenticatedImpl;
+  const _Unauthenticated._() : super._();
 }
 
 /// @nodoc
-abstract class _$$OtpSentImplCopyWith<$Res> {
-  factory _$$OtpSentImplCopyWith(
-          _$OtpSentImpl value, $Res Function(_$OtpSentImpl) then) =
-      __$$OtpSentImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({VerificationEntity verification});
-
-  $VerificationEntityCopyWith<$Res> get verification;
+abstract class _$$CheckingTokenImplCopyWith<$Res> {
+  factory _$$CheckingTokenImplCopyWith(
+          _$CheckingTokenImpl value, $Res Function(_$CheckingTokenImpl) then) =
+      __$$CheckingTokenImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$OtpSentImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$OtpSentImpl>
-    implements _$$OtpSentImplCopyWith<$Res> {
-  __$$OtpSentImplCopyWithImpl(
-      _$OtpSentImpl _value, $Res Function(_$OtpSentImpl) _then)
+class __$$CheckingTokenImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$CheckingTokenImpl>
+    implements _$$CheckingTokenImplCopyWith<$Res> {
+  __$$CheckingTokenImplCopyWithImpl(
+      _$CheckingTokenImpl _value, $Res Function(_$CheckingTokenImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? verification = null,
-  }) {
-    return _then(_$OtpSentImpl(
-      verification: null == verification
-          ? _value.verification
-          : verification // ignore: cast_nullable_to_non_nullable
-              as VerificationEntity,
-    ));
-  }
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $VerificationEntityCopyWith<$Res> get verification {
-    return $VerificationEntityCopyWith<$Res>(_value.verification, (value) {
-      return _then(_value.copyWith(verification: value));
-    });
-  }
 }
 
 /// @nodoc
 
-class _$OtpSentImpl implements _OtpSent {
-  const _$OtpSentImpl({required this.verification});
-
-  @override
-  final VerificationEntity verification;
+class _$CheckingTokenImpl extends _CheckingToken {
+  const _$CheckingTokenImpl() : super._();
 
   @override
   String toString() {
-    return 'AuthState.otpSent(verification: $verification)';
+    return 'AuthState.checkingToken()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$OtpSentImpl &&
-            (identical(other.verification, verification) ||
-                other.verification == verification));
+        (other.runtimeType == runtimeType && other is _$CheckingTokenImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, verification);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$OtpSentImplCopyWith<_$OtpSentImpl> get copyWith =>
-      __$$OtpSentImplCopyWithImpl<_$OtpSentImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() checkingUser,
+    required TResult Function(bool exists) userChecked,
     required TResult Function() loggingIn,
-    required TResult Function() sendingOtp,
-    required TResult Function() checkingToken,
-    required TResult Function() checkingUserExists,
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(VerificationEntity verification) otpSent,
-    required TResult Function(bool isValid) tokenChecked,
-    required TResult Function(bool exists) userExistsChecked,
-    required TResult Function(String message) failure,
-    required TResult Function(AuthStateError error, String? errorMessage) error,
+    required TResult Function() checkingToken,
+    required TResult Function() refreshingToken,
+    required TResult Function() finishingOnboarding,
+    required TResult Function() skippingOnboarding,
+    required TResult Function() loggingOut,
+    required TResult Function(AuthStateError error, AuthFailure failure) error,
   }) {
-    return otpSent(verification);
+    return checkingToken();
   }
 
   @override
@@ -1613,19 +1444,19 @@ class _$OtpSentImpl implements _OtpSent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? checkingUser,
+    TResult? Function(bool exists)? userChecked,
     TResult? Function()? loggingIn,
-    TResult? Function()? sendingOtp,
-    TResult? Function()? checkingToken,
-    TResult? Function()? checkingUserExists,
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(VerificationEntity verification)? otpSent,
-    TResult? Function(bool isValid)? tokenChecked,
-    TResult? Function(bool exists)? userExistsChecked,
-    TResult? Function(String message)? failure,
-    TResult? Function(AuthStateError error, String? errorMessage)? error,
+    TResult? Function()? checkingToken,
+    TResult? Function()? refreshingToken,
+    TResult? Function()? finishingOnboarding,
+    TResult? Function()? skippingOnboarding,
+    TResult? Function()? loggingOut,
+    TResult? Function(AuthStateError error, AuthFailure failure)? error,
   }) {
-    return otpSent?.call(verification);
+    return checkingToken?.call();
   }
 
   @override
@@ -1633,21 +1464,21 @@ class _$OtpSentImpl implements _OtpSent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? checkingUser,
+    TResult Function(bool exists)? userChecked,
     TResult Function()? loggingIn,
-    TResult Function()? sendingOtp,
-    TResult Function()? checkingToken,
-    TResult Function()? checkingUserExists,
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(VerificationEntity verification)? otpSent,
-    TResult Function(bool isValid)? tokenChecked,
-    TResult Function(bool exists)? userExistsChecked,
-    TResult Function(String message)? failure,
-    TResult Function(AuthStateError error, String? errorMessage)? error,
+    TResult Function()? checkingToken,
+    TResult Function()? refreshingToken,
+    TResult Function()? finishingOnboarding,
+    TResult Function()? skippingOnboarding,
+    TResult Function()? loggingOut,
+    TResult Function(AuthStateError error, AuthFailure failure)? error,
     required TResult orElse(),
   }) {
-    if (otpSent != null) {
-      return otpSent(verification);
+    if (checkingToken != null) {
+      return checkingToken();
     }
     return orElse();
   }
@@ -1657,19 +1488,19 @@ class _$OtpSentImpl implements _OtpSent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_CheckingUser value) checkingUser,
+    required TResult Function(_UserChecked value) userChecked,
     required TResult Function(_LoggingIn value) loggingIn,
-    required TResult Function(_SendingOtp value) sendingOtp,
-    required TResult Function(_CheckingToken value) checkingToken,
-    required TResult Function(_CheckingUserExists value) checkingUserExists,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_OtpSent value) otpSent,
-    required TResult Function(_TokenChecked value) tokenChecked,
-    required TResult Function(_UserExistsChecked value) userExistsChecked,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(_CheckingToken value) checkingToken,
+    required TResult Function(_RefreshingToken value) refreshingToken,
+    required TResult Function(_FinishingOnboarding value) finishingOnboarding,
+    required TResult Function(_SkippingOnboarding value) skippingOnboarding,
+    required TResult Function(_LoggingOut value) loggingOut,
     required TResult Function(_Error value) error,
   }) {
-    return otpSent(this);
+    return checkingToken(this);
   }
 
   @override
@@ -1677,19 +1508,19 @@ class _$OtpSentImpl implements _OtpSent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_CheckingUser value)? checkingUser,
+    TResult? Function(_UserChecked value)? userChecked,
     TResult? Function(_LoggingIn value)? loggingIn,
-    TResult? Function(_SendingOtp value)? sendingOtp,
-    TResult? Function(_CheckingToken value)? checkingToken,
-    TResult? Function(_CheckingUserExists value)? checkingUserExists,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(_OtpSent value)? otpSent,
-    TResult? Function(_TokenChecked value)? tokenChecked,
-    TResult? Function(_UserExistsChecked value)? userExistsChecked,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(_CheckingToken value)? checkingToken,
+    TResult? Function(_RefreshingToken value)? refreshingToken,
+    TResult? Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult? Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult? Function(_LoggingOut value)? loggingOut,
     TResult? Function(_Error value)? error,
   }) {
-    return otpSent?.call(this);
+    return checkingToken?.call(this);
   }
 
   @override
@@ -1697,122 +1528,87 @@ class _$OtpSentImpl implements _OtpSent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_CheckingUser value)? checkingUser,
+    TResult Function(_UserChecked value)? userChecked,
     TResult Function(_LoggingIn value)? loggingIn,
-    TResult Function(_SendingOtp value)? sendingOtp,
-    TResult Function(_CheckingToken value)? checkingToken,
-    TResult Function(_CheckingUserExists value)? checkingUserExists,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_OtpSent value)? otpSent,
-    TResult Function(_TokenChecked value)? tokenChecked,
-    TResult Function(_UserExistsChecked value)? userExistsChecked,
-    TResult Function(_Failure value)? failure,
+    TResult Function(_CheckingToken value)? checkingToken,
+    TResult Function(_RefreshingToken value)? refreshingToken,
+    TResult Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult Function(_LoggingOut value)? loggingOut,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
-    if (otpSent != null) {
-      return otpSent(this);
+    if (checkingToken != null) {
+      return checkingToken(this);
     }
     return orElse();
   }
 }
 
-abstract class _OtpSent implements AuthState {
-  const factory _OtpSent({required final VerificationEntity verification}) =
-      _$OtpSentImpl;
-
-  VerificationEntity get verification;
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OtpSentImplCopyWith<_$OtpSentImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _CheckingToken extends AuthState {
+  const factory _CheckingToken() = _$CheckingTokenImpl;
+  const _CheckingToken._() : super._();
 }
 
 /// @nodoc
-abstract class _$$TokenCheckedImplCopyWith<$Res> {
-  factory _$$TokenCheckedImplCopyWith(
-          _$TokenCheckedImpl value, $Res Function(_$TokenCheckedImpl) then) =
-      __$$TokenCheckedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({bool isValid});
+abstract class _$$RefreshingTokenImplCopyWith<$Res> {
+  factory _$$RefreshingTokenImplCopyWith(_$RefreshingTokenImpl value,
+          $Res Function(_$RefreshingTokenImpl) then) =
+      __$$RefreshingTokenImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$TokenCheckedImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$TokenCheckedImpl>
-    implements _$$TokenCheckedImplCopyWith<$Res> {
-  __$$TokenCheckedImplCopyWithImpl(
-      _$TokenCheckedImpl _value, $Res Function(_$TokenCheckedImpl) _then)
+class __$$RefreshingTokenImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$RefreshingTokenImpl>
+    implements _$$RefreshingTokenImplCopyWith<$Res> {
+  __$$RefreshingTokenImplCopyWithImpl(
+      _$RefreshingTokenImpl _value, $Res Function(_$RefreshingTokenImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isValid = null,
-  }) {
-    return _then(_$TokenCheckedImpl(
-      isValid: null == isValid
-          ? _value.isValid
-          : isValid // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$TokenCheckedImpl implements _TokenChecked {
-  const _$TokenCheckedImpl({required this.isValid});
-
-  @override
-  final bool isValid;
+class _$RefreshingTokenImpl extends _RefreshingToken {
+  const _$RefreshingTokenImpl() : super._();
 
   @override
   String toString() {
-    return 'AuthState.tokenChecked(isValid: $isValid)';
+    return 'AuthState.refreshingToken()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TokenCheckedImpl &&
-            (identical(other.isValid, isValid) || other.isValid == isValid));
+        (other.runtimeType == runtimeType && other is _$RefreshingTokenImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isValid);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TokenCheckedImplCopyWith<_$TokenCheckedImpl> get copyWith =>
-      __$$TokenCheckedImplCopyWithImpl<_$TokenCheckedImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() checkingUser,
+    required TResult Function(bool exists) userChecked,
     required TResult Function() loggingIn,
-    required TResult Function() sendingOtp,
-    required TResult Function() checkingToken,
-    required TResult Function() checkingUserExists,
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(VerificationEntity verification) otpSent,
-    required TResult Function(bool isValid) tokenChecked,
-    required TResult Function(bool exists) userExistsChecked,
-    required TResult Function(String message) failure,
-    required TResult Function(AuthStateError error, String? errorMessage) error,
+    required TResult Function() checkingToken,
+    required TResult Function() refreshingToken,
+    required TResult Function() finishingOnboarding,
+    required TResult Function() skippingOnboarding,
+    required TResult Function() loggingOut,
+    required TResult Function(AuthStateError error, AuthFailure failure) error,
   }) {
-    return tokenChecked(isValid);
+    return refreshingToken();
   }
 
   @override
@@ -1820,19 +1616,19 @@ class _$TokenCheckedImpl implements _TokenChecked {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? checkingUser,
+    TResult? Function(bool exists)? userChecked,
     TResult? Function()? loggingIn,
-    TResult? Function()? sendingOtp,
-    TResult? Function()? checkingToken,
-    TResult? Function()? checkingUserExists,
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(VerificationEntity verification)? otpSent,
-    TResult? Function(bool isValid)? tokenChecked,
-    TResult? Function(bool exists)? userExistsChecked,
-    TResult? Function(String message)? failure,
-    TResult? Function(AuthStateError error, String? errorMessage)? error,
+    TResult? Function()? checkingToken,
+    TResult? Function()? refreshingToken,
+    TResult? Function()? finishingOnboarding,
+    TResult? Function()? skippingOnboarding,
+    TResult? Function()? loggingOut,
+    TResult? Function(AuthStateError error, AuthFailure failure)? error,
   }) {
-    return tokenChecked?.call(isValid);
+    return refreshingToken?.call();
   }
 
   @override
@@ -1840,21 +1636,21 @@ class _$TokenCheckedImpl implements _TokenChecked {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? checkingUser,
+    TResult Function(bool exists)? userChecked,
     TResult Function()? loggingIn,
-    TResult Function()? sendingOtp,
-    TResult Function()? checkingToken,
-    TResult Function()? checkingUserExists,
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(VerificationEntity verification)? otpSent,
-    TResult Function(bool isValid)? tokenChecked,
-    TResult Function(bool exists)? userExistsChecked,
-    TResult Function(String message)? failure,
-    TResult Function(AuthStateError error, String? errorMessage)? error,
+    TResult Function()? checkingToken,
+    TResult Function()? refreshingToken,
+    TResult Function()? finishingOnboarding,
+    TResult Function()? skippingOnboarding,
+    TResult Function()? loggingOut,
+    TResult Function(AuthStateError error, AuthFailure failure)? error,
     required TResult orElse(),
   }) {
-    if (tokenChecked != null) {
-      return tokenChecked(isValid);
+    if (refreshingToken != null) {
+      return refreshingToken();
     }
     return orElse();
   }
@@ -1864,19 +1660,19 @@ class _$TokenCheckedImpl implements _TokenChecked {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_CheckingUser value) checkingUser,
+    required TResult Function(_UserChecked value) userChecked,
     required TResult Function(_LoggingIn value) loggingIn,
-    required TResult Function(_SendingOtp value) sendingOtp,
-    required TResult Function(_CheckingToken value) checkingToken,
-    required TResult Function(_CheckingUserExists value) checkingUserExists,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_OtpSent value) otpSent,
-    required TResult Function(_TokenChecked value) tokenChecked,
-    required TResult Function(_UserExistsChecked value) userExistsChecked,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(_CheckingToken value) checkingToken,
+    required TResult Function(_RefreshingToken value) refreshingToken,
+    required TResult Function(_FinishingOnboarding value) finishingOnboarding,
+    required TResult Function(_SkippingOnboarding value) skippingOnboarding,
+    required TResult Function(_LoggingOut value) loggingOut,
     required TResult Function(_Error value) error,
   }) {
-    return tokenChecked(this);
+    return refreshingToken(this);
   }
 
   @override
@@ -1884,19 +1680,19 @@ class _$TokenCheckedImpl implements _TokenChecked {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_CheckingUser value)? checkingUser,
+    TResult? Function(_UserChecked value)? userChecked,
     TResult? Function(_LoggingIn value)? loggingIn,
-    TResult? Function(_SendingOtp value)? sendingOtp,
-    TResult? Function(_CheckingToken value)? checkingToken,
-    TResult? Function(_CheckingUserExists value)? checkingUserExists,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(_OtpSent value)? otpSent,
-    TResult? Function(_TokenChecked value)? tokenChecked,
-    TResult? Function(_UserExistsChecked value)? userExistsChecked,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(_CheckingToken value)? checkingToken,
+    TResult? Function(_RefreshingToken value)? refreshingToken,
+    TResult? Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult? Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult? Function(_LoggingOut value)? loggingOut,
     TResult? Function(_Error value)? error,
   }) {
-    return tokenChecked?.call(this);
+    return refreshingToken?.call(this);
   }
 
   @override
@@ -1904,123 +1700,88 @@ class _$TokenCheckedImpl implements _TokenChecked {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_CheckingUser value)? checkingUser,
+    TResult Function(_UserChecked value)? userChecked,
     TResult Function(_LoggingIn value)? loggingIn,
-    TResult Function(_SendingOtp value)? sendingOtp,
-    TResult Function(_CheckingToken value)? checkingToken,
-    TResult Function(_CheckingUserExists value)? checkingUserExists,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_OtpSent value)? otpSent,
-    TResult Function(_TokenChecked value)? tokenChecked,
-    TResult Function(_UserExistsChecked value)? userExistsChecked,
-    TResult Function(_Failure value)? failure,
+    TResult Function(_CheckingToken value)? checkingToken,
+    TResult Function(_RefreshingToken value)? refreshingToken,
+    TResult Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult Function(_LoggingOut value)? loggingOut,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
-    if (tokenChecked != null) {
-      return tokenChecked(this);
+    if (refreshingToken != null) {
+      return refreshingToken(this);
     }
     return orElse();
   }
 }
 
-abstract class _TokenChecked implements AuthState {
-  const factory _TokenChecked({required final bool isValid}) =
-      _$TokenCheckedImpl;
-
-  bool get isValid;
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TokenCheckedImplCopyWith<_$TokenCheckedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _RefreshingToken extends AuthState {
+  const factory _RefreshingToken() = _$RefreshingTokenImpl;
+  const _RefreshingToken._() : super._();
 }
 
 /// @nodoc
-abstract class _$$UserExistsCheckedImplCopyWith<$Res> {
-  factory _$$UserExistsCheckedImplCopyWith(_$UserExistsCheckedImpl value,
-          $Res Function(_$UserExistsCheckedImpl) then) =
-      __$$UserExistsCheckedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({bool exists});
+abstract class _$$FinishingOnboardingImplCopyWith<$Res> {
+  factory _$$FinishingOnboardingImplCopyWith(_$FinishingOnboardingImpl value,
+          $Res Function(_$FinishingOnboardingImpl) then) =
+      __$$FinishingOnboardingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$UserExistsCheckedImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$UserExistsCheckedImpl>
-    implements _$$UserExistsCheckedImplCopyWith<$Res> {
-  __$$UserExistsCheckedImplCopyWithImpl(_$UserExistsCheckedImpl _value,
-      $Res Function(_$UserExistsCheckedImpl) _then)
+class __$$FinishingOnboardingImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$FinishingOnboardingImpl>
+    implements _$$FinishingOnboardingImplCopyWith<$Res> {
+  __$$FinishingOnboardingImplCopyWithImpl(_$FinishingOnboardingImpl _value,
+      $Res Function(_$FinishingOnboardingImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? exists = null,
-  }) {
-    return _then(_$UserExistsCheckedImpl(
-      exists: null == exists
-          ? _value.exists
-          : exists // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$UserExistsCheckedImpl implements _UserExistsChecked {
-  const _$UserExistsCheckedImpl({required this.exists});
-
-  @override
-  final bool exists;
+class _$FinishingOnboardingImpl extends _FinishingOnboarding {
+  const _$FinishingOnboardingImpl() : super._();
 
   @override
   String toString() {
-    return 'AuthState.userExistsChecked(exists: $exists)';
+    return 'AuthState.finishingOnboarding()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserExistsCheckedImpl &&
-            (identical(other.exists, exists) || other.exists == exists));
+            other is _$FinishingOnboardingImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, exists);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UserExistsCheckedImplCopyWith<_$UserExistsCheckedImpl> get copyWith =>
-      __$$UserExistsCheckedImplCopyWithImpl<_$UserExistsCheckedImpl>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() checkingUser,
+    required TResult Function(bool exists) userChecked,
     required TResult Function() loggingIn,
-    required TResult Function() sendingOtp,
-    required TResult Function() checkingToken,
-    required TResult Function() checkingUserExists,
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(VerificationEntity verification) otpSent,
-    required TResult Function(bool isValid) tokenChecked,
-    required TResult Function(bool exists) userExistsChecked,
-    required TResult Function(String message) failure,
-    required TResult Function(AuthStateError error, String? errorMessage) error,
+    required TResult Function() checkingToken,
+    required TResult Function() refreshingToken,
+    required TResult Function() finishingOnboarding,
+    required TResult Function() skippingOnboarding,
+    required TResult Function() loggingOut,
+    required TResult Function(AuthStateError error, AuthFailure failure) error,
   }) {
-    return userExistsChecked(exists);
+    return finishingOnboarding();
   }
 
   @override
@@ -2028,19 +1789,19 @@ class _$UserExistsCheckedImpl implements _UserExistsChecked {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? checkingUser,
+    TResult? Function(bool exists)? userChecked,
     TResult? Function()? loggingIn,
-    TResult? Function()? sendingOtp,
-    TResult? Function()? checkingToken,
-    TResult? Function()? checkingUserExists,
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(VerificationEntity verification)? otpSent,
-    TResult? Function(bool isValid)? tokenChecked,
-    TResult? Function(bool exists)? userExistsChecked,
-    TResult? Function(String message)? failure,
-    TResult? Function(AuthStateError error, String? errorMessage)? error,
+    TResult? Function()? checkingToken,
+    TResult? Function()? refreshingToken,
+    TResult? Function()? finishingOnboarding,
+    TResult? Function()? skippingOnboarding,
+    TResult? Function()? loggingOut,
+    TResult? Function(AuthStateError error, AuthFailure failure)? error,
   }) {
-    return userExistsChecked?.call(exists);
+    return finishingOnboarding?.call();
   }
 
   @override
@@ -2048,21 +1809,21 @@ class _$UserExistsCheckedImpl implements _UserExistsChecked {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? checkingUser,
+    TResult Function(bool exists)? userChecked,
     TResult Function()? loggingIn,
-    TResult Function()? sendingOtp,
-    TResult Function()? checkingToken,
-    TResult Function()? checkingUserExists,
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(VerificationEntity verification)? otpSent,
-    TResult Function(bool isValid)? tokenChecked,
-    TResult Function(bool exists)? userExistsChecked,
-    TResult Function(String message)? failure,
-    TResult Function(AuthStateError error, String? errorMessage)? error,
+    TResult Function()? checkingToken,
+    TResult Function()? refreshingToken,
+    TResult Function()? finishingOnboarding,
+    TResult Function()? skippingOnboarding,
+    TResult Function()? loggingOut,
+    TResult Function(AuthStateError error, AuthFailure failure)? error,
     required TResult orElse(),
   }) {
-    if (userExistsChecked != null) {
-      return userExistsChecked(exists);
+    if (finishingOnboarding != null) {
+      return finishingOnboarding();
     }
     return orElse();
   }
@@ -2072,19 +1833,19 @@ class _$UserExistsCheckedImpl implements _UserExistsChecked {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_CheckingUser value) checkingUser,
+    required TResult Function(_UserChecked value) userChecked,
     required TResult Function(_LoggingIn value) loggingIn,
-    required TResult Function(_SendingOtp value) sendingOtp,
-    required TResult Function(_CheckingToken value) checkingToken,
-    required TResult Function(_CheckingUserExists value) checkingUserExists,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_OtpSent value) otpSent,
-    required TResult Function(_TokenChecked value) tokenChecked,
-    required TResult Function(_UserExistsChecked value) userExistsChecked,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(_CheckingToken value) checkingToken,
+    required TResult Function(_RefreshingToken value) refreshingToken,
+    required TResult Function(_FinishingOnboarding value) finishingOnboarding,
+    required TResult Function(_SkippingOnboarding value) skippingOnboarding,
+    required TResult Function(_LoggingOut value) loggingOut,
     required TResult Function(_Error value) error,
   }) {
-    return userExistsChecked(this);
+    return finishingOnboarding(this);
   }
 
   @override
@@ -2092,19 +1853,19 @@ class _$UserExistsCheckedImpl implements _UserExistsChecked {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_CheckingUser value)? checkingUser,
+    TResult? Function(_UserChecked value)? userChecked,
     TResult? Function(_LoggingIn value)? loggingIn,
-    TResult? Function(_SendingOtp value)? sendingOtp,
-    TResult? Function(_CheckingToken value)? checkingToken,
-    TResult? Function(_CheckingUserExists value)? checkingUserExists,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(_OtpSent value)? otpSent,
-    TResult? Function(_TokenChecked value)? tokenChecked,
-    TResult? Function(_UserExistsChecked value)? userExistsChecked,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(_CheckingToken value)? checkingToken,
+    TResult? Function(_RefreshingToken value)? refreshingToken,
+    TResult? Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult? Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult? Function(_LoggingOut value)? loggingOut,
     TResult? Function(_Error value)? error,
   }) {
-    return userExistsChecked?.call(this);
+    return finishingOnboarding?.call(this);
   }
 
   @override
@@ -2112,122 +1873,87 @@ class _$UserExistsCheckedImpl implements _UserExistsChecked {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_CheckingUser value)? checkingUser,
+    TResult Function(_UserChecked value)? userChecked,
     TResult Function(_LoggingIn value)? loggingIn,
-    TResult Function(_SendingOtp value)? sendingOtp,
-    TResult Function(_CheckingToken value)? checkingToken,
-    TResult Function(_CheckingUserExists value)? checkingUserExists,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_OtpSent value)? otpSent,
-    TResult Function(_TokenChecked value)? tokenChecked,
-    TResult Function(_UserExistsChecked value)? userExistsChecked,
-    TResult Function(_Failure value)? failure,
+    TResult Function(_CheckingToken value)? checkingToken,
+    TResult Function(_RefreshingToken value)? refreshingToken,
+    TResult Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult Function(_LoggingOut value)? loggingOut,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
-    if (userExistsChecked != null) {
-      return userExistsChecked(this);
+    if (finishingOnboarding != null) {
+      return finishingOnboarding(this);
     }
     return orElse();
   }
 }
 
-abstract class _UserExistsChecked implements AuthState {
-  const factory _UserExistsChecked({required final bool exists}) =
-      _$UserExistsCheckedImpl;
-
-  bool get exists;
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UserExistsCheckedImplCopyWith<_$UserExistsCheckedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _FinishingOnboarding extends AuthState {
+  const factory _FinishingOnboarding() = _$FinishingOnboardingImpl;
+  const _FinishingOnboarding._() : super._();
 }
 
 /// @nodoc
-abstract class _$$FailureImplCopyWith<$Res> {
-  factory _$$FailureImplCopyWith(
-          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
-      __$$FailureImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
+abstract class _$$SkippingOnboardingImplCopyWith<$Res> {
+  factory _$$SkippingOnboardingImplCopyWith(_$SkippingOnboardingImpl value,
+          $Res Function(_$SkippingOnboardingImpl) then) =
+      __$$SkippingOnboardingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$FailureImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$FailureImpl>
-    implements _$$FailureImplCopyWith<$Res> {
-  __$$FailureImplCopyWithImpl(
-      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
+class __$$SkippingOnboardingImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$SkippingOnboardingImpl>
+    implements _$$SkippingOnboardingImplCopyWith<$Res> {
+  __$$SkippingOnboardingImplCopyWithImpl(_$SkippingOnboardingImpl _value,
+      $Res Function(_$SkippingOnboardingImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$FailureImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$FailureImpl implements _Failure {
-  const _$FailureImpl({required this.message});
-
-  @override
-  final String message;
+class _$SkippingOnboardingImpl extends _SkippingOnboarding {
+  const _$SkippingOnboardingImpl() : super._();
 
   @override
   String toString() {
-    return 'AuthState.failure(message: $message)';
+    return 'AuthState.skippingOnboarding()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FailureImpl &&
-            (identical(other.message, message) || other.message == message));
+        (other.runtimeType == runtimeType && other is _$SkippingOnboardingImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() checkingUser,
+    required TResult Function(bool exists) userChecked,
     required TResult Function() loggingIn,
-    required TResult Function() sendingOtp,
-    required TResult Function() checkingToken,
-    required TResult Function() checkingUserExists,
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(VerificationEntity verification) otpSent,
-    required TResult Function(bool isValid) tokenChecked,
-    required TResult Function(bool exists) userExistsChecked,
-    required TResult Function(String message) failure,
-    required TResult Function(AuthStateError error, String? errorMessage) error,
+    required TResult Function() checkingToken,
+    required TResult Function() refreshingToken,
+    required TResult Function() finishingOnboarding,
+    required TResult Function() skippingOnboarding,
+    required TResult Function() loggingOut,
+    required TResult Function(AuthStateError error, AuthFailure failure) error,
   }) {
-    return failure(message);
+    return skippingOnboarding();
   }
 
   @override
@@ -2235,19 +1961,19 @@ class _$FailureImpl implements _Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? checkingUser,
+    TResult? Function(bool exists)? userChecked,
     TResult? Function()? loggingIn,
-    TResult? Function()? sendingOtp,
-    TResult? Function()? checkingToken,
-    TResult? Function()? checkingUserExists,
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(VerificationEntity verification)? otpSent,
-    TResult? Function(bool isValid)? tokenChecked,
-    TResult? Function(bool exists)? userExistsChecked,
-    TResult? Function(String message)? failure,
-    TResult? Function(AuthStateError error, String? errorMessage)? error,
+    TResult? Function()? checkingToken,
+    TResult? Function()? refreshingToken,
+    TResult? Function()? finishingOnboarding,
+    TResult? Function()? skippingOnboarding,
+    TResult? Function()? loggingOut,
+    TResult? Function(AuthStateError error, AuthFailure failure)? error,
   }) {
-    return failure?.call(message);
+    return skippingOnboarding?.call();
   }
 
   @override
@@ -2255,21 +1981,21 @@ class _$FailureImpl implements _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? checkingUser,
+    TResult Function(bool exists)? userChecked,
     TResult Function()? loggingIn,
-    TResult Function()? sendingOtp,
-    TResult Function()? checkingToken,
-    TResult Function()? checkingUserExists,
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(VerificationEntity verification)? otpSent,
-    TResult Function(bool isValid)? tokenChecked,
-    TResult Function(bool exists)? userExistsChecked,
-    TResult Function(String message)? failure,
-    TResult Function(AuthStateError error, String? errorMessage)? error,
+    TResult Function()? checkingToken,
+    TResult Function()? refreshingToken,
+    TResult Function()? finishingOnboarding,
+    TResult Function()? skippingOnboarding,
+    TResult Function()? loggingOut,
+    TResult Function(AuthStateError error, AuthFailure failure)? error,
     required TResult orElse(),
   }) {
-    if (failure != null) {
-      return failure(message);
+    if (skippingOnboarding != null) {
+      return skippingOnboarding();
     }
     return orElse();
   }
@@ -2279,19 +2005,19 @@ class _$FailureImpl implements _Failure {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_CheckingUser value) checkingUser,
+    required TResult Function(_UserChecked value) userChecked,
     required TResult Function(_LoggingIn value) loggingIn,
-    required TResult Function(_SendingOtp value) sendingOtp,
-    required TResult Function(_CheckingToken value) checkingToken,
-    required TResult Function(_CheckingUserExists value) checkingUserExists,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_OtpSent value) otpSent,
-    required TResult Function(_TokenChecked value) tokenChecked,
-    required TResult Function(_UserExistsChecked value) userExistsChecked,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(_CheckingToken value) checkingToken,
+    required TResult Function(_RefreshingToken value) refreshingToken,
+    required TResult Function(_FinishingOnboarding value) finishingOnboarding,
+    required TResult Function(_SkippingOnboarding value) skippingOnboarding,
+    required TResult Function(_LoggingOut value) loggingOut,
     required TResult Function(_Error value) error,
   }) {
-    return failure(this);
+    return skippingOnboarding(this);
   }
 
   @override
@@ -2299,19 +2025,19 @@ class _$FailureImpl implements _Failure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_CheckingUser value)? checkingUser,
+    TResult? Function(_UserChecked value)? userChecked,
     TResult? Function(_LoggingIn value)? loggingIn,
-    TResult? Function(_SendingOtp value)? sendingOtp,
-    TResult? Function(_CheckingToken value)? checkingToken,
-    TResult? Function(_CheckingUserExists value)? checkingUserExists,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(_OtpSent value)? otpSent,
-    TResult? Function(_TokenChecked value)? tokenChecked,
-    TResult? Function(_UserExistsChecked value)? userExistsChecked,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(_CheckingToken value)? checkingToken,
+    TResult? Function(_RefreshingToken value)? refreshingToken,
+    TResult? Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult? Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult? Function(_LoggingOut value)? loggingOut,
     TResult? Function(_Error value)? error,
   }) {
-    return failure?.call(this);
+    return skippingOnboarding?.call(this);
   }
 
   @override
@@ -2319,36 +2045,201 @@ class _$FailureImpl implements _Failure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_CheckingUser value)? checkingUser,
+    TResult Function(_UserChecked value)? userChecked,
     TResult Function(_LoggingIn value)? loggingIn,
-    TResult Function(_SendingOtp value)? sendingOtp,
-    TResult Function(_CheckingToken value)? checkingToken,
-    TResult Function(_CheckingUserExists value)? checkingUserExists,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_OtpSent value)? otpSent,
-    TResult Function(_TokenChecked value)? tokenChecked,
-    TResult Function(_UserExistsChecked value)? userExistsChecked,
-    TResult Function(_Failure value)? failure,
+    TResult Function(_CheckingToken value)? checkingToken,
+    TResult Function(_RefreshingToken value)? refreshingToken,
+    TResult Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult Function(_LoggingOut value)? loggingOut,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
-    if (failure != null) {
-      return failure(this);
+    if (skippingOnboarding != null) {
+      return skippingOnboarding(this);
     }
     return orElse();
   }
 }
 
-abstract class _Failure implements AuthState {
-  const factory _Failure({required final String message}) = _$FailureImpl;
+abstract class _SkippingOnboarding extends AuthState {
+  const factory _SkippingOnboarding() = _$SkippingOnboardingImpl;
+  const _SkippingOnboarding._() : super._();
+}
 
-  String get message;
+/// @nodoc
+abstract class _$$LoggingOutImplCopyWith<$Res> {
+  factory _$$LoggingOutImplCopyWith(
+          _$LoggingOutImpl value, $Res Function(_$LoggingOutImpl) then) =
+      __$$LoggingOutImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoggingOutImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$LoggingOutImpl>
+    implements _$$LoggingOutImplCopyWith<$Res> {
+  __$$LoggingOutImplCopyWithImpl(
+      _$LoggingOutImpl _value, $Res Function(_$LoggingOutImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+
+class _$LoggingOutImpl extends _LoggingOut {
+  const _$LoggingOutImpl() : super._();
+
+  @override
+  String toString() {
+    return 'AuthState.loggingOut()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoggingOutImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() checkingUser,
+    required TResult Function(bool exists) userChecked,
+    required TResult Function() loggingIn,
+    required TResult Function() authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function() checkingToken,
+    required TResult Function() refreshingToken,
+    required TResult Function() finishingOnboarding,
+    required TResult Function() skippingOnboarding,
+    required TResult Function() loggingOut,
+    required TResult Function(AuthStateError error, AuthFailure failure) error,
+  }) {
+    return loggingOut();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? checkingUser,
+    TResult? Function(bool exists)? userChecked,
+    TResult? Function()? loggingIn,
+    TResult? Function()? authenticated,
+    TResult? Function()? unauthenticated,
+    TResult? Function()? checkingToken,
+    TResult? Function()? refreshingToken,
+    TResult? Function()? finishingOnboarding,
+    TResult? Function()? skippingOnboarding,
+    TResult? Function()? loggingOut,
+    TResult? Function(AuthStateError error, AuthFailure failure)? error,
+  }) {
+    return loggingOut?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? checkingUser,
+    TResult Function(bool exists)? userChecked,
+    TResult Function()? loggingIn,
+    TResult Function()? authenticated,
+    TResult Function()? unauthenticated,
+    TResult Function()? checkingToken,
+    TResult Function()? refreshingToken,
+    TResult Function()? finishingOnboarding,
+    TResult Function()? skippingOnboarding,
+    TResult Function()? loggingOut,
+    TResult Function(AuthStateError error, AuthFailure failure)? error,
+    required TResult orElse(),
+  }) {
+    if (loggingOut != null) {
+      return loggingOut();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_CheckingUser value) checkingUser,
+    required TResult Function(_UserChecked value) userChecked,
+    required TResult Function(_LoggingIn value) loggingIn,
+    required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_Unauthenticated value) unauthenticated,
+    required TResult Function(_CheckingToken value) checkingToken,
+    required TResult Function(_RefreshingToken value) refreshingToken,
+    required TResult Function(_FinishingOnboarding value) finishingOnboarding,
+    required TResult Function(_SkippingOnboarding value) skippingOnboarding,
+    required TResult Function(_LoggingOut value) loggingOut,
+    required TResult Function(_Error value) error,
+  }) {
+    return loggingOut(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_CheckingUser value)? checkingUser,
+    TResult? Function(_UserChecked value)? userChecked,
+    TResult? Function(_LoggingIn value)? loggingIn,
+    TResult? Function(_Authenticated value)? authenticated,
+    TResult? Function(_Unauthenticated value)? unauthenticated,
+    TResult? Function(_CheckingToken value)? checkingToken,
+    TResult? Function(_RefreshingToken value)? refreshingToken,
+    TResult? Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult? Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult? Function(_LoggingOut value)? loggingOut,
+    TResult? Function(_Error value)? error,
+  }) {
+    return loggingOut?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_CheckingUser value)? checkingUser,
+    TResult Function(_UserChecked value)? userChecked,
+    TResult Function(_LoggingIn value)? loggingIn,
+    TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unauthenticated value)? unauthenticated,
+    TResult Function(_CheckingToken value)? checkingToken,
+    TResult Function(_RefreshingToken value)? refreshingToken,
+    TResult Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult Function(_LoggingOut value)? loggingOut,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (loggingOut != null) {
+      return loggingOut(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoggingOut extends AuthState {
+  const factory _LoggingOut() = _$LoggingOutImpl;
+  const _LoggingOut._() : super._();
 }
 
 /// @nodoc
@@ -2357,7 +2248,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
           _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
       __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AuthStateError error, String? errorMessage});
+  $Res call({AuthStateError error, AuthFailure failure});
 }
 
 /// @nodoc
@@ -2374,34 +2265,34 @@ class __$$ErrorImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? error = null,
-    Object? errorMessage = freezed,
+    Object? failure = null,
   }) {
     return _then(_$ErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as AuthStateError,
-      errorMessage: freezed == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as AuthFailure,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ErrorImpl implements _Error {
-  const _$ErrorImpl({required this.error, required this.errorMessage});
+class _$ErrorImpl extends _Error {
+  const _$ErrorImpl({required this.error, required this.failure}) : super._();
 
   @override
   final AuthStateError error;
   @override
-  final String? errorMessage;
+  final AuthFailure failure;
 
   @override
   String toString() {
-    return 'AuthState.error(error: $error, errorMessage: $errorMessage)';
+    return 'AuthState.error(error: $error, failure: $failure)';
   }
 
   @override
@@ -2410,12 +2301,11 @@ class _$ErrorImpl implements _Error {
         (other.runtimeType == runtimeType &&
             other is _$ErrorImpl &&
             (identical(other.error, error) || other.error == error) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, error, errorMessage);
+  int get hashCode => Object.hash(runtimeType, error, failure);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -2430,19 +2320,19 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() checkingUser,
+    required TResult Function(bool exists) userChecked,
     required TResult Function() loggingIn,
-    required TResult Function() sendingOtp,
-    required TResult Function() checkingToken,
-    required TResult Function() checkingUserExists,
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(VerificationEntity verification) otpSent,
-    required TResult Function(bool isValid) tokenChecked,
-    required TResult Function(bool exists) userExistsChecked,
-    required TResult Function(String message) failure,
-    required TResult Function(AuthStateError error, String? errorMessage) error,
+    required TResult Function() checkingToken,
+    required TResult Function() refreshingToken,
+    required TResult Function() finishingOnboarding,
+    required TResult Function() skippingOnboarding,
+    required TResult Function() loggingOut,
+    required TResult Function(AuthStateError error, AuthFailure failure) error,
   }) {
-    return error(this.error, errorMessage);
+    return error(this.error, failure);
   }
 
   @override
@@ -2450,19 +2340,19 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? checkingUser,
+    TResult? Function(bool exists)? userChecked,
     TResult? Function()? loggingIn,
-    TResult? Function()? sendingOtp,
-    TResult? Function()? checkingToken,
-    TResult? Function()? checkingUserExists,
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(VerificationEntity verification)? otpSent,
-    TResult? Function(bool isValid)? tokenChecked,
-    TResult? Function(bool exists)? userExistsChecked,
-    TResult? Function(String message)? failure,
-    TResult? Function(AuthStateError error, String? errorMessage)? error,
+    TResult? Function()? checkingToken,
+    TResult? Function()? refreshingToken,
+    TResult? Function()? finishingOnboarding,
+    TResult? Function()? skippingOnboarding,
+    TResult? Function()? loggingOut,
+    TResult? Function(AuthStateError error, AuthFailure failure)? error,
   }) {
-    return error?.call(this.error, errorMessage);
+    return error?.call(this.error, failure);
   }
 
   @override
@@ -2470,21 +2360,21 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? checkingUser,
+    TResult Function(bool exists)? userChecked,
     TResult Function()? loggingIn,
-    TResult Function()? sendingOtp,
-    TResult Function()? checkingToken,
-    TResult Function()? checkingUserExists,
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(VerificationEntity verification)? otpSent,
-    TResult Function(bool isValid)? tokenChecked,
-    TResult Function(bool exists)? userExistsChecked,
-    TResult Function(String message)? failure,
-    TResult Function(AuthStateError error, String? errorMessage)? error,
+    TResult Function()? checkingToken,
+    TResult Function()? refreshingToken,
+    TResult Function()? finishingOnboarding,
+    TResult Function()? skippingOnboarding,
+    TResult Function()? loggingOut,
+    TResult Function(AuthStateError error, AuthFailure failure)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(this.error, errorMessage);
+      return error(this.error, failure);
     }
     return orElse();
   }
@@ -2494,16 +2384,16 @@ class _$ErrorImpl implements _Error {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_CheckingUser value) checkingUser,
+    required TResult Function(_UserChecked value) userChecked,
     required TResult Function(_LoggingIn value) loggingIn,
-    required TResult Function(_SendingOtp value) sendingOtp,
-    required TResult Function(_CheckingToken value) checkingToken,
-    required TResult Function(_CheckingUserExists value) checkingUserExists,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_OtpSent value) otpSent,
-    required TResult Function(_TokenChecked value) tokenChecked,
-    required TResult Function(_UserExistsChecked value) userExistsChecked,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(_CheckingToken value) checkingToken,
+    required TResult Function(_RefreshingToken value) refreshingToken,
+    required TResult Function(_FinishingOnboarding value) finishingOnboarding,
+    required TResult Function(_SkippingOnboarding value) skippingOnboarding,
+    required TResult Function(_LoggingOut value) loggingOut,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -2514,16 +2404,16 @@ class _$ErrorImpl implements _Error {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_CheckingUser value)? checkingUser,
+    TResult? Function(_UserChecked value)? userChecked,
     TResult? Function(_LoggingIn value)? loggingIn,
-    TResult? Function(_SendingOtp value)? sendingOtp,
-    TResult? Function(_CheckingToken value)? checkingToken,
-    TResult? Function(_CheckingUserExists value)? checkingUserExists,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(_OtpSent value)? otpSent,
-    TResult? Function(_TokenChecked value)? tokenChecked,
-    TResult? Function(_UserExistsChecked value)? userExistsChecked,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(_CheckingToken value)? checkingToken,
+    TResult? Function(_RefreshingToken value)? refreshingToken,
+    TResult? Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult? Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult? Function(_LoggingOut value)? loggingOut,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -2534,16 +2424,16 @@ class _$ErrorImpl implements _Error {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_CheckingUser value)? checkingUser,
+    TResult Function(_UserChecked value)? userChecked,
     TResult Function(_LoggingIn value)? loggingIn,
-    TResult Function(_SendingOtp value)? sendingOtp,
-    TResult Function(_CheckingToken value)? checkingToken,
-    TResult Function(_CheckingUserExists value)? checkingUserExists,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_OtpSent value)? otpSent,
-    TResult Function(_TokenChecked value)? tokenChecked,
-    TResult Function(_UserExistsChecked value)? userExistsChecked,
-    TResult Function(_Failure value)? failure,
+    TResult Function(_CheckingToken value)? checkingToken,
+    TResult Function(_RefreshingToken value)? refreshingToken,
+    TResult Function(_FinishingOnboarding value)? finishingOnboarding,
+    TResult Function(_SkippingOnboarding value)? skippingOnboarding,
+    TResult Function(_LoggingOut value)? loggingOut,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -2554,13 +2444,14 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements AuthState {
+abstract class _Error extends AuthState {
   const factory _Error(
       {required final AuthStateError error,
-      required final String? errorMessage}) = _$ErrorImpl;
+      required final AuthFailure failure}) = _$ErrorImpl;
+  const _Error._() : super._();
 
   AuthStateError get error;
-  String? get errorMessage;
+  AuthFailure get failure;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.

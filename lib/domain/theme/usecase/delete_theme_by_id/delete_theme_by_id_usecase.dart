@@ -8,9 +8,9 @@ import 'delete_theme_by_id_usecase_business_rule.dart';
 class DeleteThemeByIdUseCase {
   final ThemeRepository repository;
 
-  const DeleteThemeByIdUseCase(this.repository);
+  const DeleteThemeByIdUseCase({required this.repository});
 
-  Future<Result<void, ThemeFailure>> call({
+  Future<Result<int, ThemeFailure>> call({
     required int id,
   }) async {
     try {
@@ -25,7 +25,7 @@ class DeleteThemeByIdUseCase {
     }
 
     return repository.deleteThemeById(
-      id: id!,
+      id: id,
     );
   }
 }

@@ -1,92 +1,108 @@
+import 'package:baladeston/domain/report/usecase/count_report/count_report_usecase.dart';
 import 'package:bloc/bloc.dart';
+
 import 'report_state.dart';
 import 'package:baladeston/domain/report/entity/report_entity.dart';
 import 'package:baladeston/data/report/filter/report_query_filter.dart';
 
-import 'package:baladeston/domain/report/usecase/count_all_report_usecase.dart';
-import 'package:baladeston/domain/report/usecase/delete_report_by_fliter/delete_report_by_filter_usecase.dart';
-import 'package:baladeston/domain/report/usecase/delete_report_by_id/delete_report_by_id_usecase.dart';
-import 'package:baladeston/domain/report/usecase/get_report_by_fliter/get_report_by_filter_usecase.dart';
+// UseCases
+import 'package:baladeston/domain/report/usecase/get_report_by_filter/get_report_by_filter_usecase.dart';
 import 'package:baladeston/domain/report/usecase/get_report_by_id/get_report_by_id_usecase.dart';
 import 'package:baladeston/domain/report/usecase/create_report/create_report_usecase.dart';
-import 'package:baladeston/domain/report/usecase/update_report_usecase.dart';
+import 'package:baladeston/domain/report/usecase/update_report_by_id/update_report_by_id_usecase.dart';
+import 'package:baladeston/domain/report/usecase/update_report_by_filter/update_report_by_filter_usecase.dart';
+import 'package:baladeston/domain/report/usecase/delete_report_by_id/delete_report_by_id_usecase.dart';
+import 'package:baladeston/domain/report/usecase/delete_report_by_filter/delete_report_by_filter_usecase.dart';
 
 class ReportCubit extends Cubit<ReportState> {
-  final CountAllReportUseCase _countUseCase;
+  final CountReportUseCase _countUseCase;
   final GetReportByFilterUseCase _getByFilterUseCase;
   final GetReportByIdUseCase _getByIdUseCase;
   final CreateReportUseCase _createUseCase;
-  final UpdateReportUseCase _updateUseCase;
+  final UpdateReportByIdUseCase _updateByIdUseCase;
+  final UpdateReportByFilterUseCase _updateByFilterUseCase;
   final DeleteReportByIdUseCase _deleteByIdUseCase;
   final DeleteReportByFilterUseCase _deleteByFilterUseCase;
 
   ReportCubit({
-    required CountAllReportUseCase countUseCase,
+    required CountReportUseCase countUseCase,
     required GetReportByFilterUseCase getByFilterUseCase,
     required GetReportByIdUseCase getByIdUseCase,
     required CreateReportUseCase createUseCase,
-    required UpdateReportUseCase updateUseCase,
+    required UpdateReportByIdUseCase updateByIdUseCase,
+    required UpdateReportByFilterUseCase updateByFilterUseCase,
     required DeleteReportByIdUseCase deleteByIdUseCase,
     required DeleteReportByFilterUseCase deleteByFilterUseCase,
   })  : _countUseCase = countUseCase,
         _getByFilterUseCase = getByFilterUseCase,
         _getByIdUseCase = getByIdUseCase,
         _createUseCase = createUseCase,
-        _updateUseCase = updateUseCase,
+        _updateByIdUseCase = updateByIdUseCase,
+        _updateByFilterUseCase = updateByFilterUseCase,
         _deleteByIdUseCase = deleteByIdUseCase,
         _deleteByFilterUseCase = deleteByFilterUseCase,
         super(const ReportState.initial());
 
-  // --------------------------------------------------------------------
-  // لود لیست گزارش‌ها با فیلتر دلخواه
-  // --------------------------------------------------------------------
+  /* -------------------------------------------------------------------------- */
+  /*                                   List                                     */
+  /* -------------------------------------------------------------------------- */
+
   Future<void> loadReports({required ReportQueryFilter filter}) async {
     emit(const ReportState.fetchingList());
 
     final listResult = await _getByFilterUseCase(filter: filter);
 
-    await listResult.when(
+    listResult.when(
       success: (reports) async {
+        int count = reports.length;
+
         final countResult = await _countUseCase(filter: filter);
-        final count = countResult.when(
-          success: (value) => value,
-          failure: (_) => reports.length,
+        countResult.when(
+          success: (value) => count = value,
+          failure: (_) {},
         );
-        emit(ReportState.successListLoaded(reports: reports, count: count));
+
+        emit(
+          ReportState.successListLoaded(
+            reports: reports,
+            count: count,
+          ),
+        );
       },
-      failure: (failure) {
-        emit(const ReportState.error(
+      failure: (_) => emit(
+        const ReportState.error(
           error: ReportStateError.errorWhileLoadingList,
           message: 'خطا در دریافت لیست گزارش‌ها',
-        ));
-      },
+        ),
+      ),
     );
   }
 
-  // --------------------------------------------------------------------
-  // لود یک گزارش خاص
-  // --------------------------------------------------------------------
+  /* -------------------------------------------------------------------------- */
+  /*                                  Single                                    */
+  /* -------------------------------------------------------------------------- */
+
   Future<void> loadReportById({required int id}) async {
     emit(const ReportState.fetchingSingle());
 
     final result = await _getByIdUseCase(id: id);
 
     result.when(
-      success: (report) {
-        emit(ReportState.successSingleLoaded(report: report));
-      },
-      failure: (_) {
-        emit(const ReportState.error(
+      success: (report) =>
+          emit(ReportState.successSingleLoaded(report: report)),
+      failure: (_) => emit(
+        const ReportState.error(
           error: ReportStateError.errorWhileLoadingSingle,
           message: 'خطا در دریافت گزارش',
-        ));
-      },
+        ),
+      ),
     );
   }
 
-  // --------------------------------------------------------------------
-  // ثبت گزارش جدید و رفرش لیست
-  // --------------------------------------------------------------------
+  /* -------------------------------------------------------------------------- */
+  /*                                  Create                                    */
+  /* -------------------------------------------------------------------------- */
+
   Future<void> createReport({
     required ReportEntity report,
     required ReportQueryFilter refreshFilter,
@@ -95,59 +111,75 @@ class ReportCubit extends Cubit<ReportState> {
 
     final result = await _createUseCase(report: report);
 
-    bool shouldRefresh = false;
-
     result.when(
-      success: (_) {
-        shouldRefresh = true;
-        emit(const ReportState.created());
-      },
-      failure: (_) {
-        emit(const ReportState.error(
+      success: (_) => loadReports(filter: refreshFilter),
+      failure: (_) => emit(
+        const ReportState.error(
           error: ReportStateError.errorWhileCreating,
           message: 'خطا در ثبت گزارش',
-        ));
-      },
+        ),
+      ),
     );
-
-    if (shouldRefresh) {
-      await loadReports(filter: refreshFilter);
-    }
   }
 
-  // --------------------------------------------------------------------
-  // ویرایش گزارش و رفرش لیست
-  // --------------------------------------------------------------------
-  Future<void> updateReport({
+  /* -------------------------------------------------------------------------- */
+  /*                              Update by Id                                  */
+  /* -------------------------------------------------------------------------- */
+
+  Future<void> updateReportById({
+    required int id,
     required ReportEntity report,
     required ReportQueryFilter refreshFilter,
   }) async {
     emit(const ReportState.editing());
 
-    final result = await _updateUseCase(report: report);
-
-    bool shouldRefresh = false;
-
-    result.when(
-      success: (_) {
-        shouldRefresh = true;
-      },
-      failure: (_) {
-        emit(const ReportState.error(
-          error: ReportStateError.errorWhileEditing,
-          message: 'خطا در ویرایش گزارش',
-        ));
-      },
+    final result = await _updateByIdUseCase(
+      id: id,
+      report: report,
     );
 
-    if (shouldRefresh) {
-      await loadReports(filter: refreshFilter);
-    }
+    result.when(
+      success: (_) => loadReports(filter: refreshFilter),
+      failure: (_) => emit(
+        const ReportState.error(
+          error: ReportStateError.errorWhileEditing,
+          message: 'خطا در ویرایش گزارش',
+        ),
+      ),
+    );
   }
 
-  // --------------------------------------------------------------------
-  // حذف گزارش تکی و رفرش لیست
-  // --------------------------------------------------------------------
+  /* -------------------------------------------------------------------------- */
+  /*                           Update by Filter                                  */
+  /* -------------------------------------------------------------------------- */
+
+  Future<void> updateReportsByFilter({
+    required ReportQueryFilter filter,
+    required ReportEntity report,
+    required ReportQueryFilter refreshFilter,
+  }) async {
+    emit(const ReportState.editing());
+
+    final result = await _updateByFilterUseCase(
+      filter: filter,
+      report: report,
+    );
+
+    result.when(
+      success: (_) => loadReports(filter: refreshFilter),
+      failure: (_) => emit(
+        const ReportState.error(
+          error: ReportStateError.errorWhileEditing,
+          message: 'خطا در ویرایش گروهی گزارش‌ها',
+        ),
+      ),
+    );
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                                   Delete                                   */
+  /* -------------------------------------------------------------------------- */
+
   Future<void> deleteReportById({
     required int id,
     required ReportQueryFilter refreshFilter,
@@ -156,28 +188,17 @@ class ReportCubit extends Cubit<ReportState> {
 
     final result = await _deleteByIdUseCase(id: id);
 
-    bool shouldRefresh = false;
-
     result.when(
-      success: (_) {
-        shouldRefresh = true;
-      },
-      failure: (_) {
-        emit(const ReportState.error(
+      success: (_) => loadReports(filter: refreshFilter),
+      failure: (_) => emit(
+        const ReportState.error(
           error: ReportStateError.errorWhileDeletingById,
           message: 'خطا در حذف گزارش',
-        ));
-      },
+        ),
+      ),
     );
-
-    if (shouldRefresh) {
-      await loadReports(filter: refreshFilter);
-    }
   }
 
-  // --------------------------------------------------------------------
-  // حذف گروهی گزارش‌ها و رفرش لیست
-  // --------------------------------------------------------------------
   Future<void> deleteReportsByFilter({
     required ReportQueryFilter filter,
     required ReportQueryFilter refreshFilter,
@@ -186,22 +207,14 @@ class ReportCubit extends Cubit<ReportState> {
 
     final result = await _deleteByFilterUseCase(filter: filter);
 
-    bool shouldRefresh = false;
-
     result.when(
-      success: (_) {
-        shouldRefresh = true;
-      },
-      failure: (_) {
-        emit(const ReportState.error(
+      success: (_) => loadReports(filter: refreshFilter),
+      failure: (_) => emit(
+        const ReportState.error(
           error: ReportStateError.errorWhileDeletingByFilter,
           message: 'خطا در حذف گروهی گزارش‌ها',
-        ));
-      },
+        ),
+      ),
     );
-
-    if (shouldRefresh) {
-      await loadReports(filter: refreshFilter);
-    }
   }
 }

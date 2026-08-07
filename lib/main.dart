@@ -1,4 +1,6 @@
 import 'package:baladeston/core/di_initialization/init.dart';
+import 'package:baladeston/domain/theme/entity/theme_entity.dart';
+import 'package:baladeston/presentation/mapper/theme/theme_entity_to_theme_data.dart';
 import 'package:baladeston/presentation/pages/introduction/introduction_first.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,6 +16,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await initDependencies();
+  final themeCubit = getIt<ThemeCubit>();
+
+  themeCubit.initTheme();
   runApp(const MyApp());
 }
 
@@ -37,17 +42,16 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, state) {
           return state.maybeWhen(
-            success: (themeData, isDark) {
+            initializedTheme: (theme) {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
                 title: "Baladeston",
-                theme: themeData,
+                theme: theme.toThemeData(),
                 home: IntroductionFirst()
               );
             },
             initial: () => Container(color: Colors.blue),
-            loading: () => Container(color: Colors.red),
-            failure: (message) => Container(color: Colors.red),
+            initializingTheme: () => Container(color: Colors.red),
             orElse: () => Container(color: Colors.red),
           );
         },

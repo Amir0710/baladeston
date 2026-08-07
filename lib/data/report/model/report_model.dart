@@ -1,6 +1,6 @@
 
-import 'package:baladeston/core/enum/report_status.dart';
-import 'package:baladeston/core/enum/report_type.dart';
+import 'package:baladeston/core/enum/report/report_status.dart';
+import 'package:baladeston/core/enum/report/report_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'report_model.freezed.dart';

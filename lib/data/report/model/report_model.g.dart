@@ -7,18 +7,27 @@ part of 'report_model.dart';
 // **************************************************************************
 
 _$ReportModelImpl _$$ReportModelImplFromJson(Map<String, dynamic> json) =>
-    _$ReportModelImpl(
-      id: (json['id'] as num?)?.toInt(),
-      userId: (json['userId'] as num).toInt(),
-      targetId: (json['targetId'] as num).toInt(),
-      response: json['response'] as String?,
-      reason: json['reason'] as String?,
-      reportedAt: DateTime.parse(json['reportedAt'] as String),
-      responseAt: json['responseAt'] == null
-          ? null
-          : DateTime.parse(json['responseAt'] as String),
-      status: $enumDecode(_$ReportStatusEnumMap, json['status']),
-      type: $enumDecode(_$ReportTypeEnumMap, json['type']),
+    $checkedCreate(
+      r'_$ReportModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$ReportModelImpl(
+          id: $checkedConvert('id', (v) => (v as num?)?.toInt()),
+          userId: $checkedConvert('userId', (v) => (v as num).toInt()),
+          targetId: $checkedConvert('targetId', (v) => (v as num).toInt()),
+          response: $checkedConvert('response', (v) => v as String?),
+          reason: $checkedConvert('reason', (v) => v as String?),
+          reportedAt:
+              $checkedConvert('reportedAt', (v) => DateTime.parse(v as String)),
+          responseAt: $checkedConvert('responseAt',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+          status: $checkedConvert(
+              'status', (v) => $enumDecode(_$ReportStatusEnumMap, v)),
+          type: $checkedConvert(
+              'type', (v) => $enumDecode(_$ReportTypeEnumMap, v)),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$ReportModelImplToJson(_$ReportModelImpl instance) =>

@@ -19,7 +19,6 @@ mixin _$AuthSessionEntity {
   String get accessToken => throw _privateConstructorUsedError;
   String get refreshToken => throw _privateConstructorUsedError;
   DateTime? get expiresAt => throw _privateConstructorUsedError;
-  String? get tokenType => throw _privateConstructorUsedError;
 
   /// Create a copy of AuthSessionEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -34,11 +33,7 @@ abstract class $AuthSessionEntityCopyWith<$Res> {
           AuthSessionEntity value, $Res Function(AuthSessionEntity) then) =
       _$AuthSessionEntityCopyWithImpl<$Res, AuthSessionEntity>;
   @useResult
-  $Res call(
-      {String accessToken,
-      String refreshToken,
-      DateTime? expiresAt,
-      String? tokenType});
+  $Res call({String accessToken, String refreshToken, DateTime? expiresAt});
 }
 
 /// @nodoc
@@ -59,7 +54,6 @@ class _$AuthSessionEntityCopyWithImpl<$Res, $Val extends AuthSessionEntity>
     Object? accessToken = null,
     Object? refreshToken = null,
     Object? expiresAt = freezed,
-    Object? tokenType = freezed,
   }) {
     return _then(_value.copyWith(
       accessToken: null == accessToken
@@ -74,10 +68,6 @@ class _$AuthSessionEntityCopyWithImpl<$Res, $Val extends AuthSessionEntity>
           ? _value.expiresAt
           : expiresAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      tokenType: freezed == tokenType
-          ? _value.tokenType
-          : tokenType // ignore: cast_nullable_to_non_nullable
-              as String?,
     ) as $Val);
   }
 }
@@ -90,11 +80,7 @@ abstract class _$$AuthSessionEntityImplCopyWith<$Res>
       __$$AuthSessionEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String accessToken,
-      String refreshToken,
-      DateTime? expiresAt,
-      String? tokenType});
+  $Res call({String accessToken, String refreshToken, DateTime? expiresAt});
 }
 
 /// @nodoc
@@ -113,7 +99,6 @@ class __$$AuthSessionEntityImplCopyWithImpl<$Res>
     Object? accessToken = null,
     Object? refreshToken = null,
     Object? expiresAt = freezed,
-    Object? tokenType = freezed,
   }) {
     return _then(_$AuthSessionEntityImpl(
       accessToken: null == accessToken
@@ -128,10 +113,6 @@ class __$$AuthSessionEntityImplCopyWithImpl<$Res>
           ? _value.expiresAt
           : expiresAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      tokenType: freezed == tokenType
-          ? _value.tokenType
-          : tokenType // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -140,10 +121,7 @@ class __$$AuthSessionEntityImplCopyWithImpl<$Res>
 
 class _$AuthSessionEntityImpl implements _AuthSessionEntity {
   const _$AuthSessionEntityImpl(
-      {required this.accessToken,
-      required this.refreshToken,
-      this.expiresAt,
-      this.tokenType});
+      {required this.accessToken, required this.refreshToken, this.expiresAt});
 
   @override
   final String accessToken;
@@ -151,12 +129,10 @@ class _$AuthSessionEntityImpl implements _AuthSessionEntity {
   final String refreshToken;
   @override
   final DateTime? expiresAt;
-  @override
-  final String? tokenType;
 
   @override
   String toString() {
-    return 'AuthSessionEntity(accessToken: $accessToken, refreshToken: $refreshToken, expiresAt: $expiresAt, tokenType: $tokenType)';
+    return 'AuthSessionEntity(accessToken: $accessToken, refreshToken: $refreshToken, expiresAt: $expiresAt)';
   }
 
   @override
@@ -169,14 +145,12 @@ class _$AuthSessionEntityImpl implements _AuthSessionEntity {
             (identical(other.refreshToken, refreshToken) ||
                 other.refreshToken == refreshToken) &&
             (identical(other.expiresAt, expiresAt) ||
-                other.expiresAt == expiresAt) &&
-            (identical(other.tokenType, tokenType) ||
-                other.tokenType == tokenType));
+                other.expiresAt == expiresAt));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, accessToken, refreshToken, expiresAt, tokenType);
+      Object.hash(runtimeType, accessToken, refreshToken, expiresAt);
 
   /// Create a copy of AuthSessionEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -192,8 +166,7 @@ abstract class _AuthSessionEntity implements AuthSessionEntity {
   const factory _AuthSessionEntity(
       {required final String accessToken,
       required final String refreshToken,
-      final DateTime? expiresAt,
-      final String? tokenType}) = _$AuthSessionEntityImpl;
+      final DateTime? expiresAt}) = _$AuthSessionEntityImpl;
 
   @override
   String get accessToken;
@@ -201,8 +174,6 @@ abstract class _AuthSessionEntity implements AuthSessionEntity {
   String get refreshToken;
   @override
   DateTime? get expiresAt;
-  @override
-  String? get tokenType;
 
   /// Create a copy of AuthSessionEntity
   /// with the given fields replaced by the non-null parameter values.

@@ -53,6 +53,7 @@ class ThemeApiImplementation implements ThemeApi {
 
       if (response.statusCode == 200) {
         final List<dynamic> jsonList = jsonDecode(response.body);
+
         return jsonList
             .map(
               (e) => ThemeModel.fromJson(
@@ -67,10 +68,11 @@ class ThemeApiImplementation implements ThemeApi {
       throw NetworkException(cause: e);
     } on HttpException catch (e) {
       throw NetworkException(cause: e);
-    } on FormatException catch (e) {
-      throw ServerException();
+    } on FormatException {
+      throw const ServerException();
     }
   }
+
 
   // ------------------------------------------------------
   // Get by id
@@ -101,7 +103,7 @@ class ThemeApiImplementation implements ThemeApi {
   // ------------------------------------------------------
 
   @override
-  Future<ThemeModel> getThemeByName({
+  Future<List<ThemeModel>> getThemeByName({
     required String name,
   }) async {
     try {
@@ -109,9 +111,7 @@ class ThemeApiImplementation implements ThemeApi {
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        return ThemeModel.fromJson(
-          Map<String, dynamic>.from(data),
-        );
+        return data.map((theme)=> ThemeModel.fromJson(Map<String , dynamic>.from(theme)));
       }
 
       _handleHttpError(response);
@@ -186,7 +186,7 @@ class ThemeApiImplementation implements ThemeApi {
   // ------------------------------------------------------
 
   @override
-  Future<ThemeModel> updateThemeByFilter({
+  Future<List<ThemeModel>> updateThemeByFilter({
     required ThemeQueryFilter filter,
     required ThemeModel theme,
   }) async {
@@ -201,9 +201,7 @@ class ThemeApiImplementation implements ThemeApi {
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        return ThemeModel.fromJson(
-          Map<String, dynamic>.from(data),
-        );
+        return data.map((theme)=> ThemeModel.fromJson(Map<String,dynamic>.from(theme)));
       }
 
       _handleHttpError(response);
@@ -238,11 +236,11 @@ class ThemeApiImplementation implements ThemeApi {
   // ------------------------------------------------------
 
   @override
-  Future<int> deleteThemeByName({
-    required String name,
+  Future<List<int>> deleteThemeByFilter({
+    required ThemeQueryFilter filter,
   }) async {
     try {
-      final response = await http.delete(_url('name/$name'));
+      final response = await http.delete(_url('filter/$filter'));
 
       if (response.statusCode == 200 || response.statusCode == 204) {
         return response.statusCode == 200

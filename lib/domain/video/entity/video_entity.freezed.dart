@@ -18,15 +18,16 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$VideoEntity {
   int? get id => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  String? get videoUrl => throw _privateConstructorUsedError;
   String? get thumbnailUrl => throw _privateConstructorUsedError;
-  String? get status => throw _privateConstructorUsedError;
-  int? get requiredAge => throw _privateConstructorUsedError;
+  VideoStatus? get status => throw _privateConstructorUsedError;
   int? get videoDuration => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
-  int get uploaderId => throw _privateConstructorUsedError;
-  int get categoryId => throw _privateConstructorUsedError;
   DateTime? get uploadedAt => throw _privateConstructorUsedError;
+  String get videoUrl => throw _privateConstructorUsedError;
+  int get recommendedAge => throw _privateConstructorUsedError;
+  VideoLevel get level => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  int get ownerId => throw _privateConstructorUsedError;
+  int get price => throw _privateConstructorUsedError;
 
   /// Create a copy of VideoEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -44,15 +45,16 @@ abstract class $VideoEntityCopyWith<$Res> {
   $Res call(
       {int? id,
       String? description,
-      String? videoUrl,
       String? thumbnailUrl,
-      String? status,
-      int? requiredAge,
+      VideoStatus? status,
       int? videoDuration,
+      DateTime? uploadedAt,
+      String videoUrl,
+      int recommendedAge,
+      VideoLevel level,
       String title,
-      int uploaderId,
-      int categoryId,
-      DateTime? uploadedAt});
+      int ownerId,
+      int price});
 }
 
 /// @nodoc
@@ -72,15 +74,16 @@ class _$VideoEntityCopyWithImpl<$Res, $Val extends VideoEntity>
   $Res call({
     Object? id = freezed,
     Object? description = freezed,
-    Object? videoUrl = freezed,
     Object? thumbnailUrl = freezed,
     Object? status = freezed,
-    Object? requiredAge = freezed,
     Object? videoDuration = freezed,
-    Object? title = null,
-    Object? uploaderId = null,
-    Object? categoryId = null,
     Object? uploadedAt = freezed,
+    Object? videoUrl = null,
+    Object? recommendedAge = null,
+    Object? level = null,
+    Object? title = null,
+    Object? ownerId = null,
+    Object? price = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -91,10 +94,6 @@ class _$VideoEntityCopyWithImpl<$Res, $Val extends VideoEntity>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      videoUrl: freezed == videoUrl
-          ? _value.videoUrl
-          : videoUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
       thumbnailUrl: freezed == thumbnailUrl
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
@@ -102,31 +101,39 @@ class _$VideoEntityCopyWithImpl<$Res, $Val extends VideoEntity>
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String?,
-      requiredAge: freezed == requiredAge
-          ? _value.requiredAge
-          : requiredAge // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as VideoStatus?,
       videoDuration: freezed == videoDuration
           ? _value.videoDuration
           : videoDuration // ignore: cast_nullable_to_non_nullable
               as int?,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      uploaderId: null == uploaderId
-          ? _value.uploaderId
-          : uploaderId // ignore: cast_nullable_to_non_nullable
-              as int,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as int,
       uploadedAt: freezed == uploadedAt
           ? _value.uploadedAt
           : uploadedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      videoUrl: null == videoUrl
+          ? _value.videoUrl
+          : videoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      recommendedAge: null == recommendedAge
+          ? _value.recommendedAge
+          : recommendedAge // ignore: cast_nullable_to_non_nullable
+              as int,
+      level: null == level
+          ? _value.level
+          : level // ignore: cast_nullable_to_non_nullable
+              as VideoLevel,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      ownerId: null == ownerId
+          ? _value.ownerId
+          : ownerId // ignore: cast_nullable_to_non_nullable
+              as int,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -142,15 +149,16 @@ abstract class _$$VideoEntityImplCopyWith<$Res>
   $Res call(
       {int? id,
       String? description,
-      String? videoUrl,
       String? thumbnailUrl,
-      String? status,
-      int? requiredAge,
+      VideoStatus? status,
       int? videoDuration,
+      DateTime? uploadedAt,
+      String videoUrl,
+      int recommendedAge,
+      VideoLevel level,
       String title,
-      int uploaderId,
-      int categoryId,
-      DateTime? uploadedAt});
+      int ownerId,
+      int price});
 }
 
 /// @nodoc
@@ -168,15 +176,16 @@ class __$$VideoEntityImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? description = freezed,
-    Object? videoUrl = freezed,
     Object? thumbnailUrl = freezed,
     Object? status = freezed,
-    Object? requiredAge = freezed,
     Object? videoDuration = freezed,
-    Object? title = null,
-    Object? uploaderId = null,
-    Object? categoryId = null,
     Object? uploadedAt = freezed,
+    Object? videoUrl = null,
+    Object? recommendedAge = null,
+    Object? level = null,
+    Object? title = null,
+    Object? ownerId = null,
+    Object? price = null,
   }) {
     return _then(_$VideoEntityImpl(
       id: freezed == id
@@ -187,10 +196,6 @@ class __$$VideoEntityImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      videoUrl: freezed == videoUrl
-          ? _value.videoUrl
-          : videoUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
       thumbnailUrl: freezed == thumbnailUrl
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
@@ -198,31 +203,39 @@ class __$$VideoEntityImplCopyWithImpl<$Res>
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String?,
-      requiredAge: freezed == requiredAge
-          ? _value.requiredAge
-          : requiredAge // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as VideoStatus?,
       videoDuration: freezed == videoDuration
           ? _value.videoDuration
           : videoDuration // ignore: cast_nullable_to_non_nullable
               as int?,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      uploaderId: null == uploaderId
-          ? _value.uploaderId
-          : uploaderId // ignore: cast_nullable_to_non_nullable
-              as int,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as int,
       uploadedAt: freezed == uploadedAt
           ? _value.uploadedAt
           : uploadedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      videoUrl: null == videoUrl
+          ? _value.videoUrl
+          : videoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      recommendedAge: null == recommendedAge
+          ? _value.recommendedAge
+          : recommendedAge // ignore: cast_nullable_to_non_nullable
+              as int,
+      level: null == level
+          ? _value.level
+          : level // ignore: cast_nullable_to_non_nullable
+              as VideoLevel,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      ownerId: null == ownerId
+          ? _value.ownerId
+          : ownerId // ignore: cast_nullable_to_non_nullable
+              as int,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -233,42 +246,45 @@ class _$VideoEntityImpl implements _VideoEntity {
   const _$VideoEntityImpl(
       {this.id,
       this.description,
-      this.videoUrl,
       this.thumbnailUrl,
       this.status,
-      this.requiredAge,
       this.videoDuration,
+      this.uploadedAt,
+      required this.videoUrl,
+      required this.recommendedAge,
+      required this.level,
       required this.title,
-      required this.uploaderId,
-      required this.categoryId,
-      this.uploadedAt});
+      required this.ownerId,
+      required this.price});
 
   @override
   final int? id;
   @override
   final String? description;
   @override
-  final String? videoUrl;
-  @override
   final String? thumbnailUrl;
   @override
-  final String? status;
-  @override
-  final int? requiredAge;
+  final VideoStatus? status;
   @override
   final int? videoDuration;
   @override
+  final DateTime? uploadedAt;
+  @override
+  final String videoUrl;
+  @override
+  final int recommendedAge;
+  @override
+  final VideoLevel level;
+  @override
   final String title;
   @override
-  final int uploaderId;
+  final int ownerId;
   @override
-  final int categoryId;
-  @override
-  final DateTime? uploadedAt;
+  final int price;
 
   @override
   String toString() {
-    return 'VideoEntity(id: $id, description: $description, videoUrl: $videoUrl, thumbnailUrl: $thumbnailUrl, status: $status, requiredAge: $requiredAge, videoDuration: $videoDuration, title: $title, uploaderId: $uploaderId, categoryId: $categoryId, uploadedAt: $uploadedAt)';
+    return 'VideoEntity(id: $id, description: $description, thumbnailUrl: $thumbnailUrl, status: $status, videoDuration: $videoDuration, uploadedAt: $uploadedAt, videoUrl: $videoUrl, recommendedAge: $recommendedAge, level: $level, title: $title, ownerId: $ownerId, price: $price)';
   }
 
   @override
@@ -279,22 +295,21 @@ class _$VideoEntityImpl implements _VideoEntity {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.videoUrl, videoUrl) ||
-                other.videoUrl == videoUrl) &&
             (identical(other.thumbnailUrl, thumbnailUrl) ||
                 other.thumbnailUrl == thumbnailUrl) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.requiredAge, requiredAge) ||
-                other.requiredAge == requiredAge) &&
             (identical(other.videoDuration, videoDuration) ||
                 other.videoDuration == videoDuration) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.uploaderId, uploaderId) ||
-                other.uploaderId == uploaderId) &&
-            (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId) &&
             (identical(other.uploadedAt, uploadedAt) ||
-                other.uploadedAt == uploadedAt));
+                other.uploadedAt == uploadedAt) &&
+            (identical(other.videoUrl, videoUrl) ||
+                other.videoUrl == videoUrl) &&
+            (identical(other.recommendedAge, recommendedAge) ||
+                other.recommendedAge == recommendedAge) &&
+            (identical(other.level, level) || other.level == level) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.ownerId, ownerId) || other.ownerId == ownerId) &&
+            (identical(other.price, price) || other.price == price));
   }
 
   @override
@@ -302,15 +317,16 @@ class _$VideoEntityImpl implements _VideoEntity {
       runtimeType,
       id,
       description,
-      videoUrl,
       thumbnailUrl,
       status,
-      requiredAge,
       videoDuration,
+      uploadedAt,
+      videoUrl,
+      recommendedAge,
+      level,
       title,
-      uploaderId,
-      categoryId,
-      uploadedAt);
+      ownerId,
+      price);
 
   /// Create a copy of VideoEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -325,38 +341,41 @@ abstract class _VideoEntity implements VideoEntity {
   const factory _VideoEntity(
       {final int? id,
       final String? description,
-      final String? videoUrl,
       final String? thumbnailUrl,
-      final String? status,
-      final int? requiredAge,
+      final VideoStatus? status,
       final int? videoDuration,
+      final DateTime? uploadedAt,
+      required final String videoUrl,
+      required final int recommendedAge,
+      required final VideoLevel level,
       required final String title,
-      required final int uploaderId,
-      required final int categoryId,
-      final DateTime? uploadedAt}) = _$VideoEntityImpl;
+      required final int ownerId,
+      required final int price}) = _$VideoEntityImpl;
 
   @override
   int? get id;
   @override
   String? get description;
   @override
-  String? get videoUrl;
-  @override
   String? get thumbnailUrl;
   @override
-  String? get status;
-  @override
-  int? get requiredAge;
+  VideoStatus? get status;
   @override
   int? get videoDuration;
   @override
+  DateTime? get uploadedAt;
+  @override
+  String get videoUrl;
+  @override
+  int get recommendedAge;
+  @override
+  VideoLevel get level;
+  @override
   String get title;
   @override
-  int get uploaderId;
+  int get ownerId;
   @override
-  int get categoryId;
-  @override
-  DateTime? get uploadedAt;
+  int get price;
 
   /// Create a copy of VideoEntity
   /// with the given fields replaced by the non-null parameter values.

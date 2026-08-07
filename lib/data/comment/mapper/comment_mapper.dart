@@ -1,5 +1,5 @@
 import 'package:baladeston/data/comment/model/comment_model.dart';
-import 'package:baladeston/domain/comment/entity/comment_entity.dart';
+import 'package:baladeston/domain/comment/entity/comment/comment_entity.dart';
 
 extension CommentModelMapper on CommentModel {
   CommentEntity toEntity() {

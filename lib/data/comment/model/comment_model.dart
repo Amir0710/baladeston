@@ -1,4 +1,4 @@
-import 'package:baladeston/core/enum/comment_status.dart';
+import 'package:baladeston/core/enum/comment/comment_status.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'comment_model.freezed.dart';

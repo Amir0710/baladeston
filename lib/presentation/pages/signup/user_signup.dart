@@ -1,5 +1,5 @@
-import 'package:baladeston/application/providers/user_cubit/user_cubit.dart';
-import 'package:baladeston/application/providers/user_cubit/user_state.dart';
+import 'package:baladeston/application/providers/auth_cubit/auth_cubit.dart';
+import 'package:baladeston/application/providers/auth_cubit/auth_state.dart';
 import 'package:baladeston/core/constants/add_padding.dart';
 import 'package:baladeston/core/extensions/media_query_extension.dart';
 import 'package:baladeston/core/theme/app_themes.dart';
@@ -38,22 +38,28 @@ class _UserPassSignupState extends State<UserPassSignup> {
           ),
         ),
       ),
-      body: BlocListener<UserCubit, UserState>(
+      body: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
           state.whenOrNull(
-            userExist: () {
-              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content: Text('this user is already has been sign up')));
-            },
-            userNotExist: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => VerificationPage(
-                    phone: _phoneController.text.trim(),
+            userExistsChecked: (result) {
+              if (result == true) {
+                // User exists → show snack bar
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('This user has already signed up'),
                   ),
-                ),
-              );
+                );
+              } else {
+                // User does NOT exist → navigate
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => VerificationPage(
+                      phone: _phoneController.text.trim(),
+                    ),
+                  ),
+                );
+              }
             },
           );
         },
@@ -203,7 +209,7 @@ class _UserPassSignupState extends State<UserPassSignup> {
                               return;
                             }
                             context
-                                .read<UserCubit>()
+                                .read<AuthCubit>()
                                 .checkUserExists(phone: phone);
                           },
                           child: Row(

@@ -1,53 +1,51 @@
-import 'package:baladeston/domain/verification/entity/verification/verification_entity.dart';
+import 'package:baladeston/domain/auth/failure/auth_failure.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'auth_state.freezed.dart';
 
 enum AuthStateError {
-  invalidCredentials,
-  userNotFound,
-  otpFailed,
-  tokenExpired,
+  network,
+  timeout,
+  server,
+  validation,
+  notFound,
   unauthorized,
-  networkError,
-  unknownError,
+  userExists,
+  invalidCredentials,
+  tokenExpired,
+  unknown,
 }
 
 @freezed
 class AuthState with _$AuthState {
+  const AuthState._();
+
   const factory AuthState.initial() = _Initial;
 
   const factory AuthState.loading() = _Loading;
 
+  const factory AuthState.checkingUser() = _CheckingUser;
+
+  const factory AuthState.userChecked({required bool exists}) = _UserChecked;
+
   const factory AuthState.loggingIn() = _LoggingIn;
 
-  const factory AuthState.sendingOtp() = _SendingOtp;
+  const factory AuthState.authenticated() = _Authenticated;
+
+  const factory AuthState.unauthenticated() = _Unauthenticated;
 
   const factory AuthState.checkingToken() = _CheckingToken;
 
-  const factory AuthState.checkingUserExists() = _CheckingUserExists;
+  const factory AuthState.refreshingToken() = _RefreshingToken;
 
-  const factory AuthState.authenticated() = _Authenticated;
-  const factory AuthState.unauthenticated() = _Unauthenticated;
+  const factory AuthState.finishingOnboarding() = _FinishingOnboarding;
 
-  const factory AuthState.otpSent({
-    required VerificationEntity verification,
-  }) = _OtpSent;
+  const factory AuthState.skippingOnboarding() = _SkippingOnboarding;
 
-  const factory AuthState.tokenChecked({
-    required bool isValid,
-  }) = _TokenChecked;
-
-  const factory AuthState.userExistsChecked({
-    required bool exists,
-  }) = _UserExistsChecked;
-
-  const factory AuthState.failure({
-    required String message,
-  }) = _Failure;
+  const factory AuthState.loggingOut() = _LoggingOut;
 
   const factory AuthState.error({
     required AuthStateError error,
-    required String? errorMessage,
+    required AuthFailure failure,
   }) = _Error;
 }

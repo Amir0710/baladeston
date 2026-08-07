@@ -57,12 +57,12 @@ class ThemeRepositoryImplementation implements ThemeRepository {
   // ------------------------------------------------------
 
   @override
-  Future<Result<ThemeEntity, ThemeFailure>> getThemeByName({
+  Future<Result<List<ThemeEntity>, ThemeFailure>> getThemeByName({
     required String name,
   }) async {
     try {
       final model = await _api.getThemeByName(name: name);
-      return Result.success(model.toEntity());
+      return Result.success(model.map((theme) => theme.toEntity()).toList());
     } catch (error) {
       return Result.failure(mapThemeException(error));
     }
@@ -111,7 +111,7 @@ class ThemeRepositoryImplementation implements ThemeRepository {
   // ------------------------------------------------------
 
   @override
-  Future<Result<ThemeEntity, ThemeFailure>> updateThemeByFilter({
+  Future<Result<List<ThemeEntity>, ThemeFailure>> updateThemeByFilter({
     required ThemeQueryFilter filter,
     required ThemeEntity theme,
   }) async {
@@ -121,7 +121,7 @@ class ThemeRepositoryImplementation implements ThemeRepository {
         filter: filter,
         theme: model,
       );
-      return Result.success(updatedModel.toEntity());
+      return Result.success(updatedModel.map((theme) => theme.toEntity()).toList());
     } catch (error) {
       return Result.failure(mapThemeException(error));
     }
@@ -148,11 +148,11 @@ class ThemeRepositoryImplementation implements ThemeRepository {
   // ------------------------------------------------------
 
   @override
-  Future<Result<int, ThemeFailure>> deleteThemeByName({
-    required String name,
+  Future<Result<List<int>, ThemeFailure>> deleteThemeByFilter({
+    required ThemeQueryFilter filter,
   }) async {
     try {
-      final deletedId = await _api.deleteThemeByName(name: name);
+      final deletedId = await _api.deleteThemeByFilter(filter: filter);
       return Result.success(deletedId);
     } catch (error) {
       return Result.failure(mapThemeException(error));

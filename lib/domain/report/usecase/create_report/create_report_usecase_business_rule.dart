@@ -1,4 +1,4 @@
-import 'package:baladeston/core/enum/report_status.dart';
+import 'package:baladeston/core/enum/report/report_status.dart';
 import 'package:baladeston/domain/report/entity/report_entity.dart';
 import 'package:baladeston/domain/report/exception/report_entity_exception.dart';
 

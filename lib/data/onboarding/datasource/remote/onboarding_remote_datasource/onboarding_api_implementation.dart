@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:baladeston/config/app_config.dart';
-import 'package:baladeston/data/auth/model/auth_session_model.dart';
+import 'package:baladeston/data/auth/model/auth_session/auth_session_model.dart';
 import 'package:baladeston/data/onboarding/datasource/remote/onboarding_remote_datasource/onboarding_api.dart';
 import 'package:baladeston/data/user/model/user_model.dart';
 

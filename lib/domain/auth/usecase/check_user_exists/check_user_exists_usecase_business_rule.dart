@@ -1,4 +1,6 @@
-import 'package:baladeston/domain/auth/exception/verification_entity_exception.dart';
+import 'package:baladeston/core/result/result.dart';
+import 'package:baladeston/domain/auth/failure/auth_failure.dart';
+import 'package:baladeston/domain/auth/failure/phone_failure.dart';
 
 class CheckUserExistsUseCaseBusinessRule {
   final String phone;
@@ -7,18 +9,20 @@ class CheckUserExistsUseCaseBusinessRule {
     required this.phone,
   });
 
-  void validate() {
-    _validatePhone();
+  Result<void, AuthDomainFailure> validate() {
+    return _validatePhone();
   }
 
-  void _validatePhone() {
+  Result<void, AuthDomainFailure> _validatePhone() {
     if (phone.isEmpty) {
-      throw VerificationEntityPhoneEmptyException();
+      return const Result.failure(PhoneEmptyFailure());
     }
 
     final phoneRegex = RegExp(r'^09\d{9}$');
     if (!phoneRegex.hasMatch(phone)) {
-      throw VerificationEntityPhoneFormatInvalidException();
+      return const Result.failure(PhoneFormatFailure());
     }
+
+    return const Result.success(null);
   }
 }

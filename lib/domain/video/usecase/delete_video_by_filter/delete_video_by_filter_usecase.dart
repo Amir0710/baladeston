@@ -1,25 +1,28 @@
 import 'package:baladeston/core/result/result.dart';
 import 'package:baladeston/data/video/filter/video_query_filter.dart';
-import 'package:baladeston/domain/video/exception/video_filter_exception.dart';
-import 'package:baladeston/domain/video/failure/video_failure.dart';
+import 'package:baladeston/domain/video/failure/base_video_failure.dart';
 import 'package:baladeston/domain/video/repository/video_repository.dart';
-import 'delete_video_by_filter_usecase_business_rule.dart';
+import 'package:baladeston/domain/video/usecase/delete_video_by_filter/delete_video_by_filter_usecase_business_rule.dart';
 
 class DeleteVideoByFilterUseCase {
   final VideoRepository repository;
 
-  const DeleteVideoByFilterUseCase(this.repository);
+  const DeleteVideoByFilterUseCase({
+    required this.repository,
+  });
 
-  Future<Result<List<int>, VideoFailure>> call({
+  Future<Result<int, VideoFailure>> call({
     required VideoQueryFilter filter,
   }) async {
-    try {
-      final rule = DeleteVideoByFilterUseCaseBusinessRule(filter: filter);
-      rule.validate();
-    } on VideoFilterException catch (e) {
-      return Result.failure(VideoValidationFailure(e.message));
-    }
+    final businessRule = DeleteVideoByFilterUsecaseBusinessRule(
+      filter: filter,
+    );
 
-    return repository.deleteVideoByFilter(filter: filter);
+    final validationResult = businessRule.validate();
+
+    return validationResult.when(
+      success: (_) => repository.deleteVideoByFilter(filter: filter),
+      failure: (failure) => Result.failure(failure),
+    );
   }
 }

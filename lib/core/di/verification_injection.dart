@@ -1,52 +1,73 @@
-import 'package:baladeston/domain/usecase/verification/resend_verification_usecase.dart';
-import 'package:baladeston/presentation/providers/verification_cubit/verification_cubit.dart';
-import 'package:get_it/get_it.dart';
+import 'package:baladeston/application/providers/verification_cubit/verification_cubit.dart';
+// -----------------------------------------------------------------------------
+// API (Remote DataSource)
+// -----------------------------------------------------------------------------
 
-// API
-import 'package:baladeston/data/datasources/remote/verificarion_remote_datasource/verification_api.dart';
-import 'package:baladeston/data/verification/datasource/remote/verificarion_remote_datasource/verification_api_implementaoin.dart';
-
-// Repository
-import 'package:baladeston/domain/verification/repository/verification_repository.dart';
+import 'package:baladeston/data/verification/datasource/remote/verification_remote_datasource/verification_api.dart';
+import 'package:baladeston/data/verification/datasource/remote/verification_remote_datasource/verification_api_implementation.dart';
 import 'package:baladeston/data/verification/repository_implementation/verification_repository_implementation.dart';
-
+// -----------------------------------------------------------------------------
+// Repository
+// -----------------------------------------------------------------------------
+import 'package:baladeston/domain/verification/repository/verification_repository.dart';
+// -----------------------------------------------------------------------------
 // UseCases
-import 'package:baladeston/domain/verification/usecase/send_verification/send_verification_usecase.dart';
-import 'package:baladeston/domain/verification/usecase/check_verification/check_verification_usecase.dart';
-
-// Cubit
+// -----------------------------------------------------------------------------
+import 'package:baladeston/domain/verification/usecase/check_action_verification_code/check_action_verification_code_usecase.dart';
+import 'package:baladeston/domain/verification/usecase/check_login_verification_code/check_login_verification_code_usecase.dart';
+import 'package:baladeston/domain/verification/usecase/send_verification_request/send_verification_request_usecase.dart';
+import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
 
 Future<void> initVerificationModule() async {
   getIt
-  // API (REST)
+
+    // --------------------------------------------------
+    // 1. API (Remote DataSource)
+    // --------------------------------------------------
     ..registerLazySingleton<VerificationApi>(
-          () => VerificationApiImplementation(),
+      () => VerificationApiImplementation(),
     )
 
-  // Repository
+    // --------------------------------------------------
+    // 2. Repository
+    // --------------------------------------------------
     ..registerLazySingleton<VerificationRepository>(
-          () => VerificationRepositoryImplementation(api: getIt<VerificationApi>()),
+      () => VerificationRepositoryImplementation(
+        api: getIt<VerificationApi>(),
+      ),
     )
 
-  // UseCases
-    ..registerLazySingleton<SendVerificationUseCase>(
-          () => SendVerificationUseCase(getIt<VerificationRepository>()),
+    // --------------------------------------------------
+    // 3. UseCases
+    // --------------------------------------------------
+    ..registerLazySingleton<CheckActionVerificationCodeUseCase>(
+      () => CheckActionVerificationCodeUseCase(
+        repository: getIt<VerificationRepository>(),
+      ),
     )
-    ..registerLazySingleton<ResendVerificationUseCase>(
-          () => ResendVerificationUseCase(getIt<VerificationRepository>()),
+    ..registerLazySingleton<CheckLoginVerificationCodeUseCase>(
+      () => CheckLoginVerificationCodeUseCase(
+        repository: getIt<VerificationRepository>(),
+      ),
     )
-    ..registerLazySingleton<CheckVerificationUseCase>(
-          () => CheckVerificationUseCase(getIt<VerificationRepository>()),
+    ..registerLazySingleton<SendVerificationRequestUseCase>(
+      () => SendVerificationRequestUseCase(
+        repository: getIt<VerificationRepository>(),
+      ),
     )
 
-  // Cubit
+    // --------------------------------------------------
+    // 4. Cubit
+    // --------------------------------------------------
     ..registerFactory<VerificationCubit>(
-          () => VerificationCubit(
-        sendVerificationUseCase: getIt<SendVerificationUseCase>(),
-        checkVerificationUseCase: getIt<CheckVerificationUseCase>(),
-            resendVerificationUseCase: getIt<ResendVerificationUseCase>(),
+      () => VerificationCubit(
+        checkActionVerificationCodeUseCase:
+            getIt<CheckActionVerificationCodeUseCase>(),
+        checkLoginVerificationCodeUseCase:
+            getIt<CheckLoginVerificationCodeUseCase>(),
+        sendVerificationRequestUseCase: getIt<SendVerificationRequestUseCase>(),
       ),
     );
 }

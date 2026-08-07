@@ -1,8 +1,8 @@
-import 'dart:convert';
-
 import 'package:baladeston/config/app_config.dart';
-import 'package:baladeston/data/verification/model/verification/verification_model.dart';
-import 'package:baladeston/domain/auth/value_object/login_credentials.dart';
+import 'package:baladeston/data/auth/model/auth_session/auth_session_model.dart';
+import 'package:baladeston/data/auth/model/logout_request/logout_request_model.dart';
+import 'package:baladeston/data/auth/model/user_password/user_password_model.dart';
+import 'package:baladeston/data/user/model/user_model.dart';
 import 'package:http/http.dart' as http;
 
 import 'auth_api.dart';
@@ -12,38 +12,7 @@ class AuthApiImplementation implements AuthApi {
 
   AuthApiImplementation(this._client);
 
-  Uri _url(String path) =>
-      Uri.parse('${AppConfig.apiBaseUrl}$path');
-
-  // ---------------------------------------------------------------------------
-  // Login with password
-  // POST /auth/login
-  // ---------------------------------------------------------------------------
-  @override
-  Future<bool> loginWithPassword({
-    required LoginWithPasswordAttribute attribute,
-  }) async {
-    final response = await _client.post(
-      _url('/auth/login'),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: jsonEncode({
-        'username': attribute.identifier,
-        'password': attribute.password,
-      }),
-    );
-
-    if (response.statusCode == 200 || response.statusCode == 201) {
-      return true ;
-    }
-
-    throw Exception(
-      'Login failed with status: ${response.statusCode}',
-    );
-  }
-
-
+  Uri _url(String path) => Uri.parse('${AppConfig.apiBaseUrl}$path');
 
   @override
   Future<bool> checkToken() {
@@ -51,16 +20,42 @@ class AuthApiImplementation implements AuthApi {
     throw UnimplementedError();
   }
 
-
   @override
-  Future<VerificationModel> sendOtp({required VerificationModel verification}) {
-    // TODO: implement sendOtp
+  Future<bool> checkUserExists({required String phone}) {
+    // TODO: implement checkUserExists
     throw UnimplementedError();
   }
 
   @override
-  Future<bool> checkUserExists({required String phoneNumber}) {
-    // TODO: implement checkUserExists
+  Future<AuthSessionModel> finishOnBoarding(
+      {required UserModel user, required String onboarding}) {
+    // TODO: implement finishOnBoarding
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool> loginWithPassword(
+      {required UserPasswordModel loginWithPassword}) {
+    // TODO: implement loginWithPassword
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool> logout({required LogoutRequestModel logoutRequest}) {
+    // TODO: implement logout
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<AuthSessionModel> refreshToken({required String refreshToken}) {
+    // TODO: implement refreshToken
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<AuthSessionModel> skipOnBoarding(
+      {required UserModel user, required String onboarding}) {
+    // TODO: implement skipOnBoarding
     throw UnimplementedError();
   }
 }

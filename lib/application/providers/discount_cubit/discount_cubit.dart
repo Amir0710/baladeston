@@ -1,173 +1,243 @@
-import 'package:baladeston/data/discount/filter/discount_query_filter.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:baladeston/domain/discount/entity/discount_entity.dart';
-import 'package:baladeston/domain/discount/usecase/count_discount/count_discount_usecase.dart';
+import 'package:baladeston/data/discount/filter/discount_query_filter.dart';
+
+/* ------------------------------ USE CASES ------------------------------ */
 import 'package:baladeston/domain/discount/usecase/create_discount/create_discount_usecase.dart';
-import 'package:baladeston/domain/discount/usecase/delete_discount_by_filter/delete_discount_by_filter_usecase.dart';
+import 'package:baladeston/domain/discount/usecase/get_discount_by_filter/get_discount_by_filter_usecase.dart';
+import 'package:baladeston/domain/discount/usecase/get_discount_by_id/get_discount_by_id_usecase.dart';
+import 'package:baladeston/domain/discount/usecase/update_discount_by_id/update_discount_by_id_usecase.dart';
+import 'package:baladeston/domain/discount/usecase/update_discount_by_filter/update_discount_by_filter_usecase.dart';
 import 'package:baladeston/domain/discount/usecase/delete_discount_by_id/delete_discount_by_id_usecase.dart';
-import 'package:baladeston/domain/discount/usecase/edit_discount_usecase.dart';
-import 'package:baladeston/domain/discount/usecase/get_discount_by_filter/get_discount_usecase_by_filter.dart';
-import 'package:baladeston/domain/discount/usecase/get_discount_by_id/get_discount_usecase_by_id.dart';
-import 'package:bloc/bloc.dart';
+import 'package:baladeston/domain/discount/usecase/delete_discount_by_filter/delete_discount_by_filter_usecase.dart';
+import 'package:baladeston/domain/discount/usecase/count_discount/count_discount_usecase.dart';
 
 import 'discount_state.dart';
 
 class DiscountCubit extends Cubit<DiscountState> {
-  final CreateDiscountUseCase _createUseCase;
-  final GetDiscountByFilterUseCase _getByFilterUseCase;
-  final GetDiscountByIdUseCase _getByIdUseCase;
-  final UpdateDiscountByIdUseCase _editUseCase;
-  final DeleteDiscountByIdUseCase _deleteByIdUseCase;
-  final DeleteDiscountByFilterUseCase _deleteByFilterUseCase;
-  final CountDiscountUseCase _countUseCase;
+  /* -------------------------------------------------------------------------- */
+  /*                                   USE CASES                                */
+  /* -------------------------------------------------------------------------- */
+  final CreateDiscountUseCase createUseCase;
+  final UpdateDiscountByIdUseCase updateByIdUseCase;
+  final UpdateDiscountByFilterUseCase updateByFilterUseCase;
+  final DeleteDiscountByIdUseCase deleteByIdUseCase;
+  final DeleteDiscountByFilterUseCase deleteByFilterUseCase;
+  final GetDiscountByIdUseCase getByIdUseCase;
+  final GetDiscountByFilterUseCase getByFilterUseCase;
+  final CountDiscountUseCase countUseCase;
 
   DiscountCubit({
-    required CreateDiscountUseCase createUseCase,
-    required GetDiscountByFilterUseCase getByFilterUseCase,
-    required GetDiscountByIdUseCase getByIdUseCase,
-    required UpdateDiscountByIdUseCase editUseCase,
-    required DeleteDiscountByIdUseCase deleteByIdUseCase,
-    required DeleteDiscountByFilterUseCase deleteByFilterUseCase,
-    required CountDiscountUseCase countUseCase,
-  })  : _createUseCase = createUseCase,
-        _getByFilterUseCase = getByFilterUseCase,
-        _getByIdUseCase = getByIdUseCase,
-        _editUseCase = editUseCase,
-        _deleteByIdUseCase = deleteByIdUseCase,
-        _deleteByFilterUseCase = deleteByFilterUseCase,
-        _countUseCase = countUseCase,
-        super(const DiscountState.initial());
+    required this.createUseCase,
+    required this.updateByIdUseCase,
+    required this.updateByFilterUseCase,
+    required this.deleteByIdUseCase,
+    required this.deleteByFilterUseCase,
+    required this.getByIdUseCase,
+    required this.getByFilterUseCase,
+    required this.countUseCase,
+  }) : super(const DiscountState.initial());
 
-  // ---------------------------------------------------------------------------
-  // Load by filter
-  // ---------------------------------------------------------------------------
-  Future<void> loadDiscounts({required DiscountQueryFilter filter}) async {
+  /* -------------------------------------------------------------------------- */
+  /*                                    FETCH                                   */
+  /* -------------------------------------------------------------------------- */
+
+  Future<void> fetchList({
+    required DiscountQueryFilter filter,
+  }) async {
     emit(const DiscountState.fetchingList());
 
-    final listResult = await _getByFilterUseCase(filter: filter);
+    final result = await getByFilterUseCase(filter: filter);
 
-    await listResult.when(
+    result.when(
       success: (discounts) async {
-        final countResult = await _countUseCase(filter: filter);
+        final countResult = await countUseCase(filter: filter);
 
-        final count = countResult.when(
-          success: (value) => value,
-          failure: (_) => discounts.length,
+        countResult.when(
+          success: (count) {
+            emit(
+              DiscountState.successListLoaded(
+                discounts: discounts,
+                count: count,
+              ),
+            );
+          },
+          failure: (failure) {
+            emit(
+              DiscountState.error(
+                error: DiscountStateError.errorWhileLoadingList,
+                message: failure.message,
+              ),
+            );
+          },
         );
-
-        emit(DiscountState.successListLoaded(
-          discounts: discounts,
-          count: count,
-        ));
       },
-      failure: (error) {
-        emit(const DiscountState.error(
-          error: DiscountStateError.errorWhileLoadingList,
-          message: 'خطا در دریافت لیست تخفیف‌ها',
-        ));
+      failure: (failure) {
+        emit(
+          DiscountState.error(
+            error: DiscountStateError.errorWhileLoadingList,
+            message: failure.message,
+          ),
+        );
       },
     );
   }
 
-  // ---------------------------------------------------------------------------
-  // Load by ID
-  // ---------------------------------------------------------------------------
-  Future<void> loadDiscountById({required int id}) async {
+  Future<void> fetchSingle({
+    required int id,
+  }) async {
     emit(const DiscountState.fetchingSingle());
 
-    final result = await _getByIdUseCase(id: id);
+    final result = await getByIdUseCase(id: id);
 
     result.when(
       success: (discount) {
-        emit(DiscountState.successSingleLoaded(discount: discount));
+        emit(
+          DiscountState.successSingleLoaded(discount: discount),
+        );
       },
-      failure: (error) {
-        emit(const DiscountState.error(
-          error: DiscountStateError.errorWhileLoadingSingle,
-          message: 'خطا در دریافت اطلاعات تخفیف',
-        ));
+      failure: (failure) {
+        emit(
+          DiscountState.error(
+            error: DiscountStateError.errorWhileLoadingSingle,
+            message: failure.message,
+          ),
+        );
       },
     );
   }
 
-  // ---------------------------------------------------------------------------
-  // Create
-  // ---------------------------------------------------------------------------
-  Future<void> addDiscount(
-      {required DiscountEntity discount,
-      required DiscountQueryFilter refreshFilter}) async {
+  /* -------------------------------------------------------------------------- */
+  /*                                   CREATE                                   */
+  /* -------------------------------------------------------------------------- */
+
+  Future<void> create({
+    required DiscountEntity discount,
+  }) async {
     emit(const DiscountState.creating());
 
-    final result = await _createUseCase(discount: discount);
+    final result = await createUseCase(discount: discount);
 
     result.when(
-      success: (_) async => await loadDiscounts(filter: refreshFilter),
-      failure: (_) {
-        emit(const DiscountState.error(
-          error: DiscountStateError.errorWhileCreating,
-          message: 'خطا در ایجاد تخفیف',
-        ));
+      success: (_) {
+        emit(const DiscountState.fetchingList());
+      },
+      failure: (failure) {
+        emit(
+          DiscountState.error(
+            error: DiscountStateError.errorWhileCreating,
+            message: failure.message,
+          ),
+        );
       },
     );
   }
 
-  // ---------------------------------------------------------------------------
-  // Edit
-  // ---------------------------------------------------------------------------
-  Future<void> editDiscount(
-      {required DiscountEntity discount,
-      required DiscountQueryFilter refreshFilter}) async {
+  /* -------------------------------------------------------------------------- */
+  /*                                   UPDATE                                   */
+  /* -------------------------------------------------------------------------- */
+
+  Future<void> updateById({
+    required int id,
+    required DiscountEntity discount,
+  }) async {
     emit(const DiscountState.editing());
 
-    final result = await _editUseCase(discount: discount);
+    final result = await updateByIdUseCase(
+      id: id,
+      discount: discount,
+    );
 
     result.when(
-      success: (_) async => await loadDiscounts(filter: refreshFilter),
-      failure: (_) {
-        emit(const DiscountState.error(
-          error: DiscountStateError.errorWhileEditing,
-          message: 'خطا در ویرایش تخفیف',
-        ));
+      success: (updatedDiscount) {
+        emit(
+          DiscountState.successSingleLoaded(
+            discount: updatedDiscount,
+          ),
+        );
+      },
+      failure: (failure) {
+        emit(
+          DiscountState.error(
+            error: DiscountStateError.errorWhileEditing,
+            message: failure.message,
+          ),
+        );
       },
     );
   }
 
-  // ---------------------------------------------------------------------------
-  // Delete by ID
-  // ---------------------------------------------------------------------------
-  Future<void> deleteDiscountById(
-      {required int id, required DiscountQueryFilter refreshFilter}) async {
+  Future<void> updateByFilter({
+    required DiscountQueryFilter filter,
+    required DiscountEntity discount,
+  }) async {
+    emit(const DiscountState.editing());
+
+    final result = await updateByFilterUseCase(
+      filter: filter,
+      discount: discount,
+    );
+
+    result.when(
+      success: (_) {
+        emit(const DiscountState.fetchingList());
+      },
+      failure: (failure) {
+        emit(
+          DiscountState.error(
+            error: DiscountStateError.errorWhileEditing,
+            message: failure.message,
+          ),
+        );
+      },
+    );
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                                   DELETE                                   */
+  /* -------------------------------------------------------------------------- */
+
+  Future<void> deleteById({
+    required int id,
+  }) async {
     emit(const DiscountState.deletingById());
 
-    final result = await _deleteByIdUseCase(id: id);
+    final result = await deleteByIdUseCase(id: id);
 
     result.when(
-      success: (_) async => await loadDiscounts(filter: refreshFilter),
-      failure: (_) {
-        emit(const DiscountState.error(
-          error: DiscountStateError.errorWhileDeletingById,
-          message: 'خطا در حذف تخفیف',
-        ));
+      success: (_) {
+        emit(const DiscountState.fetchingList());
+      },
+      failure: (failure) {
+        emit(
+          DiscountState.error(
+            error: DiscountStateError.errorWhileDeletingById,
+            message: failure.message,
+          ),
+        );
       },
     );
   }
 
-  // ---------------------------------------------------------------------------
-  // Delete by filter
-  // ---------------------------------------------------------------------------
-  Future<void> deleteDiscountsByFilter(
-      {required DiscountQueryFilter filter,
-      required DiscountQueryFilter refreshFilter}) async {
+  Future<void> deleteByFilter({
+    required DiscountQueryFilter filter,
+  }) async {
     emit(const DiscountState.deletingByFilter());
 
-    final result = await _deleteByFilterUseCase(filter: filter);
+    final result = await deleteByFilterUseCase(filter: filter);
 
     result.when(
-      success: (_) async => await loadDiscounts(filter: refreshFilter),
-      failure: (_) {
-        emit(const DiscountState.error(
-          error: DiscountStateError.errorWhileDeletingByFilter,
-          message: 'خطا در حذف گروهی تخفیف‌ها',
-        ));
+      success: (_) {
+        emit(const DiscountState.fetchingList());
+      },
+      failure: (failure) {
+        emit(
+          DiscountState.error(
+            error: DiscountStateError.errorWhileDeletingByFilter,
+            message: failure.message,
+          ),
+        );
       },
     );
   }

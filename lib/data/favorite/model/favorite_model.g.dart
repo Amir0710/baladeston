@@ -7,14 +7,21 @@ part of 'favorite_model.dart';
 // **************************************************************************
 
 _$FavoriteModelImpl _$$FavoriteModelImplFromJson(Map<String, dynamic> json) =>
-    _$FavoriteModelImpl(
-      id: (json['id'] as num?)?.toInt(),
-      userId: (json['userId'] as num).toInt(),
-      targetId: (json['targetId'] as num).toInt(),
-      interestedIn: json['interestedIn'] == null
-          ? null
-          : DateTime.parse(json['interestedIn'] as String),
-      type: $enumDecode(_$FavoriteTypeEnumMap, json['type']),
+    $checkedCreate(
+      r'_$FavoriteModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$FavoriteModelImpl(
+          id: $checkedConvert('id', (v) => (v as num?)?.toInt()),
+          userId: $checkedConvert('userId', (v) => (v as num).toInt()),
+          targetId: $checkedConvert('targetId', (v) => (v as num).toInt()),
+          interestedIn: $checkedConvert('interestedIn',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+          type: $checkedConvert(
+              'type', (v) => $enumDecode(_$FavoriteTypeEnumMap, v)),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$FavoriteModelImplToJson(_$FavoriteModelImpl instance) =>

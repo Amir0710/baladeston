@@ -1,3 +1,5 @@
+import 'package:baladeston/core/enum/video/video_level.dart';
+import 'package:baladeston/core/enum/video/video_status.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'video_model.freezed.dart';
@@ -8,15 +10,16 @@ abstract class VideoModel with _$VideoModel {
   const factory VideoModel({
     int? id,
     String? description,
-    String? videoUrl,
     String? thumbnailUrl,
-    String? status,
-    int? requiredAge,
+    VideoStatus? status,
     int? videoDuration,
-    required String title,
-    required int uploaderId,
-    required int categoryId,
     DateTime? uploadedAt,
+    required String videoUrl,
+    required int recommendedAge,
+    required VideoLevel level,
+    required String title,
+    required int ownerId,
+    required int price,
   }) = _VideoModel;
 
   factory VideoModel.fromJson(Map<String, dynamic> json) =>

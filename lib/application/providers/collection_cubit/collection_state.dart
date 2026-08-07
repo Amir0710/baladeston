@@ -1,21 +1,18 @@
-
-import 'package:baladeston/domain/collection/entity/collection_entity.dart';
+import 'package:baladeston/domain/collection/entity/collection_entity/collection_entity.dart';
+import 'package:baladeston/domain/collection/failure/base_collection_failure.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'collection_state.freezed.dart';
 
-
 enum CollectionStateError {
-  noCollectionFound,
-  collectionNotFound,
-  errorWhileGettingCollection,
-  errorWhileGettingAllCollection,
-  errorWhileCreatingCollection,
-  errorWhileUpdatingCollection,
-  errorWhileDeletingCollection,
-  errorWhileCountingCollection,
+  network,
+  timeout,
+  server,
+  permission,
+  notFound,
+  validation,
+  unknown,
 }
-
 
 @freezed
 class CollectionState with _$CollectionState {
@@ -33,22 +30,20 @@ class CollectionState with _$CollectionState {
     required CollectionEntity collection,
   }) = _SuccessSingleLoaded;
 
-  //FAILURE
-  const factory CollectionState.failure({
-    required String message,
-  }) = _Failure;
-
   const factory CollectionState.error({
     required CollectionStateError error,
-    required String? errorMessage,
+    required CollectionFailure failure,
   }) = _Error;
 
   //LOAD
   const factory CollectionState.fetchingCollection() = _FetchingCollection;
-  const factory CollectionState.fetchingAllCollection() = _FetchingAllCollection;
+
+  const factory CollectionState.fetchingAllCollection() =
+      _FetchingAllCollection;
 
   //CREATE
   const factory CollectionState.creatingCollection() = _CreatingCollection;
+
   const factory CollectionState.createdCollection({
     required CollectionEntity collection,
   }) = _CreatedCollection;
@@ -63,7 +58,7 @@ class CollectionState with _$CollectionState {
 
   // update by filter
   const factory CollectionState.updatedListCollection({
-    required List<CollectionEntity> collections,
+    required int updatedCollection,
   }) = _UpdatedListCollection;
 
   //DELETE
@@ -81,7 +76,17 @@ class CollectionState with _$CollectionState {
 
   //COUNT
   const factory CollectionState.countingCollection() = _CountingCollection;
+
   const factory CollectionState.countedCollection({
     required int count,
   }) = _CountedCollection;
+
+  // UPLOAD IMAGE
+  const factory CollectionState.uploadingImageCollection() =
+      _UploadingImageCollection;
+
+  // uploaded image
+  const factory CollectionState.uploadedImageCollection({
+    required String url,
+  }) = _UploadedImageCollection;
 }

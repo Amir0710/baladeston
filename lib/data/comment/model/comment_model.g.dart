@@ -7,14 +7,24 @@ part of 'comment_model.dart';
 // **************************************************************************
 
 _$CommentModelImpl _$$CommentModelImplFromJson(Map<String, dynamic> json) =>
-    _$CommentModelImpl(
-      userId: (json['userId'] as num).toInt(),
-      targetId: (json['targetId'] as num).toInt(),
-      content: json['content'] as String,
-      rating: (json['rating'] as num).toDouble(),
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      updatedAt: DateTime.parse(json['updatedAt'] as String),
-      status: $enumDecode(_$CommentStatusEnumMap, json['status']),
+    $checkedCreate(
+      r'_$CommentModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$CommentModelImpl(
+          userId: $checkedConvert('userId', (v) => (v as num).toInt()),
+          targetId: $checkedConvert('targetId', (v) => (v as num).toInt()),
+          content: $checkedConvert('content', (v) => v as String),
+          rating: $checkedConvert('rating', (v) => (v as num).toDouble()),
+          createdAt:
+              $checkedConvert('createdAt', (v) => DateTime.parse(v as String)),
+          updatedAt:
+              $checkedConvert('updatedAt', (v) => DateTime.parse(v as String)),
+          status: $checkedConvert(
+              'status', (v) => $enumDecode(_$CommentStatusEnumMap, v)),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$CommentModelImplToJson(_$CommentModelImpl instance) =>

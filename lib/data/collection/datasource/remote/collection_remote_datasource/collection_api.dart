@@ -1,69 +1,46 @@
 import 'dart:io';
 
-import 'package:baladeston/data/collection/model/collection_model.dart';
-import 'package:baladeston/data/collection/filter/collection_query_filter.dart';
+import 'package:baladeston/core/result/result.dart';
+import 'package:baladeston/data/collection/filter/model/collection_query_filter.dart';
+import 'package:baladeston/data/collection/model/collection_model/collection_model.dart';
+import 'package:baladeston/domain/collection/failure/base_collection_failure.dart';
 
 abstract class CollectionApi {
-  // --------------------------------------------------
-  // Read
-  // --------------------------------------------------
-
-  Future<List<CollectionModel>> getCollectionByFilter({
+  Future<Result<List<CollectionModel>, CollectionFailure>> getCollectionByFilter({
     required CollectionQueryFilter filter,
   });
 
-  Future<CollectionModel> getCollectionById({
+  Future<Result<CollectionModel, CollectionFailure>> getCollectionById({
     required int id,
   });
 
-  // --------------------------------------------------
-  // Create
-  // --------------------------------------------------
-
-  Future<CollectionModel> createCollection({
+  Future<Result<CollectionModel, CollectionFailure>> createCollection({
     required CollectionModel collection,
   });
 
-  // --------------------------------------------------
-  // Update
-  // --------------------------------------------------
-
-  Future<List<CollectionModel>> updateCollectionByFilter({
+  Future<Result<int, CollectionFailure>> updateCollectionByFilter({
     required CollectionModel collection,
     required CollectionQueryFilter filter,
   });
 
-  Future<CollectionModel> updateCollectionById({
+  Future<Result<CollectionModel, CollectionFailure>> updateCollectionById({
     required CollectionModel collection,
     required int id,
   });
 
-  // --------------------------------------------------
-  // Delete
-  // --------------------------------------------------
-
-  Future<List<int>> deleteCollectionByFilter({
+  Future<Result<List<int>, CollectionFailure>> deleteCollectionByFilter({
     required CollectionQueryFilter filter,
   });
 
-  Future<int> deleteCollectionById({
+  Future<Result<int, CollectionFailure>> deleteCollectionById({
     required int id,
   });
 
-  // --------------------------------------------------
-  // Count
-  // --------------------------------------------------
-
-  Future<int> countAllCollection({
+  Future<Result<int, CollectionFailure>> countAllCollection({
     required CollectionQueryFilter filter,
   });
 
-  // --------------------------------------------------
-  // Image
-  // --------------------------------------------------
-
-  Future<String> addCollectionImage({
+  Future<Result<String, CollectionFailure>> uploadCollectionImage({
     required File image,
-    required int id,
   });
 }

@@ -1,52 +1,73 @@
 import 'package:baladeston/application/providers/auth_cubit/auth_cubit.dart';
-import 'package:baladeston/data/auth/datasource/remote/auth_datasource_remote/auth_api.dart';
-import 'package:baladeston/data/auth/datasource/remote/auth_datasource_remote/auth_api_implementation.dart';
-import 'package:baladeston/data/auth/repository_implementation/auth_repository_implementation.dart';
 import 'package:baladeston/domain/auth/repository/auth_repository.dart';
+
+// UseCases
+import 'package:baladeston/domain/auth/usecase/login_with_password/login_with_password_usecase.dart';
+import 'package:baladeston/domain/auth/usecase/finish_onboarding/finish_onboarding_usecase.dart';
+import 'package:baladeston/domain/auth/usecase/skip_onboarding/skip_onboarding_usecase.dart';
+import 'package:baladeston/domain/auth/usecase/logout/logout_usecase.dart';
 import 'package:baladeston/domain/auth/usecase/check_token/check_token_usecase.dart';
 import 'package:baladeston/domain/auth/usecase/check_user_exists/check_user_exists_usecase.dart';
-import 'package:baladeston/domain/auth/usecase/login_with_password/login_with_password_usecase.dart';
-import 'package:baladeston/domain/auth/usecase/send_otp/send_otp_usecase.dart';
+import 'package:baladeston/domain/auth/usecase/refresh_token/refresh_token_usecase.dart';
+
 import 'package:get_it/get_it.dart';
-import 'package:http/http.dart' as http;
 
 final getIt = GetIt.instance;
 
 Future<void> initAuthModule() async {
-  // Register http.Client
-  getIt.registerLazySingleton<http.Client>(() => http.Client());
-
-  // Register AuthApi with dependency
   getIt
-    ..registerLazySingleton<AuthApi>(
-      () => AuthApiImplementation(getIt<http.Client>()),
-    )
 
-    // Register AuthRepository
-    ..registerLazySingleton<AuthRepository>(
-      () => AuthRepositoryImplementation(api: getIt<AuthApi>()),
-    )
-
-    // Register UseCases
-    ..registerLazySingleton<CheckUserExistsUseCase>(
-      () => CheckUserExistsUseCase(repository: getIt<AuthRepository>()),
-    )
+  // --------------------------------------------------
+  // 1. UseCases
+  // --------------------------------------------------
     ..registerLazySingleton<LoginWithPasswordUseCase>(
-      () => LoginWithPasswordUseCase(repository: getIt<AuthRepository>()),
+          () => LoginWithPasswordUseCase(
+        repository: getIt<AuthRepository>(),
+      ),
+    )
+    ..registerLazySingleton<FinishOnBoardingUseCase>(
+          () => FinishOnBoardingUseCase(
+        repository: getIt<AuthRepository>(),
+      ),
+    )
+    ..registerLazySingleton<SkipOnBoardingUseCase>(
+          () => SkipOnBoardingUseCase(
+        repository: getIt<AuthRepository>(),
+      ),
+    )
+    ..registerLazySingleton<LogoutUseCase>(
+          () => LogoutUseCase(
+        repository: getIt<AuthRepository>(),
+      ),
     )
     ..registerLazySingleton<CheckTokenUseCase>(
-      () => CheckTokenUseCase(repository: getIt<AuthRepository>()),
+          () => CheckTokenUseCase(
+        repository: getIt<AuthRepository>(),
+      ),
     )
-    ..registerLazySingleton<SendOtpUseCase>(
-        () => SendOtpUseCase(repository: getIt<AuthRepository>()))
+    ..registerLazySingleton<CheckUserExistsUseCase>(
+          () => CheckUserExistsUseCase(
+        repository: getIt<AuthRepository>(),
+      ),
+    )
+    ..registerLazySingleton<RefreshTokenUseCase>(
+          () => RefreshTokenUseCase(
+        repository: getIt<AuthRepository>(),
+      ),
+    )
 
-    // Register AuthCubit
+  // --------------------------------------------------
+  // 2. Cubit
+  // --------------------------------------------------
     ..registerFactory<AuthCubit>(
-      () => AuthCubit(
-        checkUserExistsUseCase: getIt<CheckUserExistsUseCase>(),
-        checkTokenUseCase: getIt<CheckTokenUseCase>(),
+          () => AuthCubit(
         loginWithPasswordUseCase: getIt<LoginWithPasswordUseCase>(),
-        sendOtpUseCase: getIt<SendOtpUseCase>(),
+        finishOnBoardingUseCase: getIt<FinishOnBoardingUseCase>(),
+        skipOnBoardingUseCase: getIt<SkipOnBoardingUseCase>(),
+        logoutUseCase: getIt<LogoutUseCase>(),
+        checkTokenUseCase: getIt<CheckTokenUseCase>(),
+        checkUserExistsUseCase: getIt<CheckUserExistsUseCase>(),
+        refreshTokenUseCase: getIt<RefreshTokenUseCase>(),
       ),
     );
 }

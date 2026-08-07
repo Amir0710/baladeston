@@ -1,12 +1,13 @@
+import 'package:baladeston/domain/favorite/usecase/create_favorite/create_favorite_usecase.dart';
+import 'package:baladeston/domain/favorite/usecase/update_favorite_by_id/update_favorite_by_id_usecase.dart.dart';
 import 'package:bloc/bloc.dart';
 
 import 'favorite_state.dart';
 import 'package:baladeston/domain/favorite/entity/favorite_entity.dart';
 import 'package:baladeston/data/favorite/filter/favorite_query_filter.dart';
 
-// UseCases
-import 'package:baladeston/domain/favorite/usecase/cretate_favorite/create_favorite_usecase.dart';
-import 'package:baladeston/domain/favorite/usecase/update_favorite_usecase.dart';
+/* ------------------------------ USE CASES ------------------------------ */
+import 'package:baladeston/domain/favorite/usecase/update_favorite_by_filter/update_favorite_by_filter_usecase.dart';
 import 'package:baladeston/domain/favorite/usecase/get_favorite_by_id/get_favorite_by_id_usecase.dart';
 import 'package:baladeston/domain/favorite/usecase/get_favorite_by_filter/get_favorite_by_filter_usecase.dart';
 import 'package:baladeston/domain/favorite/usecase/delete_favorite_by_id/delete_favorite_by_id_usecase.dart';
@@ -14,54 +15,52 @@ import 'package:baladeston/domain/favorite/usecase/delete_favorite_by_filter/del
 import 'package:baladeston/domain/favorite/usecase/count_favorite/count_favorite_usecase.dart';
 
 class FavoriteCubit extends Cubit<FavoriteState> {
-  final CreateFavoriteUseCase _createUseCase;
-  final UpdateFavoriteUseCase _updateUseCase;
-  final GetFavoriteByIdUseCase _getByIdUseCase;
-  final GetFavoriteByFilterUseCase _getByFilterUseCase;
-  final DeleteFavoriteByIdUseCase _deleteByIdUseCase;
-  final DeleteFavoriteByFilterUseCase _deleteByFilterUseCase;
-  final CountFavoriteUseCase _countUseCase;
+  final CreateFavoriteUseCase createUseCase;
+  final UpdateFavoriteByIdUseCase updateByIdUseCase;
+  final UpdateFavoriteByFilterUseCase updateByFilterUseCase;
+  final GetFavoriteByIdUseCase getByIdUseCase;
+  final GetFavoriteByFilterUseCase getByFilterUseCase;
+  final DeleteFavoriteByIdUseCase deleteByIdUseCase;
+  final DeleteFavoriteByFilterUseCase deleteByFilterUseCase;
+  final CountFavoriteUseCase countUseCase;
 
   FavoriteCubit({
-    required CreateFavoriteUseCase createUseCase,
-    required UpdateFavoriteUseCase updateUseCase,
-    required GetFavoriteByIdUseCase getByIdUseCase,
-    required GetFavoriteByFilterUseCase getByFilterUseCase,
-    required DeleteFavoriteByIdUseCase deleteByIdUseCase,
-    required DeleteFavoriteByFilterUseCase deleteByFilterUseCase,
-    required CountFavoriteUseCase countUseCase,
-  })  : _createUseCase = createUseCase,
-        _updateUseCase = updateUseCase,
-        _getByIdUseCase = getByIdUseCase,
-        _getByFilterUseCase = getByFilterUseCase,
-        _deleteByIdUseCase = deleteByIdUseCase,
-        _deleteByFilterUseCase = deleteByFilterUseCase,
-        _countUseCase = countUseCase,
-        super(const FavoriteState.initial());
+    required this.createUseCase,
+    required this.updateByIdUseCase,
+    required this.updateByFilterUseCase,
+    required this.getByIdUseCase,
+    required this.getByFilterUseCase,
+    required this.deleteByIdUseCase,
+    required this.deleteByFilterUseCase,
+    required this.countUseCase,
+  }) : super(const FavoriteState.initial());
 
-  // ---------------------------------------------------------------------------
-  // Load list
-  // ---------------------------------------------------------------------------
+  /* -------------------------------------------------------------------------- */
+  /*                                    FETCH                                   */
+  /* -------------------------------------------------------------------------- */
+
   Future<void> loadFavorites({
     required FavoriteQueryFilter filter,
   }) async {
     emit(const FavoriteState.fetchingList());
 
-    final listResult = await _getByFilterUseCase(filter: filter);
+    final listResult = await getByFilterUseCase(filter: filter);
 
     await listResult.when(
       success: (favorites) async {
-        final countResult = await _countUseCase(filter: filter);
+        final countResult = await countUseCase(filter: filter);
 
         final count = countResult.when(
           success: (value) => value,
           failure: (_) => favorites.length, // fallback امن
         );
 
-        emit(FavoriteState.successListLoaded(
-          favorites: favorites,
-          count: count,
-        ));
+        emit(
+          FavoriteState.successListLoaded(
+            favorites: favorites,
+            count: count,
+          ),
+        );
       },
       failure: (_) {
         emit(const FavoriteState.error(
@@ -72,15 +71,12 @@ class FavoriteCubit extends Cubit<FavoriteState> {
     );
   }
 
-  // ---------------------------------------------------------------------------
-  // Load by id
-  // ---------------------------------------------------------------------------
   Future<void> loadFavoriteById({
     required int id,
   }) async {
     emit(const FavoriteState.fetchingSingle());
 
-    final result = await _getByIdUseCase(id: id);
+    final result = await getByIdUseCase(id: id);
 
     result.when(
       success: (favorite) {
@@ -95,22 +91,21 @@ class FavoriteCubit extends Cubit<FavoriteState> {
     );
   }
 
-  // ---------------------------------------------------------------------------
-  // Create
-  // ---------------------------------------------------------------------------
+  /* -------------------------------------------------------------------------- */
+  /*                                   CREATE                                   */
+  /* -------------------------------------------------------------------------- */
+
   Future<void> createFavorite({
     required FavoriteEntity entity,
     required FavoriteQueryFilter refreshFilter,
   }) async {
     emit(const FavoriteState.creating());
 
-    final result = await _createUseCase(favorite: entity);
-
-    bool shouldRefresh = false;
+    final result = await createUseCase(favorite: entity);
 
     result.when(
-      success: (_) {
-        shouldRefresh = true;
+      success: (_) async {
+        await loadFavorites(filter: refreshFilter);
       },
       failure: (_) {
         emit(const FavoriteState.error(
@@ -119,28 +114,27 @@ class FavoriteCubit extends Cubit<FavoriteState> {
         ));
       },
     );
-
-    if (shouldRefresh) {
-      await loadFavorites(filter: refreshFilter);
-    }
   }
 
-  // ---------------------------------------------------------------------------
-  // Update
-  // ---------------------------------------------------------------------------
-  Future<void> updateFavorite({
+  /* -------------------------------------------------------------------------- */
+  /*                                   UPDATE                                   */
+  /* -------------------------------------------------------------------------- */
+
+  Future<void> updateFavoriteById({
+    required int id,
     required FavoriteEntity entity,
     required FavoriteQueryFilter refreshFilter,
   }) async {
     emit(const FavoriteState.updating());
 
-    final result = await _updateUseCase(favorite: entity);
-
-    bool shouldRefresh = false;
+    final result = await updateByIdUseCase(
+      id: id,
+      favorite: entity,
+    );
 
     result.when(
-      success: (_) {
-        shouldRefresh = true;
+      success: (_) async {
+        await loadFavorites(filter: refreshFilter);
       },
       failure: (_) {
         emit(const FavoriteState.error(
@@ -149,28 +143,48 @@ class FavoriteCubit extends Cubit<FavoriteState> {
         ));
       },
     );
-
-    if (shouldRefresh) {
-      await loadFavorites(filter: refreshFilter);
-    }
   }
 
-  // ---------------------------------------------------------------------------
-  // Delete by id
-  // ---------------------------------------------------------------------------
+  Future<void> updateFavoriteByFilter({
+    required FavoriteQueryFilter filter,
+    required FavoriteEntity entity,
+    required FavoriteQueryFilter refreshFilter,
+  }) async {
+    emit(const FavoriteState.updating());
+
+    final result = await updateByFilterUseCase(
+      filter: filter,
+      favorite: entity,
+    );
+
+    result.when(
+      success: (_) async {
+        await loadFavorites(filter: refreshFilter);
+      },
+      failure: (_) {
+        emit(const FavoriteState.error(
+          error: FavoriteStateError.errorWhileUpdating,
+          message: 'خطا در بروزرسانی گروهی علاقه‌مندی‌ها',
+        ));
+      },
+    );
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                                   DELETE                                   */
+  /* -------------------------------------------------------------------------- */
+
   Future<void> removeFavoriteById({
     required int id,
     required FavoriteQueryFilter refreshFilter,
   }) async {
     emit(const FavoriteState.deletingById());
 
-    final result = await _deleteByIdUseCase(id: id);
-
-    bool shouldRefresh = false;
+    final result = await deleteByIdUseCase(id: id);
 
     result.when(
-      success: (_) {
-        shouldRefresh = true;
+      success: (_) async {
+        await loadFavorites(filter: refreshFilter);
       },
       failure: (_) {
         emit(const FavoriteState.error(
@@ -179,28 +193,19 @@ class FavoriteCubit extends Cubit<FavoriteState> {
         ));
       },
     );
-
-    if (shouldRefresh) {
-      await loadFavorites(filter: refreshFilter);
-    }
   }
 
-  // ---------------------------------------------------------------------------
-  // Delete by filter
-  // ---------------------------------------------------------------------------
   Future<void> removeFavoritesByFilter({
     required FavoriteQueryFilter filter,
     required FavoriteQueryFilter refreshFilter,
   }) async {
     emit(const FavoriteState.deletingByFilter());
 
-    final result = await _deleteByFilterUseCase(filter: filter);
-
-    bool shouldRefresh = false;
+    final result = await deleteByFilterUseCase(filter: filter);
 
     result.when(
-      success: (_) {
-        shouldRefresh = true;
+      success: (_) async {
+        await loadFavorites(filter: refreshFilter);
       },
       failure: (_) {
         emit(const FavoriteState.error(
@@ -209,9 +214,5 @@ class FavoriteCubit extends Cubit<FavoriteState> {
         ));
       },
     );
-
-    if (shouldRefresh) {
-      await loadFavorites(filter: refreshFilter);
-    }
   }
 }

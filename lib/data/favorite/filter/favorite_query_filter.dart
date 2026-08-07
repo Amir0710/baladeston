@@ -1,4 +1,4 @@
-import 'package:baladeston/core/enum/favorite_type.dart';
+import 'package:baladeston/core/enum/favorite/favorite_type.dart';
 
 class FavoriteQueryFilter {
   final int? userId;

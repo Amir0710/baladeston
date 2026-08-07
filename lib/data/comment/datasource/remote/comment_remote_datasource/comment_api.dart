@@ -1,5 +1,5 @@
 import 'package:baladeston/data/comment/model/comment_model.dart';
-import 'package:baladeston/data/comment/filter/comment_query_filter.dart';
+import 'package:baladeston/data/comment/filter/comment/comment_query_filter.dart';
 
 abstract class CommentApi {
   // --------------------------------------------------

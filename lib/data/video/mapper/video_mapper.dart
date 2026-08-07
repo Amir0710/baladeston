@@ -10,13 +10,12 @@ extension VideoModelMapper on VideoModel {
       videoUrl: videoUrl,
       thumbnailUrl: thumbnailUrl,
       status: status,
-      uploaderId: uploaderId,
-      categoryId: categoryId,
+      ownerId: ownerId,
       uploadedAt: uploadedAt,
-      requiredAge: requiredAge,
-      videoDuration : videoDuration ,
-
-
+      videoDuration: videoDuration,
+      recommendedAge: recommendedAge,
+      level: level,
+      price: price,
     );
   }
 }
@@ -30,11 +29,12 @@ extension VideoEntityMapper on VideoEntity {
       videoUrl: videoUrl,
       thumbnailUrl: thumbnailUrl,
       status: status,
-      uploaderId: uploaderId,
-      categoryId: categoryId,
       uploadedAt: uploadedAt,
-      requiredAge: requiredAge,
-      videoDuration : videoDuration ,
+      videoDuration: videoDuration,
+      ownerId: ownerId,
+      recommendedAge: recommendedAge,
+      level: level,
+      price: price,
     );
   }
 }

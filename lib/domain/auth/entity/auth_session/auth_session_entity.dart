@@ -9,6 +9,5 @@ class AuthSessionEntity with _$AuthSessionEntity {
     required String accessToken,
     required String refreshToken,
     DateTime? expiresAt,
-    String? tokenType,
   }) = _AuthSessionEntity;
 }

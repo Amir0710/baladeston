@@ -15,7 +15,7 @@ class UpdateThemeByFilterUseCase {
     required this.repository,
   });
 
-  Future<Result<ThemeEntity, ThemeFailure>> call({
+  Future<Result<List<ThemeEntity>, ThemeFailure>> call({
     required ThemeQueryFilter filter,
     required ThemeEntity theme,
   }) async {
@@ -35,7 +35,6 @@ class UpdateThemeByFilterUseCase {
       );
     }
 
-    /// ✅ delegation only – same pattern as GetAllThemeUseCase
     return repository.updateThemeByFilter(
       filter: filter,
       theme: theme,

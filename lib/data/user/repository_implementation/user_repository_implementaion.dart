@@ -73,7 +73,7 @@ class UserRepositoryImplementation implements UserRepository {
   // ------------------------------------------------------
 
   @override
-  Future<Result<UserEntity, UserFailure>> updateUserByFilter({
+  Future<Result<List<UserEntity>, UserFailure>> updateUserByFilter({
     required UserQueryFilter filter,
     required UserEntity user,
   }) async {
@@ -82,7 +82,9 @@ class UserRepositoryImplementation implements UserRepository {
         filter: filter,
         user: user.toModel(),
       );
-      return Result.success(result.toEntity());
+      return Result.success(
+        result.map((e) => e.toEntity()).toList(),
+      );
     } catch (error) {
       return Result.failure(mapUserException(error));
     }

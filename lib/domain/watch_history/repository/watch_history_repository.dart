@@ -11,25 +11,25 @@ abstract class WatchHistoryRepository {
   });
 
   /// Update last watched position by id
-  Future<Result<WatchHistoryEntity, WatchHistoryFailure>> updateLastPositionById({
+  Future<Result<WatchHistoryEntity, WatchHistoryFailure>> updateWatchHistoryById({
     required int id,
     required WatchHistoryEntity watchHistory,
   });
 
   /// Update last watched position bt filter
-  Future<Result<WatchHistoryEntity, WatchHistoryFailure>> updateLastPositionByFilter({
+  Future<Result<List<WatchHistoryEntity>, WatchHistoryFailure>> updateWatchHistoryByFilter({
     required WatchHistoryQueryFilter filter,
     required WatchHistoryEntity watchHistory,
   });
 
   /// Get watch history by id
-  Future<Result<WatchHistoryEntity, WatchHistoryFailure>> getLastPositionById({
+  Future<Result<WatchHistoryEntity, WatchHistoryFailure>> getWatchHistoryById({
     required int id,
   });
 
   /// Get watch history list by filter
   Future<Result<List<WatchHistoryEntity>, WatchHistoryFailure>>
-  getLastPositionByFilter({
+  getWatchHistoryByFilter({
     required WatchHistoryQueryFilter filter,
   });
 

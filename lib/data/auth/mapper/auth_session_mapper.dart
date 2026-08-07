@@ -1,4 +1,4 @@
-import 'package:baladeston/data/auth/model/auth_session_model.dart';
+import 'package:baladeston/data/auth/model/auth_session/auth_session_model.dart';
 import 'package:baladeston/domain/auth/entity/auth_session/auth_session_entity.dart';
 
 extension AuthSessionModelMapper on AuthSessionModel {
@@ -18,9 +18,7 @@ extension AuthSessionEntityMapper on AuthSessionEntity {
     return AuthSessionModel(
       accessToken: accessToken,
       refreshToken: refreshToken,
-      expiresIn: expiresAt != null
-          ? expiresAt!.difference(DateTime.now()).inSeconds
-          : null,
+      expiresIn: expiresAt?.difference(DateTime.now()).inSeconds,
     );
   }
 }

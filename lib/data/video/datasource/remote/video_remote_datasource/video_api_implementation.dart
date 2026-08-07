@@ -1,151 +1,83 @@
 import 'dart:io';
 
+import 'package:baladeston/config/app_config.dart';
+import 'package:baladeston/data/video/api/client/video_client_api.dart';
 import 'package:baladeston/data/video/datasource/remote/video_remote_datasource/video_api.dart';
 import 'package:baladeston/data/video/filter/video_query_filter.dart';
+import 'package:baladeston/data/video/mapper/video_query_filter_mapper.dart';
 import 'package:baladeston/data/video/model/video_model.dart';
 
-import 'package:baladeston/domain/video/exception/video_entity_exception.dart';
-import 'package:baladeston/domain/video/exception/video_filter_exception.dart';
-import 'package:baladeston/domain/video/exception/video_id_exception.dart';
-import 'package:baladeston/domain/video/exception/video_file_exception.dart';
-
 class VideoApiImplementation implements VideoApi {
-  // Create
+  final VideoClientApi client;
+
+  VideoApiImplementation(this.client);
+
+  Uri _url(String path, [Map<String, String>? query]) =>
+      Uri.parse('${AppConfig.apiBaseUrl}/video/$path')
+          .replace(queryParameters: query);
 
   @override
-  Future<VideoModel> createVideo({
-    required VideoModel video,
-  }) async {
-    _validateVideoEntity(video);
-
-    throw UnimplementedError();
-  }
-
-  // Read
-
-  @override
-  Future<List<VideoModel>> getVideoByFilter({
-    required VideoQueryFilter filter,
-  }) async {
-    _validateFilter(filter);
-
-    throw UnimplementedError();
+  Future<int> countVideos({required VideoQueryFilter filter}) async {
+    final result = await client.get(_url('count', filter.toQuery()));
+    return (result as Map<String, dynamic>)['count'] as int;
   }
 
   @override
-  Future<VideoModel> getVideoById({
-    required int id,
-  }) async {
-    _validateId(id);
-
-    throw UnimplementedError();
+  Future<VideoModel> createVideo({required VideoModel video}) async {
+    final result = await client.post(_url(''), body: video.toJson());
+    return VideoModel.fromJson(result as Map<String, dynamic>);
   }
 
   @override
-  Future<int> countVideos({
-    required VideoQueryFilter filter,
-  }) async {
-    _validateFilter(filter);
-
-    throw UnimplementedError();
-  }
-
-  // Update
-
-  @override
-  Future<VideoModel> updateVideoById({
-    required int id,
-    required VideoModel video,
-  }) async {
-    _validateId(id);
-
-
-
-    throw UnimplementedError();
+  Future<int> deleteVideoByFilter({required VideoQueryFilter filter}) async {
+    final result = await client.delete(_url('filter', filter.toQuery()));
+    return result;
   }
 
   @override
-  Future<VideoModel> updateVideoByFilter({
-    required VideoQueryFilter filter,
-    required VideoModel video,
-  }) async {
-    _validateFilter(filter);
-
-
-    throw UnimplementedError();
-  }
-
-  // Delete
-
-  @override
-  Future<int> deleteVideoById({
-    required int id,
-  }) async {
-    _validateId(id);
-
-    throw UnimplementedError();
+  Future<int> deleteVideoById({required int id}) async {
+    final result = await client.delete(_url('$id'));
+    return (result as Map<String, dynamic>)['deletedId'] as int;
   }
 
   @override
-  Future<List<int>> deleteVideoByFilter({
-    required VideoQueryFilter filter,
-  }) async {
-
-
-    throw UnimplementedError();
-  }
-
-  // Uploads
-
-  @override
-  Future<String> uploadImage({
-    required int id,
-    required File image,
-  }) async {
-    _validateId(id);
-
-    if (!image.existsSync()) {
-      throw InvalidVideoFileIdException();
-    }
-
-    throw UnimplementedError();
+  Future<List<VideoModel>> getVideoByFilter({required VideoQueryFilter filter}) async {
+    final result = await client.get(_url('filter', filter.toQuery()));
+    return (result as List)
+        .map((e) => VideoModel.fromJson(e as Map<String, dynamic>))
+        .toList();
   }
 
   @override
-  Future<String> uploadVideo({
-    required int id,
-    required File video,
-  }) async {
-    _validateId(id);
-
-    if (!video.existsSync()) {
-      throw InvalidVideoFileIdException();
-    }
-
-    throw UnimplementedError();
+  Future<VideoModel> getVideoById({required int id}) async {
+    final result = await client.get(_url('$id'));
+    return VideoModel.fromJson(result as Map<String, dynamic>);
   }
 
-  // Validators
-
-  void _validateId(int id) {
-    if (id <= 0) {
-      throw const VideoIdInvalidException();
-    }
+  @override
+  Future<int> updateVideoByFilter({required VideoQueryFilter filter, required VideoModel video}) async {
+    final result = await client.put(
+      _url('filter', filter.toQuery()),
+      body: video.toJson(),
+    );
+    return result;
   }
 
-  void _validateFilter(VideoQueryFilter filter) {
-    if (filter.limit != null && filter.limit <= 0) {
-      throw const VideoFilterLimitException();
-    }
-
-    if (filter.offset != null && filter.offset < 0) {
-      throw const VideoFilterOffsetException();
-    }
+  @override
+  Future<VideoModel> updateVideoById({required int id, required VideoModel video}) async {
+    final result = await client.put(_url('$id'), body: video.toJson());
+    return VideoModel.fromJson(result as Map<String, dynamic>);
   }
 
-  void _validateVideoEntity(VideoModel video) {
-    if (video.title == null || video.title.isEmpty) {
-      throw const VideoTitleEmptyException();
-    }
+  @override
+  Future<String> uploadImage({required File image}) async {
+    final result = await client.upload(_url('upload/image'), file: image, field: 'image');
+    return (result as Map<String, dynamic>)['url'] as String;
+  }
+
+  @override
+  Future<String> uploadVideo({required File video}) async {
+    final result = await client.upload(_url('upload/video'), file: video, field: 'video');
+    return (result as Map<String, dynamic>)['url'] as String;
   }
 }

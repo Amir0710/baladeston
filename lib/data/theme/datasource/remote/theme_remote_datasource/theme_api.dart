@@ -14,7 +14,7 @@ abstract class ThemeApi {
     required int id,
   });
 
-  Future<ThemeModel> getThemeByName({
+  Future<List<ThemeModel>> getThemeByName({
     required String name,
   });
 
@@ -35,7 +35,7 @@ abstract class ThemeApi {
     required ThemeModel theme,
   });
 
-  Future<ThemeModel> updateThemeByFilter({
+  Future<List<ThemeModel>> updateThemeByFilter({
     required ThemeQueryFilter filter,
     required ThemeModel theme,
   });
@@ -48,8 +48,8 @@ abstract class ThemeApi {
     required int id,
   });
 
-  Future<int> deleteThemeByName({
-    required String name,
+  Future<List<int>> deleteThemeByFilter({
+    required ThemeQueryFilter filter,
   });
 
   // ------------------------------------------------------

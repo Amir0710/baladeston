@@ -80,9 +80,9 @@ class UserApiImplementation implements UserApi {
         return list
             .map(
               (e) => UserModel.fromJson(
-            Map<String, dynamic>.from(e),
-          ),
-        )
+                Map<String, dynamic>.from(e),
+              ),
+            )
             .toList();
       }
 
@@ -130,7 +130,7 @@ class UserApiImplementation implements UserApi {
   // ------------------------------------------------------
 
   @override
-  Future<UserModel> updateUserByFilter({
+  Future<List<UserModel>> updateUserByFilter({
     required UserQueryFilter filter,
     required UserModel user,
   }) async {
@@ -144,11 +144,17 @@ class UserApiImplementation implements UserApi {
       );
 
       if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-        return UserModel.fromJson(
-          Map<String, dynamic>.from(data),
-        );
+        final List<dynamic> data = jsonDecode(response.body);
+
+        return data
+            .map(
+              (e) => UserModel.fromJson(
+            Map<String, dynamic>.from(e),
+          ),
+        )
+            .toList();
       }
+
 
       _handleHttpError(response);
     } on SocketException catch (e) {

@@ -1,78 +1,59 @@
 import 'dart:io';
 
 import 'package:baladeston/core/result/result.dart';
-
 import 'package:baladeston/data/video/datasource/remote/video_remote_datasource/video_api.dart';
 import 'package:baladeston/data/video/filter/video_query_filter.dart';
 import 'package:baladeston/data/video/mapper/video_mapper.dart';
-
 import 'package:baladeston/domain/video/entity/video_entity.dart';
-import 'package:baladeston/domain/video/failure/video_failure.dart';
-import 'package:baladeston/domain/video/failure/video_failure_mapper.dart';
+import 'package:baladeston/domain/video/failure/base_video_failure.dart';
 import 'package:baladeston/domain/video/repository/video_repository.dart';
 
-class VideoRepositoryImplementation implements VideoRepository {
-  final VideoApi api;
+class VideoRepositoryImplementation extends VideoRepository {
+  final VideoApi _api;
 
-  const VideoRepositoryImplementation({
-    required this.api,
-  });
-
-  // ------------------------------------------------------
-  // Create video
-  // ------------------------------------------------------
+  VideoRepositoryImplementation({
+    required VideoApi api,
+  }) : _api = api;
 
   @override
   Future<Result<VideoEntity, VideoFailure>> createVideo({
     required VideoEntity video,
   }) async {
     try {
-      final result = await api.createVideo(
-        video: video.toModel(),
-      );
-      return Result.success(result.toEntity());
-    } catch (error) {
-      return Result.failure(mapVideoException(error));
+      final model = video.toModel();
+      final resultModel = await _api.createVideo(video: model);
+
+      return Result.success(resultModel.toEntity());
+    } on VideoFailure catch (failure) {
+      return Result.failure(failure);
     }
   }
-
-  // ------------------------------------------------------
-  // Get videos by filter
-  // ------------------------------------------------------
 
   @override
   Future<Result<List<VideoEntity>, VideoFailure>> getVideoByFilter({
     required VideoQueryFilter filter,
   }) async {
     try {
-      final result = await api.getVideoByFilter(filter: filter);
-      return Result.success(
-        result.map((e) => e.toEntity()).toList(),
-      );
-    } catch (error) {
-      return Result.failure(mapVideoException(error));
+      final models = await _api.getVideoByFilter(filter: filter);
+
+      return Result.success(models.map((e) => e.toEntity()).toList());
+    } on VideoFailure catch (failure) {
+      return Result.failure(failure);
     }
   }
-
-  // ------------------------------------------------------
-  // Get video by id
-  // ------------------------------------------------------
 
   @override
   Future<Result<VideoEntity, VideoFailure>> getVideoById({
     required int id,
   }) async {
     try {
-      final result = await api.getVideoById(id: id);
-      return Result.success(result.toEntity());
-    } catch (error) {
-      return Result.failure(mapVideoException(error));
+      final model = await _api.getVideoById(id: id);
+
+      return Result.success(model.toEntity());
+    } on VideoFailure catch (failure) {
+      return Result.failure(failure);
     }
   }
-
-  // ------------------------------------------------------
-  // Update video by id
-  // ------------------------------------------------------
 
   @override
   Future<Result<VideoEntity, VideoFailure>> updateVideoById({
@@ -80,121 +61,92 @@ class VideoRepositoryImplementation implements VideoRepository {
     required VideoEntity video,
   }) async {
     try {
-      final result = await api.updateVideoById(
-        id: id,
-        video: video.toModel(),
-      );
-      return Result.success(result.toEntity());
-    } catch (error) {
-      return Result.failure(mapVideoException(error));
+      final model = video.toModel();
+      final updatedModel = await _api.updateVideoById(id: id, video: model);
+
+      return Result.success(updatedModel.toEntity());
+    } on VideoFailure catch (failure) {
+      return Result.failure(failure);
     }
   }
 
-  // ------------------------------------------------------
-  // Update video by filter
-  // ------------------------------------------------------
-
   @override
-  Future<Result<VideoEntity, VideoFailure>> updateVideoByFilter({
+  Future<Result<int, VideoFailure>> updateVideoByFilter({
     required VideoQueryFilter filter,
     required VideoEntity video,
   }) async {
     try {
-      final result = await api.updateVideoByFilter(
-        filter: filter,
-        video: video.toModel(),
-      );
-      return Result.success(result.toEntity());
-    } catch (error) {
-      return Result.failure(mapVideoException(error));
+      final model = video.toModel();
+      final ids = await _api.updateVideoByFilter(filter: filter, video: model);
+
+      return Result.success(ids);
+    } on VideoFailure catch (failure) {
+      return Result.failure(failure);
     }
   }
-
-  // ------------------------------------------------------
-  // Delete video by id
-  // ------------------------------------------------------
 
   @override
   Future<Result<int, VideoFailure>> deleteVideoById({
     required int id,
   }) async {
     try {
-      final result = await api.deleteVideoById(id: id);
-      return Result.success(result);
-    } catch (error) {
-      return Result.failure(mapVideoException(error));
+      final deletedId = await _api.deleteVideoById(id: id);
+
+      return Result.success(deletedId);
+    } on VideoFailure catch (failure) {
+      return Result.failure(failure);
     }
   }
 
-  // ------------------------------------------------------
-  // Delete videos by filter
-  // ------------------------------------------------------
-
   @override
-  Future<Result<List<int>, VideoFailure>> deleteVideoByFilter({
+  Future<Result<int, VideoFailure>> deleteVideoByFilter({
     required VideoQueryFilter filter,
   }) async {
     try {
-      final result = await api.deleteVideoByFilter(filter: filter);
-      return Result.success(result);
-    } catch (error) {
-      return Result.failure(mapVideoException(error));
+      final ids = await _api.deleteVideoByFilter(filter: filter);
+
+      return Result.success(ids);
+    } on VideoFailure catch (failure) {
+      return Result.failure(failure);
     }
   }
-
-  // ------------------------------------------------------
-  // Count videos
-  // ------------------------------------------------------
 
   @override
   Future<Result<int, VideoFailure>> countVideos({
     required VideoQueryFilter filter,
   }) async {
     try {
-      final result = await api.countVideos(filter: filter);
-      return Result.success(result);
-    } catch (error) {
-      return Result.failure(mapVideoException(error));
+      final count = await _api.countVideos(filter: filter);
+
+      return Result.success(count);
+    } on VideoFailure catch (failure) {
+      return Result.failure(failure);
     }
   }
-
-  // ------------------------------------------------------
-  // Upload video image
-  // ------------------------------------------------------
 
   @override
   Future<Result<String, VideoFailure>> uploadImage({
-    required int id,
     required File image,
   }) async {
     try {
-      final result = await api.uploadImage(
-        id: id,
-        image: image,
-      );
+      final result = await _api.uploadImage(image: image);
+
       return Result.success(result);
-    } catch (error) {
-      return Result.failure(mapVideoException(error));
+    } on VideoFailure catch (failure) {
+      return Result.failure(failure);
     }
   }
 
-  // ------------------------------------------------------
-  // Upload video file
-  // ------------------------------------------------------
-
   @override
   Future<Result<String, VideoFailure>> uploadVideo({
-    required int id,
     required File video,
   }) async {
     try {
-      final result = await api.uploadVideo(
-        id: id,
-        video: video,
-      );
+      final result = await _api.uploadVideo(video: video);
+
       return Result.success(result);
-    } catch (error) {
-      return Result.failure(mapVideoException(error));
+    } on VideoFailure catch (failure) {
+      return Result.failure(failure);
     }
   }
 }
