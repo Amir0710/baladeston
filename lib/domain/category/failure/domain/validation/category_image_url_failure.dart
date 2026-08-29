@@ -1,26 +1,25 @@
 import 'package:baladeston/domain/category/failure/base_category_failure.dart';
 
-abstract class CategoryImageUrlFailure extends BaseCategoryValidationFailure {
+abstract class CategoryImageUrlFailure
+    extends BaseCategoryValidationFailure {
   const CategoryImageUrlFailure();
 }
 
 // image url
-class CategoryImageUrlEmptyUrlFailure extends CategoryImageUrlFailure {
-  const CategoryImageUrlEmptyUrlFailure();
-}
 
 class CategoryImageUrlInvalidFormatFailure extends CategoryImageUrlFailure {
   const CategoryImageUrlInvalidFormatFailure();
 }
 
-class CategoryImageUrlUnsupportedSchemeFailure extends CategoryImageUrlFailure {
+class CategoryImageUrlUnsupportedSchemeFailure
+    extends CategoryImageUrlFailure {
   const CategoryImageUrlUnsupportedSchemeFailure();
 }
 
-class CategoryImageUrlUnauthorizedHostFailure extends CategoryImageUrlFailure {
-  const CategoryImageUrlUnauthorizedHostFailure();
+class CategoryImageUrlStructuralFailure extends CategoryImageUrlFailure {
+  const CategoryImageUrlStructuralFailure();
 }
 
-class CategoryImageUrlInvalidIdFailure extends CategoryImageUrlFailure {
-  const CategoryImageUrlInvalidIdFailure();
+class CategoryImageUrlInvalidLengthFailure extends CategoryImageUrlFailure {
+  const CategoryImageUrlInvalidLengthFailure();
 }

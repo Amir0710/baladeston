@@ -1,12 +1,12 @@
-import 'dart:io';
-
+import 'package:baladeston/core/model/paginated_response_model.dart';
 import 'package:baladeston/core/result/result.dart';
 import 'package:baladeston/data/collection/datasource/remote/collection_remote_datasource/collection_api.dart';
 import 'package:baladeston/data/collection/filter/model/collection_query_filter.dart';
-import 'package:baladeston/data/collection/mapper/model/collection_mapper.dart';
+import 'package:baladeston/data/collection/mapper/model/collection/collection_mapper.dart';
 import 'package:baladeston/domain/collection/entity/collection_entity/collection_entity.dart';
 import 'package:baladeston/domain/collection/failure/base_collection_failure.dart';
 import 'package:baladeston/domain/collection/repository/collection/collection_repository.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CollectionRepositoryImplementation extends CollectionRepository {
   final CollectionApi _api;
@@ -16,7 +16,7 @@ class CollectionRepositoryImplementation extends CollectionRepository {
   }) : _api = api;
 
   @override
-  Future<Result<List<CollectionEntity>, CollectionFailure>>
+  Future<Result<PaginatedResponseModel<CollectionEntity>, CollectionFailure>>
   getCollectionByFilter({
     required CollectionQueryFilter collectionItemFilter,
   }) async {
@@ -24,7 +24,21 @@ class CollectionRepositoryImplementation extends CollectionRepository {
     await _api.getCollectionByFilter(filter: collectionItemFilter);
 
     return result.map(
-      success: (s) => Result.success(s.data.map((e) => e.toEntity()).toList()),
+      success: (s) {
+        final paginatedModel = s.data;
+
+        final entities = paginatedModel.items
+            .map((e) => e.toEntity())
+            .toList();
+
+        final mapped = PaginatedResponseModel<CollectionEntity>(
+          items: entities,
+          nextCursor: paginatedModel.nextCursor,
+          isLast: paginatedModel.isLast,
+        );
+
+        return Result.success(mapped);
+      },
       failure: (f) => Result.failure(f.failure),
     );
   }
@@ -83,7 +97,7 @@ class CollectionRepositoryImplementation extends CollectionRepository {
   }
 
   @override
-  Future<Result<List<int>, CollectionFailure>> deleteCollectionByFilter({
+  Future<Result<int, CollectionFailure>> deleteCollectionByFilter({
     required CollectionQueryFilter filter,
   }) {
     return _api.deleteCollectionByFilter(filter: filter);
@@ -105,7 +119,7 @@ class CollectionRepositoryImplementation extends CollectionRepository {
 
   @override
   Future<Result<String, CollectionFailure>> uploadCollectionImage({
-    required File image,
+    required XFile image,
   }) {
     return _api.uploadCollectionImage(image: image);
   }

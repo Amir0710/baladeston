@@ -20,20 +20,18 @@ CommentQueryFilter _$CommentQueryFilterFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CommentQueryFilter {
+  List<int>? get ids => throw _privateConstructorUsedError;
   int? get userId => throw _privateConstructorUsedError;
   int? get targetId => throw _privateConstructorUsedError;
   CommentType? get commentType => throw _privateConstructorUsedError;
-  String? get content => throw _privateConstructorUsedError;
   String? get searchTerm => throw _privateConstructorUsedError;
-  double? get minRating => throw _privateConstructorUsedError;
-  double? get maxRating => throw _privateConstructorUsedError;
   DateTime? get createdAfter => throw _privateConstructorUsedError;
   DateTime? get createdBefore => throw _privateConstructorUsedError;
   CommentStatus? get status => throw _privateConstructorUsedError;
-  String get orderBy => throw _privateConstructorUsedError;
+  CommentOrder get orderBy => throw _privateConstructorUsedError;
   bool get ascending => throw _privateConstructorUsedError;
   int get limit => throw _privateConstructorUsedError;
-  int get offset => throw _privateConstructorUsedError;
+  String? get cursor => throw _privateConstructorUsedError;
 
   /// Serializes this CommentQueryFilter to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,20 +50,18 @@ abstract class $CommentQueryFilterCopyWith<$Res> {
       _$CommentQueryFilterCopyWithImpl<$Res, CommentQueryFilter>;
   @useResult
   $Res call(
-      {int? userId,
+      {List<int>? ids,
+      int? userId,
       int? targetId,
       CommentType? commentType,
-      String? content,
       String? searchTerm,
-      double? minRating,
-      double? maxRating,
       DateTime? createdAfter,
       DateTime? createdBefore,
       CommentStatus? status,
-      String orderBy,
+      CommentOrder orderBy,
       bool ascending,
       int limit,
-      int offset});
+      String? cursor});
 }
 
 /// @nodoc
@@ -83,22 +79,24 @@ class _$CommentQueryFilterCopyWithImpl<$Res, $Val extends CommentQueryFilter>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? ids = freezed,
     Object? userId = freezed,
     Object? targetId = freezed,
     Object? commentType = freezed,
-    Object? content = freezed,
     Object? searchTerm = freezed,
-    Object? minRating = freezed,
-    Object? maxRating = freezed,
     Object? createdAfter = freezed,
     Object? createdBefore = freezed,
     Object? status = freezed,
     Object? orderBy = null,
     Object? ascending = null,
     Object? limit = null,
-    Object? offset = null,
+    Object? cursor = freezed,
   }) {
     return _then(_value.copyWith(
+      ids: freezed == ids
+          ? _value.ids
+          : ids // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -111,22 +109,10 @@ class _$CommentQueryFilterCopyWithImpl<$Res, $Val extends CommentQueryFilter>
           ? _value.commentType
           : commentType // ignore: cast_nullable_to_non_nullable
               as CommentType?,
-      content: freezed == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as String?,
       searchTerm: freezed == searchTerm
           ? _value.searchTerm
           : searchTerm // ignore: cast_nullable_to_non_nullable
               as String?,
-      minRating: freezed == minRating
-          ? _value.minRating
-          : minRating // ignore: cast_nullable_to_non_nullable
-              as double?,
-      maxRating: freezed == maxRating
-          ? _value.maxRating
-          : maxRating // ignore: cast_nullable_to_non_nullable
-              as double?,
       createdAfter: freezed == createdAfter
           ? _value.createdAfter
           : createdAfter // ignore: cast_nullable_to_non_nullable
@@ -142,7 +128,7 @@ class _$CommentQueryFilterCopyWithImpl<$Res, $Val extends CommentQueryFilter>
       orderBy: null == orderBy
           ? _value.orderBy
           : orderBy // ignore: cast_nullable_to_non_nullable
-              as String,
+              as CommentOrder,
       ascending: null == ascending
           ? _value.ascending
           : ascending // ignore: cast_nullable_to_non_nullable
@@ -151,10 +137,10 @@ class _$CommentQueryFilterCopyWithImpl<$Res, $Val extends CommentQueryFilter>
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
               as int,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as int,
+      cursor: freezed == cursor
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -168,20 +154,18 @@ abstract class _$$CommentQueryFilterImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int? userId,
+      {List<int>? ids,
+      int? userId,
       int? targetId,
       CommentType? commentType,
-      String? content,
       String? searchTerm,
-      double? minRating,
-      double? maxRating,
       DateTime? createdAfter,
       DateTime? createdBefore,
       CommentStatus? status,
-      String orderBy,
+      CommentOrder orderBy,
       bool ascending,
       int limit,
-      int offset});
+      String? cursor});
 }
 
 /// @nodoc
@@ -197,22 +181,24 @@ class __$$CommentQueryFilterImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? ids = freezed,
     Object? userId = freezed,
     Object? targetId = freezed,
     Object? commentType = freezed,
-    Object? content = freezed,
     Object? searchTerm = freezed,
-    Object? minRating = freezed,
-    Object? maxRating = freezed,
     Object? createdAfter = freezed,
     Object? createdBefore = freezed,
     Object? status = freezed,
     Object? orderBy = null,
     Object? ascending = null,
     Object? limit = null,
-    Object? offset = null,
+    Object? cursor = freezed,
   }) {
     return _then(_$CommentQueryFilterImpl(
+      ids: freezed == ids
+          ? _value._ids
+          : ids // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -225,22 +211,10 @@ class __$$CommentQueryFilterImplCopyWithImpl<$Res>
           ? _value.commentType
           : commentType // ignore: cast_nullable_to_non_nullable
               as CommentType?,
-      content: freezed == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as String?,
       searchTerm: freezed == searchTerm
           ? _value.searchTerm
           : searchTerm // ignore: cast_nullable_to_non_nullable
               as String?,
-      minRating: freezed == minRating
-          ? _value.minRating
-          : minRating // ignore: cast_nullable_to_non_nullable
-              as double?,
-      maxRating: freezed == maxRating
-          ? _value.maxRating
-          : maxRating // ignore: cast_nullable_to_non_nullable
-              as double?,
       createdAfter: freezed == createdAfter
           ? _value.createdAfter
           : createdAfter // ignore: cast_nullable_to_non_nullable
@@ -256,7 +230,7 @@ class __$$CommentQueryFilterImplCopyWithImpl<$Res>
       orderBy: null == orderBy
           ? _value.orderBy
           : orderBy // ignore: cast_nullable_to_non_nullable
-              as String,
+              as CommentOrder,
       ascending: null == ascending
           ? _value.ascending
           : ascending // ignore: cast_nullable_to_non_nullable
@@ -265,10 +239,10 @@ class __$$CommentQueryFilterImplCopyWithImpl<$Res>
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
               as int,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as int,
+      cursor: freezed == cursor
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -277,23 +251,32 @@ class __$$CommentQueryFilterImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CommentQueryFilterImpl implements _CommentQueryFilter {
   const _$CommentQueryFilterImpl(
-      {this.userId,
+      {final List<int>? ids,
+      this.userId,
       this.targetId,
       this.commentType,
-      this.content,
       this.searchTerm,
-      this.minRating,
-      this.maxRating,
       this.createdAfter,
       this.createdBefore,
       this.status,
-      this.orderBy = 'createdAt',
+      this.orderBy = CommentOrder.createdAt,
       this.ascending = false,
       this.limit = 20,
-      this.offset = 0});
+      this.cursor})
+      : _ids = ids;
 
   factory _$CommentQueryFilterImpl.fromJson(Map<String, dynamic> json) =>
       _$$CommentQueryFilterImplFromJson(json);
+
+  final List<int>? _ids;
+  @override
+  List<int>? get ids {
+    final value = _ids;
+    if (value == null) return null;
+    if (_ids is EqualUnmodifiableListView) return _ids;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   final int? userId;
@@ -302,13 +285,7 @@ class _$CommentQueryFilterImpl implements _CommentQueryFilter {
   @override
   final CommentType? commentType;
   @override
-  final String? content;
-  @override
   final String? searchTerm;
-  @override
-  final double? minRating;
-  @override
-  final double? maxRating;
   @override
   final DateTime? createdAfter;
   @override
@@ -317,7 +294,7 @@ class _$CommentQueryFilterImpl implements _CommentQueryFilter {
   final CommentStatus? status;
   @override
   @JsonKey()
-  final String orderBy;
+  final CommentOrder orderBy;
   @override
   @JsonKey()
   final bool ascending;
@@ -325,12 +302,11 @@ class _$CommentQueryFilterImpl implements _CommentQueryFilter {
   @JsonKey()
   final int limit;
   @override
-  @JsonKey()
-  final int offset;
+  final String? cursor;
 
   @override
   String toString() {
-    return 'CommentQueryFilter(userId: $userId, targetId: $targetId, commentType: $commentType, content: $content, searchTerm: $searchTerm, minRating: $minRating, maxRating: $maxRating, createdAfter: $createdAfter, createdBefore: $createdBefore, status: $status, orderBy: $orderBy, ascending: $ascending, limit: $limit, offset: $offset)';
+    return 'CommentQueryFilter(ids: $ids, userId: $userId, targetId: $targetId, commentType: $commentType, searchTerm: $searchTerm, createdAfter: $createdAfter, createdBefore: $createdBefore, status: $status, orderBy: $orderBy, ascending: $ascending, limit: $limit, cursor: $cursor)';
   }
 
   @override
@@ -338,18 +314,14 @@ class _$CommentQueryFilterImpl implements _CommentQueryFilter {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CommentQueryFilterImpl &&
+            const DeepCollectionEquality().equals(other._ids, _ids) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.targetId, targetId) ||
                 other.targetId == targetId) &&
             (identical(other.commentType, commentType) ||
                 other.commentType == commentType) &&
-            (identical(other.content, content) || other.content == content) &&
             (identical(other.searchTerm, searchTerm) ||
                 other.searchTerm == searchTerm) &&
-            (identical(other.minRating, minRating) ||
-                other.minRating == minRating) &&
-            (identical(other.maxRating, maxRating) ||
-                other.maxRating == maxRating) &&
             (identical(other.createdAfter, createdAfter) ||
                 other.createdAfter == createdAfter) &&
             (identical(other.createdBefore, createdBefore) ||
@@ -359,27 +331,25 @@ class _$CommentQueryFilterImpl implements _CommentQueryFilter {
             (identical(other.ascending, ascending) ||
                 other.ascending == ascending) &&
             (identical(other.limit, limit) || other.limit == limit) &&
-            (identical(other.offset, offset) || other.offset == offset));
+            (identical(other.cursor, cursor) || other.cursor == cursor));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(_ids),
       userId,
       targetId,
       commentType,
-      content,
       searchTerm,
-      minRating,
-      maxRating,
       createdAfter,
       createdBefore,
       status,
       orderBy,
       ascending,
       limit,
-      offset);
+      cursor);
 
   /// Create a copy of CommentQueryFilter
   /// with the given fields replaced by the non-null parameter values.
@@ -400,24 +370,24 @@ class _$CommentQueryFilterImpl implements _CommentQueryFilter {
 
 abstract class _CommentQueryFilter implements CommentQueryFilter {
   const factory _CommentQueryFilter(
-      {final int? userId,
+      {final List<int>? ids,
+      final int? userId,
       final int? targetId,
       final CommentType? commentType,
-      final String? content,
       final String? searchTerm,
-      final double? minRating,
-      final double? maxRating,
       final DateTime? createdAfter,
       final DateTime? createdBefore,
       final CommentStatus? status,
-      final String orderBy,
+      final CommentOrder orderBy,
       final bool ascending,
       final int limit,
-      final int offset}) = _$CommentQueryFilterImpl;
+      final String? cursor}) = _$CommentQueryFilterImpl;
 
   factory _CommentQueryFilter.fromJson(Map<String, dynamic> json) =
       _$CommentQueryFilterImpl.fromJson;
 
+  @override
+  List<int>? get ids;
   @override
   int? get userId;
   @override
@@ -425,13 +395,7 @@ abstract class _CommentQueryFilter implements CommentQueryFilter {
   @override
   CommentType? get commentType;
   @override
-  String? get content;
-  @override
   String? get searchTerm;
-  @override
-  double? get minRating;
-  @override
-  double? get maxRating;
   @override
   DateTime? get createdAfter;
   @override
@@ -439,13 +403,13 @@ abstract class _CommentQueryFilter implements CommentQueryFilter {
   @override
   CommentStatus? get status;
   @override
-  String get orderBy;
+  CommentOrder get orderBy;
   @override
   bool get ascending;
   @override
   int get limit;
   @override
-  int get offset;
+  String? get cursor;
 
   /// Create a copy of CommentQueryFilter
   /// with the given fields replaced by the non-null parameter values.

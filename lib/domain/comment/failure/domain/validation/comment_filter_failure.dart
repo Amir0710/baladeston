@@ -1,59 +1,55 @@
-import 'package:baladeston/domain/category/failure/base_category_failure.dart';
+import 'package:baladeston/domain/comment/failure/base_comment_failure.dart';
 
-// searchTerm
-final class CategoryFilterInvalidSearchTermFailure extends CategoryFailure {
-  const CategoryFilterInvalidSearchTermFailure();
+abstract class CommentFilterFailure extends BaseCommentValidationFailure {
+  const CommentFilterFailure();
 }
 
-// searchId
-final class CategoryFilterInvalidSearchIdFailure extends CategoryFailure {
-  const CategoryFilterInvalidSearchIdFailure();
+// ids
+final class CommentFilterInvalidIdsFailure extends CommentFilterFailure {
+  const CommentFilterInvalidIdsFailure();
 }
 
-// status
-final class CategoryFilterInvalidStatusFailure extends CategoryFailure {
-  const CategoryFilterInvalidStatusFailure();
+// search term
+final class CommentFilterTooShortSearchTermFailure
+    extends CommentFilterFailure {
+  const CommentFilterTooShortSearchTermFailure();
 }
 
-// ownerId
-final class CategoryFilterInvalidOwnerIdFailure extends CategoryFailure {
-  const CategoryFilterInvalidOwnerIdFailure();
+final class CommentFilterTooLongSearchTermFailure extends CommentFilterFailure {
+  const CommentFilterTooLongSearchTermFailure();
 }
 
-// minCount / maxCount
-final class CategoryFilterInvalidMinCountFailure extends CategoryFailure {
-  const CategoryFilterInvalidMinCountFailure();
+final class CommentFilterControlCharSearchTermFailure
+    extends CommentFilterFailure {
+  const CommentFilterControlCharSearchTermFailure();
 }
 
-final class CategoryFilterInvalidMaxCountFailure extends CategoryFailure {
-  const CategoryFilterInvalidMaxCountFailure();
+final class CommentFilterContainsHtmlSearchTermFailure
+    extends CommentFilterFailure {
+  const CommentFilterContainsHtmlSearchTermFailure();
 }
 
-final class CategoryFilterInvalidCountRangeFailure extends CategoryFailure {
-  const CategoryFilterInvalidCountRangeFailure();
+final class CommentFilterEmojiOnlySearchTermFailure
+    extends CommentFilterFailure {
+  const CommentFilterEmojiOnlySearchTermFailure();
 }
 
-// limit
-final class CategoryFilterInvalidLimitFailure extends CategoryFailure {
-  const CategoryFilterInvalidLimitFailure();
+
+// dates
+final class CommentFilterInvalidCreatedAtFailure extends CommentFilterFailure {
+  const CommentFilterInvalidCreatedAtFailure();
 }
 
-// offset
-final class CategoryFilterInvalidOffsetFailure extends CategoryFailure {
-  const CategoryFilterInvalidOffsetFailure();
+final class CommentFilterInvalidCreatedBeforeFailure
+    extends CommentFilterFailure {
+  const CommentFilterInvalidCreatedBeforeFailure();
 }
 
-// ascending
-final class CategoryFilterInvalidAscendingFailure extends CategoryFailure {
-  const CategoryFilterInvalidAscendingFailure();
-}
-
-// order
-final class CategoryFilterInvalidOrderFailure extends CategoryFailure {
-  const CategoryFilterInvalidOrderFailure();
+final class CommentFilterInvalidDatesRangeFailure extends CommentFilterFailure {
+  const CommentFilterInvalidDatesRangeFailure();
 }
 
 // empty
-final class CategoryFilterEmptyFailure extends CategoryFailure {
-  const CategoryFilterEmptyFailure();
+final class CommentFilterEmptyFailure extends CommentFilterFailure {
+  const CommentFilterEmptyFailure();
 }

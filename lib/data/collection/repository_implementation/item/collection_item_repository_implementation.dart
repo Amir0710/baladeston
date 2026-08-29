@@ -1,13 +1,15 @@
+import 'package:baladeston/core/model/paginated_response_model.dart';
 import 'package:baladeston/core/result/result.dart';
 import 'package:baladeston/data/collection/datasource/remote/collection_item_remote_datasource/collection_item_api.dart';
 import 'package:baladeston/data/collection/filter/item/collection_item_query_filter.dart';
-import 'package:baladeston/data/collection/mapper/item/collection_item_mapper.dart';
+import 'package:baladeston/data/collection/mapper/item/collection_item/collection_item_mapper.dart';
 import 'package:baladeston/data/video/filter/video_query_filter.dart';
 import 'package:baladeston/data/video/mapper/video_mapper.dart';
 import 'package:baladeston/domain/collection/entity/collection_item_entity/collection_item_entity.dart';
 import 'package:baladeston/domain/collection/failure/base_collection_failure.dart';
 import 'package:baladeston/domain/collection/repository/item/collection_item_repository.dart';
 import 'package:baladeston/domain/video/entity/video_entity.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CollectionItemRepositoryImplementation extends CollectionItemRepository {
   final CollectionItemApi _itemApi;
@@ -54,7 +56,7 @@ class CollectionItemRepositoryImplementation extends CollectionItemRepository {
 
   @override
   Future<Result<CollectionItemEntity, CollectionFailure>>
-  updateCollectionItemById({
+      updateCollectionItemById({
     required int id,
     required CollectionItemEntity item,
   }) async {
@@ -69,23 +71,33 @@ class CollectionItemRepositoryImplementation extends CollectionItemRepository {
   }
 
   @override
-  Future<Result<List<CollectionItemEntity>, CollectionFailure>>
-  getCollectionItemByCollectionFilter({
+  Future<Result<PaginatedResponseModel<CollectionItemEntity>, CollectionFailure>>
+      getCollectionItemByCollectionFilter({
     required CollectionItemQueryFilter collectionItemFilter,
   }) async {
     final result = await _itemApi.getCollectionItemByCollectionFilter(
       collectionItemFilter: collectionItemFilter,
     );
     return result.map(
-      success: (s) =>
-          Result.success(s.data.map((e) => e.toEntity()).toList()),
+      success: (s) {
+        final paginatedModel = s.data;
+        final entities = paginatedModel.items.map((e) => e.toEntity()).toList();
+
+        final mapped = PaginatedResponseModel<CollectionItemEntity>(
+          items: entities,
+          nextCursor: paginatedModel.nextCursor,
+          isLast: paginatedModel.isLast,
+        );
+
+        return Result.success(mapped);
+      },
       failure: (f) => Result.failure(f.failure),
     );
   }
 
   @override
-  Future<Result<List<VideoEntity>, CollectionFailure>>
-  getVideosByCollectionItemFilter({
+  Future<Result<PaginatedResponseModel<VideoEntity>, CollectionFailure>>
+      getVideosByCollectionItemFilter({
     required CollectionItemQueryFilter collectionItemFilter,
     required VideoQueryFilter videoFilter,
   }) async {
@@ -94,9 +106,26 @@ class CollectionItemRepositoryImplementation extends CollectionItemRepository {
       videoFilter: videoFilter,
     );
     return result.map(
-      success: (s) =>
-          Result.success(s.data.map((e) => e.toEntity()).toList()),
+      success: (s) {
+        final paginatedModel = s.data;
+        final entities = paginatedModel.items.map((e) => e.toEntity()).toList();
+
+        final mapped = PaginatedResponseModel<VideoEntity>(
+          items: entities,
+          nextCursor: paginatedModel.nextCursor,
+          isLast: paginatedModel.isLast,
+        );
+
+        return Result.success(mapped);
+      },
       failure: (f) => Result.failure(f.failure),
     );
+  }
+
+  @override
+  Future<Result<String, CollectionFailure>> uploadCollectionItemImage({
+    required XFile image,
+  }) {
+    return _itemApi.uploadImage(image: image);
   }
 }

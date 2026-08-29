@@ -4,52 +4,67 @@ abstract class CategoryEntityFailure extends BaseCategoryValidationFailure {
   const CategoryEntityFailure();
 }
 
-// id
-final class CategoryEntityInvalidIdFailure extends CategoryEntityFailure {
-  const CategoryEntityInvalidIdFailure();
-}
-
 // parent
 final class CategoryEntityInvalidParentFailure extends CategoryEntityFailure {
   const CategoryEntityInvalidParentFailure();
 }
 
 // title
-final class CategoryEntityMissingTitleFailure extends CategoryEntityFailure {
+final class CategoryEntityMissingTitleFailure
+    extends CategoryEntityFailure {
   const CategoryEntityMissingTitleFailure();
 }
 
-final class CategoryEntityInvalidTitleFailure extends CategoryEntityFailure {
-  const CategoryEntityInvalidTitleFailure();
-}
-
-// status
-final class CategoryEntityInvalidStatusFailure extends CategoryEntityFailure {
-  const CategoryEntityInvalidStatusFailure();
-}
-
-// thumbnailUrl
-final class CategoryEntityInvalidThumbnailUrlFailure
+final class CategoryEntityTitleTooShortFailure
     extends CategoryEntityFailure {
-  const CategoryEntityInvalidThumbnailUrlFailure();
+  const CategoryEntityTitleTooShortFailure();
 }
 
-// createdAt
-final class CategoryEntityInvalidCreatedAtFailure extends CategoryEntityFailure {
-  const CategoryEntityInvalidCreatedAtFailure();
-}
-
-// lastTransaction
-final class CategoryEntityInvalidLastTransactionFailure
+final class CategoryEntityTooLongTitleFailure
     extends CategoryEntityFailure {
-  const CategoryEntityInvalidLastTransactionFailure();
+  const CategoryEntityTooLongTitleFailure();
+}
+final class CategoryEntityControlCharTitleFailure
+    extends CategoryEntityFailure {
+  const CategoryEntityControlCharTitleFailure();
 }
 
-// ownerId
-final class CategoryEntityMissingOwnerIdFailure extends CategoryEntityFailure {
-  const CategoryEntityMissingOwnerIdFailure();
+final class CategoryEntityContainsHtmlTitleFailure
+    extends CategoryEntityFailure {
+  const CategoryEntityContainsHtmlTitleFailure();
 }
 
-final class CategoryEntityInvalidOwnerIdFailure extends CategoryEntityFailure {
-  const CategoryEntityInvalidOwnerIdFailure();
+final class CategoryEntityEmojiOnlyTitleFailure
+    extends CategoryEntityFailure {
+  const CategoryEntityEmojiOnlyTitleFailure();
+}
+
+// description
+final class CategoryEntityMissingDescriptionFailure
+    extends CategoryEntityFailure {
+  const CategoryEntityMissingDescriptionFailure();
+}
+final class CategoryEntityTooShortDescriptionFailure
+    extends CategoryEntityFailure {
+  const CategoryEntityTooShortDescriptionFailure();
+}
+
+final class CategoryEntityTooLongDescriptionFailure
+    extends CategoryEntityFailure {
+  const CategoryEntityTooLongDescriptionFailure();
+}
+
+final class CategoryEntityControlCharDescriptionFailure
+    extends CategoryEntityFailure {
+  const CategoryEntityControlCharDescriptionFailure();
+}
+
+final class CategoryEntityContainsHtmlDescriptionFailure
+    extends CategoryEntityFailure {
+  const CategoryEntityContainsHtmlDescriptionFailure();
+}
+
+final class CategoryEntityEmojiOnlyDescriptionFailure
+    extends CategoryEntityFailure {
+  const CategoryEntityEmojiOnlyDescriptionFailure();
 }

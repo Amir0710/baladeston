@@ -1,16 +1,12 @@
-import 'dart:io';
-
+import 'package:baladeston/core/model/paginated_response_model.dart';
 import 'package:baladeston/core/result/result.dart';
-import 'package:baladeston/data/collection/filter/item/collection_item_query_filter.dart';
 import 'package:baladeston/data/collection/filter/model/collection_query_filter.dart';
-import 'package:baladeston/data/video/filter/video_query_filter.dart';
 import 'package:baladeston/domain/collection/entity/collection_entity/collection_entity.dart';
-import 'package:baladeston/domain/collection/entity/collection_item_entity/collection_item_entity.dart';
 import 'package:baladeston/domain/collection/failure/base_collection_failure.dart';
-import 'package:baladeston/domain/video/entity/video_entity.dart';
+import 'package:image_picker/image_picker.dart';
 
 abstract class CollectionRepository {
-  Future<Result<List<CollectionEntity>, CollectionFailure>>
+  Future<Result<PaginatedResponseModel<CollectionEntity>, CollectionFailure>>
       getCollectionByFilter({
     required CollectionQueryFilter collectionItemFilter,
   });
@@ -23,8 +19,7 @@ abstract class CollectionRepository {
     required CollectionEntity collection,
   });
 
-  Future<Result<int, CollectionFailure>>
-      updateCollectionByFilter({
+  Future<Result<int, CollectionFailure>> updateCollectionByFilter({
     required CollectionEntity collection,
     required CollectionQueryFilter filter,
   });
@@ -34,7 +29,7 @@ abstract class CollectionRepository {
     required int id,
   });
 
-  Future<Result<List<int>, CollectionFailure>> deleteCollectionByFilter({
+  Future<Result<int, CollectionFailure>> deleteCollectionByFilter({
     required CollectionQueryFilter filter,
   });
 
@@ -47,6 +42,6 @@ abstract class CollectionRepository {
   });
 
   Future<Result<String, CollectionFailure>> uploadCollectionImage({
-    required File image,
+    required XFile image,
   });
 }

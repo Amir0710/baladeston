@@ -5,7 +5,8 @@ import 'package:baladeston/domain/discount/entity/discount_entity.dart';
 extension DiscountModelMapper on DiscountModel {
   DiscountEntity toEntity() {
     return DiscountEntity(
-      userId: userId,
+
+      ownerId: userId,
       id: id,
       categoryId: categoryId,
       percent: percent,
@@ -21,7 +22,7 @@ extension DiscountModelMapper on DiscountModel {
 extension DiscountEntityMapper on DiscountEntity {
   DiscountModel toModel() {
     return DiscountModel(
-      userId: userId,
+      ownerId: userId,
       id: id,
       categoryId: categoryId,
       percent: percent,

@@ -113,7 +113,7 @@ class CollectionItemCubit extends Cubit<CollectionItemState> {
   }) async {
     emit(const CollectionItemState.updatingItem());
 
-    final result = await _updateByFilterUseCase(item: item, filter: filter);
+    final result = await _updateByFilterUseCase(collectionItem: item, filter: filter);
 
     result.when(
       success: (result) =>

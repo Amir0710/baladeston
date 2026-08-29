@@ -14,18 +14,23 @@ _$CollectionModelImpl _$$CollectionModelImplFromJson(
       ($checkedConvert) {
         final val = _$CollectionModelImpl(
           id: $checkedConvert('id', (v) => (v as num?)?.toInt()),
+          title: $checkedConvert('title', (v) => v as String),
+          description: $checkedConvert('description', (v) => v as String),
+          ownerId: $checkedConvert('ownerId', (v) => (v as num?)?.toInt()),
+          avgRate: $checkedConvert('avgRate', (v) => (v as num?)?.toDouble()),
+          rateCount: $checkedConvert('rateCount', (v) => (v as num?)?.toInt()),
+          thumbnailUrl: $checkedConvert('thumbnailUrl', (v) => v as String?),
           status: $checkedConvert('status',
               (v) => $enumDecodeNullable(_$CollectionStatusEnumMap, v)),
-          thumbnailUrl: $checkedConvert('thumbnailUrl', (v) => v as String?),
+          type: $checkedConvert(
+              'type', (v) => $enumDecodeNullable(_$CollectionTypeEnumMap, v)),
           count: $checkedConvert('count', (v) => (v as num?)?.toInt()),
           price: $checkedConvert('price', (v) => (v as num?)?.toInt()),
           uniqueCode: $checkedConvert('uniqueCode', (v) => v as String?),
           lastTransaction: $checkedConvert('lastTransaction',
               (v) => v == null ? null : DateTime.parse(v as String)),
-          ownerId: $checkedConvert('ownerId', (v) => (v as num).toInt()),
           createdAt: $checkedConvert('createdAt',
               (v) => v == null ? null : DateTime.parse(v as String)),
-          title: $checkedConvert('title', (v) => v as String),
         );
         return val;
       },
@@ -35,20 +40,32 @@ Map<String, dynamic> _$$CollectionModelImplToJson(
         _$CollectionModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'status': _$CollectionStatusEnumMap[instance.status],
+      'title': instance.title,
+      'description': instance.description,
+      'ownerId': instance.ownerId,
+      'avgRate': instance.avgRate,
+      'rateCount': instance.rateCount,
       'thumbnailUrl': instance.thumbnailUrl,
+      'status': _$CollectionStatusEnumMap[instance.status],
+      'type': _$CollectionTypeEnumMap[instance.type],
       'count': instance.count,
       'price': instance.price,
       'uniqueCode': instance.uniqueCode,
       'lastTransaction': instance.lastTransaction?.toIso8601String(),
-      'ownerId': instance.ownerId,
       'createdAt': instance.createdAt?.toIso8601String(),
-      'title': instance.title,
     };
 
 const _$CollectionStatusEnumMap = {
-  CollectionStatus.draft: 'draft',
   CollectionStatus.published: 'published',
-  CollectionStatus.hidden: 'hidden',
-  CollectionStatus.archived: 'archived',
+  CollectionStatus.pendingApproval: 'pendingApproval',
+  CollectionStatus.draft: 'draft',
+  CollectionStatus.suspended: 'suspended',
+  CollectionStatus.active: 'active',
+  CollectionStatus.inactive: 'inactive',
+};
+
+const _$CollectionTypeEnumMap = {
+  CollectionType.public: 'public',
+  CollectionType.private: 'private',
+  CollectionType.team: 'team',
 };

@@ -17,12 +17,17 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CollectionItemEntity {
   int? get id => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
+  int get videoId => throw _privateConstructorUsedError;
+  int get collectionId => throw _privateConstructorUsedError;
+  double? get avgRate => throw _privateConstructorUsedError;
+  int? get rateCount => throw _privateConstructorUsedError;
+  int? get price => throw _privateConstructorUsedError;
+  String? get thumbnailUrl => throw _privateConstructorUsedError;
   CollectionItemStatus? get status => throw _privateConstructorUsedError;
   DateTime? get addedAt => throw _privateConstructorUsedError;
   DateTime? get lastTransaction => throw _privateConstructorUsedError;
-  int get adderId => throw _privateConstructorUsedError;
-  int get videoId => throw _privateConstructorUsedError;
-  int get collectionId => throw _privateConstructorUsedError;
+  int? get adderId => throw _privateConstructorUsedError;
 
   /// Create a copy of CollectionItemEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -39,12 +44,17 @@ abstract class $CollectionItemEntityCopyWith<$Res> {
   @useResult
   $Res call(
       {int? id,
+      String? title,
+      int videoId,
+      int collectionId,
+      double? avgRate,
+      int? rateCount,
+      int? price,
+      String? thumbnailUrl,
       CollectionItemStatus? status,
       DateTime? addedAt,
       DateTime? lastTransaction,
-      int adderId,
-      int videoId,
-      int collectionId});
+      int? adderId});
 }
 
 /// @nodoc
@@ -64,18 +74,51 @@ class _$CollectionItemEntityCopyWithImpl<$Res,
   @override
   $Res call({
     Object? id = freezed,
+    Object? title = freezed,
+    Object? videoId = null,
+    Object? collectionId = null,
+    Object? avgRate = freezed,
+    Object? rateCount = freezed,
+    Object? price = freezed,
+    Object? thumbnailUrl = freezed,
     Object? status = freezed,
     Object? addedAt = freezed,
     Object? lastTransaction = freezed,
-    Object? adderId = null,
-    Object? videoId = null,
-    Object? collectionId = null,
+    Object? adderId = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      videoId: null == videoId
+          ? _value.videoId
+          : videoId // ignore: cast_nullable_to_non_nullable
+              as int,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as int,
+      avgRate: freezed == avgRate
+          ? _value.avgRate
+          : avgRate // ignore: cast_nullable_to_non_nullable
+              as double?,
+      rateCount: freezed == rateCount
+          ? _value.rateCount
+          : rateCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int?,
+      thumbnailUrl: freezed == thumbnailUrl
+          ? _value.thumbnailUrl
+          : thumbnailUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -88,18 +131,10 @@ class _$CollectionItemEntityCopyWithImpl<$Res,
           ? _value.lastTransaction
           : lastTransaction // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      adderId: null == adderId
+      adderId: freezed == adderId
           ? _value.adderId
           : adderId // ignore: cast_nullable_to_non_nullable
-              as int,
-      videoId: null == videoId
-          ? _value.videoId
-          : videoId // ignore: cast_nullable_to_non_nullable
-              as int,
-      collectionId: null == collectionId
-          ? _value.collectionId
-          : collectionId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -114,12 +149,17 @@ abstract class _$$CollectionItemEntityImplCopyWith<$Res>
   @useResult
   $Res call(
       {int? id,
+      String? title,
+      int videoId,
+      int collectionId,
+      double? avgRate,
+      int? rateCount,
+      int? price,
+      String? thumbnailUrl,
       CollectionItemStatus? status,
       DateTime? addedAt,
       DateTime? lastTransaction,
-      int adderId,
-      int videoId,
-      int collectionId});
+      int? adderId});
 }
 
 /// @nodoc
@@ -136,18 +176,51 @@ class __$$CollectionItemEntityImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? title = freezed,
+    Object? videoId = null,
+    Object? collectionId = null,
+    Object? avgRate = freezed,
+    Object? rateCount = freezed,
+    Object? price = freezed,
+    Object? thumbnailUrl = freezed,
     Object? status = freezed,
     Object? addedAt = freezed,
     Object? lastTransaction = freezed,
-    Object? adderId = null,
-    Object? videoId = null,
-    Object? collectionId = null,
+    Object? adderId = freezed,
   }) {
     return _then(_$CollectionItemEntityImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      videoId: null == videoId
+          ? _value.videoId
+          : videoId // ignore: cast_nullable_to_non_nullable
+              as int,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as int,
+      avgRate: freezed == avgRate
+          ? _value.avgRate
+          : avgRate // ignore: cast_nullable_to_non_nullable
+              as double?,
+      rateCount: freezed == rateCount
+          ? _value.rateCount
+          : rateCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int?,
+      thumbnailUrl: freezed == thumbnailUrl
+          ? _value.thumbnailUrl
+          : thumbnailUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -160,18 +233,10 @@ class __$$CollectionItemEntityImplCopyWithImpl<$Res>
           ? _value.lastTransaction
           : lastTransaction // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      adderId: null == adderId
+      adderId: freezed == adderId
           ? _value.adderId
           : adderId // ignore: cast_nullable_to_non_nullable
-              as int,
-      videoId: null == videoId
-          ? _value.videoId
-          : videoId // ignore: cast_nullable_to_non_nullable
-              as int,
-      collectionId: null == collectionId
-          ? _value.collectionId
-          : collectionId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -181,15 +246,34 @@ class __$$CollectionItemEntityImplCopyWithImpl<$Res>
 class _$CollectionItemEntityImpl implements _CollectionItemEntity {
   const _$CollectionItemEntityImpl(
       {this.id,
+      this.title,
+      required this.videoId,
+      required this.collectionId,
+      this.avgRate,
+      this.rateCount,
+      this.price,
+      this.thumbnailUrl,
       this.status,
       this.addedAt,
       this.lastTransaction,
-      required this.adderId,
-      required this.videoId,
-      required this.collectionId});
+      this.adderId});
 
   @override
   final int? id;
+  @override
+  final String? title;
+  @override
+  final int videoId;
+  @override
+  final int collectionId;
+  @override
+  final double? avgRate;
+  @override
+  final int? rateCount;
+  @override
+  final int? price;
+  @override
+  final String? thumbnailUrl;
   @override
   final CollectionItemStatus? status;
   @override
@@ -197,15 +281,11 @@ class _$CollectionItemEntityImpl implements _CollectionItemEntity {
   @override
   final DateTime? lastTransaction;
   @override
-  final int adderId;
-  @override
-  final int videoId;
-  @override
-  final int collectionId;
+  final int? adderId;
 
   @override
   String toString() {
-    return 'CollectionItemEntity(id: $id, status: $status, addedAt: $addedAt, lastTransaction: $lastTransaction, adderId: $adderId, videoId: $videoId, collectionId: $collectionId)';
+    return 'CollectionItemEntity(id: $id, title: $title, videoId: $videoId, collectionId: $collectionId, avgRate: $avgRate, rateCount: $rateCount, price: $price, thumbnailUrl: $thumbnailUrl, status: $status, addedAt: $addedAt, lastTransaction: $lastTransaction, adderId: $adderId)';
   }
 
   @override
@@ -214,19 +294,38 @@ class _$CollectionItemEntityImpl implements _CollectionItemEntity {
         (other.runtimeType == runtimeType &&
             other is _$CollectionItemEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.videoId, videoId) || other.videoId == videoId) &&
+            (identical(other.collectionId, collectionId) ||
+                other.collectionId == collectionId) &&
+            (identical(other.avgRate, avgRate) || other.avgRate == avgRate) &&
+            (identical(other.rateCount, rateCount) ||
+                other.rateCount == rateCount) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.thumbnailUrl, thumbnailUrl) ||
+                other.thumbnailUrl == thumbnailUrl) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.addedAt, addedAt) || other.addedAt == addedAt) &&
             (identical(other.lastTransaction, lastTransaction) ||
                 other.lastTransaction == lastTransaction) &&
-            (identical(other.adderId, adderId) || other.adderId == adderId) &&
-            (identical(other.videoId, videoId) || other.videoId == videoId) &&
-            (identical(other.collectionId, collectionId) ||
-                other.collectionId == collectionId));
+            (identical(other.adderId, adderId) || other.adderId == adderId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, status, addedAt,
-      lastTransaction, adderId, videoId, collectionId);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      videoId,
+      collectionId,
+      avgRate,
+      rateCount,
+      price,
+      thumbnailUrl,
+      status,
+      addedAt,
+      lastTransaction,
+      adderId);
 
   /// Create a copy of CollectionItemEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -242,15 +341,34 @@ class _$CollectionItemEntityImpl implements _CollectionItemEntity {
 abstract class _CollectionItemEntity implements CollectionItemEntity {
   const factory _CollectionItemEntity(
       {final int? id,
+      final String? title,
+      required final int videoId,
+      required final int collectionId,
+      final double? avgRate,
+      final int? rateCount,
+      final int? price,
+      final String? thumbnailUrl,
       final CollectionItemStatus? status,
       final DateTime? addedAt,
       final DateTime? lastTransaction,
-      required final int adderId,
-      required final int videoId,
-      required final int collectionId}) = _$CollectionItemEntityImpl;
+      final int? adderId}) = _$CollectionItemEntityImpl;
 
   @override
   int? get id;
+  @override
+  String? get title;
+  @override
+  int get videoId;
+  @override
+  int get collectionId;
+  @override
+  double? get avgRate;
+  @override
+  int? get rateCount;
+  @override
+  int? get price;
+  @override
+  String? get thumbnailUrl;
   @override
   CollectionItemStatus? get status;
   @override
@@ -258,11 +376,7 @@ abstract class _CollectionItemEntity implements CollectionItemEntity {
   @override
   DateTime? get lastTransaction;
   @override
-  int get adderId;
-  @override
-  int get videoId;
-  @override
-  int get collectionId;
+  int? get adderId;
 
   /// Create a copy of CollectionItemEntity
   /// with the given fields replaced by the non-null parameter values.

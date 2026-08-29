@@ -11,7 +11,7 @@ class DeleteCollectionByFilterUseCase {
     required this.repository,
   });
 
-  Future<Result<List<int>, CollectionFailure>> call({
+  Future<Result<int, CollectionFailure>> call({
     required CollectionQueryFilter filter,
   }) async {
 

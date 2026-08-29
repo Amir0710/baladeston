@@ -45,10 +45,10 @@ class CommentRateLimitFailure extends CommentInfrastructureFailure {
 
 // parsing data
 class CommentModelParsingFailure extends CommentInfrastructureFailure {
-  final String? field;
-  final String? message;
+  final String? debugMessage;
+  final String? rawSource;
 
-  const CommentModelParsingFailure({this.field, this.message});
+  const CommentModelParsingFailure({this.debugMessage, this.rawSource});
 }
 
 // server validation

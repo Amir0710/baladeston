@@ -1,6 +1,6 @@
 enum VideoOrder {
   title,
-  uploaded,
+  createdAt,
   price,
   duration
 }

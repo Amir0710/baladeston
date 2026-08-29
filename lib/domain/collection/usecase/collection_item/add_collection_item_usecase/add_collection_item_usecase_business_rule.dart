@@ -1,47 +1,91 @@
+import 'package:baladeston/core/constants/limits.dart';
 import 'package:baladeston/core/result/result.dart';
+import 'package:baladeston/core/variable/image_url_content_guard.dart';
+import 'package:baladeston/core/variable/text_content_guard.dart';
 import 'package:baladeston/domain/collection/entity/collection_item_entity/collection_item_entity.dart';
+import 'package:baladeston/domain/collection/failure/base_collection_failure.dart';
+import 'package:baladeston/domain/collection/failure/domain/validation/collection_image_url_failure.dart';
 import 'package:baladeston/domain/collection/failure/domain/validation/collection_item_entity_failure.dart';
 
-class UploadCollectionItemUsecaseBusinessRule {
-  final CollectionItemEntity entity;
+class AddCollectionItemUsecaseBusinessRule {
+  final CollectionItemEntity collectionItem;
 
-  const UploadCollectionItemUsecaseBusinessRule({
-    required this.entity,
+  static const Limits _limits = Limits();
+
+  const AddCollectionItemUsecaseBusinessRule({
+    required this.collectionItem,
   });
 
-  Result<void, CollectionItemEntityFailure> validate() {
-    return _itemValidation();
+  Result<void, CollectionFailure> validate() {
+    return _entityValidation();
   }
 
-  Result<void, CollectionItemEntityFailure> _itemValidation() {
-    if (entity.id != null) {
-      return const Result.failure(
-        CollectionItemEntityInvalidIdFailure(),
-      );
-    }
-
-    if (entity.adderId <= 0) {
-      return const Result.failure(
-        CollectionItemEntityInvalidAdderIdFailure(),
-      );
-    }
-
-    if (entity.videoId <= 0) {
+  Result<void, BaseCollectionValidationFailure> _entityValidation() {
+    // videoId
+    if (collectionItem.videoId <= 0) {
       return const Result.failure(
         CollectionItemEntityInvalidVideoIdFailure(),
       );
     }
 
-    if (entity.collectionId <= 0) {
+    // collectionId
+    if (collectionItem.collectionId <= 0) {
       return const Result.failure(
         CollectionItemEntityInvalidCollectionIdFailure(),
       );
     }
 
-    if ((entity.addedAt != null && entity.lastTransaction != null)) {
-      if (entity.lastTransaction!.isBefore(entity.addedAt!)) {
+    // title
+    final title = collectionItem.title?.trim();
+
+    if (title != null && title.isNotEmpty) {
+      if (TextContentGuard.containsHtml(title)) {
         return const Result.failure(
-          CollectionItemEntityInvalidLastTransactionFailure(),
+            CollectionItemEntityContainsHtmlTitleFailure());
+      }
+      if (TextContentGuard.isEmojiOnly(title)) {
+        return const Result.failure(
+            CollectionItemEntityEmojiOnlyTitleFailure());
+      }
+      if (TextContentGuard.hasControlCharacters(title)) {
+        return const Result.failure(
+            CollectionItemEntityControlCharTitleFailure());
+      }
+      if (title.length < _limits.minCollectionItemTitle) {
+        return const Result.failure(
+          CollectionItemEntityTitleTooShortFailure(),
+        );
+      }
+      if (title.length > _limits.maxCollectionItemTitle) {
+        return const Result.failure(
+          CollectionItemEntityTooLongTitleFailure(),
+        );
+      }
+    }
+
+
+    // thumbnai url
+    final thumbnailUrl = collectionItem.thumbnailUrl?.trim();
+
+    if (thumbnailUrl != null && thumbnailUrl.isNotEmpty) {
+      if (!ImageUrlContentGuard.imageStructureValidation(thumbnailUrl)) {
+        return const Result.failure(
+          CollectionImageUrlStructuralFailure(),
+        );
+      }
+      if (!ImageUrlContentGuard.imageSchemeValidation(thumbnailUrl)) {
+        return const Result.failure(
+          CollectionImageUrlUnsupportedSchemeFailure(),
+        );
+      }
+      if (ImageUrlContentGuard.imageLengthValidation(thumbnailUrl)) {
+        return const Result.failure(
+          CollectionImageUrlInvalidLengthFailure(),
+        );
+      }
+      if (ImageUrlContentGuard.imageFormatValidation(thumbnailUrl)) {
+        return const Result.failure(
+          CollectionImageUrlInvalidFormatFailure(),
         );
       }
     }

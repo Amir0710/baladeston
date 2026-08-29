@@ -12,7 +12,7 @@ class AddCategoryItemUseCase {
   Future<Result<CategoryItemEntity, CategoryFailure>> call({
     required CategoryItemEntity item,
   }) async {
-    final rule = AddCategoryItemUsecaseBusinessRule(item: item);
+    final rule = AddCategoryItemUsecaseBusinessRule(categoryItem: item);
     final validation = rule.validate();
     return validation.when(
       success: (_) => repository.addCategoryItem(item: item),

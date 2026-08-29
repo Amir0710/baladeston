@@ -9,16 +9,17 @@ part 'video_model.g.dart';
 abstract class VideoModel with _$VideoModel {
   const factory VideoModel({
     int? id,
-    String? description,
     String? thumbnailUrl,
     VideoStatus? status,
     int? videoDuration,
     DateTime? uploadedAt,
+    DateTime? lastTransaction,
     required String videoUrl,
     required int recommendedAge,
     required VideoLevel level,
     required String title,
     required int ownerId,
+    required String description,
     required int price,
   }) = _VideoModel;
 

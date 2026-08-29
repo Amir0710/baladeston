@@ -1,3 +1,4 @@
+import 'package:baladeston/core/model/paginated_response_model.dart';
 import 'package:baladeston/core/result/result.dart';
 import 'package:baladeston/data/category/filter/item/category_item_query_filter.dart';
 import 'package:baladeston/domain/category/entity/category_item_entity/category_item_entity.dart';
@@ -12,7 +13,7 @@ class GetCategoryItemByFilterUseCase {
     required this.repository,
   });
 
-  Future<Result<List<CategoryItemEntity>, CategoryFailure>> call({
+  Future<Result<PaginatedResponseModel<CategoryItemEntity>, CategoryFailure>> call({
     required CategoryItemQueryFilter filter,
   }) async {
     final businessRule = GetCategoryItemByFilterUsecaseBusinessRule(

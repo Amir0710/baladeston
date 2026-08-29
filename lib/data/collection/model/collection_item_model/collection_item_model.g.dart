@@ -14,16 +14,21 @@ _$CollectionItemModelImpl _$$CollectionItemModelImplFromJson(
       ($checkedConvert) {
         final val = _$CollectionItemModelImpl(
           id: $checkedConvert('id', (v) => (v as num?)?.toInt()),
+          title: $checkedConvert('title', (v) => v as String?),
+          videoId: $checkedConvert('videoId', (v) => (v as num).toInt()),
+          collectionId:
+              $checkedConvert('collectionId', (v) => (v as num).toInt()),
+          avgRate: $checkedConvert('avgRate', (v) => (v as num?)?.toDouble()),
+          rateCount: $checkedConvert('rateCount', (v) => (v as num?)?.toInt()),
+          price: $checkedConvert('price', (v) => (v as num?)?.toInt()),
+          thumbnailUrl: $checkedConvert('thumbnailUrl', (v) => v as String?),
           status: $checkedConvert('status',
               (v) => $enumDecodeNullable(_$CollectionItemStatusEnumMap, v)),
           addedAt: $checkedConvert(
               'addedAt', (v) => v == null ? null : DateTime.parse(v as String)),
           lastTransaction: $checkedConvert('lastTransaction',
               (v) => v == null ? null : DateTime.parse(v as String)),
-          adderId: $checkedConvert('adderId', (v) => (v as num).toInt()),
-          videoId: $checkedConvert('videoId', (v) => (v as num).toInt()),
-          collectionId:
-              $checkedConvert('collectionId', (v) => (v as num).toInt()),
+          adderId: $checkedConvert('adderId', (v) => (v as num?)?.toInt()),
         );
         return val;
       },
@@ -33,12 +38,17 @@ Map<String, dynamic> _$$CollectionItemModelImplToJson(
         _$CollectionItemModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'title': instance.title,
+      'videoId': instance.videoId,
+      'collectionId': instance.collectionId,
+      'avgRate': instance.avgRate,
+      'rateCount': instance.rateCount,
+      'price': instance.price,
+      'thumbnailUrl': instance.thumbnailUrl,
       'status': _$CollectionItemStatusEnumMap[instance.status],
       'addedAt': instance.addedAt?.toIso8601String(),
       'lastTransaction': instance.lastTransaction?.toIso8601String(),
       'adderId': instance.adderId,
-      'videoId': instance.videoId,
-      'collectionId': instance.collectionId,
     };
 
 const _$CollectionItemStatusEnumMap = {

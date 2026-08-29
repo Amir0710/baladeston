@@ -21,12 +21,19 @@ CategoryItemQueryFilter _$CategoryItemQueryFilterFromJson(
 
 /// @nodoc
 mixin _$CategoryItemQueryFilter {
+  String? get searchTerm => throw _privateConstructorUsedError;
+  List<int>? get ids => throw _privateConstructorUsedError;
+  int? get minCount => throw _privateConstructorUsedError;
+  int? get maxCount => throw _privateConstructorUsedError;
+  int? get minPrice => throw _privateConstructorUsedError;
+  int? get maxPrice => throw _privateConstructorUsedError;
   int? get categoryId => throw _privateConstructorUsedError;
   int? get adderId => throw _privateConstructorUsedError;
   int? get collectionId => throw _privateConstructorUsedError;
+  double? get minRating => throw _privateConstructorUsedError;
   CategoryItemStatus? get status => throw _privateConstructorUsedError;
   int get limit => throw _privateConstructorUsedError;
-  int get offset => throw _privateConstructorUsedError;
+  String? get cursor => throw _privateConstructorUsedError;
   bool get ascending => throw _privateConstructorUsedError;
   CategoryOrder get order => throw _privateConstructorUsedError;
 
@@ -47,12 +54,19 @@ abstract class $CategoryItemQueryFilterCopyWith<$Res> {
       _$CategoryItemQueryFilterCopyWithImpl<$Res, CategoryItemQueryFilter>;
   @useResult
   $Res call(
-      {int? categoryId,
+      {String? searchTerm,
+      List<int>? ids,
+      int? minCount,
+      int? maxCount,
+      int? minPrice,
+      int? maxPrice,
+      int? categoryId,
       int? adderId,
       int? collectionId,
+      double? minRating,
       CategoryItemStatus? status,
       int limit,
-      int offset,
+      String? cursor,
       bool ascending,
       CategoryOrder order});
 }
@@ -73,16 +87,47 @@ class _$CategoryItemQueryFilterCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? searchTerm = freezed,
+    Object? ids = freezed,
+    Object? minCount = freezed,
+    Object? maxCount = freezed,
+    Object? minPrice = freezed,
+    Object? maxPrice = freezed,
     Object? categoryId = freezed,
     Object? adderId = freezed,
     Object? collectionId = freezed,
+    Object? minRating = freezed,
     Object? status = freezed,
     Object? limit = null,
-    Object? offset = null,
+    Object? cursor = freezed,
     Object? ascending = null,
     Object? order = null,
   }) {
     return _then(_value.copyWith(
+      searchTerm: freezed == searchTerm
+          ? _value.searchTerm
+          : searchTerm // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ids: freezed == ids
+          ? _value.ids
+          : ids // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
+      minCount: freezed == minCount
+          ? _value.minCount
+          : minCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      maxCount: freezed == maxCount
+          ? _value.maxCount
+          : maxCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      minPrice: freezed == minPrice
+          ? _value.minPrice
+          : minPrice // ignore: cast_nullable_to_non_nullable
+              as int?,
+      maxPrice: freezed == maxPrice
+          ? _value.maxPrice
+          : maxPrice // ignore: cast_nullable_to_non_nullable
+              as int?,
       categoryId: freezed == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
@@ -95,6 +140,10 @@ class _$CategoryItemQueryFilterCopyWithImpl<$Res,
           ? _value.collectionId
           : collectionId // ignore: cast_nullable_to_non_nullable
               as int?,
+      minRating: freezed == minRating
+          ? _value.minRating
+          : minRating // ignore: cast_nullable_to_non_nullable
+              as double?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -103,10 +152,10 @@ class _$CategoryItemQueryFilterCopyWithImpl<$Res,
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
               as int,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as int,
+      cursor: freezed == cursor
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
+              as String?,
       ascending: null == ascending
           ? _value.ascending
           : ascending // ignore: cast_nullable_to_non_nullable
@@ -129,12 +178,19 @@ abstract class _$$CategoryItemQueryFilterImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int? categoryId,
+      {String? searchTerm,
+      List<int>? ids,
+      int? minCount,
+      int? maxCount,
+      int? minPrice,
+      int? maxPrice,
+      int? categoryId,
       int? adderId,
       int? collectionId,
+      double? minRating,
       CategoryItemStatus? status,
       int limit,
-      int offset,
+      String? cursor,
       bool ascending,
       CategoryOrder order});
 }
@@ -154,16 +210,47 @@ class __$$CategoryItemQueryFilterImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? searchTerm = freezed,
+    Object? ids = freezed,
+    Object? minCount = freezed,
+    Object? maxCount = freezed,
+    Object? minPrice = freezed,
+    Object? maxPrice = freezed,
     Object? categoryId = freezed,
     Object? adderId = freezed,
     Object? collectionId = freezed,
+    Object? minRating = freezed,
     Object? status = freezed,
     Object? limit = null,
-    Object? offset = null,
+    Object? cursor = freezed,
     Object? ascending = null,
     Object? order = null,
   }) {
     return _then(_$CategoryItemQueryFilterImpl(
+      searchTerm: freezed == searchTerm
+          ? _value.searchTerm
+          : searchTerm // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ids: freezed == ids
+          ? _value._ids
+          : ids // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
+      minCount: freezed == minCount
+          ? _value.minCount
+          : minCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      maxCount: freezed == maxCount
+          ? _value.maxCount
+          : maxCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      minPrice: freezed == minPrice
+          ? _value.minPrice
+          : minPrice // ignore: cast_nullable_to_non_nullable
+              as int?,
+      maxPrice: freezed == maxPrice
+          ? _value.maxPrice
+          : maxPrice // ignore: cast_nullable_to_non_nullable
+              as int?,
       categoryId: freezed == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
@@ -176,6 +263,10 @@ class __$$CategoryItemQueryFilterImplCopyWithImpl<$Res>
           ? _value.collectionId
           : collectionId // ignore: cast_nullable_to_non_nullable
               as int?,
+      minRating: freezed == minRating
+          ? _value.minRating
+          : minRating // ignore: cast_nullable_to_non_nullable
+              as double?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -184,10 +275,10 @@ class __$$CategoryItemQueryFilterImplCopyWithImpl<$Res>
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
               as int,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as int,
+      cursor: freezed == cursor
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
+              as String?,
       ascending: null == ascending
           ? _value.ascending
           : ascending // ignore: cast_nullable_to_non_nullable
@@ -204,18 +295,46 @@ class __$$CategoryItemQueryFilterImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CategoryItemQueryFilterImpl implements _CategoryItemQueryFilter {
   const _$CategoryItemQueryFilterImpl(
-      {this.categoryId,
+      {this.searchTerm,
+      final List<int>? ids,
+      this.minCount,
+      this.maxCount,
+      this.minPrice,
+      this.maxPrice,
+      this.categoryId,
       this.adderId,
       this.collectionId,
+      this.minRating,
       this.status,
       this.limit = 20,
-      this.offset = 0,
+      this.cursor,
       this.ascending = false,
-      this.order = CategoryOrder.title});
+      this.order = CategoryOrder.createdAt})
+      : _ids = ids;
 
   factory _$CategoryItemQueryFilterImpl.fromJson(Map<String, dynamic> json) =>
       _$$CategoryItemQueryFilterImplFromJson(json);
 
+  @override
+  final String? searchTerm;
+  final List<int>? _ids;
+  @override
+  List<int>? get ids {
+    final value = _ids;
+    if (value == null) return null;
+    if (_ids is EqualUnmodifiableListView) return _ids;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final int? minCount;
+  @override
+  final int? maxCount;
+  @override
+  final int? minPrice;
+  @override
+  final int? maxPrice;
   @override
   final int? categoryId;
   @override
@@ -223,13 +342,14 @@ class _$CategoryItemQueryFilterImpl implements _CategoryItemQueryFilter {
   @override
   final int? collectionId;
   @override
+  final double? minRating;
+  @override
   final CategoryItemStatus? status;
   @override
   @JsonKey()
   final int limit;
   @override
-  @JsonKey()
-  final int offset;
+  final String? cursor;
   @override
   @JsonKey()
   final bool ascending;
@@ -239,7 +359,7 @@ class _$CategoryItemQueryFilterImpl implements _CategoryItemQueryFilter {
 
   @override
   String toString() {
-    return 'CategoryItemQueryFilter(categoryId: $categoryId, adderId: $adderId, collectionId: $collectionId, status: $status, limit: $limit, offset: $offset, ascending: $ascending, order: $order)';
+    return 'CategoryItemQueryFilter(searchTerm: $searchTerm, ids: $ids, minCount: $minCount, maxCount: $maxCount, minPrice: $minPrice, maxPrice: $maxPrice, categoryId: $categoryId, adderId: $adderId, collectionId: $collectionId, minRating: $minRating, status: $status, limit: $limit, cursor: $cursor, ascending: $ascending, order: $order)';
   }
 
   @override
@@ -247,14 +367,27 @@ class _$CategoryItemQueryFilterImpl implements _CategoryItemQueryFilter {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CategoryItemQueryFilterImpl &&
+            (identical(other.searchTerm, searchTerm) ||
+                other.searchTerm == searchTerm) &&
+            const DeepCollectionEquality().equals(other._ids, _ids) &&
+            (identical(other.minCount, minCount) ||
+                other.minCount == minCount) &&
+            (identical(other.maxCount, maxCount) ||
+                other.maxCount == maxCount) &&
+            (identical(other.minPrice, minPrice) ||
+                other.minPrice == minPrice) &&
+            (identical(other.maxPrice, maxPrice) ||
+                other.maxPrice == maxPrice) &&
             (identical(other.categoryId, categoryId) ||
                 other.categoryId == categoryId) &&
             (identical(other.adderId, adderId) || other.adderId == adderId) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
+            (identical(other.minRating, minRating) ||
+                other.minRating == minRating) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.limit, limit) || other.limit == limit) &&
-            (identical(other.offset, offset) || other.offset == offset) &&
+            (identical(other.cursor, cursor) || other.cursor == cursor) &&
             (identical(other.ascending, ascending) ||
                 other.ascending == ascending) &&
             (identical(other.order, order) || other.order == order));
@@ -262,8 +395,23 @@ class _$CategoryItemQueryFilterImpl implements _CategoryItemQueryFilter {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, categoryId, adderId,
-      collectionId, status, limit, offset, ascending, order);
+  int get hashCode => Object.hash(
+      runtimeType,
+      searchTerm,
+      const DeepCollectionEquality().hash(_ids),
+      minCount,
+      maxCount,
+      minPrice,
+      maxPrice,
+      categoryId,
+      adderId,
+      collectionId,
+      minRating,
+      status,
+      limit,
+      cursor,
+      ascending,
+      order);
 
   /// Create a copy of CategoryItemQueryFilter
   /// with the given fields replaced by the non-null parameter values.
@@ -284,12 +432,19 @@ class _$CategoryItemQueryFilterImpl implements _CategoryItemQueryFilter {
 
 abstract class _CategoryItemQueryFilter implements CategoryItemQueryFilter {
   const factory _CategoryItemQueryFilter(
-      {final int? categoryId,
+      {final String? searchTerm,
+      final List<int>? ids,
+      final int? minCount,
+      final int? maxCount,
+      final int? minPrice,
+      final int? maxPrice,
+      final int? categoryId,
       final int? adderId,
       final int? collectionId,
+      final double? minRating,
       final CategoryItemStatus? status,
       final int limit,
-      final int offset,
+      final String? cursor,
       final bool ascending,
       final CategoryOrder order}) = _$CategoryItemQueryFilterImpl;
 
@@ -297,17 +452,31 @@ abstract class _CategoryItemQueryFilter implements CategoryItemQueryFilter {
       _$CategoryItemQueryFilterImpl.fromJson;
 
   @override
+  String? get searchTerm;
+  @override
+  List<int>? get ids;
+  @override
+  int? get minCount;
+  @override
+  int? get maxCount;
+  @override
+  int? get minPrice;
+  @override
+  int? get maxPrice;
+  @override
   int? get categoryId;
   @override
   int? get adderId;
   @override
   int? get collectionId;
   @override
+  double? get minRating;
+  @override
   CategoryItemStatus? get status;
   @override
   int get limit;
   @override
-  int get offset;
+  String? get cursor;
   @override
   bool get ascending;
   @override

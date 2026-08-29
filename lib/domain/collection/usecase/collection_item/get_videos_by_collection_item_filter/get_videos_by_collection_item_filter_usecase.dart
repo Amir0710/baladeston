@@ -1,3 +1,4 @@
+import 'package:baladeston/core/model/paginated_response_model.dart';
 import 'package:baladeston/core/result/result.dart';
 import 'package:baladeston/data/collection/filter/item/collection_item_query_filter.dart';
 import 'package:baladeston/data/video/filter/video_query_filter.dart';
@@ -13,12 +14,13 @@ class GetVideosByCollectionItemFilterUseCase {
     required this.repository,
   });
 
-  Future<Result<List<VideoEntity>, CollectionFailure>> call({
+  Future<Result<PaginatedResponseModel<VideoEntity>, CollectionFailure>>
+      call({
     required CollectionItemQueryFilter collectionItemFilter,
     required VideoQueryFilter videoFilter,
   }) async {
     final businessRule = GetVideosByCollectionItemFilterUseCaseBusinessRule(
-      collectionItemFilter: collectionItemFilter,
+      itemFilter: collectionItemFilter,
       videoFilter: videoFilter,
     );
 

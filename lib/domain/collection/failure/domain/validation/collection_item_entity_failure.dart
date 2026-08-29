@@ -7,37 +7,7 @@ abstract class CollectionItemEntityFailure
   const CollectionItemEntityFailure();
 }
 
-//  id
-
-class CollectionItemEntityInvalidIdFailure extends CollectionItemEntityFailure {
-  const CollectionItemEntityInvalidIdFailure();
-}
-
-//  status
-
-class CollectionItemEntityInvalidStatusFailure
-    extends CollectionItemEntityFailure {
-  const CollectionItemEntityInvalidStatusFailure();
-}
-
-//  adderId
-
-class CollectionItemEntityMissingAdderIdFailure
-    extends CollectionItemEntityFailure {
-  const CollectionItemEntityMissingAdderIdFailure();
-}
-
-class CollectionItemEntityInvalidAdderIdFailure
-    extends CollectionItemEntityFailure {
-  const CollectionItemEntityInvalidAdderIdFailure();
-}
-
 //  videoId
-
-class CollectionItemEntityMissingVideoIdFailure
-    extends CollectionItemEntityFailure {
-  const CollectionItemEntityMissingVideoIdFailure();
-}
 
 class CollectionItemEntityInvalidVideoIdFailure
     extends CollectionItemEntityFailure {
@@ -45,37 +15,34 @@ class CollectionItemEntityInvalidVideoIdFailure
 }
 
 //  collectionId
-
-class CollectionItemEntityMissingCollectionIdFailure
-    extends CollectionItemEntityFailure {
-  const CollectionItemEntityMissingCollectionIdFailure();
-}
-
 class CollectionItemEntityInvalidCollectionIdFailure
     extends CollectionItemEntityFailure {
   const CollectionItemEntityInvalidCollectionIdFailure();
 }
 
-//  addedAt
 
-class CollectionItemEntityMissingAddedAtFailure
+// title
+
+final class CollectionItemEntityControlCharTitleFailure
     extends CollectionItemEntityFailure {
-  const CollectionItemEntityMissingAddedAtFailure();
+  const CollectionItemEntityControlCharTitleFailure();
 }
 
-class CollectionItemEntityInvalidAddedAtFailure
+final class CollectionItemEntityContainsHtmlTitleFailure
     extends CollectionItemEntityFailure {
-  const CollectionItemEntityInvalidAddedAtFailure();
+  const CollectionItemEntityContainsHtmlTitleFailure();
 }
 
-//  lastTransaction
-
-class CollectionItemEntityMissingLastTransactionFailure
+final class CollectionItemEntityEmojiOnlyTitleFailure
     extends CollectionItemEntityFailure {
-  const CollectionItemEntityMissingLastTransactionFailure();
+  const CollectionItemEntityEmojiOnlyTitleFailure();
 }
 
-class CollectionItemEntityInvalidLastTransactionFailure
+final class CollectionItemEntityTitleTooShortFailure
     extends CollectionItemEntityFailure {
-  const CollectionItemEntityInvalidLastTransactionFailure();
+  const CollectionItemEntityTitleTooShortFailure();
+}
+final class CollectionItemEntityTooLongTitleFailure
+    extends CollectionItemEntityFailure {
+  const CollectionItemEntityTooLongTitleFailure();
 }

@@ -21,16 +21,17 @@ VideoModel _$VideoModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$VideoModel {
   int? get id => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
   String? get thumbnailUrl => throw _privateConstructorUsedError;
   VideoStatus? get status => throw _privateConstructorUsedError;
   int? get videoDuration => throw _privateConstructorUsedError;
   DateTime? get uploadedAt => throw _privateConstructorUsedError;
+  DateTime? get lastTransaction => throw _privateConstructorUsedError;
   String get videoUrl => throw _privateConstructorUsedError;
   int get recommendedAge => throw _privateConstructorUsedError;
   VideoLevel get level => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   int get ownerId => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
 
   /// Serializes this VideoModel to a JSON map.
@@ -51,16 +52,17 @@ abstract class $VideoModelCopyWith<$Res> {
   @useResult
   $Res call(
       {int? id,
-      String? description,
       String? thumbnailUrl,
       VideoStatus? status,
       int? videoDuration,
       DateTime? uploadedAt,
+      DateTime? lastTransaction,
       String videoUrl,
       int recommendedAge,
       VideoLevel level,
       String title,
       int ownerId,
+      String description,
       int price});
 }
 
@@ -80,16 +82,17 @@ class _$VideoModelCopyWithImpl<$Res, $Val extends VideoModel>
   @override
   $Res call({
     Object? id = freezed,
-    Object? description = freezed,
     Object? thumbnailUrl = freezed,
     Object? status = freezed,
     Object? videoDuration = freezed,
     Object? uploadedAt = freezed,
+    Object? lastTransaction = freezed,
     Object? videoUrl = null,
     Object? recommendedAge = null,
     Object? level = null,
     Object? title = null,
     Object? ownerId = null,
+    Object? description = null,
     Object? price = null,
   }) {
     return _then(_value.copyWith(
@@ -97,10 +100,6 @@ class _$VideoModelCopyWithImpl<$Res, $Val extends VideoModel>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
       thumbnailUrl: freezed == thumbnailUrl
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
@@ -116,6 +115,10 @@ class _$VideoModelCopyWithImpl<$Res, $Val extends VideoModel>
       uploadedAt: freezed == uploadedAt
           ? _value.uploadedAt
           : uploadedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      lastTransaction: freezed == lastTransaction
+          ? _value.lastTransaction
+          : lastTransaction // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       videoUrl: null == videoUrl
           ? _value.videoUrl
@@ -137,6 +140,10 @@ class _$VideoModelCopyWithImpl<$Res, $Val extends VideoModel>
           ? _value.ownerId
           : ownerId // ignore: cast_nullable_to_non_nullable
               as int,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -155,16 +162,17 @@ abstract class _$$VideoModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {int? id,
-      String? description,
       String? thumbnailUrl,
       VideoStatus? status,
       int? videoDuration,
       DateTime? uploadedAt,
+      DateTime? lastTransaction,
       String videoUrl,
       int recommendedAge,
       VideoLevel level,
       String title,
       int ownerId,
+      String description,
       int price});
 }
 
@@ -182,16 +190,17 @@ class __$$VideoModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? description = freezed,
     Object? thumbnailUrl = freezed,
     Object? status = freezed,
     Object? videoDuration = freezed,
     Object? uploadedAt = freezed,
+    Object? lastTransaction = freezed,
     Object? videoUrl = null,
     Object? recommendedAge = null,
     Object? level = null,
     Object? title = null,
     Object? ownerId = null,
+    Object? description = null,
     Object? price = null,
   }) {
     return _then(_$VideoModelImpl(
@@ -199,10 +208,6 @@ class __$$VideoModelImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
       thumbnailUrl: freezed == thumbnailUrl
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
@@ -218,6 +223,10 @@ class __$$VideoModelImplCopyWithImpl<$Res>
       uploadedAt: freezed == uploadedAt
           ? _value.uploadedAt
           : uploadedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      lastTransaction: freezed == lastTransaction
+          ? _value.lastTransaction
+          : lastTransaction // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       videoUrl: null == videoUrl
           ? _value.videoUrl
@@ -239,6 +248,10 @@ class __$$VideoModelImplCopyWithImpl<$Res>
           ? _value.ownerId
           : ownerId // ignore: cast_nullable_to_non_nullable
               as int,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -252,16 +265,17 @@ class __$$VideoModelImplCopyWithImpl<$Res>
 class _$VideoModelImpl implements _VideoModel {
   const _$VideoModelImpl(
       {this.id,
-      this.description,
       this.thumbnailUrl,
       this.status,
       this.videoDuration,
       this.uploadedAt,
+      this.lastTransaction,
       required this.videoUrl,
       required this.recommendedAge,
       required this.level,
       required this.title,
       required this.ownerId,
+      required this.description,
       required this.price});
 
   factory _$VideoModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -270,8 +284,6 @@ class _$VideoModelImpl implements _VideoModel {
   @override
   final int? id;
   @override
-  final String? description;
-  @override
   final String? thumbnailUrl;
   @override
   final VideoStatus? status;
@@ -279,6 +291,8 @@ class _$VideoModelImpl implements _VideoModel {
   final int? videoDuration;
   @override
   final DateTime? uploadedAt;
+  @override
+  final DateTime? lastTransaction;
   @override
   final String videoUrl;
   @override
@@ -290,11 +304,13 @@ class _$VideoModelImpl implements _VideoModel {
   @override
   final int ownerId;
   @override
+  final String description;
+  @override
   final int price;
 
   @override
   String toString() {
-    return 'VideoModel(id: $id, description: $description, thumbnailUrl: $thumbnailUrl, status: $status, videoDuration: $videoDuration, uploadedAt: $uploadedAt, videoUrl: $videoUrl, recommendedAge: $recommendedAge, level: $level, title: $title, ownerId: $ownerId, price: $price)';
+    return 'VideoModel(id: $id, thumbnailUrl: $thumbnailUrl, status: $status, videoDuration: $videoDuration, uploadedAt: $uploadedAt, lastTransaction: $lastTransaction, videoUrl: $videoUrl, recommendedAge: $recommendedAge, level: $level, title: $title, ownerId: $ownerId, description: $description, price: $price)';
   }
 
   @override
@@ -303,8 +319,6 @@ class _$VideoModelImpl implements _VideoModel {
         (other.runtimeType == runtimeType &&
             other is _$VideoModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
             (identical(other.thumbnailUrl, thumbnailUrl) ||
                 other.thumbnailUrl == thumbnailUrl) &&
             (identical(other.status, status) || other.status == status) &&
@@ -312,6 +326,8 @@ class _$VideoModelImpl implements _VideoModel {
                 other.videoDuration == videoDuration) &&
             (identical(other.uploadedAt, uploadedAt) ||
                 other.uploadedAt == uploadedAt) &&
+            (identical(other.lastTransaction, lastTransaction) ||
+                other.lastTransaction == lastTransaction) &&
             (identical(other.videoUrl, videoUrl) ||
                 other.videoUrl == videoUrl) &&
             (identical(other.recommendedAge, recommendedAge) ||
@@ -319,6 +335,8 @@ class _$VideoModelImpl implements _VideoModel {
             (identical(other.level, level) || other.level == level) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.ownerId, ownerId) || other.ownerId == ownerId) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.price, price) || other.price == price));
   }
 
@@ -327,16 +345,17 @@ class _$VideoModelImpl implements _VideoModel {
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      description,
       thumbnailUrl,
       status,
       videoDuration,
       uploadedAt,
+      lastTransaction,
       videoUrl,
       recommendedAge,
       level,
       title,
       ownerId,
+      description,
       price);
 
   /// Create a copy of VideoModel
@@ -358,16 +377,17 @@ class _$VideoModelImpl implements _VideoModel {
 abstract class _VideoModel implements VideoModel {
   const factory _VideoModel(
       {final int? id,
-      final String? description,
       final String? thumbnailUrl,
       final VideoStatus? status,
       final int? videoDuration,
       final DateTime? uploadedAt,
+      final DateTime? lastTransaction,
       required final String videoUrl,
       required final int recommendedAge,
       required final VideoLevel level,
       required final String title,
       required final int ownerId,
+      required final String description,
       required final int price}) = _$VideoModelImpl;
 
   factory _VideoModel.fromJson(Map<String, dynamic> json) =
@@ -376,8 +396,6 @@ abstract class _VideoModel implements VideoModel {
   @override
   int? get id;
   @override
-  String? get description;
-  @override
   String? get thumbnailUrl;
   @override
   VideoStatus? get status;
@@ -385,6 +403,8 @@ abstract class _VideoModel implements VideoModel {
   int? get videoDuration;
   @override
   DateTime? get uploadedAt;
+  @override
+  DateTime? get lastTransaction;
   @override
   String get videoUrl;
   @override
@@ -395,6 +415,8 @@ abstract class _VideoModel implements VideoModel {
   String get title;
   @override
   int get ownerId;
+  @override
+  String get description;
   @override
   int get price;
 

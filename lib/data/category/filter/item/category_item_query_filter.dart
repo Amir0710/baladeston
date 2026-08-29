@@ -8,14 +8,22 @@ part 'category_item_query_filter.g.dart';
 @freezed
 class CategoryItemQueryFilter with _$CategoryItemQueryFilter {
   const factory CategoryItemQueryFilter({
+    String? searchTerm,
+    List<int>? ids,
+    int? minCount,
+    int? maxCount,
+
+    int? minPrice ,
+    int? maxPrice,
     int? categoryId,
     int? adderId,
     int? collectionId,
+    double? minRating,
     CategoryItemStatus? status,
     @Default(20) int limit,
-    @Default(0) int offset,
+    String? cursor,
     @Default(false) bool ascending,
-    @Default(CategoryOrder.title) CategoryOrder order,
+    @Default(CategoryOrder.createdAt) CategoryOrder order,
   }) = _CategoryItemQueryFilter;
 
   factory CategoryItemQueryFilter.fromJson(Map<String, dynamic> json) =>

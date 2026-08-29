@@ -9,18 +9,34 @@ final class CategoryModelInvalidIdFailure extends CategoryModelFailure {
   const CategoryModelInvalidIdFailure();
 }
 
+// type
+final class CategoryModelInvalidTypeFailure extends CategoryModelFailure {
+  const CategoryModelInvalidTypeFailure();
+}
+
 // parent
 final class CategoryModelInvalidParentFailure extends CategoryModelFailure {
   const CategoryModelInvalidParentFailure();
 }
 
-// title
-final class CategoryModelMissingTitleFailure extends CategoryModelFailure {
-  const CategoryModelMissingTitleFailure();
+// avgRate
+final class CategoryModelInvalidAvgRateFailure extends CategoryModelFailure {
+  const CategoryModelInvalidAvgRateFailure();
 }
 
+// rageCount
+final class CategoryModelInvalidRageCountFailure extends CategoryModelFailure {
+  const CategoryModelInvalidRageCountFailure();
+}
+
+// title
 final class CategoryModelInvalidTitleFailure extends CategoryModelFailure {
   const CategoryModelInvalidTitleFailure();
+}
+
+// description
+final class CategoryModelInvalidDescriptionFailure extends CategoryModelFailure {
+  const CategoryModelInvalidDescriptionFailure();
 }
 
 // status
@@ -29,8 +45,7 @@ final class CategoryModelInvalidStatusFailure extends CategoryModelFailure {
 }
 
 // thumbnailUrl
-final class CategoryModelInvalidThumbnailUrlFailure
-    extends CategoryModelFailure {
+final class CategoryModelInvalidThumbnailUrlFailure extends CategoryModelFailure {
   const CategoryModelInvalidThumbnailUrlFailure();
 }
 
@@ -40,16 +55,16 @@ final class CategoryModelInvalidCreatedAtFailure extends CategoryModelFailure {
 }
 
 // lastTransaction
-final class CategoryModelInvalidLastTransactionFailure
-    extends CategoryModelFailure {
+final class CategoryModelInvalidLastTransactionFailure extends CategoryModelFailure {
   const CategoryModelInvalidLastTransactionFailure();
 }
 
 // ownerId
-final class CategoryModelMissingOwnerIdFailure extends CategoryModelFailure {
-  const CategoryModelMissingOwnerIdFailure();
-}
-
 final class CategoryModelInvalidOwnerIdFailure extends CategoryModelFailure {
   const CategoryModelInvalidOwnerIdFailure();
+}
+
+// missing
+final class CategoryModelMissingFieldFailure extends CategoryModelFailure {
+  const CategoryModelMissingFieldFailure();
 }

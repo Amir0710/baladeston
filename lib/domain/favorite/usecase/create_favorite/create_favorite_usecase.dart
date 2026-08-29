@@ -1,8 +1,7 @@
 import 'package:baladeston/core/result/result.dart';
-import 'package:baladeston/domain/favorite/entity/favorite_entity.dart';
-import 'package:baladeston/domain/favorite/exception/favorite_entity_exception.dart';
-import 'package:baladeston/domain/favorite/failure/favorite_failure.dart';
-import 'package:baladeston/domain/favorite/repository/favorite_repository.dart';
+import 'package:baladeston/domain/favorite/entity/favorite/favorite_entity.dart';
+import 'package:baladeston/domain/favorite/failure/base_favorite_failure.dart';
+import 'package:baladeston/domain/favorite/repository/favorite/favorite_repository.dart';
 import 'package:baladeston/domain/favorite/usecase/create_favorite/create_favorite_usecase_business_rule.dart';
 
 class CreateFavoriteUseCase {
@@ -15,14 +14,12 @@ class CreateFavoriteUseCase {
   Future<Result<FavoriteEntity, FavoriteFailure>> call({
     required FavoriteEntity favorite,
   }) async {
-    try {
-      final rule =
-      CreateFavoriteUsecaseBusinessRule(favorite: favorite);
-      rule.validate();
-    } on FavoriteEntityException catch (e) {
-      return Result.failure(FavoriteValidationFailure(e.message));
-    }
+    final businessRule = CreateFavoriteUseCaseBusinessRule(favorite: favorite);
+    final validationResult = businessRule.validate();
 
-    return repository.createFavorite(favorite: favorite);
+    return validationResult.when(
+      success: (_) => repository.createFavorite(favorite: favorite),
+      failure: (failure) => Result.failure(failure),
+    );
   }
 }

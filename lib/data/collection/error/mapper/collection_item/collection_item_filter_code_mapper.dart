@@ -7,11 +7,13 @@ final class CollectionItemFilterCodeMapper {
   const CollectionItemFilterCodeMapper();
 
   static final Map<String, CollectionFailure Function()> _registry = {
+    // ids
+    codes.CollectionItemFilterErrorCodes.invalidIds: () =>
+    const CollectionItemModelFilterInvalidIdsFailure(),
+
     // collectionId
-    codes.CollectionItemFilterErrorCodes.missingCollectionId: () =>
-        const CollectionItemModelFilterMissingCollectionIdFailure(),
     codes.CollectionItemFilterErrorCodes.invalidCollectionId: () =>
-        const CollectionItemModelFilterInvalidCollectionIdFailure(),
+    const CollectionItemModelFilterInvalidCollectionIdFailure(),
 
     // status
     codes.CollectionItemFilterErrorCodes.invalidStatusValue: () =>

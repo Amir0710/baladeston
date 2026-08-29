@@ -21,13 +21,17 @@ CategoryModel _$CategoryModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CategoryModel {
   int? get id => throw _privateConstructorUsedError;
-  String? get password => throw _privateConstructorUsedError;
+  int? get parent => throw _privateConstructorUsedError;
+  CategoryType get type => throw _privateConstructorUsedError;
+  double? get avgRate => throw _privateConstructorUsedError;
+  int? get rageCount => throw _privateConstructorUsedError;
+  CategoryStatus? get status => throw _privateConstructorUsedError;
   String? get thumbnailUrl => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get lastTransaction => throw _privateConstructorUsedError;
-  CategoryStatus? get status => throw _privateConstructorUsedError;
-  int get ownerId => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  int? get ownerId => throw _privateConstructorUsedError;
 
   /// Serializes this CategoryModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,13 +51,17 @@ abstract class $CategoryModelCopyWith<$Res> {
   @useResult
   $Res call(
       {int? id,
-      String? password,
+      int? parent,
+      CategoryType type,
+      double? avgRate,
+      int? rageCount,
+      CategoryStatus? status,
       String? thumbnailUrl,
       DateTime? createdAt,
       DateTime? lastTransaction,
-      CategoryStatus? status,
-      int ownerId,
-      String title});
+      String title,
+      String description,
+      int? ownerId});
 }
 
 /// @nodoc
@@ -72,23 +80,43 @@ class _$CategoryModelCopyWithImpl<$Res, $Val extends CategoryModel>
   @override
   $Res call({
     Object? id = freezed,
-    Object? password = freezed,
+    Object? parent = freezed,
+    Object? type = null,
+    Object? avgRate = freezed,
+    Object? rageCount = freezed,
+    Object? status = freezed,
     Object? thumbnailUrl = freezed,
     Object? createdAt = freezed,
     Object? lastTransaction = freezed,
-    Object? status = freezed,
-    Object? ownerId = null,
     Object? title = null,
+    Object? description = null,
+    Object? ownerId = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
+      parent: freezed == parent
+          ? _value.parent
+          : parent // ignore: cast_nullable_to_non_nullable
+              as int?,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as CategoryType,
+      avgRate: freezed == avgRate
+          ? _value.avgRate
+          : avgRate // ignore: cast_nullable_to_non_nullable
+              as double?,
+      rageCount: freezed == rageCount
+          ? _value.rageCount
+          : rageCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as CategoryStatus?,
       thumbnailUrl: freezed == thumbnailUrl
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
@@ -101,18 +129,18 @@ class _$CategoryModelCopyWithImpl<$Res, $Val extends CategoryModel>
           ? _value.lastTransaction
           : lastTransaction // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as CategoryStatus?,
-      ownerId: null == ownerId
-          ? _value.ownerId
-          : ownerId // ignore: cast_nullable_to_non_nullable
-              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      ownerId: freezed == ownerId
+          ? _value.ownerId
+          : ownerId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -127,13 +155,17 @@ abstract class _$$CategoryModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {int? id,
-      String? password,
+      int? parent,
+      CategoryType type,
+      double? avgRate,
+      int? rageCount,
+      CategoryStatus? status,
       String? thumbnailUrl,
       DateTime? createdAt,
       DateTime? lastTransaction,
-      CategoryStatus? status,
-      int ownerId,
-      String title});
+      String title,
+      String description,
+      int? ownerId});
 }
 
 /// @nodoc
@@ -150,23 +182,43 @@ class __$$CategoryModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? password = freezed,
+    Object? parent = freezed,
+    Object? type = null,
+    Object? avgRate = freezed,
+    Object? rageCount = freezed,
+    Object? status = freezed,
     Object? thumbnailUrl = freezed,
     Object? createdAt = freezed,
     Object? lastTransaction = freezed,
-    Object? status = freezed,
-    Object? ownerId = null,
     Object? title = null,
+    Object? description = null,
+    Object? ownerId = freezed,
   }) {
     return _then(_$CategoryModelImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
+      parent: freezed == parent
+          ? _value.parent
+          : parent // ignore: cast_nullable_to_non_nullable
+              as int?,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as CategoryType,
+      avgRate: freezed == avgRate
+          ? _value.avgRate
+          : avgRate // ignore: cast_nullable_to_non_nullable
+              as double?,
+      rageCount: freezed == rageCount
+          ? _value.rageCount
+          : rageCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as CategoryStatus?,
       thumbnailUrl: freezed == thumbnailUrl
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
@@ -179,18 +231,18 @@ class __$$CategoryModelImplCopyWithImpl<$Res>
           ? _value.lastTransaction
           : lastTransaction // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as CategoryStatus?,
-      ownerId: null == ownerId
-          ? _value.ownerId
-          : ownerId // ignore: cast_nullable_to_non_nullable
-              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      ownerId: freezed == ownerId
+          ? _value.ownerId
+          : ownerId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -200,13 +252,17 @@ class __$$CategoryModelImplCopyWithImpl<$Res>
 class _$CategoryModelImpl implements _CategoryModel {
   const _$CategoryModelImpl(
       {this.id,
-      this.password,
+      this.parent,
+      required this.type,
+      this.avgRate,
+      this.rageCount,
+      this.status,
       this.thumbnailUrl,
       this.createdAt,
       this.lastTransaction,
-      this.status,
-      required this.ownerId,
-      required this.title});
+      required this.title,
+      required this.description,
+      this.ownerId});
 
   factory _$CategoryModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CategoryModelImplFromJson(json);
@@ -214,7 +270,15 @@ class _$CategoryModelImpl implements _CategoryModel {
   @override
   final int? id;
   @override
-  final String? password;
+  final int? parent;
+  @override
+  final CategoryType type;
+  @override
+  final double? avgRate;
+  @override
+  final int? rageCount;
+  @override
+  final CategoryStatus? status;
   @override
   final String? thumbnailUrl;
   @override
@@ -222,15 +286,15 @@ class _$CategoryModelImpl implements _CategoryModel {
   @override
   final DateTime? lastTransaction;
   @override
-  final CategoryStatus? status;
-  @override
-  final int ownerId;
-  @override
   final String title;
+  @override
+  final String description;
+  @override
+  final int? ownerId;
 
   @override
   String toString() {
-    return 'CategoryModel(id: $id, password: $password, thumbnailUrl: $thumbnailUrl, createdAt: $createdAt, lastTransaction: $lastTransaction, status: $status, ownerId: $ownerId, title: $title)';
+    return 'CategoryModel(id: $id, parent: $parent, type: $type, avgRate: $avgRate, rageCount: $rageCount, status: $status, thumbnailUrl: $thumbnailUrl, createdAt: $createdAt, lastTransaction: $lastTransaction, title: $title, description: $description, ownerId: $ownerId)';
   }
 
   @override
@@ -239,23 +303,40 @@ class _$CategoryModelImpl implements _CategoryModel {
         (other.runtimeType == runtimeType &&
             other is _$CategoryModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
+            (identical(other.parent, parent) || other.parent == parent) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.avgRate, avgRate) || other.avgRate == avgRate) &&
+            (identical(other.rageCount, rageCount) ||
+                other.rageCount == rageCount) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.thumbnailUrl, thumbnailUrl) ||
                 other.thumbnailUrl == thumbnailUrl) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.lastTransaction, lastTransaction) ||
                 other.lastTransaction == lastTransaction) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.ownerId, ownerId) || other.ownerId == ownerId) &&
-            (identical(other.title, title) || other.title == title));
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.ownerId, ownerId) || other.ownerId == ownerId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, password, thumbnailUrl,
-      createdAt, lastTransaction, status, ownerId, title);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      parent,
+      type,
+      avgRate,
+      rageCount,
+      status,
+      thumbnailUrl,
+      createdAt,
+      lastTransaction,
+      title,
+      description,
+      ownerId);
 
   /// Create a copy of CategoryModel
   /// with the given fields replaced by the non-null parameter values.
@@ -276,13 +357,17 @@ class _$CategoryModelImpl implements _CategoryModel {
 abstract class _CategoryModel implements CategoryModel {
   const factory _CategoryModel(
       {final int? id,
-      final String? password,
+      final int? parent,
+      required final CategoryType type,
+      final double? avgRate,
+      final int? rageCount,
+      final CategoryStatus? status,
       final String? thumbnailUrl,
       final DateTime? createdAt,
       final DateTime? lastTransaction,
-      final CategoryStatus? status,
-      required final int ownerId,
-      required final String title}) = _$CategoryModelImpl;
+      required final String title,
+      required final String description,
+      final int? ownerId}) = _$CategoryModelImpl;
 
   factory _CategoryModel.fromJson(Map<String, dynamic> json) =
       _$CategoryModelImpl.fromJson;
@@ -290,7 +375,15 @@ abstract class _CategoryModel implements CategoryModel {
   @override
   int? get id;
   @override
-  String? get password;
+  int? get parent;
+  @override
+  CategoryType get type;
+  @override
+  double? get avgRate;
+  @override
+  int? get rageCount;
+  @override
+  CategoryStatus? get status;
   @override
   String? get thumbnailUrl;
   @override
@@ -298,11 +391,11 @@ abstract class _CategoryModel implements CategoryModel {
   @override
   DateTime? get lastTransaction;
   @override
-  CategoryStatus? get status;
-  @override
-  int get ownerId;
-  @override
   String get title;
+  @override
+  String get description;
+  @override
+  int? get ownerId;
 
   /// Create a copy of CategoryModel
   /// with the given fields replaced by the non-null parameter values.

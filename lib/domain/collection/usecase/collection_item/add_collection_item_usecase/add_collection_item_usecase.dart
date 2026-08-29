@@ -15,7 +15,7 @@ class AddCollectionItemUseCase {
     required CollectionItemEntity item,
   }) async {
     final businessRule =
-        UploadCollectionItemUsecaseBusinessRule(entity: item);
+        AddCollectionItemUsecaseBusinessRule(collectionItem: item);
     final validationResult = businessRule.validate();
 
     return validationResult.when(

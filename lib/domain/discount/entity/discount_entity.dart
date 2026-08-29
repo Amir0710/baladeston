@@ -1,3 +1,5 @@
+import 'package:baladeston/core/enum/discount/discount_status.dart';
+import 'package:baladeston/core/enum/discount/discount_target_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'discount_entity.freezed.dart';
@@ -5,13 +7,20 @@ part 'discount_entity.freezed.dart';
 @freezed
 abstract class DiscountEntity with _$DiscountEntity {
   const factory DiscountEntity({
-    int? userId,
     int? id,
-    int? categoryId,
+    int? ownerId,
+    required String code ,
+    String? title ,
+    int? amount,
     required int percent,
-    String? status,
+    DiscountTargetType? type ,
+    int? targetId,
+    int? minOrderAmount,
+    bool? firstOrderOnly,
+    DiscountStatus? status,
+    DateTime? createdAt ,
+    bool? userCreated ,
     DateTime? expiresAt,
-    int? videoId,
     int? maxUse,
     int? usage,
   }) = _DiscountEntity;

@@ -21,15 +21,21 @@ CollectionModel _$CollectionModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CollectionModel {
   int? get id => throw _privateConstructorUsedError;
-  CollectionStatus? get status => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  int? get ownerId => throw _privateConstructorUsedError;
+  double? get avgRate => throw _privateConstructorUsedError;
+  int? get rateCount => throw _privateConstructorUsedError;
   String? get thumbnailUrl => throw _privateConstructorUsedError;
-  int? get count => throw _privateConstructorUsedError;
-  int? get price => throw _privateConstructorUsedError;
+  CollectionStatus? get status => throw _privateConstructorUsedError;
+  CollectionType? get type => throw _privateConstructorUsedError;
+  int? get count =>
+      throw _privateConstructorUsedError; // count of video in collection
+  int? get price =>
+      throw _privateConstructorUsedError; // calculated at the time of request
   String? get uniqueCode => throw _privateConstructorUsedError;
   DateTime? get lastTransaction => throw _privateConstructorUsedError;
-  int get ownerId => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
 
   /// Serializes this CollectionModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,15 +55,19 @@ abstract class $CollectionModelCopyWith<$Res> {
   @useResult
   $Res call(
       {int? id,
-      CollectionStatus? status,
+      String title,
+      String description,
+      int? ownerId,
+      double? avgRate,
+      int? rateCount,
       String? thumbnailUrl,
+      CollectionStatus? status,
+      CollectionType? type,
       int? count,
       int? price,
       String? uniqueCode,
       DateTime? lastTransaction,
-      int ownerId,
-      DateTime? createdAt,
-      String title});
+      DateTime? createdAt});
 }
 
 /// @nodoc
@@ -76,29 +86,57 @@ class _$CollectionModelCopyWithImpl<$Res, $Val extends CollectionModel>
   @override
   $Res call({
     Object? id = freezed,
-    Object? status = freezed,
+    Object? title = null,
+    Object? description = null,
+    Object? ownerId = freezed,
+    Object? avgRate = freezed,
+    Object? rateCount = freezed,
     Object? thumbnailUrl = freezed,
+    Object? status = freezed,
+    Object? type = freezed,
     Object? count = freezed,
     Object? price = freezed,
     Object? uniqueCode = freezed,
     Object? lastTransaction = freezed,
-    Object? ownerId = null,
     Object? createdAt = freezed,
-    Object? title = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as CollectionStatus?,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      ownerId: freezed == ownerId
+          ? _value.ownerId
+          : ownerId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      avgRate: freezed == avgRate
+          ? _value.avgRate
+          : avgRate // ignore: cast_nullable_to_non_nullable
+              as double?,
+      rateCount: freezed == rateCount
+          ? _value.rateCount
+          : rateCount // ignore: cast_nullable_to_non_nullable
+              as int?,
       thumbnailUrl: freezed == thumbnailUrl
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as CollectionStatus?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as CollectionType?,
       count: freezed == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
@@ -115,18 +153,10 @@ class _$CollectionModelCopyWithImpl<$Res, $Val extends CollectionModel>
           ? _value.lastTransaction
           : lastTransaction // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      ownerId: null == ownerId
-          ? _value.ownerId
-          : ownerId // ignore: cast_nullable_to_non_nullable
-              as int,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -141,15 +171,19 @@ abstract class _$$CollectionModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {int? id,
-      CollectionStatus? status,
+      String title,
+      String description,
+      int? ownerId,
+      double? avgRate,
+      int? rateCount,
       String? thumbnailUrl,
+      CollectionStatus? status,
+      CollectionType? type,
       int? count,
       int? price,
       String? uniqueCode,
       DateTime? lastTransaction,
-      int ownerId,
-      DateTime? createdAt,
-      String title});
+      DateTime? createdAt});
 }
 
 /// @nodoc
@@ -166,29 +200,57 @@ class __$$CollectionModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? status = freezed,
+    Object? title = null,
+    Object? description = null,
+    Object? ownerId = freezed,
+    Object? avgRate = freezed,
+    Object? rateCount = freezed,
     Object? thumbnailUrl = freezed,
+    Object? status = freezed,
+    Object? type = freezed,
     Object? count = freezed,
     Object? price = freezed,
     Object? uniqueCode = freezed,
     Object? lastTransaction = freezed,
-    Object? ownerId = null,
     Object? createdAt = freezed,
-    Object? title = null,
   }) {
     return _then(_$CollectionModelImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as CollectionStatus?,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      ownerId: freezed == ownerId
+          ? _value.ownerId
+          : ownerId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      avgRate: freezed == avgRate
+          ? _value.avgRate
+          : avgRate // ignore: cast_nullable_to_non_nullable
+              as double?,
+      rateCount: freezed == rateCount
+          ? _value.rateCount
+          : rateCount // ignore: cast_nullable_to_non_nullable
+              as int?,
       thumbnailUrl: freezed == thumbnailUrl
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as CollectionStatus?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as CollectionType?,
       count: freezed == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
@@ -205,18 +267,10 @@ class __$$CollectionModelImplCopyWithImpl<$Res>
           ? _value.lastTransaction
           : lastTransaction // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      ownerId: null == ownerId
-          ? _value.ownerId
-          : ownerId // ignore: cast_nullable_to_non_nullable
-              as int,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -226,15 +280,19 @@ class __$$CollectionModelImplCopyWithImpl<$Res>
 class _$CollectionModelImpl extends _CollectionModel {
   const _$CollectionModelImpl(
       {this.id,
-      this.status,
+      required this.title,
+      required this.description,
+      this.ownerId,
+      this.avgRate,
+      this.rateCount,
       this.thumbnailUrl,
+      this.status,
+      this.type,
       this.count,
       this.price,
       this.uniqueCode,
       this.lastTransaction,
-      required this.ownerId,
-      this.createdAt,
-      required this.title})
+      this.createdAt})
       : super._();
 
   factory _$CollectionModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -243,27 +301,37 @@ class _$CollectionModelImpl extends _CollectionModel {
   @override
   final int? id;
   @override
-  final CollectionStatus? status;
+  final String title;
+  @override
+  final String description;
+  @override
+  final int? ownerId;
+  @override
+  final double? avgRate;
+  @override
+  final int? rateCount;
   @override
   final String? thumbnailUrl;
   @override
+  final CollectionStatus? status;
+  @override
+  final CollectionType? type;
+  @override
   final int? count;
+// count of video in collection
   @override
   final int? price;
+// calculated at the time of request
   @override
   final String? uniqueCode;
   @override
   final DateTime? lastTransaction;
   @override
-  final int ownerId;
-  @override
   final DateTime? createdAt;
-  @override
-  final String title;
 
   @override
   String toString() {
-    return 'CollectionModel(id: $id, status: $status, thumbnailUrl: $thumbnailUrl, count: $count, price: $price, uniqueCode: $uniqueCode, lastTransaction: $lastTransaction, ownerId: $ownerId, createdAt: $createdAt, title: $title)';
+    return 'CollectionModel(id: $id, title: $title, description: $description, ownerId: $ownerId, avgRate: $avgRate, rateCount: $rateCount, thumbnailUrl: $thumbnailUrl, status: $status, type: $type, count: $count, price: $price, uniqueCode: $uniqueCode, lastTransaction: $lastTransaction, createdAt: $createdAt)';
   }
 
   @override
@@ -272,25 +340,45 @@ class _$CollectionModelImpl extends _CollectionModel {
         (other.runtimeType == runtimeType &&
             other is _$CollectionModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.status, status) || other.status == status) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.ownerId, ownerId) || other.ownerId == ownerId) &&
+            (identical(other.avgRate, avgRate) || other.avgRate == avgRate) &&
+            (identical(other.rateCount, rateCount) ||
+                other.rateCount == rateCount) &&
             (identical(other.thumbnailUrl, thumbnailUrl) ||
                 other.thumbnailUrl == thumbnailUrl) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.type, type) || other.type == type) &&
             (identical(other.count, count) || other.count == count) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.uniqueCode, uniqueCode) ||
                 other.uniqueCode == uniqueCode) &&
             (identical(other.lastTransaction, lastTransaction) ||
                 other.lastTransaction == lastTransaction) &&
-            (identical(other.ownerId, ownerId) || other.ownerId == ownerId) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.title, title) || other.title == title));
+                other.createdAt == createdAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, status, thumbnailUrl, count,
-      price, uniqueCode, lastTransaction, ownerId, createdAt, title);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      description,
+      ownerId,
+      avgRate,
+      rateCount,
+      thumbnailUrl,
+      status,
+      type,
+      count,
+      price,
+      uniqueCode,
+      lastTransaction,
+      createdAt);
 
   /// Create a copy of CollectionModel
   /// with the given fields replaced by the non-null parameter values.
@@ -312,15 +400,19 @@ class _$CollectionModelImpl extends _CollectionModel {
 abstract class _CollectionModel extends CollectionModel {
   const factory _CollectionModel(
       {final int? id,
-      final CollectionStatus? status,
+      required final String title,
+      required final String description,
+      final int? ownerId,
+      final double? avgRate,
+      final int? rateCount,
       final String? thumbnailUrl,
+      final CollectionStatus? status,
+      final CollectionType? type,
       final int? count,
       final int? price,
       final String? uniqueCode,
       final DateTime? lastTransaction,
-      required final int ownerId,
-      final DateTime? createdAt,
-      required final String title}) = _$CollectionModelImpl;
+      final DateTime? createdAt}) = _$CollectionModelImpl;
   const _CollectionModel._() : super._();
 
   factory _CollectionModel.fromJson(Map<String, dynamic> json) =
@@ -329,23 +421,31 @@ abstract class _CollectionModel extends CollectionModel {
   @override
   int? get id;
   @override
-  CollectionStatus? get status;
+  String get title;
+  @override
+  String get description;
+  @override
+  int? get ownerId;
+  @override
+  double? get avgRate;
+  @override
+  int? get rateCount;
   @override
   String? get thumbnailUrl;
   @override
-  int? get count;
+  CollectionStatus? get status;
   @override
-  int? get price;
+  CollectionType? get type;
+  @override
+  int? get count; // count of video in collection
+  @override
+  int? get price; // calculated at the time of request
   @override
   String? get uniqueCode;
   @override
   DateTime? get lastTransaction;
   @override
-  int get ownerId;
-  @override
   DateTime? get createdAt;
-  @override
-  String get title;
 
   /// Create a copy of CollectionModel
   /// with the given fields replaced by the non-null parameter values.

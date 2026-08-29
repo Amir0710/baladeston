@@ -7,6 +7,10 @@ class CategoryItemFilterCodeMapper {
   const CategoryItemFilterCodeMapper();
 
   static final Map<String, CategoryFailure Function()> _map = {
+    // ids
+    codes.CategoryItemModelFilterErrorCodes.invalidIds: () =>
+        const CategoryItemModelFilterInvalidIdsFailure(),
+
     // categoryId
     codes.CategoryItemModelFilterErrorCodes.invalidCategoryId: () =>
         const CategoryItemModelFilterInvalidCategoryIdFailure(),
@@ -20,12 +24,10 @@ class CategoryItemFilterCodeMapper {
         const CategoryItemModelFilterInvalidLimitFailure(),
 
     // offset
-
     codes.CategoryItemModelFilterErrorCodes.invalidOffset: () =>
         const CategoryItemModelFilterInvalidOffsetFailure(),
 
     // ascending
-
     codes.CategoryItemModelFilterErrorCodes.invalidAscending: () =>
         const CategoryItemModelFilterInvalidAscendingFailure(),
 

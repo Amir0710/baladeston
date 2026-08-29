@@ -2,8 +2,8 @@ abstract final class CategoryModelFilterErrorCodes {
   // searchTerm
   static const invalidSearchTerm = 'CATEGORY_FILTER_INVALID_SEARCH_TERM';
 
-  // searchId
-  static const invalidSearchId = 'CATEGORY_FILTER_INVALID_SEARCH_ID';
+  // ids
+  static const invalidIds = 'CATEGORY_FILTER_INVALID_SEARCH_ID';
 
   // status
   static const invalidStatus = 'CATEGORY_FILTER_INVALID_STATUS';

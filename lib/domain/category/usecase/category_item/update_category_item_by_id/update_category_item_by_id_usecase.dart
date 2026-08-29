@@ -13,7 +13,7 @@ class UpdateCategoryItemByIdUseCase {
     required int id,
     required CategoryItemEntity item,
   }) async {
-    final rule = UpdateCategoryItemByIdUsecaseBusinessRule(id: id, item: item);
+    final rule = UpdateCategoryItemByIdUsecaseBusinessRule(id: id, categoryItem: item);
     final validation = rule.validate();
       return validation.when(
         success: (_) => repository.updateCategoryItemById(id: id, item: item),

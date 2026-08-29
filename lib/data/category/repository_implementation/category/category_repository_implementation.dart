@@ -1,12 +1,12 @@
-import 'dart:io';
-
+import 'package:baladeston/core/model/paginated_response_model.dart';
 import 'package:baladeston/core/result/result.dart';
-import 'package:baladeston/data/category/datasource/remote/category_item_remote_datasource/category_item_api.dart';
+import 'package:baladeston/data/category/datasource/remote/category_remote_datasource/category_api.dart';
 import 'package:baladeston/data/category/filter/model/category_query_filter.dart';
-import 'package:baladeston/data/category/mapper/model/category_mapper.dart';
+import 'package:baladeston/data/category/mapper/model/category/category_mapper.dart';
 import 'package:baladeston/domain/category/entity/category_entity/category_entity.dart';
 import 'package:baladeston/domain/category/failure/base_category_failure.dart';
 import 'package:baladeston/domain/category/repository/category/category_repository.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CategoryRepositoryImplementation extends CategoryRepository {
   final CategoryApi _api;
@@ -22,7 +22,7 @@ class CategoryRepositoryImplementation extends CategoryRepository {
 
   @override
   Future<Result<String, CategoryFailure>> uploadCategoryImage({
-    required File image,
+    required XFile image,
   }) {
     return _api.uploadCategoryImage(image: image);
   }
@@ -41,7 +41,7 @@ class CategoryRepositoryImplementation extends CategoryRepository {
   }
 
   @override
-  Future<Result<List<int>, CategoryFailure>> deleteCategoryByFilter({
+  Future<Result<int, CategoryFailure>> deleteCategoryByFilter({
     required CategoryQueryFilter filter,
   }) {
     return _api.deleteCategoryByFilter(filter: filter);
@@ -55,13 +55,25 @@ class CategoryRepositoryImplementation extends CategoryRepository {
   }
 
   @override
-  Future<Result<List<CategoryEntity>, CategoryFailure>> getCategoryByFilter({
+  Future<Result<PaginatedResponseModel<CategoryEntity>, CategoryFailure>>
+      getCategoryByFilter({
     required CategoryQueryFilter filter,
   }) async {
     final result = await _api.getCategoryByFilter(filter: filter);
 
     return result.map(
-      success: (s) => Result.success(s.data.map((e) => e.toEntity()).toList()),
+      success: (s) {
+        final paginatedModel = s.data;
+        final entities = paginatedModel.items.map((e) => e.toEntity()).toList();
+
+        final mapped = PaginatedResponseModel<CategoryEntity>(
+          items: entities,
+          nextCursor: paginatedModel.nextCursor,
+          isLast: paginatedModel.isLast,
+        );
+
+        return Result.success(mapped);
+      },
       failure: (f) => Result.failure(f.failure),
     );
   }

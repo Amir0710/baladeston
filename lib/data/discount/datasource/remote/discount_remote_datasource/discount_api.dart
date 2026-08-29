@@ -1,58 +1,42 @@
-import 'package:baladeston/data/discount/filter/discount_query_filter.dart';
+import 'package:baladeston/core/model/paginated_response_model.dart';
+import 'package:baladeston/core/result/result.dart';
+import 'package:baladeston/data/discount/filter/discount/discount_query_filter.dart';
 import 'package:baladeston/data/discount/model/discount_model.dart';
+import 'package:baladeston/domain/discount/failure/base_discount_failure.dart';
 
 abstract class DiscountApi {
-  // --------------------------------------------------
-  // Create
-  // --------------------------------------------------
-
-  Future<DiscountModel> createDiscount({
-    required DiscountModel discount,
-  });
-
-  // --------------------------------------------------
-  // Update
-  // --------------------------------------------------
-
-  Future<DiscountModel> updateDiscountById({
-    required int id,
-    required DiscountModel discount,
-  });
-
-  Future<List<DiscountModel>> updateDiscountByFilter({
-    required DiscountQueryFilter filter,
-    required DiscountModel discount,
-  });
-
-  // --------------------------------------------------
-  // Read
-  // --------------------------------------------------
-
-  Future<DiscountModel> getDiscountById({
-    required int id,
-  });
-
-  Future<List<DiscountModel>> getDiscountByFilter({
+  Future<Result<PaginatedResponseModel<DiscountModel>, DiscountFailure>>
+      getDiscountByFilter({
     required DiscountQueryFilter filter,
   });
 
-  // --------------------------------------------------
-  // Delete
-  // --------------------------------------------------
-
-  Future<int> deleteDiscountById({
+  Future<Result<DiscountModel, DiscountFailure>> getDiscountById({
     required int id,
   });
 
-  Future<List<int>> deleteDiscountByFilter({
+  Future<Result<DiscountModel, DiscountFailure>> createDiscount({
+    required DiscountModel discount,
+  });
+
+  Future<Result<DiscountModel, DiscountFailure>> updateDiscountById({
+    required DiscountModel discount,
+    required int id,
+  });
+
+  Future<Result<int, DiscountFailure>> updateDiscountByFilter({
+    required DiscountModel discount,
     required DiscountQueryFilter filter,
   });
 
-  // --------------------------------------------------
-  // Count
-  // --------------------------------------------------
+  Future<Result<int, DiscountFailure>> deleteDiscountById({
+    required int id,
+  });
 
-  Future<int> countAllDiscount({
+  Future<Result<int, DiscountFailure>> deleteDiscountByFilter({
+    required DiscountQueryFilter filter,
+  });
+
+  Future<Result<int, DiscountFailure>> countAllDiscount({
     required DiscountQueryFilter filter,
   });
 }

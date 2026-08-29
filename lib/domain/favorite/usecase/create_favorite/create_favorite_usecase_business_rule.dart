@@ -1,34 +1,30 @@
-import 'package:baladeston/domain/favorite/entity/favorite_entity.dart';
-import 'package:baladeston/domain/favorite/exception/favorite_entity_exception.dart';
+import 'package:baladeston/core/result/result.dart';
+import 'package:baladeston/domain/favorite/entity/favorite/favorite_entity.dart';
+import 'package:baladeston/domain/favorite/failure/base_favorite_failure.dart';
+import 'package:baladeston/domain/favorite/failure/domain/validation/favorite_entity_failure.dart';
 
-class CreateFavoriteUsecaseBusinessRule {
+class CreateFavoriteUseCaseBusinessRule {
   final FavoriteEntity favorite;
 
-  const CreateFavoriteUsecaseBusinessRule({
+  const CreateFavoriteUseCaseBusinessRule({
     required this.favorite,
   });
 
-  void validate() {
-    _validateOwner();
-    _validateTarget();
-    _validateTargetType();
+  Result<void, FavoriteFailure> validate() {
+    return _entityValidation();
   }
 
-  void _validateOwner() {
+  Result<void, FavoriteFailure> _entityValidation() {
+    // userId
     if (favorite.userId <= 0) {
-      throw FavoriteOwnerRequiredException();
+      return const Result.failure(FavoriteEntityInvalidUserIdFailure());
     }
-  }
 
-  void _validateTarget() {
+    // targetId
     if (favorite.targetId <= 0) {
-      throw FavoriteTargetRequiredException();
+      return const Result.failure(FavoriteEntityInvalidTargetIdFailure());
     }
-  }
 
-  void _validateTargetType() {
-    // if (favorite.type.isEmpty) {
-    //   throw FavoriteTargetTypeInvalidException();
-    // }
+    return const Result.success(null);
   }
 }

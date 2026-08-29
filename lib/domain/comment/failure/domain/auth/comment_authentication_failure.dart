@@ -1,5 +1,5 @@
 
-import 'package:baladeston/domain/Comment/failure/base_Comment_failure.dart';
+import 'package:baladeston/domain/comment/failure/base_comment_failure.dart';
 
 abstract class CommentAuthenticationFailure extends BaseCommentAuthFailure {
   const CommentAuthenticationFailure();

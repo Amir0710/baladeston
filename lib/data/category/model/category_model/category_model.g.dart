@@ -13,16 +13,21 @@ _$CategoryModelImpl _$$CategoryModelImplFromJson(Map<String, dynamic> json) =>
       ($checkedConvert) {
         final val = _$CategoryModelImpl(
           id: $checkedConvert('id', (v) => (v as num?)?.toInt()),
-          password: $checkedConvert('password', (v) => v as String?),
+          parent: $checkedConvert('parent', (v) => (v as num?)?.toInt()),
+          type: $checkedConvert(
+              'type', (v) => $enumDecode(_$CategoryTypeEnumMap, v)),
+          avgRate: $checkedConvert('avgRate', (v) => (v as num?)?.toDouble()),
+          rageCount: $checkedConvert('rageCount', (v) => (v as num?)?.toInt()),
+          status: $checkedConvert(
+              'status', (v) => $enumDecodeNullable(_$CategoryStatusEnumMap, v)),
           thumbnailUrl: $checkedConvert('thumbnailUrl', (v) => v as String?),
           createdAt: $checkedConvert('createdAt',
               (v) => v == null ? null : DateTime.parse(v as String)),
           lastTransaction: $checkedConvert('lastTransaction',
               (v) => v == null ? null : DateTime.parse(v as String)),
-          status: $checkedConvert(
-              'status', (v) => $enumDecodeNullable(_$CategoryStatusEnumMap, v)),
-          ownerId: $checkedConvert('ownerId', (v) => (v as num).toInt()),
           title: $checkedConvert('title', (v) => v as String),
+          description: $checkedConvert('description', (v) => v as String),
+          ownerId: $checkedConvert('ownerId', (v) => (v as num?)?.toInt()),
         );
         return val;
       },
@@ -31,14 +36,24 @@ _$CategoryModelImpl _$$CategoryModelImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$CategoryModelImplToJson(_$CategoryModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'password': instance.password,
+      'parent': instance.parent,
+      'type': _$CategoryTypeEnumMap[instance.type]!,
+      'avgRate': instance.avgRate,
+      'rageCount': instance.rageCount,
+      'status': _$CategoryStatusEnumMap[instance.status],
       'thumbnailUrl': instance.thumbnailUrl,
       'createdAt': instance.createdAt?.toIso8601String(),
       'lastTransaction': instance.lastTransaction?.toIso8601String(),
-      'status': _$CategoryStatusEnumMap[instance.status],
-      'ownerId': instance.ownerId,
       'title': instance.title,
+      'description': instance.description,
+      'ownerId': instance.ownerId,
     };
+
+const _$CategoryTypeEnumMap = {
+  CategoryType.root: 'root',
+  CategoryType.published: 'published',
+  CategoryType.organizational: 'organizational',
+};
 
 const _$CategoryStatusEnumMap = {
   CategoryStatus.active: 'active',

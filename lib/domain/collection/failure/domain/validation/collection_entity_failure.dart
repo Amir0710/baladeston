@@ -4,55 +4,34 @@ abstract class CollectionEntityFailure extends BaseCollectionValidationFailure {
   const CollectionEntityFailure();
 }
 
-// id
-final class CollectionEntityInvalidIdFailure extends CollectionEntityFailure {
-  const CollectionEntityInvalidIdFailure();
+// description
+final class CollectionEntityMissingDescriptionFailure
+    extends CollectionEntityFailure {
+  const CollectionEntityMissingDescriptionFailure();
+}
+final class CollectionEntityTooShortDescriptionFailure
+    extends CollectionEntityFailure {
+  const CollectionEntityTooShortDescriptionFailure();
 }
 
-// status
-final class CollectionEntityInvalidStatusFailure
+final class CollectionEntityTooLongDescriptionFailure
     extends CollectionEntityFailure {
-  const CollectionEntityInvalidStatusFailure();
+  const CollectionEntityTooLongDescriptionFailure();
 }
 
-// thumbnailUrl
-final class CollectionEntityInvalidThumbnailUrlFailure
+final class CollectionEntityControlCharDescriptionFailure
     extends CollectionEntityFailure {
-  const CollectionEntityInvalidThumbnailUrlFailure();
+  const CollectionEntityControlCharDescriptionFailure();
 }
 
-// count
-final class CollectionEntityInvalidCountFailure
+final class CollectionEntityContainsHtmlDescriptionFailure
     extends CollectionEntityFailure {
-  const CollectionEntityInvalidCountFailure();
+  const CollectionEntityContainsHtmlDescriptionFailure();
 }
 
-// uniqueCode
-final class CollectionEntityInvalidUniqueCodeFailure
+final class CollectionEntityEmojiOnlyDescriptionFailure
     extends CollectionEntityFailure {
-  const CollectionEntityInvalidUniqueCodeFailure();
-}
-
-// ownerId
-final class CollectionEntityMissingOwnerIdFailure
-    extends CollectionEntityFailure {
-  const CollectionEntityMissingOwnerIdFailure();
-}
-
-final class CollectionEntityInvalidOwnerIdFailure
-    extends CollectionEntityFailure {
-  const CollectionEntityInvalidOwnerIdFailure();
-}
-
-// createdAt
-final class CollectionEntityMissingCreatedAtFailure
-    extends CollectionEntityFailure {
-  const CollectionEntityMissingCreatedAtFailure();
-}
-
-final class CollectionEntityInvalidCreatedAtFailure
-    extends CollectionEntityFailure {
-  const CollectionEntityInvalidCreatedAtFailure();
+  const CollectionEntityEmojiOnlyDescriptionFailure();
 }
 
 // title
@@ -61,18 +40,27 @@ final class CollectionEntityMissingTitleFailure
   const CollectionEntityMissingTitleFailure();
 }
 
-final class CollectionEntityInvalidTitleFailure
+final class CollectionEntityTitleTooShortFailure
     extends CollectionEntityFailure {
-  const CollectionEntityInvalidTitleFailure();
+  const CollectionEntityTitleTooShortFailure();
 }
 
-// lastTransaction
-final class CollectionEntityMissingLastTransactionFailure
+final class CollectionEntityTooLongTitleFailure
     extends CollectionEntityFailure {
-  const CollectionEntityMissingLastTransactionFailure();
+  const CollectionEntityTooLongTitleFailure();
 }
 
-final class CollectionEntityInvalidLastTransactionFailure
+final class CollectionEntityControlCharTitleFailure
     extends CollectionEntityFailure {
-  const CollectionEntityInvalidLastTransactionFailure();
+  const CollectionEntityControlCharTitleFailure();
+}
+
+final class CollectionEntityContainsHtmlTitleFailure
+    extends CollectionEntityFailure {
+  const CollectionEntityContainsHtmlTitleFailure();
+}
+
+final class CollectionEntityEmojiOnlyTitleFailure
+    extends CollectionEntityFailure {
+  const CollectionEntityEmojiOnlyTitleFailure();
 }

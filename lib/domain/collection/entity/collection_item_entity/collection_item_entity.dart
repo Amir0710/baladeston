@@ -7,11 +7,16 @@ part 'collection_item_entity.freezed.dart';
 abstract class CollectionItemEntity with _$CollectionItemEntity {
   const factory CollectionItemEntity({
     int? id,
+    String? title,
+    required int videoId,
+    required int collectionId,
+    double? avgRate,
+    int? rateCount,
+    int? price,
+    String? thumbnailUrl,
     CollectionItemStatus? status,
     DateTime? addedAt,
     DateTime? lastTransaction,
-    required int adderId,
-    required int videoId,
-    required int collectionId,
+    int? adderId,
   }) = _CollectionItemEntity;
 }

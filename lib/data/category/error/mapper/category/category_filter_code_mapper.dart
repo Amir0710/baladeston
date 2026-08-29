@@ -12,8 +12,8 @@ class CategoryFilterCodeMapper {
     const CategoryModelFilterInvalidSearchTermFailure(),
 
     // searchId
-    codes.CategoryModelFilterErrorCodes.invalidSearchId: () =>
-    const CategoryModelFilterInvalidSearchIdFailure(),
+    codes.CategoryModelFilterErrorCodes.invalidIds: () =>
+    const CategoryModelFilterInvalidIdsFailure(),
 
     // status
     codes.CategoryModelFilterErrorCodes.invalidStatus: () =>

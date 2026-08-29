@@ -1,14 +1,14 @@
-import 'package:baladeston/domain/category/failure/base_category_failure.dart';
+import 'package:baladeston/domain/comment/failure/base_comment_failure.dart';
 
-abstract class CategoryIdFailure extends BaseCategoryValidationFailure {
-  const CategoryIdFailure();
+abstract class CommentIdFailure extends BaseCommentValidationFailure {
+  const CommentIdFailure();
 }
 
 // id
-class CategoryIdMissingFailure extends CategoryIdFailure {
-  const CategoryIdMissingFailure();
+class CommentIdMissingFailure extends CommentIdFailure {
+  const CommentIdMissingFailure();
 }
 
-class CategoryIdInvalidFailure extends CategoryIdFailure {
-  const CategoryIdInvalidFailure();
+class CommentIdInvalidFailure extends CommentIdFailure {
+  const CommentIdInvalidFailure();
 }

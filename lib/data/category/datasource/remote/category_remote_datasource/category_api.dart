@@ -1,45 +1,51 @@
+import 'package:baladeston/core/model/paginated_response_model.dart';
 import 'package:baladeston/core/result/result.dart';
-import 'package:baladeston/data/category/filter/item/category_item_query_filter.dart';
-import 'package:baladeston/data/category/model/category_item_model/category_item_model.dart';
-import 'package:baladeston/data/collection/filter/model/collection_query_filter.dart';
-import 'package:baladeston/data/collection/model/collection_model/collection_model.dart';
+import 'package:baladeston/data/category/filter/model/category_query_filter.dart';
+import 'package:baladeston/data/category/model/category_model/category_model.dart';
 import 'package:baladeston/domain/category/failure/base_category_failure.dart';
+import 'package:image_picker/image_picker.dart';
 
-abstract class CategoryItemApi {
-  Future<Result<CategoryItemModel, CategoryFailure>> addCategoryItem({
-    required CategoryItemModel item,
+abstract class CategoryApi {
+  Future<Result<PaginatedResponseModel<CategoryModel>, CategoryFailure>>
+      getCategoryByFilter({
+    required CategoryQueryFilter filter,
   });
 
-  Future<Result<CategoryItemModel, CategoryFailure>> updateCategoryItemById({
+  Future<Result<CategoryModel, CategoryFailure>> getCategoryById({
     required int id,
-    required CategoryItemModel item,
   });
 
-  Future<Result<int, CategoryFailure>> updateCategoryItemByFilter({
-    required CategoryItemQueryFilter filter,
-    required CategoryItemModel item,
+  Future<Result<List<CategoryModel>, CategoryFailure>> getAllCategory({
+    required CategoryQueryFilter filter,
   });
 
-  Future<Result<int, CategoryFailure>> deleteCategoryItemById({
-    required int itemId,
+  Future<Result<int, CategoryFailure>> countAllCategory({
+    required CategoryQueryFilter filter,
   });
 
-  Future<Result<List<int>, CategoryFailure>> deleteCategoryItemByFilter({
-    required CategoryItemQueryFilter filter,
+  Future<Result<CategoryModel, CategoryFailure>> createCategory({
+    required CategoryModel category,
   });
 
-  Future<Result<List<CollectionModel>, CategoryFailure>>
-  getCollectionsByCategoryItemFilter({
-    required CategoryItemQueryFilter categoryItemFilter,
-    required CollectionQueryFilter collectionFilter,
+  Future<Result<CategoryModel, CategoryFailure>> updateCategoryById({
+    required CategoryModel category,
+    required int id,
   });
 
-  Future<Result<List<CategoryItemModel>, CategoryFailure>>
-  getCategoryItemByFilter({
-    required CategoryItemQueryFilter categoryItemFilter,
+  Future<Result<int, CategoryFailure>> updateCategoryByFilter({
+    required CategoryModel category,
+    required CategoryQueryFilter filter,
   });
 
-  Future<Result<CategoryItemModel, CategoryFailure>> getCategoryItemById({
-    required int itemId,
+  Future<Result<int, CategoryFailure>> deleteCategoryById({
+    required int id,
+  });
+
+  Future<Result<int, CategoryFailure>> deleteCategoryByFilter({
+    required CategoryQueryFilter filter,
+  });
+
+  Future<Result<String, CategoryFailure>> uploadCategoryImage({
+    required XFile image,
   });
 }

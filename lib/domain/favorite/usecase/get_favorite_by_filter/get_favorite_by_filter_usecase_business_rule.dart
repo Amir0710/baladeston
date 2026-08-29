@@ -1,5 +1,6 @@
-import 'package:baladeston/data/favorite/filter/favorite_query_filter.dart';
-import 'package:baladeston/domain/favorite/exception/favorite_filter_exception.dart';
+import 'package:baladeston/core/result/result.dart';
+import 'package:baladeston/data/favorite/filter/favorite/favorite_query_filter.dart';
+import 'package:baladeston/domain/favorite/failure/base_favorite_failure.dart';
 
 class GetFavoriteByFilterUseCaseBusinessRule {
   final FavoriteQueryFilter filter;
@@ -8,39 +9,7 @@ class GetFavoriteByFilterUseCaseBusinessRule {
     required this.filter,
   });
 
-  void validate() {
-    _validateLimit();
-    _validateOffset();
-    _validateOrder();
-    _validateNotEmpty();
-  }
-
-  void _validateLimit() {
-    if (filter.limit <= 0) {
-      throw const FilterLimitException();
-    }
-  }
-
-  void _validateOffset() {
-    if (filter.offset < 0) {
-      throw const FilterOffsetException();
-    }
-  }
-
-  void _validateOrder() {
-    if (filter.orderBy != 'createdAt') {
-      throw const FilterOrderException();
-    }
-  }
-
-  void _validateNotEmpty() {
-    final hasAnyFilter =
-        filter.userId != null ||
-            filter.toggleId != null ||
-            filter.interestedIn != null;
-
-    if (!hasAnyFilter) {
-      throw const FilterEmptyException();
-    }
+  Result<void, FavoriteFailure> validate() {
+    return const Result.success(null);
   }
 }

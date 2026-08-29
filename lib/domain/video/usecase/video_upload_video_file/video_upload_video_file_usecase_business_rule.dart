@@ -1,37 +1,38 @@
-import 'dart:io';
-
 import 'package:baladeston/core/constants/formats.dart';
 import 'package:baladeston/core/constants/limits.dart';
 import 'package:baladeston/core/result/result.dart';
-import 'package:baladeston/domain/video/failure/base_video_failure.dart';
+import 'package:baladeston/core/variable/video_signature_validator.dart';
 import 'package:baladeston/domain/video/failure/domain/validation/video_file_failure.dart';
+import 'package:image_picker/image_picker.dart';
 
 class VideoUploadVideoFileUsecaseBusinessRule {
-  final File video;
+  final XFile video;
 
-  const VideoUploadVideoFileUsecaseBusinessRule({
-    required this.video,
-  });
+  const VideoUploadVideoFileUsecaseBusinessRule({required this.video});
 
-  Result<void, VideoFailure> validate() {
+  static const _limits = Limits();
+  static const _formats = Formats();
+
+  Future<Result<void, VideoFileFailure>> validate() {
     return videoVideoFileValidation();
   }
 
-  Result<void, VideoFailure> videoVideoFileValidation() {
-    final limit = Limits();
-    final format = Formats();
-    if (video.lengthSync() > limit.maxVideoFileSize) {
-      return Result.failure(VideoFileTooLargeFailure());
+  Future<Result<void, VideoFileFailure>> videoVideoFileValidation() async {
+    final size = await video.length();
+    if (size > _limits.maxVideoFileSize) {
+      return Result.failure(const VideoFileTooLargeFailure());
     }
 
-    final extension = video.path.toLowerCase();
-    final isFormatValid = format.videoFileFormats.any(
-      (allowedFormat) => extension.endsWith(allowedFormat),
-    );
-
-    if (!isFormatValid) {
-      return Result.failure(VideoFileInvalidFormatFailure());
+    final extension = '.${video.name.split('.').last.toLowerCase()}';
+    if (!_formats.allowVideoFileFormats.contains(extension)) {
+      return Result.failure(const VideoFileInvalidFormatFailure());
     }
+
+    final isRealVideo = await VideoSignatureValidator.isVideoFile(video);
+    if (!isRealVideo) {
+      return Result.failure(const VideoFileInvalidContentFailure());
+    }
+
     return const Result.success(null);
   }
 }

@@ -13,11 +13,11 @@ class UpdateCollectionItemByFilterUseCase {
   });
 
   Future<Result<int, CollectionFailure>> call({
-    required CollectionItemEntity item,
+    required CollectionItemEntity collectionItem,
     required CollectionItemQueryFilter filter,
   }) async {
     final businessRule = UpdateCollectionItemByFilterUseCaseBusinessRule(
-      item: item,
+      collectionItem: collectionItem,
       filter: filter,
     );
 
@@ -25,7 +25,7 @@ class UpdateCollectionItemByFilterUseCase {
 
     return validationResult.when(
       success: (_) => repository.updateCollectionItemByFilter(
-        item: item,
+        item: collectionItem,
         filter: filter,
       ),
       failure: (failure) => Result.failure(failure),

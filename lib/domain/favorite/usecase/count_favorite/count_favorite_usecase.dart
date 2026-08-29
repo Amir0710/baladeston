@@ -1,9 +1,8 @@
 import 'package:baladeston/core/result/result.dart';
-import 'package:baladeston/data/favorite/filter/favorite_query_filter.dart';
-import 'package:baladeston/domain/favorite/exception/favorite_filter_exception.dart';
-import 'package:baladeston/domain/favorite/failure/favorite_failure.dart';
-import 'package:baladeston/domain/favorite/repository/favorite_repository.dart';
-import 'count_favorite_usecase_business_rule.dart';
+import 'package:baladeston/data/favorite/filter/favorite/favorite_query_filter.dart';
+import 'package:baladeston/domain/favorite/failure/base_favorite_failure.dart';
+import 'package:baladeston/domain/favorite/repository/favorite/favorite_repository.dart';
+import 'package:baladeston/domain/favorite/usecase/count_favorite/count_favorite_usecase_business_rule.dart';
 
 class CountFavoriteUseCase {
   final FavoriteRepository repository;
@@ -15,15 +14,12 @@ class CountFavoriteUseCase {
   Future<Result<int, FavoriteFailure>> call({
     required FavoriteQueryFilter filter,
   }) async {
-    try {
-      final rule = CountFavoriteUseCaseBusinessRule(filter: filter);
-      rule.validate();
-    } on FavoriteFilterException catch (e) {
-      return Result.failure(
-        FavoriteValidationFailure(e.message),
-      );
-    }
+    final businessRule = CountFavoriteUseCaseBusinessRule(filter: filter);
+    final validationResult = businessRule.validate();
 
-    return repository.countFavorite(filter: filter);
+    return validationResult.when(
+      success: (_) => repository.countFavorite(filter: filter),
+      failure: (failure) => Result.failure(failure),
+    );
   }
 }

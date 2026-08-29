@@ -16,14 +16,14 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CommentEntity {
-  int get userId => throw _privateConstructorUsedError;
+  int? get ownerId => throw _privateConstructorUsedError;
   CommentType get targetType => throw _privateConstructorUsedError;
   int get targetId => throw _privateConstructorUsedError;
   double get rating => throw _privateConstructorUsedError;
+  String? get content => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   CommentStatus? get status => throw _privateConstructorUsedError;
-  String? get content => throw _privateConstructorUsedError;
 
   /// Create a copy of CommentEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -39,14 +39,14 @@ abstract class $CommentEntityCopyWith<$Res> {
       _$CommentEntityCopyWithImpl<$Res, CommentEntity>;
   @useResult
   $Res call(
-      {int userId,
+      {int? ownerId,
       CommentType targetType,
       int targetId,
       double rating,
+      String? content,
       DateTime? createdAt,
       DateTime? updatedAt,
-      CommentStatus? status,
-      String? content});
+      CommentStatus? status});
 }
 
 /// @nodoc
@@ -64,20 +64,20 @@ class _$CommentEntityCopyWithImpl<$Res, $Val extends CommentEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
+    Object? ownerId = freezed,
     Object? targetType = null,
     Object? targetId = null,
     Object? rating = null,
+    Object? content = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? status = freezed,
-    Object? content = freezed,
   }) {
     return _then(_value.copyWith(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
+      ownerId: freezed == ownerId
+          ? _value.ownerId
+          : ownerId // ignore: cast_nullable_to_non_nullable
+              as int?,
       targetType: null == targetType
           ? _value.targetType
           : targetType // ignore: cast_nullable_to_non_nullable
@@ -90,6 +90,10 @@ class _$CommentEntityCopyWithImpl<$Res, $Val extends CommentEntity>
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as double,
+      content: freezed == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -102,10 +106,6 @@ class _$CommentEntityCopyWithImpl<$Res, $Val extends CommentEntity>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CommentStatus?,
-      content: freezed == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as String?,
     ) as $Val);
   }
 }
@@ -119,14 +119,14 @@ abstract class _$$CommentEntityImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int userId,
+      {int? ownerId,
       CommentType targetType,
       int targetId,
       double rating,
+      String? content,
       DateTime? createdAt,
       DateTime? updatedAt,
-      CommentStatus? status,
-      String? content});
+      CommentStatus? status});
 }
 
 /// @nodoc
@@ -142,20 +142,20 @@ class __$$CommentEntityImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
+    Object? ownerId = freezed,
     Object? targetType = null,
     Object? targetId = null,
     Object? rating = null,
+    Object? content = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? status = freezed,
-    Object? content = freezed,
   }) {
     return _then(_$CommentEntityImpl(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
+      ownerId: freezed == ownerId
+          ? _value.ownerId
+          : ownerId // ignore: cast_nullable_to_non_nullable
+              as int?,
       targetType: null == targetType
           ? _value.targetType
           : targetType // ignore: cast_nullable_to_non_nullable
@@ -168,6 +168,10 @@ class __$$CommentEntityImplCopyWithImpl<$Res>
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as double,
+      content: freezed == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -180,10 +184,6 @@ class __$$CommentEntityImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CommentStatus?,
-      content: freezed == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -192,17 +192,17 @@ class __$$CommentEntityImplCopyWithImpl<$Res>
 
 class _$CommentEntityImpl implements _CommentEntity {
   const _$CommentEntityImpl(
-      {required this.userId,
+      {this.ownerId,
       required this.targetType,
       required this.targetId,
       required this.rating,
+      this.content,
       this.createdAt,
       this.updatedAt,
-      this.status,
-      this.content});
+      this.status});
 
   @override
-  final int userId;
+  final int? ownerId;
   @override
   final CommentType targetType;
   @override
@@ -210,17 +210,17 @@ class _$CommentEntityImpl implements _CommentEntity {
   @override
   final double rating;
   @override
+  final String? content;
+  @override
   final DateTime? createdAt;
   @override
   final DateTime? updatedAt;
   @override
   final CommentStatus? status;
-  @override
-  final String? content;
 
   @override
   String toString() {
-    return 'CommentEntity(userId: $userId, targetType: $targetType, targetId: $targetId, rating: $rating, createdAt: $createdAt, updatedAt: $updatedAt, status: $status, content: $content)';
+    return 'CommentEntity(ownerId: $ownerId, targetType: $targetType, targetId: $targetId, rating: $rating, content: $content, createdAt: $createdAt, updatedAt: $updatedAt, status: $status)';
   }
 
   @override
@@ -228,23 +228,23 @@ class _$CommentEntityImpl implements _CommentEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CommentEntityImpl &&
-            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.ownerId, ownerId) || other.ownerId == ownerId) &&
             (identical(other.targetType, targetType) ||
                 other.targetType == targetType) &&
             (identical(other.targetId, targetId) ||
                 other.targetId == targetId) &&
             (identical(other.rating, rating) || other.rating == rating) &&
+            (identical(other.content, content) || other.content == content) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.content, content) || other.content == content));
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userId, targetType, targetId,
-      rating, createdAt, updatedAt, status, content);
+  int get hashCode => Object.hash(runtimeType, ownerId, targetType, targetId,
+      rating, content, createdAt, updatedAt, status);
 
   /// Create a copy of CommentEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -257,17 +257,17 @@ class _$CommentEntityImpl implements _CommentEntity {
 
 abstract class _CommentEntity implements CommentEntity {
   const factory _CommentEntity(
-      {required final int userId,
+      {final int? ownerId,
       required final CommentType targetType,
       required final int targetId,
       required final double rating,
+      final String? content,
       final DateTime? createdAt,
       final DateTime? updatedAt,
-      final CommentStatus? status,
-      final String? content}) = _$CommentEntityImpl;
+      final CommentStatus? status}) = _$CommentEntityImpl;
 
   @override
-  int get userId;
+  int? get ownerId;
   @override
   CommentType get targetType;
   @override
@@ -275,13 +275,13 @@ abstract class _CommentEntity implements CommentEntity {
   @override
   double get rating;
   @override
+  String? get content;
+  @override
   DateTime? get createdAt;
   @override
   DateTime? get updatedAt;
   @override
   CommentStatus? get status;
-  @override
-  String? get content;
 
   /// Create a copy of CommentEntity
   /// with the given fields replaced by the non-null parameter values.

@@ -1,10 +1,10 @@
 import 'package:baladeston/domain/favorite/usecase/create_favorite/create_favorite_usecase.dart';
-import 'package:baladeston/domain/favorite/usecase/update_favorite_by_id/update_favorite_by_id_usecase.dart.dart';
+import 'package:baladeston/domain/favorite/usecase/update_favorite_by_id/update_favorite_by_id_usecase.dart';
 import 'package:bloc/bloc.dart';
 
 import 'favorite_state.dart';
-import 'package:baladeston/domain/favorite/entity/favorite_entity.dart';
-import 'package:baladeston/data/favorite/filter/favorite_query_filter.dart';
+import 'package:baladeston/domain/favorite/entity/favorite/favorite_entity.dart';
+import 'package:baladeston/data/favorite/filter/favorite/favorite_query_filter.dart';
 
 /* ------------------------------ USE CASES ------------------------------ */
 import 'package:baladeston/domain/favorite/usecase/update_favorite_by_filter/update_favorite_by_filter_usecase.dart';

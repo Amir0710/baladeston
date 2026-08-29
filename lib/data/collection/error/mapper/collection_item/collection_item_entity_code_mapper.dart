@@ -11,39 +11,49 @@ final class CollectionItemModelCodeMapper {
     codes.CollectionItemModelErrorCodes.invalidId: () =>
     const CollectionItemModelInvalidIdFailure(),
 
-    // status
-    codes.CollectionItemModelErrorCodes.invalidStatus: () =>
-    const CollectionItemModelInvalidStatusFailure(),
-
-    // adderId
-    codes.CollectionItemModelErrorCodes.missingAdderId: () =>
-    const CollectionItemModelMissingAdderIdFailure(),
-    codes.CollectionItemModelErrorCodes.invalidAdderId: () =>
-    const CollectionItemModelInvalidAdderIdFailure(),
+    // title
+    codes.CollectionItemModelErrorCodes.invalidTitle: () =>
+    const CollectionItemModelInvalidTitleFailure(),
 
     // videoId
-    codes.CollectionItemModelErrorCodes.missingVideoId: () =>
-    const CollectionItemModelMissingVideoIdFailure(),
     codes.CollectionItemModelErrorCodes.invalidVideoId: () =>
     const CollectionItemModelInvalidVideoIdFailure(),
 
     // collectionId
-    codes.CollectionItemModelErrorCodes.missingCollectionId: () =>
-    const CollectionItemModelMissingCollectionIdFailure(),
     codes.CollectionItemModelErrorCodes.invalidCollectionId: () =>
     const CollectionItemModelInvalidCollectionIdFailure(),
 
+    // avgRate
+    codes.CollectionItemModelErrorCodes.invalidAvgRate: () =>
+    const CollectionItemModelInvalidAvgRateFailure(),
+
+    // rateCount
+    codes.CollectionItemModelErrorCodes.invalidRateCount: () =>
+    const CollectionItemModelInvalidRateCountFailure(),
+
+    // thumbnailUrl
+    codes.CollectionItemModelErrorCodes.invalidThumbnailUrl: () =>
+    const CollectionItemModelInvalidThumbnailUrlFailure(),
+
+    // status
+    codes.CollectionItemModelErrorCodes.invalidStatus: () =>
+    const CollectionItemModelInvalidStatusFailure(),
+
     // addedAt
-    codes.CollectionItemModelErrorCodes.missingAddedAt: () =>
-    const CollectionItemModelMissingAddedAtFailure(),
     codes.CollectionItemModelErrorCodes.invalidAddedAt: () =>
     const CollectionItemModelInvalidAddedAtFailure(),
 
     // lastTransaction
-    codes.CollectionItemModelErrorCodes.missingLastTransaction: () =>
-    const CollectionItemModelMissingLastTransactionFailure(),
     codes.CollectionItemModelErrorCodes.invalidLastTransaction: () =>
     const CollectionItemModelInvalidLastTransactionFailure(),
+
+    // adderId
+    codes.CollectionItemModelErrorCodes.invalidAdderId: () =>
+    const CollectionItemModelInvalidAdderIdFailure(),
+
+    // missing
+    codes.CollectionItemModelErrorCodes.missingField: () =>
+    const CollectionItemModelMissingFieldFailure(),
   };
 
   static CollectionFailure? map(String? code) {

@@ -1,6 +1,6 @@
-import 'package:baladeston/domain/favorite/entity/favorite_entity.dart';
-import 'package:baladeston/domain/favorite/exception/favorite_entity_exception.dart';
-import 'package:baladeston/domain/favorite/exception/favorite_id_exception.dart';
+import 'package:baladeston/core/result/result.dart';
+import 'package:baladeston/domain/favorite/failure/base_favorite_failure.dart';
+import 'package:baladeston/domain/favorite/failure/domain/validation/favorite_entity_failure.dart';
 
 class DeleteFavoriteByIdUseCaseBusinessRule {
   final int id;
@@ -9,14 +9,10 @@ class DeleteFavoriteByIdUseCaseBusinessRule {
     required this.id,
   });
 
-  void validate() {
-    _validateId();
-  }
-
-  void _validateId() {
+  Result<void, FavoriteFailure> validate() {
     if (id <= 0) {
-      throw FavoriteIdInvalidException();
+      return const Result.failure(FavoriteEntityInvalidTargetIdFailure());
     }
+    return const Result.success(null);
   }
-
 }

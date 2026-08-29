@@ -1,4 +1,7 @@
 abstract final class CollectionFilterErrorCodes {
+  //  ids
+  static const invalidIds = 'COLLECTION_FILTER_INVALID_IDS';
+
   //  searchTerm
   static const invalidSearchTerm = 'COLLECTION_FILTER_INVALID_SEARCH_TERM';
 

@@ -11,7 +11,7 @@ class DeleteCategoryItemByFilterUseCase {
     required this.repository,
   });
 
-  Future<Result<List<int>, CategoryFailure>> call({
+  Future<Result<int, CategoryFailure>> call({
     required CategoryItemQueryFilter filter,
   }) async {
     final businessRule = DeleteCategoryItemByFilterUsecaseBusinessRule(

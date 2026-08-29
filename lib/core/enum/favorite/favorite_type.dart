@@ -1,6 +1,6 @@
-enum FavoriteType{
-  video,
-  comment,
-  category,
-  collection
+enum FavoriteType {
+  like,
+  starred,
+  hate,
+  disLike,
 }

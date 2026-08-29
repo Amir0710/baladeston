@@ -1,3 +1,4 @@
+import 'package:baladeston/core/model/paginated_response_model.dart';
 import 'package:baladeston/core/result/result.dart';
 import 'package:baladeston/data/collection/filter/item/collection_item_query_filter.dart';
 import 'package:baladeston/domain/collection/entity/collection_item_entity/collection_item_entity.dart';
@@ -12,7 +13,8 @@ class GetCollectionItemByCollectionItemFilterUseCase {
     required this.repository,
   });
 
-  Future<Result<List<CollectionItemEntity>, CollectionFailure>> call({
+  Future<Result<PaginatedResponseModel<CollectionItemEntity>, CollectionFailure>>
+      call({
     required CollectionItemQueryFilter collectionItemFilter,
   }) async {
     final businessRule = GetCollectionItemByFilterUsecaseBusinessRule(
@@ -22,7 +24,7 @@ class GetCollectionItemByCollectionItemFilterUseCase {
 
     return validationResult.when(
       success: (_) => repository.getCollectionItemByCollectionFilter(
-        collectionItemFilter :collectionItemFilter ),
+          collectionItemFilter: collectionItemFilter),
       failure: (failure) => Result.failure(failure),
     );
   }

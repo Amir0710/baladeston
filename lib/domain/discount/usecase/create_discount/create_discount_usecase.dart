@@ -15,7 +15,7 @@ class CreateDiscountUseCase {
   }) async {
     try {
       final businessRule =
-      CreateDiscountUsecaseBusinessRule(discount: discount);
+      CreateDiscountUseCaseBusinessRule(discount: discount);
       businessRule.validate();
     } on DiscountEntityException catch (e) {
       return Result.failure(

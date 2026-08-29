@@ -1,12 +1,13 @@
-import 'dart:io';
-
+import 'package:baladeston/core/model/paginated_response_model.dart';
 import 'package:baladeston/core/result/result.dart';
 import 'package:baladeston/data/category/filter/model/category_query_filter.dart';
 import 'package:baladeston/domain/category/entity/category_entity/category_entity.dart';
 import 'package:baladeston/domain/category/failure/base_category_failure.dart';
+import 'package:image_picker/image_picker.dart';
 
 abstract class CategoryRepository {
-  Future<Result<List<CategoryEntity>, CategoryFailure>> getCategoryByFilter({
+  Future<Result<PaginatedResponseModel<CategoryEntity>, CategoryFailure>>
+      getCategoryByFilter({
     required CategoryQueryFilter filter,
   });
 
@@ -32,7 +33,7 @@ abstract class CategoryRepository {
     required int id,
   });
 
-  Future<Result<List<int>, CategoryFailure>> deleteCategoryByFilter({
+  Future<Result<int, CategoryFailure>> deleteCategoryByFilter({
     required CategoryQueryFilter filter,
   });
 
@@ -41,6 +42,6 @@ abstract class CategoryRepository {
   });
 
   Future<Result<String, CategoryFailure>> uploadCategoryImage({
-    required File image,
+    required XFile image,
   });
 }

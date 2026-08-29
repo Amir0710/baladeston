@@ -5,75 +5,62 @@ abstract class CollectionItemModelFailure
   const CollectionItemModelFailure();
 }
 
-//  id
-
+// id
 class CollectionItemModelInvalidIdFailure extends CollectionItemModelFailure {
   const CollectionItemModelInvalidIdFailure();
 }
 
-//  status
+// title
+class CollectionItemModelInvalidTitleFailure extends CollectionItemModelFailure {
+  const CollectionItemModelInvalidTitleFailure();
+}
 
-class CollectionItemModelInvalidStatusFailure
-    extends CollectionItemModelFailure {
+// status
+class CollectionItemModelInvalidStatusFailure extends CollectionItemModelFailure {
   const CollectionItemModelInvalidStatusFailure();
 }
 
-//  adderId
-
-class CollectionItemModelMissingAdderIdFailure
-    extends CollectionItemModelFailure {
-  const CollectionItemModelMissingAdderIdFailure();
-}
-
-class CollectionItemModelInvalidAdderIdFailure
-    extends CollectionItemModelFailure {
+// adderId
+class CollectionItemModelInvalidAdderIdFailure extends CollectionItemModelFailure {
   const CollectionItemModelInvalidAdderIdFailure();
 }
 
-//  videoId
-
-class CollectionItemModelMissingVideoIdFailure
-    extends CollectionItemModelFailure {
-  const CollectionItemModelMissingVideoIdFailure();
-}
-
-class CollectionItemModelInvalidVideoIdFailure
-    extends CollectionItemModelFailure {
+// videoId
+class CollectionItemModelInvalidVideoIdFailure extends CollectionItemModelFailure {
   const CollectionItemModelInvalidVideoIdFailure();
 }
 
-//  collectionId
-
-class CollectionItemModelMissingCollectionIdFailure
-    extends CollectionItemModelFailure {
-  const CollectionItemModelMissingCollectionIdFailure();
-}
-
-class CollectionItemModelInvalidCollectionIdFailure
-    extends CollectionItemModelFailure {
+// collectionId
+class CollectionItemModelInvalidCollectionIdFailure extends CollectionItemModelFailure {
   const CollectionItemModelInvalidCollectionIdFailure();
 }
 
-//  addedAt
-
-class CollectionItemModelMissingAddedAtFailure
-    extends CollectionItemModelFailure {
-  const CollectionItemModelMissingAddedAtFailure();
-}
-
-class CollectionItemModelInvalidAddedAtFailure
-    extends CollectionItemModelFailure {
+// addedAt
+class CollectionItemModelInvalidAddedAtFailure extends CollectionItemModelFailure {
   const CollectionItemModelInvalidAddedAtFailure();
 }
 
-//  lastTransaction
-
-class CollectionItemModelMissingLastTransactionFailure
-    extends CollectionItemModelFailure {
-  const CollectionItemModelMissingLastTransactionFailure();
+// lastTransaction
+class CollectionItemModelInvalidLastTransactionFailure extends CollectionItemModelFailure {
+  const CollectionItemModelInvalidLastTransactionFailure();
 }
 
-class CollectionItemModelInvalidLastTransactionFailure
-    extends CollectionItemModelFailure {
-  const CollectionItemModelInvalidLastTransactionFailure();
+// avgRate
+class CollectionItemModelInvalidAvgRateFailure extends CollectionItemModelFailure {
+  const CollectionItemModelInvalidAvgRateFailure();
+}
+
+// rateCount
+class CollectionItemModelInvalidRateCountFailure extends CollectionItemModelFailure {
+  const CollectionItemModelInvalidRateCountFailure();
+}
+
+// thumbnailUrl
+class CollectionItemModelInvalidThumbnailUrlFailure extends CollectionItemModelFailure {
+  const CollectionItemModelInvalidThumbnailUrlFailure();
+}
+
+// missing
+class CollectionItemModelMissingFieldFailure extends CollectionItemModelFailure {
+  const CollectionItemModelMissingFieldFailure();
 }

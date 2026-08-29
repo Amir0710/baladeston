@@ -16,4 +16,9 @@ class CollectionImageFileInvalidFormatFailure
   const CollectionImageFileInvalidFormatFailure();
 }
 
+class CollectionImageFileInvalidContentFailure
+    extends CollectionImageFileFailure {
+  const CollectionImageFileInvalidContentFailure();
+}
+
 

@@ -11,63 +11,68 @@ final class CategoryItemModelInvalidIdFailure
   const CategoryItemModelInvalidIdFailure();
 }
 
+// title
+final class CategoryItemModelInvalidTitleFailure
+    extends CategoryItemModelFailure {
+  const CategoryItemModelInvalidTitleFailure();
+}
+
+// avgRate
+final class CategoryItemModelInvalidAvgRateFailure
+    extends CategoryItemModelFailure {
+  const CategoryItemModelInvalidAvgRateFailure();
+}
+
+// rageCount
+final class CategoryItemModelInvalidRageCountFailure
+    extends CategoryItemModelFailure {
+  const CategoryItemModelInvalidRageCountFailure();
+}
+
+// thumbnailUrl
+final class CategoryItemModelInvalidThumbnailUrlFailure
+    extends CategoryItemModelFailure {
+  const CategoryItemModelInvalidThumbnailUrlFailure();
+}
+
 // status
 final class CategoryItemModelInvalidStatusFailure
     extends CategoryItemModelFailure {
   const CategoryItemModelInvalidStatusFailure();
 }
 
-// adderId
-final class CategoryItemModelMissingAdderIdFailure
-    extends CategoryItemModelFailure {
-  const CategoryItemModelMissingAdderIdFailure();
-}
-
-final class CategoryItemModelInvalidAdderIdFailure
-    extends CategoryItemModelFailure {
-  const CategoryItemModelInvalidAdderIdFailure();
-}
-
-// collectionId
-final class CategoryItemModelMissingCollectionIdFailure
-    extends CategoryItemModelFailure {
-  const CategoryItemModelMissingCollectionIdFailure();
-}
-
-final class CategoryItemModelInvalidCollectionIdFailure
-    extends CategoryItemModelFailure {
-  const CategoryItemModelInvalidCollectionIdFailure();
-}
-
-// categoryId
-final class CategoryItemModelMissingCategoryIdFailure
-    extends CategoryItemModelFailure {
-  const CategoryItemModelMissingCategoryIdFailure();
-}
-
-final class CategoryItemModelInvalidCategoryIdFailure
-    extends CategoryItemModelFailure {
-  const CategoryItemModelInvalidCategoryIdFailure();
-}
-
 // addedAt
-final class CategoryItemModelMissingAddedAtFailure
-    extends CategoryItemModelFailure {
-  const CategoryItemModelMissingAddedAtFailure();
-}
-
 final class CategoryItemModelInvalidAddedAtFailure
     extends CategoryItemModelFailure {
   const CategoryItemModelInvalidAddedAtFailure();
 }
 
 // lastTransaction
-final class CategoryItemModelMissingLastTransactionFailure
-    extends CategoryItemModelFailure {
-  const CategoryItemModelMissingLastTransactionFailure();
-}
-
 final class CategoryItemModelInvalidLastTransactionFailure
     extends CategoryItemModelFailure {
   const CategoryItemModelInvalidLastTransactionFailure();
+}
+
+// adderId
+final class CategoryItemModelInvalidAdderIdFailure
+    extends CategoryItemModelFailure {
+  const CategoryItemModelInvalidAdderIdFailure();
+}
+
+// collectionId
+final class CategoryItemModelInvalidCollectionIdFailure
+    extends CategoryItemModelFailure {
+  const CategoryItemModelInvalidCollectionIdFailure();
+}
+
+// categoryId
+final class CategoryItemModelInvalidCategoryIdFailure
+    extends CategoryItemModelFailure {
+  const CategoryItemModelInvalidCategoryIdFailure();
+}
+
+// missing
+final class CategoryItemModelMissingFieldFailure
+    extends CategoryItemModelFailure {
+  const CategoryItemModelMissingFieldFailure();
 }

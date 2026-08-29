@@ -5,16 +5,17 @@ extension VideoModelMapper on VideoModel {
   VideoEntity toEntity() {
     return VideoEntity(
       id: id,
-      title: title,
-      description: description,
-      videoUrl: videoUrl,
       thumbnailUrl: thumbnailUrl,
       status: status,
-      ownerId: ownerId,
-      uploadedAt: uploadedAt,
       videoDuration: videoDuration,
+      uploadedAt: uploadedAt,
+      lastTransaction: lastTransaction,
+      videoUrl: videoUrl,
       recommendedAge: recommendedAge,
       level: level,
+      title: title,
+      ownerId: ownerId,
+      description: description,
       price: price,
     );
   }
@@ -24,16 +25,17 @@ extension VideoEntityMapper on VideoEntity {
   VideoModel toModel() {
     return VideoModel(
       id: id,
-      title: title,
-      description: description,
-      videoUrl: videoUrl,
       thumbnailUrl: thumbnailUrl,
       status: status,
-      uploadedAt: uploadedAt,
       videoDuration: videoDuration,
-      ownerId: ownerId,
+      uploadedAt: uploadedAt,
+      lastTransaction: lastTransaction,
+      videoUrl: videoUrl,
       recommendedAge: recommendedAge,
       level: level,
+      title: title,
+      ownerId: ownerId,
+      description: description,
       price: price,
     );
   }

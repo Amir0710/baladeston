@@ -1,16 +1,17 @@
+import 'package:baladeston/core/model/paginated_response_model.dart';
 import 'package:baladeston/core/result/result.dart';
-import 'package:baladeston/domain/Comment/failure/base_Comment_failure.dart';
+import 'package:baladeston/domain/comment/failure/base_comment_failure.dart';
 import 'package:baladeston/domain/comment/entity/comment/comment_entity.dart';
 import 'package:baladeston/domain/comment/repository/comment/comment_repository.dart';
 import 'package:baladeston/data/comment/filter/comment/comment_query_filter.dart';
-import 'package:baladeston/domain/comment/usecase/get_comment_by_filter/get_comment_by_filter_usecase_business_rule.dart';
+import 'package:baladeston/domain/comment/usecase/comment/get_comment_by_filter/get_comment_by_filter_usecase_business_rule.dart';
 
 class GetCommentByFilterUseCase {
   final CommentRepository repository;
 
   const GetCommentByFilterUseCase({required this.repository});
 
-  Future<Result<List<CommentEntity>, CommentFailure>> call({
+  Future<Result<PaginatedResponseModel<CommentEntity>, CommentFailure>> call({
     required CommentQueryFilter filter,
   }) async {
     final businessRule = GetCommentByFilterUseCaseBusinessRule(filter: filter);

@@ -1,58 +1,42 @@
-import 'package:baladeston/data/comment/model/comment_model.dart';
+import 'package:baladeston/core/model/paginated_response_model.dart';
+import 'package:baladeston/core/result/result.dart';
 import 'package:baladeston/data/comment/filter/comment/comment_query_filter.dart';
+import 'package:baladeston/data/comment/model/comment_model.dart';
+import 'package:baladeston/domain/comment/failure/base_comment_failure.dart';
 
 abstract class CommentApi {
-  // --------------------------------------------------
-  // Read
-  // --------------------------------------------------
-
-  Future<List<CommentModel>> getCommentByFilter({
+  Future<Result<PaginatedResponseModel<CommentModel>, CommentFailure>>
+      getCommentByFilter({
     required CommentQueryFilter filter,
   });
 
-  Future<CommentModel> getCommentById({
+  Future<Result<CommentModel, CommentFailure>> getCommentById({
     required int id,
   });
 
-  // --------------------------------------------------
-  // Create
-  // --------------------------------------------------
-
-  Future<CommentModel> createComment({
+  Future<Result<CommentModel, CommentFailure>> createComment({
     required CommentModel comment,
   });
 
-  // --------------------------------------------------
-  // Update
-  // --------------------------------------------------
-
-  Future<CommentModel> updateCommentById({
+  Future<Result<CommentModel, CommentFailure>> updateCommentById({
     required CommentModel comment,
     required int id,
   });
 
-  Future<List<CommentModel>> updateCommentByFilter({
+  Future<Result<int, CommentFailure>> updateCommentByFilter({
     required CommentModel comment,
     required CommentQueryFilter filter,
   });
 
-  // --------------------------------------------------
-  // Delete
-  // --------------------------------------------------
-
-  Future<int> deleteCommentById({
+  Future<Result<int, CommentFailure>> deleteCommentById({
     required int id,
   });
 
-  Future<List<int>> deleteCommentByFilter({
+  Future<Result<int, CommentFailure>> deleteCommentByFilter({
     required CommentQueryFilter filter,
   });
 
-  // --------------------------------------------------
-  // Count
-  // --------------------------------------------------
-
-  Future<int> countAllComment({
+  Future<Result<int, CommentFailure>> countAllComment({
     required CommentQueryFilter filter,
   });
 }

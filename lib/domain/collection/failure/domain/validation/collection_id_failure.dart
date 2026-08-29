@@ -5,10 +5,6 @@ abstract class CollectionIdFailure extends BaseCollectionValidationFailure {
 }
 // id
 
-class CollectionIdMissingFailure extends CollectionIdFailure {
-  const CollectionIdMissingFailure();
-}
-
 class CollectionIdInvalidFailure extends CollectionIdFailure {
   const CollectionIdInvalidFailure();
 }

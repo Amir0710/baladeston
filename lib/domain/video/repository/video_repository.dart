@@ -1,16 +1,17 @@
-import 'dart:io';
-
+import 'package:baladeston/core/model/paginated_response_model.dart';
 import 'package:baladeston/core/result/result.dart';
 import 'package:baladeston/data/video/filter/video_query_filter.dart';
 import 'package:baladeston/domain/video/entity/video_entity.dart';
 import 'package:baladeston/domain/video/failure/base_video_failure.dart';
+import 'package:image_picker/image_picker.dart';
 
 abstract class VideoRepository {
   Future<Result<VideoEntity, VideoFailure>> createVideo({
     required VideoEntity video,
   });
 
-  Future<Result<List<VideoEntity>, VideoFailure>> getVideoByFilter({
+  Future<Result<PaginatedResponseModel<VideoEntity>, VideoFailure>>
+      getVideoByFilter({
     required VideoQueryFilter filter,
   });
 
@@ -41,10 +42,10 @@ abstract class VideoRepository {
   });
 
   Future<Result<String, VideoFailure>> uploadImage({
-    required File image,
+    required XFile image,
   });
 
   Future<Result<String, VideoFailure>> uploadVideo({
-    required File video,
+    required XFile video,
   });
 }

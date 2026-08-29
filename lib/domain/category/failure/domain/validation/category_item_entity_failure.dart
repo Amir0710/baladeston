@@ -5,69 +5,41 @@ abstract class CategoryItemEntityFailure
   const CategoryItemEntityFailure();
 }
 
-// id
-final class CategoryItemEntityInvalidIdFailure
-    extends CategoryItemEntityFailure {
-  const CategoryItemEntityInvalidIdFailure();
-}
-
-// status
-final class CategoryItemEntityInvalidStatusFailure
-    extends CategoryItemEntityFailure {
-  const CategoryItemEntityInvalidStatusFailure();
-}
-
-// adderId
-final class CategoryItemEntityMissingAdderIdFailure
-    extends CategoryItemEntityFailure {
-  const CategoryItemEntityMissingAdderIdFailure();
-}
-
-final class CategoryItemEntityInvalidAdderIdFailure
-    extends CategoryItemEntityFailure {
-  const CategoryItemEntityInvalidAdderIdFailure();
-}
-
-// collectionId
-final class CategoryItemEntityMissingCollectionIdFailure
-    extends CategoryItemEntityFailure {
-  const CategoryItemEntityMissingCollectionIdFailure();
-}
-
-final class CategoryItemEntityInvalidCollectionIdFailure
-    extends CategoryItemEntityFailure {
-  const CategoryItemEntityInvalidCollectionIdFailure();
-}
-
-// categoryId
-final class CategoryItemEntityMissingCategoryIdFailure
-    extends CategoryItemEntityFailure {
-  const CategoryItemEntityMissingCategoryIdFailure();
-}
-
-final class CategoryItemEntityInvalidCategoryIdFailure
+//  category id
+class CategoryItemEntityInvalidCategoryIdFailure
     extends CategoryItemEntityFailure {
   const CategoryItemEntityInvalidCategoryIdFailure();
 }
 
-// addedAt
-final class CategoryItemEntityMissingAddedAtFailure
+//  collection id
+class CategoryItemEntityInvalidCollectionIdFailure
     extends CategoryItemEntityFailure {
-  const CategoryItemEntityMissingAddedAtFailure();
+  const CategoryItemEntityInvalidCollectionIdFailure();
 }
 
-final class CategoryItemEntityInvalidAddedAtFailure
+
+// title
+
+final class CategoryItemEntityControlCharTitleFailure
     extends CategoryItemEntityFailure {
-  const CategoryItemEntityInvalidAddedAtFailure();
+  const CategoryItemEntityControlCharTitleFailure();
 }
 
-// lastTransaction
-final class CategoryItemEntityMissingLastTransactionFailure
+final class CategoryItemEntityContainsHtmlTitleFailure
     extends CategoryItemEntityFailure {
-  const CategoryItemEntityMissingLastTransactionFailure();
+  const CategoryItemEntityContainsHtmlTitleFailure();
 }
 
-final class CategoryItemEntityInvalidLastTransactionFailure
+final class CategoryItemEntityEmojiOnlyTitleFailure
     extends CategoryItemEntityFailure {
-  const CategoryItemEntityInvalidLastTransactionFailure();
+  const CategoryItemEntityEmojiOnlyTitleFailure();
+}
+
+final class CategoryItemEntityTitleTooShortFailure
+    extends CategoryItemEntityFailure {
+  const CategoryItemEntityTitleTooShortFailure();
+}
+final class CategoryItemEntityTooLongTitleFailure
+    extends CategoryItemEntityFailure {
+  const CategoryItemEntityTooLongTitleFailure();
 }

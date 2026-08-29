@@ -4,16 +4,24 @@ abstract class CategoryItemModelFilterFailure extends CategoryFailure {
   const CategoryItemModelFilterFailure();
 }
 
+// ids
+final class CategoryItemModelFilterInvalidIdsFailure
+    extends CategoryItemModelFilterFailure {
+  const CategoryItemModelFilterInvalidIdsFailure();
+}
+
 // categoryId
 final class CategoryItemModelFilterInvalidCategoryIdFailure
     extends CategoryItemModelFilterFailure {
   const CategoryItemModelFilterInvalidCategoryIdFailure();
 }
+
 // adderId
 final class CategoryItemModelFilterInvalidAdderIdFailure
     extends CategoryItemModelFilterFailure {
   const CategoryItemModelFilterInvalidAdderIdFailure();
 }
+
 // collectionId
 final class CategoryItemModelFilterInvalidCollectionIdFailure
     extends CategoryItemModelFilterFailure {
@@ -52,6 +60,7 @@ final class CategoryItemModelFilterInvalidOrderFailure
 
 // general
 
-final class CategoryItemModelFilterEmptyFailure extends CategoryItemModelFilterFailure {
+final class CategoryItemModelFilterEmptyFailure
+    extends CategoryItemModelFilterFailure {
   const CategoryItemModelFilterEmptyFailure();
 }

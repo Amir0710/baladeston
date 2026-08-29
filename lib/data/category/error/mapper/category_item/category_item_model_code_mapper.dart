@@ -10,45 +10,53 @@ class CategoryItemModelCodeMapper {
     codes.CategoryItemModelErrorCodes.invalidId: () =>
     const CategoryItemModelInvalidIdFailure(),
 
+    // title
+    codes.CategoryItemModelErrorCodes.invalidTitle: () =>
+    const CategoryItemModelInvalidTitleFailure(),
+
+    // avgRate
+    codes.CategoryItemModelErrorCodes.invalidAvgRate: () =>
+    const CategoryItemModelInvalidAvgRateFailure(),
+
+    // rageCount
+    codes.CategoryItemModelErrorCodes.invalidRageCount: () =>
+    const CategoryItemModelInvalidRageCountFailure(),
+
+    // thumbnailUrl
+    codes.CategoryItemModelErrorCodes.invalidThumbnailUrl: () =>
+    const CategoryItemModelInvalidThumbnailUrlFailure(),
+
     // status
     codes.CategoryItemModelErrorCodes.invalidStatus: () =>
     const CategoryItemModelInvalidStatusFailure(),
 
-    // adderId
-    codes.CategoryItemModelErrorCodes.missingAdderId: () =>
-    const CategoryItemModelMissingAdderIdFailure(),
-    codes.CategoryItemModelErrorCodes.invalidAdderId: () =>
-    const CategoryItemModelInvalidAdderIdFailure(),
-
-    // collectionId
-    codes.CategoryItemModelErrorCodes.missingCollectionId: () =>
-    const CategoryItemModelMissingCollectionIdFailure(),
-    codes.CategoryItemModelErrorCodes.invalidCollectionId: () =>
-    const CategoryItemModelInvalidCollectionIdFailure(),
-
-    // categoryId
-    codes.CategoryItemModelErrorCodes.missingCategoryId: () =>
-    const CategoryItemModelMissingCategoryIdFailure(),
-    codes.CategoryItemModelErrorCodes.invalidCategoryId: () =>
-    const CategoryItemModelInvalidCategoryIdFailure(),
-
     // addedAt
-    codes.CategoryItemModelErrorCodes.missingAddedAt: () =>
-    const CategoryItemModelMissingAddedAtFailure(),
     codes.CategoryItemModelErrorCodes.invalidAddedAt: () =>
     const CategoryItemModelInvalidAddedAtFailure(),
 
     // lastTransaction
-    codes.CategoryItemModelErrorCodes.missingLastTransaction: () =>
-    const CategoryItemModelMissingLastTransactionFailure(),
     codes.CategoryItemModelErrorCodes.invalidLastTransaction: () =>
     const CategoryItemModelInvalidLastTransactionFailure(),
+
+    // adderId
+    codes.CategoryItemModelErrorCodes.invalidAdderId: () =>
+    const CategoryItemModelInvalidAdderIdFailure(),
+
+    // collectionId
+    codes.CategoryItemModelErrorCodes.invalidCollectionId: () =>
+    const CategoryItemModelInvalidCollectionIdFailure(),
+
+    // categoryId
+    codes.CategoryItemModelErrorCodes.invalidCategoryId: () =>
+    const CategoryItemModelInvalidCategoryIdFailure(),
+
+    // missing
+    codes.CategoryItemModelErrorCodes.missingField: () =>
+    const CategoryItemModelMissingFieldFailure(),
   };
 
   static CategoryFailure? map(String? code) {
     if (code == null) return null;
-
-    final factory = _map[code];
-    return factory?.call();
+    return _map[code]?.call();
   }
 }

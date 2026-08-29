@@ -18,12 +18,16 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CategoryEntity {
   int? get id => throw _privateConstructorUsedError;
   int? get parent => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
+  CategoryType get type => throw _privateConstructorUsedError;
+  double? get avgRate => throw _privateConstructorUsedError;
+  int? get rageCount => throw _privateConstructorUsedError;
   CategoryStatus? get status => throw _privateConstructorUsedError;
   String? get thumbnailUrl => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get lastTransaction => throw _privateConstructorUsedError;
-  int get ownerId => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  int? get ownerId => throw _privateConstructorUsedError;
 
   /// Create a copy of CategoryEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -41,12 +45,16 @@ abstract class $CategoryEntityCopyWith<$Res> {
   $Res call(
       {int? id,
       int? parent,
-      String title,
+      CategoryType type,
+      double? avgRate,
+      int? rageCount,
       CategoryStatus? status,
       String? thumbnailUrl,
       DateTime? createdAt,
       DateTime? lastTransaction,
-      int ownerId});
+      String title,
+      String description,
+      int? ownerId});
 }
 
 /// @nodoc
@@ -66,12 +74,16 @@ class _$CategoryEntityCopyWithImpl<$Res, $Val extends CategoryEntity>
   $Res call({
     Object? id = freezed,
     Object? parent = freezed,
-    Object? title = null,
+    Object? type = null,
+    Object? avgRate = freezed,
+    Object? rageCount = freezed,
     Object? status = freezed,
     Object? thumbnailUrl = freezed,
     Object? createdAt = freezed,
     Object? lastTransaction = freezed,
-    Object? ownerId = null,
+    Object? title = null,
+    Object? description = null,
+    Object? ownerId = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -82,10 +94,18 @@ class _$CategoryEntityCopyWithImpl<$Res, $Val extends CategoryEntity>
           ? _value.parent
           : parent // ignore: cast_nullable_to_non_nullable
               as int?,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as CategoryType,
+      avgRate: freezed == avgRate
+          ? _value.avgRate
+          : avgRate // ignore: cast_nullable_to_non_nullable
+              as double?,
+      rageCount: freezed == rageCount
+          ? _value.rageCount
+          : rageCount // ignore: cast_nullable_to_non_nullable
+              as int?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -102,10 +122,18 @@ class _$CategoryEntityCopyWithImpl<$Res, $Val extends CategoryEntity>
           ? _value.lastTransaction
           : lastTransaction // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      ownerId: null == ownerId
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      ownerId: freezed == ownerId
           ? _value.ownerId
           : ownerId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -121,12 +149,16 @@ abstract class _$$CategoryEntityImplCopyWith<$Res>
   $Res call(
       {int? id,
       int? parent,
-      String title,
+      CategoryType type,
+      double? avgRate,
+      int? rageCount,
       CategoryStatus? status,
       String? thumbnailUrl,
       DateTime? createdAt,
       DateTime? lastTransaction,
-      int ownerId});
+      String title,
+      String description,
+      int? ownerId});
 }
 
 /// @nodoc
@@ -144,12 +176,16 @@ class __$$CategoryEntityImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? parent = freezed,
-    Object? title = null,
+    Object? type = null,
+    Object? avgRate = freezed,
+    Object? rageCount = freezed,
     Object? status = freezed,
     Object? thumbnailUrl = freezed,
     Object? createdAt = freezed,
     Object? lastTransaction = freezed,
-    Object? ownerId = null,
+    Object? title = null,
+    Object? description = null,
+    Object? ownerId = freezed,
   }) {
     return _then(_$CategoryEntityImpl(
       id: freezed == id
@@ -160,10 +196,18 @@ class __$$CategoryEntityImplCopyWithImpl<$Res>
           ? _value.parent
           : parent // ignore: cast_nullable_to_non_nullable
               as int?,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as CategoryType,
+      avgRate: freezed == avgRate
+          ? _value.avgRate
+          : avgRate // ignore: cast_nullable_to_non_nullable
+              as double?,
+      rageCount: freezed == rageCount
+          ? _value.rageCount
+          : rageCount // ignore: cast_nullable_to_non_nullable
+              as int?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -180,10 +224,18 @@ class __$$CategoryEntityImplCopyWithImpl<$Res>
           ? _value.lastTransaction
           : lastTransaction // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      ownerId: null == ownerId
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      ownerId: freezed == ownerId
           ? _value.ownerId
           : ownerId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -194,19 +246,27 @@ class _$CategoryEntityImpl implements _CategoryEntity {
   const _$CategoryEntityImpl(
       {this.id,
       this.parent,
-      required this.title,
+      required this.type,
+      this.avgRate,
+      this.rageCount,
       this.status,
       this.thumbnailUrl,
       this.createdAt,
       this.lastTransaction,
-      required this.ownerId});
+      required this.title,
+      required this.description,
+      this.ownerId});
 
   @override
   final int? id;
   @override
   final int? parent;
   @override
-  final String title;
+  final CategoryType type;
+  @override
+  final double? avgRate;
+  @override
+  final int? rageCount;
   @override
   final CategoryStatus? status;
   @override
@@ -216,11 +276,15 @@ class _$CategoryEntityImpl implements _CategoryEntity {
   @override
   final DateTime? lastTransaction;
   @override
-  final int ownerId;
+  final String title;
+  @override
+  final String description;
+  @override
+  final int? ownerId;
 
   @override
   String toString() {
-    return 'CategoryEntity(id: $id, parent: $parent, title: $title, status: $status, thumbnailUrl: $thumbnailUrl, createdAt: $createdAt, lastTransaction: $lastTransaction, ownerId: $ownerId)';
+    return 'CategoryEntity(id: $id, parent: $parent, type: $type, avgRate: $avgRate, rageCount: $rageCount, status: $status, thumbnailUrl: $thumbnailUrl, createdAt: $createdAt, lastTransaction: $lastTransaction, title: $title, description: $description, ownerId: $ownerId)';
   }
 
   @override
@@ -230,7 +294,10 @@ class _$CategoryEntityImpl implements _CategoryEntity {
             other is _$CategoryEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.parent, parent) || other.parent == parent) &&
-            (identical(other.title, title) || other.title == title) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.avgRate, avgRate) || other.avgRate == avgRate) &&
+            (identical(other.rageCount, rageCount) ||
+                other.rageCount == rageCount) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.thumbnailUrl, thumbnailUrl) ||
                 other.thumbnailUrl == thumbnailUrl) &&
@@ -238,12 +305,27 @@ class _$CategoryEntityImpl implements _CategoryEntity {
                 other.createdAt == createdAt) &&
             (identical(other.lastTransaction, lastTransaction) ||
                 other.lastTransaction == lastTransaction) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.ownerId, ownerId) || other.ownerId == ownerId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, parent, title, status,
-      thumbnailUrl, createdAt, lastTransaction, ownerId);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      parent,
+      type,
+      avgRate,
+      rageCount,
+      status,
+      thumbnailUrl,
+      createdAt,
+      lastTransaction,
+      title,
+      description,
+      ownerId);
 
   /// Create a copy of CategoryEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -259,19 +341,27 @@ abstract class _CategoryEntity implements CategoryEntity {
   const factory _CategoryEntity(
       {final int? id,
       final int? parent,
-      required final String title,
+      required final CategoryType type,
+      final double? avgRate,
+      final int? rageCount,
       final CategoryStatus? status,
       final String? thumbnailUrl,
       final DateTime? createdAt,
       final DateTime? lastTransaction,
-      required final int ownerId}) = _$CategoryEntityImpl;
+      required final String title,
+      required final String description,
+      final int? ownerId}) = _$CategoryEntityImpl;
 
   @override
   int? get id;
   @override
   int? get parent;
   @override
-  String get title;
+  CategoryType get type;
+  @override
+  double? get avgRate;
+  @override
+  int? get rageCount;
   @override
   CategoryStatus? get status;
   @override
@@ -281,7 +371,11 @@ abstract class _CategoryEntity implements CategoryEntity {
   @override
   DateTime? get lastTransaction;
   @override
-  int get ownerId;
+  String get title;
+  @override
+  String get description;
+  @override
+  int? get ownerId;
 
   /// Create a copy of CategoryEntity
   /// with the given fields replaced by the non-null parameter values.

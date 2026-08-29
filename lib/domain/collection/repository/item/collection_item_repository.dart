@@ -1,9 +1,11 @@
+import 'package:baladeston/core/model/paginated_response_model.dart';
 import 'package:baladeston/core/result/result.dart';
 import 'package:baladeston/data/collection/filter/item/collection_item_query_filter.dart';
 import 'package:baladeston/data/video/filter/video_query_filter.dart';
 import 'package:baladeston/domain/collection/entity/collection_item_entity/collection_item_entity.dart';
 import 'package:baladeston/domain/collection/failure/base_collection_failure.dart';
 import 'package:baladeston/domain/video/entity/video_entity.dart';
+import 'package:image_picker/image_picker.dart';
 
 abstract class CollectionItemRepository {
   Future<Result<CollectionItemEntity, CollectionFailure>> addCollectionItem({
@@ -30,15 +32,19 @@ abstract class CollectionItemRepository {
   });
 
   // get videos in tree view
-  Future<Result<List<VideoEntity>, CollectionFailure>>
+  Future<Result<PaginatedResponseModel<VideoEntity>, CollectionFailure>>
       getVideosByCollectionItemFilter({
     required CollectionItemQueryFilter collectionItemFilter,
     required VideoQueryFilter videoFilter,
   });
 
   // get relation in user dashboard
-  Future<Result<List<CollectionItemEntity>, CollectionFailure>>
+  Future<Result<PaginatedResponseModel<CollectionItemEntity>, CollectionFailure>>
       getCollectionItemByCollectionFilter({
     required CollectionItemQueryFilter collectionItemFilter,
+  });
+
+  Future<Result<String, CollectionFailure>> uploadCollectionItemImage({
+    required XFile image,
   });
 }

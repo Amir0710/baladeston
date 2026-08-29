@@ -13,7 +13,7 @@ class DeleteCollectionByIdUseCaseBusinessRule {
     return idValidation();
   }
 
-  Result<void, CollectionFailure> idValidation() {
+  Result<void, CollectionIdFailure> idValidation() {
     if (collectionId <= 0) {
       return const Result.failure(CollectionIdInvalidFailure());
     }

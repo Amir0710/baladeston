@@ -1,10 +1,12 @@
+import 'package:baladeston/core/model/paginated_response_model.dart';
 import 'package:baladeston/core/result/result.dart';
 import 'package:baladeston/data/comment/filter/comment/comment_query_filter.dart';
-import 'package:baladeston/domain/Comment/failure/base_Comment_failure.dart';
+import 'package:baladeston/domain/comment/failure/base_comment_failure.dart';
 import 'package:baladeston/domain/comment/entity/comment/comment_entity.dart';
 
 abstract class CommentRepository {
-  Future<Result<List<CommentEntity>, CommentFailure>> getCommentByFilter({
+  Future<Result<PaginatedResponseModel<CommentEntity>, CommentFailure>>
+  getCommentByFilter({
     required CommentQueryFilter filter,
   });
 
@@ -26,7 +28,7 @@ abstract class CommentRepository {
     required int id,
   });
 
-  Future<Result<List<int>, CommentFailure>> deleteCommentByFilter({
+  Future<Result<int, CommentFailure>> deleteCommentByFilter({
     required CommentQueryFilter filter,
   });
 

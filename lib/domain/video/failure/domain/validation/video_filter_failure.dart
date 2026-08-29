@@ -4,34 +4,78 @@ abstract class VideoFilterFailure extends BaseVideoValidationFailure {
   const VideoFilterFailure();
 }
 
-class VideoFilterLimitInvalidFailure extends VideoFilterFailure {
-  const VideoFilterLimitInvalidFailure();
+// ids
+final class VideoFilterInvalidIdsFailure extends VideoFilterFailure {
+  const VideoFilterInvalidIdsFailure();
 }
 
-class VideoFilterOffsetInvalidFailure extends VideoFilterFailure {
-  const VideoFilterOffsetInvalidFailure();
+// searchTerm
+final class VideoFilterSearchTermTooShortFailure extends VideoFilterFailure {
+  const VideoFilterSearchTermTooShortFailure();
 }
 
+final class VideoFilterSearchTermTooLongFailure extends VideoFilterFailure {
+  const VideoFilterSearchTermTooLongFailure();
+}
+
+final class VideoFilterControlCharSearchTermFailure extends VideoFilterFailure {
+  const VideoFilterControlCharSearchTermFailure();
+}
+
+final class VideoFilterContainsHtmlSearchTermFailure
+    extends VideoFilterFailure {
+  const VideoFilterContainsHtmlSearchTermFailure();
+}
+
+final class VideoFilterEmojiOnlySearchTermFailure extends VideoFilterFailure {
+  const VideoFilterEmojiOnlySearchTermFailure();
+}
+
+// recommended age
+class VideoFilterRecommendedAgeTooLowFailure extends VideoFilterFailure {
+  const VideoFilterRecommendedAgeTooLowFailure();
+}
+
+class VideoFilterRecommendedAgeTooHighFailure extends VideoFilterFailure {
+  const VideoFilterRecommendedAgeTooHighFailure();
+}
+
+class VideoFilterRecommendedAgeRangeFailure extends VideoFilterFailure {
+  const VideoFilterRecommendedAgeRangeFailure();
+}
+
+// rate
 class VideoFilterRatingInvalidFailure extends VideoFilterFailure {
   const VideoFilterRatingInvalidFailure();
 }
 
-class VideoFilterOrderInvalidFailure extends VideoFilterFailure {
-  const VideoFilterOrderInvalidFailure();
+// price
+class VideoFilterPriceTooLowFailure extends VideoFilterFailure {
+  const VideoFilterPriceTooLowFailure();
 }
 
-class VideoFilterOwnerInvalidFailure extends VideoFilterFailure {
-  const VideoFilterOwnerInvalidFailure();
-}
-class VideoQueryFilterPriceInvalidFailure extends VideoFilterFailure {
-  const VideoQueryFilterPriceInvalidFailure();
+class VideoFilterPriceTooHighFailure extends VideoFilterFailure {
+  const VideoFilterPriceTooHighFailure();
 }
 
-class VideoQueryFilterDateRangeInvalidFailure extends VideoFilterFailure {
-  const VideoQueryFilterDateRangeInvalidFailure();
+class VideoFilterPriceRangeFailure extends VideoFilterFailure {
+  const VideoFilterPriceRangeFailure();
 }
 
+// dates
+final class VideoFilterInvalidUploadedAfterFailure extends VideoFilterFailure {
+  const VideoFilterInvalidUploadedAfterFailure();
+}
 
-class VideoFilterEmptyFailure extends VideoFilterFailure {
+final class VideoFilterInvalidUploadedBeforeFailure extends VideoFilterFailure {
+  const VideoFilterInvalidUploadedBeforeFailure();
+}
+
+final class VideoFilterInvalidDateRangeFailure extends VideoFilterFailure {
+  const VideoFilterInvalidDateRangeFailure();
+}
+
+// empty
+final class VideoFilterEmptyFailure extends VideoFilterFailure {
   const VideoFilterEmptyFailure();
 }

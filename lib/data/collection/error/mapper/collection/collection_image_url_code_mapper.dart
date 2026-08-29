@@ -7,16 +7,14 @@ class CollectionImageUrlCodeMapper {
   const CollectionImageUrlCodeMapper();
 
   static final Map<String, CollectionFailure Function()> _map = {
-    codes.CollectionImageUrlErrorCodes.emptyUrl: () =>
-        const CollectionModelImageUrlEmptyUrlFailure(),
-    codes.CollectionImageUrlErrorCodes.invalidFormat: () =>
-        const CollectionModelImageUrlInvalidFormatFailure(),
-    codes.CollectionImageUrlErrorCodes.unsupportedScheme: () =>
-        const CollectionModelImageUrlUnsupportedSchemeFailure(),
-    codes.CollectionImageUrlErrorCodes.unauthorizedHost: () =>
-        const CollectionModelImageUrlUnauthorizedHostFailure(),
-    codes.CollectionImageUrlErrorCodes.invalidId: () =>
-        const CollectionModelImageUrlInvalidIdFailure(),
+    codes.CollectionImageUrlErrorCodes.urlInvalidFormat: () =>
+        const CollectionImageUrlInvalidFormatFailure(),
+    codes.CollectionImageUrlErrorCodes.urlUnsupportedScheme: () =>
+        const CollectionImageUrlUnsupportedSchemeFailure(),
+    codes.CollectionImageUrlErrorCodes.urlInvalidStructural: () =>
+        const CollectionImageUrlStructuralFailure(),
+    codes.CollectionImageUrlErrorCodes.urlInvalidLength: () =>
+        const CollectionImageUrlInvalidLengthFailure(),
   };
 
   static CollectionFailure? map(String? code) {

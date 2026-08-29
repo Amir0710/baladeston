@@ -1,3 +1,4 @@
+import 'package:baladeston/core/model/paginated_response_model.dart';
 import 'package:baladeston/core/result/result.dart';
 import 'package:baladeston/data/category/filter/item/category_item_query_filter.dart';
 import 'package:baladeston/data/collection/filter/model/collection_query_filter.dart';
@@ -13,7 +14,7 @@ class GetCollectionsByCategoryItemFilterUseCase {
     required this.repository,
   });
 
-  Future<Result<List<CollectionEntity>, CategoryFailure>> call({
+  Future<Result<PaginatedResponseModel<CollectionEntity>, CategoryFailure>> call({
     required CategoryItemQueryFilter categoryItemFilter,
     required CollectionQueryFilter collectionFilter,
   }) async {

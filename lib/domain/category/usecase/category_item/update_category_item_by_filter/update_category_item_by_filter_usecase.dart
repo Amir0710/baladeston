@@ -15,7 +15,7 @@ class UpdateCategoryItemByFilterUseCase {
     required CategoryItemQueryFilter filter,
   }) async {
     final rule = UpdateCategoryItemByFilterUsecaseBusinessRule(
-      item: item,
+      categoryItem: item,
       filter: filter,
     );
     final validation = rule.validate();

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:baladeston/core/model/paginated_response_model.dart';
 import 'package:baladeston/core/result/result.dart';
 import 'package:baladeston/data/video/datasource/remote/video_remote_datasource/video_api.dart';
 import 'package:baladeston/data/video/filter/video_query_filter.dart';
@@ -16,58 +17,71 @@ class VideoRepositoryImplementation extends VideoRepository {
   }) : _api = api;
 
   @override
-  Future<Result<VideoEntity, VideoFailure>> createVideo({
-    required VideoEntity video,
-  }) async {
-    try {
-      final model = video.toModel();
-      final resultModel = await _api.createVideo(video: model);
-
-      return Result.success(resultModel.toEntity());
-    } on VideoFailure catch (failure) {
-      return Result.failure(failure);
-    }
+  Future<Result<int, VideoFailure>> countVideos({
+    required VideoQueryFilter filter,
+  }) {
+    return _api.countVideos(filter: filter);
   }
 
   @override
-  Future<Result<List<VideoEntity>, VideoFailure>> getVideoByFilter({
+  Future<Result<VideoEntity, VideoFailure>> createVideo({
+    required VideoEntity video,
+  }) async {
+    final model = video.toModel();
+    final result = await _api.createVideo(video: model);
+
+    return result.map(
+      success: (s) => Result.success(s.data.toEntity()),
+      failure: (f) => Result.failure(f.failure),
+    );
+  }
+
+  @override
+  Future<Result<int, VideoFailure>> deleteVideoByFilter({
+    required VideoQueryFilter filter,
+  }) {
+    return _api.deleteVideoByFilter(filter: filter);
+  }
+
+  @override
+  Future<Result<int, VideoFailure>> deleteVideoById({
+    required int id,
+  }) {
+    return _api.deleteVideoById(id: id);
+  }
+
+  @override
+  Future<Result<PaginatedResponseModel<VideoEntity>, VideoFailure>>
+      getVideoByFilter({
     required VideoQueryFilter filter,
   }) async {
-    try {
-      final models = await _api.getVideoByFilter(filter: filter);
+    final result = await _api.getVideoByFilter(filter: filter);
 
-      return Result.success(models.map((e) => e.toEntity()).toList());
-    } on VideoFailure catch (failure) {
-      return Result.failure(failure);
-    }
+    return result.map(
+      success: (s) {
+        final paginatedModel = s.data;
+        final entities = paginatedModel.items.map((e) => e.toEntity()).toList();
+
+        return Result.success(PaginatedResponseModel<VideoEntity>(
+          items: entities,
+          nextCursor: paginatedModel.nextCursor,
+          isLast: paginatedModel.isLast,
+        ));
+      },
+      failure: (f) => Result.failure(f.failure),
+    );
   }
 
   @override
   Future<Result<VideoEntity, VideoFailure>> getVideoById({
     required int id,
   }) async {
-    try {
-      final model = await _api.getVideoById(id: id);
+    final result = await _api.getVideoById(id: id);
 
-      return Result.success(model.toEntity());
-    } on VideoFailure catch (failure) {
-      return Result.failure(failure);
-    }
-  }
-
-  @override
-  Future<Result<VideoEntity, VideoFailure>> updateVideoById({
-    required int id,
-    required VideoEntity video,
-  }) async {
-    try {
-      final model = video.toModel();
-      final updatedModel = await _api.updateVideoById(id: id, video: model);
-
-      return Result.success(updatedModel.toEntity());
-    } on VideoFailure catch (failure) {
-      return Result.failure(failure);
-    }
+    return result.map(
+      success: (s) => Result.success(s.data.toEntity()),
+      failure: (f) => Result.failure(f.failure),
+    );
   }
 
   @override
@@ -75,78 +89,35 @@ class VideoRepositoryImplementation extends VideoRepository {
     required VideoQueryFilter filter,
     required VideoEntity video,
   }) async {
-    try {
-      final model = video.toModel();
-      final ids = await _api.updateVideoByFilter(filter: filter, video: model);
-
-      return Result.success(ids);
-    } on VideoFailure catch (failure) {
-      return Result.failure(failure);
-    }
+    final model = video.toModel();
+    return _api.updateVideoByFilter(filter: filter, video: model);
   }
 
   @override
-  Future<Result<int, VideoFailure>> deleteVideoById({
+  Future<Result<VideoEntity, VideoFailure>> updateVideoById({
     required int id,
+    required VideoEntity video,
   }) async {
-    try {
-      final deletedId = await _api.deleteVideoById(id: id);
+    final model = video.toModel();
+    final result = await _api.updateVideoById(id: id, video: model);
 
-      return Result.success(deletedId);
-    } on VideoFailure catch (failure) {
-      return Result.failure(failure);
-    }
-  }
-
-  @override
-  Future<Result<int, VideoFailure>> deleteVideoByFilter({
-    required VideoQueryFilter filter,
-  }) async {
-    try {
-      final ids = await _api.deleteVideoByFilter(filter: filter);
-
-      return Result.success(ids);
-    } on VideoFailure catch (failure) {
-      return Result.failure(failure);
-    }
-  }
-
-  @override
-  Future<Result<int, VideoFailure>> countVideos({
-    required VideoQueryFilter filter,
-  }) async {
-    try {
-      final count = await _api.countVideos(filter: filter);
-
-      return Result.success(count);
-    } on VideoFailure catch (failure) {
-      return Result.failure(failure);
-    }
+    return result.map(
+      success: (s) => Result.success(s.data.toEntity()),
+      failure: (f) => Result.failure(f.failure),
+    );
   }
 
   @override
   Future<Result<String, VideoFailure>> uploadImage({
     required File image,
-  }) async {
-    try {
-      final result = await _api.uploadImage(image: image);
-
-      return Result.success(result);
-    } on VideoFailure catch (failure) {
-      return Result.failure(failure);
-    }
+  }) {
+    return _api.uploadImage(image: image);
   }
 
   @override
   Future<Result<String, VideoFailure>> uploadVideo({
     required File video,
-  }) async {
-    try {
-      final result = await _api.uploadVideo(video: video);
-
-      return Result.success(result);
-    } on VideoFailure catch (failure) {
-      return Result.failure(failure);
-    }
+  }) {
+    return _api.uploadVideo(video: video);
   }
 }

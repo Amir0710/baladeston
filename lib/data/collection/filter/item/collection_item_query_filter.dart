@@ -8,14 +8,19 @@ part 'collection_item_query_filter.g.dart';
 @freezed
 class CollectionItemQueryFilter with _$CollectionItemQueryFilter {
   const factory CollectionItemQueryFilter({
+    String? searchTerm,
+    List<int>? ids,
     int? collectionId,
-    int? adderId ,
-    int? videoId ,
+    int? adderId,
+    int? videoId,
+    double? minRating,
+    double? minPrice,
+    double? maxPrice,
     CollectionItemStatus? status,
     @Default(20) int limit,
-    @Default(0) int offset,
+    String? cursor,
     @Default(false) bool ascending,
-    @Default(CollectionOrder.title) CollectionOrder order,
+    @Default(CollectionOrder.createdAt) CollectionOrder order,
   }) = _CollectionItemQueryFilter;
 
   factory CollectionItemQueryFilter.fromJson(Map<String, dynamic> json) =>

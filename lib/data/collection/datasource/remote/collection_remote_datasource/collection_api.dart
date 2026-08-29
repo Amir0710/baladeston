@@ -1,12 +1,14 @@
-import 'dart:io';
-
+import 'package:baladeston/core/model/paginated_response_model.dart';
 import 'package:baladeston/core/result/result.dart';
 import 'package:baladeston/data/collection/filter/model/collection_query_filter.dart';
 import 'package:baladeston/data/collection/model/collection_model/collection_model.dart';
 import 'package:baladeston/domain/collection/failure/base_collection_failure.dart';
+import 'package:image_picker/image_picker.dart';
+
 
 abstract class CollectionApi {
-  Future<Result<List<CollectionModel>, CollectionFailure>> getCollectionByFilter({
+  Future<Result<PaginatedResponseModel<CollectionModel>, CollectionFailure>>
+  getCollectionByFilter({
     required CollectionQueryFilter filter,
   });
 
@@ -28,7 +30,7 @@ abstract class CollectionApi {
     required int id,
   });
 
-  Future<Result<List<int>, CollectionFailure>> deleteCollectionByFilter({
+  Future<Result<int, CollectionFailure>> deleteCollectionByFilter({
     required CollectionQueryFilter filter,
   });
 
@@ -41,6 +43,6 @@ abstract class CollectionApi {
   });
 
   Future<Result<String, CollectionFailure>> uploadCollectionImage({
-    required File image,
+    required XFile image,
   });
 }

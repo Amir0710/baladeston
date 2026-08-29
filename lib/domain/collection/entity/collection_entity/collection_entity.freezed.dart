@@ -17,15 +17,19 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CollectionEntity {
   int? get id => throw _privateConstructorUsedError;
-  CollectionStatus? get status => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  int? get ownerId => throw _privateConstructorUsedError;
+  double? get avgRate => throw _privateConstructorUsedError;
+  int? get rateCount => throw _privateConstructorUsedError;
   String? get thumbnailUrl => throw _privateConstructorUsedError;
+  CollectionStatus? get status => throw _privateConstructorUsedError;
+  CollectionType? get type => throw _privateConstructorUsedError;
   int? get count => throw _privateConstructorUsedError;
   int? get price => throw _privateConstructorUsedError;
   String? get uniqueCode => throw _privateConstructorUsedError;
   DateTime? get lastTransaction => throw _privateConstructorUsedError;
-  int get ownerId => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
 
   /// Create a copy of CollectionEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -42,15 +46,19 @@ abstract class $CollectionEntityCopyWith<$Res> {
   @useResult
   $Res call(
       {int? id,
-      CollectionStatus? status,
+      String title,
+      String description,
+      int? ownerId,
+      double? avgRate,
+      int? rateCount,
       String? thumbnailUrl,
+      CollectionStatus? status,
+      CollectionType? type,
       int? count,
       int? price,
       String? uniqueCode,
       DateTime? lastTransaction,
-      int ownerId,
-      DateTime? createdAt,
-      String title});
+      DateTime? createdAt});
 }
 
 /// @nodoc
@@ -69,29 +77,57 @@ class _$CollectionEntityCopyWithImpl<$Res, $Val extends CollectionEntity>
   @override
   $Res call({
     Object? id = freezed,
-    Object? status = freezed,
+    Object? title = null,
+    Object? description = null,
+    Object? ownerId = freezed,
+    Object? avgRate = freezed,
+    Object? rateCount = freezed,
     Object? thumbnailUrl = freezed,
+    Object? status = freezed,
+    Object? type = freezed,
     Object? count = freezed,
     Object? price = freezed,
     Object? uniqueCode = freezed,
     Object? lastTransaction = freezed,
-    Object? ownerId = null,
     Object? createdAt = freezed,
-    Object? title = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as CollectionStatus?,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      ownerId: freezed == ownerId
+          ? _value.ownerId
+          : ownerId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      avgRate: freezed == avgRate
+          ? _value.avgRate
+          : avgRate // ignore: cast_nullable_to_non_nullable
+              as double?,
+      rateCount: freezed == rateCount
+          ? _value.rateCount
+          : rateCount // ignore: cast_nullable_to_non_nullable
+              as int?,
       thumbnailUrl: freezed == thumbnailUrl
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as CollectionStatus?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as CollectionType?,
       count: freezed == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
@@ -108,18 +144,10 @@ class _$CollectionEntityCopyWithImpl<$Res, $Val extends CollectionEntity>
           ? _value.lastTransaction
           : lastTransaction // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      ownerId: null == ownerId
-          ? _value.ownerId
-          : ownerId // ignore: cast_nullable_to_non_nullable
-              as int,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -134,15 +162,19 @@ abstract class _$$CollectionEntityImplCopyWith<$Res>
   @useResult
   $Res call(
       {int? id,
-      CollectionStatus? status,
+      String title,
+      String description,
+      int? ownerId,
+      double? avgRate,
+      int? rateCount,
       String? thumbnailUrl,
+      CollectionStatus? status,
+      CollectionType? type,
       int? count,
       int? price,
       String? uniqueCode,
       DateTime? lastTransaction,
-      int ownerId,
-      DateTime? createdAt,
-      String title});
+      DateTime? createdAt});
 }
 
 /// @nodoc
@@ -159,29 +191,57 @@ class __$$CollectionEntityImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? status = freezed,
+    Object? title = null,
+    Object? description = null,
+    Object? ownerId = freezed,
+    Object? avgRate = freezed,
+    Object? rateCount = freezed,
     Object? thumbnailUrl = freezed,
+    Object? status = freezed,
+    Object? type = freezed,
     Object? count = freezed,
     Object? price = freezed,
     Object? uniqueCode = freezed,
     Object? lastTransaction = freezed,
-    Object? ownerId = null,
     Object? createdAt = freezed,
-    Object? title = null,
   }) {
     return _then(_$CollectionEntityImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as CollectionStatus?,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      ownerId: freezed == ownerId
+          ? _value.ownerId
+          : ownerId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      avgRate: freezed == avgRate
+          ? _value.avgRate
+          : avgRate // ignore: cast_nullable_to_non_nullable
+              as double?,
+      rateCount: freezed == rateCount
+          ? _value.rateCount
+          : rateCount // ignore: cast_nullable_to_non_nullable
+              as int?,
       thumbnailUrl: freezed == thumbnailUrl
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as CollectionStatus?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as CollectionType?,
       count: freezed == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
@@ -198,18 +258,10 @@ class __$$CollectionEntityImplCopyWithImpl<$Res>
           ? _value.lastTransaction
           : lastTransaction // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      ownerId: null == ownerId
-          ? _value.ownerId
-          : ownerId // ignore: cast_nullable_to_non_nullable
-              as int,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -219,22 +271,38 @@ class __$$CollectionEntityImplCopyWithImpl<$Res>
 class _$CollectionEntityImpl implements _CollectionEntity {
   const _$CollectionEntityImpl(
       {this.id,
-      this.status,
+      required this.title,
+      required this.description,
+      this.ownerId,
+      this.avgRate,
+      this.rateCount,
       this.thumbnailUrl,
+      this.status,
+      this.type,
       this.count,
       this.price,
       this.uniqueCode,
       this.lastTransaction,
-      required this.ownerId,
-      this.createdAt,
-      required this.title});
+      this.createdAt});
 
   @override
   final int? id;
   @override
-  final CollectionStatus? status;
+  final String title;
+  @override
+  final String description;
+  @override
+  final int? ownerId;
+  @override
+  final double? avgRate;
+  @override
+  final int? rateCount;
   @override
   final String? thumbnailUrl;
+  @override
+  final CollectionStatus? status;
+  @override
+  final CollectionType? type;
   @override
   final int? count;
   @override
@@ -244,15 +312,11 @@ class _$CollectionEntityImpl implements _CollectionEntity {
   @override
   final DateTime? lastTransaction;
   @override
-  final int ownerId;
-  @override
   final DateTime? createdAt;
-  @override
-  final String title;
 
   @override
   String toString() {
-    return 'CollectionEntity(id: $id, status: $status, thumbnailUrl: $thumbnailUrl, count: $count, price: $price, uniqueCode: $uniqueCode, lastTransaction: $lastTransaction, ownerId: $ownerId, createdAt: $createdAt, title: $title)';
+    return 'CollectionEntity(id: $id, title: $title, description: $description, ownerId: $ownerId, avgRate: $avgRate, rateCount: $rateCount, thumbnailUrl: $thumbnailUrl, status: $status, type: $type, count: $count, price: $price, uniqueCode: $uniqueCode, lastTransaction: $lastTransaction, createdAt: $createdAt)';
   }
 
   @override
@@ -261,24 +325,44 @@ class _$CollectionEntityImpl implements _CollectionEntity {
         (other.runtimeType == runtimeType &&
             other is _$CollectionEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.status, status) || other.status == status) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.ownerId, ownerId) || other.ownerId == ownerId) &&
+            (identical(other.avgRate, avgRate) || other.avgRate == avgRate) &&
+            (identical(other.rateCount, rateCount) ||
+                other.rateCount == rateCount) &&
             (identical(other.thumbnailUrl, thumbnailUrl) ||
                 other.thumbnailUrl == thumbnailUrl) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.type, type) || other.type == type) &&
             (identical(other.count, count) || other.count == count) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.uniqueCode, uniqueCode) ||
                 other.uniqueCode == uniqueCode) &&
             (identical(other.lastTransaction, lastTransaction) ||
                 other.lastTransaction == lastTransaction) &&
-            (identical(other.ownerId, ownerId) || other.ownerId == ownerId) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.title, title) || other.title == title));
+                other.createdAt == createdAt));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, status, thumbnailUrl, count,
-      price, uniqueCode, lastTransaction, ownerId, createdAt, title);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      description,
+      ownerId,
+      avgRate,
+      rateCount,
+      thumbnailUrl,
+      status,
+      type,
+      count,
+      price,
+      uniqueCode,
+      lastTransaction,
+      createdAt);
 
   /// Create a copy of CollectionEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -293,22 +377,38 @@ class _$CollectionEntityImpl implements _CollectionEntity {
 abstract class _CollectionEntity implements CollectionEntity {
   const factory _CollectionEntity(
       {final int? id,
-      final CollectionStatus? status,
+      required final String title,
+      required final String description,
+      final int? ownerId,
+      final double? avgRate,
+      final int? rateCount,
       final String? thumbnailUrl,
+      final CollectionStatus? status,
+      final CollectionType? type,
       final int? count,
       final int? price,
       final String? uniqueCode,
       final DateTime? lastTransaction,
-      required final int ownerId,
-      final DateTime? createdAt,
-      required final String title}) = _$CollectionEntityImpl;
+      final DateTime? createdAt}) = _$CollectionEntityImpl;
 
   @override
   int? get id;
   @override
-  CollectionStatus? get status;
+  String get title;
+  @override
+  String get description;
+  @override
+  int? get ownerId;
+  @override
+  double? get avgRate;
+  @override
+  int? get rateCount;
   @override
   String? get thumbnailUrl;
+  @override
+  CollectionStatus? get status;
+  @override
+  CollectionType? get type;
   @override
   int? get count;
   @override
@@ -318,11 +418,7 @@ abstract class _CollectionEntity implements CollectionEntity {
   @override
   DateTime? get lastTransaction;
   @override
-  int get ownerId;
-  @override
   DateTime? get createdAt;
-  @override
-  String get title;
 
   /// Create a copy of CollectionEntity
   /// with the given fields replaced by the non-null parameter values.

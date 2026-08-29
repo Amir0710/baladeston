@@ -1,12 +1,17 @@
 import 'package:baladeston/data/collection/api/error_codes/collection/collection_filter_error_code.dart'
     as codes;
 import 'package:baladeston/domain/collection/failure/base_collection_failure.dart';
+import 'package:baladeston/domain/collection/failure/server/code/collection_item_model_filter_failure.dart';
 import 'package:baladeston/domain/collection/failure/server/code/collection_model_filter_failure.dart';
 
 final class CollectionFilterCodeMapper {
   const CollectionFilterCodeMapper();
 
   static final Map<String, CollectionFailure Function()> _registry = {
+    // ids
+    codes.CollectionFilterErrorCodes.invalidIds: () =>
+        const CollectionItemModelFilterInvalidIdsFailure(),
+
     // searchTerm
     codes.CollectionFilterErrorCodes.invalidSearchTerm: () =>
         const CollectionModelFilterInvalidSearchTermFailure(),

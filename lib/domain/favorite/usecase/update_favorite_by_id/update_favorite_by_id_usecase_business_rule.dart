@@ -1,44 +1,24 @@
-import 'package:baladeston/domain/favorite/entity/favorite_entity.dart';
-import 'package:baladeston/domain/favorite/exception/favorite_entity_exception.dart';
-import 'package:baladeston/domain/favorite/exception/favorite_id_exception.dart';
+import 'package:baladeston/core/result/result.dart';
+import 'package:baladeston/domain/favorite/entity/favorite/favorite_entity.dart';
+import 'package:baladeston/domain/favorite/failure/base_favorite_failure.dart';
+import 'package:baladeston/domain/favorite/failure/domain/validation/favorite_entity_failure.dart';
 
-class UpdateFavoriteByIdUsecaseBusinessRule {
+class UpdateFavoriteByIdUseCaseBusinessRule {
   final int id;
   final FavoriteEntity favorite;
 
-  const UpdateFavoriteByIdUsecaseBusinessRule({
+  const UpdateFavoriteByIdUseCaseBusinessRule({
     required this.id,
     required this.favorite,
   });
 
-  void validate() {
-    _validateId();
-    _validateUpdatableFields();
-    _validateEntity();
-  }
-
-  void _validateId() {
+  Result<void, FavoriteFailure> validate() {
     if (id <= 0) {
-      throw FavoriteIdInvalidException();
+      return const Result.failure(FavoriteEntityInvalidTargetIdFailure());
     }
-  }
-
-  void _validateEntity() {
     if (favorite.userId <= 0) {
-      throw FavoriteEntityIdInvalidException();
+      return const Result.failure(FavoriteEntityInvalidUserIdFailure());
     }
-    if(favorite.userId != id){
-      throw FavoriteInvalidEntityException();
-    }
-  }
-
-
-
-  void _validateUpdatableFields() {
-    final hasUpdate = favorite.targetId > 0;
-
-    if (!hasUpdate) {
-      throw FavoriteNoUpdatableFieldsException();
-    }
+    return const Result.success(null);
   }
 }

@@ -21,12 +21,17 @@ CollectionItemQueryFilter _$CollectionItemQueryFilterFromJson(
 
 /// @nodoc
 mixin _$CollectionItemQueryFilter {
+  String? get searchTerm => throw _privateConstructorUsedError;
+  List<int>? get ids => throw _privateConstructorUsedError;
   int? get collectionId => throw _privateConstructorUsedError;
   int? get adderId => throw _privateConstructorUsedError;
   int? get videoId => throw _privateConstructorUsedError;
+  double? get minRating => throw _privateConstructorUsedError;
+  double? get minPrice => throw _privateConstructorUsedError;
+  double? get maxPrice => throw _privateConstructorUsedError;
   CollectionItemStatus? get status => throw _privateConstructorUsedError;
   int get limit => throw _privateConstructorUsedError;
-  int get offset => throw _privateConstructorUsedError;
+  String? get cursor => throw _privateConstructorUsedError;
   bool get ascending => throw _privateConstructorUsedError;
   CollectionOrder get order => throw _privateConstructorUsedError;
 
@@ -47,12 +52,17 @@ abstract class $CollectionItemQueryFilterCopyWith<$Res> {
       _$CollectionItemQueryFilterCopyWithImpl<$Res, CollectionItemQueryFilter>;
   @useResult
   $Res call(
-      {int? collectionId,
+      {String? searchTerm,
+      List<int>? ids,
+      int? collectionId,
       int? adderId,
       int? videoId,
+      double? minRating,
+      double? minPrice,
+      double? maxPrice,
       CollectionItemStatus? status,
       int limit,
-      int offset,
+      String? cursor,
       bool ascending,
       CollectionOrder order});
 }
@@ -73,16 +83,29 @@ class _$CollectionItemQueryFilterCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? searchTerm = freezed,
+    Object? ids = freezed,
     Object? collectionId = freezed,
     Object? adderId = freezed,
     Object? videoId = freezed,
+    Object? minRating = freezed,
+    Object? minPrice = freezed,
+    Object? maxPrice = freezed,
     Object? status = freezed,
     Object? limit = null,
-    Object? offset = null,
+    Object? cursor = freezed,
     Object? ascending = null,
     Object? order = null,
   }) {
     return _then(_value.copyWith(
+      searchTerm: freezed == searchTerm
+          ? _value.searchTerm
+          : searchTerm // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ids: freezed == ids
+          ? _value.ids
+          : ids // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
       collectionId: freezed == collectionId
           ? _value.collectionId
           : collectionId // ignore: cast_nullable_to_non_nullable
@@ -95,6 +118,18 @@ class _$CollectionItemQueryFilterCopyWithImpl<$Res,
           ? _value.videoId
           : videoId // ignore: cast_nullable_to_non_nullable
               as int?,
+      minRating: freezed == minRating
+          ? _value.minRating
+          : minRating // ignore: cast_nullable_to_non_nullable
+              as double?,
+      minPrice: freezed == minPrice
+          ? _value.minPrice
+          : minPrice // ignore: cast_nullable_to_non_nullable
+              as double?,
+      maxPrice: freezed == maxPrice
+          ? _value.maxPrice
+          : maxPrice // ignore: cast_nullable_to_non_nullable
+              as double?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -103,10 +138,10 @@ class _$CollectionItemQueryFilterCopyWithImpl<$Res,
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
               as int,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as int,
+      cursor: freezed == cursor
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
+              as String?,
       ascending: null == ascending
           ? _value.ascending
           : ascending // ignore: cast_nullable_to_non_nullable
@@ -129,12 +164,17 @@ abstract class _$$CollectionItemQueryFilterImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int? collectionId,
+      {String? searchTerm,
+      List<int>? ids,
+      int? collectionId,
       int? adderId,
       int? videoId,
+      double? minRating,
+      double? minPrice,
+      double? maxPrice,
       CollectionItemStatus? status,
       int limit,
-      int offset,
+      String? cursor,
       bool ascending,
       CollectionOrder order});
 }
@@ -154,16 +194,29 @@ class __$$CollectionItemQueryFilterImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? searchTerm = freezed,
+    Object? ids = freezed,
     Object? collectionId = freezed,
     Object? adderId = freezed,
     Object? videoId = freezed,
+    Object? minRating = freezed,
+    Object? minPrice = freezed,
+    Object? maxPrice = freezed,
     Object? status = freezed,
     Object? limit = null,
-    Object? offset = null,
+    Object? cursor = freezed,
     Object? ascending = null,
     Object? order = null,
   }) {
     return _then(_$CollectionItemQueryFilterImpl(
+      searchTerm: freezed == searchTerm
+          ? _value.searchTerm
+          : searchTerm // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ids: freezed == ids
+          ? _value._ids
+          : ids // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
       collectionId: freezed == collectionId
           ? _value.collectionId
           : collectionId // ignore: cast_nullable_to_non_nullable
@@ -176,6 +229,18 @@ class __$$CollectionItemQueryFilterImplCopyWithImpl<$Res>
           ? _value.videoId
           : videoId // ignore: cast_nullable_to_non_nullable
               as int?,
+      minRating: freezed == minRating
+          ? _value.minRating
+          : minRating // ignore: cast_nullable_to_non_nullable
+              as double?,
+      minPrice: freezed == minPrice
+          ? _value.minPrice
+          : minPrice // ignore: cast_nullable_to_non_nullable
+              as double?,
+      maxPrice: freezed == maxPrice
+          ? _value.maxPrice
+          : maxPrice // ignore: cast_nullable_to_non_nullable
+              as double?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -184,10 +249,10 @@ class __$$CollectionItemQueryFilterImplCopyWithImpl<$Res>
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
               as int,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as int,
+      cursor: freezed == cursor
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
+              as String?,
       ascending: null == ascending
           ? _value.ascending
           : ascending // ignore: cast_nullable_to_non_nullable
@@ -204,17 +269,35 @@ class __$$CollectionItemQueryFilterImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CollectionItemQueryFilterImpl implements _CollectionItemQueryFilter {
   const _$CollectionItemQueryFilterImpl(
-      {this.collectionId,
+      {this.searchTerm,
+      final List<int>? ids,
+      this.collectionId,
       this.adderId,
       this.videoId,
+      this.minRating,
+      this.minPrice,
+      this.maxPrice,
       this.status,
       this.limit = 20,
-      this.offset = 0,
+      this.cursor,
       this.ascending = false,
-      this.order = CollectionOrder.title});
+      this.order = CollectionOrder.createdAt})
+      : _ids = ids;
 
   factory _$CollectionItemQueryFilterImpl.fromJson(Map<String, dynamic> json) =>
       _$$CollectionItemQueryFilterImplFromJson(json);
+
+  @override
+  final String? searchTerm;
+  final List<int>? _ids;
+  @override
+  List<int>? get ids {
+    final value = _ids;
+    if (value == null) return null;
+    if (_ids is EqualUnmodifiableListView) return _ids;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   final int? collectionId;
@@ -223,13 +306,18 @@ class _$CollectionItemQueryFilterImpl implements _CollectionItemQueryFilter {
   @override
   final int? videoId;
   @override
+  final double? minRating;
+  @override
+  final double? minPrice;
+  @override
+  final double? maxPrice;
+  @override
   final CollectionItemStatus? status;
   @override
   @JsonKey()
   final int limit;
   @override
-  @JsonKey()
-  final int offset;
+  final String? cursor;
   @override
   @JsonKey()
   final bool ascending;
@@ -239,7 +327,7 @@ class _$CollectionItemQueryFilterImpl implements _CollectionItemQueryFilter {
 
   @override
   String toString() {
-    return 'CollectionItemQueryFilter(collectionId: $collectionId, adderId: $adderId, videoId: $videoId, status: $status, limit: $limit, offset: $offset, ascending: $ascending, order: $order)';
+    return 'CollectionItemQueryFilter(searchTerm: $searchTerm, ids: $ids, collectionId: $collectionId, adderId: $adderId, videoId: $videoId, minRating: $minRating, minPrice: $minPrice, maxPrice: $maxPrice, status: $status, limit: $limit, cursor: $cursor, ascending: $ascending, order: $order)';
   }
 
   @override
@@ -247,13 +335,22 @@ class _$CollectionItemQueryFilterImpl implements _CollectionItemQueryFilter {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CollectionItemQueryFilterImpl &&
+            (identical(other.searchTerm, searchTerm) ||
+                other.searchTerm == searchTerm) &&
+            const DeepCollectionEquality().equals(other._ids, _ids) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
             (identical(other.adderId, adderId) || other.adderId == adderId) &&
             (identical(other.videoId, videoId) || other.videoId == videoId) &&
+            (identical(other.minRating, minRating) ||
+                other.minRating == minRating) &&
+            (identical(other.minPrice, minPrice) ||
+                other.minPrice == minPrice) &&
+            (identical(other.maxPrice, maxPrice) ||
+                other.maxPrice == maxPrice) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.limit, limit) || other.limit == limit) &&
-            (identical(other.offset, offset) || other.offset == offset) &&
+            (identical(other.cursor, cursor) || other.cursor == cursor) &&
             (identical(other.ascending, ascending) ||
                 other.ascending == ascending) &&
             (identical(other.order, order) || other.order == order));
@@ -261,8 +358,21 @@ class _$CollectionItemQueryFilterImpl implements _CollectionItemQueryFilter {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, collectionId, adderId, videoId,
-      status, limit, offset, ascending, order);
+  int get hashCode => Object.hash(
+      runtimeType,
+      searchTerm,
+      const DeepCollectionEquality().hash(_ids),
+      collectionId,
+      adderId,
+      videoId,
+      minRating,
+      minPrice,
+      maxPrice,
+      status,
+      limit,
+      cursor,
+      ascending,
+      order);
 
   /// Create a copy of CollectionItemQueryFilter
   /// with the given fields replaced by the non-null parameter values.
@@ -283,12 +393,17 @@ class _$CollectionItemQueryFilterImpl implements _CollectionItemQueryFilter {
 
 abstract class _CollectionItemQueryFilter implements CollectionItemQueryFilter {
   const factory _CollectionItemQueryFilter(
-      {final int? collectionId,
+      {final String? searchTerm,
+      final List<int>? ids,
+      final int? collectionId,
       final int? adderId,
       final int? videoId,
+      final double? minRating,
+      final double? minPrice,
+      final double? maxPrice,
       final CollectionItemStatus? status,
       final int limit,
-      final int offset,
+      final String? cursor,
       final bool ascending,
       final CollectionOrder order}) = _$CollectionItemQueryFilterImpl;
 
@@ -296,17 +411,27 @@ abstract class _CollectionItemQueryFilter implements CollectionItemQueryFilter {
       _$CollectionItemQueryFilterImpl.fromJson;
 
   @override
+  String? get searchTerm;
+  @override
+  List<int>? get ids;
+  @override
   int? get collectionId;
   @override
   int? get adderId;
   @override
   int? get videoId;
   @override
+  double? get minRating;
+  @override
+  double? get minPrice;
+  @override
+  double? get maxPrice;
+  @override
   CollectionItemStatus? get status;
   @override
   int get limit;
   @override
-  int get offset;
+  String? get cursor;
   @override
   bool get ascending;
   @override

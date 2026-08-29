@@ -5,6 +5,14 @@ abstract class CollectionItemModelFilterFailure
   const CollectionItemModelFilterFailure();
 }
 
+//  ids
+
+
+class CollectionItemModelFilterInvalidIdsFailure
+    extends CollectionItemModelFilterFailure {
+  const CollectionItemModelFilterInvalidIdsFailure();
+}
+
 //  collectionId
 
 
@@ -12,10 +20,7 @@ class CollectionItemModelFilterInvalidCollectionIdFailure
     extends CollectionItemModelFilterFailure {
   const CollectionItemModelFilterInvalidCollectionIdFailure();
 }
-class CollectionItemModelFilterMissingCollectionIdFailure
-    extends CollectionItemModelFilterFailure {
-  const CollectionItemModelFilterMissingCollectionIdFailure();
-}
+
 
 //  status
 

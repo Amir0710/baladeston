@@ -7,7 +7,7 @@ import 'package:baladeston/application/providers/comment_cubit/comment_cubit.dar
 /* -------------------------------------------------------------------------- */
 import 'package:baladeston/data/comment/datasource/remote/comment_remote_datasource/comment_api.dart';
 import 'package:baladeston/data/comment/datasource/remote/comment_remote_datasource/comment_api_implementation.dart';
-import 'package:baladeston/data/comment/repository_implementation/comment_repository_implementation.dart';
+import 'package:baladeston/data/comment/repository_implementation/comment/comment_repository_implementation.dart';
 /* -------------------------------------------------------------------------- */
 /*                                DOMAIN LAYER                                */
 /* -------------------------------------------------------------------------- */

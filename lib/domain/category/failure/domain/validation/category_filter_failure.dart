@@ -6,58 +6,57 @@ abstract class CategoryFilterFailure extends BaseCategoryValidationFailure{
   const CategoryFilterFailure();
 }
 
+// ids
+final class CategoryFilterInvalidIdsFailure extends CategoryFilterFailure {
+  const CategoryFilterInvalidIdsFailure();
+}
 
 // searchTerm
-final class CategoryFilterInvalidSearchTermFailure extends CategoryFilterFailure {
-  const CategoryFilterInvalidSearchTermFailure();
+final class CategoryFilterSearchTermTooShortFailure
+    extends CategoryFilterFailure {
+  const CategoryFilterSearchTermTooShortFailure();
 }
 
-// searchId
-final class CategoryFilterInvalidSearchIdFailure extends CategoryFilterFailure {
-  const CategoryFilterInvalidSearchIdFailure();
+final class CategoryFilterSearchTermTooLongFailure
+    extends CategoryFilterFailure {
+  const CategoryFilterSearchTermTooLongFailure();
 }
 
-// status
-final class CategoryFilterInvalidStatusFailure extends CategoryFilterFailure {
-  const CategoryFilterInvalidStatusFailure();
+final class CategoryFilterControlCharSearchTermFailure
+    extends CategoryFilterFailure {
+  const CategoryFilterControlCharSearchTermFailure();
 }
 
-// ownerId
-final class CategoryFilterInvalidOwnerIdFailure extends CategoryFilterFailure {
-  const CategoryFilterInvalidOwnerIdFailure();
+final class CategoryFilterContainsHtmlSearchTermFailure
+    extends CategoryFilterFailure {
+  const CategoryFilterContainsHtmlSearchTermFailure();
+}
+
+final class CategoryFilterEmojiOnlySearchTermFailure
+    extends CategoryFilterFailure {
+  const CategoryFilterEmojiOnlySearchTermFailure();
+}
+
+// rating
+final class CategoryFilterInvalidMinRatingFailure
+    extends CategoryFilterFailure {
+  const CategoryFilterInvalidMinRatingFailure();
 }
 
 // minCount / maxCount
-final class CategoryFilterInvalidMinCountFailure extends CategoryFilterFailure {
+final class CategoryFilterInvalidMinCountFailure
+    extends CategoryFilterFailure {
   const CategoryFilterInvalidMinCountFailure();
 }
 
-final class CategoryFilterInvalidMaxCountFailure extends CategoryFilterFailure {
+final class CategoryFilterInvalidMaxCountFailure
+    extends CategoryFilterFailure {
   const CategoryFilterInvalidMaxCountFailure();
 }
 
-final class CategoryFilterInvalidCountRangeFailure extends CategoryFilterFailure {
+final class CategoryFilterInvalidCountRangeFailure
+    extends CategoryFilterFailure {
   const CategoryFilterInvalidCountRangeFailure();
-}
-
-// limit
-final class CategoryFilterInvalidLimitFailure extends CategoryFilterFailure {
-  const CategoryFilterInvalidLimitFailure();
-}
-
-// offset
-final class CategoryFilterInvalidOffsetFailure extends CategoryFilterFailure {
-  const CategoryFilterInvalidOffsetFailure();
-}
-
-// ascending
-final class CategoryFilterInvalidAscendingFailure extends CategoryFilterFailure {
-  const CategoryFilterInvalidAscendingFailure();
-}
-
-// order
-final class CategoryFilterInvalidOrderFailure extends CategoryFilterFailure {
-  const CategoryFilterInvalidOrderFailure();
 }
 
 // empty

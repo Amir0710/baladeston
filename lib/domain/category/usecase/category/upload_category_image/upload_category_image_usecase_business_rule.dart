@@ -1,42 +1,41 @@
-import 'dart:io';
-
 import 'package:baladeston/core/constants/formats.dart';
 import 'package:baladeston/core/constants/limits.dart';
 import 'package:baladeston/core/result/result.dart';
+import 'package:baladeston/core/variable/image_signature_validator.dart';
 import 'package:baladeston/domain/category/failure/base_category_failure.dart';
 import 'package:baladeston/domain/category/failure/domain/validation/category_image_file_failure.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UploadCategoryImageUseCaseBusinessRule {
-  final File image;
-
-  static const Limits _limits = Limits();
-  static const Formats _formats = Formats();
+  final XFile image;
+  static const _limits = Limits();
+  static const _formats = Formats();
 
   const UploadCategoryImageUseCaseBusinessRule({
     required this.image,
   });
 
-  Result<void, CategoryFailure> validate() {
-    if (!_isValidSize()) {
-      return const Result.failure(CategoryImageFileSizeNotValidFailure());
+  Future<Result<void, CategoryFailure>> validate() async {
+    return await imageValidation();
+  }
+
+  Future<Result<void, CategoryImageFileFailure>> imageValidation() async {
+    final int size = await image.length();
+
+    if (size > _limits.maxCategoryImageSize) {
+      return const Result.failure(CategoryImageFileTooLargeFailure());
     }
 
-    if (!_isValidFormat()) {
+    final ext = image.path.split('.').last.toLowerCase();
+    if (!_formats.allowImageFormats.contains(ext)) {
       return const Result.failure(CategoryImageFileInvalidFormatFailure());
     }
 
+    final isRealImage = await ImageSignatureValidator.isImageFile(image);
+    if (!isRealImage) {
+      return const Result.failure(CategoryImageFileInvalidContentFailure());
+    }
+
     return const Result.success(null);
-  }
-
-  bool _isValidSize() {
-    if (!image.existsSync()) return false;
-
-    final size = image.lengthSync();
-    return size > 0 && size <= _limits.maxCategoryImageSize;
-  }
-
-  bool _isValidFormat() {
-    final ext = image.path.split('.').last.toLowerCase();
-    return _formats.categoryImageFormats.contains(ext);
   }
 }

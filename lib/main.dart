@@ -1,5 +1,4 @@
 import 'package:baladeston/core/di_initialization/init.dart';
-import 'package:baladeston/domain/theme/entity/theme_entity.dart';
 import 'package:baladeston/presentation/mapper/theme/theme_entity_to_theme_data.dart';
 import 'package:baladeston/presentation/pages/introduction/introduction_first.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,6 @@ import 'application/providers/theme_cubit/theme_cubit.dart';
 import 'application/providers/theme_cubit/theme_state.dart';
 import 'application/providers/user_cubit/user_cubit.dart';
 import 'core/di/auth_injection.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,11 +42,10 @@ class MyApp extends StatelessWidget {
           return state.maybeWhen(
             initializedTheme: (theme) {
               return MaterialApp(
-                debugShowCheckedModeBanner: false,
-                title: "Baladeston",
-                theme: theme.toThemeData(),
-                home: IntroductionFirst()
-              );
+                  debugShowCheckedModeBanner: false,
+                  title: "Baladeston",
+                  theme: theme.toThemeData(),
+                  home: IntroductionFirst());
             },
             initial: () => Container(color: Colors.blue),
             initializingTheme: () => Container(color: Colors.red),

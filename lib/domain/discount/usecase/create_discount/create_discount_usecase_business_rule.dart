@@ -1,10 +1,10 @@
 import 'package:baladeston/domain/discount/entity/discount_entity.dart';
 import 'package:baladeston/domain/discount/exception/discount_entity_exception.dart';
 
-class CreateDiscountUsecaseBusinessRule {
+class CreateDiscountUseCaseBusinessRule {
   final DiscountEntity discount;
 
-  const CreateDiscountUsecaseBusinessRule({
+  const CreateDiscountUseCaseBusinessRule({
     required this.discount,
   });
 
@@ -42,14 +42,6 @@ class CreateDiscountUsecaseBusinessRule {
 
     if (discount.userId != null && discount.userId! <= 0) {
       throw DiscountEntityUserIdInvalidException();
-    }
-
-    if (discount.categoryId != null && discount.categoryId! <= 0) {
-      throw DiscountEntityCategoryInvalidException();
-    }
-
-    if (discount.videoId != null && discount.videoId! <= 0) {
-      throw DiscountEntityVideoIdInvalidException();
     }
   }
 
@@ -91,8 +83,7 @@ class CreateDiscountUsecaseBusinessRule {
   void _validateStatus() {
     const allowedStatuses = ['active', 'inactive', 'expired'];
 
-    if (discount.status != null &&
-        !allowedStatuses.contains(discount.status)) {
+    if (discount.status != null && !allowedStatuses.contains(discount.status)) {
       throw DiscountEntityStatusInvalidException();
     }
   }
@@ -101,7 +92,5 @@ class CreateDiscountUsecaseBusinessRule {
   // Expiration / business constraints
   // ------------------------------------------------------
 
-  void _validateExpiration() {
-
-  }
+  void _validateExpiration() {}
 }

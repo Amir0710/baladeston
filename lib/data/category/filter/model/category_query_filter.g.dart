@@ -13,21 +13,29 @@ _$CategoryQueryFilterImpl _$$CategoryQueryFilterImplFromJson(
       json,
       ($checkedConvert) {
         final val = _$CategoryQueryFilterImpl(
+          ids: $checkedConvert(
+              'ids',
+              (v) => (v as List<dynamic>?)
+                  ?.map((e) => (e as num).toInt())
+                  .toList()),
           searchTerm: $checkedConvert('searchTerm', (v) => v as String?),
-          searchId: $checkedConvert('searchId', (v) => (v as num?)?.toInt()),
           status: $checkedConvert(
               'status', (v) => $enumDecodeNullable(_$CategoryStatusEnumMap, v)),
+          type: $checkedConvert(
+              'type', (v) => $enumDecodeNullable(_$CategoryTypeEnumMap, v)),
           ownerId: $checkedConvert('ownerId', (v) => (v as num?)?.toInt()),
           minCount: $checkedConvert('minCount', (v) => (v as num?)?.toInt()),
           maxCount: $checkedConvert('maxCount', (v) => (v as num?)?.toInt()),
+          minRating:
+              $checkedConvert('minRating', (v) => (v as num?)?.toDouble()),
           limit: $checkedConvert('limit', (v) => (v as num?)?.toInt() ?? 20),
-          offset: $checkedConvert('offset', (v) => (v as num?)?.toInt() ?? 0),
+          cursor: $checkedConvert('cursor', (v) => v as String?),
           ascending: $checkedConvert('ascending', (v) => v as bool? ?? false),
           order: $checkedConvert(
               'order',
               (v) =>
                   $enumDecodeNullable(_$CategoryOrderEnumMap, v) ??
-                  CategoryOrder.title),
+                  CategoryOrder.createdAt),
         );
         return val;
       },
@@ -36,14 +44,16 @@ _$CategoryQueryFilterImpl _$$CategoryQueryFilterImplFromJson(
 Map<String, dynamic> _$$CategoryQueryFilterImplToJson(
         _$CategoryQueryFilterImpl instance) =>
     <String, dynamic>{
+      'ids': instance.ids,
       'searchTerm': instance.searchTerm,
-      'searchId': instance.searchId,
       'status': _$CategoryStatusEnumMap[instance.status],
+      'type': _$CategoryTypeEnumMap[instance.type],
       'ownerId': instance.ownerId,
       'minCount': instance.minCount,
       'maxCount': instance.maxCount,
+      'minRating': instance.minRating,
       'limit': instance.limit,
-      'offset': instance.offset,
+      'cursor': instance.cursor,
       'ascending': instance.ascending,
       'order': _$CategoryOrderEnumMap[instance.order]!,
     };
@@ -54,8 +64,14 @@ const _$CategoryStatusEnumMap = {
   CategoryStatus.archived: 'archived',
 };
 
+const _$CategoryTypeEnumMap = {
+  CategoryType.root: 'root',
+  CategoryType.published: 'published',
+  CategoryType.organizational: 'organizational',
+};
+
 const _$CategoryOrderEnumMap = {
   CategoryOrder.title: 'title',
   CategoryOrder.lastTransaction: 'lastTransaction',
-  CategoryOrder.created: 'created',
+  CategoryOrder.createdAt: 'createdAt',
 };

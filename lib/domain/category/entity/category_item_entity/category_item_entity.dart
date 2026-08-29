@@ -7,11 +7,17 @@ part 'category_item_entity.freezed.dart';
 abstract class CategoryItemEntity with _$CategoryItemEntity {
   const factory CategoryItemEntity({
     int? id,
-    CategoryItemStatus? status,
-    DateTime? addedAt,
-    DateTime? lastTransaction,
-    required int adderId,
+    String? title ,
     required int collectionId,
     required int categoryId,
+    double? avgRate,
+    int? rageCount ,
+    String? thumbnailUrl,
+    CategoryItemStatus? status,
+    int? count,
+    int? price,
+    DateTime? addedAt,
+    DateTime? lastTransaction,
+    int? adderId,
   }) = _CategoryItemEntity;
 }

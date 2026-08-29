@@ -7,10 +7,6 @@ abstract class CollectionImageUrlFailure
 
 // image url
 
-class CollectionImageUrlEmptyUrlFailure extends CollectionImageUrlFailure {
-  const CollectionImageUrlEmptyUrlFailure();
-}
-
 class CollectionImageUrlInvalidFormatFailure extends CollectionImageUrlFailure {
   const CollectionImageUrlInvalidFormatFailure();
 }
@@ -20,11 +16,10 @@ class CollectionImageUrlUnsupportedSchemeFailure
   const CollectionImageUrlUnsupportedSchemeFailure();
 }
 
-class CollectionImageUrlUnauthorizedHostFailure
-    extends CollectionImageUrlFailure {
-  const CollectionImageUrlUnauthorizedHostFailure();
+class CollectionImageUrlStructuralFailure extends CollectionImageUrlFailure {
+  const CollectionImageUrlStructuralFailure();
 }
 
-class CollectionImageUrlInvalidIdFailure extends CollectionImageUrlFailure {
-  const CollectionImageUrlInvalidIdFailure();
+class CollectionImageUrlInvalidLengthFailure extends CollectionImageUrlFailure {
+  const CollectionImageUrlInvalidLengthFailure();
 }

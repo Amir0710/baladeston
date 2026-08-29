@@ -1,66 +1,78 @@
 import 'package:baladeston/domain/collection/failure/base_collection_failure.dart';
 
-
 final class CollectionFilterFailure extends CollectionFailure {
   const CollectionFilterFailure();
 }
 
+// ids
+final class CollectionFilterInvalidIdsFailure extends CollectionFilterFailure {
+  const CollectionFilterInvalidIdsFailure();
+}
 
 // searchTerm
-final class CollectionFilterInvalidSearchTermFailure extends CollectionFilterFailure {
-  const CollectionFilterInvalidSearchTermFailure();
+final class CollectionFilterSearchTermTooShortFailure
+    extends CollectionFilterFailure {
+  const CollectionFilterSearchTermTooShortFailure();
 }
 
-// ownerId
-final class CollectionFilterInvalidOwnerIdFailure extends CollectionFilterFailure {
-  const CollectionFilterInvalidOwnerIdFailure();
+final class CollectionFilterSearchTermTooLongFailure
+    extends CollectionFilterFailure {
+  const CollectionFilterSearchTermTooLongFailure();
 }
 
-// status
-final class CollectionFilterInvalidStatusFailure extends CollectionFilterFailure {
-  const CollectionFilterInvalidStatusFailure();
+final class CollectionFilterControlCharSearchTermFailure
+    extends CollectionFilterFailure {
+  const CollectionFilterControlCharSearchTermFailure();
+}
+
+final class CollectionFilterContainsHtmlSearchTermFailure
+    extends CollectionFilterFailure {
+  const CollectionFilterContainsHtmlSearchTermFailure();
+}
+
+final class CollectionFilterEmojiOnlySearchTermFailure
+    extends CollectionFilterFailure {
+  const CollectionFilterEmojiOnlySearchTermFailure();
+}
+
+// rating
+final class CollectionFilterInvalidMinRatingFailure
+    extends CollectionFilterFailure {
+  const CollectionFilterInvalidMinRatingFailure();
 }
 
 // minCount / maxCount
-final class CollectionFilterInvalidMinCountFailure extends CollectionFilterFailure {
-  const CollectionFilterInvalidMinCountFailure();
+final class CollectionFilterMinCountFailure
+    extends CollectionFilterFailure {
+  const CollectionFilterMinCountFailure();
 }
 
-final class CollectionFilterInvalidMaxCountFailure extends CollectionFilterFailure {
-  const CollectionFilterInvalidMaxCountFailure();
+final class CollectionFilterMaxCountFailure
+    extends CollectionFilterFailure {
+  const CollectionFilterMaxCountFailure();
 }
 
-final class CollectionFilterInvalidCountRangeFailure extends CollectionFilterFailure {
-  const CollectionFilterInvalidCountRangeFailure();
+final class CollectionFilterCountRangeFailure
+    extends CollectionFilterFailure {
+  const CollectionFilterCountRangeFailure();
 }
 
 // minPrice / maxPrice
-final class CollectionFilterInvalidMinPriceFailure extends CollectionFilterFailure {
-  const CollectionFilterInvalidMinPriceFailure();
+final class CollectionFilterMinPriceFailure
+    extends CollectionFilterFailure {
+  const CollectionFilterMinPriceFailure();
 }
 
-final class CollectionFilterInvalidMaxPriceFailure extends CollectionFilterFailure {
-  const CollectionFilterInvalidMaxPriceFailure();
+final class CollectionFilterMaxPriceFailure
+    extends CollectionFilterFailure {
+  const CollectionFilterMaxPriceFailure();
 }
 
-final class CollectionFilterInvalidPriceRangeFailure extends CollectionFilterFailure {
-  const CollectionFilterInvalidPriceRangeFailure();
+final class CollectionFilterPriceRangeFailure
+    extends CollectionFilterFailure {
+  const CollectionFilterPriceRangeFailure();
 }
 
-// limit
-final class CollectionFilterInvalidLimitFailure extends CollectionFilterFailure {
-  const CollectionFilterInvalidLimitFailure();
-}
-
-// offset
-final class CollectionFilterInvalidOffsetFailure extends CollectionFilterFailure {
-  const CollectionFilterInvalidOffsetFailure();
-}
-
-// order
-final class CollectionFilterInvalidOrderFailure extends CollectionFilterFailure {
-  const CollectionFilterInvalidOrderFailure();
-}
 
 // empty
 final class CollectionFilterEmptyFailure extends CollectionFilterFailure {

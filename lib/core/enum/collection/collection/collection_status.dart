@@ -1,6 +1,8 @@
 enum CollectionStatus {
-  draft,
   published,
-  hidden,
-  archived,
+  pendingApproval,
+  draft,
+  suspended, // reactive able
+  active,
+  inactive, // not reactive able
 }

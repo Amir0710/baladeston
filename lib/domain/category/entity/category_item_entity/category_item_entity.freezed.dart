@@ -17,12 +17,18 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CategoryItemEntity {
   int? get id => throw _privateConstructorUsedError;
-  CategoryItemStatus? get status => throw _privateConstructorUsedError;
-  DateTime? get addedAt => throw _privateConstructorUsedError;
-  DateTime? get lastTransaction => throw _privateConstructorUsedError;
-  int get adderId => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
   int get collectionId => throw _privateConstructorUsedError;
   int get categoryId => throw _privateConstructorUsedError;
+  double? get avgRate => throw _privateConstructorUsedError;
+  int? get rageCount => throw _privateConstructorUsedError;
+  String? get thumbnailUrl => throw _privateConstructorUsedError;
+  CategoryItemStatus? get status => throw _privateConstructorUsedError;
+  int? get count => throw _privateConstructorUsedError;
+  int? get price => throw _privateConstructorUsedError;
+  DateTime? get addedAt => throw _privateConstructorUsedError;
+  DateTime? get lastTransaction => throw _privateConstructorUsedError;
+  int? get adderId => throw _privateConstructorUsedError;
 
   /// Create a copy of CategoryItemEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -39,12 +45,18 @@ abstract class $CategoryItemEntityCopyWith<$Res> {
   @useResult
   $Res call(
       {int? id,
+      String? title,
+      int collectionId,
+      int categoryId,
+      double? avgRate,
+      int? rageCount,
+      String? thumbnailUrl,
       CategoryItemStatus? status,
+      int? count,
+      int? price,
       DateTime? addedAt,
       DateTime? lastTransaction,
-      int adderId,
-      int collectionId,
-      int categoryId});
+      int? adderId});
 }
 
 /// @nodoc
@@ -63,34 +75,28 @@ class _$CategoryItemEntityCopyWithImpl<$Res, $Val extends CategoryItemEntity>
   @override
   $Res call({
     Object? id = freezed,
-    Object? status = freezed,
-    Object? addedAt = freezed,
-    Object? lastTransaction = freezed,
-    Object? adderId = null,
+    Object? title = freezed,
     Object? collectionId = null,
     Object? categoryId = null,
+    Object? avgRate = freezed,
+    Object? rageCount = freezed,
+    Object? thumbnailUrl = freezed,
+    Object? status = freezed,
+    Object? count = freezed,
+    Object? price = freezed,
+    Object? addedAt = freezed,
+    Object? lastTransaction = freezed,
+    Object? adderId = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as CategoryItemStatus?,
-      addedAt: freezed == addedAt
-          ? _value.addedAt
-          : addedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastTransaction: freezed == lastTransaction
-          ? _value.lastTransaction
-          : lastTransaction // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      adderId: null == adderId
-          ? _value.adderId
-          : adderId // ignore: cast_nullable_to_non_nullable
-              as int,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
       collectionId: null == collectionId
           ? _value.collectionId
           : collectionId // ignore: cast_nullable_to_non_nullable
@@ -99,6 +105,42 @@ class _$CategoryItemEntityCopyWithImpl<$Res, $Val extends CategoryItemEntity>
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
               as int,
+      avgRate: freezed == avgRate
+          ? _value.avgRate
+          : avgRate // ignore: cast_nullable_to_non_nullable
+              as double?,
+      rageCount: freezed == rageCount
+          ? _value.rageCount
+          : rageCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      thumbnailUrl: freezed == thumbnailUrl
+          ? _value.thumbnailUrl
+          : thumbnailUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as CategoryItemStatus?,
+      count: freezed == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int?,
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int?,
+      addedAt: freezed == addedAt
+          ? _value.addedAt
+          : addedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      lastTransaction: freezed == lastTransaction
+          ? _value.lastTransaction
+          : lastTransaction // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      adderId: freezed == adderId
+          ? _value.adderId
+          : adderId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -113,12 +155,18 @@ abstract class _$$CategoryItemEntityImplCopyWith<$Res>
   @useResult
   $Res call(
       {int? id,
+      String? title,
+      int collectionId,
+      int categoryId,
+      double? avgRate,
+      int? rageCount,
+      String? thumbnailUrl,
       CategoryItemStatus? status,
+      int? count,
+      int? price,
       DateTime? addedAt,
       DateTime? lastTransaction,
-      int adderId,
-      int collectionId,
-      int categoryId});
+      int? adderId});
 }
 
 /// @nodoc
@@ -135,34 +183,28 @@ class __$$CategoryItemEntityImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? status = freezed,
-    Object? addedAt = freezed,
-    Object? lastTransaction = freezed,
-    Object? adderId = null,
+    Object? title = freezed,
     Object? collectionId = null,
     Object? categoryId = null,
+    Object? avgRate = freezed,
+    Object? rageCount = freezed,
+    Object? thumbnailUrl = freezed,
+    Object? status = freezed,
+    Object? count = freezed,
+    Object? price = freezed,
+    Object? addedAt = freezed,
+    Object? lastTransaction = freezed,
+    Object? adderId = freezed,
   }) {
     return _then(_$CategoryItemEntityImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as CategoryItemStatus?,
-      addedAt: freezed == addedAt
-          ? _value.addedAt
-          : addedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastTransaction: freezed == lastTransaction
-          ? _value.lastTransaction
-          : lastTransaction // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      adderId: null == adderId
-          ? _value.adderId
-          : adderId // ignore: cast_nullable_to_non_nullable
-              as int,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
       collectionId: null == collectionId
           ? _value.collectionId
           : collectionId // ignore: cast_nullable_to_non_nullable
@@ -171,6 +213,42 @@ class __$$CategoryItemEntityImplCopyWithImpl<$Res>
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
               as int,
+      avgRate: freezed == avgRate
+          ? _value.avgRate
+          : avgRate // ignore: cast_nullable_to_non_nullable
+              as double?,
+      rageCount: freezed == rageCount
+          ? _value.rageCount
+          : rageCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      thumbnailUrl: freezed == thumbnailUrl
+          ? _value.thumbnailUrl
+          : thumbnailUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as CategoryItemStatus?,
+      count: freezed == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int?,
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int?,
+      addedAt: freezed == addedAt
+          ? _value.addedAt
+          : addedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      lastTransaction: freezed == lastTransaction
+          ? _value.lastTransaction
+          : lastTransaction // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      adderId: freezed == adderId
+          ? _value.adderId
+          : adderId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -180,31 +258,49 @@ class __$$CategoryItemEntityImplCopyWithImpl<$Res>
 class _$CategoryItemEntityImpl implements _CategoryItemEntity {
   const _$CategoryItemEntityImpl(
       {this.id,
+      this.title,
+      required this.collectionId,
+      required this.categoryId,
+      this.avgRate,
+      this.rageCount,
+      this.thumbnailUrl,
       this.status,
+      this.count,
+      this.price,
       this.addedAt,
       this.lastTransaction,
-      required this.adderId,
-      required this.collectionId,
-      required this.categoryId});
+      this.adderId});
 
   @override
   final int? id;
   @override
+  final String? title;
+  @override
+  final int collectionId;
+  @override
+  final int categoryId;
+  @override
+  final double? avgRate;
+  @override
+  final int? rageCount;
+  @override
+  final String? thumbnailUrl;
+  @override
   final CategoryItemStatus? status;
+  @override
+  final int? count;
+  @override
+  final int? price;
   @override
   final DateTime? addedAt;
   @override
   final DateTime? lastTransaction;
   @override
-  final int adderId;
-  @override
-  final int collectionId;
-  @override
-  final int categoryId;
+  final int? adderId;
 
   @override
   String toString() {
-    return 'CategoryItemEntity(id: $id, status: $status, addedAt: $addedAt, lastTransaction: $lastTransaction, adderId: $adderId, collectionId: $collectionId, categoryId: $categoryId)';
+    return 'CategoryItemEntity(id: $id, title: $title, collectionId: $collectionId, categoryId: $categoryId, avgRate: $avgRate, rageCount: $rageCount, thumbnailUrl: $thumbnailUrl, status: $status, count: $count, price: $price, addedAt: $addedAt, lastTransaction: $lastTransaction, adderId: $adderId)';
   }
 
   @override
@@ -213,20 +309,41 @@ class _$CategoryItemEntityImpl implements _CategoryItemEntity {
         (other.runtimeType == runtimeType &&
             other is _$CategoryItemEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.addedAt, addedAt) || other.addedAt == addedAt) &&
-            (identical(other.lastTransaction, lastTransaction) ||
-                other.lastTransaction == lastTransaction) &&
-            (identical(other.adderId, adderId) || other.adderId == adderId) &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
             (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId));
+                other.categoryId == categoryId) &&
+            (identical(other.avgRate, avgRate) || other.avgRate == avgRate) &&
+            (identical(other.rageCount, rageCount) ||
+                other.rageCount == rageCount) &&
+            (identical(other.thumbnailUrl, thumbnailUrl) ||
+                other.thumbnailUrl == thumbnailUrl) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.count, count) || other.count == count) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.addedAt, addedAt) || other.addedAt == addedAt) &&
+            (identical(other.lastTransaction, lastTransaction) ||
+                other.lastTransaction == lastTransaction) &&
+            (identical(other.adderId, adderId) || other.adderId == adderId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, status, addedAt,
-      lastTransaction, adderId, collectionId, categoryId);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      collectionId,
+      categoryId,
+      avgRate,
+      rageCount,
+      thumbnailUrl,
+      status,
+      count,
+      price,
+      addedAt,
+      lastTransaction,
+      adderId);
 
   /// Create a copy of CategoryItemEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -241,27 +358,45 @@ class _$CategoryItemEntityImpl implements _CategoryItemEntity {
 abstract class _CategoryItemEntity implements CategoryItemEntity {
   const factory _CategoryItemEntity(
       {final int? id,
+      final String? title,
+      required final int collectionId,
+      required final int categoryId,
+      final double? avgRate,
+      final int? rageCount,
+      final String? thumbnailUrl,
       final CategoryItemStatus? status,
+      final int? count,
+      final int? price,
       final DateTime? addedAt,
       final DateTime? lastTransaction,
-      required final int adderId,
-      required final int collectionId,
-      required final int categoryId}) = _$CategoryItemEntityImpl;
+      final int? adderId}) = _$CategoryItemEntityImpl;
 
   @override
   int? get id;
   @override
+  String? get title;
+  @override
+  int get collectionId;
+  @override
+  int get categoryId;
+  @override
+  double? get avgRate;
+  @override
+  int? get rageCount;
+  @override
+  String? get thumbnailUrl;
+  @override
   CategoryItemStatus? get status;
+  @override
+  int? get count;
+  @override
+  int? get price;
   @override
   DateTime? get addedAt;
   @override
   DateTime? get lastTransaction;
   @override
-  int get adderId;
-  @override
-  int get collectionId;
-  @override
-  int get categoryId;
+  int? get adderId;
 
   /// Create a copy of CategoryItemEntity
   /// with the given fields replaced by the non-null parameter values.

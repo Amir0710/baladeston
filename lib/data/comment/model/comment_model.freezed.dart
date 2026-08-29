@@ -20,13 +20,14 @@ CommentModel _$CommentModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CommentModel {
-  int get userId => throw _privateConstructorUsedError;
+  int? get ownerId => throw _privateConstructorUsedError;
+  CommentType get targetType => throw _privateConstructorUsedError;
   int get targetId => throw _privateConstructorUsedError;
-  String get content => throw _privateConstructorUsedError;
   double get rating => throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
-  DateTime get updatedAt => throw _privateConstructorUsedError;
-  CommentStatus get status => throw _privateConstructorUsedError;
+  String? get content => throw _privateConstructorUsedError;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  CommentStatus? get status => throw _privateConstructorUsedError;
 
   /// Serializes this CommentModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,13 +46,14 @@ abstract class $CommentModelCopyWith<$Res> {
       _$CommentModelCopyWithImpl<$Res, CommentModel>;
   @useResult
   $Res call(
-      {int userId,
+      {int? ownerId,
+      CommentType targetType,
       int targetId,
-      String content,
       double rating,
-      DateTime createdAt,
-      DateTime updatedAt,
-      CommentStatus status});
+      String? content,
+      DateTime? createdAt,
+      DateTime? updatedAt,
+      CommentStatus? status});
 }
 
 /// @nodoc
@@ -69,43 +71,48 @@ class _$CommentModelCopyWithImpl<$Res, $Val extends CommentModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
+    Object? ownerId = freezed,
+    Object? targetType = null,
     Object? targetId = null,
-    Object? content = null,
     Object? rating = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
-    Object? status = null,
+    Object? content = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? status = freezed,
   }) {
     return _then(_value.copyWith(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
+      ownerId: freezed == ownerId
+          ? _value.ownerId
+          : ownerId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      targetType: null == targetType
+          ? _value.targetType
+          : targetType // ignore: cast_nullable_to_non_nullable
+              as CommentType,
       targetId: null == targetId
           ? _value.targetId
           : targetId // ignore: cast_nullable_to_non_nullable
               as int,
-      content: null == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as String,
       rating: null == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as double,
-      createdAt: null == createdAt
+      content: freezed == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
+              as DateTime?,
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      status: null == status
+              as DateTime?,
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as CommentStatus,
+              as CommentStatus?,
     ) as $Val);
   }
 }
@@ -119,13 +126,14 @@ abstract class _$$CommentModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int userId,
+      {int? ownerId,
+      CommentType targetType,
       int targetId,
-      String content,
       double rating,
-      DateTime createdAt,
-      DateTime updatedAt,
-      CommentStatus status});
+      String? content,
+      DateTime? createdAt,
+      DateTime? updatedAt,
+      CommentStatus? status});
 }
 
 /// @nodoc
@@ -141,80 +149,89 @@ class __$$CommentModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
+    Object? ownerId = freezed,
+    Object? targetType = null,
     Object? targetId = null,
-    Object? content = null,
     Object? rating = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
-    Object? status = null,
+    Object? content = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? status = freezed,
   }) {
     return _then(_$CommentModelImpl(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
+      ownerId: freezed == ownerId
+          ? _value.ownerId
+          : ownerId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      targetType: null == targetType
+          ? _value.targetType
+          : targetType // ignore: cast_nullable_to_non_nullable
+              as CommentType,
       targetId: null == targetId
           ? _value.targetId
           : targetId // ignore: cast_nullable_to_non_nullable
               as int,
-      content: null == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as String,
       rating: null == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as double,
-      createdAt: null == createdAt
+      content: freezed == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
+              as DateTime?,
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      status: null == status
+              as DateTime?,
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as CommentStatus,
+              as CommentStatus?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$CommentModelImpl implements _CommentModel {
+class _$CommentModelImpl extends _CommentModel {
   const _$CommentModelImpl(
-      {required this.userId,
+      {this.ownerId,
+      required this.targetType,
       required this.targetId,
-      required this.content,
       required this.rating,
-      required this.createdAt,
-      required this.updatedAt,
-      required this.status});
+      this.content,
+      this.createdAt,
+      this.updatedAt,
+      this.status})
+      : super._();
 
   factory _$CommentModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CommentModelImplFromJson(json);
 
   @override
-  final int userId;
+  final int? ownerId;
+  @override
+  final CommentType targetType;
   @override
   final int targetId;
   @override
-  final String content;
-  @override
   final double rating;
   @override
-  final DateTime createdAt;
+  final String? content;
   @override
-  final DateTime updatedAt;
+  final DateTime? createdAt;
   @override
-  final CommentStatus status;
+  final DateTime? updatedAt;
+  @override
+  final CommentStatus? status;
 
   @override
   String toString() {
-    return 'CommentModel(userId: $userId, targetId: $targetId, content: $content, rating: $rating, createdAt: $createdAt, updatedAt: $updatedAt, status: $status)';
+    return 'CommentModel(ownerId: $ownerId, targetType: $targetType, targetId: $targetId, rating: $rating, content: $content, createdAt: $createdAt, updatedAt: $updatedAt, status: $status)';
   }
 
   @override
@@ -222,11 +239,13 @@ class _$CommentModelImpl implements _CommentModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CommentModelImpl &&
-            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.ownerId, ownerId) || other.ownerId == ownerId) &&
+            (identical(other.targetType, targetType) ||
+                other.targetType == targetType) &&
             (identical(other.targetId, targetId) ||
                 other.targetId == targetId) &&
-            (identical(other.content, content) || other.content == content) &&
             (identical(other.rating, rating) || other.rating == rating) &&
+            (identical(other.content, content) || other.content == content) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -236,8 +255,8 @@ class _$CommentModelImpl implements _CommentModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, userId, targetId, content,
-      rating, createdAt, updatedAt, status);
+  int get hashCode => Object.hash(runtimeType, ownerId, targetType, targetId,
+      rating, content, createdAt, updatedAt, status);
 
   /// Create a copy of CommentModel
   /// with the given fields replaced by the non-null parameter values.
@@ -255,33 +274,37 @@ class _$CommentModelImpl implements _CommentModel {
   }
 }
 
-abstract class _CommentModel implements CommentModel {
+abstract class _CommentModel extends CommentModel {
   const factory _CommentModel(
-      {required final int userId,
+      {final int? ownerId,
+      required final CommentType targetType,
       required final int targetId,
-      required final String content,
       required final double rating,
-      required final DateTime createdAt,
-      required final DateTime updatedAt,
-      required final CommentStatus status}) = _$CommentModelImpl;
+      final String? content,
+      final DateTime? createdAt,
+      final DateTime? updatedAt,
+      final CommentStatus? status}) = _$CommentModelImpl;
+  const _CommentModel._() : super._();
 
   factory _CommentModel.fromJson(Map<String, dynamic> json) =
       _$CommentModelImpl.fromJson;
 
   @override
-  int get userId;
+  int? get ownerId;
+  @override
+  CommentType get targetType;
   @override
   int get targetId;
   @override
-  String get content;
-  @override
   double get rating;
   @override
-  DateTime get createdAt;
+  String? get content;
   @override
-  DateTime get updatedAt;
+  DateTime? get createdAt;
   @override
-  CommentStatus get status;
+  DateTime? get updatedAt;
+  @override
+  CommentStatus? get status;
 
   /// Create a copy of CommentModel
   /// with the given fields replaced by the non-null parameter values.

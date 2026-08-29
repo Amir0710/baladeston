@@ -1440,8 +1440,6 @@ abstract class _$$SuccessSingleLoadedImplCopyWith<$Res> {
       __$$SuccessSingleLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({FavoriteEntity favorite});
-
-  $FavoriteEntityCopyWith<$Res> get favorite;
 }
 
 /// @nodoc
@@ -1457,24 +1455,14 @@ class __$$SuccessSingleLoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? favorite = null,
+    Object? favorite = freezed,
   }) {
     return _then(_$SuccessSingleLoadedImpl(
-      favorite: null == favorite
+      favorite: freezed == favorite
           ? _value.favorite
           : favorite // ignore: cast_nullable_to_non_nullable
               as FavoriteEntity,
     ));
-  }
-
-  /// Create a copy of FavoriteState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $FavoriteEntityCopyWith<$Res> get favorite {
-    return $FavoriteEntityCopyWith<$Res>(_value.favorite, (value) {
-      return _then(_value.copyWith(favorite: value));
-    });
   }
 }
 
@@ -1496,12 +1484,12 @@ class _$SuccessSingleLoadedImpl implements _SuccessSingleLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessSingleLoadedImpl &&
-            (identical(other.favorite, favorite) ||
-                other.favorite == favorite));
+            const DeepCollectionEquality().equals(other.favorite, favorite));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, favorite);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(favorite));
 
   /// Create a copy of FavoriteState
   /// with the given fields replaced by the non-null parameter values.

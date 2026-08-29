@@ -4,30 +4,21 @@ abstract class CollectionModelImageUrlFailure
     extends BaseCollectionServerValidationFailure {
   const CollectionModelImageUrlFailure();
 }
-
 // image url
 
-class CollectionModelImageUrlEmptyUrlFailure
-    extends CollectionModelImageUrlFailure {
-  const CollectionModelImageUrlEmptyUrlFailure();
+class CollectionImageUrlInvalidFormatFailure extends CollectionModelImageUrlFailure {
+  const CollectionImageUrlInvalidFormatFailure();
 }
 
-class CollectionModelImageUrlInvalidFormatFailure
+class CollectionImageUrlUnsupportedSchemeFailure
     extends CollectionModelImageUrlFailure {
-  const CollectionModelImageUrlInvalidFormatFailure();
+  const CollectionImageUrlUnsupportedSchemeFailure();
 }
 
-class CollectionModelImageUrlUnsupportedSchemeFailure
-    extends CollectionModelImageUrlFailure {
-  const CollectionModelImageUrlUnsupportedSchemeFailure();
+class CollectionImageUrlStructuralFailure extends CollectionModelImageUrlFailure {
+  const CollectionImageUrlStructuralFailure();
 }
 
-class CollectionModelImageUrlUnauthorizedHostFailure
-    extends CollectionModelImageUrlFailure {
-  const CollectionModelImageUrlUnauthorizedHostFailure();
-}
-
-class CollectionModelImageUrlInvalidIdFailure
-    extends CollectionModelImageUrlFailure {
-  const CollectionModelImageUrlInvalidIdFailure();
+class CollectionImageUrlInvalidLengthFailure extends CollectionModelImageUrlFailure {
+  const CollectionImageUrlInvalidLengthFailure();
 }

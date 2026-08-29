@@ -4,9 +4,7 @@ abstract class VideoImageUrlFailure extends BaseVideoValidationFailure {
   const VideoImageUrlFailure();
 }
 
-class VideoImageUrlEmptyFailure extends VideoImageUrlFailure {
-  const VideoImageUrlEmptyFailure();
-}
+// image url
 
 class VideoImageUrlInvalidFormatFailure extends VideoImageUrlFailure {
   const VideoImageUrlInvalidFormatFailure();
@@ -16,10 +14,10 @@ class VideoImageUrlUnsupportedSchemeFailure extends VideoImageUrlFailure {
   const VideoImageUrlUnsupportedSchemeFailure();
 }
 
-class VideoImageUrlUnauthorizedHostFailure extends VideoImageUrlFailure {
-  const VideoImageUrlUnauthorizedHostFailure();
+class VideoImageUrlStructuralFailure extends VideoImageUrlFailure {
+  const VideoImageUrlStructuralFailure();
 }
 
-class VideoImageUrlInvalidIdFailure extends VideoImageUrlFailure {
-  const VideoImageUrlInvalidIdFailure();
+class VideoImageUrlInvalidLengthFailure extends VideoImageUrlFailure {
+  const VideoImageUrlInvalidLengthFailure();
 }

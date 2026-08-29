@@ -16,7 +16,7 @@ class UpdateCollectionItemByIdUseCase {
     required CollectionItemEntity item,
   }) async {
     final businessRule =
-        UpdateCollectionItemByIdUseCaseBusinessRule(entity: item, id: id);
+        UpdateCollectionItemByIdUseCaseBusinessRule(collectionItem: item, id: id);
     final validationResult = businessRule.validate();
 
     return validationResult.when(

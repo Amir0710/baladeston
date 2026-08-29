@@ -1,43 +1,47 @@
-import 'package:baladeston/data/favorite/filter/favorite_query_filter.dart';
+import 'package:baladeston/core/model/paginated_response_model.dart';
+import 'package:baladeston/core/result/result.dart';
+import 'package:baladeston/data/favorite/filter/favorite/favorite_query_filter.dart';
 import 'package:baladeston/data/favorite/model/favorite_model.dart';
+import 'package:baladeston/domain/favorite/failure/base_favorite_failure.dart';
 
 abstract class FavoriteApi {
   // Create
-  Future<FavoriteModel> createFavorite({
+  Future<Result<FavoriteModel, FavoriteFailure>> createFavorite({
     required FavoriteModel favorite,
   });
 
   // Update
-  Future<FavoriteModel> updateFavoriteById({
+  Future<Result<FavoriteModel, FavoriteFailure>> updateFavoriteById({
     required int id,
     required FavoriteModel favorite,
   });
 
-  Future<FavoriteModel> updateFavoriteByFilter({
+  Future<Result<int, FavoriteFailure>> updateFavoriteByFilter({
     required FavoriteQueryFilter filter,
     required FavoriteModel favorite,
   });
 
   // Read
-  Future<FavoriteModel> getFavoriteById({
+  Future<Result<FavoriteModel, FavoriteFailure>> getFavoriteById({
     required int id,
   });
 
-  Future<List<FavoriteModel>> getFavoriteByFilter({
+  Future<Result<PaginatedResponseModel<FavoriteModel>, FavoriteFailure>>
+      getFavoriteByFilter({
     required FavoriteQueryFilter filter,
   });
 
   // Delete
-  Future<int> deleteFavoriteById({
+  Future<Result<int, FavoriteFailure>> deleteFavoriteById({
     required int id,
   });
 
-  Future<List<int>> deleteFavoriteByFilter({
+  Future<Result<int, FavoriteFailure>> deleteFavoriteByFilter({
     required FavoriteQueryFilter filter,
   });
 
   // Count
-  Future<int> countFavorite({
+  Future<Result<int, FavoriteFailure>> countFavorite({
     required FavoriteQueryFilter filter,
   });
 }

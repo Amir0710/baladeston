@@ -20,14 +20,16 @@ CategoryQueryFilter _$CategoryQueryFilterFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CategoryQueryFilter {
+  List<int>? get ids => throw _privateConstructorUsedError;
   String? get searchTerm => throw _privateConstructorUsedError;
-  int? get searchId => throw _privateConstructorUsedError;
   CategoryStatus? get status => throw _privateConstructorUsedError;
+  CategoryType? get type => throw _privateConstructorUsedError;
   int? get ownerId => throw _privateConstructorUsedError;
   int? get minCount => throw _privateConstructorUsedError;
   int? get maxCount => throw _privateConstructorUsedError;
+  double? get minRating => throw _privateConstructorUsedError;
   int get limit => throw _privateConstructorUsedError;
-  int get offset => throw _privateConstructorUsedError;
+  String? get cursor => throw _privateConstructorUsedError;
   bool get ascending => throw _privateConstructorUsedError;
   CategoryOrder get order => throw _privateConstructorUsedError;
 
@@ -48,14 +50,16 @@ abstract class $CategoryQueryFilterCopyWith<$Res> {
       _$CategoryQueryFilterCopyWithImpl<$Res, CategoryQueryFilter>;
   @useResult
   $Res call(
-      {String? searchTerm,
-      int? searchId,
+      {List<int>? ids,
+      String? searchTerm,
       CategoryStatus? status,
+      CategoryType? type,
       int? ownerId,
       int? minCount,
       int? maxCount,
+      double? minRating,
       int limit,
-      int offset,
+      String? cursor,
       bool ascending,
       CategoryOrder order});
 }
@@ -75,30 +79,36 @@ class _$CategoryQueryFilterCopyWithImpl<$Res, $Val extends CategoryQueryFilter>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? ids = freezed,
     Object? searchTerm = freezed,
-    Object? searchId = freezed,
     Object? status = freezed,
+    Object? type = freezed,
     Object? ownerId = freezed,
     Object? minCount = freezed,
     Object? maxCount = freezed,
+    Object? minRating = freezed,
     Object? limit = null,
-    Object? offset = null,
+    Object? cursor = freezed,
     Object? ascending = null,
     Object? order = null,
   }) {
     return _then(_value.copyWith(
+      ids: freezed == ids
+          ? _value.ids
+          : ids // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
       searchTerm: freezed == searchTerm
           ? _value.searchTerm
           : searchTerm // ignore: cast_nullable_to_non_nullable
               as String?,
-      searchId: freezed == searchId
-          ? _value.searchId
-          : searchId // ignore: cast_nullable_to_non_nullable
-              as int?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CategoryStatus?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as CategoryType?,
       ownerId: freezed == ownerId
           ? _value.ownerId
           : ownerId // ignore: cast_nullable_to_non_nullable
@@ -111,14 +121,18 @@ class _$CategoryQueryFilterCopyWithImpl<$Res, $Val extends CategoryQueryFilter>
           ? _value.maxCount
           : maxCount // ignore: cast_nullable_to_non_nullable
               as int?,
+      minRating: freezed == minRating
+          ? _value.minRating
+          : minRating // ignore: cast_nullable_to_non_nullable
+              as double?,
       limit: null == limit
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
               as int,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as int,
+      cursor: freezed == cursor
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
+              as String?,
       ascending: null == ascending
           ? _value.ascending
           : ascending // ignore: cast_nullable_to_non_nullable
@@ -140,14 +154,16 @@ abstract class _$$CategoryQueryFilterImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? searchTerm,
-      int? searchId,
+      {List<int>? ids,
+      String? searchTerm,
       CategoryStatus? status,
+      CategoryType? type,
       int? ownerId,
       int? minCount,
       int? maxCount,
+      double? minRating,
       int limit,
-      int offset,
+      String? cursor,
       bool ascending,
       CategoryOrder order});
 }
@@ -165,30 +181,36 @@ class __$$CategoryQueryFilterImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? ids = freezed,
     Object? searchTerm = freezed,
-    Object? searchId = freezed,
     Object? status = freezed,
+    Object? type = freezed,
     Object? ownerId = freezed,
     Object? minCount = freezed,
     Object? maxCount = freezed,
+    Object? minRating = freezed,
     Object? limit = null,
-    Object? offset = null,
+    Object? cursor = freezed,
     Object? ascending = null,
     Object? order = null,
   }) {
     return _then(_$CategoryQueryFilterImpl(
+      ids: freezed == ids
+          ? _value._ids
+          : ids // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
       searchTerm: freezed == searchTerm
           ? _value.searchTerm
           : searchTerm // ignore: cast_nullable_to_non_nullable
               as String?,
-      searchId: freezed == searchId
-          ? _value.searchId
-          : searchId // ignore: cast_nullable_to_non_nullable
-              as int?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CategoryStatus?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as CategoryType?,
       ownerId: freezed == ownerId
           ? _value.ownerId
           : ownerId // ignore: cast_nullable_to_non_nullable
@@ -201,14 +223,18 @@ class __$$CategoryQueryFilterImplCopyWithImpl<$Res>
           ? _value.maxCount
           : maxCount // ignore: cast_nullable_to_non_nullable
               as int?,
+      minRating: freezed == minRating
+          ? _value.minRating
+          : minRating // ignore: cast_nullable_to_non_nullable
+              as double?,
       limit: null == limit
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
               as int,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as int,
+      cursor: freezed == cursor
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
+              as String?,
       ascending: null == ascending
           ? _value.ascending
           : ascending // ignore: cast_nullable_to_non_nullable
@@ -225,26 +251,39 @@ class __$$CategoryQueryFilterImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CategoryQueryFilterImpl implements _CategoryQueryFilter {
   const _$CategoryQueryFilterImpl(
-      {this.searchTerm,
-      this.searchId,
+      {final List<int>? ids,
+      this.searchTerm,
       this.status,
+      this.type,
       this.ownerId,
       this.minCount,
       this.maxCount,
+      this.minRating,
       this.limit = 20,
-      this.offset = 0,
+      this.cursor,
       this.ascending = false,
-      this.order = CategoryOrder.title});
+      this.order = CategoryOrder.createdAt})
+      : _ids = ids;
 
   factory _$CategoryQueryFilterImpl.fromJson(Map<String, dynamic> json) =>
       _$$CategoryQueryFilterImplFromJson(json);
 
+  final List<int>? _ids;
+  @override
+  List<int>? get ids {
+    final value = _ids;
+    if (value == null) return null;
+    if (_ids is EqualUnmodifiableListView) return _ids;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final String? searchTerm;
   @override
-  final int? searchId;
-  @override
   final CategoryStatus? status;
+  @override
+  final CategoryType? type;
   @override
   final int? ownerId;
   @override
@@ -252,11 +291,12 @@ class _$CategoryQueryFilterImpl implements _CategoryQueryFilter {
   @override
   final int? maxCount;
   @override
+  final double? minRating;
+  @override
   @JsonKey()
   final int limit;
   @override
-  @JsonKey()
-  final int offset;
+  final String? cursor;
   @override
   @JsonKey()
   final bool ascending;
@@ -266,7 +306,7 @@ class _$CategoryQueryFilterImpl implements _CategoryQueryFilter {
 
   @override
   String toString() {
-    return 'CategoryQueryFilter(searchTerm: $searchTerm, searchId: $searchId, status: $status, ownerId: $ownerId, minCount: $minCount, maxCount: $maxCount, limit: $limit, offset: $offset, ascending: $ascending, order: $order)';
+    return 'CategoryQueryFilter(ids: $ids, searchTerm: $searchTerm, status: $status, type: $type, ownerId: $ownerId, minCount: $minCount, maxCount: $maxCount, minRating: $minRating, limit: $limit, cursor: $cursor, ascending: $ascending, order: $order)';
   }
 
   @override
@@ -274,18 +314,20 @@ class _$CategoryQueryFilterImpl implements _CategoryQueryFilter {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CategoryQueryFilterImpl &&
+            const DeepCollectionEquality().equals(other._ids, _ids) &&
             (identical(other.searchTerm, searchTerm) ||
                 other.searchTerm == searchTerm) &&
-            (identical(other.searchId, searchId) ||
-                other.searchId == searchId) &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.type, type) || other.type == type) &&
             (identical(other.ownerId, ownerId) || other.ownerId == ownerId) &&
             (identical(other.minCount, minCount) ||
                 other.minCount == minCount) &&
             (identical(other.maxCount, maxCount) ||
                 other.maxCount == maxCount) &&
+            (identical(other.minRating, minRating) ||
+                other.minRating == minRating) &&
             (identical(other.limit, limit) || other.limit == limit) &&
-            (identical(other.offset, offset) || other.offset == offset) &&
+            (identical(other.cursor, cursor) || other.cursor == cursor) &&
             (identical(other.ascending, ascending) ||
                 other.ascending == ascending) &&
             (identical(other.order, order) || other.order == order));
@@ -293,8 +335,20 @@ class _$CategoryQueryFilterImpl implements _CategoryQueryFilter {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, searchTerm, searchId, status,
-      ownerId, minCount, maxCount, limit, offset, ascending, order);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_ids),
+      searchTerm,
+      status,
+      type,
+      ownerId,
+      minCount,
+      maxCount,
+      minRating,
+      limit,
+      cursor,
+      ascending,
+      order);
 
   /// Create a copy of CategoryQueryFilter
   /// with the given fields replaced by the non-null parameter values.
@@ -315,14 +369,16 @@ class _$CategoryQueryFilterImpl implements _CategoryQueryFilter {
 
 abstract class _CategoryQueryFilter implements CategoryQueryFilter {
   const factory _CategoryQueryFilter(
-      {final String? searchTerm,
-      final int? searchId,
+      {final List<int>? ids,
+      final String? searchTerm,
       final CategoryStatus? status,
+      final CategoryType? type,
       final int? ownerId,
       final int? minCount,
       final int? maxCount,
+      final double? minRating,
       final int limit,
-      final int offset,
+      final String? cursor,
       final bool ascending,
       final CategoryOrder order}) = _$CategoryQueryFilterImpl;
 
@@ -330,11 +386,13 @@ abstract class _CategoryQueryFilter implements CategoryQueryFilter {
       _$CategoryQueryFilterImpl.fromJson;
 
   @override
+  List<int>? get ids;
+  @override
   String? get searchTerm;
   @override
-  int? get searchId;
-  @override
   CategoryStatus? get status;
+  @override
+  CategoryType? get type;
   @override
   int? get ownerId;
   @override
@@ -342,9 +400,11 @@ abstract class _CategoryQueryFilter implements CategoryQueryFilter {
   @override
   int? get maxCount;
   @override
+  double? get minRating;
+  @override
   int get limit;
   @override
-  int get offset;
+  String? get cursor;
   @override
   bool get ascending;
   @override

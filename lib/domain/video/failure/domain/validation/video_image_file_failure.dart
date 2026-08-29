@@ -14,6 +14,6 @@ class VideoImageFileInvalidFormatFailure
   const VideoImageFileInvalidFormatFailure();
 }
 
-class VideoImageFileInvalidIdFailure extends VideoImageFileFailure {
-  const VideoImageFileInvalidIdFailure();
+class VideoImageFileInvalidContentFailure extends VideoImageFileFailure {
+  const VideoImageFileInvalidContentFailure();
 }

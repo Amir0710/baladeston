@@ -10,10 +10,10 @@ class GetCollectionByIdUsecaseBusinessRule {
   });
 
   Result<void, CollectionFailure> validate() {
-    return idValidation();
+    return _idValidation();
   }
 
-  Result<void, CollectionFailure> idValidation() {
+  Result<void, CollectionIdFailure> _idValidation() {
     if (collectionId <= 0) {
       return const Result.failure(CollectionIdInvalidFailure());
     }

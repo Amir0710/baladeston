@@ -4,51 +4,70 @@ abstract class VideoEntityFailure extends BaseVideoValidationFailure {
   const VideoEntityFailure();
 }
 
+// title
 class VideoEntityTitleEmptyFailure extends VideoEntityFailure {
   const VideoEntityTitleEmptyFailure();
 }
-
-class VideoEntityOwnerRequiredFailure extends VideoEntityFailure {
-  const VideoEntityOwnerRequiredFailure();
+class VideoEntityTitleTooShortFailure extends VideoEntityFailure {
+  const VideoEntityTitleTooShortFailure();
 }
-class VideoEntityOwnerIdInvalidFailure extends VideoEntityFailure {
-  const VideoEntityOwnerIdInvalidFailure();
+class VideoEntityTitleTooLongFailure extends VideoEntityFailure {
+  const VideoEntityTitleTooLongFailure();
 }
-
-class VideoEntityIdInvalidFailure extends VideoEntityFailure {
-  const VideoEntityIdInvalidFailure();
+class VideoEntityTitleControlCharFailure extends VideoEntityFailure {
+  const VideoEntityTitleControlCharFailure();
 }
-
-class VideoEntityTitleInvalidFailure extends VideoEntityFailure {
-  const VideoEntityTitleInvalidFailure();
+class VideoEntityTitleContainsHtmlFailure extends VideoEntityFailure {
+  const VideoEntityTitleContainsHtmlFailure();
 }
-
-
-class VideoEntityStatusInvalidFailure extends VideoEntityFailure {
-  const VideoEntityStatusInvalidFailure();
+class VideoEntityTitleEmojiOnlyFailure extends VideoEntityFailure {
+  const VideoEntityTitleEmojiOnlyFailure();
 }
 
-class VideoEntityThumbnailInvalidFailure extends VideoEntityFailure {
-  const VideoEntityThumbnailInvalidFailure();
+// description
+final class VideoEntityMissingDescriptionFailure
+    extends VideoEntityFailure {
+  const VideoEntityMissingDescriptionFailure();
+}
+final class VideoEntityTooShortDescriptionFailure
+    extends VideoEntityFailure {
+  const VideoEntityTooShortDescriptionFailure();
 }
 
-class VideoEntityNoUpdatableFieldsFailure extends VideoEntityFailure {
-  const VideoEntityNoUpdatableFieldsFailure();
+final class VideoEntityTooLongDescriptionFailure
+    extends VideoEntityFailure {
+  const VideoEntityTooLongDescriptionFailure();
 }
 
-class VideoEntityVideoUrlInvalidFailure extends VideoEntityFailure {
-  const VideoEntityVideoUrlInvalidFailure();
+final class VideoEntityControlCharDescriptionFailure
+    extends VideoEntityFailure {
+  const VideoEntityControlCharDescriptionFailure();
 }
 
-class VideoEntityRecommendAgeInvalidFailure extends VideoEntityFailure {
-  const VideoEntityRecommendAgeInvalidFailure();
+final class VideoEntityContainsHtmlDescriptionFailure
+    extends VideoEntityFailure {
+  const VideoEntityContainsHtmlDescriptionFailure();
 }
 
-class VideoEntityLevelInvalidFailure extends VideoEntityFailure {
-  const VideoEntityLevelInvalidFailure();
+final class VideoEntityEmojiOnlyDescriptionFailure
+    extends VideoEntityFailure {
+  const VideoEntityEmojiOnlyDescriptionFailure();
 }
 
-class VideoEntityPriceInvalidFailure extends VideoEntityFailure {
-  const VideoEntityPriceInvalidFailure();
+
+// recommended age
+class VideoEntityRecommendedAgeTooLowFailure extends VideoEntityFailure {
+  const VideoEntityRecommendedAgeTooLowFailure();
+}
+class VideoEntityRecommendedAgeTooHighFailure extends VideoEntityFailure {
+  const VideoEntityRecommendedAgeTooHighFailure();
 }
 
+
+// price
+class VideoEntityPriceTooLowFailure extends VideoEntityFailure {
+  const VideoEntityPriceTooLowFailure();
+}
+class VideoEntityPriceTooHighFailure extends VideoEntityFailure {
+  const VideoEntityPriceTooHighFailure();
+}

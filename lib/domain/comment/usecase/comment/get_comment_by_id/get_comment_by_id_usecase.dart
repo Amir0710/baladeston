@@ -1,8 +1,8 @@
 import 'package:baladeston/core/result/result.dart';
-import 'package:baladeston/domain/Comment/failure/base_Comment_failure.dart';
+import 'package:baladeston/domain/comment/failure/base_comment_failure.dart';
 import 'package:baladeston/domain/comment/entity/comment/comment_entity.dart';
 import 'package:baladeston/domain/comment/repository/comment/comment_repository.dart';
-import 'package:baladeston/domain/comment/usecase/get_comment_by_id/get_comment_by_id_usecase_business_rule.dart';
+import 'package:baladeston/domain/comment/usecase/comment/get_comment_by_id/get_comment_by_id_usecase_business_rule.dart';
 
 class GetCommentByIdUseCase {
   final CommentRepository repository;

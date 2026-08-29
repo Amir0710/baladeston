@@ -4,54 +4,33 @@ abstract class CommentEntityFailure extends BaseCommentValidationFailure {
   const CommentEntityFailure();
 }
 
-// userId
-final class CommentEntityInvalidUserIdFailure extends CommentEntityFailure {
-  const CommentEntityInvalidUserIdFailure();
-}
-final class CommentEntityMissingUserIdFailure extends CommentEntityFailure {
-  const CommentEntityMissingUserIdFailure();
-}
-
-// targetType
-final class CommentEntityInvalidTargetTypeFailure extends CommentEntityFailure {
-  const CommentEntityInvalidTargetTypeFailure();
-}
-final class CommentEntityMissingTargetTypeFailure extends CommentEntityFailure {
-  const CommentEntityMissingTargetTypeFailure();
-}
-
-// targetId
-final class CommentEntityInvalidTargetIdFailure extends CommentEntityFailure {
-  const CommentEntityInvalidTargetIdFailure();
-}
-final class CommentEntityMissingTargetIdFailure extends CommentEntityFailure {
-  const CommentEntityMissingTargetIdFailure();
-}
-
-// rating
-final class CommentEntityInvalidRatingFailure extends CommentEntityFailure {
-  const CommentEntityInvalidRatingFailure();
-}
-final class CommentEntityMissingRatingFailure extends CommentEntityFailure {
-  const CommentEntityMissingRatingFailure();
-}
 
 // content
-final class CommentEntityInvalidContentFailure extends CommentEntityFailure {
-  const CommentEntityInvalidContentFailure();
+final class CommentEntityMissingContentFailure
+    extends CommentEntityFailure {
+  const CommentEntityMissingContentFailure();
+}
+final class CommentEntityTooShortContentFailure
+    extends CommentEntityFailure {
+  const CommentEntityTooShortContentFailure();
 }
 
-// status
-final class CommentEntityInvalidStatusFailure extends CommentEntityFailure {
-  const CommentEntityInvalidStatusFailure();
+final class CommentEntityTooLongContentFailure
+    extends CommentEntityFailure {
+  const CommentEntityTooLongContentFailure();
 }
 
-// createdAt
-final class CommentEntityInvalidCreatedAtFailure extends CommentEntityFailure {
-  const CommentEntityInvalidCreatedAtFailure();
+final class CommentEntityControlCharContentFailure
+    extends CommentEntityFailure {
+  const CommentEntityControlCharContentFailure();
 }
 
-// updatedAt
-final class CommentEntityInvalidUpdatedAtFailure extends CommentEntityFailure {
-  const CommentEntityInvalidUpdatedAtFailure();
+final class CommentEntityContainsHtmlContentFailure
+    extends CommentEntityFailure {
+  const CommentEntityContainsHtmlContentFailure();
+}
+
+final class CommentEntityEmojiOnlyContentFailure
+    extends CommentEntityFailure {
+  const CommentEntityEmojiOnlyContentFailure();
 }

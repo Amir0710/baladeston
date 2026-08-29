@@ -1,4 +1,5 @@
 import 'package:baladeston/core/enum/collection/collection/collection_status.dart';
+import 'package:baladeston/core/enum/collection/collection/collection_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'collection_model.freezed.dart';
@@ -9,15 +10,19 @@ abstract class CollectionModel with _$CollectionModel {
 
   const factory CollectionModel({
     int? id,
-    CollectionStatus? status,
+    required String title,
+    required String description ,
+    int? ownerId,
+    double? avgRate,
+    int? rateCount,
     String? thumbnailUrl,
-    int? count,
-    int? price ,
+    CollectionStatus? status,
+    CollectionType? type ,
+    int? count, // count of video in collection
+    int? price, // calculated at the time of request
     String? uniqueCode,
     DateTime? lastTransaction,
-    required int ownerId,
     DateTime? createdAt,
-    required String title,
   }) = _CollectionModel;
 
   factory CollectionModel.fromJson(Map<String, dynamic> json) =>

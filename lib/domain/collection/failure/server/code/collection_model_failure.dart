@@ -5,54 +5,64 @@ abstract class CollectionModelFailure
   const CollectionModelFailure();
 }
 
+// id
 class CollectionModelInvalidIdFailure extends CollectionModelFailure {
   const CollectionModelInvalidIdFailure();
 }
 
+// status
 class CollectionModelInvalidStatusFailure extends CollectionModelFailure {
   const CollectionModelInvalidStatusFailure();
 }
 
-class CollectionModelInvalidThumbnailUrlFailure extends CollectionModelFailure {
-  const CollectionModelInvalidThumbnailUrlFailure();
-}
 
+// count
 class CollectionModelInvalidCountFailure extends CollectionModelFailure {
   const CollectionModelInvalidCountFailure();
 }
 
+// uniqueCode
 class CollectionModelInvalidUniqueCodeFailure extends CollectionModelFailure {
   const CollectionModelInvalidUniqueCodeFailure();
 }
 
-class CollectionModelMissingOwnerIdFailure extends CollectionModelFailure {
-  const CollectionModelMissingOwnerIdFailure();
-}
-
+// ownerId
 class CollectionModelInvalidOwnerIdFailure extends CollectionModelFailure {
   const CollectionModelInvalidOwnerIdFailure();
 }
 
-class CollectionModelMissingCreatedAtFailure extends CollectionModelFailure {
-  const CollectionModelMissingCreatedAtFailure();
-}
-
+// createdAt
 class CollectionModelInvalidCreatedAtFailure extends CollectionModelFailure {
   const CollectionModelInvalidCreatedAtFailure();
 }
 
-class CollectionModelMissingTitleFailure extends CollectionModelFailure {
-  const CollectionModelMissingTitleFailure();
-}
-
+// title
 class CollectionModelInvalidTitleFailure extends CollectionModelFailure {
   const CollectionModelInvalidTitleFailure();
 }
 
-class CollectionModelMissingLastTransactionFailure extends CollectionModelFailure {
-  const CollectionModelMissingLastTransactionFailure();
+// lastTransaction
+class CollectionModelInvalidLastTransactionFailure
+    extends CollectionModelFailure {
+  const CollectionModelInvalidLastTransactionFailure();
 }
 
-class CollectionModelInvalidLastTransactionFailure extends CollectionModelFailure {
-  const CollectionModelInvalidLastTransactionFailure();
+// avgRate
+class CollectionModelInvalidAvgRateFailure extends CollectionModelFailure {
+  const CollectionModelInvalidAvgRateFailure();
+}
+
+// rateCount
+class CollectionModelInvalidRateCountFailure extends CollectionModelFailure {
+  const CollectionModelInvalidRateCountFailure();
+}
+
+// price
+class CollectionModelInvalidPriceFailure extends CollectionModelFailure {
+  const CollectionModelInvalidPriceFailure();
+}
+
+// missing
+class CollectionModelMissingField extends CollectionModelFailure {
+  const CollectionModelMissingField();
 }

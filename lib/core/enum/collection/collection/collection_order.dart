@@ -1,7 +1,7 @@
 enum CollectionOrder {
   title,
   lastTransaction,
-  created,
+  createdAt,
   price,
   age,
 }

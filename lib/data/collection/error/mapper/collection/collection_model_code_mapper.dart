@@ -1,5 +1,5 @@
 import 'package:baladeston/data/collection/api/error_codes/collection/collection_model_error_code.dart'
-    as codes;
+as codes;
 import 'package:baladeston/domain/collection/failure/base_collection_failure.dart';
 import 'package:baladeston/domain/collection/failure/server/code/collection_model_failure.dart';
 
@@ -9,47 +9,51 @@ final class CollectionModelCodeMapper {
   static final Map<String, CollectionFailure Function()> _registry = {
     // id
     codes.CollectionModelErrorCodes.invalidId: () =>
-        const CollectionModelInvalidIdFailure(),
+    const CollectionModelInvalidIdFailure(),
 
     // status
     codes.CollectionModelErrorCodes.invalidStatus: () =>
-        const CollectionModelInvalidStatusFailure(),
-
-    // thumbnailUrl
-    codes.CollectionModelErrorCodes.invalidThumbnailUrl: () =>
-        const CollectionModelInvalidThumbnailUrlFailure(),
+    const CollectionModelInvalidStatusFailure(),
 
     // count
     codes.CollectionModelErrorCodes.invalidCount: () =>
-        const CollectionModelInvalidCountFailure(),
+    const CollectionModelInvalidCountFailure(),
 
     // uniqueCode
     codes.CollectionModelErrorCodes.invalidUniqueCode: () =>
-        const CollectionModelInvalidUniqueCodeFailure(),
+    const CollectionModelInvalidUniqueCodeFailure(),
 
     // ownerId
-    codes.CollectionModelErrorCodes.missingOwnerId: () =>
-        const CollectionModelMissingOwnerIdFailure(),
     codes.CollectionModelErrorCodes.invalidOwnerId: () =>
-        const CollectionModelInvalidOwnerIdFailure(),
+    const CollectionModelInvalidOwnerIdFailure(),
 
     // createdAt
-    codes.CollectionModelErrorCodes.missingCreatedAt: () =>
-        const CollectionModelMissingCreatedAtFailure(),
     codes.CollectionModelErrorCodes.invalidCreatedAt: () =>
-        const CollectionModelInvalidCreatedAtFailure(),
+    const CollectionModelInvalidCreatedAtFailure(),
 
     // title
-    codes.CollectionModelErrorCodes.missingTitle: () =>
-        const CollectionModelMissingTitleFailure(),
     codes.CollectionModelErrorCodes.invalidTitle: () =>
-        const CollectionModelInvalidTitleFailure(),
+    const CollectionModelInvalidTitleFailure(),
 
     // lastTransaction
-    codes.CollectionModelErrorCodes.missingLastTransaction: () =>
-        const CollectionModelMissingLastTransactionFailure(),
     codes.CollectionModelErrorCodes.invalidLastTransaction: () =>
-        const CollectionModelInvalidLastTransactionFailure(),
+    const CollectionModelInvalidLastTransactionFailure(),
+
+    // avgRate
+    codes.CollectionModelErrorCodes.invalidAvgRate: () =>
+    const CollectionModelInvalidAvgRateFailure(),
+
+    // rateCount
+    codes.CollectionModelErrorCodes.invalidRateCount: () =>
+    const CollectionModelInvalidRateCountFailure(),
+
+    // price
+    codes.CollectionModelErrorCodes.invalidPrice: () =>
+    const CollectionModelInvalidPriceFailure(),
+
+    // missing
+    codes.CollectionModelErrorCodes.missingField: () =>
+    const CollectionModelMissingField(),
   };
 
   static CollectionFailure? map(String? code) {

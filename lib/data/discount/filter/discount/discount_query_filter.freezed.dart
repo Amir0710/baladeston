@@ -1,0 +1,532 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'discount_query_filter.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+DiscountQueryFilter _$DiscountQueryFilterFromJson(Map<String, dynamic> json) {
+  return _DiscountQueryFilter.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DiscountQueryFilter {
+  int? get ownerId =>
+      throw _privateConstructorUsedError; // in user app is not important and i must extract id from token
+  List<int>? get ids => throw _privateConstructorUsedError;
+  int? get targetId => throw _privateConstructorUsedError;
+  DiscountTargetType? get targetType => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
+  int? get minPercent => throw _privateConstructorUsedError;
+  int? get maxPercent => throw _privateConstructorUsedError;
+  DiscountStatus? get status => throw _privateConstructorUsedError;
+  DateTime? get createAt => throw _privateConstructorUsedError;
+  bool? get userCreated => throw _privateConstructorUsedError;
+  DateTime? get expiresAt => throw _privateConstructorUsedError;
+  int? get maxUse => throw _privateConstructorUsedError;
+  int? get usage => throw _privateConstructorUsedError;
+  int get limit => throw _privateConstructorUsedError;
+  int get offset => throw _privateConstructorUsedError;
+  bool get ascending => throw _privateConstructorUsedError;
+  DiscountOrder get order => throw _privateConstructorUsedError;
+
+  /// Serializes this DiscountQueryFilter to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of DiscountQueryFilter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $DiscountQueryFilterCopyWith<DiscountQueryFilter> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DiscountQueryFilterCopyWith<$Res> {
+  factory $DiscountQueryFilterCopyWith(
+          DiscountQueryFilter value, $Res Function(DiscountQueryFilter) then) =
+      _$DiscountQueryFilterCopyWithImpl<$Res, DiscountQueryFilter>;
+  @useResult
+  $Res call(
+      {int? ownerId,
+      List<int>? ids,
+      int? targetId,
+      DiscountTargetType? targetType,
+      String? title,
+      int? minPercent,
+      int? maxPercent,
+      DiscountStatus? status,
+      DateTime? createAt,
+      bool? userCreated,
+      DateTime? expiresAt,
+      int? maxUse,
+      int? usage,
+      int limit,
+      int offset,
+      bool ascending,
+      DiscountOrder order});
+}
+
+/// @nodoc
+class _$DiscountQueryFilterCopyWithImpl<$Res, $Val extends DiscountQueryFilter>
+    implements $DiscountQueryFilterCopyWith<$Res> {
+  _$DiscountQueryFilterCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of DiscountQueryFilter
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ownerId = freezed,
+    Object? ids = freezed,
+    Object? targetId = freezed,
+    Object? targetType = freezed,
+    Object? title = freezed,
+    Object? minPercent = freezed,
+    Object? maxPercent = freezed,
+    Object? status = freezed,
+    Object? createAt = freezed,
+    Object? userCreated = freezed,
+    Object? expiresAt = freezed,
+    Object? maxUse = freezed,
+    Object? usage = freezed,
+    Object? limit = null,
+    Object? offset = null,
+    Object? ascending = null,
+    Object? order = null,
+  }) {
+    return _then(_value.copyWith(
+      ownerId: freezed == ownerId
+          ? _value.ownerId
+          : ownerId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      ids: freezed == ids
+          ? _value.ids
+          : ids // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
+      targetId: freezed == targetId
+          ? _value.targetId
+          : targetId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      targetType: freezed == targetType
+          ? _value.targetType
+          : targetType // ignore: cast_nullable_to_non_nullable
+              as DiscountTargetType?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      minPercent: freezed == minPercent
+          ? _value.minPercent
+          : minPercent // ignore: cast_nullable_to_non_nullable
+              as int?,
+      maxPercent: freezed == maxPercent
+          ? _value.maxPercent
+          : maxPercent // ignore: cast_nullable_to_non_nullable
+              as int?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as DiscountStatus?,
+      createAt: freezed == createAt
+          ? _value.createAt
+          : createAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      userCreated: freezed == userCreated
+          ? _value.userCreated
+          : userCreated // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      expiresAt: freezed == expiresAt
+          ? _value.expiresAt
+          : expiresAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      maxUse: freezed == maxUse
+          ? _value.maxUse
+          : maxUse // ignore: cast_nullable_to_non_nullable
+              as int?,
+      usage: freezed == usage
+          ? _value.usage
+          : usage // ignore: cast_nullable_to_non_nullable
+              as int?,
+      limit: null == limit
+          ? _value.limit
+          : limit // ignore: cast_nullable_to_non_nullable
+              as int,
+      offset: null == offset
+          ? _value.offset
+          : offset // ignore: cast_nullable_to_non_nullable
+              as int,
+      ascending: null == ascending
+          ? _value.ascending
+          : ascending // ignore: cast_nullable_to_non_nullable
+              as bool,
+      order: null == order
+          ? _value.order
+          : order // ignore: cast_nullable_to_non_nullable
+              as DiscountOrder,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$DiscountQueryFilterImplCopyWith<$Res>
+    implements $DiscountQueryFilterCopyWith<$Res> {
+  factory _$$DiscountQueryFilterImplCopyWith(_$DiscountQueryFilterImpl value,
+          $Res Function(_$DiscountQueryFilterImpl) then) =
+      __$$DiscountQueryFilterImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int? ownerId,
+      List<int>? ids,
+      int? targetId,
+      DiscountTargetType? targetType,
+      String? title,
+      int? minPercent,
+      int? maxPercent,
+      DiscountStatus? status,
+      DateTime? createAt,
+      bool? userCreated,
+      DateTime? expiresAt,
+      int? maxUse,
+      int? usage,
+      int limit,
+      int offset,
+      bool ascending,
+      DiscountOrder order});
+}
+
+/// @nodoc
+class __$$DiscountQueryFilterImplCopyWithImpl<$Res>
+    extends _$DiscountQueryFilterCopyWithImpl<$Res, _$DiscountQueryFilterImpl>
+    implements _$$DiscountQueryFilterImplCopyWith<$Res> {
+  __$$DiscountQueryFilterImplCopyWithImpl(_$DiscountQueryFilterImpl _value,
+      $Res Function(_$DiscountQueryFilterImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DiscountQueryFilter
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ownerId = freezed,
+    Object? ids = freezed,
+    Object? targetId = freezed,
+    Object? targetType = freezed,
+    Object? title = freezed,
+    Object? minPercent = freezed,
+    Object? maxPercent = freezed,
+    Object? status = freezed,
+    Object? createAt = freezed,
+    Object? userCreated = freezed,
+    Object? expiresAt = freezed,
+    Object? maxUse = freezed,
+    Object? usage = freezed,
+    Object? limit = null,
+    Object? offset = null,
+    Object? ascending = null,
+    Object? order = null,
+  }) {
+    return _then(_$DiscountQueryFilterImpl(
+      ownerId: freezed == ownerId
+          ? _value.ownerId
+          : ownerId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      ids: freezed == ids
+          ? _value._ids
+          : ids // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
+      targetId: freezed == targetId
+          ? _value.targetId
+          : targetId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      targetType: freezed == targetType
+          ? _value.targetType
+          : targetType // ignore: cast_nullable_to_non_nullable
+              as DiscountTargetType?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      minPercent: freezed == minPercent
+          ? _value.minPercent
+          : minPercent // ignore: cast_nullable_to_non_nullable
+              as int?,
+      maxPercent: freezed == maxPercent
+          ? _value.maxPercent
+          : maxPercent // ignore: cast_nullable_to_non_nullable
+              as int?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as DiscountStatus?,
+      createAt: freezed == createAt
+          ? _value.createAt
+          : createAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      userCreated: freezed == userCreated
+          ? _value.userCreated
+          : userCreated // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      expiresAt: freezed == expiresAt
+          ? _value.expiresAt
+          : expiresAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      maxUse: freezed == maxUse
+          ? _value.maxUse
+          : maxUse // ignore: cast_nullable_to_non_nullable
+              as int?,
+      usage: freezed == usage
+          ? _value.usage
+          : usage // ignore: cast_nullable_to_non_nullable
+              as int?,
+      limit: null == limit
+          ? _value.limit
+          : limit // ignore: cast_nullable_to_non_nullable
+              as int,
+      offset: null == offset
+          ? _value.offset
+          : offset // ignore: cast_nullable_to_non_nullable
+              as int,
+      ascending: null == ascending
+          ? _value.ascending
+          : ascending // ignore: cast_nullable_to_non_nullable
+              as bool,
+      order: null == order
+          ? _value.order
+          : order // ignore: cast_nullable_to_non_nullable
+              as DiscountOrder,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$DiscountQueryFilterImpl implements _DiscountQueryFilter {
+  const _$DiscountQueryFilterImpl(
+      {this.ownerId,
+      final List<int>? ids,
+      this.targetId,
+      this.targetType,
+      this.title,
+      this.minPercent,
+      this.maxPercent,
+      this.status,
+      this.createAt,
+      this.userCreated,
+      this.expiresAt,
+      this.maxUse,
+      this.usage,
+      this.limit = 20,
+      this.offset = 0,
+      this.ascending = false,
+      this.order = DiscountOrder.expiresAt})
+      : _ids = ids;
+
+  factory _$DiscountQueryFilterImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DiscountQueryFilterImplFromJson(json);
+
+  @override
+  final int? ownerId;
+// in user app is not important and i must extract id from token
+  final List<int>? _ids;
+// in user app is not important and i must extract id from token
+  @override
+  List<int>? get ids {
+    final value = _ids;
+    if (value == null) return null;
+    if (_ids is EqualUnmodifiableListView) return _ids;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final int? targetId;
+  @override
+  final DiscountTargetType? targetType;
+  @override
+  final String? title;
+  @override
+  final int? minPercent;
+  @override
+  final int? maxPercent;
+  @override
+  final DiscountStatus? status;
+  @override
+  final DateTime? createAt;
+  @override
+  final bool? userCreated;
+  @override
+  final DateTime? expiresAt;
+  @override
+  final int? maxUse;
+  @override
+  final int? usage;
+  @override
+  @JsonKey()
+  final int limit;
+  @override
+  @JsonKey()
+  final int offset;
+  @override
+  @JsonKey()
+  final bool ascending;
+  @override
+  @JsonKey()
+  final DiscountOrder order;
+
+  @override
+  String toString() {
+    return 'DiscountQueryFilter(ownerId: $ownerId, ids: $ids, targetId: $targetId, targetType: $targetType, title: $title, minPercent: $minPercent, maxPercent: $maxPercent, status: $status, createAt: $createAt, userCreated: $userCreated, expiresAt: $expiresAt, maxUse: $maxUse, usage: $usage, limit: $limit, offset: $offset, ascending: $ascending, order: $order)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DiscountQueryFilterImpl &&
+            (identical(other.ownerId, ownerId) || other.ownerId == ownerId) &&
+            const DeepCollectionEquality().equals(other._ids, _ids) &&
+            (identical(other.targetId, targetId) ||
+                other.targetId == targetId) &&
+            (identical(other.targetType, targetType) ||
+                other.targetType == targetType) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.minPercent, minPercent) ||
+                other.minPercent == minPercent) &&
+            (identical(other.maxPercent, maxPercent) ||
+                other.maxPercent == maxPercent) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.createAt, createAt) ||
+                other.createAt == createAt) &&
+            (identical(other.userCreated, userCreated) ||
+                other.userCreated == userCreated) &&
+            (identical(other.expiresAt, expiresAt) ||
+                other.expiresAt == expiresAt) &&
+            (identical(other.maxUse, maxUse) || other.maxUse == maxUse) &&
+            (identical(other.usage, usage) || other.usage == usage) &&
+            (identical(other.limit, limit) || other.limit == limit) &&
+            (identical(other.offset, offset) || other.offset == offset) &&
+            (identical(other.ascending, ascending) ||
+                other.ascending == ascending) &&
+            (identical(other.order, order) || other.order == order));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      ownerId,
+      const DeepCollectionEquality().hash(_ids),
+      targetId,
+      targetType,
+      title,
+      minPercent,
+      maxPercent,
+      status,
+      createAt,
+      userCreated,
+      expiresAt,
+      maxUse,
+      usage,
+      limit,
+      offset,
+      ascending,
+      order);
+
+  /// Create a copy of DiscountQueryFilter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DiscountQueryFilterImplCopyWith<_$DiscountQueryFilterImpl> get copyWith =>
+      __$$DiscountQueryFilterImplCopyWithImpl<_$DiscountQueryFilterImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$DiscountQueryFilterImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _DiscountQueryFilter implements DiscountQueryFilter {
+  const factory _DiscountQueryFilter(
+      {final int? ownerId,
+      final List<int>? ids,
+      final int? targetId,
+      final DiscountTargetType? targetType,
+      final String? title,
+      final int? minPercent,
+      final int? maxPercent,
+      final DiscountStatus? status,
+      final DateTime? createAt,
+      final bool? userCreated,
+      final DateTime? expiresAt,
+      final int? maxUse,
+      final int? usage,
+      final int limit,
+      final int offset,
+      final bool ascending,
+      final DiscountOrder order}) = _$DiscountQueryFilterImpl;
+
+  factory _DiscountQueryFilter.fromJson(Map<String, dynamic> json) =
+      _$DiscountQueryFilterImpl.fromJson;
+
+  @override
+  int?
+      get ownerId; // in user app is not important and i must extract id from token
+  @override
+  List<int>? get ids;
+  @override
+  int? get targetId;
+  @override
+  DiscountTargetType? get targetType;
+  @override
+  String? get title;
+  @override
+  int? get minPercent;
+  @override
+  int? get maxPercent;
+  @override
+  DiscountStatus? get status;
+  @override
+  DateTime? get createAt;
+  @override
+  bool? get userCreated;
+  @override
+  DateTime? get expiresAt;
+  @override
+  int? get maxUse;
+  @override
+  int? get usage;
+  @override
+  int get limit;
+  @override
+  int get offset;
+  @override
+  bool get ascending;
+  @override
+  DiscountOrder get order;
+
+  /// Create a copy of DiscountQueryFilter
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DiscountQueryFilterImplCopyWith<_$DiscountQueryFilterImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

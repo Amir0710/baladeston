@@ -1,11 +1,9 @@
 import 'package:baladeston/core/result/result.dart';
-import 'package:baladeston/data/favorite/filter/favorite_query_filter.dart';
-import 'package:baladeston/domain/favorite/entity/favorite_entity.dart';
-import 'package:baladeston/domain/favorite/exception/favorite_entity_exception.dart';
-import 'package:baladeston/domain/favorite/exception/favorite_filter_exception.dart';
-import 'package:baladeston/domain/favorite/failure/favorite_failure.dart';
-import 'package:baladeston/domain/favorite/repository/favorite_repository.dart';
-import 'update_favorite_by_filter_usecase_business_rule.dart';
+import 'package:baladeston/data/favorite/filter/favorite/favorite_query_filter.dart';
+import 'package:baladeston/domain/favorite/entity/favorite/favorite_entity.dart';
+import 'package:baladeston/domain/favorite/failure/base_favorite_failure.dart';
+import 'package:baladeston/domain/favorite/repository/favorite/favorite_repository.dart';
+import 'package:baladeston/domain/favorite/usecase/update_favorite_by_filter/update_favorite_by_filter_usecase_business_rule.dart';
 
 class UpdateFavoriteByFilterUseCase {
   final FavoriteRepository repository;
@@ -18,25 +16,18 @@ class UpdateFavoriteByFilterUseCase {
     required FavoriteQueryFilter filter,
     required FavoriteEntity favorite,
   }) async {
-    try {
-      final rule = UpdateFavoriteByFilterUseCaseBusinessRule(
-        filter: filter,
-        favorite: favorite,
-      );
-      rule.validate();
-    } on FavoriteEntityException catch (e) {
-      return Result.failure(
-        FavoriteValidationFailure(e.message),
-      );
-    } on FavoriteFilterException catch (e) {
-      return Result.failure(
-        FavoriteValidationFailure(e.message),
-      );
-    }
-
-    return repository.updateFavoriteByFilter(
+    final businessRule = UpdateFavoriteByFilterUseCaseBusinessRule(
       filter: filter,
       favorite: favorite,
+    );
+    final validationResult = businessRule.validate();
+
+    return validationResult.when(
+      success: (_) => repository.updateFavoriteByFilter(
+        filter: filter,
+        favorite: favorite,
+      ),
+      failure: (failure) => Result.failure(failure),
     );
   }
 }

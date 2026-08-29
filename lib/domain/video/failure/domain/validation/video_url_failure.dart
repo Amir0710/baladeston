@@ -4,8 +4,8 @@ abstract class VideoUrlFailure extends BaseVideoValidationFailure {
   const VideoUrlFailure();
 }
 
-class VideoUrlEmptyFailure extends VideoUrlFailure {
-  const VideoUrlEmptyFailure();
+class VideoUrlMissing extends VideoUrlFailure {
+  const VideoUrlMissing();
 }
 
 class VideoUrlInvalidFormatFailure extends VideoUrlFailure {
@@ -16,6 +16,10 @@ class VideoUrlUnsupportedSchemeFailure extends VideoUrlFailure {
   const VideoUrlUnsupportedSchemeFailure();
 }
 
-class VideoUrlUnauthorizedHostFailure extends VideoUrlFailure {
-  const VideoUrlUnauthorizedHostFailure();
+class VideoUrlStructuralFailure extends VideoUrlFailure {
+  const VideoUrlStructuralFailure();
+}
+
+class VideoUrlInvalidLengthFailure extends VideoUrlFailure {
+  const VideoUrlInvalidLengthFailure();
 }

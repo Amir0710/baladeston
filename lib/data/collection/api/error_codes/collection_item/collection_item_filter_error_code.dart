@@ -1,8 +1,8 @@
 abstract final class CollectionItemFilterErrorCodes {
-  //  collectionId
-  static const missingCollectionId =
-      'COLLECTION_ITEM_FILTER_MISSING_COLLECTION_ID';
+  //  ids
+  static const invalidIds = 'COLLECTION_ITEM_FILTER_INVALID_IDS';
 
+  //  collectionId
   static const invalidCollectionId =
       'COLLECTION_ITEM_FILTER_INVALID_COLLECTION_ID';
 

@@ -1,4 +1,5 @@
 import 'package:baladeston/core/enum/collection/collection/collection_status.dart';
+import 'package:baladeston/core/enum/collection/collection/collection_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'collection_entity.freezed.dart';
@@ -7,14 +8,18 @@ part 'collection_entity.freezed.dart';
 abstract class CollectionEntity with _$CollectionEntity {
   const factory CollectionEntity({
     int? id,
-    CollectionStatus? status,
+    required String title,
+    required String description ,
+    int? ownerId,
+    double? avgRate,
+    int? rateCount,
     String? thumbnailUrl,
+    CollectionStatus? status,
+    CollectionType? type ,
     int? count,
-    int? price ,
+    int? price,
     String? uniqueCode,
     DateTime? lastTransaction,
-    required int ownerId,
     DateTime? createdAt,
-    required String title,
   }) = _CollectionEntity;
 }

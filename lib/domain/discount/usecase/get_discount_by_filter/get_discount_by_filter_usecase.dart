@@ -1,3 +1,4 @@
+import 'package:baladeston/core/model/paginated_response_model.dart';
 import 'package:baladeston/core/result/result.dart';
 import 'package:baladeston/data/discount/filter/discount_query_filter.dart';
 import 'package:baladeston/domain/discount/entity/discount_entity.dart';
@@ -11,12 +12,13 @@ class GetDiscountByFilterUseCase {
 
   const GetDiscountByFilterUseCase({required this.repository});
 
-  Future<Result<List<DiscountEntity>, DiscountFailure>> call({
+  Future<Result<PaginatedResponseModel<DiscountEntity>, DiscountFailure>>
+      call({
     required DiscountQueryFilter filter,
   }) async {
     try {
       final businessRule =
-      GetDiscountByFilterUsecaseBusinessRule(filter: filter);
+          GetDiscountByFilterUsecaseBusinessRule(filter: filter);
       businessRule.validate();
     } on DiscountEntityException catch (e) {
       return Result.failure(

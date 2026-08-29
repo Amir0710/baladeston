@@ -12,16 +12,18 @@ _$CommentModelImpl _$$CommentModelImplFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = _$CommentModelImpl(
-          userId: $checkedConvert('userId', (v) => (v as num).toInt()),
+          ownerId: $checkedConvert('ownerId', (v) => (v as num?)?.toInt()),
+          targetType: $checkedConvert(
+              'targetType', (v) => $enumDecode(_$CommentTypeEnumMap, v)),
           targetId: $checkedConvert('targetId', (v) => (v as num).toInt()),
-          content: $checkedConvert('content', (v) => v as String),
           rating: $checkedConvert('rating', (v) => (v as num).toDouble()),
-          createdAt:
-              $checkedConvert('createdAt', (v) => DateTime.parse(v as String)),
-          updatedAt:
-              $checkedConvert('updatedAt', (v) => DateTime.parse(v as String)),
+          content: $checkedConvert('content', (v) => v as String?),
+          createdAt: $checkedConvert('createdAt',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+          updatedAt: $checkedConvert('updatedAt',
+              (v) => v == null ? null : DateTime.parse(v as String)),
           status: $checkedConvert(
-              'status', (v) => $enumDecode(_$CommentStatusEnumMap, v)),
+              'status', (v) => $enumDecodeNullable(_$CommentStatusEnumMap, v)),
         );
         return val;
       },
@@ -29,14 +31,24 @@ _$CommentModelImpl _$$CommentModelImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$CommentModelImplToJson(_$CommentModelImpl instance) =>
     <String, dynamic>{
-      'userId': instance.userId,
+      'ownerId': instance.ownerId,
+      'targetType': _$CommentTypeEnumMap[instance.targetType]!,
       'targetId': instance.targetId,
-      'content': instance.content,
       'rating': instance.rating,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'updatedAt': instance.updatedAt.toIso8601String(),
-      'status': _$CommentStatusEnumMap[instance.status]!,
+      'content': instance.content,
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
+      'status': _$CommentStatusEnumMap[instance.status],
     };
+
+const _$CommentTypeEnumMap = {
+  CommentType.category: 'category',
+  CommentType.categoryItem: 'categoryItem',
+  CommentType.collection: 'collection',
+  CommentType.collectionItem: 'collectionItem',
+  CommentType.video: 'video',
+  CommentType.user: 'user',
+};
 
 const _$CommentStatusEnumMap = {
   CommentStatus.deleted: 'deleted',

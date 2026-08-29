@@ -4,54 +4,95 @@ abstract class CategoryItemFilterFailure extends CategoryFailure {
   const CategoryItemFilterFailure();
 }
 
-// categoryId
-final class CategoryItemFilterInvalidCategoryIdFailure
-    extends CategoryItemFilterFailure {
-  const CategoryItemFilterInvalidCategoryIdFailure();
+// ids
+final class CategoryItemFilterInvalidIdsFailure extends CategoryItemFilterFailure {
+  const CategoryItemFilterInvalidIdsFailure();
 }
-// adderId
-final class CategoryItemFilterInvalidAdderIdFailure
+
+// searchTerm
+final class CategoryItemFilterSearchTermTooShortFailure
     extends CategoryItemFilterFailure {
-  const CategoryItemFilterInvalidAdderIdFailure();
+  const CategoryItemFilterSearchTermTooShortFailure();
 }
-// collectionId
-final class CategoryItemFilterInvalidCollectionIdFailure
+
+final class CategoryItemFilterSearchTermTooLongFailure
+    extends CategoryItemFilterFailure {
+  const CategoryItemFilterSearchTermTooLongFailure();
+}
+
+final class CategoryItemFilterControlCharSearchTermFailure
+    extends CategoryItemFilterFailure {
+  const CategoryItemFilterControlCharSearchTermFailure();
+}
+
+final class CategoryItemFilterContainsHtmlSearchTermFailure
+    extends CategoryItemFilterFailure {
+  const CategoryItemFilterContainsHtmlSearchTermFailure();
+}
+
+final class CategoryItemFilterEmojiOnlySearchTermFailure
+    extends CategoryItemFilterFailure {
+  const CategoryItemFilterEmojiOnlySearchTermFailure();
+}
+
+
+
+// minCount / maxCount
+final class CategoryItemFilterMinCountFailure
+    extends CategoryItemFilterFailure {
+  const CategoryItemFilterMinCountFailure();
+}
+
+final class CategoryItemFilterMaxCountFailure
+    extends CategoryItemFilterFailure {
+  const CategoryItemFilterMaxCountFailure();
+}
+
+final class CategoryItemFilterCountRangeFailure
+    extends CategoryItemFilterFailure {
+  const CategoryItemFilterCountRangeFailure();
+}
+
+// minPrice / maxPrice
+final class CategoryItemFilterMinPriceFailure
+    extends CategoryItemFilterFailure {
+  const CategoryItemFilterMinPriceFailure();
+}
+
+final class CategoryItemFilterMaxPriceFailure
+    extends CategoryItemFilterFailure {
+  const CategoryItemFilterMaxPriceFailure();
+}
+
+final class CategoryItemFilterPriceRangeFailure
+    extends CategoryItemFilterFailure {
+  const CategoryItemFilterPriceRangeFailure();
+}
+
+
+// rating
+final class CategoryItemFilterInvalidMinRatingFailure
+    extends CategoryItemFilterFailure {
+  const CategoryItemFilterInvalidMinRatingFailure();
+}
+
+//  collection id
+
+class CategoryItemFilterInvalidCollectionIdFailure
     extends CategoryItemFilterFailure {
   const CategoryItemFilterInvalidCollectionIdFailure();
 }
 
-// status
-final class CategoryItemFilterInvalidStatusFailure
+//  category id
+
+class CategoryItemFilterInvalidCategoryIdFailure
     extends CategoryItemFilterFailure {
-  const CategoryItemFilterInvalidStatusFailure();
+  const CategoryItemFilterInvalidCategoryIdFailure();
 }
 
-// limit
-final class CategoryItemFilterInvalidLimitFailure
-    extends CategoryItemFilterFailure {
-  const CategoryItemFilterInvalidLimitFailure();
-}
 
-// offset
-final class CategoryItemFilterInvalidOffsetFailure
-    extends CategoryItemFilterFailure {
-  const CategoryItemFilterInvalidOffsetFailure();
-}
+//  general
 
-// ascending
-final class CategoryItemFilterInvalidAscendingFailure
-    extends CategoryItemFilterFailure {
-  const CategoryItemFilterInvalidAscendingFailure();
-}
-
-// order
-final class CategoryItemFilterInvalidOrderFailure
-    extends CategoryItemFilterFailure {
-  const CategoryItemFilterInvalidOrderFailure();
-}
-
-// general
-
-final class CategoryItemFilterEmptyFailure extends CategoryItemFilterFailure {
+class CategoryItemFilterEmptyFailure extends CategoryItemFilterFailure {
   const CategoryItemFilterEmptyFailure();
 }

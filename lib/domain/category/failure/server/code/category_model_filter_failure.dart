@@ -11,10 +11,10 @@ final class CategoryModelFilterInvalidSearchTermFailure
   const CategoryModelFilterInvalidSearchTermFailure();
 }
 
-// searchId
-final class CategoryModelFilterInvalidSearchIdFailure
+// ids
+final class CategoryModelFilterInvalidIdsFailure
     extends CategoryModelFilterFailure {
-  const CategoryModelFilterInvalidSearchIdFailure();
+  const CategoryModelFilterInvalidIdsFailure();
 }
 
 // status

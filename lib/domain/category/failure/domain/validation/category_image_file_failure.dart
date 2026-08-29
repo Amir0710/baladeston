@@ -5,10 +5,14 @@ abstract class CategoryImageFileFailure extends BaseCategoryValidationFailure {
 }
 
 // image file
-class CategoryImageFileSizeNotValidFailure extends CategoryImageFileFailure {
-  const CategoryImageFileSizeNotValidFailure();
+class CategoryImageFileTooLargeFailure extends CategoryImageFileFailure {
+  const CategoryImageFileTooLargeFailure();
 }
 
 class CategoryImageFileInvalidFormatFailure extends CategoryImageFileFailure {
   const CategoryImageFileInvalidFormatFailure();
+}
+
+class CategoryImageFileInvalidContentFailure extends CategoryImageFileFailure {
+  const CategoryImageFileInvalidContentFailure();
 }

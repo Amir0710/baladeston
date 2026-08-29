@@ -9,7 +9,6 @@ part 'request_model.g.dart';
 abstract class RequestModel with _$RequestModel {
   const factory RequestModel({
     int? id,
-
     required int userId,
     required int targetId,
     RequestStatus? status,

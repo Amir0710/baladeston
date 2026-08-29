@@ -21,15 +21,18 @@ CollectionQueryFilter _$CollectionQueryFilterFromJson(
 
 /// @nodoc
 mixin _$CollectionQueryFilter {
+  List<int>? get ids => throw _privateConstructorUsedError;
   String? get searchTerm => throw _privateConstructorUsedError;
   int? get ownerId => throw _privateConstructorUsedError;
   CollectionStatus? get status => throw _privateConstructorUsedError;
+  CollectionType? get type => throw _privateConstructorUsedError;
   int? get minCount => throw _privateConstructorUsedError;
   int? get maxCount => throw _privateConstructorUsedError;
   int? get minPrice => throw _privateConstructorUsedError;
   int? get maxPrice => throw _privateConstructorUsedError;
+  double? get minRating => throw _privateConstructorUsedError;
   int get limit => throw _privateConstructorUsedError;
-  int get offset => throw _privateConstructorUsedError;
+  String? get cursor => throw _privateConstructorUsedError;
   bool get ascending => throw _privateConstructorUsedError;
   CollectionOrder get order => throw _privateConstructorUsedError;
 
@@ -50,15 +53,18 @@ abstract class $CollectionQueryFilterCopyWith<$Res> {
       _$CollectionQueryFilterCopyWithImpl<$Res, CollectionQueryFilter>;
   @useResult
   $Res call(
-      {String? searchTerm,
+      {List<int>? ids,
+      String? searchTerm,
       int? ownerId,
       CollectionStatus? status,
+      CollectionType? type,
       int? minCount,
       int? maxCount,
       int? minPrice,
       int? maxPrice,
+      double? minRating,
       int limit,
-      int offset,
+      String? cursor,
       bool ascending,
       CollectionOrder order});
 }
@@ -79,19 +85,26 @@ class _$CollectionQueryFilterCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? ids = freezed,
     Object? searchTerm = freezed,
     Object? ownerId = freezed,
     Object? status = freezed,
+    Object? type = freezed,
     Object? minCount = freezed,
     Object? maxCount = freezed,
     Object? minPrice = freezed,
     Object? maxPrice = freezed,
+    Object? minRating = freezed,
     Object? limit = null,
-    Object? offset = null,
+    Object? cursor = freezed,
     Object? ascending = null,
     Object? order = null,
   }) {
     return _then(_value.copyWith(
+      ids: freezed == ids
+          ? _value.ids
+          : ids // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
       searchTerm: freezed == searchTerm
           ? _value.searchTerm
           : searchTerm // ignore: cast_nullable_to_non_nullable
@@ -104,6 +117,10 @@ class _$CollectionQueryFilterCopyWithImpl<$Res,
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CollectionStatus?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as CollectionType?,
       minCount: freezed == minCount
           ? _value.minCount
           : minCount // ignore: cast_nullable_to_non_nullable
@@ -120,14 +137,18 @@ class _$CollectionQueryFilterCopyWithImpl<$Res,
           ? _value.maxPrice
           : maxPrice // ignore: cast_nullable_to_non_nullable
               as int?,
+      minRating: freezed == minRating
+          ? _value.minRating
+          : minRating // ignore: cast_nullable_to_non_nullable
+              as double?,
       limit: null == limit
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
               as int,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as int,
+      cursor: freezed == cursor
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
+              as String?,
       ascending: null == ascending
           ? _value.ascending
           : ascending // ignore: cast_nullable_to_non_nullable
@@ -150,15 +171,18 @@ abstract class _$$CollectionQueryFilterImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? searchTerm,
+      {List<int>? ids,
+      String? searchTerm,
       int? ownerId,
       CollectionStatus? status,
+      CollectionType? type,
       int? minCount,
       int? maxCount,
       int? minPrice,
       int? maxPrice,
+      double? minRating,
       int limit,
-      int offset,
+      String? cursor,
       bool ascending,
       CollectionOrder order});
 }
@@ -177,19 +201,26 @@ class __$$CollectionQueryFilterImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? ids = freezed,
     Object? searchTerm = freezed,
     Object? ownerId = freezed,
     Object? status = freezed,
+    Object? type = freezed,
     Object? minCount = freezed,
     Object? maxCount = freezed,
     Object? minPrice = freezed,
     Object? maxPrice = freezed,
+    Object? minRating = freezed,
     Object? limit = null,
-    Object? offset = null,
+    Object? cursor = freezed,
     Object? ascending = null,
     Object? order = null,
   }) {
     return _then(_$CollectionQueryFilterImpl(
+      ids: freezed == ids
+          ? _value._ids
+          : ids // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
       searchTerm: freezed == searchTerm
           ? _value.searchTerm
           : searchTerm // ignore: cast_nullable_to_non_nullable
@@ -202,6 +233,10 @@ class __$$CollectionQueryFilterImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CollectionStatus?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as CollectionType?,
       minCount: freezed == minCount
           ? _value.minCount
           : minCount // ignore: cast_nullable_to_non_nullable
@@ -218,14 +253,18 @@ class __$$CollectionQueryFilterImplCopyWithImpl<$Res>
           ? _value.maxPrice
           : maxPrice // ignore: cast_nullable_to_non_nullable
               as int?,
+      minRating: freezed == minRating
+          ? _value.minRating
+          : minRating // ignore: cast_nullable_to_non_nullable
+              as double?,
       limit: null == limit
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
               as int,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as int,
+      cursor: freezed == cursor
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
+              as String?,
       ascending: null == ascending
           ? _value.ascending
           : ascending // ignore: cast_nullable_to_non_nullable
@@ -242,20 +281,34 @@ class __$$CollectionQueryFilterImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CollectionQueryFilterImpl implements _CollectionQueryFilter {
   const _$CollectionQueryFilterImpl(
-      {this.searchTerm,
+      {final List<int>? ids,
+      this.searchTerm,
       this.ownerId,
       this.status,
+      this.type,
       this.minCount,
       this.maxCount,
       this.minPrice,
       this.maxPrice,
+      this.minRating,
       this.limit = 20,
-      this.offset = 0,
+      this.cursor,
       this.ascending = false,
-      this.order = CollectionOrder.title});
+      this.order = CollectionOrder.createdAt})
+      : _ids = ids;
 
   factory _$CollectionQueryFilterImpl.fromJson(Map<String, dynamic> json) =>
       _$$CollectionQueryFilterImplFromJson(json);
+
+  final List<int>? _ids;
+  @override
+  List<int>? get ids {
+    final value = _ids;
+    if (value == null) return null;
+    if (_ids is EqualUnmodifiableListView) return _ids;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   final String? searchTerm;
@@ -263,6 +316,8 @@ class _$CollectionQueryFilterImpl implements _CollectionQueryFilter {
   final int? ownerId;
   @override
   final CollectionStatus? status;
+  @override
+  final CollectionType? type;
   @override
   final int? minCount;
   @override
@@ -272,11 +327,12 @@ class _$CollectionQueryFilterImpl implements _CollectionQueryFilter {
   @override
   final int? maxPrice;
   @override
+  final double? minRating;
+  @override
   @JsonKey()
   final int limit;
   @override
-  @JsonKey()
-  final int offset;
+  final String? cursor;
   @override
   @JsonKey()
   final bool ascending;
@@ -286,7 +342,7 @@ class _$CollectionQueryFilterImpl implements _CollectionQueryFilter {
 
   @override
   String toString() {
-    return 'CollectionQueryFilter(searchTerm: $searchTerm, ownerId: $ownerId, status: $status, minCount: $minCount, maxCount: $maxCount, minPrice: $minPrice, maxPrice: $maxPrice, limit: $limit, offset: $offset, ascending: $ascending, order: $order)';
+    return 'CollectionQueryFilter(ids: $ids, searchTerm: $searchTerm, ownerId: $ownerId, status: $status, type: $type, minCount: $minCount, maxCount: $maxCount, minPrice: $minPrice, maxPrice: $maxPrice, minRating: $minRating, limit: $limit, cursor: $cursor, ascending: $ascending, order: $order)';
   }
 
   @override
@@ -294,10 +350,12 @@ class _$CollectionQueryFilterImpl implements _CollectionQueryFilter {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CollectionQueryFilterImpl &&
+            const DeepCollectionEquality().equals(other._ids, _ids) &&
             (identical(other.searchTerm, searchTerm) ||
                 other.searchTerm == searchTerm) &&
             (identical(other.ownerId, ownerId) || other.ownerId == ownerId) &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.type, type) || other.type == type) &&
             (identical(other.minCount, minCount) ||
                 other.minCount == minCount) &&
             (identical(other.maxCount, maxCount) ||
@@ -306,8 +364,10 @@ class _$CollectionQueryFilterImpl implements _CollectionQueryFilter {
                 other.minPrice == minPrice) &&
             (identical(other.maxPrice, maxPrice) ||
                 other.maxPrice == maxPrice) &&
+            (identical(other.minRating, minRating) ||
+                other.minRating == minRating) &&
             (identical(other.limit, limit) || other.limit == limit) &&
-            (identical(other.offset, offset) || other.offset == offset) &&
+            (identical(other.cursor, cursor) || other.cursor == cursor) &&
             (identical(other.ascending, ascending) ||
                 other.ascending == ascending) &&
             (identical(other.order, order) || other.order == order));
@@ -315,8 +375,22 @@ class _$CollectionQueryFilterImpl implements _CollectionQueryFilter {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, searchTerm, ownerId, status,
-      minCount, maxCount, minPrice, maxPrice, limit, offset, ascending, order);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_ids),
+      searchTerm,
+      ownerId,
+      status,
+      type,
+      minCount,
+      maxCount,
+      minPrice,
+      maxPrice,
+      minRating,
+      limit,
+      cursor,
+      ascending,
+      order);
 
   /// Create a copy of CollectionQueryFilter
   /// with the given fields replaced by the non-null parameter values.
@@ -337,15 +411,18 @@ class _$CollectionQueryFilterImpl implements _CollectionQueryFilter {
 
 abstract class _CollectionQueryFilter implements CollectionQueryFilter {
   const factory _CollectionQueryFilter(
-      {final String? searchTerm,
+      {final List<int>? ids,
+      final String? searchTerm,
       final int? ownerId,
       final CollectionStatus? status,
+      final CollectionType? type,
       final int? minCount,
       final int? maxCount,
       final int? minPrice,
       final int? maxPrice,
+      final double? minRating,
       final int limit,
-      final int offset,
+      final String? cursor,
       final bool ascending,
       final CollectionOrder order}) = _$CollectionQueryFilterImpl;
 
@@ -353,11 +430,15 @@ abstract class _CollectionQueryFilter implements CollectionQueryFilter {
       _$CollectionQueryFilterImpl.fromJson;
 
   @override
+  List<int>? get ids;
+  @override
   String? get searchTerm;
   @override
   int? get ownerId;
   @override
   CollectionStatus? get status;
+  @override
+  CollectionType? get type;
   @override
   int? get minCount;
   @override
@@ -367,9 +448,11 @@ abstract class _CollectionQueryFilter implements CollectionQueryFilter {
   @override
   int? get maxPrice;
   @override
+  double? get minRating;
+  @override
   int get limit;
   @override
-  int get offset;
+  String? get cursor;
   @override
   bool get ascending;
   @override

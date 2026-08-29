@@ -10,12 +10,18 @@ abstract class CategoryItemModel with _$CategoryItemModel {
 
   const factory CategoryItemModel({
     int? id,
-    CategoryItemStatus? status,
-    DateTime? addedAt,
-    DateTime? lastTransaction,
-    required int adderId,
+    String? title ,
     required int collectionId,
     required int categoryId,
+    double? avgRate,
+    int? rageCount ,
+    String? thumbnailUrl,
+    CategoryItemStatus? status,
+    int? count, // for preview from collection
+    int? price, // for preview from collection
+    DateTime? addedAt,
+    DateTime? lastTransaction,
+    int? adderId,
   }) = _CategoryItemModel;
 
   factory CategoryItemModel.fromJson(Map<String, dynamic> json) =>
