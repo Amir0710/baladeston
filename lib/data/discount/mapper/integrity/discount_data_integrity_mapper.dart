@@ -8,10 +8,22 @@ final class DiscountDataIntegrityMapper {
   const DiscountDataIntegrityMapper();
 
   static DiscountDataIntegrityFailure? map(Map<String, dynamic> json) {
+    final id = json['id'];
+    final ownerId = json['ownerId'];
     final code = json['code'];
+    final title = json['title'];
+    final amount = json['amount'];
     final percent = json['percent'];
     final type = json['type'];
+    final targetId = json['targetId'];
+    final minOrderAmount = json['minOrderAmount'];
+    final firstOrderOnly = json['firstOrderOnly'];
     final status = json['status'];
+    final createdAt = json['createdAt'];
+    final userCreated = json['userCreated'];
+    final expiresAt = json['expiresAt'];
+    final maxUse = json['maxUse'];
+    final usage = json['usage'];
 
     // Required fields
     if (code == null) {
@@ -27,6 +39,50 @@ final class DiscountDataIntegrityMapper {
     }
     if (percent is! int) {
       return _failure('percent must be an int.', json);
+    }
+
+    // Optional fields types
+    if (id != null && id is! int) {
+      return _failure('id must be an int.', json);
+    }
+    if (ownerId != null && ownerId is! int) {
+      return _failure('ownerId must be an int.', json);
+    }
+    if (title != null && title is! String) {
+      return _failure('title must be a String.', json);
+    }
+    if (amount != null && amount is! int) {
+      return _failure('amount must be an int.', json);
+    }
+    if (targetId != null && targetId is! int) {
+      return _failure('targetId must be an int.', json);
+    }
+    if (minOrderAmount != null && minOrderAmount is! int) {
+      return _failure('minOrderAmount must be an int.', json);
+    }
+    if (firstOrderOnly != null && firstOrderOnly is! bool) {
+      return _failure('firstOrderOnly must be a bool.', json);
+    }
+    if (userCreated != null && userCreated is! bool) {
+      return _failure('userCreated must be a bool.', json);
+    }
+    if (maxUse != null && maxUse is! int) {
+      return _failure('maxUse must be an int.', json);
+    }
+    if (usage != null && usage is! int) {
+      return _failure('usage must be an int.', json);
+    }
+
+    // Date fields
+    if (createdAt != null) {
+      if (createdAt is! String || DateTime.tryParse(createdAt) == null) {
+        return _failure('createdAt is not a valid date.', json);
+      }
+    }
+    if (expiresAt != null) {
+      if (expiresAt is! String || DateTime.tryParse(expiresAt) == null) {
+        return _failure('expiresAt is not a valid date.', json);
+      }
     }
 
     // Optional enum: DiscountTargetType

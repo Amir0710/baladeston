@@ -31,6 +31,8 @@ _$VideoModelImpl _$$VideoModelImplFromJson(Map<String, dynamic> json) =>
           ownerId: $checkedConvert('ownerId', (v) => (v as num).toInt()),
           description: $checkedConvert('description', (v) => v as String),
           price: $checkedConvert('price', (v) => (v as num).toInt()),
+          avgRate: $checkedConvert('avgRate', (v) => (v as num?)?.toDouble()),
+          rateCount: $checkedConvert('rateCount', (v) => (v as num?)?.toInt()),
         );
         return val;
       },
@@ -51,6 +53,8 @@ Map<String, dynamic> _$$VideoModelImplToJson(_$VideoModelImpl instance) =>
       'ownerId': instance.ownerId,
       'description': instance.description,
       'price': instance.price,
+      'avgRate': instance.avgRate,
+      'rateCount': instance.rateCount,
     };
 
 const _$VideoStatusEnumMap = {

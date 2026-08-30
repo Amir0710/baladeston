@@ -37,7 +37,7 @@ _$DiscountQueryFilterImpl _$$DiscountQueryFilterImplFromJson(
           maxUse: $checkedConvert('maxUse', (v) => (v as num?)?.toInt()),
           usage: $checkedConvert('usage', (v) => (v as num?)?.toInt()),
           limit: $checkedConvert('limit', (v) => (v as num?)?.toInt() ?? 20),
-          offset: $checkedConvert('offset', (v) => (v as num?)?.toInt() ?? 0),
+          cursor: $checkedConvert('cursor', (v) => v as String?),
           ascending: $checkedConvert('ascending', (v) => v as bool? ?? false),
           order: $checkedConvert(
               'order',
@@ -66,7 +66,7 @@ Map<String, dynamic> _$$DiscountQueryFilterImplToJson(
       'maxUse': instance.maxUse,
       'usage': instance.usage,
       'limit': instance.limit,
-      'offset': instance.offset,
+      'cursor': instance.cursor,
       'ascending': instance.ascending,
       'order': _$DiscountOrderEnumMap[instance.order]!,
     };

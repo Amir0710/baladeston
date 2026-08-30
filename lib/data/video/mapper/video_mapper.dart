@@ -17,6 +17,8 @@ extension VideoModelMapper on VideoModel {
       ownerId: ownerId,
       description: description,
       price: price,
+      avgRate: avgRate,
+      rateCount: rateCount,
     );
   }
 }
@@ -37,6 +39,8 @@ extension VideoEntityMapper on VideoEntity {
       ownerId: ownerId,
       description: description,
       price: price,
+      avgRate: avgRate,
+      rateCount: rateCount,
     );
   }
 }

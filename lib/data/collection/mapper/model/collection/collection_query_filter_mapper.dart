@@ -16,6 +16,10 @@ extension CollectionQueryFilterMapper on CollectionQueryFilter {
       query['search'] = searchTerm!;
     }
 
+    if (ownerId != null) {
+      query['ownerId'] = ownerId.toString();
+    }
+
     if (status != null) {
       query['status'] = status!.name;
     }
@@ -45,7 +49,9 @@ extension CollectionQueryFilterMapper on CollectionQueryFilter {
     }
 
     query['limit'] = limit.toString();
-    query['cursor'] = cursor.toString();
+    if (cursor != null) {
+      query['cursor'] = cursor!;
+    }
     query['ascending'] = ascending.toString();
     query['order'] = order.name;
 

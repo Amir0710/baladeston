@@ -1,16 +1,12 @@
-
 import 'package:baladeston/data/comment/filter/comment/comment_query_filter.dart';
 
 extension CommentQueryFilterMapper on CommentQueryFilter {
   Map<String, String> toQuery() {
     final query = <String, String>{};
 
-
-
     if (ids != null && ids!.isNotEmpty) {
       query['ids'] = ids!.join(',');
     }
-
 
     if (userId != null) {
       query['userId'] = userId.toString();
@@ -24,17 +20,8 @@ extension CommentQueryFilterMapper on CommentQueryFilter {
       query['commentType'] = commentType!.name;
     }
 
-
     if (searchTerm != null && searchTerm!.isNotEmpty) {
       query['search'] = searchTerm!;
-    }
-
-    if (minRating != null) {
-      query['minRating'] = minRating.toString();
-    }
-
-    if (maxRating != null) {
-      query['maxRating'] = maxRating.toString();
     }
 
     if (createdAfter != null) {
@@ -49,11 +36,12 @@ extension CommentQueryFilterMapper on CommentQueryFilter {
       query['status'] = status!.name;
     }
 
-    // Default values and pagination
     query['orderBy'] = orderBy.name;
     query['ascending'] = ascending.toString();
     query['limit'] = limit.toString();
-    query['cursor'] = cursor.toString();
+    if (cursor != null) {
+      query['cursor'] = cursor!;
+    }
 
     return query;
   }

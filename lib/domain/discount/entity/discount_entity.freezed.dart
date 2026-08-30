@@ -18,19 +18,32 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DiscountEntity {
   int? get id => throw _privateConstructorUsedError;
   int? get ownerId => throw _privateConstructorUsedError;
-  String get code => throw _privateConstructorUsedError;
-  String? get title => throw _privateConstructorUsedError;
-  int? get amount => throw _privateConstructorUsedError;
-  int get percent => throw _privateConstructorUsedError;
-  DiscountTargetType? get type => throw _privateConstructorUsedError;
-  int? get targetId => throw _privateConstructorUsedError;
-  int? get minOrderAmount => throw _privateConstructorUsedError;
-  bool? get firstOrderOnly => throw _privateConstructorUsedError;
-  DiscountStatus? get status => throw _privateConstructorUsedError;
-  DateTime? get createdAt => throw _privateConstructorUsedError;
-  bool? get userCreated => throw _privateConstructorUsedError;
-  DateTime? get expiresAt => throw _privateConstructorUsedError;
-  int? get maxUse => throw _privateConstructorUsedError;
+  String get code =>
+      throw _privateConstructorUsedError; // user fill - text guard کامل روش اجرا بشه و یه اندازه ی ماکزیموم و مینیموم براش با استفاده از فایل limits تعریف بشه
+  String? get title =>
+      throw _privateConstructorUsedError; // user fill - با text guard چک بشه و min max با استفاده از limits براش تعریف بشه
+  int? get amount =>
+      throw _privateConstructorUsedError; // user fill - مقدار ربالی پولی است که حداکثر اون همه تخفیف بهش تعلق میگیره براش min max تعریف کن
+  int get percent =>
+      throw _privateConstructorUsedError; // user fill این هم درصد تخفیف هستش برای این هم باید 0 تا 100 نmin max ست بشه
+  DiscountTargetType? get type =>
+      throw _privateConstructorUsedError; // چون enum هستش چیزی برای تست این فیلد لازم نیست
+  int? get targetId =>
+      throw _privateConstructorUsedError; // user fill - یه id size مناسب تعریف کن و چک کن که کاربر طول درست id رو وارد کرده و براش از text guard هم استفاده کن
+  int? get minOrderAmount =>
+      throw _privateConstructorUsedError; // user fill - حداقل خریدی که برای اون تخفیف عمل میکنه هستش و اینو هم چک کن و min max براش تعریف کن با limits
+  bool? get firstOrderOnly =>
+      throw _privateConstructorUsedError; // لازم نیست کاری کنی
+  DiscountStatus? get status =>
+      throw _privateConstructorUsedError; // لازم نیست کاری کنی
+  DateTime? get createdAt =>
+      throw _privateConstructorUsedError; // لازم نیست کاری کنی
+  bool? get userCreated =>
+      throw _privateConstructorUsedError; // لازم نیست کاری کنی
+  DateTime? get expiresAt =>
+      throw _privateConstructorUsedError; // user fill - چک کن تاریخ جلو تر از امروز نباشه و یه حداکثر  اعتبار تعریف کن توی limits مثل 365 روز و چک کن بیشتر از اون نشه
+  int? get maxUse =>
+      throw _privateConstructorUsedError; // user fill -  برای این هم چک کن که عدد معتبر وارد شده باشه و حداقل براش تعریف کن که برابر 1 کاربر باشه
   int? get usage => throw _privateConstructorUsedError;
 
   /// Create a copy of DiscountEntity
@@ -319,30 +332,43 @@ class _$DiscountEntityImpl implements _DiscountEntity {
   final int? ownerId;
   @override
   final String code;
+// user fill - text guard کامل روش اجرا بشه و یه اندازه ی ماکزیموم و مینیموم براش با استفاده از فایل limits تعریف بشه
   @override
   final String? title;
+// user fill - با text guard چک بشه و min max با استفاده از limits براش تعریف بشه
   @override
   final int? amount;
+// user fill - مقدار ربالی پولی است که حداکثر اون همه تخفیف بهش تعلق میگیره براش min max تعریف کن
   @override
   final int percent;
+// user fill این هم درصد تخفیف هستش برای این هم باید 0 تا 100 نmin max ست بشه
   @override
   final DiscountTargetType? type;
+// چون enum هستش چیزی برای تست این فیلد لازم نیست
   @override
   final int? targetId;
+// user fill - یه id size مناسب تعریف کن و چک کن که کاربر طول درست id رو وارد کرده و براش از text guard هم استفاده کن
   @override
   final int? minOrderAmount;
+// user fill - حداقل خریدی که برای اون تخفیف عمل میکنه هستش و اینو هم چک کن و min max براش تعریف کن با limits
   @override
   final bool? firstOrderOnly;
+// لازم نیست کاری کنی
   @override
   final DiscountStatus? status;
+// لازم نیست کاری کنی
   @override
   final DateTime? createdAt;
+// لازم نیست کاری کنی
   @override
   final bool? userCreated;
+// لازم نیست کاری کنی
   @override
   final DateTime? expiresAt;
+// user fill - چک کن تاریخ جلو تر از امروز نباشه و یه حداکثر  اعتبار تعریف کن توی limits مثل 365 روز و چک کن بیشتر از اون نشه
   @override
   final int? maxUse;
+// user fill -  برای این هم چک کن که عدد معتبر وارد شده باشه و حداقل براش تعریف کن که برابر 1 کاربر باشه
   @override
   final int? usage;
 
@@ -434,31 +460,39 @@ abstract class _DiscountEntity implements DiscountEntity {
   @override
   int? get ownerId;
   @override
-  String get code;
+  String
+      get code; // user fill - text guard کامل روش اجرا بشه و یه اندازه ی ماکزیموم و مینیموم براش با استفاده از فایل limits تعریف بشه
   @override
-  String? get title;
+  String?
+      get title; // user fill - با text guard چک بشه و min max با استفاده از limits براش تعریف بشه
   @override
-  int? get amount;
+  int?
+      get amount; // user fill - مقدار ربالی پولی است که حداکثر اون همه تخفیف بهش تعلق میگیره براش min max تعریف کن
   @override
-  int get percent;
+  int get percent; // user fill این هم درصد تخفیف هستش برای این هم باید 0 تا 100 نmin max ست بشه
   @override
-  DiscountTargetType? get type;
+  DiscountTargetType?
+      get type; // چون enum هستش چیزی برای تست این فیلد لازم نیست
   @override
-  int? get targetId;
+  int?
+      get targetId; // user fill - یه id size مناسب تعریف کن و چک کن که کاربر طول درست id رو وارد کرده و براش از text guard هم استفاده کن
   @override
-  int? get minOrderAmount;
+  int?
+      get minOrderAmount; // user fill - حداقل خریدی که برای اون تخفیف عمل میکنه هستش و اینو هم چک کن و min max براش تعریف کن با limits
   @override
-  bool? get firstOrderOnly;
+  bool? get firstOrderOnly; // لازم نیست کاری کنی
   @override
-  DiscountStatus? get status;
+  DiscountStatus? get status; // لازم نیست کاری کنی
   @override
-  DateTime? get createdAt;
+  DateTime? get createdAt; // لازم نیست کاری کنی
   @override
-  bool? get userCreated;
+  bool? get userCreated; // لازم نیست کاری کنی
   @override
-  DateTime? get expiresAt;
+  DateTime?
+      get expiresAt; // user fill - چک کن تاریخ جلو تر از امروز نباشه و یه حداکثر  اعتبار تعریف کن توی limits مثل 365 روز و چک کن بیشتر از اون نشه
   @override
-  int? get maxUse;
+  int?
+      get maxUse; // user fill -  برای این هم چک کن که عدد معتبر وارد شده باشه و حداقل براش تعریف کن که برابر 1 کاربر باشه
   @override
   int? get usage;
 

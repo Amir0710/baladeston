@@ -21,21 +21,22 @@ DiscountQueryFilter _$DiscountQueryFilterFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$DiscountQueryFilter {
   int? get ownerId =>
-      throw _privateConstructorUsedError; // in user app is not important and i must extract id from token
-  List<int>? get ids => throw _privateConstructorUsedError;
-  int? get targetId => throw _privateConstructorUsedError;
+      throw _privateConstructorUsedError; // in user app is not important and i must extract id from token but i need it for admin panel
+  List<int>? get ids => throw _privateConstructorUsedError; // validated needed
+  int? get targetId => throw _privateConstructorUsedError; // validated needed
   DiscountTargetType? get targetType => throw _privateConstructorUsedError;
-  String? get title => throw _privateConstructorUsedError;
-  int? get minPercent => throw _privateConstructorUsedError;
-  int? get maxPercent => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError; // validated needed
+  int? get minPercent => throw _privateConstructorUsedError; // validated needed
+  int? get maxPercent => throw _privateConstructorUsedError; // validated needed
   DiscountStatus? get status => throw _privateConstructorUsedError;
   DateTime? get createAt => throw _privateConstructorUsedError;
   bool? get userCreated => throw _privateConstructorUsedError;
-  DateTime? get expiresAt => throw _privateConstructorUsedError;
-  int? get maxUse => throw _privateConstructorUsedError;
-  int? get usage => throw _privateConstructorUsedError;
+  DateTime? get expiresAt =>
+      throw _privateConstructorUsedError; // validated needed
+  int? get maxUse => throw _privateConstructorUsedError; // validated needed
+  int? get usage => throw _privateConstructorUsedError; // validated needed
   int get limit => throw _privateConstructorUsedError;
-  int get offset => throw _privateConstructorUsedError;
+  String? get cursor => throw _privateConstructorUsedError;
   bool get ascending => throw _privateConstructorUsedError;
   DiscountOrder get order => throw _privateConstructorUsedError;
 
@@ -70,7 +71,7 @@ abstract class $DiscountQueryFilterCopyWith<$Res> {
       int? maxUse,
       int? usage,
       int limit,
-      int offset,
+      String? cursor,
       bool ascending,
       DiscountOrder order});
 }
@@ -104,7 +105,7 @@ class _$DiscountQueryFilterCopyWithImpl<$Res, $Val extends DiscountQueryFilter>
     Object? maxUse = freezed,
     Object? usage = freezed,
     Object? limit = null,
-    Object? offset = null,
+    Object? cursor = freezed,
     Object? ascending = null,
     Object? order = null,
   }) {
@@ -165,10 +166,10 @@ class _$DiscountQueryFilterCopyWithImpl<$Res, $Val extends DiscountQueryFilter>
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
               as int,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as int,
+      cursor: freezed == cursor
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
+              as String?,
       ascending: null == ascending
           ? _value.ascending
           : ascending // ignore: cast_nullable_to_non_nullable
@@ -204,7 +205,7 @@ abstract class _$$DiscountQueryFilterImplCopyWith<$Res>
       int? maxUse,
       int? usage,
       int limit,
-      int offset,
+      String? cursor,
       bool ascending,
       DiscountOrder order});
 }
@@ -236,7 +237,7 @@ class __$$DiscountQueryFilterImplCopyWithImpl<$Res>
     Object? maxUse = freezed,
     Object? usage = freezed,
     Object? limit = null,
-    Object? offset = null,
+    Object? cursor = freezed,
     Object? ascending = null,
     Object? order = null,
   }) {
@@ -297,10 +298,10 @@ class __$$DiscountQueryFilterImplCopyWithImpl<$Res>
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
               as int,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as int,
+      cursor: freezed == cursor
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
+              as String?,
       ascending: null == ascending
           ? _value.ascending
           : ascending // ignore: cast_nullable_to_non_nullable
@@ -331,7 +332,7 @@ class _$DiscountQueryFilterImpl implements _DiscountQueryFilter {
       this.maxUse,
       this.usage,
       this.limit = 20,
-      this.offset = 0,
+      this.cursor,
       this.ascending = false,
       this.order = DiscountOrder.expiresAt})
       : _ids = ids;
@@ -341,9 +342,9 @@ class _$DiscountQueryFilterImpl implements _DiscountQueryFilter {
 
   @override
   final int? ownerId;
-// in user app is not important and i must extract id from token
+// in user app is not important and i must extract id from token but i need it for admin panel
   final List<int>? _ids;
-// in user app is not important and i must extract id from token
+// in user app is not important and i must extract id from token but i need it for admin panel
   @override
   List<int>? get ids {
     final value = _ids;
@@ -353,16 +354,21 @@ class _$DiscountQueryFilterImpl implements _DiscountQueryFilter {
     return EqualUnmodifiableListView(value);
   }
 
+// validated needed
   @override
   final int? targetId;
+// validated needed
   @override
   final DiscountTargetType? targetType;
   @override
   final String? title;
+// validated needed
   @override
   final int? minPercent;
+// validated needed
   @override
   final int? maxPercent;
+// validated needed
   @override
   final DiscountStatus? status;
   @override
@@ -371,16 +377,18 @@ class _$DiscountQueryFilterImpl implements _DiscountQueryFilter {
   final bool? userCreated;
   @override
   final DateTime? expiresAt;
+// validated needed
   @override
   final int? maxUse;
+// validated needed
   @override
   final int? usage;
+// validated needed
   @override
   @JsonKey()
   final int limit;
   @override
-  @JsonKey()
-  final int offset;
+  final String? cursor;
   @override
   @JsonKey()
   final bool ascending;
@@ -390,7 +398,7 @@ class _$DiscountQueryFilterImpl implements _DiscountQueryFilter {
 
   @override
   String toString() {
-    return 'DiscountQueryFilter(ownerId: $ownerId, ids: $ids, targetId: $targetId, targetType: $targetType, title: $title, minPercent: $minPercent, maxPercent: $maxPercent, status: $status, createAt: $createAt, userCreated: $userCreated, expiresAt: $expiresAt, maxUse: $maxUse, usage: $usage, limit: $limit, offset: $offset, ascending: $ascending, order: $order)';
+    return 'DiscountQueryFilter(ownerId: $ownerId, ids: $ids, targetId: $targetId, targetType: $targetType, title: $title, minPercent: $minPercent, maxPercent: $maxPercent, status: $status, createAt: $createAt, userCreated: $userCreated, expiresAt: $expiresAt, maxUse: $maxUse, usage: $usage, limit: $limit, cursor: $cursor, ascending: $ascending, order: $order)';
   }
 
   @override
@@ -419,7 +427,7 @@ class _$DiscountQueryFilterImpl implements _DiscountQueryFilter {
             (identical(other.maxUse, maxUse) || other.maxUse == maxUse) &&
             (identical(other.usage, usage) || other.usage == usage) &&
             (identical(other.limit, limit) || other.limit == limit) &&
-            (identical(other.offset, offset) || other.offset == offset) &&
+            (identical(other.cursor, cursor) || other.cursor == cursor) &&
             (identical(other.ascending, ascending) ||
                 other.ascending == ascending) &&
             (identical(other.order, order) || other.order == order));
@@ -443,7 +451,7 @@ class _$DiscountQueryFilterImpl implements _DiscountQueryFilter {
       maxUse,
       usage,
       limit,
-      offset,
+      cursor,
       ascending,
       order);
 
@@ -480,7 +488,7 @@ abstract class _DiscountQueryFilter implements DiscountQueryFilter {
       final int? maxUse,
       final int? usage,
       final int limit,
-      final int offset,
+      final String? cursor,
       final bool ascending,
       final DiscountOrder order}) = _$DiscountQueryFilterImpl;
 
@@ -489,19 +497,19 @@ abstract class _DiscountQueryFilter implements DiscountQueryFilter {
 
   @override
   int?
-      get ownerId; // in user app is not important and i must extract id from token
+      get ownerId; // in user app is not important and i must extract id from token but i need it for admin panel
   @override
-  List<int>? get ids;
+  List<int>? get ids; // validated needed
   @override
-  int? get targetId;
+  int? get targetId; // validated needed
   @override
   DiscountTargetType? get targetType;
   @override
-  String? get title;
+  String? get title; // validated needed
   @override
-  int? get minPercent;
+  int? get minPercent; // validated needed
   @override
-  int? get maxPercent;
+  int? get maxPercent; // validated needed
   @override
   DiscountStatus? get status;
   @override
@@ -509,15 +517,15 @@ abstract class _DiscountQueryFilter implements DiscountQueryFilter {
   @override
   bool? get userCreated;
   @override
-  DateTime? get expiresAt;
+  DateTime? get expiresAt; // validated needed
   @override
-  int? get maxUse;
+  int? get maxUse; // validated needed
   @override
-  int? get usage;
+  int? get usage; // validated needed
   @override
   int get limit;
   @override
-  int get offset;
+  String? get cursor;
   @override
   bool get ascending;
   @override

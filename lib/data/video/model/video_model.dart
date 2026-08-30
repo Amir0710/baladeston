@@ -21,6 +21,8 @@ abstract class VideoModel with _$VideoModel {
     required int ownerId,
     required String description,
     required int price,
+    double? avgRate,
+    int? rateCount,
   }) = _VideoModel;
 
   factory VideoModel.fromJson(Map<String, dynamic> json) =>

@@ -379,7 +379,7 @@ class DiscountApiImplementation extends DiscountApi {
         );
       }
 
-      final deletedId = json['deletedId'];
+      final deletedId = json['deletedId'] ?? json['id'];
       if (deletedId is! int) {
         return _parsingFailure(
           debugMessage:

@@ -12,8 +12,8 @@ extension DiscountQueryFilterMapper on DiscountQueryFilter {
       query['ids'] = ids!.join(',');
     }
 
-    if (title != null) {
-      query['title'] = title!;
+    if (title != null && title!.trim().isNotEmpty) {
+      query['search'] = title!.trim();
     }
 
     if (targetId != null) {
@@ -57,7 +57,9 @@ extension DiscountQueryFilterMapper on DiscountQueryFilter {
     }
 
     query['limit'] = limit.toString();
-    query['offset'] = offset.toString();
+    if (cursor != null) {
+      query['cursor'] = cursor!;
+    }
     query['ascending'] = ascending.toString();
     query['order'] = order.name;
 

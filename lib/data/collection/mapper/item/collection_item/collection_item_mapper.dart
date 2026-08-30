@@ -15,6 +15,7 @@ extension CollectionItemMapper on CollectionItemModel {
       addedAt: addedAt,
       lastTransaction: lastTransaction,
       status: status,
+      price: price,
     );
   }
 }
@@ -33,6 +34,7 @@ extension CollectionItemEntityMapper on CollectionItemEntity {
       addedAt: addedAt,
       lastTransaction: lastTransaction,
       status: status,
+      price: price,
     );
   }
 }

@@ -8,6 +8,10 @@ extension CategoryItemQueryFilterMapper on CategoryItemQueryFilter {
       query['ids'] = ids!.join(',');
     }
 
+    if (searchTerm != null && searchTerm!.isNotEmpty) {
+      query['search'] = searchTerm!;
+    }
+
     if (categoryId != null) {
       query['categoryId'] = categoryId.toString();
     }
@@ -24,12 +28,30 @@ extension CategoryItemQueryFilterMapper on CategoryItemQueryFilter {
       query['status'] = status!.name;
     }
 
+    if (minCount != null) {
+      query['minCount'] = minCount.toString();
+    }
+
+    if (maxCount != null) {
+      query['maxCount'] = maxCount.toString();
+    }
+
+    if (minPrice != null) {
+      query['minPrice'] = minPrice.toString();
+    }
+
+    if (maxPrice != null) {
+      query['maxPrice'] = maxPrice.toString();
+    }
+
     if (minRating != null) {
       query['minRating'] = minRating.toString();
     }
 
     query['limit'] = limit.toString();
-    query['cursor'] = cursor.toString();
+    if (cursor != null) {
+      query['cursor'] = cursor!;
+    }
     query['ascending'] = ascending.toString();
     query['order'] = order.name;
 

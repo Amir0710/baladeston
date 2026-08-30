@@ -10,21 +10,21 @@ part 'discount_query_filter.g.dart';
 class DiscountQueryFilter with _$DiscountQueryFilter {
   const factory DiscountQueryFilter({
     int?
-        ownerId, // in user app is not important and i must extract id from token
-    List<int>? ids,
-    int? targetId,
+    ownerId, // in user app is not important and i must extract id from token but i need it for admin panel
+    List<int>? ids, // validated needed
+    int? targetId,  // validated needed
     DiscountTargetType? targetType,
-    String? title,
-    int? minPercent,
-    int? maxPercent,
+    String? title, // validated needed
+    int? minPercent,  // validated needed
+    int? maxPercent, // validated needed
     DiscountStatus? status,
     DateTime? createAt,
     bool? userCreated,
-    DateTime? expiresAt,
-    int? maxUse,
-    int? usage,
+    DateTime? expiresAt, // validated needed
+    int? maxUse, // validated needed
+    int? usage,  // validated needed
     @Default(20) int limit,
-    @Default(0) int offset,
+    String? cursor,
     @Default(false) bool ascending,
     @Default(DiscountOrder.expiresAt) DiscountOrder order,
   }) = _DiscountQueryFilter;

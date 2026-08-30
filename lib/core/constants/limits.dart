@@ -51,6 +51,24 @@ class Limits {
   final int minCommentFilterSearchTermLength;
   final int maxCommentFilterSearchTermLength;
 
+  // discount
+  final int minDiscountCode;
+  final int maxDiscountCode;
+  final int minDiscountTitle;
+  final int maxDiscountTitle;
+  final int minDiscountAmount;
+  final int maxDiscountAmount;
+  final int minDiscountPercent;
+  final int maxDiscountPercent;
+  final int minDiscountOrderAmount;
+  final int maxDiscountOrderAmount;
+  final int maxDiscountValidityDays;
+  final int minDiscountMaxUse;
+
+  // discount filter
+  final int minDiscountFilterSearchTermLength;
+  final int maxDiscountFilterSearchTermLength;
+
   //video
   final int maxVideoImageSize;
   final int maxVideoFileSize;
@@ -150,6 +168,24 @@ class Limits {
     // comment filter
     this.minCommentFilterSearchTermLength = 2,
     this.maxCommentFilterSearchTermLength = 20,
+
+    // discount
+    this.minDiscountCode = 4,
+    this.maxDiscountCode = 15,
+    this.minDiscountTitle = 5,
+    this.maxDiscountTitle = 50,
+    this.minDiscountAmount = 0,
+    this.maxDiscountAmount = 10000000,
+    this.minDiscountPercent = 0,
+    this.maxDiscountPercent = 100,
+    this.minDiscountOrderAmount = 0,
+    this.maxDiscountOrderAmount = 100000000,
+    this.maxDiscountValidityDays = 365,
+    this.minDiscountMaxUse = 1,
+
+    // discount filter
+    this.minDiscountFilterSearchTermLength = 2,
+    this.maxDiscountFilterSearchTermLength = 20,
 
     // video filter
     this.minVideoFilterSearchTermLength = 2,

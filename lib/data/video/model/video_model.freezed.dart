@@ -33,6 +33,8 @@ mixin _$VideoModel {
   int get ownerId => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
+  double? get avgRate => throw _privateConstructorUsedError;
+  int? get rateCount => throw _privateConstructorUsedError;
 
   /// Serializes this VideoModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -63,7 +65,9 @@ abstract class $VideoModelCopyWith<$Res> {
       String title,
       int ownerId,
       String description,
-      int price});
+      int price,
+      double? avgRate,
+      int? rateCount});
 }
 
 /// @nodoc
@@ -94,6 +98,8 @@ class _$VideoModelCopyWithImpl<$Res, $Val extends VideoModel>
     Object? ownerId = null,
     Object? description = null,
     Object? price = null,
+    Object? avgRate = freezed,
+    Object? rateCount = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -148,6 +154,14 @@ class _$VideoModelCopyWithImpl<$Res, $Val extends VideoModel>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
+      avgRate: freezed == avgRate
+          ? _value.avgRate
+          : avgRate // ignore: cast_nullable_to_non_nullable
+              as double?,
+      rateCount: freezed == rateCount
+          ? _value.rateCount
+          : rateCount // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -173,7 +187,9 @@ abstract class _$$VideoModelImplCopyWith<$Res>
       String title,
       int ownerId,
       String description,
-      int price});
+      int price,
+      double? avgRate,
+      int? rateCount});
 }
 
 /// @nodoc
@@ -202,6 +218,8 @@ class __$$VideoModelImplCopyWithImpl<$Res>
     Object? ownerId = null,
     Object? description = null,
     Object? price = null,
+    Object? avgRate = freezed,
+    Object? rateCount = freezed,
   }) {
     return _then(_$VideoModelImpl(
       id: freezed == id
@@ -256,6 +274,14 @@ class __$$VideoModelImplCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
+      avgRate: freezed == avgRate
+          ? _value.avgRate
+          : avgRate // ignore: cast_nullable_to_non_nullable
+              as double?,
+      rateCount: freezed == rateCount
+          ? _value.rateCount
+          : rateCount // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -276,7 +302,9 @@ class _$VideoModelImpl implements _VideoModel {
       required this.title,
       required this.ownerId,
       required this.description,
-      required this.price});
+      required this.price,
+      this.avgRate,
+      this.rateCount});
 
   factory _$VideoModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$VideoModelImplFromJson(json);
@@ -307,10 +335,14 @@ class _$VideoModelImpl implements _VideoModel {
   final String description;
   @override
   final int price;
+  @override
+  final double? avgRate;
+  @override
+  final int? rateCount;
 
   @override
   String toString() {
-    return 'VideoModel(id: $id, thumbnailUrl: $thumbnailUrl, status: $status, videoDuration: $videoDuration, uploadedAt: $uploadedAt, lastTransaction: $lastTransaction, videoUrl: $videoUrl, recommendedAge: $recommendedAge, level: $level, title: $title, ownerId: $ownerId, description: $description, price: $price)';
+    return 'VideoModel(id: $id, thumbnailUrl: $thumbnailUrl, status: $status, videoDuration: $videoDuration, uploadedAt: $uploadedAt, lastTransaction: $lastTransaction, videoUrl: $videoUrl, recommendedAge: $recommendedAge, level: $level, title: $title, ownerId: $ownerId, description: $description, price: $price, avgRate: $avgRate, rateCount: $rateCount)';
   }
 
   @override
@@ -337,7 +369,10 @@ class _$VideoModelImpl implements _VideoModel {
             (identical(other.ownerId, ownerId) || other.ownerId == ownerId) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.price, price) || other.price == price));
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.avgRate, avgRate) || other.avgRate == avgRate) &&
+            (identical(other.rateCount, rateCount) ||
+                other.rateCount == rateCount));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -356,7 +391,9 @@ class _$VideoModelImpl implements _VideoModel {
       title,
       ownerId,
       description,
-      price);
+      price,
+      avgRate,
+      rateCount);
 
   /// Create a copy of VideoModel
   /// with the given fields replaced by the non-null parameter values.
@@ -388,7 +425,9 @@ abstract class _VideoModel implements VideoModel {
       required final String title,
       required final int ownerId,
       required final String description,
-      required final int price}) = _$VideoModelImpl;
+      required final int price,
+      final double? avgRate,
+      final int? rateCount}) = _$VideoModelImpl;
 
   factory _VideoModel.fromJson(Map<String, dynamic> json) =
       _$VideoModelImpl.fromJson;
@@ -419,6 +458,10 @@ abstract class _VideoModel implements VideoModel {
   String get description;
   @override
   int get price;
+  @override
+  double? get avgRate;
+  @override
+  int? get rateCount;
 
   /// Create a copy of VideoModel
   /// with the given fields replaced by the non-null parameter values.

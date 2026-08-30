@@ -38,7 +38,9 @@ extension CategoryQueryFilterMapper on CategoryQueryFilter {
     }
 
     query['limit'] = limit.toString();
-    query['cursor'] = cursor.toString();
+    if (cursor != null) {
+      query['cursor'] = cursor!;
+    }
     query['ascending'] = ascending.toString();
     query['order'] = order.name;
 

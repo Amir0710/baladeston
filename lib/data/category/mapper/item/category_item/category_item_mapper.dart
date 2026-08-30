@@ -18,6 +18,8 @@ extension CategoryItemModelMapper on CategoryItemModel {
       adderId: adderId,
       collectionId: collectionId,
       categoryId: categoryId,
+      count: count,
+      price: price,
     );
   }
 }
@@ -36,6 +38,8 @@ extension CategoryItemEntityMapper on CategoryItemEntity {
       adderId: adderId,
       collectionId: collectionId,
       categoryId: categoryId,
+      count: count,
+      price: price,
     );
   }
 }
