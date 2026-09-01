@@ -16,49 +16,114 @@ class DeleteDiscountByFilterUsecaseBusinessRule {
   });
 
   Result<void, DiscountFailure> validate() {
-    // Empty filter check
-    final hasAnyFilter = filter.ownerId != null ||
-        (filter.ids != null && filter.ids!.isNotEmpty) ||
-        filter.targetId != null ||
-        filter.status != null ||
-        filter.minPercent != null ||
-        filter.maxPercent != null ||
-        (filter.title != null && filter.title!.trim().isNotEmpty);
+    return _filterValidation();
+  }
 
-    if (!hasAnyFilter) {
-      return const Result.failure(DiscountFilterEmptyFailure());
+  Result<void, DiscountFilterFailure> _filterValidation() {
+    final ids = filter.ids;
+    final ownerId = filter.ownerId;
+    final targetId = filter.targetId;
+    final searchTerm = filter.searchTerm?.trim();
+    final minPercent = filter.minPercent;
+    final maxPercent = filter.maxPercent;
+    final maxUse = filter.maxUse;
+    final usage = filter.usage;
+    final createAt = filter.createAt;
+    final expiresAt = filter.expiresAt;
+
+    // ids
+    if (ids != null) {
+      if (ids.isEmpty || ids.any((id) => id <= 0)) {
+        return const Result.failure(DiscountFilterInvalidIdsFailure());
+      }
     }
 
     // ownerId
-    if (filter.ownerId != null && filter.ownerId! <= 0) {
-      return const Result.failure(DiscountOwnerIdInvalidFailure());
+    if (ownerId != null && ownerId <= 0) {
+      return const Result.failure(DiscountFilterInvalidOwnerIdFailure());
     }
 
     // targetId
-    if (filter.targetId != null && filter.targetId! <= 0) {
-      return const Result.failure(DiscountTargetIdInvalidFailure());
+    if (targetId != null && targetId <= 0) {
+      return const Result.failure(DiscountFilterInvalidTargetIdFailure());
     }
 
-    // title (search term)
-    if (filter.title != null && filter.title!.trim().isNotEmpty) {
-      final term = filter.title!.trim();
-      if (TextContentGuard.containsHtml(term) ||
-          TextContentGuard.hasControlCharacters(term)) {
-        return const Result.failure(DiscountEntityTitleControlCharFailure());
+    // searchTerm (search term)
+    if (searchTerm != null) {
+      if (TextContentGuard.containsHtml(searchTerm)) {
+        return const Result.failure(DiscountFilterContainsHtmlTitleFailure());
       }
-      if (term.length < _limits.minDiscountFilterSearchTermLength) {
-        return const Result.failure(DiscountFilterSearchTermTooShortFailure());
+      if (TextContentGuard.isEmojiOnly(searchTerm)) {
+        return const Result.failure(DiscountFilterEmojiOnlyTitleFailure());
       }
-      if (term.length > _limits.maxDiscountFilterSearchTermLength) {
-        return const Result.failure(DiscountFilterSearchTermTooLongFailure());
+      if (TextContentGuard.hasControlCharacters(searchTerm)) {
+        return const Result.failure(DiscountFilterControlCharTitleFailure());
+      }
+      if (searchTerm.length < _limits.minDiscountFilterSearchTermLength) {
+        return const Result.failure(DiscountFilterTooShortTitleFailure());
+      }
+      if (searchTerm.length > _limits.maxDiscountFilterSearchTermLength) {
+        return const Result.failure(DiscountFilterTooLongTitleFailure());
       }
     }
 
-    // Percent range
-    if (filter.minPercent != null &&
-        filter.maxPercent != null &&
-        filter.minPercent! > filter.maxPercent!) {
+    // percentages
+    if (minPercent != null &&
+        (minPercent < _limits.minDiscountPercent ||
+            minPercent > _limits.maxDiscountPercent)) {
+      return const Result.failure(DiscountFilterInvalidMinPercentFailure());
+    }
+
+    if (maxPercent != null &&
+        (maxPercent < _limits.minDiscountPercent ||
+            maxPercent > _limits.maxDiscountPercent)) {
+      return const Result.failure(DiscountFilterInvalidMaxPercentFailure());
+    }
+
+    if (minPercent != null && maxPercent != null && minPercent > maxPercent) {
       return const Result.failure(DiscountFilterInvalidPercentRangeFailure());
+    }
+
+    // usages
+    if (maxUse != null && maxUse <= _limits.minDiscountMaxUse) {
+      return const Result.failure(DiscountFilterInvalidMaxUseFailure());
+    }
+
+    if (usage != null && usage < 0) {
+      return const Result.failure(DiscountFilterInvalidUsageFailure());
+    }
+
+    if (usage != null && maxUse != null && usage > maxUse) {
+      return const Result.failure(DiscountFilterUsageExceedsMaxUseFailure());
+    }
+
+    // dates
+    if (createAt != null && createAt.isAfter(DateTime.now())) {
+      return const Result.failure(DiscountFilterInvalidCreatedAtFailure());
+    }
+
+    if (expiresAt != null && createAt != null && expiresAt.isBefore(createAt)) {
+      return const Result.failure(DiscountFilterInvalidExpiresAtFailure());
+    }
+
+    if (createAt != null && expiresAt != null && createAt.isAfter(expiresAt)) {
+      return const Result.failure(DiscountFilterInvalidDatesRangeFailure());
+    }
+
+    // empty filter check
+    final isEmpty = ids == null &&
+        ownerId == null &&
+        targetId == null &&
+        (searchTerm == null || searchTerm.isEmpty) &&
+        minPercent == null &&
+        maxPercent == null &&
+        createAt == null &&
+        expiresAt == null &&
+        maxUse == null &&
+        usage == null;
+
+    if (isEmpty) {
+      return const Result.failure(DiscountFilterEmptyFailure());
     }
 
     return const Result.success(null);

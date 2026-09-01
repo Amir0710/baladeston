@@ -12,8 +12,8 @@ extension DiscountQueryFilterMapper on DiscountQueryFilter {
       query['ids'] = ids!.join(',');
     }
 
-    if (title != null && title!.trim().isNotEmpty) {
-      query['search'] = title!.trim();
+    if (searchTerm != null && searchTerm!.trim().isNotEmpty) {
+      query['search'] = searchTerm!.trim();
     }
 
     if (targetId != null) {

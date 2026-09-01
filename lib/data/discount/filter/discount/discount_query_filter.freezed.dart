@@ -25,7 +25,8 @@ mixin _$DiscountQueryFilter {
   List<int>? get ids => throw _privateConstructorUsedError; // validated needed
   int? get targetId => throw _privateConstructorUsedError; // validated needed
   DiscountTargetType? get targetType => throw _privateConstructorUsedError;
-  String? get title => throw _privateConstructorUsedError; // validated needed
+  String? get searchTerm =>
+      throw _privateConstructorUsedError; // validated needed
   int? get minPercent => throw _privateConstructorUsedError; // validated needed
   int? get maxPercent => throw _privateConstructorUsedError; // validated needed
   DiscountStatus? get status => throw _privateConstructorUsedError;
@@ -61,7 +62,7 @@ abstract class $DiscountQueryFilterCopyWith<$Res> {
       List<int>? ids,
       int? targetId,
       DiscountTargetType? targetType,
-      String? title,
+      String? searchTerm,
       int? minPercent,
       int? maxPercent,
       DiscountStatus? status,
@@ -95,7 +96,7 @@ class _$DiscountQueryFilterCopyWithImpl<$Res, $Val extends DiscountQueryFilter>
     Object? ids = freezed,
     Object? targetId = freezed,
     Object? targetType = freezed,
-    Object? title = freezed,
+    Object? searchTerm = freezed,
     Object? minPercent = freezed,
     Object? maxPercent = freezed,
     Object? status = freezed,
@@ -126,9 +127,9 @@ class _$DiscountQueryFilterCopyWithImpl<$Res, $Val extends DiscountQueryFilter>
           ? _value.targetType
           : targetType // ignore: cast_nullable_to_non_nullable
               as DiscountTargetType?,
-      title: freezed == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      searchTerm: freezed == searchTerm
+          ? _value.searchTerm
+          : searchTerm // ignore: cast_nullable_to_non_nullable
               as String?,
       minPercent: freezed == minPercent
           ? _value.minPercent
@@ -195,7 +196,7 @@ abstract class _$$DiscountQueryFilterImplCopyWith<$Res>
       List<int>? ids,
       int? targetId,
       DiscountTargetType? targetType,
-      String? title,
+      String? searchTerm,
       int? minPercent,
       int? maxPercent,
       DiscountStatus? status,
@@ -227,7 +228,7 @@ class __$$DiscountQueryFilterImplCopyWithImpl<$Res>
     Object? ids = freezed,
     Object? targetId = freezed,
     Object? targetType = freezed,
-    Object? title = freezed,
+    Object? searchTerm = freezed,
     Object? minPercent = freezed,
     Object? maxPercent = freezed,
     Object? status = freezed,
@@ -258,9 +259,9 @@ class __$$DiscountQueryFilterImplCopyWithImpl<$Res>
           ? _value.targetType
           : targetType // ignore: cast_nullable_to_non_nullable
               as DiscountTargetType?,
-      title: freezed == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      searchTerm: freezed == searchTerm
+          ? _value.searchTerm
+          : searchTerm // ignore: cast_nullable_to_non_nullable
               as String?,
       minPercent: freezed == minPercent
           ? _value.minPercent
@@ -322,7 +323,7 @@ class _$DiscountQueryFilterImpl implements _DiscountQueryFilter {
       final List<int>? ids,
       this.targetId,
       this.targetType,
-      this.title,
+      this.searchTerm,
       this.minPercent,
       this.maxPercent,
       this.status,
@@ -361,7 +362,7 @@ class _$DiscountQueryFilterImpl implements _DiscountQueryFilter {
   @override
   final DiscountTargetType? targetType;
   @override
-  final String? title;
+  final String? searchTerm;
 // validated needed
   @override
   final int? minPercent;
@@ -398,7 +399,7 @@ class _$DiscountQueryFilterImpl implements _DiscountQueryFilter {
 
   @override
   String toString() {
-    return 'DiscountQueryFilter(ownerId: $ownerId, ids: $ids, targetId: $targetId, targetType: $targetType, title: $title, minPercent: $minPercent, maxPercent: $maxPercent, status: $status, createAt: $createAt, userCreated: $userCreated, expiresAt: $expiresAt, maxUse: $maxUse, usage: $usage, limit: $limit, cursor: $cursor, ascending: $ascending, order: $order)';
+    return 'DiscountQueryFilter(ownerId: $ownerId, ids: $ids, targetId: $targetId, targetType: $targetType, searchTerm: $searchTerm, minPercent: $minPercent, maxPercent: $maxPercent, status: $status, createAt: $createAt, userCreated: $userCreated, expiresAt: $expiresAt, maxUse: $maxUse, usage: $usage, limit: $limit, cursor: $cursor, ascending: $ascending, order: $order)';
   }
 
   @override
@@ -412,7 +413,8 @@ class _$DiscountQueryFilterImpl implements _DiscountQueryFilter {
                 other.targetId == targetId) &&
             (identical(other.targetType, targetType) ||
                 other.targetType == targetType) &&
-            (identical(other.title, title) || other.title == title) &&
+            (identical(other.searchTerm, searchTerm) ||
+                other.searchTerm == searchTerm) &&
             (identical(other.minPercent, minPercent) ||
                 other.minPercent == minPercent) &&
             (identical(other.maxPercent, maxPercent) ||
@@ -441,7 +443,7 @@ class _$DiscountQueryFilterImpl implements _DiscountQueryFilter {
       const DeepCollectionEquality().hash(_ids),
       targetId,
       targetType,
-      title,
+      searchTerm,
       minPercent,
       maxPercent,
       status,
@@ -478,7 +480,7 @@ abstract class _DiscountQueryFilter implements DiscountQueryFilter {
       final List<int>? ids,
       final int? targetId,
       final DiscountTargetType? targetType,
-      final String? title,
+      final String? searchTerm,
       final int? minPercent,
       final int? maxPercent,
       final DiscountStatus? status,
@@ -505,7 +507,7 @@ abstract class _DiscountQueryFilter implements DiscountQueryFilter {
   @override
   DiscountTargetType? get targetType;
   @override
-  String? get title; // validated needed
+  String? get searchTerm; // validated needed
   @override
   int? get minPercent; // validated needed
   @override

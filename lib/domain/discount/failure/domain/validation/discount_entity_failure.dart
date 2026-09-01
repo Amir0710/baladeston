@@ -41,6 +41,11 @@ final class DiscountEntityTitleControlCharFailure extends DiscountEntityFailure 
   const DiscountEntityTitleControlCharFailure();
 }
 
+// target id
+final class DiscountTargetIdInvalidFailure extends DiscountEntityFailure {
+  const DiscountTargetIdInvalidFailure();
+}
+
 // Amount & Percent
 final class DiscountEntityMissingPercentFailure extends DiscountEntityFailure {
   const DiscountEntityMissingPercentFailure();

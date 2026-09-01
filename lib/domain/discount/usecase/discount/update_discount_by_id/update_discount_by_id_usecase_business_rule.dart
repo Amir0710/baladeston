@@ -6,26 +6,39 @@ import 'package:baladeston/domain/discount/failure/base_discount_failure.dart';
 import 'package:baladeston/domain/discount/failure/domain/validation/discount_entity_failure.dart';
 import 'package:baladeston/domain/discount/failure/domain/validation/discount_id_failure.dart';
 
-class UpdateDiscountByIdUsecaseBusinessRule {
-  final int id;
+class UpdateDiscountByIdUseCaseBusinessRule {
   final DiscountEntity discount;
+  final int id;
   static const Limits _limits = Limits();
 
-  const UpdateDiscountByIdUsecaseBusinessRule({
-    required this.id,
+  const UpdateDiscountByIdUseCaseBusinessRule({
     required this.discount,
+    required this.id,
   });
 
   Result<void, DiscountFailure> validate() {
+    late Result<void, DiscountFailure> result;
+
+    _idValidation().when(
+      success: (_) {
+        result = _entityValidation();
+      },
+      failure: (failure) {
+        result = Result.failure(failure);
+      },
+    );
+
+    return result;
+  }
+
+  Result<void, DiscountIdFailure> _idValidation() {
     if (id <= 0) {
       return const Result.failure(DiscountIdInvalidFailure());
     }
-
-    return _validateEntity();
+    return const Result.success(null);
   }
 
-  Result<void, DiscountFailure> _validateEntity() {
-    // Code validation
+  Result<void, DiscountEntityFailure> _entityValidation() {
     final code = discount.code.trim();
     if (code.isEmpty) {
       return const Result.failure(DiscountEntityMissingCodeFailure());
@@ -91,7 +104,8 @@ class UpdateDiscountByIdUsecaseBusinessRule {
     if (discount.minOrderAmount != null) {
       if (discount.minOrderAmount! < _limits.minDiscountOrderAmount ||
           discount.minOrderAmount! > _limits.maxDiscountOrderAmount) {
-        return const Result.failure(DiscountEntityInvalidMinOrderAmountFailure());
+        return const Result.failure(
+            DiscountEntityInvalidMinOrderAmountFailure());
       }
     }
 
@@ -101,7 +115,8 @@ class UpdateDiscountByIdUsecaseBusinessRule {
       if (discount.expiresAt!.isBefore(now)) {
         return const Result.failure(DiscountEntityExpiredFailure());
       }
-      final maxExpiry = now.add(Duration(days: _limits.maxDiscountValidityDays));
+      final maxExpiry =
+      now.add(Duration(days: _limits.maxDiscountValidityDays));
       if (discount.expiresAt!.isAfter(maxExpiry)) {
         return const Result.failure(DiscountEntityExpirationTooFarFailure());
       }

@@ -13,7 +13,7 @@ class UpdateDiscountByIdUseCase {
     required int id,
     required DiscountEntity discount,
   }) async {
-    final businessRule = UpdateDiscountByIdUsecaseBusinessRule(
+    final businessRule = UpdateDiscountByIdUseCaseBusinessRule(
       id: id,
       discount: discount,
     );

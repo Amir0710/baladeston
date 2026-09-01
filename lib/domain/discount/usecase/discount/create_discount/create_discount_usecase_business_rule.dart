@@ -4,7 +4,6 @@ import 'package:baladeston/core/variable/text_content_guard.dart';
 import 'package:baladeston/domain/discount/entity/discount_entity.dart';
 import 'package:baladeston/domain/discount/failure/base_discount_failure.dart';
 import 'package:baladeston/domain/discount/failure/domain/validation/discount_entity_failure.dart';
-import 'package:baladeston/domain/discount/failure/domain/validation/discount_id_failure.dart';
 
 class CreateDiscountUseCaseBusinessRule {
   final DiscountEntity discount;
@@ -15,7 +14,10 @@ class CreateDiscountUseCaseBusinessRule {
   });
 
   Result<void, DiscountFailure> validate() {
-    // Code validation
+    return _entityValidation();
+  }
+
+  Result<void, DiscountEntityFailure> _entityValidation() {
     final code = discount.code.trim();
     if (code.isEmpty) {
       return const Result.failure(DiscountEntityMissingCodeFailure());
@@ -81,7 +83,8 @@ class CreateDiscountUseCaseBusinessRule {
     if (discount.minOrderAmount != null) {
       if (discount.minOrderAmount! < _limits.minDiscountOrderAmount ||
           discount.minOrderAmount! > _limits.maxDiscountOrderAmount) {
-        return const Result.failure(DiscountEntityInvalidMinOrderAmountFailure());
+        return const Result.failure(
+            DiscountEntityInvalidMinOrderAmountFailure());
       }
     }
 
@@ -91,7 +94,8 @@ class CreateDiscountUseCaseBusinessRule {
       if (discount.expiresAt!.isBefore(now)) {
         return const Result.failure(DiscountEntityExpiredFailure());
       }
-      final maxExpiry = now.add(Duration(days: _limits.maxDiscountValidityDays));
+      final maxExpiry =
+          now.add(Duration(days: _limits.maxDiscountValidityDays));
       if (discount.expiresAt!.isAfter(maxExpiry)) {
         return const Result.failure(DiscountEntityExpirationTooFarFailure());
       }

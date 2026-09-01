@@ -22,7 +22,7 @@ _$DiscountQueryFilterImpl _$$DiscountQueryFilterImplFromJson(
           targetId: $checkedConvert('targetId', (v) => (v as num?)?.toInt()),
           targetType: $checkedConvert('targetType',
               (v) => $enumDecodeNullable(_$DiscountTargetTypeEnumMap, v)),
-          title: $checkedConvert('title', (v) => v as String?),
+          searchTerm: $checkedConvert('searchTerm', (v) => v as String?),
           minPercent:
               $checkedConvert('minPercent', (v) => (v as num?)?.toInt()),
           maxPercent:
@@ -56,7 +56,7 @@ Map<String, dynamic> _$$DiscountQueryFilterImplToJson(
       'ids': instance.ids,
       'targetId': instance.targetId,
       'targetType': _$DiscountTargetTypeEnumMap[instance.targetType],
-      'title': instance.title,
+      'searchTerm': instance.searchTerm,
       'minPercent': instance.minPercent,
       'maxPercent': instance.maxPercent,
       'status': _$DiscountStatusEnumMap[instance.status],

@@ -10,6 +10,10 @@ class GetDiscountByIdUsecaseBusinessRule {
   });
 
   Result<void, DiscountFailure> validate() {
+    return _idValidation();
+  }
+
+  Result<void, DiscountIdFailure> _idValidation() {
     if (id <= 0) {
       return const Result.failure(DiscountIdInvalidFailure());
     }

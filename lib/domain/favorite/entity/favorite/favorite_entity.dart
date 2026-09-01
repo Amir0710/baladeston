@@ -1,4 +1,3 @@
-
 import 'package:baladeston/core/enum/favorite/favorite_type.dart';
 import 'package:baladeston/core/enum/favorite/target_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

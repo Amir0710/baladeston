@@ -12,7 +12,7 @@ class CountDiscountUseCase {
   Future<Result<int, DiscountFailure>> call({
     required DiscountQueryFilter filter,
   }) async {
-    final businessRule = CountDiscountUsecaseBusinessRule(filter: filter);
+    final businessRule = CountDiscountUseCaseBusinessRule(filter: filter);
     final validationResult = businessRule.validate();
 
     return validationResult.when(
