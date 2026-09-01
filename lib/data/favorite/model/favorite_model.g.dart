@@ -41,6 +41,7 @@ const _$FavoriteTypeEnumMap = {
   FavoriteType.starred: 'starred',
   FavoriteType.hate: 'hate',
   FavoriteType.disLike: 'disLike',
+  FavoriteType.saved: 'saved',
 };
 
 const _$TargetTypeEnumMap = {
@@ -48,4 +49,5 @@ const _$TargetTypeEnumMap = {
   TargetType.comment: 'comment',
   TargetType.category: 'category',
   TargetType.collection: 'collection',
+  TargetType.user: 'user',
 };

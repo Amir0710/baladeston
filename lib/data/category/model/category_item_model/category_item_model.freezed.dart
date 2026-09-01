@@ -25,7 +25,7 @@ mixin _$CategoryItemModel {
   int get collectionId => throw _privateConstructorUsedError;
   int get categoryId => throw _privateConstructorUsedError;
   double? get avgRate => throw _privateConstructorUsedError;
-  int? get rageCount => throw _privateConstructorUsedError;
+  int? get rateCount => throw _privateConstructorUsedError;
   String? get thumbnailUrl => throw _privateConstructorUsedError;
   CategoryItemStatus? get status => throw _privateConstructorUsedError;
   int? get count =>
@@ -58,7 +58,7 @@ abstract class $CategoryItemModelCopyWith<$Res> {
       int collectionId,
       int categoryId,
       double? avgRate,
-      int? rageCount,
+      int? rateCount,
       String? thumbnailUrl,
       CategoryItemStatus? status,
       int? count,
@@ -88,7 +88,7 @@ class _$CategoryItemModelCopyWithImpl<$Res, $Val extends CategoryItemModel>
     Object? collectionId = null,
     Object? categoryId = null,
     Object? avgRate = freezed,
-    Object? rageCount = freezed,
+    Object? rateCount = freezed,
     Object? thumbnailUrl = freezed,
     Object? status = freezed,
     Object? count = freezed,
@@ -118,9 +118,9 @@ class _$CategoryItemModelCopyWithImpl<$Res, $Val extends CategoryItemModel>
           ? _value.avgRate
           : avgRate // ignore: cast_nullable_to_non_nullable
               as double?,
-      rageCount: freezed == rageCount
-          ? _value.rageCount
-          : rageCount // ignore: cast_nullable_to_non_nullable
+      rateCount: freezed == rateCount
+          ? _value.rateCount
+          : rateCount // ignore: cast_nullable_to_non_nullable
               as int?,
       thumbnailUrl: freezed == thumbnailUrl
           ? _value.thumbnailUrl
@@ -168,7 +168,7 @@ abstract class _$$CategoryItemModelImplCopyWith<$Res>
       int collectionId,
       int categoryId,
       double? avgRate,
-      int? rageCount,
+      int? rateCount,
       String? thumbnailUrl,
       CategoryItemStatus? status,
       int? count,
@@ -196,7 +196,7 @@ class __$$CategoryItemModelImplCopyWithImpl<$Res>
     Object? collectionId = null,
     Object? categoryId = null,
     Object? avgRate = freezed,
-    Object? rageCount = freezed,
+    Object? rateCount = freezed,
     Object? thumbnailUrl = freezed,
     Object? status = freezed,
     Object? count = freezed,
@@ -226,9 +226,9 @@ class __$$CategoryItemModelImplCopyWithImpl<$Res>
           ? _value.avgRate
           : avgRate // ignore: cast_nullable_to_non_nullable
               as double?,
-      rageCount: freezed == rageCount
-          ? _value.rageCount
-          : rageCount // ignore: cast_nullable_to_non_nullable
+      rateCount: freezed == rateCount
+          ? _value.rateCount
+          : rateCount // ignore: cast_nullable_to_non_nullable
               as int?,
       thumbnailUrl: freezed == thumbnailUrl
           ? _value.thumbnailUrl
@@ -271,7 +271,7 @@ class _$CategoryItemModelImpl extends _CategoryItemModel {
       required this.collectionId,
       required this.categoryId,
       this.avgRate,
-      this.rageCount,
+      this.rateCount,
       this.thumbnailUrl,
       this.status,
       this.count,
@@ -295,7 +295,7 @@ class _$CategoryItemModelImpl extends _CategoryItemModel {
   @override
   final double? avgRate;
   @override
-  final int? rageCount;
+  final int? rateCount;
   @override
   final String? thumbnailUrl;
   @override
@@ -315,7 +315,7 @@ class _$CategoryItemModelImpl extends _CategoryItemModel {
 
   @override
   String toString() {
-    return 'CategoryItemModel(id: $id, title: $title, collectionId: $collectionId, categoryId: $categoryId, avgRate: $avgRate, rageCount: $rageCount, thumbnailUrl: $thumbnailUrl, status: $status, count: $count, price: $price, addedAt: $addedAt, lastTransaction: $lastTransaction, adderId: $adderId)';
+    return 'CategoryItemModel(id: $id, title: $title, collectionId: $collectionId, categoryId: $categoryId, avgRate: $avgRate, rateCount: $rateCount, thumbnailUrl: $thumbnailUrl, status: $status, count: $count, price: $price, addedAt: $addedAt, lastTransaction: $lastTransaction, adderId: $adderId)';
   }
 
   @override
@@ -330,8 +330,8 @@ class _$CategoryItemModelImpl extends _CategoryItemModel {
             (identical(other.categoryId, categoryId) ||
                 other.categoryId == categoryId) &&
             (identical(other.avgRate, avgRate) || other.avgRate == avgRate) &&
-            (identical(other.rageCount, rageCount) ||
-                other.rageCount == rageCount) &&
+            (identical(other.rateCount, rateCount) ||
+                other.rateCount == rateCount) &&
             (identical(other.thumbnailUrl, thumbnailUrl) ||
                 other.thumbnailUrl == thumbnailUrl) &&
             (identical(other.status, status) || other.status == status) &&
@@ -352,7 +352,7 @@ class _$CategoryItemModelImpl extends _CategoryItemModel {
       collectionId,
       categoryId,
       avgRate,
-      rageCount,
+      rateCount,
       thumbnailUrl,
       status,
       count,
@@ -385,7 +385,7 @@ abstract class _CategoryItemModel extends CategoryItemModel {
       required final int collectionId,
       required final int categoryId,
       final double? avgRate,
-      final int? rageCount,
+      final int? rateCount,
       final String? thumbnailUrl,
       final CategoryItemStatus? status,
       final int? count,
@@ -409,7 +409,7 @@ abstract class _CategoryItemModel extends CategoryItemModel {
   @override
   double? get avgRate;
   @override
-  int? get rageCount;
+  int? get rateCount;
   @override
   String? get thumbnailUrl;
   @override

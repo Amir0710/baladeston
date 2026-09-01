@@ -8,8 +8,8 @@ abstract final class CategoryItemModelErrorCodes {
   // avgRate
   static const String invalidAvgRate = 'CATEGORY_ITEM_ENTITY_INVALID_AVG_RATE';
 
-  // rageCount
-  static const String invalidRageCount = 'CATEGORY_ITEM_ENTITY_INVALID_RAGE_COUNT';
+  // rateCount
+  static const String invalidRateCount = 'CATEGORY_ITEM_ENTITY_INVALID_RATE_COUNT';
 
   // thumbnailUrl
   static const String invalidThumbnailUrl = 'CATEGORY_ITEM_ENTITY_INVALID_THUMBNAIL_URL';

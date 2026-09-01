@@ -39,14 +39,6 @@ final class CollectionModelCodeMapper {
     codes.CollectionModelErrorCodes.invalidLastTransaction: () =>
     const CollectionModelInvalidLastTransactionFailure(),
 
-    // avgRate
-    codes.CollectionModelErrorCodes.invalidAvgRate: () =>
-    const CollectionModelInvalidAvgRateFailure(),
-
-    // rateCount
-    codes.CollectionModelErrorCodes.invalidRateCount: () =>
-    const CollectionModelInvalidRateCountFailure(),
-
     // price
     codes.CollectionModelErrorCodes.invalidPrice: () =>
     const CollectionModelInvalidPriceFailure(),

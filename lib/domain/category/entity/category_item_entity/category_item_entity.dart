@@ -11,7 +11,7 @@ abstract class CategoryItemEntity with _$CategoryItemEntity {
     required int collectionId,
     required int categoryId,
     double? avgRate,
-    int? rageCount ,
+    int? rateCount ,
     String? thumbnailUrl,
     CategoryItemStatus? status,
     int? count,

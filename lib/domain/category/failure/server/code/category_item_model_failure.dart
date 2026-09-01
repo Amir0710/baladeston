@@ -23,10 +23,10 @@ final class CategoryItemModelInvalidAvgRateFailure
   const CategoryItemModelInvalidAvgRateFailure();
 }
 
-// rageCount
-final class CategoryItemModelInvalidRageCountFailure
+// rateCount
+final class CategoryItemModelInvalidRateCountFailure
     extends CategoryItemModelFailure {
-  const CategoryItemModelInvalidRageCountFailure();
+  const CategoryItemModelInvalidRateCountFailure();
 }
 
 // thumbnailUrl

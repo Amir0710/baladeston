@@ -11,8 +11,6 @@ final class CollectionDataIntegrityMapper {
     final title = json['title'];
     final description = json['description'];
     final ownerId = json['ownerId'];
-    final avgRate = json['avgRate'];
-    final rateCount = json['rateCount'];
     final thumbnailUrl = json['thumbnailUrl'];
     final status = json['status'];
     final count = json['count'];
@@ -56,24 +54,6 @@ final class CollectionDataIntegrityMapper {
 
     if (id is int && id < 0) {
       return _failure('id cannot be negative.', json);
-    }
-
-    // Optional double avgRate
-    if (avgRate != null && avgRate is! num) {
-      return _failure('avgRate must be numeric.', json);
-    }
-
-    if (avgRate is num && avgRate < 0) {
-      return _failure('avgRate cannot be negative.', json);
-    }
-
-    // Optional int rateCount
-    if (rateCount != null && rateCount is! int) {
-      return _failure('rateCount must be int.', json);
-    }
-
-    if (rateCount is int && rateCount < 0) {
-      return _failure('rateCount cannot be negative.', json);
     }
 
     // Optional int count

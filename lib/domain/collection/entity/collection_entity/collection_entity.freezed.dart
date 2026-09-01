@@ -20,8 +20,6 @@ mixin _$CollectionEntity {
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   int? get ownerId => throw _privateConstructorUsedError;
-  double? get avgRate => throw _privateConstructorUsedError;
-  int? get rateCount => throw _privateConstructorUsedError;
   String? get thumbnailUrl => throw _privateConstructorUsedError;
   CollectionStatus? get status => throw _privateConstructorUsedError;
   CollectionType? get type => throw _privateConstructorUsedError;
@@ -49,8 +47,6 @@ abstract class $CollectionEntityCopyWith<$Res> {
       String title,
       String description,
       int? ownerId,
-      double? avgRate,
-      int? rateCount,
       String? thumbnailUrl,
       CollectionStatus? status,
       CollectionType? type,
@@ -80,8 +76,6 @@ class _$CollectionEntityCopyWithImpl<$Res, $Val extends CollectionEntity>
     Object? title = null,
     Object? description = null,
     Object? ownerId = freezed,
-    Object? avgRate = freezed,
-    Object? rateCount = freezed,
     Object? thumbnailUrl = freezed,
     Object? status = freezed,
     Object? type = freezed,
@@ -107,14 +101,6 @@ class _$CollectionEntityCopyWithImpl<$Res, $Val extends CollectionEntity>
       ownerId: freezed == ownerId
           ? _value.ownerId
           : ownerId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      avgRate: freezed == avgRate
-          ? _value.avgRate
-          : avgRate // ignore: cast_nullable_to_non_nullable
-              as double?,
-      rateCount: freezed == rateCount
-          ? _value.rateCount
-          : rateCount // ignore: cast_nullable_to_non_nullable
               as int?,
       thumbnailUrl: freezed == thumbnailUrl
           ? _value.thumbnailUrl
@@ -165,8 +151,6 @@ abstract class _$$CollectionEntityImplCopyWith<$Res>
       String title,
       String description,
       int? ownerId,
-      double? avgRate,
-      int? rateCount,
       String? thumbnailUrl,
       CollectionStatus? status,
       CollectionType? type,
@@ -194,8 +178,6 @@ class __$$CollectionEntityImplCopyWithImpl<$Res>
     Object? title = null,
     Object? description = null,
     Object? ownerId = freezed,
-    Object? avgRate = freezed,
-    Object? rateCount = freezed,
     Object? thumbnailUrl = freezed,
     Object? status = freezed,
     Object? type = freezed,
@@ -221,14 +203,6 @@ class __$$CollectionEntityImplCopyWithImpl<$Res>
       ownerId: freezed == ownerId
           ? _value.ownerId
           : ownerId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      avgRate: freezed == avgRate
-          ? _value.avgRate
-          : avgRate // ignore: cast_nullable_to_non_nullable
-              as double?,
-      rateCount: freezed == rateCount
-          ? _value.rateCount
-          : rateCount // ignore: cast_nullable_to_non_nullable
               as int?,
       thumbnailUrl: freezed == thumbnailUrl
           ? _value.thumbnailUrl
@@ -274,8 +248,6 @@ class _$CollectionEntityImpl implements _CollectionEntity {
       required this.title,
       required this.description,
       this.ownerId,
-      this.avgRate,
-      this.rateCount,
       this.thumbnailUrl,
       this.status,
       this.type,
@@ -293,10 +265,6 @@ class _$CollectionEntityImpl implements _CollectionEntity {
   final String description;
   @override
   final int? ownerId;
-  @override
-  final double? avgRate;
-  @override
-  final int? rateCount;
   @override
   final String? thumbnailUrl;
   @override
@@ -316,7 +284,7 @@ class _$CollectionEntityImpl implements _CollectionEntity {
 
   @override
   String toString() {
-    return 'CollectionEntity(id: $id, title: $title, description: $description, ownerId: $ownerId, avgRate: $avgRate, rateCount: $rateCount, thumbnailUrl: $thumbnailUrl, status: $status, type: $type, count: $count, price: $price, uniqueCode: $uniqueCode, lastTransaction: $lastTransaction, createdAt: $createdAt)';
+    return 'CollectionEntity(id: $id, title: $title, description: $description, ownerId: $ownerId, thumbnailUrl: $thumbnailUrl, status: $status, type: $type, count: $count, price: $price, uniqueCode: $uniqueCode, lastTransaction: $lastTransaction, createdAt: $createdAt)';
   }
 
   @override
@@ -329,9 +297,6 @@ class _$CollectionEntityImpl implements _CollectionEntity {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.ownerId, ownerId) || other.ownerId == ownerId) &&
-            (identical(other.avgRate, avgRate) || other.avgRate == avgRate) &&
-            (identical(other.rateCount, rateCount) ||
-                other.rateCount == rateCount) &&
             (identical(other.thumbnailUrl, thumbnailUrl) ||
                 other.thumbnailUrl == thumbnailUrl) &&
             (identical(other.status, status) || other.status == status) &&
@@ -353,8 +318,6 @@ class _$CollectionEntityImpl implements _CollectionEntity {
       title,
       description,
       ownerId,
-      avgRate,
-      rateCount,
       thumbnailUrl,
       status,
       type,
@@ -380,8 +343,6 @@ abstract class _CollectionEntity implements CollectionEntity {
       required final String title,
       required final String description,
       final int? ownerId,
-      final double? avgRate,
-      final int? rateCount,
       final String? thumbnailUrl,
       final CollectionStatus? status,
       final CollectionType? type,
@@ -399,10 +360,6 @@ abstract class _CollectionEntity implements CollectionEntity {
   String get description;
   @override
   int? get ownerId;
-  @override
-  double? get avgRate;
-  @override
-  int? get rateCount;
   @override
   String? get thumbnailUrl;
   @override

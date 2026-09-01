@@ -47,16 +47,6 @@ class CollectionModelInvalidLastTransactionFailure
   const CollectionModelInvalidLastTransactionFailure();
 }
 
-// avgRate
-class CollectionModelInvalidAvgRateFailure extends CollectionModelFailure {
-  const CollectionModelInvalidAvgRateFailure();
-}
-
-// rateCount
-class CollectionModelInvalidRateCountFailure extends CollectionModelFailure {
-  const CollectionModelInvalidRateCountFailure();
-}
-
 // price
 class CollectionModelInvalidPriceFailure extends CollectionModelFailure {
   const CollectionModelInvalidPriceFailure();

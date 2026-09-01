@@ -22,20 +22,18 @@ DiscountQueryFilter _$DiscountQueryFilterFromJson(Map<String, dynamic> json) {
 mixin _$DiscountQueryFilter {
   int? get ownerId =>
       throw _privateConstructorUsedError; // in user app is not important and i must extract id from token but i need it for admin panel
-  List<int>? get ids => throw _privateConstructorUsedError; // validated needed
-  int? get targetId => throw _privateConstructorUsedError; // validated needed
+  List<int>? get ids => throw _privateConstructorUsedError;
+  int? get targetId => throw _privateConstructorUsedError;
   DiscountTargetType? get targetType => throw _privateConstructorUsedError;
-  String? get searchTerm =>
-      throw _privateConstructorUsedError; // validated needed
-  int? get minPercent => throw _privateConstructorUsedError; // validated needed
-  int? get maxPercent => throw _privateConstructorUsedError; // validated needed
+  String? get searchTerm => throw _privateConstructorUsedError;
+  int? get minPercent => throw _privateConstructorUsedError;
+  int? get maxPercent => throw _privateConstructorUsedError;
   DiscountStatus? get status => throw _privateConstructorUsedError;
   DateTime? get createAt => throw _privateConstructorUsedError;
   bool? get userCreated => throw _privateConstructorUsedError;
-  DateTime? get expiresAt =>
-      throw _privateConstructorUsedError; // validated needed
-  int? get maxUse => throw _privateConstructorUsedError; // validated needed
-  int? get usage => throw _privateConstructorUsedError; // validated needed
+  DateTime? get expiresAt => throw _privateConstructorUsedError;
+  int? get maxUse => throw _privateConstructorUsedError;
+  int? get usage => throw _privateConstructorUsedError;
   int get limit => throw _privateConstructorUsedError;
   String? get cursor => throw _privateConstructorUsedError;
   bool get ascending => throw _privateConstructorUsedError;
@@ -355,21 +353,16 @@ class _$DiscountQueryFilterImpl implements _DiscountQueryFilter {
     return EqualUnmodifiableListView(value);
   }
 
-// validated needed
   @override
   final int? targetId;
-// validated needed
   @override
   final DiscountTargetType? targetType;
   @override
   final String? searchTerm;
-// validated needed
   @override
   final int? minPercent;
-// validated needed
   @override
   final int? maxPercent;
-// validated needed
   @override
   final DiscountStatus? status;
   @override
@@ -378,13 +371,10 @@ class _$DiscountQueryFilterImpl implements _DiscountQueryFilter {
   final bool? userCreated;
   @override
   final DateTime? expiresAt;
-// validated needed
   @override
   final int? maxUse;
-// validated needed
   @override
   final int? usage;
-// validated needed
   @override
   @JsonKey()
   final int limit;
@@ -501,17 +491,17 @@ abstract class _DiscountQueryFilter implements DiscountQueryFilter {
   int?
       get ownerId; // in user app is not important and i must extract id from token but i need it for admin panel
   @override
-  List<int>? get ids; // validated needed
+  List<int>? get ids;
   @override
-  int? get targetId; // validated needed
+  int? get targetId;
   @override
   DiscountTargetType? get targetType;
   @override
-  String? get searchTerm; // validated needed
+  String? get searchTerm;
   @override
-  int? get minPercent; // validated needed
+  int? get minPercent;
   @override
-  int? get maxPercent; // validated needed
+  int? get maxPercent;
   @override
   DiscountStatus? get status;
   @override
@@ -519,11 +509,11 @@ abstract class _DiscountQueryFilter implements DiscountQueryFilter {
   @override
   bool? get userCreated;
   @override
-  DateTime? get expiresAt; // validated needed
+  DateTime? get expiresAt;
   @override
-  int? get maxUse; // validated needed
+  int? get maxUse;
   @override
-  int? get usage; // validated needed
+  int? get usage;
   @override
   int get limit;
   @override

@@ -18,9 +18,9 @@ class CategoryItemModelCodeMapper {
     codes.CategoryItemModelErrorCodes.invalidAvgRate: () =>
     const CategoryItemModelInvalidAvgRateFailure(),
 
-    // rageCount
-    codes.CategoryItemModelErrorCodes.invalidRageCount: () =>
-    const CategoryItemModelInvalidRageCountFailure(),
+    // rateCount
+    codes.CategoryItemModelErrorCodes.invalidRateCount: () =>
+    const CategoryItemModelInvalidRateCountFailure(),
 
     // thumbnailUrl
     codes.CategoryItemModelErrorCodes.invalidThumbnailUrl: () =>

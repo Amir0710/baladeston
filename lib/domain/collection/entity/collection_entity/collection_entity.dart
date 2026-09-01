@@ -11,8 +11,6 @@ abstract class CollectionEntity with _$CollectionEntity {
     required String title,
     required String description ,
     int? ownerId,
-    double? avgRate,
-    int? rateCount,
     String? thumbnailUrl,
     CollectionStatus? status,
     CollectionType? type ,

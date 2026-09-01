@@ -14,7 +14,7 @@ abstract class CategoryItemModel with _$CategoryItemModel {
     required int collectionId,
     required int categoryId,
     double? avgRate,
-    int? rageCount ,
+    int? rateCount ,
     String? thumbnailUrl,
     CategoryItemStatus? status,
     int? count, // for preview from collection

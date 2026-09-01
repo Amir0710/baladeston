@@ -25,9 +25,9 @@ class CategoryItemDataIntegrityMapper {
       }
     }
 
-    if (json.containsKey('rageCount') && json['rageCount'] != null) {
-      if (json['rageCount'] is! int || (json['rageCount'] as int) < 0) {
-        return _failure('rageCount must be a non-negative int', json);
+    if (json.containsKey('rateCount') && json['rateCount'] != null) {
+      if (json['rateCount'] is! int || (json['rateCount'] as int) < 0) {
+        return _failure('rateCount must be a non-negative int', json);
       }
     }
 
